@@ -17,8 +17,8 @@ TABLE_GAP = re.compile(r"\S {3,}\S")
 # what follows "Diagram 4.1" when it is a cross-reference wrapped onto a new line, not a caption: "Diagram 4.1).",
 # "Diagram 1.5 d. For access…", "Diagram 1.12 (for buildings…", "Table 1.1. e. Comply…"
 NOT_CAPTION = re.compile(r"^(?:[),;]|[.:]\s*[a-z(]|\(?\s*[a-z])")
-INDEX_REF_END = re.compile(r"(?:\d{1,2}\.\d{1,3}(?:\s*[–-]\s*\d{1,2}\.\d{1,3})?|(?:Tables?|Diagrams?|Appendix)\s+[\dA-Z][\d.]*|"
-                           r"[Pp]age\s+\d{1,3})\s*[,;&]?$")
+INDEX_REF_END = re.compile(r"(?:\d{1,2}\.\d{1,3}(?:\s*[–-]\s*\d{1,2}\.\d{1,3})?|"
+                           r"(?:Tables?|Diagrams?|Appendix)\s+[\dA-Z][\d.]*|[Pp]age\s+\d{1,3})\s*[,;&]?$")
 
 
 def figure_start(text):
@@ -171,7 +171,8 @@ def blocks(text, state=None):
                 continue
             flush_table()
         s = SPACE.sub(" ", s)
-        starts_new = PARA.match(s) or figure_start(s) or HEADING.match(s) or re.match(r"^([•\-–*]|\(?[a-z]\)|\d+\))\s", s)
+        starts_new = PARA.match(s) or figure_start(s) or HEADING.match(s) or \
+            re.match(r"^([•\-–*]|\(?[a-z]\)|\d+\))\s", s)
         if starts_new and cur:
             flush()
         cur.append(s)
