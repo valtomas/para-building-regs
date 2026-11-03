@@ -37,6 +37,10 @@ explain""".split())
 PART_WORD = re.compile(r"\b(?:part|approved\s+document)\s+([a-t])(?![a-z])|\bad\s?([a-t])(?![a-z])", re.I)
 
 
+# words whose document form is longer: matched as a prefix ("door" finds "doorset", "doorway")
+PREFIX_WORDS = {"door", "doors"}
+
+
 def query_terms(query):
     """FTS5 terms for a query: words minus stopwords; "2.5" or "B1" kept as phrases."""
     terms = []
@@ -50,6 +54,8 @@ def query_terms(query):
             continue
         parts = [p for p in re.split(r"[.\-/]", raw) if p]
         term = '"' + " ".join(parts) + '"'
+        if raw in PREFIX_WORDS:  # people say "fire door", the documents "fire doorset"
+            term = raw.rstrip("s") + "*"
         if term not in terms:
             terms.append(term)
     return terms[:14]
