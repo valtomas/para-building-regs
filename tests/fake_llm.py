@@ -16,18 +16,14 @@ def _chunks(delta_list, finish):
 def respond(body):
     msgs = body["messages"]
     tools = body.get("tools")
-    tool_msgs = [m for m in msgs if m["role"] == "tool"]
     last_user = [m for m in msgs if m["role"] == "user"][-1]["content"]
     if not tools:
         if "Reply with just: OK" in last_user:
             return _chunks([{"content": "OK"}], "stop")
         ids = re.findall(r"\[([rf]\d+)\]", last_user)
         return _chunks([{"content": f"From the excerpts: rise 220 mm [{ids[0] if ids else 'r1'}]."}], "stop")
-    if not tool_msgs or msgs[-1]["role"] == "user":
-        if msgs[-1]["role"] == "user" and tool_msgs and "Note from the app" not in msgs[-1]["content"]:
-            pass
-        else:
-            pass
+    if "from memory" in last_user and msgs[-1]["role"] == "user":  # answers without looking up, until the app asks
+        return _chunks([{"content": "A higher-risk building has 18 storeys or more."}], "stop")
     since_user = []
     for m in reversed(msgs):
         if m["role"] == "user":

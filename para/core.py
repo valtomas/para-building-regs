@@ -62,6 +62,8 @@ FINAL_NUDGE = ("(Note from the app, not the person: you have used all your looku
                "read, with citations. Don't call any more tools.)")
 THINK_NUDGE = ("(Note from the app, not the person: you have reasoned long enough. Answer now from what you have, "
                "briefly, with citations.)")
+LOOKUP_NUDGE = ("(Note from the app, not the person: search the library with search_library before you answer, and "
+                "cite the passages you use. If the message isn't about building regulations or guidance, just reply.)")
 RESCUE_NOTE = ("(Note from the app, not the person: you can't look anything else up. Answer the question now from "
                "these library excerpts, citing their ids in square brackets.)")
 UNSEEN_ID = "No search result has that id. Use an id from your search_library results."
@@ -269,6 +271,13 @@ def chat_events(client, library, history, question, settings, supports_tools=Tru
         if calls:
             entry["tool_calls"] = calls
         messages.append(entry)
+        if not calls and use_tools and round_no == 0 and sent is None and text.strip() and \
+                not any(i in known for i in ID_IN_TEXT.findall(text)):
+            # It answered from memory without looking anything up: once, ask it to search first.
+            messages.pop()
+            yield {"type": "retry", "why": "lookup"}
+            nudge, round_no = LOOKUP_NUDGE, 1
+            continue
         if not calls:
             answer = text
             break

@@ -108,6 +108,10 @@ except urllib.error.HTTPError as e:
 ev2 = ask("And headroom?", cid)
 check(ev2[-1]["type"] == "done", "follow-up question in the same chat")
 
+ev3 = ask("Answer from memory: what is a higher-risk building?")
+check(any(e["type"] == "retry" for e in ev3) and any(e["type"] == "search" for e in ev3) and ev3[-1]["cites"],
+      "an answer from memory is sent back to search first")
+
 # the person's files
 data = b"# Fire strategy\n\n2.1 The building has a sprinkler system to BS 9251.\n\n2.2 Travel distance is 7.5 m."
 call("/api/files", raw=data, headers={"X-Filename": "Fire%20strategy.md"})
