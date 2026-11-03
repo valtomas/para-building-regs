@@ -218,9 +218,8 @@ class Bundled:
     def _install_server(self, job, gpu):
         info = catalog().get("llama_cpp") or {}
         repo, tag = info.get("repo", "ggml-org/llama.cpp"), info.get("tag", "latest")
-        rel = _json(f"https://api.github.com/repos/{repo}/releases/" + ("latest" if tag == "latest" else f"tags/{tag}"))
         pattern = (info.get("assets") or {}).get(platform_key(gpu))
-        asset = next((a for a in rel.get("assets", []) if pattern and re.search(pattern, a["name"])), None)
+        rel, asset = _find_release(repo, tag, pattern)
         if not asset:
             raise EngineError(f"No llama.cpp build for this computer ({platform_key(gpu)}) in release "
                               f"{rel.get('tag_name')}. Use an engine you install yourself instead.")
@@ -302,6 +301,22 @@ class Bundled:
                 p.wait(10)
             except subprocess.TimeoutExpired:
                 p.kill()
+
+
+def _find_release(repo, tag, pattern):
+    """(release, asset) for this computer. llama.cpp publishes its builds (b1234) as pre-releases, and its "latest"
+    release can be one with no binaries at all, so "latest" means the newest release that has a matching build."""
+    if tag != "latest":
+        rels = [_json(f"https://api.github.com/repos/{repo}/releases/tags/{tag}")]
+    else:
+        rels = _json(f"https://api.github.com/repos/{repo}/releases?per_page=20")
+    for rel in rels:
+        if rel.get("draft"):
+            continue
+        asset = next((a for a in rel.get("assets", []) if pattern and re.search(pattern, a["name"])), None)
+        if asset:
+            return rel, asset
+    return (rels[0] if rels else {}), None
 
 
 def _hf_file_info(repo, filename):
