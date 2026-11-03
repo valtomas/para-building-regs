@@ -149,6 +149,23 @@ text, cites, dropped = core._check_citations("Competence [BR 2010, reg 11G(1), r
 check(text == "Competence (BR 2010, reg 11G(1)) [r12]. Duties [r20][r22]. Not." and set(cites) == {"r12", "r20", "r22"}
       and dropped == ["r99"], "citations inside the model's own brackets link; made-up ones still dropped")
 
+
+
+class RefLibrary:
+    PASSAGES = {"r1": ("ADB1", "Table 3.1"), "r2": ("ADB1", "3.20–3.22"), "r3": ("ADK", "Diagram 3.1")}
+
+    def describe(self, pid):
+        if pid not in self.PASSAGES:
+            return None
+        source, ref = self.PASSAGES[pid]
+        return {"id": pid, "source": source, "title": "", "ref": ref}
+
+
+text, cites, _ = core._check_citations("A [ADB1, Table 3.1]. B (ADB Vol 1, para 3.21). C [ADK, Diagram 3.1]. "
+                                       "D [ADB1, Table 3.2].", {"r1", "r2"}, RefLibrary())
+check(text == "A [r1]. B (ADB Vol 1, para 3.21) [r2]. C [ADK, Diagram 3.1]. D [ADB1, Table 3.2]." and
+      set(cites) == {"r1", "r2"}, "references written in words link only to passages the model saw")
+
 # splitting: cross-references wrapped onto a new line are not captions; index pages are skipped
 from para.splitter import skipped_pages  # noqa: E402
 

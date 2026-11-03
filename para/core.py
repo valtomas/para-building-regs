@@ -70,6 +70,9 @@ BAD_ID = "That isn't a passage id. Ids look like r1234 or f56."
 # A bracket or parenthesis holding passage ids, alone ("[r12]", "[r12, r34]") or with the model's own words
 # ("[BR 2010, reg 11G(1), r4412]", "(ADB Vol 1, Table 3.1, r272)", "[r4122–r4124]").
 CITE_GROUPS = (re.compile(r"\[([^\[\]\n]{0,300})\]"), re.compile(r"\(([^()\n]{0,300})\)"))
+# a reference in words inside such a bracket: "Table 3.1", "Diagram 3.2", "reg 11G(1)", "para 3.27"
+LABEL_REF = re.compile(r"(?i)\b(table|diagram|figure)\s+([a-z]?\d{1,2}(?:\.\d{1,3})?[a-z]?)\b|\b(reg(?:ulation)?)\.?\s+"
+                       r"(\d{1,3}[a-z]{0,2})\b|(?:\bpara(?:graph)?\.?\s+|(?<=[\s,]))(\d{1,2}\.\d{1,3})\b")
 ID_TOKEN = re.compile(r"(?<![\w/.#\x00])([rf])(\d+)(?:\s*[–-]\s*[rf]?(\d+))?(?![\w\x00])")
 ID_IN_TEXT = re.compile(r"\[([rf]\d+)\]")
 TOOL_MARKUP = ("<tool_call", "<function", "[TOOL_CALLS]", "<|tool_call")
@@ -295,15 +298,68 @@ def chat_events(client, library, history, question, settings, supports_tools=Tru
            "tokens": usage_total, "messages": messages[1:]}
 
 
+def _source_key(name):
+    s = re.sub(r"approved document\s+([a-z])\b", r"ad\1", (name or "").lower())
+    s = re.sub(r"\bvol(?:ume)?\.?\s*|^the\s+", "", s)
+    return re.sub(r"[^a-z0-9]", "", s)
+
+
+def _ref_keys(ref):
+    """"3.23–3.25" -> {"3.23", "3.24", "3.25"}; "Table 3.1, Diagram 3.2" -> both; "reg 11G" -> {"reg 11g"}."""
+    keys = set()
+    for part in (ref or "").lower().split(", "):
+        m = re.fullmatch(r"(\d{1,2})\.(\d{1,3})\s*[–-]\s*\1\.(\d{1,3})", part.strip())
+        if m:
+            keys.update(f"{m.group(1)}.{n}" for n in range(int(m.group(2)), int(m.group(3)) + 1))
+        elif part.strip():
+            keys.add(part.strip())
+    return keys
+
+
+def _label_ref(text):
+    """(source part, ref key) of a reference written in words: "ADB Vol 1, Table 3.1", "BR 2010, reg 11G(1)"."""
+    m = LABEL_REF.search(text)
+    if not m:
+        return None
+    if m.group(1):
+        ref = f"{m.group(1)} {m.group(2)}".lower()
+    elif m.group(3):
+        ref = f"reg {m.group(4)}".lower()
+    else:
+        ref = m.group(5)
+    return re.sub(r"(?i)^\s*(?:see(?: also)?|in|from|under)\b", "", text[:m.start()]), ref
+
+
+def _by_reference(text, known, library):
+    """The passage the model saw whose document and reference are the ones written in text, if exactly one is."""
+    label = _label_ref(text)
+    if not label:
+        return None
+    source, ref = _source_key(label[0]), label[1]
+    found = []
+    for pid in known:
+        info = library.describe(pid)
+        if info and ref in _ref_keys(info.get("ref")) and \
+                (not source or source in (_source_key(info.get("source")), _source_key(info.get("title")))):
+            found.append(pid)
+    return found[0] if len(found) == 1 else None
+
+
 def _check_citations(answer, known, library):
-    """Keep citations to passages it saw; drop made-up ids. Returns (answer, {id: info}, [dropped ids])."""
+    """Keep citations to passages it saw; drop made-up ids. A reference written in words in brackets
+    ("[ADB1, Table 3.1]") links to the passage it names only if the model saw that very passage. Returns (answer,
+    {id: info}, [dropped ids])."""
     cites, dropped = {}, []
 
     def fix(m):
         inner = m.group(1)
         tokens = list(ID_TOKEN.finditer(inner))
         if not tokens:
-            return m.group(0)
+            pid = _by_reference(inner, known, library) if len(inner) < 120 else None
+            if not pid:
+                return m.group(0)
+            cites[pid] = _brief(library.describe(pid))
+            return f"\x00{pid}\x00" if m.group(0).startswith("[") else f"{m.group(0)} \x00{pid}\x00"
         ids = []
         for t in tokens:  # a range "r4122–r4124" counts as its two ends: what lies between wasn't named
             ids += [t[1] + t[2]] + ([t[1] + t[3]] if t[3] else [])
