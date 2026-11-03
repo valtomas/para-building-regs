@@ -138,5 +138,26 @@ out = list(core.chat_events(Client(fake_url, "", "fake-model"), Library(), [], "
                             server.settings.load(), supports_tools=False))
 check(out[-1]["type"] == "done" and out[-1]["cites"], "no-tools mode cites attached excerpts")
 
+# splitting: cross-references wrapped onto a new line are not captions; index pages are skipped
+from para.splitter import skipped_pages  # noqa: E402
+
+refs = [p["ref"] for p in split(["4.1 Provide barriers where vehicles have access, as shown in\nDiagram 4.1).\n\n"
+                                 "Diagram 4.1 Barrier siting\n\n4.2 Barriers should be provided in accordance with "
+                                 "all of the following.\n\nTable 1.1. e. Comply with paragraph 1.9b."])]
+check("Diagram 4.1" in refs and refs.count("Diagram 4.1") == 1 and "Table 1.1" not in refs,
+      "cross-references don't start figure passages")
+index = "Index\n" + "\n".join(f"Topic {i} 1.{i}, Diagram {i}.1" for i in range(12))
+more = "\n".join(f"Other topic {i} Table {i}.2; 3.{i}" for i in range(12))
+check(skipped_pages(["1.1 Text.", index, more, "2.1 Body text again."]) == {2, 3}, "index pages skipped")
+
+# built-in engine: llama.cpp's "latest" release can have no binaries; builds are pre-releases
+from para import engine  # noqa: E402
+
+releases = [{"tag_name": "v0.8.0", "assets": [{"name": "nightly-tag.txt"}]},
+            {"tag_name": "b2", "prerelease": True, "assets": [{"name": "llama-b2-bin-ubuntu-x64.tar.gz"}]}]
+engine._json = lambda url: releases
+rel, asset = engine._find_release("ggml-org/llama.cpp", "latest", r"bin-ubuntu-x64\.(zip|tar\.gz)$")
+check(rel["tag_name"] == "b2" and asset["name"].startswith("llama-b2"), "finds the newest llama.cpp build")
+
 print(f"\n{len(failures)} failed" if failures else "\nall passed")
 sys.exit(1 if failures else 0)

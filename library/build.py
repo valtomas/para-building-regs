@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.dirname(HERE))
 sys.path.insert(0, HERE)
 
 from para.myfiles import html_text  # noqa: E402
-from para.splitter import clean_pages, is_contents, split  # noqa: E402
+from para.splitter import clean_pages, skipped_pages, split  # noqa: E402
 from para.store import Store  # noqa: E402
 import figures  # noqa: E402
 import legislation  # noqa: E402
@@ -74,7 +74,7 @@ def pdf_passages(path):
     """Passages of a PDF, and its diagrams and tables as images. A drawing's labels are taken out of the running
     text (where they would land in the middle of the wrong paragraph) and kept with the diagram's own passage."""
     pages = pdf_pages(path)
-    skip = {i + 1 for i, text in enumerate(clean_pages(pages)) if is_contents(text)}
+    skip = skipped_pages(clean_pages(pages))
     figs = figures.find(path, skip_pages=skip)
     for f in figs:
         if f["kind"] != "Table":  # a table's text is its content: keep it
@@ -93,14 +93,16 @@ def pdf_passages(path):
     by_label = {}
     for p in passages:
         for ref in (p.get("ref") or "").split(", "):
-            by_label.setdefault(ref, p)
+            by_label.setdefault(ref, []).append(p)
     for f in figs:
-        target = by_label.get(f["label"])
+        # the passage with its label nearest its page: the same label also turns up in an index or a cross-reference
+        near = [p for p in by_label.get(f["label"], []) if abs((p.get("page") or 0) - f["page"]) <= 2]
+        target = min(near, key=lambda p: abs((p.get("page") or 0) - f["page"])) if near else None
         if target is None:  # its caption didn't start a passage: give the figure one of its own
             target = {"ref": f["label"], "heading": "", "page": f["page"], "text": f["caption"]}
             at = next((i for i, p in enumerate(passages) if (p.get("page") or 0) > f["page"]), len(passages))
             passages.insert(at, target)
-            by_label[f["label"]] = target
+            by_label.setdefault(f["label"], []).append(target)
         f["target"] = target
         # what's left of the drawing in the running text: fragments such as ".x" or "Fd"
         target["text"] = re.sub(r"\n\n[^A-Za-z\n]*(?:[A-Za-z]{1,2}[^A-Za-z\n]*)?(?=\n\n|$)", "", target["text"])
