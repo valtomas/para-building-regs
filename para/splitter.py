@@ -33,6 +33,61 @@ def _norm(line):
     return re.sub(r"\s+", " ", re.sub(r"\d+", "#", line.strip().lower()))
 
 
+def _prose(cells):
+    """Do these pieces of lines read as running text (not table cells)?"""
+    cells = [c for c in cells if c.strip()]
+    if len(cells) < 4:
+        return False
+    text = " ".join(cells)
+    words = re.findall(r"[A-Za-z]{2,}", text)
+    return sum(len(c.strip()) for c in cells) / len(cells) >= 18 and len(words) >= 3 * len(cells) and \
+        len(re.findall(r"\d", text)) < 0.08 * len(text)
+
+
+def unweave_columns(page):
+    """Text of a two-column page from pdftotext -layout comes out a line of each column side by side ("2.2 Where it
+    is not possible…   d. there is a level landing…"). Find the gutter, and where both sides of a run of lines read
+    as prose, put the left column before the right. Full-width lines and tables stay as they are."""
+    lines = page.split("\n")
+    long = [ln for ln in lines if len(ln.strip()) > 40]
+    if len(long) < 10:
+        return page
+    width = max(len(ln) for ln in long)
+
+    def splits_at(ln, x):
+        return len(ln) > x + 2 and ln[x - 1:x + 2] == "   " and ln[:x].strip() and ln[x:].strip()
+
+    best, best_n = None, 0
+    for x in range(int(width * 0.35), int(width * 0.65)):
+        n = sum(1 for ln in long if splits_at(ln, x))
+        if n > best_n:
+            best, best_n = x, n
+    if best is None or best_n < 0.6 * len(long):
+        return page
+    out, run = [], []
+
+    def flush():
+        if run:
+            left = [ln[:best].rstrip() for ln in run]
+            right = [ln[best:].strip() for ln in run]
+            if _prose(left) and _prose(right):
+                out.extend([ln.strip() for ln in left] + [""] + right)
+            else:
+                out.extend(run)
+            run.clear()
+
+    for ln in lines:
+        if splits_at(ln, best) or (not ln.strip() and run) or (ln.strip() and len(ln) <= best and run):
+            run.append(ln)  # both columns, a blank line, or a line with text only in the left column
+        elif ln.strip() and ln[:best].strip() == "" and run:
+            run.append(ln)  # text only in the right column
+        else:
+            flush()
+            out.append(ln)
+    flush()
+    return "\n".join(out)
+
+
 def clean_pages(pages):
     """pages: list of page texts. Drops running headers/footers (lines on many pages) and page numbers (a bare number
     among the first or last few lines of a page; bare numbers elsewhere are table cells)."""

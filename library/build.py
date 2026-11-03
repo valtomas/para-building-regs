@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.dirname(HERE))
 sys.path.insert(0, HERE)
 
 from para.myfiles import html_text  # noqa: E402
-from para.splitter import clean_pages, skipped_pages, split  # noqa: E402
+from para.splitter import clean_pages, skipped_pages, split, unweave_columns  # noqa: E402
 from para.store import Store  # noqa: E402
 import figures  # noqa: E402
 import legislation  # noqa: E402
@@ -67,7 +67,7 @@ def content(base_path):
 
 def pdf_pages(path):
     out = subprocess.run(["pdftotext", "-layout", "-enc", "UTF-8", path, "-"], capture_output=True, check=True).stdout
-    return out.decode("utf-8", "replace").split("\f")
+    return [unweave_columns(p) for p in out.decode("utf-8", "replace").split("\f")]
 
 
 def pdf_passages(path):
