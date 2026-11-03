@@ -55,10 +55,10 @@ python3 library/build.py                   # build the library (needs poppler-ut
 Use `PARA_APP_DIR` (settings, chats, indexes), `PARA_LIBRARY` (a library file) and `HOME` (the files folder) to
 run against throwaway folders. Never test against the person's real app folder.
 
-Testing with a real engine: Lemonade (`http://127.0.0.1:13305/api/v1`; older versions `:8000`), Ollama (`http://127.0.0.1:11434/v1`) and
-LM Studio (`http://127.0.0.1:1234/v1`) are found by *Find engines on this computer*. When you change prompts or the
-tool loop, ask a real model a few questions from different Parts and check the citations open the right
-paragraphs.
+Testing with a real engine: Lemonade (`http://127.0.0.1:13305/api/v1`; older versions `:8000`), Ollama
+(`http://127.0.0.1:11434/v1`) and LM Studio (`http://127.0.0.1:1234/v1`) are found by *Find engines on this
+computer*. When you change prompts or the tool loop, ask a real model a few questions from different Parts and check
+the citations open the right paragraphs.
 
 ## Conventions
 
