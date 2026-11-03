@@ -182,6 +182,16 @@ index = "Index\n" + "\n".join(f"Topic {i} 1.{i}, Diagram {i}.1" for i in range(1
 more = "\n".join(f"Other topic {i} Table {i}.2; 3.{i}" for i in range(12))
 check(skipped_pages(["1.1 Text.", index, more, "2.1 Body text again."]) == {2, 3}, "index pages skipped")
 
+# figures: a drawing's text is smaller than the running text, so a long label doesn't cut the drawing short
+sys.path.insert(0, os.path.join(ROOT, "library"))
+import figures  # noqa: E402
+
+body = figures.Line(57, 100, 540, 114, "2.9 A non-powered manually operated entrance door, fitted with a closer", 0)
+label = figures.Line(141, 254, 405, 263, "The central door may be omitted if maximum travel distance is not more", 1)
+part = figures.Line(141, 118, 264, 127, "a. Corridor access without dead ends", 2)
+check(figures._is_body(body, 483, 57, 14) and not figures._is_body(label, 483, 57, 14)
+      and not figures._is_body(part, 483, 57, 14), "a drawing's labels are not running text")
+
 # built-in engine: llama.cpp's "latest" release can have no binaries; builds are pre-releases
 from para import engine  # noqa: E402
 

@@ -61,10 +61,25 @@ def _is_caption(ln):
     return f"{m.group(1)} {m.group(2)}", False
 
 
-def _is_body(ln, column, left=None):
+def _words(ln):
+    return len(re.findall(r"[A-Za-z]{2,}", ln.text))
+
+
+def body_height(lines, least=1):
+    """The height of a line of running text: the commonest among lines of four words or more (0 with fewer than
+    `least` of them)."""
+    heights = collections.Counter(round(ln.y1 - ln.y0) for ln in lines if _words(ln) >= 4)
+    return heights.most_common(1)[0][0] if sum(heights.values()) >= least else 0
+
+
+def _is_body(ln, column, left=None, body_h=0):
     """Running text, as opposed to a label in a drawing: a long line of words, or the start of a paragraph (at the
-    left margin: a table cell such as "1.6 or Window Energy Rating" isn't paragraph 1.6)."""
-    words = len(re.findall(r"[A-Za-z]{2,}", ln.text))
+    left margin: a table cell such as "1.6 or Window Energy Rating" isn't paragraph 1.6). A drawing's text is
+    smaller than the running text, so a long label such as "The central door may be omitted if…", or a part's title
+    such as "a. Corridor access without dead ends", is not running text."""
+    if ln.y1 - ln.y0 < 0.8 * body_h:
+        return False
+    words = _words(ln)
     at_margin = left is None or ln.x0 <= left + 40
     return (ln.x1 - ln.x0 >= 0.5 * column and words >= 7) or bool(PARA_START.match(ln.text) and words >= 5
                                                                     and at_margin)
@@ -74,6 +89,7 @@ def find(pdf, skip_pages=()):
     """Figures in a PDF: [{label, continued, page (1-based), box (x0, y0, x1, y1) in points, labels: [text],
     words: Counter of words inside the drawing}]."""
     pages = page_lines(pdf)
+    doc_body_h = body_height([ln for _w, _h, lines in pages for ln in lines])
     found = []
     votes = collections.Counter()
     for pno, (w, h, lines) in enumerate(pages, start=1):
@@ -83,12 +99,14 @@ def find(pdf, skip_pages=()):
         xs = sorted(ln.x0 for ln in lines)
         left = xs[len(xs) // 10]
         top_limit, bottom_limit = h * 0.08, h * 0.93
-        body_or_caption = [ln for ln in lines if (_is_body(ln, column, left) or _is_caption(ln))
+        # a page with plenty of running text has its own: pages replaced by an amendment may be set smaller
+        body_h = body_height([ln for ln in lines if ln.x1 - ln.x0 >= w / 3], least=20) or doc_body_h
+        body_or_caption = [ln for ln in lines if (_is_body(ln, column, left, body_h) or _is_caption(ln))
                            and top_limit < ln.y0 < bottom_limit and not NOTE.match(ln.text)]
         # Going down from a caption (tables, and diagrams captioned above), long lines may be table rows or notes,
         # so only a numbered paragraph, a heading or another caption ends the figure.
         starts = [ln for ln in lines if (_is_caption(ln) or HEADING.match(ln.text) or
-                                         (PARA_START.match(ln.text) and _is_body(ln, column, left)))
+                                         (PARA_START.match(ln.text) and _is_body(ln, column, left, body_h)))
                   and top_limit < ln.y0 < bottom_limit]
         for i, ln in enumerate(lines):
             cap = _is_caption(ln)
