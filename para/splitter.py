@@ -33,6 +33,13 @@ def _norm(line):
     return re.sub(r"\s+", " ", re.sub(r"\d+", "#", line.strip().lower()))
 
 
+def _untabbed(line):
+    """A header line without the section tab set apart at either end ("B1", "R2-C", "L1(b), L2"): the tab changes
+    from section to section, the header doesn't."""
+    tab = r"[A-Z]{1,2}(?:\d[\w()\-]{0,4})?(?:, [A-Z]\d[\w()]{0,3})?"  # not a word: "CONTENTS" says what a page is
+    return _norm(re.sub(rf"^\s*{tab}\s{{3,}}|\s{{3,}}{tab}\s*$", "", line))
+
+
 def _prose(cells):
     """Do these pieces of lines read as running text (not table cells)?"""
     cells = [c for c in cells if c.strip()]
@@ -91,13 +98,15 @@ def unweave_columns(page):
 def clean_pages(pages):
     """pages: list of page texts. Drops running headers/footers (lines on many pages) and page numbers (a bare number
     among the first or last few lines of a page; bare numbers elsewhere are table cells)."""
-    counts = collections.Counter()
+    counts, tabbed = collections.Counter(), collections.Counter()
     split_lines = []
     for text in pages:
         lines = [ln.rstrip().replace("\u00a0", " ") for ln in (text or "").splitlines()]
         split_lines.append(lines)
         counts.update({_norm(ln) for ln in lines if ln.strip()})
+        tabbed.update({_untabbed(ln) for ln in lines if ln.strip()})
     threshold = max(3, len(pages) * 0.3)
+    edge_threshold = max(3, len(pages) * 0.15)  # at the top or bottom: a header that's only on left-hand pages
     out = []
     for lines in split_lines:
         filled = [i for i, ln in enumerate(lines) if ln.strip()]
@@ -105,7 +114,12 @@ def clean_pages(pages):
         kept = []
         for i, ln in enumerate(lines):
             st = ln.strip()
-            if st and counts[_norm(ln)] >= threshold and len(st) < 160:
+            n = counts[_norm(ln)]
+            # the length without the layout's padding: a footer spread across the page is still short
+            untabbed = _untabbed(ln)  # needs two words left: "2.1      Introduction" untabbed is nothing
+            edge = i in edges and max(n, tabbed[untabbed] if len(re.findall(r"[a-z]{2,}", untabbed)) >= 2
+                                      else 0) >= edge_threshold
+            if st and (n >= threshold or edge) and len(_norm(ln)) < 160:
                 continue
             if st and i in edges and PAGE_NO.match(st):
                 continue

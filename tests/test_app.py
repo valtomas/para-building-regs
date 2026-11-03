@@ -183,6 +183,20 @@ index = "Index\n" + "\n".join(f"Topic {i} 1.{i}, Diagram {i}.1" for i in range(1
 more = "\n".join(f"Other topic {i} Table {i}.2; 3.{i}" for i in range(12))
 check(skipped_pages(["1.1 Text.", index, more, "2.1 Body text again."]) == {2, 3}, "index pages skipped")
 
+# page furniture: a footer padded across the page, a header with the section's tab beside it (on left-hand pages only)
+from para.splitter import clean_pages  # noqa: E402
+
+footer = "Building Regulations 2010" + " " * 70 + "Approved Document B Volume 1, 2019 edition" + " " * 20 + "{}"
+tabs = ["B1", "B2", "B3", "B4", "B5"]
+words = "stairs ramps guarding doors windows walls floors roofs lifts lobbies".split()
+pages = [(f"{tabs[n // 4]}      ONLINE VERSION\n" if n % 2 else "ONLINE VERSION\n") + f"{n}.1 Paragraph about "
+         f"{words[n % 10]} and {words[n // 2]}.\n" + footer.format(n) for n in range(20)]
+pages[3] = "CONTENTS      ONLINE VERSION\n" + pages[3]
+cleaned = clean_pages(pages)
+check(all("ONLINE" not in p.replace("CONTENTS      ONLINE VERSION", "") and "edition" not in p for p in cleaned)
+      and "CONTENTS" in cleaned[3] and all(f"{n}.1 Paragraph about" in p for n, p in enumerate(cleaned)),
+      "page headers and footers are removed, page text and a Contents heading stay")
+
 # figures: a drawing's text is smaller than the running text, so a long label doesn't cut the drawing short
 sys.path.insert(0, os.path.join(ROOT, "library"))
 import figures  # noqa: E402

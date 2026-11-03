@@ -78,7 +78,7 @@ def pdf_passages(path):
     figs = figures.find(path, skip_pages=skip)
     for f in figs:
         if f["kind"] != "Table":  # a table's text is its content: keep it
-            pages[f["page"] - 1] = figures.strip_labels(pages[f["page"] - 1], f["words"])
+            pages[f["page"] - 1] = figures.strip_labels(pages[f["page"] - 1], f["words"], f["labels"])
     passages = split(pages)
     out_dir = os.path.join(CACHE, "figures")
     os.makedirs(out_dir, exist_ok=True)
