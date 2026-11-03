@@ -98,6 +98,11 @@ class Library:
         store = self._store(pid)
         return store.document(pid) if store else None
 
+    def figure(self, figure_id):
+        """A diagram or table image from the regulations library (the person's files have none)."""
+        with self.lock:
+            return self.regs.figure(figure_id) if self.regs and str(figure_id).isdigit() else None
+
     def first_passage(self, key):
         for store in (self.regs, self.files):
             if store:

@@ -27,6 +27,9 @@ lib = Store(os.environ["PARA_LIBRARY"], "r")
 lib.add_source("ADK", "Approved Document K: Protection from falling, collision and impact", "ADK",
                "approved-document", split(K_TEXT), url="https://example.gov.uk/adk.pdf", license="OGL v3.0",
                published="2013 edition")
+TINY_PNG = bytes.fromhex("89504e470d0a1a0a0000000d4948445200000001000000010806000000"
+                         "1f15c4890000000d49444154789c6360000002000105e9a4a10000000049454e44ae426082")
+lib.add_figure(lib.passage_rowid("ADK", 0), TINY_PNG, 3)
 lib.set_meta(version="2026.11.03", built="test")
 lib.close()
 
@@ -93,6 +96,14 @@ check(len(chat["turns"]) == 1 and chat["messages"][-1]["role"] == "assistant", "
 pid = list(done["cites"])[0]
 doc = json.loads(call("/api/passage?id=" + pid))
 check(doc["focus"] == pid and len(doc["parts"]) >= 2 and doc["license"] == "OGL v3.0", "reader opens the passage")
+fig = doc["parts"][0]["figures"]
+check(len(fig) == 1 and fig[0]["width"] == 1, "passages list their figures")
+check(call(f"/api/figure?id={fig[0]['id']}") == TINY_PNG, "figure image served")
+try:
+    call("/api/figure?id=../etc")
+    check(False, "bad figure id refused")
+except urllib.error.HTTPError as e:
+    check(e.code == 404, "bad figure id refused")
 
 ev2 = ask("And headroom?", cid)
 check(ev2[-1]["type"] == "done", "follow-up question in the same chat")

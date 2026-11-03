@@ -18,6 +18,9 @@ CREATE TABLE IF NOT EXISTS sources(
 CREATE TABLE IF NOT EXISTS passages(
   id INTEGER PRIMARY KEY, source_id INTEGER, seq INTEGER, ref TEXT, heading TEXT, page INTEGER, doc TEXT, text TEXT);
 CREATE INDEX IF NOT EXISTS passages_source ON passages(source_id, seq);
+CREATE TABLE IF NOT EXISTS figures(
+  id INTEGER PRIMARY KEY, passage_id INTEGER, page INTEGER, width INTEGER, height INTEGER, png BLOB);
+CREATE INDEX IF NOT EXISTS figures_passage ON figures(passage_id);
 CREATE VIRTUAL TABLE IF NOT EXISTS fts USING fts5(
   doc, ref, heading, text, content='passages', content_rowid='id', tokenize='porter unicode61');
 """
@@ -50,6 +53,13 @@ def query_terms(query):
         if term not in terms:
             terms.append(term)
     return terms[:14]
+
+
+def png_size(png):
+    """(width, height) from a PNG's header."""
+    if png[:8] == b"\x89PNG\r\n\x1a\n" and len(png) >= 24:
+        return int.from_bytes(png[16:20], "big"), int.from_bytes(png[20:24], "big")
+    return None, None
 
 
 def snippet(text, terms, width=320):
@@ -135,6 +145,42 @@ class Store:
                 self.db.commit()
             return True
 
+    def passage_rowid(self, key, seq):
+        with self.lock:
+            row = self.db.execute("SELECT p.id FROM passages p JOIN sources s ON s.id = p.source_id "
+                                  "WHERE s.key=? AND p.seq=?", (key, seq)).fetchone()
+        return row[0] if row else None
+
+    def add_figure(self, passage_rowid, png, page=None):
+        """An image of a diagram or table, shown with its passage in the reader."""
+        width, height = png_size(png)
+        with self.lock, self.db:
+            self.db.execute("INSERT INTO figures(passage_id, page, width, height, png) VALUES (?,?,?,?,?)",
+                            (passage_rowid, page, width, height, png))
+
+    def figure(self, figure_id):
+        """PNG bytes of a figure, or None (also for libraries built before figures existed)."""
+        with self.lock:
+            try:
+                row = self.db.execute("SELECT png FROM figures WHERE id=?", (int(figure_id),)).fetchone()
+            except (sqlite3.OperationalError, ValueError):
+                return None
+        return row[0] if row else None
+
+    def _figures_by_passage(self, rowids):
+        if not rowids:
+            return {}
+        out = {}
+        marks = ",".join("?" * len(rowids))
+        try:
+            rows = self.db.execute(f"SELECT passage_id, id, width, height FROM figures WHERE passage_id IN ({marks}) "
+                                   "ORDER BY id", list(rowids)).fetchall()
+        except sqlite3.OperationalError:  # a library built before figures existed
+            return {}
+        for pid, fid, w, h in rows:
+            out.setdefault(pid, []).append({"id": fid, "width": w, "height": h})
+        return out
+
     def set_meta(self, **kv):
         with self.lock, self.db:
             for k, v in kv.items():
@@ -215,9 +261,11 @@ class Store:
             r = self._row(self.rowid(pid))
             if not r:
                 return None
-            parts = [{"id": self.pid(i), "ref": ref, "heading": h, "page": pg, "text": t}
-                     for i, ref, h, pg, t in self.db.execute(
-                         "SELECT id, ref, heading, page, text FROM passages WHERE source_id=? ORDER BY seq", (r[0],))]
+            rows = self.db.execute("SELECT id, ref, heading, page, text FROM passages WHERE source_id=? ORDER BY seq",
+                                   (r[0],)).fetchall()
+            figs = self._figures_by_passage([row[0] for row in rows])
+            parts = [{"id": self.pid(i), "ref": ref, "heading": h, "page": pg, "text": t, "figures": figs.get(i, [])}
+                     for i, ref, h, pg, t in rows]
         return {"focus": pid, "source": r[5], "title": r[6], "url": r[7], "license": r[8], "kind": r[9],
                 "key": r[10], "path": r[11], "parts": parts}
 

@@ -268,10 +268,18 @@ function showDoc(doc) {
   else link.hidden = true;
   $("#readerLicense").textContent = doc.license || (doc.kind === "file" ? "One of your files." : "");
   const body = $("#readerBody");
-  body.innerHTML = doc.parts.map((p) => `<div class="passage${p.id === doc.focus ? " focus" : ""}" id="p-${esc(p.id)}"><span class="ph">${esc([p.heading, p.ref, p.page ? "p. " + p.page : ""].filter(Boolean).join(" · "))}</span>${esc(p.text)}</div>`).join("");
+  const isPdf = /\.pdf($|[?#])/i.test(doc.url || "");
+  const pageLink = (n) => (doc.url || "").split("#")[0] + "#page=" + n;
+  body.innerHTML = doc.parts.map((p) => `<div class="passage${p.id === doc.focus ? " focus" : ""}" id="p-${esc(p.id)}"><span class="ph">${esc([p.heading, p.ref].filter(Boolean).join(" · "))}${p.page && isPdf ? ` · <a href="#" data-page="${p.page}">PDF page ${p.page} ↗</a>` : ""}</span>${(p.figures || []).map((f) => `<img class="figure" src="/api/figure?id=${f.id}" ${f.width ? `width="${f.width}" height="${f.height}"` : ""} alt="${esc(p.ref || "Drawing")}" title="Click to enlarge" loading="lazy">`).join("")}${esc(p.text)}</div>`).join("");
+  $$("[data-page]", body).forEach((a) => { a.onclick = (e) => { e.preventDefault(); openUrl(pageLink(a.dataset.page)); }; });
+  const focusPart = doc.parts.find((p) => p.id === doc.focus);
+  if (isPdf && focusPart && focusPart.page) {
+    link.textContent = `Original, page ${focusPart.page} ↗`;
+    link.onclick = (e) => { e.preventDefault(); openUrl(pageLink(focusPart.page)); };
+  }
   $("#readerFind").value = "";
   const f = document.getElementById("p-" + doc.focus);
-  if (f) f.scrollIntoView({ block: "center" });
+  if (f) f.scrollIntoView({ block: f.querySelector("img.figure") ? "start" : "center" });
 }
 function openUrl(url) { api("/api/open", { method: "POST", body: { url } }).catch(() => window.open(url, "_blank")); }
 $("#closeReader").onclick = () => { $("#reader").hidden = true; };
@@ -289,6 +297,8 @@ $("#readerFind").addEventListener("input", (e) => {
 
 // ---------- clicks anywhere ----------
 document.addEventListener("click", (e) => {
+  const fig = e.target.closest("img.figure");
+  if (fig) { fig.classList.toggle("zoom"); return; }
   const pidEl = e.target.closest("[data-pid]");
   if (pidEl) { e.preventDefault(); openPassage(pidEl.dataset.pid); return; }
   const ext = e.target.closest("a[data-ext]");
@@ -572,7 +582,7 @@ $("#libSearch").addEventListener("input", (e) => {
 async function offerLibrary() {
   if (S.library.sources.length || $("#libOffer")) return;
   const w = $("#welcome"); if (!w) return;
-  w.insertAdjacentHTML("afterbegin", `<div id="libOffer" class="note" style="max-width:620px;margin:0 auto 18px">No regulations library is installed yet. <button class="btn" id="getLibNow">Download it (about 4 MB)</button><div id="libJob"></div></div>`);
+  w.insertAdjacentHTML("afterbegin", `<div id="libOffer" class="note" style="max-width:620px;margin:0 auto 18px">No regulations library is installed yet. <button class="btn" id="getLibNow">Download it (about 15 MB)</button><div id="libJob"></div></div>`);
   $("#getLibNow").onclick = async () => {
     try {
       if (!(S.updates && S.updates.library)) S.updates = await api("/api/updates/check", { method: "POST" });

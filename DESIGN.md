@@ -48,6 +48,7 @@ time someone adds a file.
 | Empty chat with example questions | `welcome.png` |
 | Answer with inline citations, activity expanded | `answer.png` |
 | Answer with the reader open at the cited table | `answer-reader.png`, `answer-reader-dark.png` |
+| Reader showing a diagram, and enlarged | `reader-diagram.png`, `reader-diagram-zoom.png` |
 | Library: documents by group, direct search | `library.png`, `library-search.png` |
 | Your files: permission prompt, file list with notes | `files-permission.png`, `files.png` |
 | Phone width | `narrow.png` |
@@ -86,7 +87,11 @@ than 26 px. Radius: 10 px (cards, dialogs 14 px, chips 6 px or pill). Spacing in
 - **Model cards**: radio, name, Recommended tag, one-line description with download size and memory, action
   button (Download / Delete).
 - **Reader**: document short name and full title, find-in-document filter, link to the original (gov.uk or
-  legislation.gov.uk) or "Open file" for the person's files, licence line in the footer.
+  legislation.gov.uk) or "Open file" for the person's files, licence line in the footer. For PDFs the link opens
+  the page of the cited passage ("Original, page 34 ↗") and each passage header has its own "PDF page N ↗".
+- **Figures**: diagrams and tables are shown as images above their passage's text, full reader width on a white
+  card (the drawings are designed on white, so they stay white in dark mode). Click to enlarge to the window;
+  click again to close. When the reader opens at a passage with a figure, it scrolls to the top of the figure.
 
 ## Writing in the interface
 
@@ -98,8 +103,10 @@ no emoji in messages (icons in the sidebar and activity list are the only except
 
 - **Phone width**: the sidebar is hidden below 900 px with no way to open it, so chats, Library, Your files and
   Settings are unreachable there. Needs a menu button. (Matters only when serving to a network with `--host`.)
-- **Tables in the reader** show as pipe-separated rows (`Private stair | 150 | 220`). Render rows containing ` | `
-  as an HTML table.
+- **Tables in the reader** show the table's image, then its text as pipe-separated rows
+  (`Private stair | 150 | 220`). The text could be collapsed under the image, or rendered as an HTML table.
+- **Figure crops** are found from captions, so a few are cut short or include the next heading, and some
+  diagrams without a recognisable caption have no image. "Original, page N" is always there as a fallback.
 - **Icons** are emoji and look different on each platform. Replace with a small inline SVG set.
 - **Reader find** hides non-matching passages rather than highlighting matches.
 - **No app icon** yet (`packaging/icon.icns`, `packaging/icon.ico`). The ¶ mark in the sidebar is the starting point.

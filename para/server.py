@@ -242,6 +242,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 pid = library.first_passage(q.get("key", ""))
                 doc = library.document(pid) if pid else None
                 return self._send(200 if doc else 404, doc or {"error": "No such document"})
+            if path == "/api/figure":
+                png = library.figure(q.get("id", ""))
+                if not png:
+                    return self._send(404, {"error": "No such figure"})
+                return self._send(200, png, "image/png")
             if path == "/api/search":
                 return self._send(200, {"results": library.search(q.get("q", ""), limit=30)})
             if path == "/api/engines":

@@ -35,6 +35,7 @@ passage ids; the app checks every citation. It must stay:
 | `para/paths.py` | App data folders, settings (`settings.json`) |
 | `para/static/` | The interface: `index.html`, `app.css`, `app.js` |
 | `library/build.py` | Builds `library/dist/regs.sqlite` from gov.uk (content API + PDFs) and legislation.gov.uk (CLML XML) |
+| `library/figures.py` | Finds diagrams and tables in the PDFs from their captions, renders them to PNG, and takes drawing labels out of the running text |
 | `library/legislation.py` | Turns legislation XML into passages cited as `reg 7`, `s 120D`, `Sch 1 Pt B` |
 | `library/sources.json` | What goes into the library |
 | `packaging/` | PyInstaller spec and launcher |
@@ -47,7 +48,8 @@ passage ids; the app checks every citation. It must stay:
 python3 tests/test_app.py                  # must pass before every commit; no engine or network needed
 python3 -m pyflakes para library tests     # keep it clean
 python3 -m para --browser                  # run from source in the browser
-python3 library/build.py                   # build the library (needs pdftotext); --offline reuses library/cache
+python3 library/build.py                   # build the library (needs poppler-utils; Pillow shrinks images)
+                                           # --offline reuses library/cache
 ```
 
 Use `PARA_APP_DIR` (settings, chats, indexes), `PARA_LIBRARY` (a library file) and `HOME` (the files folder) to
@@ -66,6 +68,12 @@ paragraphs.
 - **Library quality beats model cleverness.** If answers are wrong because a passage is garbled, fix
   `splitter.py` or `build.py`, rebuild, and look at the passages (`sqlite3 library/dist/regs.sqlite`). Check tables
   keep their numbers and paragraph refs stay in sequence (`splitter.plausible`).
+- **Diagrams and tables**: `library/figures.py` finds each one from its caption and crops it from the page. Whether
+  a document puts diagram captions above or below the drawing is decided per document by a vote; tables are always
+  captioned above. When you change it, render a few figures from ADB, ADK, ADL and ADM and look at them: a crop
+  that cuts a drawing short or swallows the next paragraph is easy to miss in the numbers. The text the AI reads for
+  a diagram is its caption plus "Text in the drawing:" (the labels); never present that as a description of the
+  drawing.
 - **Ids**: regulations passages are `r<rowid>`, the person's files `f<rowid>`. Rowids change between library
   builds, so saved chats can point at a different passage after an update. Don't build features that assume they
   are stable across versions.

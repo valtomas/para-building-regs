@@ -123,6 +123,11 @@ a { color: var(--accent); }
 .passage { padding: 8px 10px; border-radius: 8px; margin-bottom: 4px; white-space: pre-wrap; }
 .passage .ph { font-size: 11px; color: var(--muted); display: block; margin-bottom: 2px; }
 .passage.focus { background: var(--mark); }
+.passage .ph a { color: var(--accent); text-decoration: none; }
+.passage img.figure { display: block; width: 100%; height: auto; margin: 6px 0 8px; border-radius: 6px;
+  background: #fff; border: 1px solid var(--border); cursor: zoom-in; }
+.passage img.figure.zoom { position: fixed; inset: 3vh 3vw; width: 94vw; height: 94vh; object-fit: contain;
+  z-index: 20; cursor: zoom-out; box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .6); margin: 0; }
 .passage mark { background: var(--mark); color: inherit; }
 #readerLicense { font-size: 11px; color: var(--muted); padding: 8px 14px; border-top: 1px solid var(--border); }
 

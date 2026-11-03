@@ -35,6 +35,9 @@ which allows redistribution with attribution:
 | Legislation (consolidated, from legislation.gov.uk) | Building Regulations 2010; Building Act 1984; Building Safety Act 2022; Building (Higher-Risk Buildings Procedures) (England) Regulations 2023; Higher-Risk Buildings (Descriptions and Supplementary Provisions) Regulations 2023; Regulatory Reform (Fire Safety) Order 2005; Fire Safety (England) Regulations 2022 |
 | Government guidance (gov.uk) | Criteria for higher-risk buildings; building control approval, changes, completion certificates and transitional arrangements for higher-risk buildings; the golden thread; mandatory occurrence reporting; meeting building requirements (dutyholders); the Building Safety Act overview |
 
+Diagrams and tables are included as images (about 600 of them), shown next to their paragraph in the reader, and
+every passage from a PDF links to its page in the original.
+
 The list is in [library/sources.json](library/sources.json). NHBC Standards, LABC Warranty's technical manual,
 British Standards and similar are free to read online in some cases but are not licensed for redistribution or AI
 use, so they're not included; if your licence allows it, add your copy under **Your files**.
@@ -91,7 +94,7 @@ python3 -m para                       # in its own window (or the browser withou
 python3 -m para --browser             # in your browser
 ```
 
-Without a built library the app offers to download the latest one. To build it yourself (needs `pdftotext` from
+Without a built library the app offers to download the latest one. To build it yourself (needs `pdftotext` and `pdftoppm` from
 poppler-utils):
 
 ```bash
