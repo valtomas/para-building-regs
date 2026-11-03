@@ -287,7 +287,10 @@ class Bundled:
                 except Exception:  # noqa: BLE001 - 503 while loading
                     pass
                 time.sleep(0.5)
-            raise EngineError("The built-in engine took too long to load the model.")
+            # stop it, or the next question would find it "running" and get "Loading model" from it for ever
+            self.stop()
+            raise EngineError("The built-in engine took too long to load the model. This usually means the "
+                              "computer is short of memory: close other AI apps and try again.")
 
     @property
     def base_url(self):
