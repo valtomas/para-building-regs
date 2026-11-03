@@ -1,7 +1,7 @@
 """Ask real models the test questions through a running Para and score what they did. Results: docs/model-tests.md.
 
 python3 -m para --browser --port 8765                                  (throwaway PARA_APP_DIR and HOME)
-python3 tests/ask_models.py ask http://127.0.0.1:8765 out.jsonl MODEL [MODEL…]   (bundled:<id> for the built-in engine)
+python3 tests/ask_models.py ask http://127.0.0.1:8765 out.jsonl MODEL [MODEL…]   (bundled:<id>: built-in engine)
 python3 tests/ask_models.py score out.jsonl [--answers]
 
 The scores are checks for the expected figures and the expected passage, so read the answers too: a right figure from
