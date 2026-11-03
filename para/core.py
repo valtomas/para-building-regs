@@ -74,7 +74,8 @@ BAD_ID = "That isn't a passage id. Ids look like r1234 or f56."
 CITE_GROUPS = (re.compile(r"\[([^\[\]\n]{0,300})\]"), re.compile(r"\(([^()\n]{0,300})\)"))
 # a reference in words inside such a bracket: "Table 3.1", "Diagram 3.2", "reg 11G(1)", "para 3.27"
 LABEL_REF = re.compile(r"(?i)\b(table|diagram|figure)\s+([a-z]?\d{1,2}(?:\.\d{1,3})?[a-z]?)\b|\b(reg(?:ulation)?)\.?\s+"
-                       r"(\d{1,3}[a-z]{0,2})\b|(?:\bpara(?:graph)?\.?\s+|(?<=[\s,]))(\d{1,2}\.\d{1,3})\b")
+                       r"(\d{1,3}[a-z]{0,2})\b|(?:\bpara(?:graph)?\.?\s+|(?<=[\s,]))"
+                       r"(\d{1,2}\.\d{1,3})(?:[a-z]\b|\([a-z]\)|\b)")  # "3.7d", "3.7(d)": an item in 3.7
 ID_TOKEN = re.compile(r"(?<![\w/.#\x00])([rf])(\d+)(?:\s*[–-]\s*[rf]?(\d+))?(?![\w\x00])")
 ID_IN_TEXT = re.compile(r"\[([rf]\d+)\]")
 TOOL_MARKUP = ("<tool_call", "<function", "[TOOL_CALLS]", "<|tool_call")

@@ -166,8 +166,9 @@ class RefLibrary:
 
 
 text, cites, _ = core._check_citations("A [ADB1, Table 3.1]. B (ADB Vol 1, para 3.21). C [ADK, Diagram 3.1]. "
-                                       "D [ADB1, Table 3.2].", {"r1", "r2"}, RefLibrary())
-check(text == "A [r1]. B (ADB Vol 1, para 3.21) [r2]. C [ADK, Diagram 3.1]. D [ADB1, Table 3.2]." and
+                                       "D [ADB1, Table 3.2]. E (ADB1, para 3.20d).", {"r1", "r2"}, RefLibrary())
+check(text == "A [r1]. B (ADB Vol 1, para 3.21) [r2]. C [ADK, Diagram 3.1]. D [ADB1, Table 3.2]. "
+      "E (ADB1, para 3.20d) [r2]." and
       set(cites) == {"r1", "r2"}, "references written in words link only to passages the model saw")
 
 # splitting: cross-references wrapped onto a new line are not captions; index pages are skipped
