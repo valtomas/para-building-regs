@@ -1,0 +1,109 @@
+name: Build and release
+
+# Push a tag like v0.2.0 to build the library and the Mac and Windows apps and publish a GitHub release.
+# Run it by hand (Actions > Build and release > Run workflow) to build without releasing.
+on:
+  push:
+    tags: ["v*"]
+    branches: ["**"]
+  workflow_dispatch:
+  schedule:
+    - cron: "17 4 * * 1"   # Mondays: rebuild the library so new editions of the documents are picked up
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install pypdf
+      - run: python tests/test_app.py
+
+  library:
+    needs: test
+    if: github.event_name != 'push' || startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - run: pip install pypdf
+      - run: python library/build.py --release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: library
+          path: |
+            library/dist/regs.sqlite
+            library/dist/regs.sqlite.gz
+            library/dist/library.json
+
+  app:
+    needs: library
+    if: github.event_name != 'schedule'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-14          # Apple Silicon
+            zip: Para-mac.zip
+          - os: windows-latest
+            zip: Para-windows.zip
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - uses: actions/download-artifact@v4
+        with: { name: library, path: library/dist }
+      - run: pip install pyinstaller pywebview pypdf truststore
+      - run: pyinstaller --noconfirm --clean packaging/app.spec
+      - name: Zip (macOS)
+        if: runner.os == 'macOS'
+        run: cd dist && ditto -c -k --keepParent "Para.app" "../${{ matrix.zip }}"
+      - name: Zip (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: Compress-Archive -Path "dist/Para" -DestinationPath "${{ matrix.zip }}"
+      - uses: actions/upload-artifact@v4
+        with: { name: "${{ matrix.zip }}", path: "${{ matrix.zip }}" }
+
+  release:
+    needs: [library, app]
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { path: out, merge-multiple: true }
+      - run: cp para/models.json out/models.json && ls -la out
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            out/Para-mac.zip
+            out/Para-windows.zip
+            out/regs.sqlite.gz
+            out/library.json
+            out/models.json
+          generate_release_notes: true
+
+  library-update:
+    # Weekly: publish a fresh library to the latest release, so installed apps offer it as an update.
+    needs: library
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { name: library, path: out }
+      - env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          tag=$(gh release view --repo "$GITHUB_REPOSITORY" --json tagName -q .tagName) || exit 0
+          old=$(gh release download "$tag" --repo "$GITHUB_REPOSITORY" -p library.json -O - | jq -r .content_hash || echo none)
+          new=$(jq -r .content_hash out/library.json)
+          if [ "$old" != "$new" ]; then
+            gh release upload "$tag" out/regs.sqlite.gz out/library.json --clobber --repo "$GITHUB_REPOSITORY"
+          fi

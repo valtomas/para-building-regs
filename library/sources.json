@@ -1,0 +1,25 @@
+{
+  "about": "What goes into the regulations library. Everything here is Crown copyright, published under the Open Government Licence v3.0, so it can be redistributed with attribution. build.py reads gov.uk's content API and legislation.gov.uk, so new editions are picked up on the next build.",
+  "license": "Contains public sector information licensed under the Open Government Licence v3.0 (Crown copyright). https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+  "approved_documents": "/government/collections/approved-documents",
+  "skip_publications": ["/guidance/building-regulations-and-approved-documents-index"],
+  "guidance_collections": [
+    "/government/collections/design-and-construction-of-higher-risk-buildings",
+    "/government/collections/guidance-on-the-criteria-for-being-a-higher-risk-building"
+  ],
+  "guidance_pages": [
+    "/guidance/the-building-safety-act",
+    "/guidance/transitional-building-control-approval-for-new-higher-risk-buildings",
+    "/guidance/transitional-building-control-approval-for-work-on-existing-higher-risk-buildings",
+    "/building-regulations-approval"
+  ],
+  "legislation": [
+    {"key": "BR2010", "short": "BR 2010", "path": "/uksi/2010/2214", "title": "The Building Regulations 2010"},
+    {"key": "HRBPR2023", "short": "HRB Procedures Regs 2023", "path": "/uksi/2023/909", "title": "The Building (Higher-Risk Buildings Procedures) (England) Regulations 2023"},
+    {"key": "HRBDR2023", "short": "HRB Descriptions Regs 2023", "path": "/uksi/2023/275", "title": "The Higher-Risk Buildings (Descriptions and Supplementary Provisions) Regulations 2023"},
+    {"key": "BA1984", "short": "Building Act 1984", "path": "/ukpga/1984/55", "title": "Building Act 1984"},
+    {"key": "BSA2022", "short": "Building Safety Act 2022", "path": "/ukpga/2022/30", "title": "Building Safety Act 2022"},
+    {"key": "RRFSO2005", "short": "Fire Safety Order 2005", "path": "/uksi/2005/1541", "title": "The Regulatory Reform (Fire Safety) Order 2005"},
+    {"key": "FSER2022", "short": "Fire Safety (England) Regs 2022", "path": "/uksi/2022/547", "title": "The Fire Safety (England) Regulations 2022"}
+  ]
+}

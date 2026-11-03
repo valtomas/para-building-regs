@@ -1,0 +1,131 @@
+"""End-to-end checks with a stand-in model: no real engine or downloaded library needed.
+
+python3 tests/test_app.py
+"""
+import json
+import os
+import sys
+import tempfile
+import threading
+import urllib.request
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, ROOT)
+TMP = tempfile.mkdtemp()
+os.environ["PARA_APP_DIR"] = os.path.join(TMP, "app")
+os.environ["PARA_LIBRARY"] = os.path.join(TMP, "regs.sqlite")
+os.environ["HOME"] = TMP  # the files folder goes under it
+
+from para.splitter import split  # noqa: E402
+from para.store import Store  # noqa: E402
+
+K_TEXT = ["APPROVED DOCUMENT K\nSection 1: Stairs and ladders\n1.1 Stairs should have level steps.\n"
+          "1.2 For a private stair the maximum rise is 220 mm and the minimum going is 220 mm.\n3",
+          "APPROVED DOCUMENT K\n1.3 Headroom over a stair should be at least 2.0 m.\n4",
+          "APPROVED DOCUMENT K\nSection 3: Guarding\n3.2 Guarding to a balcony in a dwelling should be 1100 mm high.\n5"]
+lib = Store(os.environ["PARA_LIBRARY"], "r")
+lib.add_source("ADK", "Approved Document K: Protection from falling, collision and impact", "ADK",
+               "approved-document", split(K_TEXT), url="https://example.gov.uk/adk.pdf", license="OGL v3.0",
+               published="2013 edition")
+lib.set_meta(version="2026.11.03", built="test")
+lib.close()
+
+from tests.fake_llm import start  # noqa: E402
+from para import server  # noqa: E402
+
+fake, fake_url = start()
+httpd = server.Server(("127.0.0.1", 0), server.Handler)
+threading.Thread(target=httpd.serve_forever, daemon=True).start()
+BASE = f"http://127.0.0.1:{httpd.server_address[1]}"
+
+
+def call(path, body=None, method=None, headers=None, raw=None):
+    data = raw if raw is not None else (json.dumps(body).encode() if body is not None else None)
+    req = urllib.request.Request(BASE + path, data=data, method=method,
+                                 headers=headers or {"Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return r.read()
+
+
+def ask(question, cid=None):
+    events = []
+    for line in call("/api/ask", {"question": question, "id": cid}).decode().split("\n\n"):
+        if line.startswith("data: "):
+            events.append(json.loads(line[6:]))
+    return events
+
+
+failures = []
+
+
+def check(cond, what):
+    print(("ok   " if cond else "FAIL ") + what)
+    if not cond:
+        failures.append(what)
+
+
+st = json.loads(call("/api/state"))
+check(st["library"]["version"] == "2026.11.03" and len(st["library"]["sources"]) == 1, "library loads")
+check(st["settings"]["engine"]["mode"] == "", "no engine until set up")
+ev = ask("stair rise?")
+check(ev[-1]["type"] == "error" and "No AI engine" in ev[-1]["text"], "asks to set up an engine")
+
+call("/api/settings", {"engine": {"mode": "external", "base_url": fake_url, "model": ""}})
+st = json.loads(call("/api/state"))
+check(st["settings"]["private"] is True, "local engine counts as private")
+t = json.loads(call("/api/test-engine", {}))
+check(t["ok"] and t["reply"] == "OK" and t["model"] == "fake-model", "test engine picks the first model")
+
+hits = json.loads(call("/api/search?q=" + urllib.parse.quote("Part K private stair rise")))["results"]
+check(hits and hits[0]["ref"].startswith("1.1"), "direct search finds the paragraph")
+
+ev = ask("What is the maximum rise of a private stair?")
+types = [e["type"] for e in ev]
+check("search" in types and "read" in types and "thinking" in types, "searches, reads, streams reasoning")
+done = ev[-1]
+check(done["type"] == "done", "finishes")
+check("220 mm" in done["answer"] and "checking" not in done["answer"], "answer text, <think> split off")
+check(len(done["cites"]) == 1 and done["dropped"] == ["r99999"] and "[r99999]" not in done["answer"],
+      "keeps the real citation, drops the made-up one")
+cid = ev[0]["id"]
+chat = json.loads(call("/api/chat?id=" + cid))
+check(len(chat["turns"]) == 1 and chat["messages"][-1]["role"] == "assistant", "chat saved")
+pid = list(done["cites"])[0]
+doc = json.loads(call("/api/passage?id=" + pid))
+check(doc["focus"] == pid and len(doc["parts"]) >= 2 and doc["license"] == "OGL v3.0", "reader opens the passage")
+
+ev2 = ask("And headroom?", cid)
+check(ev2[-1]["type"] == "done", "follow-up question in the same chat")
+
+# the person's files
+data = b"# Fire strategy\n\n2.1 The building has a sprinkler system to BS 9251.\n\n2.2 Travel distance is 7.5 m."
+call("/api/files", raw=data, headers={"X-Filename": "Fire%20strategy.md"})
+files = json.loads(call("/api/state"))["files"]
+check(len(files) == 1 and files[0]["status"] == "ok" and files[0]["passages"] >= 1, "adds a file")
+hits = json.loads(call("/api/search?q=sprinkler"))["results"]
+check(hits and hits[0]["id"].startswith("f"), "files are searched")
+try:
+    call("/api/files", raw=b"x", headers={"X-Filename": "photo.jpg"})
+    check(False, "refuses unsupported files")
+except urllib.error.HTTPError as e:
+    check(e.code == 400, "refuses unsupported files")
+
+# a page on another site can't drive the app
+try:
+    call("/api/settings", {"project_notes": "x"}, headers={"Content-Type": "application/json",
+                                                           "Origin": "https://evil.example"})
+    check(False, "blocks cross-site posts")
+except urllib.error.HTTPError as e:
+    check(e.code == 403, "blocks cross-site posts")
+
+# engines without tools: excerpts attached
+from para import core  # noqa: E402
+from para.library import Library  # noqa: E402
+from para.llm import Client  # noqa: E402
+
+out = list(core.chat_events(Client(fake_url, "", "fake-model"), Library(), [], "private stair rise",
+                            server.settings.load(), supports_tools=False))
+check(out[-1]["type"] == "done" and out[-1]["cites"], "no-tools mode cites attached excerpts")
+
+print(f"\n{len(failures)} failed" if failures else "\nall passed")
+sys.exit(1 if failures else 0)

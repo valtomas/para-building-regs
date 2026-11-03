@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Para</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<div id="app">
+  <aside id="sidebar">
+    <div class="brand"><span class="logo">¶</span><span>Para<br><small>Building regs, cited</small></span></div>
+    <button id="newChat" class="btn primary wide">+ New chat</button>
+    <nav id="chatList" aria-label="Chats"></nav>
+    <div class="side-foot">
+      <button class="side-link" data-open="library">📚 Library</button>
+      <button class="side-link" data-open="files">📄 Your files <span id="filesCount" class="count"></span></button>
+      <button class="side-link" data-open="settings">⚙️ Settings</button>
+      <div id="engineBadge" class="badge" title="Where your questions go"></div>
+      <div id="updateNote" class="update-note" hidden></div>
+      <div class="version" id="version"></div>
+    </div>
+  </aside>
+
+  <main id="main">
+    <div id="messages" aria-live="polite">
+      <div id="welcome" class="welcome">
+        <h1>Ask about the Building Regulations</h1>
+        <p>Answers come from the Approved Documents, the Building Regulations 2010, the Building Safety Act and
+          its guidance, and any files you add, with a link to each paragraph used.</p>
+        <div class="examples">
+          <button>What is the maximum travel distance in a single-direction escape route from a flat?</button>
+          <button>Minimum headroom and maximum pitch for a private stair</button>
+          <button>When is a building a higher-risk building?</button>
+          <button>Guarding height for a balcony in a dwelling</button>
+        </div>
+      </div>
+    </div>
+    <form id="composer">
+      <textarea id="question" rows="1" placeholder="Ask a question… (Enter to send, Shift+Enter for a new line)"
+                aria-label="Your question"></textarea>
+      <div class="composer-row">
+        <label class="mini">Reasoning
+          <select id="reasoning"><option value="auto">Auto</option><option value="off">Off</option><option value="on">On</option></select>
+        </label>
+        <label class="mini">Length
+          <select id="length"><option value="normal">Normal</option><option value="long">Long</option><option value="none">No limit</option></select>
+        </label>
+        <span id="status" class="status"></span>
+        <button type="button" id="stop" class="btn" hidden>Stop</button>
+        <button type="submit" id="send" class="btn primary">Send</button>
+      </div>
+      <div class="disclaimer">AI can make mistakes. Check the cited paragraphs before relying on an answer.</div>
+    </form>
+  </main>
+
+  <aside id="reader" hidden>
+    <header>
+      <div>
+        <div id="readerSource" class="reader-source"></div>
+        <div id="readerTitle" class="reader-title"></div>
+      </div>
+      <button class="icon" id="closeReader" aria-label="Close">✕</button>
+    </header>
+    <div class="reader-tools">
+      <input id="readerFind" type="search" placeholder="Find in this document">
+      <a id="readerLink" href="#" class="small-link">Original ↗</a>
+    </div>
+    <div id="readerBody"></div>
+    <footer id="readerLicense"></footer>
+  </aside>
+</div>
+
+<dialog id="dlg-settings" class="modal">
+  <form method="dialog" class="modal-head"><h2>Settings</h2><button class="icon" aria-label="Close">✕</button></form>
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-tab="engine">AI engine</button>
+    <button class="tab" data-tab="instructions">Instructions</button>
+    <button class="tab" data-tab="project">Project notes</button>
+    <button class="tab" data-tab="about">Updates &amp; about</button>
+  </div>
+
+  <section class="tabpane" data-pane="engine">
+    <div class="choice">
+      <label class="radio-card"><input type="radio" name="mode" value="external">
+        <div><b>Use an engine I already run</b><br><small>Ollama, LM Studio, Lemonade, llama.cpp, Jan, vLLM, or any
+          other OpenAI-compatible server, on this computer or your network.</small></div></label>
+      <label class="radio-card"><input type="radio" name="mode" value="bundled">
+        <div><b>Built-in engine</b><br><small>The app downloads llama.cpp and a model suited to this computer and
+          runs them itself. Nothing else to install.</small></div></label>
+    </div>
+
+    <div id="externalPane" class="pane" hidden>
+      <div class="row"><button type="button" class="btn" id="findEngines">Find engines on this computer</button>
+        <span id="findResult" class="muted"></span></div>
+      <div id="foundList" class="found"></div>
+      <label>Server address (base URL, ending in /v1 for most servers)
+        <input id="baseUrl" placeholder="http://127.0.0.1:11434/v1"></label>
+      <label>API key <small class="muted">(only if the server needs one)</small>
+        <input id="apiKey" type="password" placeholder="leave empty for local servers" autocomplete="off"></label>
+      <label>Model
+        <div class="row"><select id="modelSelect"></select><button type="button" class="btn" id="loadModels">Refresh</button></div>
+      </label>
+      <p id="remoteWarning" class="warn" hidden>This address isn't on this computer or your local network. Your
+        questions and the passages the app finds, including from your own files, will be sent to it.</p>
+      <p class="muted small">The model needs tool calling (function calling) for the best results. Models without it
+        still work: the app attaches the best passages to your question instead.</p>
+    </div>
+
+    <div id="bundledPane" class="pane" hidden>
+      <p class="muted small" id="machineInfo"></p>
+      <div id="modelCards"></div>
+      <label class="check"><input type="checkbox" id="gpu" checked> Use the graphics card (Windows/Linux: Vulkan
+        build; untick for the CPU-only build if the engine fails to start)</label>
+      <div id="jobView"></div>
+    </div>
+
+    <div class="modal-actions">
+      <span id="testResult" class="muted"></span>
+      <button type="button" class="btn" id="testEngine">Test</button>
+      <button type="button" class="btn primary" id="saveEngine">Save</button>
+    </div>
+  </section>
+
+  <section class="tabpane" data-pane="instructions" hidden>
+    <p class="muted small">What the AI is told before every chat. {library}, {files}, {today} and {notes} are filled
+      in by the app.</p>
+    <textarea id="instructions" rows="18" spellcheck="false"></textarea>
+    <div class="modal-actions"><button type="button" class="btn" id="resetInstructions">Reset</button>
+      <button type="button" class="btn primary" id="saveInstructions">Save</button></div>
+  </section>
+
+  <section class="tabpane" data-pane="project" hidden>
+    <p class="muted small">Facts about the project you're working on, added to every chat, e.g. "6-storey block of
+      flats, top floor 17 m, sprinklered, new build in London".</p>
+    <textarea id="projectNotes" rows="8"></textarea>
+    <div class="modal-actions"><button type="button" class="btn primary" id="saveNotes">Save</button></div>
+  </section>
+
+  <section class="tabpane" data-pane="about" hidden>
+    <div id="aboutInfo"></div>
+    <label class="check"><input type="checkbox" id="checkUpdates"> Check for updates once a day (asks GitHub for the
+      latest release; nothing about you is sent)</label>
+    <div class="modal-actions"><button type="button" class="btn" id="checkNow">Check now</button></div>
+    <div id="updateView"></div>
+  </section>
+</dialog>
+
+<dialog id="dlg-files" class="modal">
+  <form method="dialog" class="modal-head"><h2>Your files</h2><button class="icon" aria-label="Close">✕</button></form>
+  <p class="muted small">Add your own documents (specifications, fire strategies, building control comments,
+    manufacturers' guidance) and they're searched together with the library. They stay on this computer, in
+    <a href="#" id="openFolder">your files folder</a>; files you put in that folder are picked up on their own.</p>
+  <div id="dropZone" class="drop">Drop files here or <label class="link">choose files<input type="file" id="filePick" multiple hidden></label>
+    <div class="muted small">PDF, Word (.docx), EPUB, HTML, Markdown or text. Scanned pages can't be read yet.</div></div>
+  <div id="fileList"></div>
+</dialog>
+
+<dialog id="dlg-permission" class="modal narrow">
+  <h2>Are you allowed to use these documents with AI?</h2>
+  <p>Many publishers' licences don't allow their documents to be copied into, or processed by, AI tools. That
+    includes some technical standards (such as British Standards), warranty providers' technical manuals and
+    subscription services. Your employer may have its own rules too.</p>
+  <p>Before adding a document, check its licence or terms of use, or ask whoever supplied it. Documents you add
+    stay on this computer, but if you use an engine on another computer or a cloud service, passages from them are
+    sent to it with your questions.</p>
+  <label class="check"><input type="checkbox" id="permAgree"> I'll only add documents I'm allowed to use this way</label>
+  <div class="modal-actions"><button class="btn" id="permCancel">Cancel</button>
+    <button class="btn primary" id="permOk" disabled>Continue</button></div>
+</dialog>
+
+<dialog id="dlg-library" class="modal wide">
+  <form method="dialog" class="modal-head"><h2>Library</h2><button class="icon" aria-label="Close">✕</button></form>
+  <input id="libSearch" type="search" placeholder="Search the library directly (no AI), e.g. 'protected stairway door'">
+  <div id="libResults"></div>
+  <div id="libSources"></div>
+</dialog>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
