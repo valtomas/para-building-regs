@@ -9,13 +9,14 @@
 <body>
 <div id="app">
   <aside id="sidebar">
-    <div class="brand"><span class="logo">¶</span><span>Para<br><small>Building regs, cited</small></span></div>
-    <button id="newChat" class="btn primary wide">+ New chat</button>
+    <div class="brand"><span class="logo">¶</span><span>Para<br><small>Building regs, cited</small></span>
+      <button class="icon close" id="closeMenu" aria-label="Close menu">✕</button></div>
+    <button id="newChat" class="btn primary wide"><span>New chat</span><span aria-hidden="true">+</span></button>
     <nav id="chatList" aria-label="Chats"></nav>
     <div class="side-foot">
-      <button class="side-link" data-open="library">📚 Library</button>
-      <button class="side-link" data-open="files">📄 Your files <span id="filesCount" class="count"></span></button>
-      <button class="side-link" data-open="settings">⚙️ Settings</button>
+      <button class="side-link" data-open="library">Library <span id="libCount" class="count"></span></button>
+      <button class="side-link" data-open="files">Your files <span id="filesCount" class="count"></span></button>
+      <button class="side-link" data-open="settings">Settings</button>
       <div id="engineBadge" class="badge" title="Where your questions go"></div>
       <div id="updateNote" class="update-note" hidden></div>
       <div class="version" id="version"></div>
@@ -23,8 +24,14 @@
   </aside>
 
   <main id="main">
+    <header class="topbar">
+      <button class="menu" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      <span class="topbar-brand"><span class="logo">¶</span> Para</span>
+      <span class="topbar-dot" title="Where your questions go"></span>
+    </header>
     <div id="messages" aria-live="polite">
       <div id="welcome" class="welcome">
+        <div class="eyebrow">England · Approved Documents · BR 2010 · BSA 2022</div>
         <h1>Ask about the Building Regulations</h1>
         <p>Answers come from the Approved Documents, the Building Regulations 2010, the Building Safety Act and
           its guidance, and any files you add, with a link to each paragraph used.</p>
@@ -37,8 +44,12 @@
       </div>
     </div>
     <form id="composer">
-      <textarea id="question" rows="1" placeholder="Ask a question… (Enter to send, Shift+Enter for a new line)"
-                aria-label="Your question"></textarea>
+      <div class="composer-box">
+        <textarea id="question" rows="1" placeholder="Ask a question…"
+                  title="Enter to send, Shift+Enter for a new line" aria-label="Your question"></textarea>
+        <button type="button" id="stop" class="btn" hidden>Stop</button>
+        <button type="submit" id="send" class="btn primary">Send</button>
+      </div>
       <div class="composer-row">
         <label class="mini">Reasoning
           <select id="reasoning"><option value="auto">Auto</option><option value="off">Off</option><option value="on">On</option></select>
@@ -47,10 +58,8 @@
           <select id="length"><option value="normal">Normal</option><option value="long">Long</option><option value="none">No limit</option></select>
         </label>
         <span id="status" class="status"></span>
-        <button type="button" id="stop" class="btn" hidden>Stop</button>
-        <button type="submit" id="send" class="btn primary">Send</button>
+        <span class="disclaimer">AI can make mistakes. Check the cited paragraphs before relying on an answer.</span>
       </div>
-      <div class="disclaimer">AI can make mistakes. Check the cited paragraphs before relying on an answer.</div>
     </form>
   </main>
 
@@ -72,7 +81,7 @@
 </div>
 
 <dialog id="dlg-settings" class="modal">
-  <form method="dialog" class="modal-head"><h2>Settings</h2><button class="icon" aria-label="Close">✕</button></form>
+  <form method="dialog" class="modal-head"><div><div class="eyebrow">Para</div><h2>Settings</h2></div><button class="icon" aria-label="Close">✕</button></form>
   <div class="tabs" role="tablist">
     <button class="tab active" data-tab="engine">AI engine</button>
     <button class="tab" data-tab="instructions">Instructions</button>
@@ -123,7 +132,8 @@
   </section>
 
   <section class="tabpane" data-pane="instructions" hidden>
-    <p class="muted small">What the AI is told before every chat. {library}, {files}, {today} and {notes} are filled
+    <p class="muted small">What the AI is told before every chat. <code>{library}</code>, <code>{files}</code>, <code>{today}</code> and
+      <code>{notes}</code> are filled
       in by the app.</p>
     <textarea id="instructions" rows="18" spellcheck="false"></textarea>
     <div class="modal-actions"><button type="button" class="btn" id="resetInstructions">Reset</button>
@@ -147,16 +157,17 @@
 </dialog>
 
 <dialog id="dlg-files" class="modal">
-  <form method="dialog" class="modal-head"><h2>Your files</h2><button class="icon" aria-label="Close">✕</button></form>
+  <form method="dialog" class="modal-head"><div><div class="eyebrow">Searched with the library</div><h2>Your files</h2></div><button class="icon" aria-label="Close">✕</button></form>
   <p class="muted small">Add your own documents (specifications, fire strategies, building control comments,
     manufacturers' guidance) and they're searched together with the library. They stay on this computer, in
     <a href="#" id="openFolder">your files folder</a>; files you put in that folder are picked up on their own.</p>
-  <div id="dropZone" class="drop">Drop files here or <label class="link">choose files<input type="file" id="filePick" multiple hidden></label>
+  <div id="dropZone" class="drop"><span class="drop-title">Drop files here or <label class="link">choose files<input type="file" id="filePick" multiple hidden></label></span>
     <div class="muted small">PDF, Word (.docx), EPUB, HTML, Markdown or text. Scanned pages can't be read yet.</div></div>
   <div id="fileList"></div>
 </dialog>
 
 <dialog id="dlg-permission" class="modal narrow">
+  <div class="eyebrow">Before you add files</div>
   <h2>Are you allowed to use these documents with AI?</h2>
   <p>Many publishers' licences don't allow their documents to be copied into, or processed by, AI tools. That
     includes some technical standards (such as British Standards), warranty providers' technical manuals and
@@ -170,8 +181,9 @@
 </dialog>
 
 <dialog id="dlg-library" class="modal wide">
-  <form method="dialog" class="modal-head"><h2>Library</h2><button class="icon" aria-label="Close">✕</button></form>
-  <input id="libSearch" type="search" placeholder="Search the library directly (no AI), e.g. 'protected stairway door'">
+  <form method="dialog" class="modal-head"><div><div class="eyebrow">Browse, or search without AI</div><h2>Library</h2></div><button class="icon" aria-label="Close">✕</button></form>
+  <label class="lib-search"><span>Search</span><input id="libSearch" type="search"
+    placeholder="Search the library directly (no AI), e.g. 'protected stairway door'"></label>
   <div id="libResults"></div>
   <div id="libSources"></div>
 </dialog>
