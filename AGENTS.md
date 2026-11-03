@@ -41,6 +41,7 @@ passage ids; the app checks every citation. It must stay:
 | `packaging/` | PyInstaller spec and launcher |
 | `.github/workflows/release.yml` | Tests on every push; on a `v*` tag: library, Mac and Windows apps, GitHub release; weekly library refresh |
 | `tests/` | `test_app.py` (end to end through the HTTP API) and `fake_llm.py` (a stand-in OpenAI-compatible server) |
+| `tests/ask_models.py` | Asks real models the test questions through a running app and scores them; results in `docs/model-tests.md` |
 
 ## Run and test
 
@@ -57,8 +58,8 @@ run against throwaway folders. Never test against the person's real app folder.
 
 Testing with a real engine: Lemonade (`http://127.0.0.1:13305/api/v1`; older versions `:8000`), Ollama
 (`http://127.0.0.1:11434/v1`) and LM Studio (`http://127.0.0.1:1234/v1`) are found by *Find engines on this
-computer*. When you change prompts or the tool loop, ask a real model a few questions from different Parts and check
-the citations open the right paragraphs.
+computer*. When you change prompts or the tool loop, ask real models the test questions (`tests/ask_models.py`) and
+check the citations open the right paragraphs.
 
 ## Conventions
 
@@ -67,7 +68,9 @@ the citations open the right paragraphs.
   call, a background thread) and say so in a comment.
 - **Library quality beats model cleverness.** If answers are wrong because a passage is garbled, fix
   `splitter.py` or `build.py`, rebuild, and look at the passages (`sqlite3 library/dist/regs.sqlite`). Check tables
-  keep their numbers and paragraph refs stay in sequence (`splitter.plausible`).
+  keep their numbers and paragraph refs stay in sequence (`splitter.plausible`). Two-column pages are read a column
+  at a time (`splitter.unweave_columns`) and contents and index pages are skipped (`splitter.skipped_pages`): when
+  you change either, compare passage counts and refs per document before and after.
 - **Diagrams and tables**: `library/figures.py` finds each one from its caption and crops it from the page. Whether
   a document puts diagram captions above or below the drawing is decided per document by a vote; tables are always
   captioned above. When you change it, render a few figures from ADB, ADK, ADL and ADM and look at them: a crop
