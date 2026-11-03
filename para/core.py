@@ -67,7 +67,10 @@ RESCUE_NOTE = ("(Note from the app, not the person: you can't look anything else
 UNSEEN_ID = "No search result has that id. Use an id from your search_library results."
 BAD_ID = "That isn't a passage id. Ids look like r1234 or f56."
 
-CITE = re.compile(r"\[\s*((?:[rf]\d+)(?:\s*[,;]\s*[rf]\d+)*)\s*\]")
+# A bracket or parenthesis holding passage ids, alone ("[r12]", "[r12, r34]") or with the model's own words
+# ("[BR 2010, reg 11G(1), r4412]", "(ADB Vol 1, Table 3.1, r272)", "[r4122–r4124]").
+CITE_GROUPS = (re.compile(r"\[([^\[\]\n]{0,300})\]"), re.compile(r"\(([^()\n]{0,300})\)"))
+ID_TOKEN = re.compile(r"(?<![\w/.#\x00])([rf])(\d+)(?:\s*[–-]\s*[rf]?(\d+))?(?![\w\x00])")
 ID_IN_TEXT = re.compile(r"\[([rf]\d+)\]")
 TOOL_MARKUP = ("<tool_call", "<function", "[TOOL_CALLS]", "<|tool_call")
 TEXT_CALL = re.compile(r"<tool_call>\s*(\{.*?\})\s*</tool_call>", re.S)
@@ -297,18 +300,31 @@ def _check_citations(answer, known, library):
     cites, dropped = {}, []
 
     def fix(m):
-        ids = [i.strip().lower() for i in re.split(r"[,;]", m.group(1))]
+        inner = m.group(1)
+        tokens = list(ID_TOKEN.finditer(inner))
+        if not tokens:
+            return m.group(0)
+        ids = []
+        for t in tokens:  # a range "r4122–r4124" counts as its two ends: what lies between wasn't named
+            ids += [t[1] + t[2]] + ([t[1] + t[3]] if t[3] else [])
         good = []
-        for i in ids:
+        for i in dict.fromkeys(ids):
             info = library.describe(i) if i in known else None
             if info:
                 cites[i] = _brief(info)
                 good.append(i)
             else:
                 dropped.append(i)
-        return "".join(f"[{i}]" for i in good)
+        words = re.sub(r"(?:\s*(?:[,;]|\band\b|&)\s*)+", ", ", ID_TOKEN.sub(" ", inner)).strip(" ,;:")
+        if re.fullmatch(r"(?i)see(?: also)?|cf\.?|source:?|from", words):
+            words = ""
+        chips = "".join(f"\x00{i}\x00" for i in good)  # marked so the second pass leaves them alone
+        return f"({words}) {chips}".rstrip() if words else chips
 
-    answer = CITE.sub(fix, answer or "")
+    answer = (answer or "").replace("\x00", "")
+    for group in CITE_GROUPS:  # square brackets first: "(ADB Vol 1, para 2.13 [r12])"
+        answer = group.sub(fix, answer)
+    answer = re.sub(r"\x00([rf]\d+)\x00", r"[\1]", answer)
     answer = re.sub(r"[ \t]+([.,;:])", r"\1", answer)
     return answer, cites, dropped
 

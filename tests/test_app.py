@@ -138,6 +138,17 @@ out = list(core.chat_events(Client(fake_url, "", "fake-model"), Library(), [], "
                             server.settings.load(), supports_tools=False))
 check(out[-1]["type"] == "done" and out[-1]["cites"], "no-tools mode cites attached excerpts")
 
+# citations written with the model's own words, or as a range, still link; unseen ids still go
+class StubLibrary:
+    def describe(self, pid):
+        return {"id": pid, "source": "BR 2010", "ref": "reg 11G"}
+
+
+text, cites, dropped = core._check_citations("Competence [BR 2010, reg 11G(1), r12]. Duties (r20–r22). Not [r99].",
+                                             {"r12", "r20", "r22"}, StubLibrary())
+check(text == "Competence (BR 2010, reg 11G(1)) [r12]. Duties [r20][r22]. Not." and set(cites) == {"r12", "r20", "r22"}
+      and dropped == ["r99"], "citations inside the model's own brackets link; made-up ones still dropped")
+
 # splitting: cross-references wrapped onto a new line are not captions; index pages are skipped
 from para.splitter import skipped_pages  # noqa: E402
 
