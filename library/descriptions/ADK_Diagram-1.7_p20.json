@@ -1,0 +1,12 @@
+{
+ "key": "ADK_Diagram-1.7_p20",
+ "source": "ADK",
+ "label": "Diagram 1.7",
+ "page": 20,
+ "caption": "Diagram 1.7 | Cupboard onto landing",
+ "model": "Gemma-4-26B-A4B-it-GGUF",
+ "date": "2026-11-04",
+ "image_sha256": "6f6b14dd72d4bc76b23c2c4acecc5f65c91d0b04062da854896a9839ac066d72",
+ "reviewed": false,
+ "description": "This diagram, titled 'Diagram 1.7 Cupboard onto landing', is a plan view showing the relationship between a cupboard door and a staircase. The drawing depicts a rectangular 'Cupboard' at the top of a flight of stairs. A door is shown swinging open from the cupboard into the landing area. To the right of the landing, a set of stairs descends, indicated by a series of parallel lines and an arrow pointing 'Up' at the bottom of the flight. A shaded rectangular area is positioned on the landing, between the cupboard door and the stairs. This shaded area is marked with a dimension line and the label '400mm minimum', indicating the required clear width of the landing space in front of the cupboard door. The text 'See para 1.21' is located in the top left corner of the diagram."
+}

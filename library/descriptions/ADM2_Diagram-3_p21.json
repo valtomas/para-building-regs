@@ -1,0 +1,12 @@
+{
+ "key": "ADM2_Diagram-3_p21",
+ "source": "ADM2",
+ "label": "Diagram 3",
+ "page": 21,
+ "caption": "Diagram 3 Relationship of ramp gradient to the going of a flight",
+ "model": "Gemma-4-26B-A4B-it-GGUF",
+ "date": "2026-11-04",
+ "image_sha256": "121075c4bbf180218d4aadd94f2302dee33a5900c5660b8af7f897277aa4bad7",
+ "reviewed": false,
+ "description": "This diagram, titled Diagram 3 Relationship of ramp gradient to the going of a flight, consists of two comparative cross-sectional drawings, labelled 'a' and 'b'. \n\nPart a shows a flight of stairs. It features a series of steps with a vertical 'rise' and a horizontal 'going'. The steps are shown with a consistent upward inclination.\n\nPart b shows a ramp. It features a much shallower inclination compared to the stairs in part a. The ramp is shown with a much longer horizontal distance to reach the same vertical height as the stairs.\n\nAccompanying text states: \"have restricted mobility find it more difficult to negotiate a ramp than a stair. In addition, adverse weather conditions increase the risk of slipping on a ramp. It is therefore beneficial to have steps as well as a ramp.\""
+}

@@ -1,0 +1,12 @@
+{
+ "key": "ADM1_Diagram-1.3_p16",
+ "source": "ADM1",
+ "label": "Diagram 1.3",
+ "page": 16,
+ "caption": "Diagram 1.3 | WC access zones",
+ "model": "Gemma-4-26B-A4B-it-GGUF",
+ "date": "2026-11-04",
+ "image_sha256": "0a7a40881d984185e0c221aa99df789c10dc41d28efa681080949f91a7dfb19c",
+ "reviewed": false,
+ "description": "This diagram, titled 'Diagram 1.3 WC access zones', consists of two plan-view examples labelled 'Example 1.3A'. \n\nThe left side, 'Example 1.3A – Clear access for oblique transfer', shows a toilet with a circular symbol in the centre. A rectangular shaded area, representing an access zone, sits in front of the toilet. This zone is 750mm deep and 750mm wide. The width is split by a dimension line into 450mm and 400mm. An 'Opening to front of WC' is marked as 250mm.\n\nThe right side, 'Example 1.3A – Clear access for frontal transfer', also shows a toilet and a rectangular shaded access zone. This zone is 750mm deep and is split into two equal widths of 450mm* and 450mm*. \n\nThree notes are provided: 1. All dimensions minimum unless otherwise stated. 2. * denotes minimum but 500mm preferred. 3. Basins should not project into access zones in such a way as to impede access."
+}

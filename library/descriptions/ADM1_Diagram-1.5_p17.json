@@ -1,0 +1,12 @@
+{
+ "key": "ADM1_Diagram-1.5_p17",
+ "source": "ADM1",
+ "label": "Diagram 1.5",
+ "page": 17,
+ "caption": "Diagram 1.5",
+ "model": "Gemma-4-26B-A4B-it-GGUF",
+ "date": "2026-11-04",
+ "image_sha256": "23dc02ff33e6766e8ce327d4cbd7841e693eb8edcfc5b4f0abcb7a394f332676",
+ "reviewed": false,
+ "description": "This diagram, titled 'Diagram 1.5: Heights of switches, sockets etc.', illustrates the recommended mounting heights for various electrical and communication points. It shows a vertical scale with three horizontal dashed lines indicating different height levels.\n\nThe lowest level is marked at 450mm from the floor. This height corresponds to 'door bells, entry phones'.\n\nThe middle level is indicated at 1200mm from the floor. This level is associated with 'switches, sockets' and 'TV sockets'.\n\nThe highest level is represented by a dashed line with no numerical value provided, but it is labelled as 'telephone jack points'.\n\nThe diagram uses a vertical rectangle to represent a wall section, with various small symbols representing the specific points, such as a square for a socket and smaller icons for doorbells and telephone jacks."
+}

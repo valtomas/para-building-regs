@@ -1,0 +1,12 @@
+{
+ "key": "ADM2_Diagram-11_p36",
+ "source": "ADM2",
+ "label": "Diagram 11",
+ "page": 36,
+ "caption": "Diagram 11 Key dimensions associated with passenger lifts",
+ "model": "Gemma-4-26B-A4B-it-GGUF",
+ "date": "2026-11-04",
+ "image_sha256": "804a081e6b2106080ee2bcbd29a001280fafdf4d45e491caad3c0a01155149ea",
+ "reviewed": false,
+ "description": "This diagram, titled \"Diagram 11 Key dimensions associated with passenger lifts,\" depicts a three-dimensional perspective view of a lift landing and the lift car controls.\n\nOn the left, the landing area shows a wall with \"Landing call buttons with tactile identification\" and a \"Sign showing storey with tactile identification.\" An arrow indicates a \"900mm\" vertical distance between the buttons and the sign. A dimension line shows the \"Range for centre lines of landing call buttons\" is \"1100mm\" from the side wall. Below this, an \"Unobstructed wheelchair turning space\" is indicated by a square area measuring \"1500mm\" by \"1500mm,\" with a minimum \"800mm min.\" width for access.\n\nOn the right, the lift car interior is shown. It features \"Lift car controls with tactile identification\" and a \"Handrail.\" The \"Range for centre lines of lift car controls\" is \"1200mm\" from the back wall, positioned \"900mm nominal\" above the floor. The handrail is \"1100mm min.\" high. Floor dimensions include a \"400mm\" depth and a \"1400mm min.\" width."
+}
