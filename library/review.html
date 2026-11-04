@@ -105,7 +105,7 @@ function render() {
         <span class="state ${kind(it)}">${label[kind(it)]}</span>
         <div class="ref">${esc(it.source)} ${esc(it.label)}</div>
         <p class="caption">${esc(it.caption)}</p>
-        <p class="meta">${esc(it.model)} · written ${esc(it.date)}${it.reviewed_date ? ` · approved ${esc(it.reviewed_date)}` : ""} · PDF page ${esc(it.page)}</p>
+        <p class="meta">${esc(it.model)} · written ${esc(it.date)}${it.corrected_by ? ` · corrected by ${esc(it.corrected_by)}` : ""}${it.reviewed_date ? ` · approved ${esc(it.reviewed_date)}` : ""} · PDF page ${esc(it.page)}</p>
         ${it.stale ? `<p class="note">The drawing's image has changed since this was approved, so it is left out of the library until you approve it again against the image shown.</p>` : ""}
         <p class="text">${esc(it.description)}</p>
         <div class="actions">
