@@ -1,6 +1,8 @@
 # Para
 
-**Building regulations, cited.** A free, open-source AI assistant for the building regulations in England that runs on your own computer. Ask it a question
+**Building regulations, cited.** · [pararegs.co.uk](https://pararegs.co.uk)
+
+ A free, open-source AI assistant for the building regulations in England that runs on your own computer. Ask it a question
 ("maximum travel distance from a flat entrance door in a single-stair block?") and it searches a library of the
 Approved Documents, the Building Regulations 2010, the Building Safety Act and its guidance, reads the relevant
 paragraphs, and answers with a link to each one, so you can check exactly where it came from.

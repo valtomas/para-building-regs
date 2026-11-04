@@ -1,0 +1,38 @@
+name: Website
+
+# Publishes site/ to GitHub Pages (pararegs.co.uk). The fonts and screenshots come from the app, so the site always
+# matches it. Needs Settings → Pages → Source set to "GitHub Actions" once.
+on:
+  push:
+    branches: [main]
+    paths: ["site/**", "docs/screenshots/**", "para/static/fonts/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assemble the site
+        run: |
+          mkdir -p _site/fonts _site/screenshots
+          cp -r site/. _site/
+          cp para/static/fonts/*.woff2 para/static/fonts/OFL-*.txt _site/fonts/
+          cp docs/screenshots/answer-reader.png _site/screenshots/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: _site }
+      - id: deployment
+        uses: actions/deploy-pages@v4
