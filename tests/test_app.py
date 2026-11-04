@@ -216,5 +216,58 @@ engine._json = lambda url: releases
 rel, asset = engine._find_release("ggml-org/llama.cpp", "latest", r"bin-ubuntu-x64\.(zip|tar\.gz)$")
 check(rel["tag_name"] == "b2" and asset["name"].startswith("llama-b2"), "finds the newest llama.cpp build")
 
+# built-in engine memory: no load that won't fit, no engine left behind, none kept running idle
+if os.name != "nt":
+    import subprocess  # noqa: E402
+    import time  # noqa: E402
+
+    bundled = engine.Bundled()
+    fake_dir = os.path.join(bundled.engine_dir, "b0")
+    os.makedirs(fake_dir, exist_ok=True)
+    fake_server = os.path.join(fake_dir, "llama-server")
+    with open(fake_server, "w") as f:
+        f.write("#!/bin/sh\nexec sleep 60\n")
+    os.chmod(fake_server, 0o755)
+    small = engine.catalog()["models"][-1]
+    os.makedirs(bundled.models_dir, exist_ok=True)
+    open(bundled.model_path(small), "wb").close()
+    real_ram, real_vram = engine.available_ram_gb, engine.free_vram_gb
+    engine.available_ram_gb, engine.free_vram_gb = (lambda: 1.0), (lambda: 0.0)
+    try:
+        bundled.start(small["id"])
+        refused = ""
+    except engine.EngineError as e:
+        refused = str(e)
+    check("Not enough free memory" in refused and bundled.proc is None, "a model that won't fit isn't loaded")
+    engine.free_vram_gb = lambda: 64.0  # a graphics card's own memory counts too
+    with open(fake_server, "w") as f:
+        f.write("#!/bin/sh\nexit 1\n")  # past the memory check, the stand-in stops at once
+    try:
+        bundled.start(small["id"])
+        started = ""
+    except engine.EngineError as e:
+        started = str(e)
+    check("stopped while loading" in started, "free memory on a graphics card counts towards a model")
+    with open(fake_server, "w") as f:
+        f.write("#!/bin/sh\nexec sleep 60\n")
+    engine.available_ram_gb, engine.free_vram_gb = real_ram, real_vram
+
+    left = subprocess.Popen([fake_server])  # an engine an earlier run left behind
+    with open(bundled.pid_path, "w") as f:
+        f.write(f"{left.pid} {fake_server}\n")
+    engine.Bundled()
+    try:
+        left.wait(10)
+    except subprocess.TimeoutExpired:
+        left.kill()
+    check(left.returncode is not None and left.returncode != 0 and not os.path.exists(bundled.pid_path),
+          "an engine left behind by an earlier run is stopped")
+
+    bundled.proc = subprocess.Popen([fake_server])
+    bundled.last_used = time.time()
+    busy = bundled.stop_if_idle(minutes=1)
+    bundled.last_used = time.time() - 120
+    check(not busy and bundled.stop_if_idle(minutes=1) and bundled.proc is None, "an idle engine is stopped")
+
 print(f"\n{len(failures)} failed" if failures else "\nall passed")
 sys.exit(1 if failures else 0)

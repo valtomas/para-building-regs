@@ -37,28 +37,98 @@ def catalog():
     return {"models": [], "llama_cpp": {}}
 
 
+def _windows_memory():
+    import ctypes
+
+    class MEMORYSTATUSEX(ctypes.Structure):
+        _fields_ = [("dwLength", ctypes.c_ulong), ("dwMemoryLoad", ctypes.c_ulong),
+                    ("ullTotalPhys", ctypes.c_ulonglong), ("ullAvailPhys", ctypes.c_ulonglong),
+                    ("ullTotalPageFile", ctypes.c_ulonglong), ("ullAvailPageFile", ctypes.c_ulonglong),
+                    ("ullTotalVirtual", ctypes.c_ulonglong), ("ullAvailVirtual", ctypes.c_ulonglong),
+                    ("sullAvailExtendedVirtual", ctypes.c_ulonglong)]
+    stat = MEMORYSTATUSEX()
+    stat.dwLength = ctypes.sizeof(MEMORYSTATUSEX)
+    ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(stat))
+    return stat
+
+
 def total_ram_gb():
     try:
         if sys.platform == "darwin":
             out = subprocess.run(["sysctl", "-n", "hw.memsize"], capture_output=True, text=True, timeout=5).stdout
             return int(out.strip()) / 2**30
         if os.name == "nt":
-            import ctypes
-
-            class MEMORYSTATUSEX(ctypes.Structure):
-                _fields_ = [("dwLength", ctypes.c_ulong), ("dwMemoryLoad", ctypes.c_ulong),
-                            ("ullTotalPhys", ctypes.c_ulonglong), ("ullAvailPhys", ctypes.c_ulonglong),
-                            ("ullTotalPageFile", ctypes.c_ulonglong), ("ullAvailPageFile", ctypes.c_ulonglong),
-                            ("ullTotalVirtual", ctypes.c_ulonglong), ("ullAvailVirtual", ctypes.c_ulonglong),
-                            ("sullAvailExtendedVirtual", ctypes.c_ulonglong)]
-            stat = MEMORYSTATUSEX()
-            stat.dwLength = ctypes.sizeof(MEMORYSTATUSEX)
-            ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(stat))
-            return stat.ullTotalPhys / 2**30
+            return _windows_memory().ullTotalPhys / 2**30
         with open("/proc/meminfo") as f:
             return int(re.search(r"MemTotal:\s+(\d+)", f.read()).group(1)) / 2**20
     except Exception:  # noqa: BLE001
         return 0.0
+
+
+def available_ram_gb():
+    """Memory that can be used without pushing other programs out (0 when unknown). Integrated GPUs, such as Apple
+    silicon and AMD's Strix Halo, take a model's memory from this too."""
+    try:
+        if sys.platform == "darwin":
+            out = subprocess.run(["vm_stat"], capture_output=True, text=True, timeout=5).stdout
+            page = int(re.search(r"page size of (\d+)", out).group(1))
+            pages = sum(int(re.search(rf"{k}:\s+(\d+)", out).group(1))
+                        for k in ("Pages free", "Pages inactive", "Pages speculative", "Pages purgeable"))
+            return pages * page / 2**30
+        if os.name == "nt":
+            return _windows_memory().ullAvailPhys / 2**30
+        with open("/proc/meminfo") as f:
+            return int(re.search(r"MemAvailable:\s+(\d+)", f.read()).group(1)) / 2**20
+    except Exception:  # noqa: BLE001
+        return 0.0
+
+
+def free_vram_gb():
+    """Free memory on graphics cards with their own memory, in GB: 0 when there are none, None when there may be
+    one that can't be read (AMD and Intel cards on Windows). An integrated GPU's small reserved slice (Strix Halo:
+    512 MB) doesn't count: such GPUs load models into system memory, which available_ram_gb covers."""
+    total = 0.0
+    try:
+        if shutil.which("nvidia-smi"):
+            out = subprocess.run(["nvidia-smi", "--query-gpu=memory.free", "--format=csv,noheader,nounits"],
+                                 capture_output=True, text=True, timeout=10,
+                                 creationflags=0x08000000 if os.name == "nt" else 0).stdout
+            total += sum(int(x) for x in re.findall(r"\d+", out)) / 1024
+        if sys.platform.startswith("linux"):
+            for card in os.listdir("/sys/class/drm"):
+                base = f"/sys/class/drm/{card}/device/mem_info_vram_"
+                if re.fullmatch(r"card\d+", card) and os.path.exists(base + "total"):
+                    with open(base + "total") as f, open(base + "used") as g:
+                        vram, used = int(f.read()), int(g.read())
+                    if vram >= 2 * 2**30:  # a card's own memory, not an integrated GPU's reserved slice
+                        total += (vram - used) / 2**30
+            return total
+        if sys.platform == "darwin":
+            return 0.0  # Apple silicon shares system memory
+        return total or None  # Windows: an AMD or Intel card's memory can't be read without extra libraries
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def memory_needed_gb(model):
+    """About what a model takes once loaded: its file, plus the context and the engine's working memory."""
+    return model.get("size_gb", 0) * 1.1 + 1.5
+
+
+def _process_command(pid):
+    """The command line of a running process, or "" when there is none (or it can't be read)."""
+    try:
+        if os.name == "nt":
+            out = subprocess.run(["tasklist", "/FI", f"PID eq {pid}", "/FO", "CSV", "/NH"], capture_output=True,
+                                 text=True, timeout=10, creationflags=0x08000000).stdout
+            return out if f'"{pid}"' in out else ""
+        if os.path.exists(f"/proc/{pid}/cmdline"):
+            with open(f"/proc/{pid}/cmdline", "rb") as f:
+                return f.read().replace(b"\0", b" ").decode("utf-8", "replace")
+        return subprocess.run(["ps", "-p", str(pid), "-o", "command="], capture_output=True, text=True,
+                              timeout=10).stdout
+    except Exception:  # noqa: BLE001
+        return ""
 
 
 def recommend(models=None, ram=None):
@@ -141,14 +211,69 @@ def _json(url):
         return json.load(r)
 
 
+IDLE_MINUTES = 10  # the built-in engine gives its memory back after this long without a question
+
+
 class Bundled:
-    """llama-server, installed and run by the app."""
+    """llama-server, installed and run by the app. It holds gigabytes of memory, so it never outlives the app: it is
+    stopped when the app exits, a copy left behind by an app that was killed is stopped at the next start, and it
+    is stopped after IDLE_MINUTES without use (the next question starts it again)."""
 
     def __init__(self):
         self.proc, self.port, self.model_id = None, None, None
         self.jobs, self.lock = {}, threading.Lock()
         self.log_path = paths.data_path("logs", "engine.log")
+        self.pid_path = paths.data_path("engine.pid")
+        self.last_used = time.time()
+        self.watcher = None
         atexit.register(self.stop)
+        self.stop_leftover()
+
+    def stop_leftover(self):
+        """Stop a llama-server that an earlier run of the app started and couldn't stop (it was killed, or the
+        computer slept through it). Left running, it keeps its model in memory with nobody to use it."""
+        try:
+            with open(self.pid_path) as f:
+                pid = int(f.read().split()[0])
+        except (OSError, ValueError, IndexError):
+            return
+        command = _process_command(pid)
+        if "llama-server" in command and (os.name == "nt" or self.engine_dir in command):
+            try:
+                if os.name == "nt":
+                    subprocess.run(["taskkill", "/PID", str(pid), "/F"], capture_output=True, timeout=10,
+                                   creationflags=0x08000000)
+                else:
+                    os.kill(pid, 15)  # SIGTERM
+            except Exception:  # noqa: BLE001 - it may have just exited
+                pass
+        try:
+            os.remove(self.pid_path)
+        except OSError:
+            pass
+
+    def touch(self):
+        """A question is using the engine: don't stop it for being idle."""
+        self.last_used = time.time()
+
+    def stop_if_idle(self, minutes=IDLE_MINUTES):
+        """Stop the engine if nothing has used it for a while (not while it is being started)."""
+        if self.proc is None or self.proc.poll() is not None or time.time() - self.last_used <= minutes * 60:
+            return False
+        if not self.lock.acquire(blocking=False):
+            return False
+        try:
+            if time.time() - self.last_used > minutes * 60:
+                self.stop()
+                return True
+            return False
+        finally:
+            self.lock.release()
+
+    def _watch_idle(self):
+        while True:
+            time.sleep(30)
+            self.stop_if_idle()
 
     # ----- what is installed -----
     @property
@@ -257,6 +382,7 @@ class Bundled:
     # ----- running -----
     def start(self, model_id, context=32768):
         with self.lock:
+            self.touch()
             if self.proc and self.proc.poll() is None and self.model_id == model_id:
                 return self.base_url
             self.stop()
@@ -264,18 +390,34 @@ class Bundled:
             server = self.server_path()
             if not model or not server or not os.path.exists(self.model_path(model)):
                 raise EngineError("The built-in engine or its model isn't installed yet. Open Settings to set it up.")
+            # A load that doesn't fit doesn't fail cleanly: it pushes everything else out of memory, and on some
+            # computers the graphics driver has crashed the whole system trying.
+            # llama.cpp puts what fits on the graphics card and the rest in system memory, so the two add up.
+            need, ram, vram = memory_needed_gb(model), available_ram_gb(), free_vram_gb()
+            if ram and vram is not None and ram + vram < need:
+                raise EngineError(f"Not enough free memory to start {model['name']}: it needs about {need:.0f} GB "
+                                  f"and {ram + vram:.0f} GB is free. Close other AI apps (another engine may be "
+                                  "holding a model in memory), or choose a smaller model in Settings.")
             with socket.socket() as s:
                 s.bind(("127.0.0.1", 0))
                 self.port = s.getsockname()[1]
             ctx = min(int(context or 32768), int(model.get("context") or 32768))
             cmd = [server, "-m", self.model_path(model), "--host", "127.0.0.1", "--port", str(self.port),
-                   "--jinja", "-c", str(ctx), "-ngl", "999", "--alias", model["id"]]
+                   "--jinja", "-c", str(ctx), "--alias", model["id"]]
             cmd += model.get("args", [])
             log = open(self.log_path, "ab")
             flags = 0x08000000 if os.name == "nt" else 0  # CREATE_NO_WINDOW
             self.proc = subprocess.Popen(cmd, stdout=log, stderr=log, stdin=subprocess.DEVNULL,
                                          cwd=os.path.dirname(server), creationflags=flags)
             self.model_id = model_id
+            try:
+                with open(self.pid_path, "w") as f:
+                    f.write(f"{self.proc.pid} {server}\n")
+            except OSError:
+                pass
+            if self.watcher is None:
+                self.watcher = threading.Thread(target=self._watch_idle, daemon=True)
+                self.watcher.start()
             deadline = time.time() + 600
             while time.time() < deadline:
                 if self.proc.poll() is not None:
@@ -304,6 +446,11 @@ class Bundled:
                 p.wait(10)
             except subprocess.TimeoutExpired:
                 p.kill()
+        if p:
+            try:
+                os.remove(self.pid_path)
+            except OSError:
+                pass
 
 
 def _find_release(repo, tag, pattern):

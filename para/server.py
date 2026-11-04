@@ -10,6 +10,7 @@ import hashlib
 import http.server
 import json
 import os
+import signal
 import socket
 import subprocess
 import sys
@@ -397,6 +398,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
             send({"type": "status", "text": "", "model": client.model})
             answer = []
             for ev in chat_events(client, library, chat["messages"], question, s):
+                engine.bundled.touch()  # a long answer isn't idle time
                 if stop.is_set():
                     turn["stopped"] = True
                     break
@@ -469,6 +471,11 @@ def main(argv=None):
     ap.add_argument("--host", default="127.0.0.1", help="address to serve on (0.0.0.0 to share on the network)")
     ap.add_argument("--port", type=int, default=0)
     args = ap.parse_args(argv)
+    # Being killed (a terminal closed, a service stopped) exits like closing the window, so the built-in engine
+    # is stopped and doesn't keep its model in memory with nobody to use it.
+    for name in ("SIGTERM", "SIGHUP"):
+        if hasattr(signal, name):
+            signal.signal(getattr(signal, name), lambda *_: sys.exit(0))
     port = args.port or free_port(args.host)
     httpd = Server((args.host, port), Handler)
     threading.Thread(target=background, daemon=True).start()
