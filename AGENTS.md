@@ -39,6 +39,7 @@ passage ids; the app checks every citation. It must stay:
 | `library/describe.py` | Descriptions of the diagrams: a vision model writes them (`run`), a person checks them on a local review page (`review`, `library/review.html`); kept in `library/descriptions/` |
 | `library/legislation.py` | Turns legislation XML into passages cited as `reg 7`, `s 120D`, `Sch 1 Pt B` |
 | `library/sources.json` | What goes into the library |
+| `library/check.py` | Compares a new library with the published one and fails the build if a document is missing or much smaller, so a broken rebuild never reaches installed apps |
 | `packaging/` | PyInstaller spec and launcher |
 | `site/` | The website, pararegs.co.uk: one static page in the app's look; download buttons read the latest GitHub release |
 | `.github/workflows/pages.yml` | Publishes `site/` to GitHub Pages, adding the app's fonts and `docs/screenshots/answer-reader.png` |
@@ -50,6 +51,7 @@ passage ids; the app checks every citation. It must stay:
 
 ```bash
 python3 tests/test_app.py                  # must pass before every commit; no engine or network needed
+python3 tests/test_check.py                # the publishing gate in library/check.py
 python3 -m pyflakes para library tests     # keep it clean
 python3 -m para --browser                  # run from source in the browser
 python3 library/build.py                   # build the library (needs poppler-utils; Pillow shrinks images)
