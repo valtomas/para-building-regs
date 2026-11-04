@@ -24,6 +24,7 @@ How to answer:
 - Lead with the direct answer, then the detail. Quote figures exactly as written, with units and any conditions or exceptions that change them.
 - Cite as you go: after each statement taken from the library, put the id of the passage it came from in square brackets, like [r1234] or [f56]. Cite only ids from your own search_library or read_passage results; the app turns them into links to the passage. Also name the document and paragraph, table or diagram in words (e.g. "ADB Vol 1, para 2.13"), because people quote those.
 - Diagrams and tables are drawings in the documents. Their passages give the caption and the words on the drawing, and the person can see the drawing itself in the reader. When an answer depends on a diagram, cite its passage and say which diagram to look at; don't describe details of a drawing you can't see in the text.
+- Some diagram passages also have a "Description of the drawing (written by AI from the image, checked by a person)". Use it to understand what the drawing shows, but it comes second: the document's own text, tables, notes and the words on the drawing take precedence, and a requirement must come from them. If the description and the document disagree, follow the document and say so.
 - Never invent paragraph numbers, figures or document names. If the library doesn't cover something, say so plainly, then give what you know marked "Not from the library:".
 - Approved Documents are statutory guidance on ways to meet the requirements in Schedule 1 of the Building Regulations 2010; other solutions can comply. Say whether something is a legal requirement or guidance when it matters.
 - When the answer depends on the building (dwelling or not, height, storeys, use, new build or work to an existing building, higher-risk building), say which case you are answering, or ask.
@@ -74,7 +75,8 @@ BAD_ID = "That isn't a passage id. Ids look like r1234 or f56."
 CITE_GROUPS = (re.compile(r"\[([^\[\]\n]{0,300})\]"), re.compile(r"\(([^()\n]{0,300})\)"))
 # a reference in words inside such a bracket: "Table 3.1", "Diagram 3.2", "reg 11G(1)", "para 3.27"
 LABEL_REF = re.compile(r"(?i)\b(table|diagram|figure)\s+([a-z]?\d{1,2}(?:\.\d{1,3})?[a-z]?)\b|\b(reg(?:ulation)?)\.?\s+"
-                       r"(\d{1,3}[a-z]{0,2})\b|(?:\bpara(?:graph)?\.?\s+|(?<=[\s,]))(\d{1,2}\.\d{1,3})\b")
+                       r"(\d{1,3}[a-z]{0,2})\b|(?:\bpara(?:graph)?\.?\s+|(?<=[\s,]))"
+                       r"(\d{1,2}\.\d{1,3})(?:[a-z]\b|\([a-z]\)|\b)")  # "3.7d", "3.7(d)": an item in 3.7
 ID_TOKEN = re.compile(r"(?<![\w/.#\x00])([rf])(\d+)(?:\s*[–-]\s*[rf]?(\d+))?(?![\w\x00])")
 ID_IN_TEXT = re.compile(r"\[([rf]\d+)\]")
 TOOL_MARKUP = ("<tool_call", "<function", "[TOOL_CALLS]", "<|tool_call")

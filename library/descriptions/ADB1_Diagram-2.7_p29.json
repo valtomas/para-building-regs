@@ -1,0 +1,12 @@
+{
+ "key": "ADB1_Diagram-2.7_p29",
+ "source": "ADB1",
+ "label": "Diagram 2.7",
+ "page": 29,
+ "caption": "Diagram 2.7 Fire resistance of areas near to external stairs",
+ "model": "Gemma-4-26B-A4B-it-GGUF",
+ "date": "2026-11-04",
+ "image_sha256": "e5031256c9686f00e91d42b534fa6a71e8e2e7cb3c348ac1630d80f518dbf4a1",
+ "reviewed": false,
+ "description": "This diagram, titled \"Diagram 2.7 Fire resistance of areas near to external stairs,\" is a cross-section showing a stairway located outside a building. The stairway consists of flights and landings, starting from \"Ground level.\"\n\nThe drawing specifies areas requiring \"Fire resisting construction (minimum RE 30),\" which is indicated by a green shaded area. This shaded region extends \"9m below stair flights and landings,\" \"1100mm above top landing,\" and \"1800mm at side of stairway.\"\n\nWithin this green area, there is a \"Fire resisting window (minimum RE 30)\" located on the wall. There are two \"Fd Fire doorset\" symbols positioned on the side of the stairway structure. A door above the top landing is labeled \"No fire resistance required for door.\"\n\nA note at the top left states, \"See para 2.17.\" A note on the left reads, \"NOTE: 6m max. stair height without weather protection.\""
+}

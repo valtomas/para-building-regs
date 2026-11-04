@@ -30,6 +30,9 @@ lib.add_source("ADK", "Approved Document K: Protection from falling, collision a
 TINY_PNG = bytes.fromhex("89504e470d0a1a0a0000000d4948445200000001000000010806000000"
                          "1f15c4890000000d49444154789c6360000002000105e9a4a10000000049454e44ae426082")
 lib.add_figure(lib.passage_rowid("ADK", 0), TINY_PNG, 3)
+lib_pid3 = f"r{lib.passage_rowid('ADK', 1)}"
+lib.add_figure(lib.passage_rowid("ADK", 1), TINY_PNG, 5, "ADK_Diagram-3.1_p5", "Diagram 3.1",
+               "A section through the edge of a balcony with guarding 1100 mm high.")
 lib.set_meta(version="2026.11.03", built="test")
 lib.close()
 
@@ -99,6 +102,7 @@ check(doc["focus"] == pid and len(doc["parts"]) >= 2 and doc["license"] == "OGL 
 fig = doc["parts"][0]["figures"]
 check(len(fig) == 1 and fig[0]["width"] == 1, "passages list their figures")
 check(call(f"/api/figure?id={fig[0]['id']}") == TINY_PNG, "figure image served")
+check(fig[0]["description"] == "", "a figure without a checked description has none")
 try:
     call("/api/figure?id=../etc")
     check(False, "bad figure id refused")
@@ -166,8 +170,9 @@ class RefLibrary:
 
 
 text, cites, _ = core._check_citations("A [ADB1, Table 3.1]. B (ADB Vol 1, para 3.21). C [ADK, Diagram 3.1]. "
-                                       "D [ADB1, Table 3.2].", {"r1", "r2"}, RefLibrary())
-check(text == "A [r1]. B (ADB Vol 1, para 3.21) [r2]. C [ADK, Diagram 3.1]. D [ADB1, Table 3.2]." and
+                                       "D [ADB1, Table 3.2]. E (ADB1, para 3.20d).", {"r1", "r2"}, RefLibrary())
+check(text == "A [r1]. B (ADB Vol 1, para 3.21) [r2]. C [ADK, Diagram 3.1]. D [ADB1, Table 3.2]. "
+      "E (ADB1, para 3.20d) [r2]." and
       set(cites) == {"r1", "r2"}, "references written in words link only to passages the model saw")
 
 # splitting: cross-references wrapped onto a new line are not captions; index pages are skipped
@@ -182,8 +187,64 @@ index = "Index\n" + "\n".join(f"Topic {i} 1.{i}, Diagram {i}.1" for i in range(1
 more = "\n".join(f"Other topic {i} Table {i}.2; 3.{i}" for i in range(12))
 check(skipped_pages(["1.1 Text.", index, more, "2.1 Body text again."]) == {2, 3}, "index pages skipped")
 
-# figures: a drawing's text is smaller than the running text, so a long label doesn't cut the drawing short
+# page furniture: a footer padded across the page, a header with the section's tab beside it (on left-hand pages only)
+from para.splitter import clean_pages  # noqa: E402
+
+footer = "Building Regulations 2010" + " " * 70 + "Approved Document B Volume 1, 2019 edition" + " " * 20 + "{}"
+tabs = ["B1", "B2", "B3", "B4", "B5"]
+words = "stairs ramps guarding doors windows walls floors roofs lifts lobbies".split()
+pages = [(f"{tabs[n // 4]}      ONLINE VERSION\n" if n % 2 else "ONLINE VERSION\n") + f"{n}.1 Paragraph about "
+         f"{words[n % 10]} and {words[n // 2]}.\n" + footer.format(n) for n in range(20)]
+pages[3] = "CONTENTS      ONLINE VERSION\n" + pages[3]
+cleaned = clean_pages(pages)
+check(all("ONLINE" not in p.replace("CONTENTS      ONLINE VERSION", "") and "edition" not in p for p in cleaned)
+      and "CONTENTS" in cleaned[3] and all(f"{n}.1 Paragraph about" in p for n, p in enumerate(cleaned)),
+      "page headers and footers are removed, page text and a Contents heading stay")
+
+# descriptions of drawings: written by a model from the image, in the library only once a person has checked them
 sys.path.insert(0, os.path.join(ROOT, "library"))
+import describe  # noqa: E402
+
+doc3 = json.loads(call("/api/passage?id=" + lib_pid3))
+check(doc3["parts"][next(i for i, p in enumerate(doc3["parts"]) if p["id"] == lib_pid3)]["figures"][0]["description"]
+      .startswith("A section through"), "the reader gets a figure's checked description")
+with open(os.path.join(ROOT, "para", "static", "app.js"), encoding="utf-8") as f:
+    app_js = f.read()
+check(describe.LABEL == "Description of the drawing (written by AI from the image, checked by a person):"
+      and f'"{describe.LABEL}"' in app_js, "descriptions are labelled as AI-written and checked, the same in the reader")
+check(describe.figure_key("ADB1", "Diagram 3.8", 40) == "ADB1_Diagram-3.8_p40" and
+      describe.figure_key("ADM amendments 2024", "Diagram 1.2", 5) == "ADM-amendments-2024_Diagram-1.2_p5",
+      "figure keys name the document, the figure and the page")
+describe.DESC_DIR = os.path.join(TMP, "descriptions")
+other_png = TINY_PNG + b"x"
+h = describe.image_hash(TINY_PNG)
+describe.save({"key": "K_Diagram-1_p1", "image_sha256": h, "reviewed": False, "description": "A plan."})
+rec = describe.load("K_Diagram-1_p1")
+check(not describe.needs_writing(rec, h) and describe.needs_writing(rec, describe.image_hash(other_png))
+      and describe.needs_writing(None, h), "a description is written again only when its image changed")
+check(describe.usable("K_Diagram-1_p1", TINY_PNG) is None, "an unreviewed description stays out of the library")
+fig1 = {"key": "K_Diagram-1_p1", "png": TINY_PNG}
+describe.approve(fig1, "A plan of a flat.")
+rec = describe.load("K_Diagram-1_p1")
+check(rec["reviewed"] and rec["description"] == "A plan of a flat." and rec["model_description"] == "A plan."
+      and describe.usable("K_Diagram-1_p1", TINY_PNG) == "A plan of a flat.",
+      "approving keeps the person's correction and what the model wrote")
+check(not describe.needs_writing(rec, describe.image_hash(other_png)) and describe.stale(rec, describe.image_hash(other_png))
+      and describe.usable("K_Diagram-1_p1", other_png) is None,
+      "a reviewed description is never overwritten, and leaves the library if its image changes")
+
+describe.save({"key": "K_Diagram-2_p2", "image_sha256": h, "reviewed": False, "description": "Running text."})
+describe.approve({"key": "K_Diagram-2_p2", "png": TINY_PNG}, None, approved=True, rejected=True)
+rec = describe.load("K_Diagram-2_p2")
+check(rec["rejected"] and not rec["reviewed"] and describe.usable("K_Diagram-2_p2", TINY_PNG) is None
+      and not describe.needs_writing(rec, h) and describe.needs_writing(rec, describe.image_hash(other_png)),
+      "a rejected description stays out, and is written again only for a new image")
+model_text = describe.write_description(
+    Client(fake_url, "", "fake-model"),
+    {"source": "ADK", "caption": "Diagram 1.1 Rise and going", "drawing_text": "Rise; Going", "png": TINY_PNG})
+check(model_text.startswith("A drawing"), "a description is written from the image through the engine's API")
+
+# figures: a drawing's text is smaller than the running text, so a long label doesn't cut the drawing short
 import figures  # noqa: E402
 
 body = figures.Line(57, 100, 540, 114, "2.9 A non-powered manually operated entrance door, fitted with a closer", 0)
@@ -200,6 +261,59 @@ releases = [{"tag_name": "v0.8.0", "assets": [{"name": "nightly-tag.txt"}]},
 engine._json = lambda url: releases
 rel, asset = engine._find_release("ggml-org/llama.cpp", "latest", r"bin-ubuntu-x64\.(zip|tar\.gz)$")
 check(rel["tag_name"] == "b2" and asset["name"].startswith("llama-b2"), "finds the newest llama.cpp build")
+
+# built-in engine memory: no load that won't fit, no engine left behind, none kept running idle
+if os.name != "nt":
+    import subprocess  # noqa: E402
+    import time  # noqa: E402
+
+    bundled = engine.Bundled()
+    fake_dir = os.path.join(bundled.engine_dir, "b0")
+    os.makedirs(fake_dir, exist_ok=True)
+    fake_server = os.path.join(fake_dir, "llama-server")
+    with open(fake_server, "w") as f:
+        f.write("#!/bin/sh\nexec sleep 60\n")
+    os.chmod(fake_server, 0o755)
+    small = engine.catalog()["models"][-1]
+    os.makedirs(bundled.models_dir, exist_ok=True)
+    open(bundled.model_path(small), "wb").close()
+    real_ram, real_vram = engine.available_ram_gb, engine.free_vram_gb
+    engine.available_ram_gb, engine.free_vram_gb = (lambda: 1.0), (lambda: 0.0)
+    try:
+        bundled.start(small["id"])
+        refused = ""
+    except engine.EngineError as e:
+        refused = str(e)
+    check("Not enough free memory" in refused and bundled.proc is None, "a model that won't fit isn't loaded")
+    engine.free_vram_gb = lambda: 64.0  # a graphics card's own memory counts too
+    with open(fake_server, "w") as f:
+        f.write("#!/bin/sh\nexit 1\n")  # past the memory check, the stand-in stops at once
+    try:
+        bundled.start(small["id"])
+        started = ""
+    except engine.EngineError as e:
+        started = str(e)
+    check("stopped while loading" in started, "free memory on a graphics card counts towards a model")
+    with open(fake_server, "w") as f:
+        f.write("#!/bin/sh\nexec sleep 60\n")
+    engine.available_ram_gb, engine.free_vram_gb = real_ram, real_vram
+
+    left = subprocess.Popen([fake_server])  # an engine an earlier run left behind
+    with open(bundled.pid_path, "w") as f:
+        f.write(f"{left.pid} {fake_server}\n")
+    engine.Bundled()
+    try:
+        left.wait(10)
+    except subprocess.TimeoutExpired:
+        left.kill()
+    check(left.returncode is not None and left.returncode != 0 and not os.path.exists(bundled.pid_path),
+          "an engine left behind by an earlier run is stopped")
+
+    bundled.proc = subprocess.Popen([fake_server])
+    bundled.last_used = time.time()
+    busy = bundled.stop_if_idle(minutes=1)
+    bundled.last_used = time.time() - 120
+    check(not busy and bundled.stop_if_idle(minutes=1) and bundled.proc is None, "an idle engine is stopped")
 
 print(f"\n{len(failures)} failed" if failures else "\nall passed")
 sys.exit(1 if failures else 0)

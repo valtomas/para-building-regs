@@ -26,7 +26,7 @@ passage ids; the app checks every citation. It must stay:
 | `para/server.py` | HTTP server (stdlib `ThreadingHTTPServer`), JSON API, SSE chat stream, chats on disk, update checks, window start-up |
 | `para/core.py` | One chat turn: system prompt, tool loop (`search_library`, `read_passage`, `show_passage`), nudges, rescue, citation checking |
 | `para/llm.py` | OpenAI-compatible streaming client; splits `<think>` and `reasoning_content`; probes known local servers |
-| `para/engine.py` | Built-in engine: downloads llama.cpp's `llama-server` and GGUF models, starts and stops it; `Engine.client()` picks the configured engine |
+| `para/engine.py` | Built-in engine: downloads llama.cpp's `llama-server` and GGUF models, starts and stops it (memory check, idle stop, leftover clean-up); `Engine.client()` picks the configured engine |
 | `para/models.json` | Built-in model catalogue (also published with each release and fetched by installed apps) |
 | `para/store.py` | SQLite FTS5 store (sources, passages, BM25 search, read, document), used for both libraries |
 | `para/library.py` | The regulations library plus the person's files, searched together; ids `r…` and `f…` |
@@ -36,6 +36,7 @@ passage ids; the app checks every citation. It must stay:
 | `para/static/` | The interface: `index.html`, `app.css`, `app.js` |
 | `library/build.py` | Builds `library/dist/regs.sqlite` from gov.uk (content API + PDFs) and legislation.gov.uk (CLML XML) |
 | `library/figures.py` | Finds diagrams and tables in the PDFs from their captions, renders them to PNG, and takes drawing labels out of the running text |
+| `library/describe.py` | Descriptions of the diagrams: a vision model writes them (`run`), a person checks them on a local review page (`review`, `library/review.html`); kept in `library/descriptions/` |
 | `library/legislation.py` | Turns legislation XML into passages cited as `reg 7`, `s 120D`, `Sch 1 Pt B` |
 | `library/sources.json` | What goes into the library |
 | `packaging/` | PyInstaller spec and launcher |
@@ -59,7 +60,9 @@ run against throwaway folders. Never test against the person's real app folder.
 Testing with a real engine: Lemonade (`http://127.0.0.1:13305/api/v1`; older versions `:8000`), Ollama
 (`http://127.0.0.1:11434/v1`) and LM Studio (`http://127.0.0.1:1234/v1`) are found by *Find engines on this
 computer*. When you change prompts or the tool loop, ask real models the test questions (`tests/ask_models.py`) and
-check the citations open the right paragraphs.
+check the citations open the right paragraphs. Unload the external engine's models (`lemonade unload`) before
+testing the built-in engine, and stop the app normally (not `kill -9`): two engines holding models can exhaust
+memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole system.
 
 ## Conventions
 
@@ -77,6 +80,16 @@ check the citations open the right paragraphs.
   that cuts a drawing short or swallows the next paragraph is easy to miss in the numbers. The text the AI reads for
   a diagram is its caption plus "Text in the drawing:" (the labels); never present that as a description of the
   drawing.
+- **Descriptions of drawings**: `library/describe.py run` asks a vision model (default Gemma 4 26B on Lemonade) to
+  describe each diagram from its image, and saves `library/descriptions/<key>.json` (model, date, image SHA-256,
+  `reviewed: false`). `describe.py review` opens a page where a person approves, corrects or rejects each one (reject a
+  crop that is cut short: it isn't described again until the image changes). The build adds only reviewed descriptions
+  whose image hash still matches, after the passage text and labelled "Description of the drawing (written by AI from
+  the image, checked by a person):"; the reader shows them under the image, and the prompt says they come second to the
+  document's text. Rules: never mark a description reviewed yourself (only a person, on the review page, may); never
+  regenerate one whose image is unchanged; never overwrite a reviewed one (if its image changes, it leaves the library
+  until a person approves it again). The key (`ADB1_Diagram-3.8_p40`) names the figure across builds, because rowids
+  don't.
 - **Ids**: regulations passages are `r<rowid>`, the person's files `f<rowid>`. Rowids change between library
   builds, so saved chats can point at a different passage after an update. Don't build features that assume they
   are stable across versions.
@@ -87,9 +100,17 @@ check the citations open the right paragraphs.
 - **Licensing**: the bundled library may contain only material that can be redistributed (Open Government
   Licence). Don't add NHBC, LABC, BSI or other copyrighted material to `sources.json`; people add their own copies
   under Your files.
+- **Code licence**: Para is AGPL-3.0-or-later (`LICENSE`). Only add dependencies, fonts or copied code under
+  licences compatible with it (MIT, BSD, Apache-2.0, LGPL, GPL-3.0, OFL for fonts); check before adding. Keep the
+  licence notice and source link in Settings → Updates & about.
 - **Security**: keep the Origin check in `Handler._allowed`. `/api/open` may only open http(s) URLs, the files
   folder, or files already in the files index. Don't add endpoints that read arbitrary paths.
 - **Commits**: small, with a message that says why. Run the tests first.
+- **Memory**: the built-in engine holds gigabytes, so it must never outlive the app or load what won't fit.
+  `Bundled.start` checks free system memory plus free graphics-card memory (`available_ram_gb`, `free_vram_gb`)
+  and leaves the GPU/CPU split to llama.cpp's `--fit` (don't pass `-ngl`); the engine stops after
+  `IDLE_MINUTES` unused, on SIGTERM/SIGHUP, and a copy left by a killed app is stopped at the next start
+  (`engine.pid`). External engines manage their own memory: don't add engine-specific unload calls.
 
 ## Adding things
 

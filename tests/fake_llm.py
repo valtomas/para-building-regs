@@ -17,6 +17,9 @@ def respond(body):
     msgs = body["messages"]
     tools = body.get("tools")
     last_user = [m for m in msgs if m["role"] == "user"][-1]["content"]
+    if isinstance(last_user, list):  # text and an image: describe the drawing
+        has_image = any(part.get("type") == "image_url" for part in last_user)
+        return _chunks([{"content": "A drawing of a stair in section." if has_image else "No image."}], "stop")
     if not tools:
         if "Reply with just: OK" in last_user:
             return _chunks([{"content": "OK"}], "stop")

@@ -1,0 +1,12 @@
+{
+ "key": "ADM1_Diagram-1.1_p13",
+ "source": "ADM1",
+ "label": "Diagram 1.1",
+ "page": 13,
+ "caption": "Diagram 1.1.",
+ "model": "Gemma-4-26B-A4B-it-GGUF",
+ "date": "2026-11-04",
+ "image_sha256": "824c8a9290de64b9a1f675ccfb842db9b9848f637d8b33710a560e7ea363084a",
+ "reviewed": false,
+ "description": "This diagram, titled 'Diagram 1.1. Measurement of clear opening width of external and internal doors', is a technical illustration showing how to measure the clear opening width of a doorway. The drawing shows a top-down view of a doorway with a door shown in an open position.\n\nA key defines four lettered points: 'a' refers to the 'inside face of door (when open)', 'b' refers to the 'inside edge of door frame or stop', 'c' refers to the 'leading edge', and 'd' refers to the 'following edge'. The leading edge (c) and following edge (d) are the two vertical edges of the door leaf itself.\n\nA dimension line at the bottom of the doorway shows the distance between point 'a' and point 'b'. This is labelled 'distance a-b = clear opening width'. A note below the key states: '1. Handles, other door furniture and weatherboards may be ignored when measuring clear opening width.'"
+}

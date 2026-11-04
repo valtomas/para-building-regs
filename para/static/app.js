@@ -252,6 +252,19 @@ async function ask(question) {
 function setStatus(t) { $("#status").textContent = t; }
 
 // ---------- reader ----------
+// A checked description of a drawing is shown under its image, labelled; its copy in the passage text (there for
+// search and for the AI) isn't repeated.
+const DESCRIPTION_LABEL = "Description of the drawing (written by AI from the image, checked by a person):";
+function figureDescription(f) {
+  if (!f.description) return "";
+  return `<div class="figure-desc"><span class="lbl">Description of the drawing</span>${esc(f.description)}` +
+    `<span class="who">Written by AI from the image, checked by a person. The document's text comes first.</span></div>`;
+}
+function withoutDescriptions(p) {
+  if (!(p.figures || []).some((f) => f.description)) return p.text;
+  return p.text.split("\n\n").filter((para) => !para.startsWith(DESCRIPTION_LABEL)).join("\n\n");
+}
+
 async function openPassage(pid) {
   try { showDoc(await api("/api/passage?id=" + encodeURIComponent(pid))); } catch (e) { alert(e.message); }
 }
@@ -271,7 +284,7 @@ function showDoc(doc) {
   const body = $("#readerBody");
   const isPdf = /\.pdf($|[?#])/i.test(doc.url || "");
   const pageLink = (n) => (doc.url || "").split("#")[0] + "#page=" + n;
-  body.innerHTML = doc.parts.map((p) => `<div class="passage${p.id === doc.focus ? " focus" : ""}" id="p-${esc(p.id)}"><span class="ph">${esc([p.heading, p.ref].filter(Boolean).join(" · "))}${p.page && isPdf ? ` · <a href="#" data-page="${p.page}">PDF page ${p.page} ↗</a>` : ""}</span>${(p.figures || []).map((f) => `<img class="figure" src="/api/figure?id=${f.id}" ${f.width ? `width="${f.width}" height="${f.height}"` : ""} alt="${esc(p.ref || "Drawing")}" title="Click to enlarge" loading="lazy">`).join("")}${esc(p.text)}</div>`).join("");
+  body.innerHTML = doc.parts.map((p) => `<div class="passage${p.id === doc.focus ? " focus" : ""}" id="p-${esc(p.id)}"><span class="ph">${esc([p.heading, p.ref].filter(Boolean).join(" · "))}${p.page && isPdf ? ` · <a href="#" data-page="${p.page}">PDF page ${p.page} ↗</a>` : ""}</span>${(p.figures || []).map((f) => `<img class="figure" src="/api/figure?id=${f.id}" ${f.width ? `width="${f.width}" height="${f.height}"` : ""} alt="${esc(p.ref || "Drawing")}" title="Click to enlarge" loading="lazy">${figureDescription(f)}`).join("")}${esc(withoutDescriptions(p))}</div>`).join("");
   $$("[data-page]", body).forEach((a) => { a.onclick = (e) => { e.preventDefault(); openUrl(pageLink(a.dataset.page)); }; });
   const focusPart = doc.parts.find((p) => p.id === doc.focus);
   if (isPdf && focusPart && focusPart.page) {
@@ -482,7 +495,8 @@ $("#checkUpdates").onchange = (e) => api("/api/settings", { method: "POST", body
 $("#checkNow").onclick = async () => { $("#updateView").textContent = "Checking…"; S.updates = await api("/api/updates/check", { method: "POST" }); renderAbout(); refresh(); };
 function renderAbout() {
   const L = S.library;
-  $("#aboutInfo").innerHTML = `<p class="about"><b>Para ${esc(S.version)}</b><br><span class="meta">Regulations library ${esc(L.version || "not installed")} · ${L.sources.length} documents</span></p>`;
+  $("#aboutInfo").innerHTML = `<p class="about"><b>Para ${esc(S.version)}</b><br><span class="meta">Regulations library ${esc(L.version || "not installed")} · ${L.sources.length} documents</span></p>
+    <p class="muted small">Copyright (C) 2026 valtomas. Para is free software under the GNU Affero General Public License, version 3 or later, and comes with no warranty. <a href="https://github.com/valtomas/para-building-regs" data-ext>Source code and licence</a>. Library content is Crown copyright under the Open Government Licence v3.0.</p>`;
   const u = S.updates || {};
   let h = "";
   if (u.error) h += `<p class="muted small">Couldn't check for updates: ${esc(u.error)}</p>`;

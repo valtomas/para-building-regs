@@ -1,0 +1,12 @@
+{
+ "key": "ADM2_Diagram-13_p41",
+ "source": "ADM2",
+ "label": "Diagram 13",
+ "page": 41,
+ "caption": "Diagram 13 An example of wheelchair spaces in a lecture theatre",
+ "model": "Gemma-4-26B-A4B-it-GGUF",
+ "date": "2026-11-04",
+ "image_sha256": "fc39d62ef739d04fa01934e5623729e18ea2757ccc521d36fabaa22bf9fa5a6f",
+ "reviewed": false,
+ "description": "Diagram 13 is a plan view showing an example of wheelchair spaces in a lecture theatre. The drawing depicts several rows of seating, represented by long, thin rectangular blocks. Within these rows, there are specific areas designated for wheelchair users. Two such spaces are shown, each marked with the label 'In and out'. These spaces are integrated into the seating arrangement, providing gaps within the rows to accommodate wheelchairs. The diagram includes text at the top referring to 'of, and access to, suitable spaces for wheelchair users in stadia, see Guide to safety at sports grounds, Accessible stadia: a good practice guide to the design of facilities to meet the needs of disabled spectators and other users and accessible sports facilities.' However, the visual content specifically illustrates the layout of the wheelchair positions relative to the standard seating rows."
+}

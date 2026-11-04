@@ -128,6 +128,16 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
 - **Figures**: diagrams and tables are shown as images above their passage's text, full reader width on a white
   card (the drawings are designed on white, so they stay white in dark mode). Click to enlarge to the window;
   click again to close. When the reader opens at a passage with a figure, it scrolls to the top of the figure.
+- **Description of a drawing** (`.figure-desc`): when a diagram has a description checked by a person, it sits
+  directly under the image, set off by a 2 px accent rule on the left: a mono "Description of the drawing" label,
+  the description in body text, then an italic note in `--muted`, "Written by AI from the image, checked by a
+  person. The document's text comes first." Its copy in the passage text (there for search and for the AI) isn't
+  shown again.
+- **Review page** (`library/review.html`, served by `library/describe.py review`, not part of the app): the same
+  tokens and fonts; one card per drawing with the image on white, the ref in display type, the caption in italic,
+  the model and dates in mono, and Approve (primary), Edit (outline) and Reject (danger outline) buttons; once
+  decided, Withdraw approval or Undo rejection. A warm note
+  says when a drawing's image has changed since its description was approved.
 
 ## Writing in the interface
 

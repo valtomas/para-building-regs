@@ -19,7 +19,8 @@ CREATE TABLE IF NOT EXISTS passages(
   id INTEGER PRIMARY KEY, source_id INTEGER, seq INTEGER, ref TEXT, heading TEXT, page INTEGER, doc TEXT, text TEXT);
 CREATE INDEX IF NOT EXISTS passages_source ON passages(source_id, seq);
 CREATE TABLE IF NOT EXISTS figures(
-  id INTEGER PRIMARY KEY, passage_id INTEGER, page INTEGER, width INTEGER, height INTEGER, png BLOB);
+  id INTEGER PRIMARY KEY, passage_id INTEGER, page INTEGER, width INTEGER, height INTEGER, png BLOB, key TEXT,
+  label TEXT, description TEXT);
 CREATE INDEX IF NOT EXISTS figures_passage ON figures(passage_id);
 CREATE VIRTUAL TABLE IF NOT EXISTS fts USING fts5(
   doc, ref, heading, text, content='passages', content_rowid='id', tokenize='porter unicode61');
@@ -157,12 +158,14 @@ class Store:
                                   "WHERE s.key=? AND p.seq=?", (key, seq)).fetchone()
         return row[0] if row else None
 
-    def add_figure(self, passage_rowid, png, page=None):
-        """An image of a diagram or table, shown with its passage in the reader."""
+    def add_figure(self, passage_rowid, png, page=None, key=None, label=None, description=None):
+        """An image of a diagram or table, shown with its passage in the reader. key names it across builds
+        (library/describe.py); description is a checked description of the drawing, if there is one."""
         width, height = png_size(png)
         with self.lock, self.db:
-            self.db.execute("INSERT INTO figures(passage_id, page, width, height, png) VALUES (?,?,?,?,?)",
-                            (passage_rowid, page, width, height, png))
+            self.db.execute("INSERT INTO figures(passage_id, page, width, height, png, key, label, description) "
+                            "VALUES (?,?,?,?,?,?,?,?)", (passage_rowid, page, width, height, png, key, label,
+                                                         description))
 
     def figure(self, figure_id):
         """PNG bytes of a figure, or None (also for libraries built before figures existed)."""
@@ -179,12 +182,16 @@ class Store:
         out = {}
         marks = ",".join("?" * len(rowids))
         try:
-            rows = self.db.execute(f"SELECT passage_id, id, width, height FROM figures WHERE passage_id IN ({marks}) "
-                                   "ORDER BY id", list(rowids)).fetchall()
-        except sqlite3.OperationalError:  # a library built before figures existed
-            return {}
-        for pid, fid, w, h in rows:
-            out.setdefault(pid, []).append({"id": fid, "width": w, "height": h})
+            rows = self.db.execute(f"SELECT passage_id, id, width, height, description FROM figures "
+                                   f"WHERE passage_id IN ({marks}) ORDER BY id", list(rowids)).fetchall()
+        except sqlite3.OperationalError:  # a library built before descriptions (or figures) existed
+            try:
+                rows = self.db.execute(f"SELECT passage_id, id, width, height, NULL FROM figures "
+                                       f"WHERE passage_id IN ({marks}) ORDER BY id", list(rowids)).fetchall()
+            except sqlite3.OperationalError:
+                return {}
+        for pid, fid, w, h, desc in rows:
+            out.setdefault(pid, []).append({"id": fid, "width": w, "height": h, "description": desc or ""})
         return out
 
     def set_meta(self, **kv):

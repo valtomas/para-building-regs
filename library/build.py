@@ -28,6 +28,7 @@ sys.path.insert(0, HERE)
 from para.myfiles import html_text  # noqa: E402
 from para.splitter import clean_pages, skipped_pages, split, unweave_columns  # noqa: E402
 from para.store import Store  # noqa: E402
+import describe  # noqa: E402
 import figures  # noqa: E402
 import legislation  # noqa: E402
 
@@ -78,7 +79,7 @@ def pdf_passages(path):
     figs = figures.find(path, skip_pages=skip)
     for f in figs:
         if f["kind"] != "Table":  # a table's text is its content: keep it
-            pages[f["page"] - 1] = figures.strip_labels(pages[f["page"] - 1], f["words"])
+            pages[f["page"] - 1] = figures.strip_labels(pages[f["page"] - 1], f["words"], f["labels"])
     passages = split(pages)
     out_dir = os.path.join(CACHE, "figures")
     os.makedirs(out_dir, exist_ok=True)
@@ -297,14 +298,22 @@ def main():
             report.append(f"EMPTY  {kw['short']}: {kw['title']}")
             return
         figs = kw.pop("figures", None) or []
+        for f in figs:
+            # a person's checked description of this very image, if there is one (library/describe.py)
+            f["key"] = describe.figure_key(kw["short"], f["label"], f["page"])
+            f["description"] = describe.usable(f["key"], f["png"]) if f["kind"] != "Table" else None
+            if f["description"] and f.get("target") is not None:
+                f["target"]["text"] += f"\n\n{describe.LABEL} {f['description']}"
         store.add_source(passages=passages, license=cfg["license"], **kw)
         for f in figs:  # add_source numbered the passages: find each figure's passage again
             seq = next((i for i, p in enumerate(passages) if p is f.get("target")), None)
             if seq is not None:
                 rowid = store.passage_rowid(kw["key"], seq)
-                store.add_figure(rowid, f["png"], f["page"])
+                store.add_figure(rowid, f["png"], f["page"], f["key"], f["label"], f["description"])
         if figs:
-            print(f"      {len(figs)} figures, {sum(len(f['png']) for f in figs) // 1024} KB", flush=True)
+            described = sum(1 for f in figs if f["description"])
+            print(f"      {len(figs)} figures, {sum(len(f['png']) for f in figs) // 1024} KB, "
+                  f"{described} with checked descriptions", flush=True)
         chars = sum(len(p["text"]) for p in passages)
         refs = sum(1 for p in passages if p.get("ref"))
         report.append(f"{len(passages):5d} passages {chars // 1000:5d}k chars {100 * refs // len(passages):3d}% "

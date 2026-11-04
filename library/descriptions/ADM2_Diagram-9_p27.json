@@ -1,0 +1,12 @@
+{
+ "key": "ADM2_Diagram-9_p27",
+ "source": "ADM2",
+ "label": "Diagram 9",
+ "page": 27,
+ "caption": "Diagram 9 Effective clear width of doors | Manually operated non-powered | entrance doors",
+ "model": "Gemma-4-26B-A4B-it-GGUF",
+ "date": "2026-11-04",
+ "image_sha256": "a5b3cd5c66b0e8f4f0cc667bf0efbfb70c53f4e427191c2882afcafb96763647",
+ "reviewed": false,
+ "description": "Diagram 9 is a technical drawing titled \"Effective clear width of doors | Manually operated non-powered | entrance doors\". It depicts a plan view showing two doorway configurations.\n\nThe drawing illustrates the clear opening width available when a door is open at a 90-degree angle. On the left, a door is shown partially obstructing the opening, with vertical lines representing the door leaf and the door frame. On the right, a similar configuration is shown. \n\nThe text accompanying the diagram states: \"existing buildings where it is not practicable or cost-effective to adopt the preferred effective clear widths for new buildings.\"\n\nThe diagram uses symbols to represent the door leaf, the door frame, and the clear space between them. There are no specific numerical dimensions or labels for the widths provided in this view, but it serves to visually define the concept of \"effective clear width\" in relation to the door's position and the frame."
+}

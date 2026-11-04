@@ -193,11 +193,14 @@ def shrink(png_bytes, colours=48):
     return out.getvalue() if len(out.getvalue()) < len(png_bytes) else png_bytes
 
 
-def strip_labels(page_text, words):
-    """Remove lines made of a drawing's label words from the page's running text."""
+def strip_labels(page_text, words, labels=()):
+    """Remove lines made of a drawing's label words from the page's running text. A line that starts like a paragraph
+    stays (a crop can take in running text), unless it is a lettered line word for word in the drawing's text: a
+    part's title such as "a. Corridor access without dead ends"."""
     if not words:
         return page_text
     left = collections.Counter(words)
+    drawing = " ".join(" ".join(labels).split())
     kept = []
     for line in page_text.split("\n"):
         tokens = line.split()
@@ -205,7 +208,9 @@ def strip_labels(page_text, words):
             kept.append(line)
             continue
         hits = sum(1 for t in tokens if left.get(t, 0) > 0)
-        if hits / len(tokens) >= 0.7 and not PARA_START.match(line.strip()):
+        start = PARA_START.match(line.strip())
+        part_title = start and not start.group(1)[0].isdigit() and " ".join(tokens) in drawing
+        if hits / len(tokens) >= 0.7 and (not start or part_title):
             for t in tokens:
                 if left.get(t, 0) > 0:
                     left[t] -= 1
