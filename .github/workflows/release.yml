@@ -22,8 +22,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - run: pip install pypdf
       - run: python tests/test_app.py
@@ -34,8 +34,8 @@ jobs:
     if: github.event_name != 'push' || startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - run: pip install pypdf pillow
@@ -69,7 +69,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: macos-14          # Apple Silicon
+          - os: macos-15          # Apple Silicon (macos-14 runners are scarce; jobs were cancelled waiting)
             zip: Para-mac.zip
             webview: pywebview
           - os: windows-latest
@@ -80,8 +80,8 @@ jobs:
             webview: "pywebview[qt]"   # Qt is bundled: GTK/WebKit differ between distributions
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - uses: actions/download-artifact@v4
         with: { name: library, path: library/dist }
@@ -113,7 +113,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/download-artifact@v4
         with: { path: out, merge-multiple: true }
       - run: cp para/models.json out/models.json && ls -la out
