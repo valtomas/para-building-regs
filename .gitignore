@@ -6,13 +6,6 @@ dist/
 build/
 *.egg
 
-# Vectorstore (large binary, regeneratable)
-vectorstore/
-
-# Large PDFs and markdown (regeneratable, ~3 MB + 23 files)
-docs/
-docs_md/
-
 # Environment
 .venv/
 env/

@@ -27,6 +27,9 @@ lib = Store(os.environ["PARA_LIBRARY"], "r")
 lib.add_source("ADK", "Approved Document K: Protection from falling, collision and impact", "ADK",
                "approved-document", split(K_TEXT), url="https://example.gov.uk/adk.pdf", license="OGL v3.0",
                published="2013 edition")
+TINY_PNG = bytes.fromhex("89504e470d0a1a0a0000000d4948445200000001000000010806000000"
+                         "1f15c4890000000d49444154789c6360000002000105e9a4a10000000049454e44ae426082")
+lib.add_figure(lib.passage_rowid("ADK", 0), TINY_PNG, 3)
 lib.set_meta(version="2026.11.03", built="test")
 lib.close()
 
@@ -93,9 +96,21 @@ check(len(chat["turns"]) == 1 and chat["messages"][-1]["role"] == "assistant", "
 pid = list(done["cites"])[0]
 doc = json.loads(call("/api/passage?id=" + pid))
 check(doc["focus"] == pid and len(doc["parts"]) >= 2 and doc["license"] == "OGL v3.0", "reader opens the passage")
+fig = doc["parts"][0]["figures"]
+check(len(fig) == 1 and fig[0]["width"] == 1, "passages list their figures")
+check(call(f"/api/figure?id={fig[0]['id']}") == TINY_PNG, "figure image served")
+try:
+    call("/api/figure?id=../etc")
+    check(False, "bad figure id refused")
+except urllib.error.HTTPError as e:
+    check(e.code == 404, "bad figure id refused")
 
 ev2 = ask("And headroom?", cid)
 check(ev2[-1]["type"] == "done", "follow-up question in the same chat")
+
+ev3 = ask("Answer from memory: what is a higher-risk building?")
+check(any(e["type"] == "retry" for e in ev3) and any(e["type"] == "search" for e in ev3) and ev3[-1]["cites"],
+      "an answer from memory is sent back to search first")
 
 # the person's files
 data = b"# Fire strategy\n\n2.1 The building has a sprinkler system to BS 9251.\n\n2.2 Travel distance is 7.5 m."
@@ -126,6 +141,65 @@ from para.llm import Client  # noqa: E402
 out = list(core.chat_events(Client(fake_url, "", "fake-model"), Library(), [], "private stair rise",
                             server.settings.load(), supports_tools=False))
 check(out[-1]["type"] == "done" and out[-1]["cites"], "no-tools mode cites attached excerpts")
+
+# citations written with the model's own words, or as a range, still link; unseen ids still go
+class StubLibrary:
+    def describe(self, pid):
+        return {"id": pid, "source": "BR 2010", "ref": "reg 11G"}
+
+
+text, cites, dropped = core._check_citations("Competence [BR 2010, reg 11G(1), r12]. Duties (r20–r22). Not [r99].",
+                                             {"r12", "r20", "r22"}, StubLibrary())
+check(text == "Competence (BR 2010, reg 11G(1)) [r12]. Duties [r20][r22]. Not." and set(cites) == {"r12", "r20", "r22"}
+      and dropped == ["r99"], "citations inside the model's own brackets link; made-up ones still dropped")
+
+
+
+class RefLibrary:
+    PASSAGES = {"r1": ("ADB1", "Table 3.1"), "r2": ("ADB1", "3.20–3.22"), "r3": ("ADK", "Diagram 3.1")}
+
+    def describe(self, pid):
+        if pid not in self.PASSAGES:
+            return None
+        source, ref = self.PASSAGES[pid]
+        return {"id": pid, "source": source, "title": "", "ref": ref}
+
+
+text, cites, _ = core._check_citations("A [ADB1, Table 3.1]. B (ADB Vol 1, para 3.21). C [ADK, Diagram 3.1]. "
+                                       "D [ADB1, Table 3.2].", {"r1", "r2"}, RefLibrary())
+check(text == "A [r1]. B (ADB Vol 1, para 3.21) [r2]. C [ADK, Diagram 3.1]. D [ADB1, Table 3.2]." and
+      set(cites) == {"r1", "r2"}, "references written in words link only to passages the model saw")
+
+# splitting: cross-references wrapped onto a new line are not captions; index pages are skipped
+from para.splitter import skipped_pages  # noqa: E402
+
+refs = [p["ref"] for p in split(["4.1 Provide barriers where vehicles have access, as shown in\nDiagram 4.1).\n\n"
+                                 "Diagram 4.1 Barrier siting\n\n4.2 Barriers should be provided in accordance with "
+                                 "all of the following.\n\nTable 1.1. e. Comply with paragraph 1.9b."])]
+check("Diagram 4.1" in refs and refs.count("Diagram 4.1") == 1 and "Table 1.1" not in refs,
+      "cross-references don't start figure passages")
+index = "Index\n" + "\n".join(f"Topic {i} 1.{i}, Diagram {i}.1" for i in range(12))
+more = "\n".join(f"Other topic {i} Table {i}.2; 3.{i}" for i in range(12))
+check(skipped_pages(["1.1 Text.", index, more, "2.1 Body text again."]) == {2, 3}, "index pages skipped")
+
+# figures: a drawing's text is smaller than the running text, so a long label doesn't cut the drawing short
+sys.path.insert(0, os.path.join(ROOT, "library"))
+import figures  # noqa: E402
+
+body = figures.Line(57, 100, 540, 114, "2.9 A non-powered manually operated entrance door, fitted with a closer", 0)
+label = figures.Line(141, 254, 405, 263, "The central door may be omitted if maximum travel distance is not more", 1)
+part = figures.Line(141, 118, 264, 127, "a. Corridor access without dead ends", 2)
+check(figures._is_body(body, 483, 57, 14) and not figures._is_body(label, 483, 57, 14)
+      and not figures._is_body(part, 483, 57, 14), "a drawing's labels are not running text")
+
+# built-in engine: llama.cpp's "latest" release can have no binaries; builds are pre-releases
+from para import engine  # noqa: E402
+
+releases = [{"tag_name": "v0.8.0", "assets": [{"name": "nightly-tag.txt"}]},
+            {"tag_name": "b2", "prerelease": True, "assets": [{"name": "llama-b2-bin-ubuntu-x64.tar.gz"}]}]
+engine._json = lambda url: releases
+rel, asset = engine._find_release("ggml-org/llama.cpp", "latest", r"bin-ubuntu-x64\.(zip|tar\.gz)$")
+check(rel["tag_name"] == "b2" and asset["name"].startswith("llama-b2"), "finds the newest llama.cpp build")
 
 print(f"\n{len(failures)} failed" if failures else "\nall passed")
 sys.exit(1 if failures else 0)

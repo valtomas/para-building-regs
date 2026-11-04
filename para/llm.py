@@ -63,7 +63,9 @@ class Client:
         with self._request("/models", timeout=timeout) as r:
             data = json.load(r)
         items = data.get("data") or data.get("models") or []
-        return sorted({m.get("id") or m.get("name") for m in items if isinstance(m, dict)} - {None})
+        ids = {m.get("id") or m.get("name") for m in items if isinstance(m, dict)} - {None}
+        # embedding and reranking models can't chat: leave them out of the choice
+        return sorted(i for i in ids if not re.search(r"embed|rerank", i, re.I))
 
     def stream(self, messages, tools=None, max_tokens=None, reasoning=None, extra=None):
         """Yields {"type": "content"|"reasoning", "text"}, {"type": "tool_calls", "calls": [...]}, then
@@ -203,9 +205,11 @@ def probe_known():
     def check(item):
         name, url = item
         try:
-            return {"name": name, "base_url": url, "models": Client(url).models(timeout=1.5)}
+            models = Client(url).models(timeout=1.5)
         except Exception:  # noqa: BLE001
             return None
+        # nothing to chat with, e.g. the embedding backend Lemonade runs on 8001
+        return {"name": name, "base_url": url, "models": models} if models else None
 
     with cf.ThreadPoolExecutor(len(KNOWN_SERVERS)) as pool:
         found = [r for r in pool.map(check, KNOWN_SERVERS) if r]

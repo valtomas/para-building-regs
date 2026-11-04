@@ -35,11 +35,13 @@ passage ids; the app checks every citation. It must stay:
 | `para/paths.py` | App data folders, settings (`settings.json`) |
 | `para/static/` | The interface: `index.html`, `app.css`, `app.js` |
 | `library/build.py` | Builds `library/dist/regs.sqlite` from gov.uk (content API + PDFs) and legislation.gov.uk (CLML XML) |
+| `library/figures.py` | Finds diagrams and tables in the PDFs from their captions, renders them to PNG, and takes drawing labels out of the running text |
 | `library/legislation.py` | Turns legislation XML into passages cited as `reg 7`, `s 120D`, `Sch 1 Pt B` |
 | `library/sources.json` | What goes into the library |
 | `packaging/` | PyInstaller spec and launcher |
 | `.github/workflows/release.yml` | Tests on every push; on a `v*` tag: library, Mac and Windows apps, GitHub release; weekly library refresh |
 | `tests/` | `test_app.py` (end to end through the HTTP API) and `fake_llm.py` (a stand-in OpenAI-compatible server) |
+| `tests/ask_models.py` | Asks real models the test questions through a running app and scores them; results in `docs/model-tests.md` |
 
 ## Run and test
 
@@ -47,16 +49,17 @@ passage ids; the app checks every citation. It must stay:
 python3 tests/test_app.py                  # must pass before every commit; no engine or network needed
 python3 -m pyflakes para library tests     # keep it clean
 python3 -m para --browser                  # run from source in the browser
-python3 library/build.py                   # build the library (needs pdftotext); --offline reuses library/cache
+python3 library/build.py                   # build the library (needs poppler-utils; Pillow shrinks images)
+                                           # --offline reuses library/cache
 ```
 
 Use `PARA_APP_DIR` (settings, chats, indexes), `PARA_LIBRARY` (a library file) and `HOME` (the files folder) to
 run against throwaway folders. Never test against the person's real app folder.
 
-Testing with a real engine: Lemonade (`http://127.0.0.1:8000/api/v1`), Ollama (`http://127.0.0.1:11434/v1`) and
-LM Studio (`http://127.0.0.1:1234/v1`) are found by *Find engines on this computer*. When you change prompts or the
-tool loop, ask a real model a few questions from different Parts and check the citations open the right
-paragraphs.
+Testing with a real engine: Lemonade (`http://127.0.0.1:13305/api/v1`; older versions `:8000`), Ollama
+(`http://127.0.0.1:11434/v1`) and LM Studio (`http://127.0.0.1:1234/v1`) are found by *Find engines on this
+computer*. When you change prompts or the tool loop, ask real models the test questions (`tests/ask_models.py`) and
+check the citations open the right paragraphs.
 
 ## Conventions
 
@@ -65,7 +68,15 @@ paragraphs.
   call, a background thread) and say so in a comment.
 - **Library quality beats model cleverness.** If answers are wrong because a passage is garbled, fix
   `splitter.py` or `build.py`, rebuild, and look at the passages (`sqlite3 library/dist/regs.sqlite`). Check tables
-  keep their numbers and paragraph refs stay in sequence (`splitter.plausible`).
+  keep their numbers and paragraph refs stay in sequence (`splitter.plausible`). Two-column pages are read a column
+  at a time (`splitter.unweave_columns`) and contents and index pages are skipped (`splitter.skipped_pages`): when
+  you change either, compare passage counts and refs per document before and after.
+- **Diagrams and tables**: `library/figures.py` finds each one from its caption and crops it from the page. Whether
+  a document puts diagram captions above or below the drawing is decided per document by a vote; tables are always
+  captioned above. When you change it, render a few figures from ADB, ADK, ADL and ADM and look at them: a crop
+  that cuts a drawing short or swallows the next paragraph is easy to miss in the numbers. The text the AI reads for
+  a diagram is its caption plus "Text in the drawing:" (the labels); never present that as a description of the
+  drawing.
 - **Ids**: regulations passages are `r<rowid>`, the person's files `f<rowid>`. Rowids change between library
   builds, so saved chats can point at a different passage after an update. Don't build features that assume they
   are stable across versions.

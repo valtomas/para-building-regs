@@ -14,10 +14,78 @@ SPACE = re.compile(r"[ \t ]+")
 
 
 TABLE_GAP = re.compile(r"\S {3,}\S")
+# what follows "Diagram 4.1" when it is a cross-reference wrapped onto a new line, not a caption: "Diagram 4.1).",
+# "Diagram 1.5 d. For access…", "Diagram 1.12 (for buildings…", "Table 1.1. e. Comply…"
+NOT_CAPTION = re.compile(r"^(?:[),;]|[.:]\s*[a-z(]|\(?\s*[a-z])")
+INDEX_REF_END = re.compile(r"(?:\d{1,2}\.\d{1,3}(?:\s*[–-]\s*\d{1,2}\.\d{1,3})?|"
+                           r"(?:Tables?|Diagrams?|Appendix)\s+[\dA-Z][\d.]*|[Pp]age\s+\d{1,3})\s*[,;&]?$")
+
+
+def figure_start(text):
+    """The FIGURE match if text starts with a caption ("Table 1.1 Rise and going"), None for a cross-reference."""
+    m = FIGURE.match(text)
+    if m and NOT_CAPTION.match(text[m.end():].lstrip(" ")):
+        return None
+    return m
 
 
 def _norm(line):
     return re.sub(r"\s+", " ", re.sub(r"\d+", "#", line.strip().lower()))
+
+
+def _prose(cells):
+    """Do these pieces of lines read as running text (not table cells)?"""
+    cells = [c for c in cells if c.strip()]
+    if len(cells) < 4:
+        return False
+    text = " ".join(cells)
+    words = re.findall(r"[A-Za-z]{2,}", text)
+    return sum(len(c.strip()) for c in cells) / len(cells) >= 18 and len(words) >= 3 * len(cells) and \
+        len(re.findall(r"\d", text)) < 0.08 * len(text)
+
+
+def unweave_columns(page):
+    """Text of a two-column page from pdftotext -layout comes out a line of each column side by side ("2.2 Where it
+    is not possible…   d. there is a level landing…"). Find the gutter, and where both sides of a run of lines read
+    as prose, put the left column before the right. Full-width lines and tables stay as they are."""
+    lines = page.split("\n")
+    long = [ln for ln in lines if len(ln.strip()) > 40]
+    if len(long) < 10:
+        return page
+    width = max(len(ln) for ln in long)
+
+    def splits_at(ln, x):
+        return len(ln) > x + 2 and ln[x - 1:x + 2] == "   " and ln[:x].strip() and ln[x:].strip()
+
+    best, best_n = None, 0
+    for x in range(int(width * 0.35), int(width * 0.65)):
+        n = sum(1 for ln in long if splits_at(ln, x))
+        if n > best_n:
+            best, best_n = x, n
+    if best is None or best_n < 0.6 * len(long):
+        return page
+    out, run = [], []
+
+    def flush():
+        if run:
+            left = [ln[:best].rstrip() for ln in run]
+            right = [ln[best:].strip() for ln in run]
+            if _prose(left) and _prose(right):
+                out.extend([ln.strip() for ln in left] + [""] + right)
+            else:
+                out.extend(run)
+            run.clear()
+
+    for ln in lines:
+        if splits_at(ln, best) or (not ln.strip() and run) or (ln.strip() and len(ln) <= best and run):
+            run.append(ln)  # both columns, a blank line, or a line with text only in the left column
+        elif ln.strip() and ln[:best].strip() == "" and run:
+            run.append(ln)  # text only in the right column
+        else:
+            flush()
+            out.append(ln)
+    flush()
+    return "\n".join(out)
 
 
 def clean_pages(pages):
@@ -55,7 +123,27 @@ def is_contents(text):
         return True
     # a back-of-book index: many short lines ending in page numbers, "see" cross-references
     short_num = sum(1 for ln in lines if len(ln) < 70 and re.search(r"\d{1,3}(?:,\s*\d{1,3})*$", ln))
-    return short_num / len(lines) > 0.45 and len(re.findall(r"\bsee\b", text, re.I)) >= 2
+    if short_num / len(lines) > 0.45 and len(re.findall(r"\bsee\b", text, re.I)) >= 2:
+        return True
+    # an Approved Document's index: headed "Index", entries ending in paragraph, table or diagram numbers
+    if any(ln.lower() == "index" for ln in lines[:3]):
+        return _index_like(lines)
+    return False
+
+
+def _index_like(lines):
+    return sum(1 for ln in lines if INDEX_REF_END.search(ln)) / len(lines) > 0.3
+
+
+def skipped_pages(pages):
+    """Page numbers (1-based) of contents and index pages in cleaned pages. An index's later pages have no "Index"
+    heading, so a page that follows one and still reads like index entries is skipped too."""
+    skip = set()
+    for n, text in enumerate(pages, start=1):
+        lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
+        if is_contents(text) or (n - 1 in skip and len(lines) >= 8 and _index_like(lines)):
+            skip.add(n)
+    return skip
 
 
 def plausible(label, state):
@@ -133,12 +221,13 @@ def blocks(text, state=None):
             continue
         if table:
             # a short line after table rows is usually a wrapped cell ("stair3"); anything else ends the table
-            if len(s) < 40 and not PARA.match(s) and not FIGURE.match(s) and not HEADING.match(s):
+            if len(s) < 40 and not PARA.match(s) and not figure_start(s) and not HEADING.match(s):
                 table[-1] += " " + s
                 continue
             flush_table()
         s = SPACE.sub(" ", s)
-        starts_new = PARA.match(s) or FIGURE.match(s) or HEADING.match(s) or re.match(r"^([•\-–*]|\(?[a-z]\)|\d+\))\s", s)
+        starts_new = PARA.match(s) or figure_start(s) or HEADING.match(s) or \
+            re.match(r"^([•\-–*]|\(?[a-z]\)|\d+\))\s", s)
         if starts_new and cur:
             flush()
         cur.append(s)
@@ -177,8 +266,10 @@ def split(pages, max_chars=1800, min_chars=350):
                 passages.append({"ref": ref, "heading": heading[:160], "page": cur_page, "text": text})
         cur, cur_refs, size, cur_page = [], [], 0, None
 
-    for page_no, page in enumerate(clean_pages(pages), start=1):
-        if is_contents(page):
+    cleaned = clean_pages(pages)
+    skip = skipped_pages(cleaned)
+    for page_no, page in enumerate(cleaned, start=1):
+        if page_no in skip:
             continue
         page_blocks = blocks(page, state)
         is_head = [bool(re.match(r"^#{1,6}\s+", b)) or bool(HEADING.match(b) and len(b) < 140) for b in page_blocks]
@@ -192,7 +283,7 @@ def split(pages, max_chars=1800, min_chars=350):
                 flush()
                 heading = (md.group(1) if md else b).strip()
                 continue
-            m_para, m_fig = PARA.match(b), FIGURE.match(b)
+            m_para, m_fig = PARA.match(b), figure_start(b)
             label = None
             if m_para and plausible(m_para.group(1), state):
                 label = m_para.group(1)

@@ -28,7 +28,7 @@
       "id": "gpt-oss-20b",
       "name": "gpt-oss 20B",
       "repo": "ggml-org/gpt-oss-20b-GGUF",
-      "file": "gpt-oss-20b-mxfp4.gguf",
+      "file": "gpt-oss-20b-MXFP4.gguf",
       "size_gb": 12.1,
       "min_ram_gb": 24,
       "context": 32768,

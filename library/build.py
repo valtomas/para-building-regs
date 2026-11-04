@@ -4,7 +4,8 @@ python3 library/build.py             fetch what changed (cached in library/cache
 python3 library/build.py --offline   build from the cache only
 python3 library/build.py --release   also write library/dist/regs.sqlite.gz and library.json for a GitHub release
 
-Needs pdftotext (poppler-utils) for the PDFs. Everything else is the standard library.
+Needs pdftotext and pdftoppm (poppler-utils) for the PDFs, and optionally Pillow to make the diagram images smaller.
+Everything else is the standard library.
 """
 import argparse
 import datetime
@@ -25,8 +26,9 @@ sys.path.insert(0, os.path.dirname(HERE))
 sys.path.insert(0, HERE)
 
 from para.myfiles import html_text  # noqa: E402
-from para.splitter import split  # noqa: E402
+from para.splitter import clean_pages, skipped_pages, split, unweave_columns  # noqa: E402
 from para.store import Store  # noqa: E402
+import figures  # noqa: E402
 import legislation  # noqa: E402
 
 CACHE = os.path.join(HERE, "cache")
@@ -65,7 +67,48 @@ def content(base_path):
 
 def pdf_pages(path):
     out = subprocess.run(["pdftotext", "-layout", "-enc", "UTF-8", path, "-"], capture_output=True, check=True).stdout
-    return out.decode("utf-8", "replace").split("\f")
+    return [unweave_columns(p) for p in out.decode("utf-8", "replace").split("\f")]
+
+
+def pdf_passages(path):
+    """Passages of a PDF, and its diagrams and tables as images. A drawing's labels are taken out of the running
+    text (where they would land in the middle of the wrong paragraph) and kept with the diagram's own passage."""
+    pages = pdf_pages(path)
+    skip = skipped_pages(clean_pages(pages))
+    figs = figures.find(path, skip_pages=skip)
+    for f in figs:
+        if f["kind"] != "Table":  # a table's text is its content: keep it
+            pages[f["page"] - 1] = figures.strip_labels(pages[f["page"] - 1], f["words"])
+    passages = split(pages)
+    out_dir = os.path.join(CACHE, "figures")
+    os.makedirs(out_dir, exist_ok=True)
+    for f in figs:
+        box = ",".join(str(round(v)) for v in f["box"])
+        name = hashlib.sha1(f"{os.path.basename(path)}|{f['page']}|{box}|{figures.DPI}".encode()).hexdigest()[:20]
+        png = os.path.join(out_dir, name + ".png")
+        if not os.path.exists(png):
+            figures.render(path, f["page"], f["box"], png)
+        with open(png, "rb") as fh:
+            f["png"] = figures.shrink(fh.read())
+    by_label = {}
+    for p in passages:
+        for ref in (p.get("ref") or "").split(", "):
+            by_label.setdefault(ref, []).append(p)
+    for f in figs:
+        # the passage with its label nearest its page: the same label also turns up in an index or a cross-reference
+        near = [p for p in by_label.get(f["label"], []) if abs((p.get("page") or 0) - f["page"]) <= 2]
+        target = min(near, key=lambda p: abs((p.get("page") or 0) - f["page"])) if near else None
+        if target is None:  # its caption didn't start a passage: give the figure one of its own
+            target = {"ref": f["label"], "heading": "", "page": f["page"], "text": f["caption"]}
+            at = next((i for i, p in enumerate(passages) if (p.get("page") or 0) > f["page"]), len(passages))
+            passages.insert(at, target)
+            by_label.setdefault(f["label"], []).append(target)
+        f["target"] = target
+        # what's left of the drawing in the running text: fragments such as ".x" or "Fd"
+        target["text"] = re.sub(r"\n\n[^A-Za-z\n]*(?:[A-Za-z]{1,2}[^A-Za-z\n]*)?(?=\n\n|$)", "", target["text"])
+        if f["kind"] != "Table" and f["labels"] and "Text in the drawing:" not in target["text"]:
+            target["text"] += "\n\nText in the drawing: " + "; ".join(f["labels"])
+    return passages, figs
 
 
 def date_of(item):
@@ -117,8 +160,9 @@ def approved_documents(sources_cfg, add):
             if a.get("content_type") == "application/pdf":
                 path = fetch(url)
                 kind = "approved-document"
+                passages, figs = pdf_passages(path)
                 add(key=short.replace(" ", "_"), title=title, short=short, kind=kind, url=url,
-                    published=_edition(title) or date_of(pub), passages=split(pdf_pages(path)))
+                    published=_edition(title) or date_of(pub), passages=passages, figures=figs)
             elif a.get("attachment_type") in ("html", "external") and "frequently asked" in low:
                 page = urllib.parse.urlparse(url).path if "gov.uk" in url or url.startswith("/") else None
                 if page:
@@ -252,7 +296,15 @@ def main():
         if not passages:
             report.append(f"EMPTY  {kw['short']}: {kw['title']}")
             return
+        figs = kw.pop("figures", None) or []
         store.add_source(passages=passages, license=cfg["license"], **kw)
+        for f in figs:  # add_source numbered the passages: find each figure's passage again
+            seq = next((i for i, p in enumerate(passages) if p is f.get("target")), None)
+            if seq is not None:
+                rowid = store.passage_rowid(kw["key"], seq)
+                store.add_figure(rowid, f["png"], f["page"])
+        if figs:
+            print(f"      {len(figs)} figures, {sum(len(f['png']) for f in figs) // 1024} KB", flush=True)
         chars = sum(len(p["text"]) for p in passages)
         refs = sum(1 for p in passages if p.get("ref"))
         report.append(f"{len(passages):5d} passages {chars // 1000:5d}k chars {100 * refs // len(passages):3d}% "

@@ -12,8 +12,9 @@ when the interface changes).
    answer comes first.
 3. **Honest states.** Say plainly when an answer doesn't come from the library, when a citation was removed, when
    the engine isn't private, and when the answer was cut short. Never hide these to look cleaner.
-4. **Calm and professional.** It's a reference tool used at work: neutral colours, one accent, no animation beyond
-   the typing cursor, no illustrations.
+4. **Calm and professional.** It's a reference tool used at work, styled like a well-set printed reference:
+   parchment pages, an oxblood sidebar, one clay accent, a serif for reading and a monospace for labels. No animation
+   beyond the typing cursor, no illustrations, no emoji.
 5. **Works without explanation.** Someone who has never used an AI tool should get from install to a cited answer
    without reading anything.
 
@@ -21,19 +22,24 @@ when the interface changes).
 
 ```
 ┌───────────────┬──────────────────────────────────┬───────────────────────┐
-│ ¶ Para        │  conversation                    │  Reader (when open)   │
-│ + New chat    │   question (right, tinted)       │   document · title    │
-│ chat list     │   ▸ Show reasoning               │   find · Original ↗   │
-│               │   ▸ Looked up: 2 searches, …     │   passages, cited one │
+│ ¶ Para        │  YOUR QUESTION                   │  Reader (overlay,     │
+│ New chat   +  │  Question in display type        │  when open)           │
+│ RECENT        │  ──────────────────────────────  │   eyebrow · title  ✕  │
+│ chat list     │   + Show reasoning               │   find · Original ↗   │
+│               │   + Looked up: 2 searches, …     │   passages, cited one │
 │               │   answer with [ADK Table 1.1]    │   highlighted         │
-│               │   Cited: chips                   │                       │
-│ Library       ├──────────────────────────────────┤   licence             │
-│ Your files    │  question box                    │                       │
-│ Settings      │  Reasoning · Length      [Send]  │                       │
-│ 🔒 Private    │  disclaimer                      │                       │
+│               │   CITED: ref ······ heading      │                       │
+│ Library    64 ├──────────────────────────────────┤   licence             │
+│ Your files  3 │  [ question box         Send ]   │                       │
+│ Settings      │  REASONING · LENGTH  disclaimer  │                       │
+│ ● Private     │                                  │                       │
 └───────────────┴──────────────────────────────────┴───────────────────────┘
-   250 px              flexible, text ≤ 860 px          min(520 px, 45vw)
+   264 px              flexible, text ≤ 760 px          min(500 px, 46vw)
 ```
+
+The reader is an overlay on the right edge. Above 1240 px the conversation and question box make room for it;
+below that it covers part of the conversation. Below 900 px the sidebar becomes a full-screen drawer opened from a
+menu button in a 56 px top bar, and the reader and dialogs fill the screen.
 
 Dialogs (native `<dialog>`): **Settings** (tabs: AI engine, Instructions, Project notes, Updates & about),
 **Your files**, **Library** (browse documents and search without AI), and the **permission** prompt shown the first
@@ -48,6 +54,7 @@ time someone adds a file.
 | Empty chat with example questions | `welcome.png` |
 | Answer with inline citations, activity expanded | `answer.png` |
 | Answer with the reader open at the cited table | `answer-reader.png`, `answer-reader-dark.png` |
+| Reader showing a diagram, and enlarged | `reader-diagram.png`, `reader-diagram-zoom.png` |
 | Library: documents by group, direct search | `library.png`, `library-search.png` |
 | Your files: permission prompt, file list with notes | `files-permission.png`, `files.png` |
 | Phone width | `narrow.png` |
@@ -58,49 +65,82 @@ Defined on `:root` in `para/static/app.css`, redefined for dark mode under `pref
 
 | Token | Light | Dark | Used for |
 |---|---|---|---|
-| `--bg` | `#f6f6f8` | `#111116` | page |
-| `--panel` / `--panel-2` | `#ffffff` / `#f0f0f4` | `#1a1a22` / `#23232d` | sidebar, cards, inputs / hover, code |
-| `--border` | `#e2e2e8` | `#2e2e3a` | all hairlines |
-| `--text` / `--muted` | `#1d1d22` / `#6b6b76` | `#e6e6ea` / `#9a9aa6` | body / secondary |
-| `--accent` | `#4f46e5` | `#8b8ef8` | primary buttons, links, focus, selected |
-| `--accent-2` | `#eef0ff` | `#262848` | question bubble, selected cards |
-| `--cite` / `--cite-text` | `#eef0ff` / `#3730a3` | `#2a2c52` / `#c7c9ff` | regulation citations |
-| `--warn` / `--warn-bg` | `#b45309` / `#fff7e6` | `#f0b35a` / `#33281a` | notes, your-file citations, remote engine |
-| `--ok` / `--danger` | `#15803d` / `#c0392b` | `#4ade80` / `#f87171` | private badge / errors, delete |
-| `--mark` | `#fff3a3` | `#5a4d10` | the cited passage in the reader |
+| `--bg` | `#f2ebdf` | `#1c1411` | page, main column |
+| `--panel` / `--panel-2` | `#faf5ec` / `#eadfcd` | `#261b17` / `#30231e` | reader, dialogs, question box / hover rows, reasoning |
+| `--field` | `#fffdf8` | `#2a1e19` | inputs, text areas |
+| `--sidebar` / `--sidebar-hover` / `--sidebar-line` | `#6b2419` / `#7d2e22` / `#8a3c2f` | `#3a120c` / `#4d1a12` / `#5a2219` | sidebar, phone top bar and drawer |
+| `--sidebar-text` / `--sidebar-muted` | `#f4ead9` / `#d7a98f` | `#efe4d3` / `#b58a73` | sidebar text / labels, counts |
+| `--ink` (`--text`) | `#2b1d16` | `#efe4d3` | body text, strong rules, outline buttons |
+| `--muted` / `--muted-2` / `--faint` | `#5c4a3e` / `#7a6656` / `#9a8a7a` | `#b8a593` / `#8a7868` / `#6b5a4e` | secondary text / meta, mono labels / placeholders, dotted leaders |
+| `--border` / `--border-field` | `#d6c7b2` / `#c9b8a1` | `#3d2c25` / `#5c4a3e` | hairlines / input borders |
+| `--line-strong` | `--ink` | `#5c4a3e` | outline of dialogs, reader and question box |
+| `--accent` / `--accent-hover` | `#8a3324` / `#6b2419` | `#d9876b` / `#e0927a` | primary buttons, links, eyebrows, focus, selected |
+| `--accent-2` | `#f3e4cf` | `#3a2620` | selected cards, drag-over, 3 px focus ring |
+| `--gold` | `#e9b872` | `#e9b872` | pilcrow, Recommended tag, remote badge, dark-mode New chat |
+| `--cite` / `--cite-text` | `#ecdcc0` / `#8a3324` | `#3d2620` / `#f0b9a0` | regulation citations (hover: accent with cream text) |
+| `--mark` | `#f0dfb6` | `#4a3a17` | the cited passage in the reader, search highlight |
+| `--warn` / `--warn-bg` | `#5e3a0a` / `#f5e6c8` | `#f0c98a` / `#3a2a14` | notes, remote warning; your-file citations use `#7a4a0c` with a `#c99a4a` border |
+| `--danger` / `--danger-bg` | `#a3291b` (text `#7d1d12`) / `#f6dcd3` | `#f08a7a` / `#3a1a14` | errors, Remove, too-big models |
+| `--ok` | `#4a6420` (dot `#a9c27a`) | `#a9c27a` | private badge, success lines, Installed |
+| `--none` | `#e07a5f` | `#e07a5f` | "No AI engine set up" badge |
+| `--track` | `#e6d9c4` | `#3d2c25` | progress track (fill is `--accent`) |
 
-Type: the system UI font stack at 15 px / 1.55; 12–13 px for secondary text; headings are weight 700, never larger
-than 26 px. Radius: 10 px (cards, dialogs 14 px, chips 6 px or pill). Spacing in multiples of 2 px, mostly 8, 10,
-14, 24.
+Backdrop `rgba(43,29,22,.55)`; dialog shadow `0 30px 80px rgba(20,10,6,.35)`; reader shadow
+`-24px 0 48px rgba(43,29,22,.18)`.
+
+Type, bundled in `para/static/fonts/` so the app works offline (all SIL Open Font License):
+
+- **Display**, Gloock 400: welcome heading `clamp(40px, 5vw, 64px)`, the question `clamp(28px, 3.4vw, 42px)`,
+  dialog titles 32–40 px, reader title 26 px, group titles 22–24 px, sidebar links 19 px, the brand 40 px.
+- **Body**, Newsreader 400–600 and italic: answers 19 px / 1.6, dialog text 15–17 px, reader 16 px. Italic for quiet
+  notes (disclaimer, hints, "Nothing found.", "No chats yet.").
+- **Labels**, JetBrains Mono 400–500: eyebrows 11 px uppercase with .22–.24em tracking in `--accent`; button labels
+  11–12 px uppercase; citations 12 px; sizes, dates and page refs 11–12.5 px.
+
+Radius: dialogs 20 px, the question box 18 px, cards 14 px, notes and errors 12 px, inputs 10 px, citations 4 px,
+buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 2 px, mostly 8, 10, 14, 22, 28.
 
 ## Components
 
-- **Citation** (`.cite`): inline button, `--cite` background, label `<source> <ref>`, tooltip with the heading.
-  Your files use the warm variant (`.cite.file`) so people can tell their documents from the regulations.
-- **Source chips** (`.source-chip`): under the answer, "Cited" then "read" passages, pill outline.
-- **Activity** and **reasoning**: `<details>`, collapsed by default, 13 px muted.
+- **Question** (`.msg.user`): a heading, not a bubble: "Your question" eyebrow, the question in display type, an
+  ink rule under it. Each turn repeats it.
+- **Citation** (`.cite`): inline mono tag, `--cite` background, label `<source> <ref>`, tooltip with the heading.
+  Your files use the warm, bordered variant (`.cite.file`) so people can tell their documents from the regulations.
+- **Cited list** (`.sources`, `.source-chip`): under the answer, a "Cited" (or "Cited and read") eyebrow over an
+  ink rule, then one ruled row per passage: the ref in display type, a dotted leader, the heading in mono.
+- **Activity** and **reasoning**: `<details>`, collapsed by default, a mono summary line with "+" or "−" in accent.
+  Expanded activity is a bordered mono list; expanded reasoning is italic on `--panel-2`.
+- **Buttons**: primary is an accent pill with a cream mono uppercase label; secondary an ink outline pill; danger a
+  red outline pill; disabled at 40 % opacity.
 - **Notes** (`.note`): warm background for honest-state messages; **errors** (`.error`) in danger colour, with a
   button to the setting that fixes them.
-- **Privacy badge**: bottom of the sidebar. Green "Private" for the built-in engine or a local or LAN address,
-  amber with the host name for anything else, red "No AI engine set up" (opens Settings).
-- **Model cards**: radio, name, Recommended tag, one-line description with download size and memory, action
-  button (Download / Delete).
+- **Privacy badge**: bottom of the sidebar, a bordered box with a coloured dot. Green "Private" for the built-in
+  engine or a local or LAN address, gold with the host name for anything else, coral "No AI engine set up" (opens
+  Settings). On phones the dot alone sits at the right of the top bar.
+- **Model rows**: ruled rows with a radio, name, Recommended tag (gold pill), description, mono size and memory line,
+  and an action (Download, or Installed and Delete). Models too big for this computer are faded with the size line
+  in red.
+- **Library list**: a three-column grid (short name, title with the edition in italic under it, date) so long
+  edition text can't squeeze the titles.
 - **Reader**: document short name and full title, find-in-document filter, link to the original (gov.uk or
-  legislation.gov.uk) or "Open file" for the person's files, licence line in the footer.
+  legislation.gov.uk) or "Open file" for the person's files, licence line in the footer. For PDFs the link opens
+  the page of the cited passage ("Original, page 34 ↗") and each passage header has its own "PDF page N ↗".
+- **Figures**: diagrams and tables are shown as images above their passage's text, full reader width on a white
+  card (the drawings are designed on white, so they stay white in dark mode). Click to enlarge to the window;
+  click again to close. When the reader opens at a passage with a figure, it scrolls to the top of the figure.
 
 ## Writing in the interface
 
 British English, sentence case, plain verbs on buttons ("Download", "Save", "Open file"). Say what happened and
 what to do next ("The AI cited 1 passage it never looked up, so it was removed."). No "oops", no exclamation marks,
-no emoji in messages (icons in the sidebar and activity list are the only exception).
+no emoji anywhere.
 
 ## Known gaps
 
-- **Phone width**: the sidebar is hidden below 900 px with no way to open it, so chats, Library, Your files and
-  Settings are unreachable there. Needs a menu button. (Matters only when serving to a network with `--host`.)
-- **Tables in the reader** show as pipe-separated rows (`Private stair | 150 | 220`). Render rows containing ` | `
-  as an HTML table.
-- **Icons** are emoji and look different on each platform. Replace with a small inline SVG set.
+- **Tables in the reader** show the table's image, then its text as pipe-separated rows
+  (`Private stair | 150 | 220`). The text could be collapsed under the image, or rendered as an HTML table.
+- **Figure crops** are found from captions, so a few are cut short or include the next heading, and some
+  diagrams without a recognisable caption have no image. "Original, page N" is always there as a fallback.
 - **Reader find** hides non-matching passages rather than highlighting matches.
 - **No app icon** yet (`packaging/icon.icns`, `packaging/icon.ico`). The ¶ mark in the sidebar is the starting point.
 - **Keyboard**: dialogs and citations are reachable by Tab, but there's no shortcut for New chat or focusing the

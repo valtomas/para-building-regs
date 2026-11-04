@@ -23,6 +23,7 @@ How to answer:
 - Search the library before answering any question about requirements, guidance, dimensions, procedures or definitions, even if you think you know, so the person can check where it came from. Use the documents' own terms (e.g. "means of escape", "travel distance", "protected stairway", "guarding", "going", "U-value", "purge ventilation"). If the first search misses, try other wording or name the Part. Read the most relevant passage before answering.
 - Lead with the direct answer, then the detail. Quote figures exactly as written, with units and any conditions or exceptions that change them.
 - Cite as you go: after each statement taken from the library, put the id of the passage it came from in square brackets, like [r1234] or [f56]. Cite only ids from your own search_library or read_passage results; the app turns them into links to the passage. Also name the document and paragraph, table or diagram in words (e.g. "ADB Vol 1, para 2.13"), because people quote those.
+- Diagrams and tables are drawings in the documents. Their passages give the caption and the words on the drawing, and the person can see the drawing itself in the reader. When an answer depends on a diagram, cite its passage and say which diagram to look at; don't describe details of a drawing you can't see in the text.
 - Never invent paragraph numbers, figures or document names. If the library doesn't cover something, say so plainly, then give what you know marked "Not from the library:".
 - Approved Documents are statutory guidance on ways to meet the requirements in Schedule 1 of the Building Regulations 2010; other solutions can comply. Say whether something is a legal requirement or guidance when it matters.
 - When the answer depends on the building (dwelling or not, height, storeys, use, new build or work to an existing building, higher-risk building), say which case you are answering, or ask.
@@ -61,12 +62,20 @@ FINAL_NUDGE = ("(Note from the app, not the person: you have used all your looku
                "read, with citations. Don't call any more tools.)")
 THINK_NUDGE = ("(Note from the app, not the person: you have reasoned long enough. Answer now from what you have, "
                "briefly, with citations.)")
+LOOKUP_NUDGE = ("(Note from the app, not the person: search the library with search_library before you answer, and "
+                "cite the passages you use. If the message isn't about building regulations or guidance, just reply.)")
 RESCUE_NOTE = ("(Note from the app, not the person: you can't look anything else up. Answer the question now from "
                "these library excerpts, citing their ids in square brackets.)")
 UNSEEN_ID = "No search result has that id. Use an id from your search_library results."
 BAD_ID = "That isn't a passage id. Ids look like r1234 or f56."
 
-CITE = re.compile(r"\[\s*((?:[rf]\d+)(?:\s*[,;]\s*[rf]\d+)*)\s*\]")
+# A bracket or parenthesis holding passage ids, alone ("[r12]", "[r12, r34]") or with the model's own words
+# ("[BR 2010, reg 11G(1), r4412]", "(ADB Vol 1, Table 3.1, r272)", "[r4122–r4124]").
+CITE_GROUPS = (re.compile(r"\[([^\[\]\n]{0,300})\]"), re.compile(r"\(([^()\n]{0,300})\)"))
+# a reference in words inside such a bracket: "Table 3.1", "Diagram 3.2", "reg 11G(1)", "para 3.27"
+LABEL_REF = re.compile(r"(?i)\b(table|diagram|figure)\s+([a-z]?\d{1,2}(?:\.\d{1,3})?[a-z]?)\b|\b(reg(?:ulation)?)\.?\s+"
+                       r"(\d{1,3}[a-z]{0,2})\b|(?:\bpara(?:graph)?\.?\s+|(?<=[\s,]))(\d{1,2}\.\d{1,3})\b")
+ID_TOKEN = re.compile(r"(?<![\w/.#\x00])([rf])(\d+)(?:\s*[–-]\s*[rf]?(\d+))?(?![\w\x00])")
 ID_IN_TEXT = re.compile(r"\[([rf]\d+)\]")
 TOOL_MARKUP = ("<tool_call", "<function", "[TOOL_CALLS]", "<|tool_call")
 TEXT_CALL = re.compile(r"<tool_call>\s*(\{.*?\})\s*</tool_call>", re.S)
@@ -262,6 +271,13 @@ def chat_events(client, library, history, question, settings, supports_tools=Tru
         if calls:
             entry["tool_calls"] = calls
         messages.append(entry)
+        if not calls and use_tools and round_no == 0 and sent is None and text.strip() and \
+                not any(i in known for i in ID_IN_TEXT.findall(text)):
+            # It answered from memory without looking anything up: once, ask it to search first.
+            messages.pop()
+            yield {"type": "retry", "why": "lookup"}
+            nudge, round_no = LOOKUP_NUDGE, 1
+            continue
         if not calls:
             answer = text
             break
@@ -291,23 +307,89 @@ def chat_events(client, library, history, question, settings, supports_tools=Tru
            "tokens": usage_total, "messages": messages[1:]}
 
 
+def _source_key(name):
+    s = re.sub(r"approved document\s+([a-z])\b", r"ad\1", (name or "").lower())
+    s = re.sub(r"\bvol(?:ume)?\.?\s*|^the\s+", "", s)
+    return re.sub(r"[^a-z0-9]", "", s)
+
+
+def _ref_keys(ref):
+    """"3.23–3.25" -> {"3.23", "3.24", "3.25"}; "Table 3.1, Diagram 3.2" -> both; "reg 11G" -> {"reg 11g"}."""
+    keys = set()
+    for part in (ref or "").lower().split(", "):
+        m = re.fullmatch(r"(\d{1,2})\.(\d{1,3})\s*[–-]\s*\1\.(\d{1,3})", part.strip())
+        if m:
+            keys.update(f"{m.group(1)}.{n}" for n in range(int(m.group(2)), int(m.group(3)) + 1))
+        elif part.strip():
+            keys.add(part.strip())
+    return keys
+
+
+def _label_ref(text):
+    """(source part, ref key) of a reference written in words: "ADB Vol 1, Table 3.1", "BR 2010, reg 11G(1)"."""
+    m = LABEL_REF.search(text)
+    if not m:
+        return None
+    if m.group(1):
+        ref = f"{m.group(1)} {m.group(2)}".lower()
+    elif m.group(3):
+        ref = f"reg {m.group(4)}".lower()
+    else:
+        ref = m.group(5)
+    return re.sub(r"(?i)^\s*(?:see(?: also)?|in|from|under)\b", "", text[:m.start()]), ref
+
+
+def _by_reference(text, known, library):
+    """The passage the model saw whose document and reference are the ones written in text, if exactly one is."""
+    label = _label_ref(text)
+    if not label:
+        return None
+    source, ref = _source_key(label[0]), label[1]
+    found = []
+    for pid in known:
+        info = library.describe(pid)
+        if info and ref in _ref_keys(info.get("ref")) and \
+                (not source or source in (_source_key(info.get("source")), _source_key(info.get("title")))):
+            found.append(pid)
+    return found[0] if len(found) == 1 else None
+
+
 def _check_citations(answer, known, library):
-    """Keep citations to passages it saw; drop made-up ids. Returns (answer, {id: info}, [dropped ids])."""
+    """Keep citations to passages it saw; drop made-up ids. A reference written in words in brackets
+    ("[ADB1, Table 3.1]") links to the passage it names only if the model saw that very passage. Returns (answer,
+    {id: info}, [dropped ids])."""
     cites, dropped = {}, []
 
     def fix(m):
-        ids = [i.strip().lower() for i in re.split(r"[,;]", m.group(1))]
+        inner = m.group(1)
+        tokens = list(ID_TOKEN.finditer(inner))
+        if not tokens:
+            pid = _by_reference(inner, known, library) if len(inner) < 120 else None
+            if not pid:
+                return m.group(0)
+            cites[pid] = _brief(library.describe(pid))
+            return f"\x00{pid}\x00" if m.group(0).startswith("[") else f"{m.group(0)} \x00{pid}\x00"
+        ids = []
+        for t in tokens:  # a range "r4122–r4124" counts as its two ends: what lies between wasn't named
+            ids += [t[1] + t[2]] + ([t[1] + t[3]] if t[3] else [])
         good = []
-        for i in ids:
+        for i in dict.fromkeys(ids):
             info = library.describe(i) if i in known else None
             if info:
                 cites[i] = _brief(info)
                 good.append(i)
             else:
                 dropped.append(i)
-        return "".join(f"[{i}]" for i in good)
+        words = re.sub(r"(?:\s*(?:[,;]|\band\b|&)\s*)+", ", ", ID_TOKEN.sub(" ", inner)).strip(" ,;:")
+        if re.fullmatch(r"(?i)see(?: also)?|cf\.?|source:?|from", words):
+            words = ""
+        chips = "".join(f"\x00{i}\x00" for i in good)  # marked so the second pass leaves them alone
+        return f"({words}) {chips}".rstrip() if words else chips
 
-    answer = CITE.sub(fix, answer or "")
+    answer = (answer or "").replace("\x00", "")
+    for group in CITE_GROUPS:  # square brackets first: "(ADB Vol 1, para 2.13 [r12])"
+        answer = group.sub(fix, answer)
+    answer = re.sub(r"\x00([rf]\d+)\x00", r"[\1]", answer)
     answer = re.sub(r"[ \t]+([.,;:])", r"\1", answer)
     return answer, cites, dropped
 

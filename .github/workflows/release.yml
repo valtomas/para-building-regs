@@ -32,7 +32,7 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: sudo apt-get update && sudo apt-get install -y poppler-utils
-      - run: pip install pypdf
+      - run: pip install pypdf pillow
       - run: python library/build.py --release
       - uses: actions/upload-artifact@v4
         with:
