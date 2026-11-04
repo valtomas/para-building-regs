@@ -22,8 +22,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - run: pip install pypdf
       - run: python tests/test_app.py
@@ -34,8 +34,8 @@ jobs:
     if: github.event_name != 'push' || startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - run: pip install pypdf pillow
@@ -69,18 +69,29 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: macos-14          # Apple Silicon
+          - os: macos-15          # Apple Silicon (macos-14 runners are scarce; jobs were cancelled waiting)
             zip: Para-mac.zip
+            webview: pywebview
           - os: windows-latest
             zip: Para-windows.zip
+            webview: pywebview
+          - os: ubuntu-22.04      # oldest glibc we support: the build runs on Ubuntu 22.04+, Debian 12+, Fedora 36+
+            zip: Para-linux.tar.gz
+            webview: "pywebview[qt]"   # Qt is bundled: GTK/WebKit differ between distributions
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - uses: actions/download-artifact@v4
         with: { name: library, path: library/dist }
-      - run: pip install pyinstaller pywebview pypdf truststore
+      - name: X libraries to bundle (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libxcb-cursor0 libxcb-icccm4 libxcb-keysyms1 libxcb-image0 libxcb-render-util0 \
+            libxkbcommon-x11-0 libegl1
+      - run: pip install pyinstaller "${{ matrix.webview }}" pypdf truststore
       - run: pyinstaller --noconfirm --clean packaging/app.spec
       - name: Zip (macOS)
         if: runner.os == 'macOS'
@@ -89,23 +100,32 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: Compress-Archive -Path "dist/Para" -DestinationPath "${{ matrix.zip }}"
+      - name: Archive (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          cp packaging/linux/install.sh dist/Para/
+          tar -czf "${{ matrix.zip }}" -C dist Para
       - uses: actions/upload-artifact@v4
         with: { name: "${{ matrix.zip }}", path: "${{ matrix.zip }}" }
 
   release:
     needs: [library, app]
-    if: startsWith(github.ref, 'refs/tags/')
+    # Publish whatever platforms built: GitHub sometimes has no Mac runner free, and one stuck platform shouldn't
+    # hold back the others. Re-running the failed job later ("Re-run failed jobs") adds its download to the release.
+    if: always() && startsWith(github.ref, 'refs/tags/') && needs.library.result == 'success'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/download-artifact@v4
         with: { path: out, merge-multiple: true }
       - run: cp para/models.json out/models.json && ls -la out
       - uses: softprops/action-gh-release@v2
         with:
+          fail_on_unmatched_files: false
           files: |
             out/Para-mac.zip
             out/Para-windows.zip
+            out/Para-linux.tar.gz
             out/regs.sqlite.gz
             out/library.json
             out/models.json

@@ -465,6 +465,19 @@ def background():
             pass
 
 
+def _gui_choice():
+    """On Linux, use Qt for the window: the packaged app bundles it, while GTK/WebKit differ between distributions."""
+    if sys.platform.startswith("linux"):
+        import importlib.util
+        if importlib.util.find_spec("qtpy") is None:  # the Qt backend isn't installed
+            return {}
+        from .qtprobe import qt_works
+        if not qt_works():
+            raise RuntimeError("Qt can't open a window on this system")
+        return {"gui": "qt"}
+    return {}
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog=paths.APP_SLUG)
     ap.add_argument("--browser", action="store_true", help="open in the web browser instead of a window")
@@ -499,8 +512,13 @@ def main(argv=None):
     try:
         if window is not None:
             import webview
-            webview.start(private_mode=False, storage_path=paths.data_path("webview", "x")[:-2])
-        else:
+            try:
+                webview.start(private_mode=False, storage_path=paths.data_path("webview", "x")[:-2],
+                              **_gui_choice())
+            except Exception as e:  # noqa: BLE001 - no usable window toolkit (e.g. Linux without WebEngine libraries)
+                print(f"Can't open a window ({e.__class__.__name__}: {e}); opening the browser instead.", flush=True)
+                window = None
+        if window is None:
             webbrowser.open(url)
             while True:
                 time.sleep(3600)

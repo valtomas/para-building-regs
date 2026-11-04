@@ -60,6 +60,11 @@ The library covers **England**. Wales, Scotland and Northern Ireland have their 
 2. Open the extracted folder and double-click **Para.exe**. If Windows SmartScreen appears,
    click **More info**, then **Run anyway**.
 
+**Linux** (x86-64: Ubuntu 22.04, Debian 12, Fedora 36 or newer)
+1. Download `Para-linux.tar.gz` and extract it (`tar -xzf Para-linux.tar.gz`).
+2. Run `Para/Para`, or run `Para/install.sh` to add Para to your applications menu (`install.sh --uninstall`
+   removes it). Para opens in its own window; if your system can't show one, it opens in your web browser instead.
+
 **Then** choose an AI engine in the window that opens:
 - **Use an engine I already run.** Click *Find engines on this computer*, or type the server's address
   (e.g. `http://127.0.0.1:11434/v1` for Ollama, `http://127.0.0.1:1234/v1` for LM Studio,
