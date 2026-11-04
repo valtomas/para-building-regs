@@ -130,7 +130,7 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   click again to close. When the reader opens at a passage with a figure, it scrolls to the top of the figure.
 - **Description of a drawing** (`.figure-desc`): when a diagram has a description checked by a person, it sits
   directly under the image, set off by a 2 px accent rule on the left: a mono "Description of the drawing" label,
-  the description in body text, then an italic note in `--muted-2`, "Written by AI from the image, checked by a
+  the description in body text, then an italic note in `--muted`, "Written by AI from the image, checked by a
   person. The document's text comes first." Its copy in the passage text (there for search and for the AI) isn't
   shown again.
 - **Review page** (`library/review.html`, served by `library/describe.py review`, not part of the app): the same

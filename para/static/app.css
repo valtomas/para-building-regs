@@ -276,7 +276,7 @@ code { font-family: var(--mono); font-size: .8em; background: var(--cite); color
   white-space: normal; color: var(--ink); font-size: 15.5px; }
 .passage .figure-desc .lbl { display: block; font: 10.5px/1.5 var(--mono); letter-spacing: .14em; text-transform: uppercase;
   color: var(--accent); margin-bottom: 2px; }
-.passage .figure-desc .who { display: block; font: italic 13px/1.45 var(--serif); color: var(--muted-2); margin-top: 4px; }
+.passage .figure-desc .who { display: block; font: italic 13px/1.45 var(--serif); color: var(--muted); margin-top: 4px; }
 .passage mark { background: var(--mark); color: inherit; padding: 0 2px; border-radius: 3px; }
 #readerLicense { padding: 12px 26px; border-top: 1px solid var(--border); font: italic 12.5px/1.45 var(--serif); color: var(--muted-2); }
 #readerLicense:empty { display: none; }

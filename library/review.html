@@ -148,7 +148,9 @@ document.addEventListener("click", (e) => {
     card.querySelector('[data-act="approve"]').disabled = false;
     b.textContent = "Save without approving";
     b.dataset.act = "save";
-    card.querySelector("textarea").focus();
+    const ta = card.querySelector("textarea");
+    ta.style.height = ta.scrollHeight + 4 + "px";  // the whole description, without scrolling inside the box
+    ta.focus();
   } else if (b.dataset.act === "save") {
     save(key, area.value, false);
   } else if (b.dataset.act === "approve") {
