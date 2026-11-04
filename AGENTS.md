@@ -91,7 +91,7 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   its reviewed description out of the library until a person approves it again. The text the AI reads for a
   diagram is its caption plus "Text in the drawing:" (the labels); never present that as a description of the
   drawing.
-- **Descriptions of drawings**: `library/describe.py run` asks a vision model (`DEFAULT_MODEL`, on Lemonade) to
+- **Descriptions of drawings**: `library/describe.py run` asks a vision model (`DEFAULT_MODEL`, Qwen3.8 27B with thinking on, on Lemonade) to
   describe each diagram from its image, and saves `library/descriptions/<key>.json` (model, date, the image's SHA-256
   and a 16 by 16 grey thumbnail, `reviewed: false`). `describe.py check` has a model read each draft against its image
   and leave notes for the reviewer (`check` in the file); it's advisory and never changes a description or approves

@@ -123,3 +123,23 @@ python3 tests/ask_models.py score out.jsonl --answers
 
 Read the answers, not only the scores: a right figure from the wrong document, or a right answer the check misses,
 only shows there.
+
+## Describing drawings
+
+`library/describe.py` has a vision model describe each diagram, and a second reading check each draft against its
+image for the person who reviews it. Tested on 2026-11-04 on Lemonade (Strix Halo), with nine drawings whose content
+had been checked by hand: ADB Vol 1 Diagrams 2.2, 2.4 and 2.6, ADK 1.3 and 1.9, ADM Vol 1 1.2 and 1.5, ADM Vol 2 11
+and 19.
+
+| Model | Thinking | Time a drawing | Descriptions | Checking a faulty description |
+|---|---|---|---|---|
+| Gemma 4 26B-A4B | off | ~5 s | Fluent but wrong on most: dimensions read as the wrong thing, items miscounted | About half the real errors found, plus wrong claims of its own |
+| Qwen3.8 27B | off | ~15–35 s | As wrong as Gemma; invented details (a "basement") | Mostly wrong claims; missed two misread dimensions |
+| Qwen3.6 27B | off | ~20–30 s | As wrong; "green dots", a seat height read as a width | Some real errors, some wrong; once wandered ("wait, looking closer…") |
+| Qwen3.6 27B | on | ~4–6 min | not tried | ADK 1.3 and ADM 1.5: every error found, nothing invented |
+| Qwen3.8 27B | on | ~1–3 min | ADK 1.3 right throughout; ADM 1.5 right but one dimension's start; ADM 11 cautious, one slip | Same as Qwen3.6, in half the time |
+
+What a dimension line measures is the hard part, and only thinking gets it right. Both models ran out of room on the
+lift diagram (ADM Vol 2 Diagram 11) with a 12,000-token limit; the limit is now 32,000. The default is Qwen3.8 27B
+with thinking on: about 40 drawings drafted and checked a night. Even so, every description is checked by a person:
+the model's check is where to look first, not a verdict.

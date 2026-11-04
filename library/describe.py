@@ -38,7 +38,7 @@ DESC_DIR = os.path.join(HERE, "descriptions")
 LIBRARY = os.path.join(HERE, "dist", "regs.sqlite")
 LABEL = "Description of the drawing (written by AI from the image, checked by a person):"
 DEFAULT_ENGINE = "http://127.0.0.1:13305/api/v1"
-DEFAULT_MODEL = "Gemma-4-26B-A4B-it-GGUF"
+DEFAULT_MODEL = "Qwen3.8-27B-GGUF"  # with thinking on: see docs/model-tests.md, "Describing drawings"
 
 PROMPT = """You describe drawings from the Approved Documents (the building regulations guidance for England) for
 people who can't see them, and for an AI that answers questions about them but sees only text.
@@ -184,18 +184,25 @@ def figures_in(library=LIBRARY, only=None):
     return out
 
 
-def write_description(client, fig):
+def _ask(client, messages, think):
+    """The model's answer. With thinking on, a 27B model reads what each dimension line measures far better (a check
+    of ADK Diagram 1.3 found both misread dimensions with it, and invented others without), at a few minutes a
+    drawing: fine overnight. The thinking needs room, hence the large limit."""
+    out = []
+    for ev in client.stream(messages, max_tokens=32000 if think else 1500, reasoning="on" if think else "off"):
+        if ev["type"] == "content":
+            out.append(ev["text"])
+    return "".join(out).strip()
+
+
+def write_description(client, fig, think=True):
     """One description, from the image (with the caption and the drawing's words to read small print by)."""
     url = "data:image/png;base64," + base64.b64encode(fig["png"]).decode()
     words = f"\n\nWords found on the drawing (may be out of order): {fig['drawing_text']}" if fig["drawing_text"] else ""
     messages = [{"role": "system", "content": PROMPT},
                 {"role": "user", "content": [{"type": "text", "text": f"{fig['source']}: {fig['caption']}{words}"},
                                              {"type": "image_url", "image_url": {"url": url}}]}]
-    out = []
-    for ev in client.stream(messages, max_tokens=1200, reasoning="off"):
-        if ev["type"] == "content":
-            out.append(ev["text"])
-    text = "".join(out).strip()
+    text = _ask(client, messages, think)
     if not text:
         raise EngineError("The model wrote nothing.")
     return text
@@ -219,7 +226,7 @@ def parse_check(answer):
     return {"ok": bool(out.get("ok")) and not notes, "notes": notes}
 
 
-def check_description(client, fig, description):
+def check_description(client, fig, description, think=True):
     """A second reading of the image against a description: notes for the person reviewing it. Advisory only: it
     never changes the description or whether it is approved."""
     url = "data:image/png;base64," + base64.b64encode(fig["png"]).decode()
@@ -229,11 +236,7 @@ def check_description(client, fig, description):
                     {"type": "text", "text": f"{fig['source']}: {fig['caption']}{words}\n\nDescription to check:\n"
                                              f"{description}"},
                     {"type": "image_url", "image_url": {"url": url}}]}]
-    out = []
-    for ev in client.stream(messages, max_tokens=1500, reasoning="off"):
-        if ev["type"] == "content":
-            out.append(ev["text"])
-    return parse_check("".join(out))
+    return parse_check(_ask(client, messages, think))
 
 
 def needs_check(rec, png):
@@ -253,7 +256,7 @@ def check(args):
             continue
         checked = rec["description"]
         try:
-            verdict = check_description(client, fig, checked)
+            verdict = check_description(client, fig, checked, think=not args.no_think)
         except EngineError as e:
             failed += 1
             print(f"failed   {fig['key']}: {e}", flush=True)
@@ -285,7 +288,7 @@ def run(args):
                 print(f"changed  {fig['key']}: reviewed against an older image; review it again", flush=True)
             continue
         try:
-            text = write_description(client, fig)
+            text = write_description(client, fig, think=not args.no_think)
         except EngineError as e:
             failed += 1
             print(f"failed   {fig['key']}: {e}", flush=True)
@@ -481,7 +484,8 @@ def auto(args):
             os.symlink(cache, os.path.join(wt, "library", "cache"))  # the PDFs already downloaded
         py = [sys.executable, "library/build.py"] + (["--offline"] if args.offline else [])
         subprocess.run(py, cwd=wt, check=True)
-        model = ["--base-url", args.base_url, "--model", args.model] + (["--limit", str(args.limit)] if args.limit else [])
+        model = (["--base-url", args.base_url, "--model", args.model] + (["--limit", str(args.limit)] if args.limit else [])
+                 + (["--no-think"] if args.no_think else []))
         subprocess.run([sys.executable, "library/describe.py", "run", *model], cwd=wt, check=True)
         subprocess.run([sys.executable, "library/describe.py", "check", *model], cwd=wt, check=True)
         _git("add", "library/descriptions", cwd=wt)
@@ -510,6 +514,7 @@ def main(argv=None):
     r.add_argument("--model", default=DEFAULT_MODEL, help="a model that reads images")
     r.add_argument("--only", help="documents or key prefixes, comma-separated (ADB1,ADK)")
     r.add_argument("--limit", type=int, default=0)
+    r.add_argument("--no-think", action="store_true", help="answer straight away (much faster, far less accurate)")
     v = sub.add_parser("review", help="open the review page")
     v.add_argument("--port", type=int, default=8790)
     v.add_argument("--no-browser", action="store_true")
@@ -520,12 +525,14 @@ def main(argv=None):
         p.add_argument("--model", default=DEFAULT_MODEL, help="a model that reads images")
         p.add_argument("--only", help="documents or key prefixes, comma-separated (ADB1,ADK)")
         p.add_argument("--limit", type=int, default=0)
+        p.add_argument("--no-think", action="store_true", help="answer straight away (much faster, far less accurate)")
     n = sub.add_parser("pending", help="the drawings that need drafting or checking (no AI)")
     n.add_argument("--markdown", action="store_true", help="as the body of the GitHub issue")
     a = sub.add_parser("auto", help="draft and check on a branch of main, and open a pull request")
     a.add_argument("--base-url", default=DEFAULT_ENGINE)
     a.add_argument("--model", default=DEFAULT_MODEL, help="a model that reads images")
-    a.add_argument("--limit", type=int, default=0)
+    a.add_argument("--limit", type=int, default=40, help="drawings to draft, and to check, in one night")
+    a.add_argument("--no-think", action="store_true", help="answer straight away (much faster, far less accurate)")
     a.add_argument("--offline", action="store_true", help="build the library from library/cache")
     args = ap.parse_args(argv)
     {"run": run, "review": review, "status": status, "check": check, "pending": show_pending,
