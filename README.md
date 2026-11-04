@@ -135,7 +135,7 @@ Your settings, chats and the index of your files are kept in `~/Library/Applicat
 (Mac), `%LOCALAPPDATA%\Para` (Windows) or `~/.local/share/para` (Linux). Your
 files themselves are in `~/Para Files`.
 
-A personal open-source project by [valtomas](https://github.com/valtomas), inspired by
+A personal open-source project by [Tomás Val](https://github.com/valtomas), inspired by
 [Survival LLM](https://github.com/anonnerdfrenzy/survival-llm). Contributions welcome: see [AGENTS.md](AGENTS.md) for
 how the code fits together and [DESIGN.md](DESIGN.md) for the interface.
 
@@ -143,7 +143,7 @@ how the code fits together and [DESIGN.md](DESIGN.md) for the interface.
 
 Para is free software: you can redistribute it and/or modify it under the terms of the
 [GNU Affero General Public License](LICENSE) as published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version. Copyright (C) 2026 valtomas. It comes with no warranty.
+License, or (at your option) any later version. Copyright (C) 2026 Tomás Val. It comes with no warranty.
 
 In short: use it, share it and change it freely. If you distribute a changed version, or run one as a service for
 other people, you must publish your changes under the same licence.

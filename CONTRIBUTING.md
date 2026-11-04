@@ -12,7 +12,7 @@ By opening a pull request you agree that:
 
 1. your contribution is your own work, or you have the right to submit it;
 2. it is licensed under the GNU Affero General Public License, version 3 or later; and
-3. the project's maintainer (valtomas) may also distribute your contribution under other licences, for example to
+3. the project's maintainer (Tomás Val) may also distribute your contribution under other licences, for example to
    offer Para as a hosted service or to relicense the project in future.
 
 Point 3 keeps the project able to change course. If you don't agree to it, say so in your pull request before it is
