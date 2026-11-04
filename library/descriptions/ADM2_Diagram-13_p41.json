@@ -7,6 +7,8 @@
  "model": "Gemma-4-26B-A4B-it-GGUF",
  "date": "2026-11-04",
  "image_sha256": "37ee8e6e680c79ac94eff72f244bed33d349238980d702236f1022882986029a",
- "reviewed": false,
- "description": "This drawing is a plan view of a lecture theatre. It shows a rectangular room containing several rows of seating and specific areas designated for wheelchair users.\n\nAt the front of the room, there is a 'Wall mounted projection screen' spanning the width. Below the screen is a 'Demonstration table' on the left and a 'Lectern' on the right. \n\nThe seating is arranged in several horizontal rows. On both the left and right sides of the seating area, there are designated spaces labelled 'In and out' with arrows pointing towards the exits. Within the seating rows, there are two specific rectangular areas also labelled 'In and out' which represent the wheelchair spaces. These spaces are positioned at the ends of rows, one on the left and one on the right, allowing for movement into and out of the seating area."
+ "reviewed": true,
+ "description": "This drawing is a plan view of a lecture theatre. It shows a rectangular room containing several rows of seating and specific areas designated for wheelchair users.\n\nAt the front of the room, there is a 'Wall mounted projection screen' spanning the width. Below the screen is a 'Demonstration table' on the left and a 'Lectern' on the right. \n\nThe seating is arranged in several horizontal rows. On both the left and right sides of the seating area, there are designated spaces labelled 'In and out' with arrows pointing towards the exits. Within the seating rows, there are two specific rectangular areas also labelled 'In and out' which represent the wheelchair spaces. These spaces are positioned at the ends of rows, one on the left and one on the right, allowing for movement into and out of the seating area.",
+ "rejected": false,
+ "reviewed_date": "2026-11-04"
 }
