@@ -30,6 +30,9 @@ lib.add_source("ADK", "Approved Document K: Protection from falling, collision a
 TINY_PNG = bytes.fromhex("89504e470d0a1a0a0000000d4948445200000001000000010806000000"
                          "1f15c4890000000d49444154789c6360000002000105e9a4a10000000049454e44ae426082")
 lib.add_figure(lib.passage_rowid("ADK", 0), TINY_PNG, 3)
+lib_pid3 = f"r{lib.passage_rowid('ADK', 1)}"
+lib.add_figure(lib.passage_rowid("ADK", 1), TINY_PNG, 5, "ADK_Diagram-3.1_p5", "Diagram 3.1",
+               "A section through the edge of a balcony with guarding 1100 mm high.")
 lib.set_meta(version="2026.11.03", built="test")
 lib.close()
 
@@ -99,6 +102,7 @@ check(doc["focus"] == pid and len(doc["parts"]) >= 2 and doc["license"] == "OGL 
 fig = doc["parts"][0]["figures"]
 check(len(fig) == 1 and fig[0]["width"] == 1, "passages list their figures")
 check(call(f"/api/figure?id={fig[0]['id']}") == TINY_PNG, "figure image served")
+check(fig[0]["description"] == "", "a figure without a checked description has none")
 try:
     call("/api/figure?id=../etc")
     check(False, "bad figure id refused")
@@ -197,8 +201,44 @@ check(all("ONLINE" not in p.replace("CONTENTS      ONLINE VERSION", "") and "edi
       and "CONTENTS" in cleaned[3] and all(f"{n}.1 Paragraph about" in p for n, p in enumerate(cleaned)),
       "page headers and footers are removed, page text and a Contents heading stay")
 
-# figures: a drawing's text is smaller than the running text, so a long label doesn't cut the drawing short
+# descriptions of drawings: written by a model from the image, in the library only once a person has checked them
 sys.path.insert(0, os.path.join(ROOT, "library"))
+import describe  # noqa: E402
+
+doc3 = json.loads(call("/api/passage?id=" + lib_pid3))
+check(doc3["parts"][next(i for i, p in enumerate(doc3["parts"]) if p["id"] == lib_pid3)]["figures"][0]["description"]
+      .startswith("A section through"), "the reader gets a figure's checked description")
+with open(os.path.join(ROOT, "para", "static", "app.js"), encoding="utf-8") as f:
+    app_js = f.read()
+check(describe.LABEL == "Description of the drawing (written by AI from the image, checked by a person):"
+      and f'"{describe.LABEL}"' in app_js, "descriptions are labelled as AI-written and checked, the same in the reader")
+check(describe.figure_key("ADB1", "Diagram 3.8", 40) == "ADB1_Diagram-3.8_p40" and
+      describe.figure_key("ADM amendments 2024", "Diagram 1.2", 5) == "ADM-amendments-2024_Diagram-1.2_p5",
+      "figure keys name the document, the figure and the page")
+describe.DESC_DIR = os.path.join(TMP, "descriptions")
+other_png = TINY_PNG + b"x"
+h = describe.image_hash(TINY_PNG)
+describe.save({"key": "K_Diagram-1_p1", "image_sha256": h, "reviewed": False, "description": "A plan."})
+rec = describe.load("K_Diagram-1_p1")
+check(not describe.needs_writing(rec, h) and describe.needs_writing(rec, describe.image_hash(other_png))
+      and describe.needs_writing(None, h), "a description is written again only when its image changed")
+check(describe.usable("K_Diagram-1_p1", TINY_PNG) is None, "an unreviewed description stays out of the library")
+fig1 = {"key": "K_Diagram-1_p1", "png": TINY_PNG}
+describe.approve(fig1, "A plan of a flat.")
+rec = describe.load("K_Diagram-1_p1")
+check(rec["reviewed"] and rec["description"] == "A plan of a flat." and rec["model_description"] == "A plan."
+      and describe.usable("K_Diagram-1_p1", TINY_PNG) == "A plan of a flat.",
+      "approving keeps the person's correction and what the model wrote")
+check(not describe.needs_writing(rec, describe.image_hash(other_png)) and describe.stale(rec, describe.image_hash(other_png))
+      and describe.usable("K_Diagram-1_p1", other_png) is None,
+      "a reviewed description is never overwritten, and leaves the library if its image changes")
+
+model_text = describe.write_description(
+    Client(fake_url, "", "fake-model"),
+    {"source": "ADK", "caption": "Diagram 1.1 Rise and going", "drawing_text": "Rise; Going", "png": TINY_PNG})
+check(model_text.startswith("A drawing"), "a description is written from the image through the engine's API")
+
+# figures: a drawing's text is smaller than the running text, so a long label doesn't cut the drawing short
 import figures  # noqa: E402
 
 body = figures.Line(57, 100, 540, 114, "2.9 A non-powered manually operated entrance door, fitted with a closer", 0)

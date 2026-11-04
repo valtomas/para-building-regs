@@ -36,6 +36,7 @@ passage ids; the app checks every citation. It must stay:
 | `para/static/` | The interface: `index.html`, `app.css`, `app.js` |
 | `library/build.py` | Builds `library/dist/regs.sqlite` from gov.uk (content API + PDFs) and legislation.gov.uk (CLML XML) |
 | `library/figures.py` | Finds diagrams and tables in the PDFs from their captions, renders them to PNG, and takes drawing labels out of the running text |
+| `library/describe.py` | Descriptions of the diagrams: a vision model writes them (`run`), a person checks them on a local review page (`review`, `library/review.html`); kept in `library/descriptions/` |
 | `library/legislation.py` | Turns legislation XML into passages cited as `reg 7`, `s 120D`, `Sch 1 Pt B` |
 | `library/sources.json` | What goes into the library |
 | `packaging/` | PyInstaller spec and launcher |
@@ -79,6 +80,15 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   that cuts a drawing short or swallows the next paragraph is easy to miss in the numbers. The text the AI reads for
   a diagram is its caption plus "Text in the drawing:" (the labels); never present that as a description of the
   drawing.
+- **Descriptions of drawings**: `library/describe.py run` asks a vision model (default Gemma 4 26B on Lemonade) to
+  describe each diagram from its image, and saves `library/descriptions/<key>.json` (model, date, image SHA-256,
+  `reviewed: false`). `describe.py review` opens a page where a person approves or corrects each one. The build
+  adds only reviewed descriptions whose image hash still matches, after the passage text and labelled "Description
+  of the drawing (written by AI from the image, checked by a person):"; the reader shows them under the image, and
+  the prompt says they come second to the document's text. Rules: never mark a description reviewed yourself
+  (only a person, on the review page, may); never regenerate one whose image is unchanged; never overwrite a
+  reviewed one (if its image changes, it leaves the library until a person approves it again). The key
+  (`ADB1_Diagram-3.8_p40`) names the figure across builds, because rowids don't.
 - **Ids**: regulations passages are `r<rowid>`, the person's files `f<rowid>`. Rowids change between library
   builds, so saved chats can point at a different passage after an update. Don't build features that assume they
   are stable across versions.
