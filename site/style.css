@@ -12,15 +12,7 @@
   --cite: #ecdcc0; --cite-text: #8a3324; --warn-bg: #f5e6c8; --warn: #5e3a0a;
   --display: "Gloock", Georgia, serif; --body: "Newsreader", Georgia, serif;
   --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #1c1411; --panel: #261b17; --panel-2: #30231e;
-    --sidebar: #3a120c; --sidebar-text: #efe4d3; --sidebar-muted: #b58a73;
-    --ink: #efe4d3; --muted: #b8a593; --muted-2: #8a7868; --border: #3d2c25;
-    --accent: #d9876b; --accent-hover: #e0927a;
-    --cite: #3d2620; --cite-text: #f0b9a0; --warn-bg: #3a2a14; --warn: #f0c98a;
-  }
+  color-scheme: light; /* the site is always light, whatever the device's setting */
 }
 
 * { box-sizing: border-box; }
@@ -59,9 +51,6 @@ h3 { font-size: 24px; margin: 0 0 8px; }
 .btn.primary { background: var(--accent); border-color: var(--accent); color: #faf5ec; }
 .btn.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: #faf5ec; }
 .btn small { font-size: 10.5px; opacity: .8; letter-spacing: .08em; }
-@media (prefers-color-scheme: dark) {
-  .btn.primary, .btn.primary:hover { color: #1c1411; }
-}
 .btn:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 
 /* sections */
