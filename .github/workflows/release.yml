@@ -110,7 +110,9 @@ jobs:
 
   release:
     needs: [library, app]
-    if: startsWith(github.ref, 'refs/tags/')
+    # Publish whatever platforms built: GitHub sometimes has no Mac runner free, and one stuck platform shouldn't
+    # hold back the others. Re-running the failed job later ("Re-run failed jobs") adds its download to the release.
+    if: always() && startsWith(github.ref, 'refs/tags/') && needs.library.result == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -119,6 +121,7 @@ jobs:
       - run: cp para/models.json out/models.json && ls -la out
       - uses: softprops/action-gh-release@v2
         with:
+          fail_on_unmatched_files: false
           files: |
             out/Para-mac.zip
             out/Para-windows.zip
