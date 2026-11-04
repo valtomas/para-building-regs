@@ -253,6 +253,17 @@ part = figures.Line(141, 118, 264, 127, "a. Corridor access without dead ends", 
 check(figures._is_body(body, 483, 57, 14) and not figures._is_body(label, 483, 57, 14)
       and not figures._is_body(part, 483, 57, 14), "a drawing's labels are not running text")
 
+# figures: on a page in two columns, a figure in one column isn't cut short by the text beside it (ADM2 Diagram 3)
+L = figures.Line
+cap = [L(332, 388, 512, 402, "Diagram 3 Relationship of ramp", 22), L(393, 402, 527, 416, "gradient to the going", 22)]
+beside = [L(71, 380 + 14 * i, 298, 394 + 14 * i, "to negotiate a ramp than a stair. In addition, adverse", 10)
+          for i in range(4)]
+table_head = [L(300, 395, 520, 406, "Minimum fire resistance of doorset in terms of integrity", 17)]
+check(figures._column(cap, cap + beside, 595, 842, 14) == (326, 535)
+      and figures._column([L(65, 394, 248, 408, "Table C1 Provisions for fire doorsets", 15)],
+                          table_head, 595, 842, 14) is None,
+      "a figure set in one column of two is cropped to that column; a table across the page is not")
+
 # built-in engine: llama.cpp's "latest" release can have no binaries; builds are pre-releases
 from para import engine  # noqa: E402
 

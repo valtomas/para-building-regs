@@ -55,6 +55,7 @@ time someone adds a file.
 | Answer with inline citations, activity expanded | `answer.png` |
 | Answer with the reader open at the cited table | `answer-reader.png`, `answer-reader-dark.png` |
 | Reader showing a diagram, and enlarged | `reader-diagram.png`, `reader-diagram-zoom.png` |
+| Reader: a diagram's description, checked by a person | `reader-description.png` |
 | Library: documents by group, direct search | `library.png`, `library-search.png` |
 | Your files: permission prompt, file list with notes | `files-permission.png`, `files.png` |
 | Phone width | `narrow.png` |

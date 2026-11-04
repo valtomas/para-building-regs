@@ -6,7 +6,9 @@
  "caption": "Diagram 3 Relationship of ramp gradient to the going of a flight",
  "model": "Gemma-4-26B-A4B-it-GGUF",
  "date": "2026-11-04",
- "image_sha256": "121075c4bbf180218d4aadd94f2302dee33a5900c5660b8af7f897277aa4bad7",
- "reviewed": false,
- "description": "This diagram, titled Diagram 3 Relationship of ramp gradient to the going of a flight, consists of two comparative cross-sectional drawings, labelled 'a' and 'b'. \n\nPart a shows a flight of stairs. It features a series of steps with a vertical 'rise' and a horizontal 'going'. The steps are shown with a consistent upward inclination.\n\nPart b shows a ramp. It features a much shallower inclination compared to the stairs in part a. The ramp is shown with a much longer horizontal distance to reach the same vertical height as the stairs.\n\nAccompanying text states: \"have restricted mobility find it more difficult to negotiate a ramp than a stair. In addition, adverse weather conditions increase the risk of slipping on a ramp. It is therefore beneficial to have steps as well as a ramp.\""
+ "image_sha256": "8882ac31f7710d5da14c8e4ef826fa4168e3bd1f44ee755f34cc7027446d4742",
+ "reviewed": true,
+ "description": "This is a line graph titled 'Diagram 3 Relationship of ramp gradient to the going of a flight'. The vertical axis is labelled 'Gradient of ramp' and shows scale markings for 1:10, 1:12, 1:15, and 1:20. The horizontal axis is labelled 'Going of ramp flight (m)' and shows scale markings for 0, 2, 4, 5, and 10.\n\nA single straight line slopes upwards from left to right across the graph, connecting three specific data points. The first point is located at a horizontal value of 2m and a vertical value of 1:12, and is labelled '(166mm rise)'. The second point is located at a horizontal value of 4m and a vertical value of 1:15, and is labelled '(333mm rise)'. The third point is located at a horizontal value of 10m and a vertical value of 1:20, and is labelled '(500mm rise)'. Dashed lines extend from these points to their corresponding positions on the axes.",
+ "rejected": false,
+ "reviewed_date": "2026-11-04"
 }
