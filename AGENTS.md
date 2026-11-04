@@ -40,6 +40,8 @@ passage ids; the app checks every citation. It must stay:
 | `library/legislation.py` | Turns legislation XML into passages cited as `reg 7`, `s 120D`, `Sch 1 Pt B` |
 | `library/sources.json` | What goes into the library |
 | `packaging/` | PyInstaller spec and launcher |
+| `site/` | The website, pararegs.co.uk: one static page in the app's look; download buttons read the latest GitHub release |
+| `.github/workflows/pages.yml` | Publishes `site/` to GitHub Pages, adding the app's fonts and `docs/screenshots/answer-reader.png` |
 | `.github/workflows/release.yml` | Tests on every push; on a `v*` tag: library, Mac and Windows apps, GitHub release; weekly library refresh |
 | `tests/` | `test_app.py` (end to end through the HTTP API) and `fake_llm.py` (a stand-in OpenAI-compatible server) |
 | `tests/ask_models.py` | Asks real models the test questions through a running app and scores them; results in `docs/model-tests.md` |
