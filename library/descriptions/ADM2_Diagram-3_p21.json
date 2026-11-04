@@ -11,5 +11,10 @@
  "description": "This is a line graph titled 'Diagram 3 Relationship of ramp gradient to the going of a flight'. The vertical axis is labelled 'Gradient of ramp' and shows scale markings for 1:10, 1:12, 1:15, and 1:20. The horizontal axis is labelled 'Going of ramp flight (m)' and shows scale markings for 0, 2, 5 and 10.\n\nA single straight line slopes upwards from left to right across the graph, connecting three specific data points. The first point is located at a horizontal value of 2m and a vertical value of 1:12, and is labelled '(166mm rise)'. The second point is located at a horizontal value of 5m and a vertical value of 1:15, and is labelled '(333mm rise)'. The third point is located at a horizontal value of 10m and a vertical value of 1:20, and is labelled '(500mm rise)'. Dashed lines extend from these points to their corresponding positions on the axes.",
  "rejected": false,
  "model_description": "This is a line graph titled 'Diagram 3 Relationship of ramp gradient to the going of a flight'. The vertical axis is labelled 'Gradient of ramp' and shows scale markings for 1:10, 1:12, 1:15, and 1:20. The horizontal axis is labelled 'Going of ramp flight (m)' and shows scale markings for 0, 2, 4, 5, and 10.\n\nA single straight line slopes upwards from left to right across the graph, connecting three specific data points. The first point is located at a horizontal value of 2m and a vertical value of 1:12, and is labelled '(166mm rise)'. The second point is located at a horizontal value of 4m and a vertical value of 1:15, and is labelled '(333mm rise)'. The third point is located at a horizontal value of 10m and a vertical value of 1:20, and is labelled '(500mm rise)'. Dashed lines extend from these points to their corresponding positions on the axes.",
- "corrected_by": "Claude, checking the image (2026-11-04)"
+ "corrected_by": "Claude, checking the image (2026-11-04)",
+ "image_sig": {
+  "w": 371,
+  "h": 391,
+  "grey": "6cPD0cmvsr2vxcG4xuvr8PPp5OnesrG5wra5ubrE6e/z6enp4Lmqz+np6enp6env4uXl5eXl5eXl5eXl5eXl5en+7/X5+vr5+fr6+ejm6u/p//3z/////////+n2///06f/98////////+j++v//9On7/fP//////ej///n///Tp5/rz////++L+/v/6///06ebx7fn699zw7vH/+v//9Onu/fP/+uv5//////n///Tp/vDq8dXr6v/////6///06f/98//6//r/////+f//9On+8Ozx6/Hu8fHx8fT///Tp///5/fn07/P0///2///04+rq6uro297a3+rq6urq5w=="
+ }
 }

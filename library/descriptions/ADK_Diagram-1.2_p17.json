@@ -10,5 +10,10 @@
  "reviewed": true,
  "description": "Diagram 1.2, titled \"Examples of suitable tread profiles,\" depicts three separate profile line drawings showing side views of stair treads. Above the diagrams, the text reads \"See paras 1.5–1.10\".\n\nThe first profile shows a simple L-shaped step with a flat top and a vertical riser.\n\nThe second profile shows a step with a slight overhang. It is labelled \"25mm max. overlap\" with arrows indicating the distance between the edge of the tread and the vertical riser below.\n\nThe third profile shows a stepped tread with a more complex shape. It is also labelled \"25mm max. overlap\" at the top edge. Below the tread, an angle is marked with the text \"60° min.\", indicating the minimum angle of the underside of the tread profile.",
  "rejected": false,
- "reviewed_date": "2026-11-04"
+ "reviewed_date": "2026-11-04",
+ "image_sig": {
+  "w": 737,
+  "h": 329,
+  "grey": "+Pn5+fn5+fn5+fn5+fn5+fr++/n////////////////45O32/////////////////P/////q8v///+j0//////z///z/793y/v/p3PX9///8///4///+9vf///z89////P/t6v///+bx///65/L///z/9//6///r//r//Pn8/f/89Pf1+P/w+u///Or27v///P/59P////T6//jr6P3///z+8P////j2////9Pn////88//////z/////fT//////P////////////////////z///////////////////+WdXd2dnd0d3V0dHR0dHR0jHJedGxzcHFjVVVVVVVVVQ=="
+ }
 }

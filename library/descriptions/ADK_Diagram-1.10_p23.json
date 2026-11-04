@@ -11,5 +11,10 @@
  "description": "A perspective view of six separate treads of an alternating tread stair (see paras 1.29 and 1.30), each cut away on alternate sides, with a single handrail drawn above and labelled 'Handrail (both sides)'. A dashed dimension between alternate treads is 'Minimum going 220mm', and a dimension between adjacent treads is 'Maximum rise 220mm'. Arrows point to two treads with the note 'With this type of stair the going is measured between alternate nosings'.",
  "rejected": false,
  "model_description": "This diagram, titled Diagram 1.10 Alternating tread stair, depicts an isometric view of a staircase with uniquely shaped steps. The stair consists of a series of treads that have a staggered, cut-away profile to create an alternating pattern. Two long, thin lines represent the 'Handrail (both sides)' positioned on either side of the steps. \n\nThe drawing includes several annotations regarding dimensions and measurements. A vertical double-headed arrow between two treads is labelled 'Maximum rise 220mm'. A horizontal dimension, indicated by a dashed line between the edges of two non-adjacent treads, is labelled 'Minimum going 220mm'. An additional text note explains: 'With this type of stair the going is measured between alternate nosings'. The top left of the diagram contains the instruction 'See paras 1.29 and 1.30'.",
- "corrected_by": "Claude, checking the image (2026-11-04)"
+ "corrected_by": "Claude, checking the image (2026-11-04)",
+ "image_sig": {
+  "w": 737,
+  "h": 452,
+  "grey": "+fr6+vr6+vr6+vr6+vr6+vjq7O72/+/x8f/////////8///////i7P7/9v///////P//////7O3/8Obx8f7///z///////nz//jq5O7k///8///////w++7p+evj/v///P//////7f/x5d/q2vL///z///////L/9+T259ro///89d/g////9fHu3uLv7////PXX2fj5+ezg5ufe//////z36OX/+v/h7vHz+P/////8//////n/+enr5PL//////P//////4vby6ujn7/////z///////bn5uPe6ff////RxsbGxsbGxsbGxsbGxsbGimthbG1rX1VVVVVVVVVVVQ=="
+ }
 }

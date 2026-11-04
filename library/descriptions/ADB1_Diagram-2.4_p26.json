@@ -11,5 +11,10 @@
  "description": "A floor plan (left) and a section through the house (right), showing fire separation in a dwellinghouse with two or more storeys more than 4.5m above ground level. See para 2.6.\n\nThe plan shows rooms off a hall, with a stair in the lower middle. Green lines around the stair are 'Fire resisting construction minimum REI 30', and a 'Fire door' opens from the stair enclosure on its right. A green arrow on the right-hand wall marks an 'Example of alternative exit in para 2.6(a) (see definition in Appendix A)'.\n\nThe section shows a four-storey house with a pitched roof. Dimensions of '4.5m' and '7.5m' rise from ground level, and the top storey, shaded green, is labelled 'Storey over 7.5m'.",
  "rejected": false,
  "model_description": "This drawing, titled Diagram 2.4, depicts two views: a floor plan on the left and a cross-section elevation on the right.\n\nThe plan shows a layout of rooms divided by thick black lines. A doorway leads from a room into a stairwell containing a set of stairs. A label with an arrow points to the door at the bottom of the stairs, identifying it as a \"Fire door\". Another label with an arrow points to the stairwell area, identifying it as \"Fire resisting construction minimum REI 30\". An arrow points to the doorway as an \"Example of alternative exit in para 2.6(a) (see definition in Appendix A)\".\n\nThe elevation shows a building with three storeys. The ground level is marked by a horizontal line. A vertical dimension line indicates the height of the first storey is \"4.5m\" and the height to the top of the second storey is \"7.5m\". The top section is labelled \"Storey over 7.5m\". This top storey is shaded green, matching the green shading of the stairwell in the plan. Text at the top left refers the viewer to \"See para 2.6\".",
- "corrected_by": "Claude, checking the image (2026-11-04)"
+ "corrected_by": "Claude, checking the image (2026-11-04)",
+ "image_sig": {
+  "w": 756,
+  "h": 344,
+  "grey": "9vb39/f39/f39/f39/f39u3r//////////////////vStLS0o7S0xv/////t/v/72P///+b//97i9//x+Ov/+9j////m///e3Oj/w6Ok6/vY///23P//3tPd/8Okq+f51MzK5NHMzMvj8/Pz//b/+9j59//////q5vH56url//vY/u3////14dTf7uv/9v/72P/m/8zO4dn5++7j7Ob/+9j/5v/V2+fR5/317//2//vetKu0qKuw0v//6cnJyej7+///////////////////+66YmJiYmJmYmJiYmJiYmKmIamJraWZuZ2hkZ2loZ2l9glVeaWNVVVVVVVVVVVVVeg=="
+ }
 }

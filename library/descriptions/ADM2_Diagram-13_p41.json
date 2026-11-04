@@ -11,5 +11,10 @@
  "description": "A plan of a lecture theatre showing where wheelchair spaces can go. Rows of seating run across the room in two blocks. Four doors are marked 'In and out': two in the top wall and one in each side wall. The wheelchair spaces, drawn as small wheelchair symbols, are in the back row (one at its left-hand end and two in a gap towards the right) and in the front row (two in a gap left of centre and one at its right-hand end). In front of the seating are a 'Demonstration table' and a 'Lectern', with the 'Wall mounted projection screen' on the bottom wall.",
  "rejected": false,
  "model_description": "This drawing is a plan view of a lecture theatre. It shows a rectangular room containing several rows of seating and specific areas designated for wheelchair users.\n\nAt the front of the room, there is a 'Wall mounted projection screen' spanning the width. Below the screen is a 'Demonstration table' on the left and a 'Lectern' on the right. \n\nThe seating is arranged in several horizontal rows. On both the left and right sides of the seating area, there are designated spaces labelled 'In and out' with arrows pointing towards the exits. Within the seating rows, there are two specific rectangular areas also labelled 'In and out' which represent the wheelchair spaces. These spaces are positioned at the ends of rows, one on the left and one on the right, allowing for movement into and out of the seating area.",
- "corrected_by": "Claude, checking the image (2026-11-04)"
+ "corrected_by": "Claude, checking the image (2026-11-04)",
+ "image_sig": {
+  "w": 371,
+  "h": 313,
+  "grey": "68/P2NPKz8fGysnCwsLF8e7Vzd3dxsa7u8bCu7m8turs3d3d3bmxtMG9tLW5tLPb4/Ly8uzj5/Ly6+Ds8vLy6+n//fHv5Ony8u/f7fH7//Tp//T68PLy8/Xx8vL18//06f/05NfZ2djc2NjZ3PH/9On/89LMzMzKzszMzM3u//Tp//PZ19fX1NfX19fW7//06f/z29nZ2dbY2dnZ2O//9Oj+7+bk3t7i4+Tk5N7q/vPh5+j64+Pt5Ovs7+b/6ujn6f/369Xw7uLc7PDw8PT/9On/////////9f////////Tp///////My8/6///////05/Ly8vLy8vLy8vLy8vLy7Q=="
+ }
 }

@@ -11,5 +11,10 @@
  "description": "Two plans of a doorway, each with a wheelchair user approaching through the open door, showing how the effective clear width of a door is measured.\n\nOn the left, the open door has projecting ironmongery: the 'Effective clear width (door stop to projecting ironmongery)' runs from the door stop to the handle on the open door. A '300mm minimum unless door is power operated' dimension marks the wall nib beside the leading edge of the door.\n\nOn the right, the 'Effective clear width (door stop to door leaf)' runs from the door stop to the face of the open door leaf.",
  "rejected": false,
  "model_description": "Diagram 9, titled 'Effective clear width of doors', is a technical drawing illustrating design considerations for manually operated non-powered entrance doors. The diagram shows two side-on views of a door opening to demonstrate how clear width is measured.\n\nOn the left, a door is shown in an open position. An arc indicates the path of the door leaf, and a dimension line with arrows measures the 'Effective clear width (door stop to projecting ironmongery)'. This measurement starts from the door stop and ends at the furthest point of the projecting hardware.\n\nOn the right, a second door is shown. An arc indicates the door's movement, and a dimension line measures the 'Effective clear width (door stop to door leaf)'. This measurement starts from the door stop and ends at the edge of the door leaf itself.\n\nA central vertical dimension line specifies a '300mm minimum unless door is power operated'. This dimension refers to the clear width shown in the diagrams.",
- "corrected_by": "Claude, checking the image (2026-11-04)"
+ "corrected_by": "Claude, checking the image (2026-11-04)",
+ "image_sig": {
+  "w": 372,
+  "h": 272,
+  "grey": "6sPHzMKotsGzxLCpwbm76ebKxNLOycrOyM3Lyc/Ky+Du////+Pz1///////99/Pw7v//7vHz8P/////w9O/t8O7//PHv6/D/////8vDn7fDu///m7fHw//////Hp7O3w7v//9u7v8P/////97evt8O795vrp8d/N0/Tf+u3t7fDu/uX/+v3exvr+4//6/+3w7v/p//vh7P7//+r///vt8Ov26P//7+r9//bm///45+zt/eD//+7+///94P//7/7v6fHz///q8f3+8e///+7x6e7/6uro8//////s6evq//Du59vRzt3n////3tXS3//w6Orq6urq6urq6urq6urq5g=="
+ }
 }

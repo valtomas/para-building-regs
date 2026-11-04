@@ -11,5 +11,10 @@
  "description": "A plan of a stair with a cupboard opening onto its landing (see para 1.21). A flight marked 'Up' rises to a landing, and a second flight continues up from the landing to the right. A 'Cupboard' at the top of the landing has doors that swing out over the landing. The shaded part of the landing, between the doors' swing and the top step of the lower flight, is marked '400mm minimum'.",
  "rejected": false,
  "model_description": "This diagram, titled 'Diagram 1.7 Cupboard onto landing', is a plan view showing the relationship between a cupboard door and a staircase. The drawing depicts a rectangular 'Cupboard' at the top of a flight of stairs. A door is shown swinging open from the cupboard into the landing area. To the right of the landing, a set of stairs descends, indicated by a series of parallel lines and an arrow pointing 'Up' at the bottom of the flight. A shaded rectangular area is positioned on the landing, between the cupboard door and the stairs. This shaded area is marked with a dimension line and the label '400mm minimum', indicating the required clear width of the landing space in front of the cupboard door. The text 'See para 1.21' is located in the top left corner of the diagram.",
- "corrected_by": "Claude, checking the image (2026-11-04)"
+ "corrected_by": "Claude, checking the image (2026-11-04)",
+ "image_sig": {
+  "w": 754,
+  "h": 309,
+  "grey": "9vb29vb29vb29vb29vb29fXl7f////3y+P////////v6+Pv////01uX////////7+///////8/rw////////+/v///////Pm1tXo//////v7///////0593p7v/////7+//////T3NXN3eX/////+/v/////2dXh1d3q//////v7///////x2dnk9P/////7+///////8eDi////////+/v///////DT2/////////v7///////x4uD////////7+///////9+Hq////////+/v///////////////////uKaGVoaGhkX19fX19fX195h2lVamZnX09PT09PT09Pbg=="
+ }
 }
