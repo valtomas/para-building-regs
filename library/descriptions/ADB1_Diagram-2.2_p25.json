@@ -6,7 +6,7 @@
  "caption": "Diagram 2.2 Alternative arrangements for final exits | a. | b. | house with a storey more than 4.5m above ground level",
  "model": "Gemma-4-26B-A4B-it-GGUF",
  "date": "2026-11-04",
- "image_sha256": "91665f9a7e4da47931bbb52ee775ea0f8b41e6372b00861c56bbdc2556a92603",
+ "image_sha256": "120b9454857177d9c41b8e31be4710e16ab927d751a85b757b69d8d48cdc0bb8",
  "reviewed": true,
  "description": "This diagram, titled \"Diagram 2.2 Alternative arrangements for final exits,\" contains two separate parts, labelled 'a.' and 'b.', showing floor plans for a house with a storey more than 4.5m above ground level.\n\nPart 'a.' shows a rectangular floor plan containing a 'Protected stairway'. A single green line, labelled 'Fire resisting construction minimum REI 30', forms a continuous enclosure around the stairway, except for one opening. This opening is marked 'Fd' and leads to a 'Final exit', which is indicated by a green arrow pointing out of the building. Another 'Fd' label, referring to 'Fire doorset minimum E 20', is placed on the door leading from the stairway into the main area of the floor plan.\n\nPart 'b.' shows a rectangular floor plan with a 'Protected stairway' located towards the top centre. This stairway is enclosed by a green line representing 'Fire resisting construction minimum REI 30'. There are two 'Fd' labels on doors within this enclosure, both referring to 'Fire doorset minimum E 20'. These doors lead to two separate green arrows, both labelled 'Final exit', pointing outwards from the building in opposite directions. A note at the top left states 'See para 2.5'.",
  "rejected": false,

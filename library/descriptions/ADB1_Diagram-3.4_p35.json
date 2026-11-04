@@ -6,7 +6,7 @@
  "caption": "Diagram 3.4",
  "model": "Gemma-4-26B-A4B-it-GGUF",
  "date": "2026-11-04",
- "image_sha256": "47a0b026d3ba19e11a773378fb83ec5287c8c28a57706b60aaeec86535764ff7",
+ "image_sha256": "5892907a42ffd71d420ee5d8b2a9725be2b0c75f458b9018af6f10c7fc740a6f",
  "reviewed": true,
  "description": "This diagram is a floor plan for a flat with an alternative exit. The plan shows a layout including a living room, kitchen, bath, and three bedrooms. The flat entrance is located at the bottom of the plan, leading into the living room. A hallway connects the living room to the kitchen, bath, and bedrooms. One bedroom is located in the top left, another in the top middle, and a third in the top right. The alternative exit is indicated by a green arrow pointing out of a door in the top right bedroom.\n\nA symbol labelled 'Fd' refers to a fire doorset located between the living room and the hallway. A green line indicates fire resisting construction (minimum REI 30) between living and bedroom accommodation. A black rectangle represents compartment walls; a note states to see Appendix B for the fire resistance of compartment walls separating a flat from any other part of the building or other occupancies. A note also states: \"The bedrooms are not classified as inner rooms because escape is possible in two directions.\"",
  "rejected": false,

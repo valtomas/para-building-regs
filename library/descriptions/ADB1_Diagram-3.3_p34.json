@@ -6,7 +6,7 @@
  "caption": "Diagram 3.3 Flat with restricted travel distance from furthest point to entrance",
  "model": "Gemma-4-26B-A4B-it-GGUF",
  "date": "2026-11-04",
- "image_sha256": "67a866acef3711b5ada607ded1e01a2a5178b1e8da4b1e733b65a99c1b1eb7fe",
+ "image_sha256": "fdf9a4918a7946e4da942723fefabb579fdb2e1abf03b8e563f9677b958716a9",
  "reviewed": true,
  "description": "The drawing consists of two plan views, labelled a. and b., showing the internal layout of a flat and the travel distances from various points to the flat entrance.\n\nIn part a., a rectangular flat is shown containing a kitchen area and a bathroom (labelled 'Bath'). A 'Flat entrance' is located at the bottom of the plan. Two green lines originate from the entrance and extend into the flat. One line extends from the entrance to the corner of the kitchen area, labelled '9m max'. The second line extends from the entrance towards the bathroom, also labelled '9m max'. A third green line extends from the entrance towards the far wall of the bathroom, but it is labelled 'Distance not restricted'. A note at the top left says 'See para 3.18'.\n\nIn part b., a second, simpler rectangular flat layout is shown. A 'Flat entrance' is at the bottom. Two green lines extend from the entrance into the flat: one reaches the corner of the kitchen, labelled '9m max', and the other reaches the opposite corner of the flat, also labelled '9m max'.",
  "rejected": false,

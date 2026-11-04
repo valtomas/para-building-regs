@@ -6,7 +6,7 @@
  "caption": "Diagram 3.2 Flat where all habitable rooms have direct access to an entrance hall",
  "model": "Gemma-4-26B-A4B-it-GGUF",
  "date": "2026-11-04",
- "image_sha256": "e34c86c549cc3c12d98fa4b1384b7fd5f309224770bb61432f0430bce037c28e",
+ "image_sha256": "e1c4346bbcb4d24abafa1bbb62ecfd567f0869148bcc4bc708b0be563bed2756",
  "reviewed": true,
  "description": "This diagram is a floor plan showing the layout of a flat where all habitable rooms have direct access to an entrance hall. The plan depicts several rooms connected to a central, shaded area labelled 'Protected entrance hall (minimum REI 30)'. The 'Flat entrance' opens into this hall.\n\nThe hall is bounded by 'Fire resisting construction (minimum REI 30)' and its length is marked as '9m max.'. All doors leading from the rooms into the hall are labelled 'Fd' and refer to 'Fire doorset (minimum E 20)'. Thick black lines represent 'compartment walls separating a flat from any other part of the building or other occupancies', with a note to 'See Appendix B' for further detail. A note at the bottom states: 'NOTE: Bathrooms do not need to have fire doorsets provided that the bathroom is separated by fire resisting construction from the adjacent rooms.' A reference 'See para 3.18a' is located in the top left corner.",
  "rejected": false,

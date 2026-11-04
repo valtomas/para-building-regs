@@ -6,7 +6,7 @@
  "caption": "Diagram 1.2 \u0007\u0007\u0007Minimum door width, hall widths and localised obstructions",
  "model": "Gemma-4-26B-A4B-it-GGUF",
  "date": "2026-11-04",
- "image_sha256": "76371391af096170340a4835fe5dcc0fef7159a273a89dbd668f71cafc8f9cc8",
+ "image_sha256": "375fd6626b57623b06877664b1fdf42b5cbacaf15d3db7d9821b38666a425b78",
  "reviewed": true,
  "description": "This diagram, titled \"Diagram 1.2 Minimum door width, hall widths and localised obstructions,\" consists of a floor plan showing various door openings and hallway widths. A note at the bottom states, \"*all dimensions are minimum except where noted\".\n\nThe plan illustrates three door scenarios and a hallway. The first door on the left shows a clear opening width of 750mm, with a total width of 900mm including the door leaf. Adjacent to this door is a hallway with a width of 1050mm, which contains a shaded area labelled \"Localised obstruction not permitted in shaded zone\". This shaded area is located within a 2m max. length.\n\nThe second door shows a clear opening of 750mm and a total width of 800mm. Next to it is a hallway with a width of 900mm, containing a dashed rectangle labelled \"Permitted obstruction\" within a 2m max. length. \n\nThe third door, shown at the bottom, has a clear opening of 750mm and a total width of 1200mm. This door opens into a space with a 900mm width.",
  "rejected": false,

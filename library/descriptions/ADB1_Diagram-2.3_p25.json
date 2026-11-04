@@ -6,7 +6,7 @@
  "caption": "Diagram 2.3",
  "model": "Gemma-4-26B-A4B-it-GGUF",
  "date": "2026-11-04",
- "image_sha256": "748b72311e6d5d252b7889ab72ed752fd3bf32466a6d2bf519d15fe847a98a56",
+ "image_sha256": "ab520582c9eecfcb537be73eec6cf4dfac30c244ec6ac233898cb71d10ace358",
  "reviewed": true,
  "description": "This diagram, titled \"Alternative cavity barrier arrangements in roof space over protected stairway in a\", shows two cross-sectional drawings, labelled a. and b., illustrating different cavity barrier configurations.\n\nIn drawing a., a protected stairway is shown on the right, enclosed by a \"Fire resisting enclosure to protected stairway REI 30\". Above this is an \"Unoccupied space\". A \"Cavity barrier E 30 and EI 15\" is positioned horizontally, separating the unoccupied space from the area above the stairway. A dimension of \"4.5m\" indicates the height from the floor to the ceiling level.\n\nIn drawing b., the configuration differs. The \"Protected stairway\" remains enclosed by a \"Fire resisting enclosure to protected stairway REI 30\". However, instead of a cavity barrier, there is a \"Fire resisting ceiling EI 30\" separating the stairway from the \"Unoccupied space\" above. This drawing also includes a \"4.5m\" dimension for the height. A note at the top left of the entire diagram states \"See para 2.5\".",
  "rejected": false,

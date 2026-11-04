@@ -6,7 +6,7 @@
  "caption": "Diagram 2.5 Ground or basement storey exit into an enclosed space",
  "model": "Gemma-4-26B-A4B-it-GGUF",
  "date": "2026-11-04",
- "image_sha256": "67ddfacc64dfac65898801faf927311aeefd6f6d431b1decbf8633526285c973",
+ "image_sha256": "20305075bcfa415f2c0157f618f85705c841deae13577095af396aa0bf1536c2",
  "reviewed": true,
  "description": "This diagram, titled Diagram 2.5 Ground or basement storey exit into an enclosed space, is a cross-sectional view illustrating the relationship between a dwellinghouse, an extension, and an enclosed space.\n\nThe drawing shows a building profile with a pitched roof. A vertical dimension line labeled 'x' measures the height of the dwellinghouse from the ground level to the 'Mean roof level'. A smaller rectangular section attached to the side of the main house is labeled with a vertical dimension 'y', representing the height of the extension. \n\nTo the right of the building, there is an open area representing an enclosed space, bounded by a vertical line labeled 'Enclosure to space e.g. a wall, fence, building'. An exit path is shown via stairs leading from the ground level into this space. A horizontal dimension line labeled 'y min.' and 'x min.' indicates the required length of the space. Text accompanying the diagram states that where escape from a dwellinghouse is to an enclosed space with exit only possible through other buildings (e.g. a courtyard or back garden), the length of the space should exceed whichever is the greater of: a. The height of the dwellinghouse above ground level (x); b. Where a rear extension is provided, the height of the extension (y). A note 'See para 2.10' is also present.",
  "rejected": false,

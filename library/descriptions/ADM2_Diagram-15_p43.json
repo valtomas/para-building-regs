@@ -6,7 +6,7 @@
  "caption": "Diagram 15 An example of wheelchair space provision in a cinema or theatre",
  "model": "Gemma-4-26B-A4B-it-GGUF",
  "date": "2026-11-04",
- "image_sha256": "3537ec32587dd6374d9de41c253ab40ab7454dd1bf2f1d36e62bde47aadc984a",
+ "image_sha256": "87897df306ad4182090a93dfee7d0f29b9484f32132c0211e8a025c011f57417",
  "reviewed": true,
  "description": "This diagram shows a plan view of an example of wheelchair space provision in a cinema or theatre. It depicts rows of seats, a rostrum, a rear wall, and two wheelchair spaces.\n\nThe seating is arranged in rows, with vertical lines representing aisles and 'Steps' indicated at the bottom of two aisles. At the top right, there is a hatched area labeled 'Rostrum'. Adjacent to the rostrum, a dashed rectangle outlines two wheelchair spaces. Each space contains a top-down symbol of a person in a wheelchair. A text note states: 'The rostrum as well as seats on the rostrum and seats in the next row can be removed to create more wheelchair spaces'.\n\nThe wheelchair spaces are labeled '1400mm x 900mm nominal wheelchair spaces'. A horizontal dimension line shows the width of one wheelchair space as '900mm' and the total width of both spaces plus the gap as '1100mm*'. A note at the bottom specifies: '* Dimension derived from BS 8300'. The 'Rear wall' is indicated by a thin line with an arrow pointing to it, located behind the wheelchair spaces.",
  "rejected": false,
