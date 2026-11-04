@@ -272,10 +272,16 @@ code { font-family: var(--mono); font-size: .8em; background: var(--cite); color
   background: #fff; border: 1px solid var(--border); cursor: zoom-in; }
 .passage img.figure.zoom { position: fixed; inset: 3vh 3vw; width: 94vw; height: 94vh; object-fit: contain; z-index: 20;
   cursor: zoom-out; box-shadow: 0 0 0 100vmax rgba(43, 29, 22, .75); margin: 0; border-radius: 12px; }
-.passage .figure-desc { margin: -4px 0 14px; padding: 2px 0 2px 14px; border-left: 2px solid var(--accent);
+.passage .figure-desc { margin: -4px 0 14px; padding: 2px 0 2px 12px; border-left: 2px solid var(--border);
   white-space: normal; color: var(--ink); font-size: 15.5px; }
-.passage .figure-desc .lbl { display: block; font: 10.5px/1.5 var(--mono); letter-spacing: .14em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 2px; }
+.passage .figure-desc summary { cursor: pointer; user-select: none; list-style: none; display: flex; gap: 8px;
+  font: 10.5px/1.5 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted-2); }
+.passage .figure-desc summary::-webkit-details-marker { display: none; }
+.passage .figure-desc summary::before { content: "+"; color: var(--accent); width: 10px; }
+.passage .figure-desc[open] summary::before { content: "\2212"; }
+.passage .figure-desc summary:hover, .passage .figure-desc[open] summary { color: var(--accent); }
+.passage .figure-desc[open] summary { margin-bottom: 4px; }
+.passage .figure-desc[open] { border-left-color: var(--accent); }
 .passage .figure-desc .who { display: block; font: italic 13px/1.45 var(--serif); color: var(--muted); margin-top: 4px; }
 .passage mark { background: var(--mark); color: inherit; padding: 0 2px; border-radius: 3px; }
 #readerLicense { padding: 12px 26px; border-top: 1px solid var(--border); font: italic 12.5px/1.45 var(--serif); color: var(--muted-2); }
