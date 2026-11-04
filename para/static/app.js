@@ -495,7 +495,8 @@ $("#checkUpdates").onchange = (e) => api("/api/settings", { method: "POST", body
 $("#checkNow").onclick = async () => { $("#updateView").textContent = "Checking…"; S.updates = await api("/api/updates/check", { method: "POST" }); renderAbout(); refresh(); };
 function renderAbout() {
   const L = S.library;
-  $("#aboutInfo").innerHTML = `<p class="about"><b>Para ${esc(S.version)}</b><br><span class="meta">Regulations library ${esc(L.version || "not installed")} · ${L.sources.length} documents</span></p>`;
+  $("#aboutInfo").innerHTML = `<p class="about"><b>Para ${esc(S.version)}</b><br><span class="meta">Regulations library ${esc(L.version || "not installed")} · ${L.sources.length} documents</span></p>
+    <p class="muted small">Copyright (C) 2026 valtomas. Para is free software under the GNU Affero General Public License, version 3 or later, and comes with no warranty. <a href="https://github.com/valtomas/para-building-regs" data-ext>Source code and licence</a>. Library content is Crown copyright under the Open Government Licence v3.0.</p>`;
   const u = S.updates || {};
   let h = "";
   if (u.error) h += `<p class="muted small">Couldn't check for updates: ${esc(u.error)}</p>`;

@@ -139,7 +139,16 @@ how the code fits together and [DESIGN.md](DESIGN.md) for the interface.
 
 ## Licence
 
-Code: MIT ([LICENSE](LICENSE)). Library content: Crown copyright, Open Government Licence v3.0.
+Para is free software: you can redistribute it and/or modify it under the terms of the
+[GNU Affero General Public License](LICENSE) as published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version. Copyright (C) 2026 valtomas. It comes with no warranty.
+
+In short: use it, share it and change it freely. If you distribute a changed version, or run one as a service for
+other people, you must publish your changes under the same licence.
+
+- Library content: Crown copyright, [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
+- Fonts in `para/static/fonts/`: SIL Open Font License.
+- Contributions: see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 AI makes mistakes. Every answer shows its sources so you can check them against the documents. This is not a
 substitute for professional judgement or for building control approval.
