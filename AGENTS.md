@@ -39,7 +39,11 @@ passage ids; the app checks every citation. It must stay:
 | `library/describe.py` | Descriptions of the diagrams: a vision model writes them (`run`), a person checks them on a local review page (`review`, `library/review.html`); kept in `library/descriptions/` |
 | `library/legislation.py` | Turns legislation XML into passages cited as `reg 7`, `s 120D`, `Sch 1 Pt B` |
 | `library/sources.json` | What goes into the library |
-| `packaging/` | PyInstaller spec and launcher |
+| `library/check.py` | Compares a new library with the published one and fails the build if a document is missing or much smaller, so a broken rebuild never reaches installed apps |
+| `packaging/` | PyInstaller spec and launcher; `packaging/linux/install.sh` adds the Linux app to the applications menu |
+| `para/qtprobe.py` | Linux: checks in a separate process that Qt can open a window (Qt aborts instead of raising), so the app falls back to the browser |
+| `site/` | The website, pararegs.co.uk: one static page in the app's look; download buttons read the latest GitHub release |
+| `.github/workflows/pages.yml` | Publishes `site/` to GitHub Pages, adding the app's fonts and `docs/screenshots/answer-reader.png` |
 | `.github/workflows/release.yml` | Tests on every push; on a `v*` tag: library, Mac and Windows apps, GitHub release; weekly library refresh |
 | `tests/` | `test_app.py` (end to end through the HTTP API) and `fake_llm.py` (a stand-in OpenAI-compatible server) |
 | `tests/ask_models.py` | Asks real models the test questions through a running app and scores them; results in `docs/model-tests.md` |
@@ -48,6 +52,7 @@ passage ids; the app checks every citation. It must stay:
 
 ```bash
 python3 tests/test_app.py                  # must pass before every commit; no engine or network needed
+python3 tests/test_check.py                # the publishing gate in library/check.py
 python3 -m pyflakes para library tests     # keep it clean
 python3 -m para --browser                  # run from source in the browser
 python3 library/build.py                   # build the library (needs poppler-utils; Pillow shrinks images)
@@ -102,6 +107,9 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
 - **Licensing**: the bundled library may contain only material that can be redistributed (Open Government
   Licence). Don't add NHBC, LABC, BSI or other copyrighted material to `sources.json`; people add their own copies
   under Your files.
+- **Code licence**: Para is AGPL-3.0-or-later (`LICENSE`). Only add dependencies, fonts or copied code under
+  licences compatible with it (MIT, BSD, Apache-2.0, LGPL, GPL-3.0, OFL for fonts); check before adding. Keep the
+  licence notice and source link in Settings → Updates & about.
 - **Security**: keep the Origin check in `Handler._allowed`. `/api/open` may only open http(s) URLs, the files
   folder, or files already in the files index. Don't add endpoints that read arbitrary paths.
 - **Commits**: small, with a message that says why. Run the tests first.

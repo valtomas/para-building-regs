@@ -1,6 +1,8 @@
 # Para
 
-**Building regulations, cited.** A free, open-source AI assistant for the building regulations in England that runs on your own computer. Ask it a question
+**Building regulations, cited.** · [pararegs.co.uk](https://pararegs.co.uk)
+
+A free, open-source AI assistant for the building regulations in England that runs on your own computer. Ask it a question
 ("maximum travel distance from a flat entrance door in a single-stair block?") and it searches a library of the
 Approved Documents, the Building Regulations 2010, the Building Safety Act and its guidance, reads the relevant
 paragraphs, and answers with a link to each one, so you can check exactly where it came from.
@@ -57,6 +59,11 @@ The library covers **England**. Wales, Scotland and Northern Ireland have their 
 1. Download `Para-windows.zip`, right-click it and choose **Extract All**.
 2. Open the extracted folder and double-click **Para.exe**. If Windows SmartScreen appears,
    click **More info**, then **Run anyway**.
+
+**Linux** (x86-64: Ubuntu 22.04, Debian 12, Fedora 36 or newer)
+1. Download `Para-linux.tar.gz` and extract it (`tar -xzf Para-linux.tar.gz`).
+2. Run `Para/Para`, or run `Para/install.sh` to add Para to your applications menu (`install.sh --uninstall`
+   removes it). Para opens in its own window; if your system can't show one, it opens in your web browser instead.
 
 **Then** choose an AI engine in the window that opens:
 - **Use an engine I already run.** Click *Find engines on this computer*, or type the server's address
@@ -133,13 +140,22 @@ Your settings, chats and the index of your files are kept in `~/Library/Applicat
 (Mac), `%LOCALAPPDATA%\Para` (Windows) or `~/.local/share/para` (Linux). Your
 files themselves are in `~/Para Files`.
 
-A personal open-source project by [valtomas](https://github.com/valtomas), inspired by
+A personal open-source project by [Tomás Val](https://github.com/valtomas), inspired by
 [Survival LLM](https://github.com/anonnerdfrenzy/survival-llm). Contributions welcome: see [AGENTS.md](AGENTS.md) for
 how the code fits together and [DESIGN.md](DESIGN.md) for the interface.
 
 ## Licence
 
-Code: MIT ([LICENSE](LICENSE)). Library content: Crown copyright, Open Government Licence v3.0.
+Para is free software: you can redistribute it and/or modify it under the terms of the
+[GNU Affero General Public License](LICENSE) as published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version. Copyright (C) 2026 Tomás Val. It comes with no warranty.
+
+In short: use it, share it and change it freely. If you distribute a changed version, or run one as a service for
+other people, you must publish your changes under the same licence.
+
+- Library content: Crown copyright, [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
+- Fonts in `para/static/fonts/`: SIL Open Font License.
+- Contributions: see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 AI makes mistakes. Every answer shows its sources so you can check them against the documents. This is not a
 substitute for professional judgement or for building control approval.

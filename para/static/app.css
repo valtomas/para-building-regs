@@ -502,3 +502,8 @@ input[type=checkbox]:checked { background-color: var(--accent); border-color: va
   .lib-source { grid-template-columns: 84px minmax(0, 1fr); gap: 4px 12px; }
   .lib-source small { grid-column: 2; text-align: left; }
 }
+
+/* The close and delete crosses are drawn, not typed: the ✕ character sits off-centre in most fonts. */
+svg.x { width: 12px; height: 12px; display: block; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
+.icon svg.x { width: 11px; height: 11px; }
+.del svg.x { width: 10px; height: 10px; }

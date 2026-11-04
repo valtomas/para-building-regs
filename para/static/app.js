@@ -96,7 +96,7 @@ function renderChats() {
   for (const c of S.chats) {
     const row = document.createElement("div");
     row.className = "chat-item" + (c.id === chatId ? " active" : "");
-    row.innerHTML = `<button class="open" title="${esc(c.title)}">${esc(c.title || "Chat")}</button><button class="del" title="Delete">✕</button>`;
+    row.innerHTML = `<button class="open" title="${esc(c.title)}">${esc(c.title || "Chat")}</button><button class="del" title="Delete" aria-label="Delete chat"><svg class="x" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button>`;
     $(".open", row).onclick = () => openChat(c.id);
     $(".del", row).onclick = async () => {
       if (!confirm("Delete this chat?")) return;
@@ -495,7 +495,8 @@ $("#checkUpdates").onchange = (e) => api("/api/settings", { method: "POST", body
 $("#checkNow").onclick = async () => { $("#updateView").textContent = "Checking…"; S.updates = await api("/api/updates/check", { method: "POST" }); renderAbout(); refresh(); };
 function renderAbout() {
   const L = S.library;
-  $("#aboutInfo").innerHTML = `<p class="about"><b>Para ${esc(S.version)}</b><br><span class="meta">Regulations library ${esc(L.version || "not installed")} · ${L.sources.length} documents</span></p>`;
+  $("#aboutInfo").innerHTML = `<p class="about"><b>Para ${esc(S.version)}</b><br><span class="meta">Regulations library ${esc(L.version || "not installed")} · ${L.sources.length} documents</span></p>
+    <p class="muted small">Copyright (C) 2026 Tomás Val. Para is free software under the GNU Affero General Public License, version 3 or later, and comes with no warranty. <a href="https://github.com/valtomas/para-building-regs" data-ext>Source code and licence</a>. Library content is Crown copyright under the Open Government Licence v3.0.</p>`;
   const u = S.updates || {};
   let h = "";
   if (u.error) h += `<p class="muted small">Couldn't check for updates: ${esc(u.error)}</p>`;
