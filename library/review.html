@@ -12,7 +12,7 @@
 :root {
   --bg: #f2ebdf; --panel: #faf5ec; --panel-2: #eadfcd; --field: #fffdf8; --ink: #2b1d16; --muted: #5c4a3e;
   --muted-2: #7a6656; --border: #d6c7b2; --border-field: #c9b8a1; --accent: #8a3324; --accent-hover: #6b2419;
-  --accent-2: #f3e4cf; --ok: #4a6420; --warn: #5e3a0a; --warn-bg: #f5e6c8;
+  --accent-2: #f3e4cf; --ok: #4a6420; --warn: #5e3a0a; --warn-bg: #f5e6c8; --danger: #a3291b;
   --display: "Gloock", Georgia, serif; --body: "Newsreader", Georgia, serif;
   --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
 }
@@ -20,7 +20,7 @@
   :root {
     --bg: #1c1411; --panel: #261b17; --panel-2: #30231e; --field: #2a1e19; --ink: #efe4d3; --muted: #b8a593;
     --muted-2: #8a7868; --border: #3d2c25; --border-field: #5c4a3e; --accent: #d9876b; --accent-hover: #e0927a;
-    --accent-2: #3a2620; --ok: #a9c27a; --warn: #f0c98a; --warn-bg: #3a2a14;
+    --accent-2: #3a2620; --ok: #a9c27a; --warn: #f0c98a; --warn-bg: #3a2a14; --danger: #f08a7a;
   }
 }
 * { box-sizing: border-box; }
@@ -52,6 +52,8 @@ button:focus-visible, textarea:focus-visible { outline: 3px solid var(--accent-2
 .state.reviewed { color: var(--ok); }
 .state.todo { color: var(--muted-2); }
 .state.stale { color: var(--warn); background: var(--warn-bg); border-color: transparent; }
+.state.rejected { color: var(--danger); }
+button.danger { border-color: var(--danger); color: var(--danger); }
 .text { white-space: pre-wrap; margin: 0 0 14px; }
 textarea { width: 100%; min-height: 220px; font: 16px/1.55 var(--body); color: var(--ink); background: var(--field);
   border: 1px solid var(--border-field); border-radius: 10px; padding: 12px; margin: 0 0 14px; resize: vertical; }
@@ -67,12 +69,13 @@ textarea { width: 100%; min-height: 220px; font: 16px/1.55 var(--body); color: v
   <div class="eyebrow">Para library · drawings</div>
   <h1>Review drawing descriptions</h1>
   <p class="intro">A vision model wrote these from each drawing. Check each one against the image: it should say only
-    what the drawing shows, with the labels and figures exactly as drawn. Correct it if needed, then approve it.
+    what the drawing shows, with the labels and figures exactly as drawn. Correct it if needed, then approve it; reject it if the image is cut short or the description can't be put right.
     Only approved descriptions go into the library, labelled as written by AI and checked by a person.</p>
   <div class="bar" role="toolbar" aria-label="Show">
     <button class="tab" data-show="todo" aria-pressed="true">To review</button>
     <button class="tab" data-show="stale" aria-pressed="false">Changed since review</button>
     <button class="tab" data-show="reviewed" aria-pressed="false">Reviewed</button>
+    <button class="tab" data-show="rejected" aria-pressed="false">Rejected</button>
     <button class="tab" data-show="all" aria-pressed="false">All</button>
     <span class="count" id="count"></span>
   </div>
@@ -81,8 +84,8 @@ textarea { width: 100%; min-height: 220px; font: 16px/1.55 var(--body); color: v
 <script>
 let items = [], show = "todo";
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
-const kind = (it) => (it.stale ? "stale" : it.reviewed ? "reviewed" : "todo");
-const label = { todo: "To review", reviewed: "Reviewed", stale: "Image changed since review" };
+const kind = (it) => (it.stale ? "stale" : it.reviewed ? "reviewed" : it.rejected ? "rejected" : "todo");
+const label = { todo: "To review", reviewed: "Reviewed", rejected: "Rejected", stale: "Image changed since review" };
 
 async function load() {
   items = await (await fetch("/api/items")).json();
@@ -93,7 +96,7 @@ function render() {
   const shown = items.filter((it) => show === "all" || kind(it) === show);
   const n = (k) => items.filter((it) => kind(it) === k).length;
   document.getElementById("count").textContent =
-    `${n("todo")} to review · ${n("reviewed")} reviewed · ${n("stale")} changed · ${items.length} written`;
+    `${n("todo")} to review · ${n("reviewed")} reviewed · ${n("rejected")} rejected · ${n("stale")} changed · ${items.length} written`;
   document.getElementById("list").innerHTML = shown.length ? shown.map((it) => `
     <article class="card" data-key="${esc(it.key)}">
       <div class="img"><img src="/image?key=${encodeURIComponent(it.key)}" alt="${esc(it.source + " " + it.label)}"
@@ -108,7 +111,7 @@ function render() {
         <div class="actions">
           <button class="primary" data-act="approve">${it.reviewed && !it.stale ? "Approved" : "Approve"}</button>
           <button data-act="edit">Edit</button>
-          ${it.reviewed ? `<button data-act="unapprove">Withdraw approval</button>` : ""}
+          ${it.reviewed || it.rejected ? `<button data-act="unapprove">${it.rejected ? "Undo rejection" : "Withdraw approval"}</button>` : `<button class="danger" data-act="reject">Reject</button>`}
         </div>
       </div>
     </article>`).join("") : `<p class="empty">Nothing here.</p>`;
@@ -118,9 +121,9 @@ function render() {
   });
 }
 
-async function save(key, description, approve) {
+async function save(key, description, approve, reject = false) {
   const r = await fetch("/api/save", { method: "POST", headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ key, description, approve }) });
+    body: JSON.stringify({ key, description, approve, reject }) });
   if (!r.ok) { alert("Couldn't save: " + (await r.text())); return; }
   const rec = await r.json();
   const i = items.findIndex((x) => x.key === key);
@@ -155,6 +158,8 @@ document.addEventListener("click", (e) => {
     save(key, area.value, false);
   } else if (b.dataset.act === "approve") {
     save(key, area ? area.value : null, true);
+  } else if (b.dataset.act === "reject") {
+    save(key, null, false, true);
   } else if (b.dataset.act === "unapprove") {
     save(key, null, false);
   }

@@ -82,13 +82,14 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   drawing.
 - **Descriptions of drawings**: `library/describe.py run` asks a vision model (default Gemma 4 26B on Lemonade) to
   describe each diagram from its image, and saves `library/descriptions/<key>.json` (model, date, image SHA-256,
-  `reviewed: false`). `describe.py review` opens a page where a person approves or corrects each one. The build
-  adds only reviewed descriptions whose image hash still matches, after the passage text and labelled "Description
-  of the drawing (written by AI from the image, checked by a person):"; the reader shows them under the image, and
-  the prompt says they come second to the document's text. Rules: never mark a description reviewed yourself
-  (only a person, on the review page, may); never regenerate one whose image is unchanged; never overwrite a
-  reviewed one (if its image changes, it leaves the library until a person approves it again). The key
-  (`ADB1_Diagram-3.8_p40`) names the figure across builds, because rowids don't.
+  `reviewed: false`). `describe.py review` opens a page where a person approves, corrects or rejects each one (reject a
+  crop that is cut short: it isn't described again until the image changes). The build adds only reviewed descriptions
+  whose image hash still matches, after the passage text and labelled "Description of the drawing (written by AI from
+  the image, checked by a person):"; the reader shows them under the image, and the prompt says they come second to the
+  document's text. Rules: never mark a description reviewed yourself (only a person, on the review page, may); never
+  regenerate one whose image is unchanged; never overwrite a reviewed one (if its image changes, it leaves the library
+  until a person approves it again). The key (`ADB1_Diagram-3.8_p40`) names the figure across builds, because rowids
+  don't.
 - **Ids**: regulations passages are `r<rowid>`, the person's files `f<rowid>`. Rowids change between library
   builds, so saved chats can point at a different passage after an update. Don't build features that assume they
   are stable across versions.

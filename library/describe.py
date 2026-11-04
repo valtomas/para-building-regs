@@ -43,7 +43,8 @@ each label, dimension and symbol refers to, and how the parts relate to each oth
 figures. If the drawing has separate parts (a., b., c.), describe each in turn.
 
 Don't state requirements or explain the regulations, and don't guess at anything you can't see. If a part is unclear,
-say so. Plain British English, no headings, 60 to 200 words."""
+say so. If the image is cut off or shows mostly running text rather than a drawing, say only that. Plain British
+English, no headings, 60 to 200 words."""
 
 
 def figure_key(short, label, page):
@@ -169,11 +170,11 @@ def run(args):
 
 def status(args):
     figs = figures_in(args.library)
-    counts = {"missing": 0, "to review": 0, "reviewed": 0, "changed since review": 0}
+    counts = {"missing": 0, "to review": 0, "reviewed": 0, "rejected": 0, "changed since review": 0}
     for fig in figs:
         rec, h = load(fig["key"]), image_hash(fig["png"])
         key = ("missing" if rec is None else "changed since review" if stale(rec, h)
-               else "reviewed" if rec.get("reviewed") else "to review")
+               else "reviewed" if rec.get("reviewed") else "rejected" if rec.get("rejected") else "to review")
         counts[key] += 1
     print(f"{len(figs)} diagrams: " + ", ".join(f"{v} {k}" for k, v in counts.items()))
 
@@ -190,8 +191,10 @@ def review_items(figs):
     return items
 
 
-def approve(fig, description, approved=True):
-    """A person checked (and maybe corrected) a description against the figure's current image."""
+def approve(fig, description, approved=True, rejected=False):
+    """A person checked (and maybe corrected) a description against the figure's current image, or rejected it (a
+    crop that is cut short, a description that can't be put right). A rejected one stays out of the library and
+    isn't written again until the image changes."""
     rec = load(fig["key"])
     if rec is None:
         return None
@@ -199,8 +202,9 @@ def approve(fig, description, approved=True):
     if text != rec["description"]:
         rec.setdefault("model_description", rec["description"])  # what the model wrote, kept for the record
         rec["description"] = text
-    rec["reviewed"] = bool(approved)
-    if approved:
+    rec["reviewed"] = bool(approved) and not rejected
+    rec["rejected"] = bool(rejected)
+    if approved or rejected:
         rec["image_sha256"] = image_hash(fig["png"])
         rec["reviewed_date"] = datetime.date.today().isoformat()
     save(rec)
@@ -248,7 +252,8 @@ class ReviewHandler(http.server.BaseHTTPRequestHandler):
             return self._send(404, {"error": "Not found"})
         body = json.loads(self.rfile.read(int(self.headers.get("Content-Length") or 0)) or b"{}")
         fig = self.figs.get(str(body.get("key", "")))
-        rec = approve(fig, body.get("description"), approved=bool(body.get("approve"))) if fig else None
+        rec = approve(fig, body.get("description"), approved=bool(body.get("approve")),
+                      rejected=bool(body.get("reject"))) if fig else None
         return self._send(200 if rec else 404, rec or {"error": "No such description"})
 
 

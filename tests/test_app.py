@@ -233,6 +233,12 @@ check(not describe.needs_writing(rec, describe.image_hash(other_png)) and descri
       and describe.usable("K_Diagram-1_p1", other_png) is None,
       "a reviewed description is never overwritten, and leaves the library if its image changes")
 
+describe.save({"key": "K_Diagram-2_p2", "image_sha256": h, "reviewed": False, "description": "Running text."})
+describe.approve({"key": "K_Diagram-2_p2", "png": TINY_PNG}, None, approved=True, rejected=True)
+rec = describe.load("K_Diagram-2_p2")
+check(rec["rejected"] and not rec["reviewed"] and describe.usable("K_Diagram-2_p2", TINY_PNG) is None
+      and not describe.needs_writing(rec, h) and describe.needs_writing(rec, describe.image_hash(other_png)),
+      "a rejected description stays out, and is written again only for a new image")
 model_text = describe.write_description(
     Client(fake_url, "", "fake-model"),
     {"source": "ADK", "caption": "Diagram 1.1 Rise and going", "drawing_text": "Rise; Going", "png": TINY_PNG})
