@@ -5,6 +5,7 @@
   const box = document.getElementById("downloads");
   const isMac = /Mac/i.test(navigator.platform || navigator.userAgent);
   const isWin = /Win/i.test(navigator.platform || navigator.userAgent);
+  const isLinux = !isMac && !isWin && /Linux|X11/i.test(navigator.platform || navigator.userAgent);
 
   function link(href, label, sub, primary) {
     const a = document.createElement("a");
@@ -32,12 +33,13 @@
     .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
     .then((rel) => {
       const assets = Object.fromEntries((rel.assets || []).map((a) => [a.name, a]));
-      const mac = assets["Para-mac.zip"], win = assets["Para-windows.zip"];
-      if (!mac && !win) return noRelease();
+      const mac = assets["Para-mac.zip"], win = assets["Para-windows.zip"], lin = assets["Para-linux.tar.gz"];
+      if (!mac && !win && !lin) return noRelease();
       box.textContent = "";
       const mb = (a) => Math.round(a.size / 2 ** 20) + " MB";
-      if (mac) box.appendChild(link(mac.browser_download_url, "Download for Mac", mb(mac), isMac || !isWin));
+      if (mac) box.appendChild(link(mac.browser_download_url, "Download for Mac", mb(mac), isMac || (!isWin && !isLinux)));
       if (win) box.appendChild(link(win.browser_download_url, "Download for Windows", mb(win), isWin));
+      if (lin) box.appendChild(link(lin.browser_download_url, "Download for Linux", mb(lin), isLinux));
       const v = document.createElement("p");
       v.className = "fine";
       v.textContent = "Version " + String(rel.tag_name || "").replace(/^v/, "") + ". ";
@@ -47,8 +49,9 @@
       v.appendChild(notes);
       box.appendChild(v);
       const hero = document.querySelector("#heroActions .btn.primary");
-      const mine = isWin ? win : mac;
-      if (hero && mine) { hero.href = mine.browser_download_url; hero.textContent = isWin ? "Download for Windows" : "Download for Mac"; }
+      const mine = isWin ? win : isLinux ? lin : mac;
+      const label = isWin ? "Download for Windows" : isLinux ? "Download for Linux" : "Download for Mac";
+      if (hero && mine) { hero.href = mine.browser_download_url; hero.textContent = label; }
     })
     .catch(noRelease);
 })();
