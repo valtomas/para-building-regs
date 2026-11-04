@@ -88,11 +88,13 @@ def _is_body(ln, column, left=None, body_h=0):
 def _column(cap_lines, lines, w, h, body_h):
     """The column a caption sits in, (x0, x1), when running text sits beside it in the other column: then the figure
     is set in one column, and the text beside it mustn't cut it short. None for a figure across the page. Only lines
-    of running text a column wide count, not the cells of a table across the page."""
+    of running text a column wide count, not the cells of a table across the page; so does a second figure's caption,
+    for two drawings set side by side (ADE)."""
     mid = w / 2
 
-    def wide(ln):  # a line of running text a column wide, away from the page's header and footer
-        return ln.x1 - ln.x0 > 0.35 * w and ln.y1 - ln.y0 >= 0.9 * body_h and 0.08 * h < ln.y0 < 0.93 * h
+    def wide(ln):  # a line of running text a column wide, or another figure's caption, away from header and footer
+        return ((ln.x1 - ln.x0 > 0.35 * w and ln.y1 - ln.y0 >= 0.9 * body_h or _is_caption(ln))
+                and 0.08 * h < ln.y0 < 0.93 * h)
     cx0, cx1 = min(x.x0 for x in cap_lines), max(x.x1 for x in cap_lines)
     y0, y1 = min(x.y0 for x in cap_lines) - 6, max(x.y1 for x in cap_lines) + 40  # beside the caption or just below
     if cx0 > mid - 10:
@@ -159,7 +161,8 @@ def find(pdf, skip_pages=()):
             gap_above, gap_below = ln.y0 - above, below - cap_bottom
             found.append({"label": cap[0], "continued": cap[1], "page": pno, "kind": cap[0].split()[0],
                           "cap": (ln.y0, cap_bottom), "above": above, "below": below_strict, "w": w, "h": h,
-                          "lines": [x for x in lines if beside(x)], "cap_lines": cap_lines, "col": col})
+                          "lines": [x for x in lines if beside(x)], "cap_lines": cap_lines, "col": col,
+                          "body_h": body_h})
             # Tables have their caption above; whether diagram captions sit above or below their drawing differs
             # between documents, so each document votes with the captions where only one side has room.
             if cap[0].startswith(("Diagram", "Figure")):
@@ -168,7 +171,7 @@ def find(pdf, skip_pages=()):
                 elif gap_below > 60 and gap_above < 25:
                     votes["above"] += 1
     caption_below = votes["below"] > votes["above"]
-    out = []
+    out, greys = [], {}
     for f in found:
         if f["kind"] == "Table" or not caption_below:
             y0, y1 = f["cap"][0] - 4, f["below"] - 3  # caption, then the drawing or table under it
@@ -183,6 +186,14 @@ def find(pdf, skip_pages=()):
         else:
             x0 = max(0, min(xs + [f["w"] * 0.08]) - 8)
             x1 = min(f["w"], max(xs + [f["w"] * 0.92]) + 8)
+        # then down to where the drawing's ink is, with the running text (text as big as the body's) taken out
+        if f["page"] not in greys:
+            greys[f["page"]] = page_grey(pdf, f["page"])
+        running = [x for x in inside if x.y1 - x.y0 >= 0.9 * f["body_h"]]
+        tight = ink_box(greys[f["page"]], (x0, max(0, y0), x1, min(f["h"], y1)), running, f["cap_lines"])
+        if tight:
+            x0, y0, x1, y1 = tight
+            inside = [x for x in inside if x.y0 >= y0 - 1 and x.y1 <= y1 + 1]
         labels = _labels([x for x in inside if x not in f["cap_lines"]])
         words = collections.Counter(w for x in inside if x not in f["cap_lines"] for w in x.text.split())
         out.append({"label": f["label"], "continued": f["continued"], "kind": f["kind"], "page": f["page"],
@@ -203,6 +214,45 @@ def _labels(lines):
         if len(re.findall(r"[A-Za-z]{2,}", text)) >= 2 or re.search(r"\d+(\.\d+)?\s?(m|mm)\b", text):
             out.append(re.sub(r"\s+", " ", text).strip())
     return out
+
+
+def page_grey(pdf, page):
+    """A page rendered in grey at one pixel per point: (width, height, bytes, a row at a time)."""
+    raw = subprocess.run(["pdftoppm", "-gray", "-r", "72", "-f", str(page), "-l", str(page), "-singlefile", pdf],
+                         capture_output=True, check=True).stdout
+    m = re.match(rb"P5\s+(\d+)\s+(\d+)\s+255\s", raw)
+    w, h = int(m.group(1)), int(m.group(2))
+    return w, h, bytearray(raw[m.end():m.end() + w * h])
+
+
+INK = bytes(1 if v < 200 else 0 for v in range(256))  # darker than this is ink, not the white page
+
+
+def ink_box(grey, box, text_lines, keep):
+    """The part of a box that has ink once the running text is taken out: the drawing's lines, fills and frame, its
+    small labels, and the table's rules. The text extractor can't see drawings, so a crop found from text alone runs
+    on into an unnumbered paragraph or heading; on the rendered page, that text is blank once it's whited out.
+    `keep` (the caption) is always kept. None when too little ink is left to go by (a table of plain text)."""
+    w, h, px = grey
+    x0, y0, x1, y1 = (max(0, int(box[0])), max(0, int(box[1])), min(w, int(box[2]) + 1), min(h, int(box[3]) + 1))
+    px = bytearray(px)
+    for ln in text_lines:
+        lx0, lx1 = max(x0, int(ln.x0) - 1), min(x1, int(ln.x1) + 2)
+        if lx1 > lx0:
+            for y in range(max(y0, int(ln.y0)), min(y1, int(ln.y1) + 1)):
+                px[y * w + lx0:y * w + lx1] = b"\xff" * (lx1 - lx0)
+    rows, left, right = [], x1, x0
+    for y in range(y0, y1):
+        line = bytes(px[y * w + x0:y * w + x1]).translate(INK)
+        first = line.find(1)
+        if first >= 0:
+            rows.append(y)
+            left, right = min(left, x0 + first), max(right, x0 + line.rfind(1))
+    if len(rows) < 30:
+        return None
+    k = [min(x.x0 for x in keep), min(x.y0 for x in keep), max(x.x1 for x in keep), max(x.y1 for x in keep)]
+    return (max(box[0], min(left, k[0]) - 6), max(box[1], min(rows[0], k[1]) - 4),
+            min(box[2], max(right, k[2]) + 6), min(box[3], max(rows[-1], k[3]) + 4))
 
 
 def render(pdf, page, box, out_path, dpi=DPI):
