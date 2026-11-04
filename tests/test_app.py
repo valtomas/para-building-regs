@@ -264,6 +264,16 @@ check(figures._column(cap, cap + beside, 595, 842, 14) == (326, 535)
                           table_head, 595, 842, 14) is None,
       "a figure set in one column of two is cropped to that column; a table across the page is not")
 
+# figures: a crop is narrowed to the drawing's ink, so a paragraph swallowed below the drawing is left out
+page = bytearray(b"\xff" * 200 * 300)
+for y in list(range(20, 120)) + list(range(200, 212)):  # a drawing, then a line of running text
+    page[y * 200 + 30:y * 200 + 170] = b"\x00" * 140
+para = L(30, 200, 170, 212, "The next paragraph, which doesn't start with a paragraph number", 9)
+caption = L(30, 8, 120, 18, "Diagram 1 A drawing", 1)
+tight = figures.ink_box((200, 300, page), (10, 5, 190, 290), [para], [caption])
+check(tight is not None and 115 <= tight[3] <= 130 and tight[1] <= 8,
+      "a figure's crop stops where its drawing does, not at the next numbered paragraph")
+
 # built-in engine: llama.cpp's "latest" release can have no binaries; builds are pre-releases
 from para import engine  # noqa: E402
 
