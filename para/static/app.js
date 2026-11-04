@@ -71,12 +71,13 @@ async function refresh() {
   $("#reasoning").value = s.reasoning || "auto";
   $("#length").value = s.length || "normal";
   $("#version").textContent = `Version ${S.version} · library ${S.library.version || "none"}`;
-  $("#filesCount").textContent = S.files.length ? `(${S.files.length})` : "";
+  $("#filesCount").textContent = S.files.length || "";
+  $("#libCount").textContent = S.library.sources.length || "";
   const b = $("#engineBadge");
   const e = s.engine;
-  if (!e.mode) { b.className = "badge none"; b.textContent = "⚠ No AI engine set up"; b.onclick = () => openSettings(); }
-  else if (s.private) { b.className = "badge private"; b.textContent = "🔒 Private: runs on " + (e.mode === "bundled" ? "this computer" : "your machine/network"); b.onclick = null; }
-  else { b.className = "badge remote"; b.textContent = "☁ Questions go to " + hostOf(e.base_url); b.onclick = () => openSettings(); }
+  if (!e.mode) { b.className = "badge none"; b.textContent = "No AI engine set up"; b.onclick = () => openSettings(); }
+  else if (s.private) { b.className = "badge private"; b.textContent = "Private: runs on " + (e.mode === "bundled" ? "this computer" : "your machine or network"); b.onclick = null; }
+  else { b.className = "badge remote"; b.textContent = "Questions go to " + hostOf(e.base_url); b.onclick = () => openSettings(); }
   const u = S.updates || {};
   const note = $("#updateNote");
   if (u.app || u.library) {
@@ -165,14 +166,14 @@ function addAssistant() {
       const li = document.createElement("li");
       if (ev.type === "search") {
         searches++;
-        li.innerHTML = `🔎 Searched “${esc(ev.query)}” — ${ev.results.length} result${ev.results.length === 1 ? "" : "s"}`;
+        li.innerHTML = `Searched “${esc(ev.query)}” · ${ev.results.length} result${ev.results.length === 1 ? "" : "s"}`;
       } else if (ev.type === "read" || ev.type === "show") {
         reads += ev.type === "read" ? 1 : 0;
         citeInfo[ev.id] = citeInfo[ev.id] || ev;
-        li.innerHTML = `${ev.type === "read" ? "📖 Read" : "👁 Showed"} <button class="src" data-pid="${esc(ev.id)}">${esc(ev.source)} ${esc(ev.ref || "")}${ev.heading ? " — " + esc(ev.heading) : ""}</button>`;
+        li.innerHTML = `${ev.type === "read" ? "Read" : "Showed"} <button class="src" data-pid="${esc(ev.id)}">${esc(ev.source)} ${esc(ev.ref || "")}${ev.heading ? " · " + esc(ev.heading) : ""}</button>`;
         if (ev.type === "show") openPassage(ev.id);
       } else if (ev.type === "notice") {
-        li.textContent = "ℹ " + ev.text;
+        li.textContent = ev.text;
       }
       $("ul", act).appendChild(li);
       summary();
@@ -180,7 +181,7 @@ function addAssistant() {
     error(msg) {
       ans.classList.remove("cursor");
       $(".extras", el).insertAdjacentHTML("beforeend", `<div class="error">${esc(msg)}</div>`);
-      if (/engine|Settings|reach/i.test(msg)) $(".extras", el).insertAdjacentHTML("beforeend", `<p><button class="btn" data-settings>Open AI engine settings</button></p>`);
+      if (/engine|Settings|reach/i.test(msg)) $(".extras", el).insertAdjacentHTML("beforeend", `<p><button class="btn small" data-settings>Open AI engine settings</button></p>`);
     },
     finish(done) {
       ans.classList.remove("cursor");
@@ -401,11 +402,11 @@ function renderBundled() {
   $("#modelCards").innerHTML = S.catalog.map((m) => {
     const installed = b.models.includes(m.id);
     const tooBig = m.min_ram_gb > b.ram_gb + 0.5;
-    return `<label class="model-card ${m.id === chosenBundled ? "selected" : ""}">
+    return `<label class="model-card ${m.id === chosenBundled ? "selected" : ""}${tooBig ? " too-big" : ""}">
       <input type="radio" name="bmodel" value="${esc(m.id)}" ${m.id === chosenBundled ? "checked" : ""}>
       <div class="info"><b>${esc(m.name)}</b>${m.id === S.recommended ? '<span class="tag">Recommended</span>' : ""}<br>
-      <small class="muted">${esc(m.about)} ${m.size_gb} GB download · needs ${m.min_ram_gb} GB memory${tooBig ? " — too big for this computer" : ""}</small></div>
-      ${installed ? `<span class="muted small">Installed</span> <button type="button" class="btn danger" data-remove="${esc(m.id)}">Delete</button>`
+      <small class="muted">${esc(m.about)}</small><small class="meta">${m.size_gb} GB download · needs ${m.min_ram_gb} GB memory${tooBig ? " — too big for this computer" : ""}</small></div>
+      ${installed ? `<span class="installed">Installed</span> <button type="button" class="btn danger" data-remove="${esc(m.id)}">Delete</button>`
         : `<button type="button" class="btn" data-install="${esc(m.id)}">Download</button>`}
     </label>`;
   }).join("");
@@ -427,8 +428,8 @@ function renderJob(j) {
   if (!j) { v.innerHTML = ""; return; }
   const pct = j.total ? Math.round(j.done / j.total * 100) : 0;
   const gb = (n) => (n / 2 ** 30).toFixed(1);
-  v.innerHTML = j.state === "running" ? `<div class="small">Downloading ${esc(j.label)}… ${gb(j.done)} of ${j.total ? gb(j.total) : "?"} GB</div><div class="progress"><div style="width:${pct}%"></div></div><button type="button" class="btn" id="cancelJob">Cancel</button>`
-    : j.state === "error" ? `<div class="error">${esc(j.error)}</div>` : `<div class="small" style="color:var(--ok)">Downloaded. Press Save to use it.</div>`;
+  v.innerHTML = j.state === "running" ? `<div class="job-line"><span>Downloading ${esc(j.label)}…</span><span class="meta">${gb(j.done)} of ${j.total ? gb(j.total) : "?"} GB</span></div><div class="progress"><div style="width:${pct}%"></div></div><button type="button" class="btn small" id="cancelJob">Cancel</button>`
+    : j.state === "error" ? `<div class="error">${esc(j.error)}</div>` : `<div class="ok-line">Downloaded. Press Save to use it.</div>`;
   const c = $("#cancelJob"); if (c) c.onclick = () => api("/api/bundled/cancel", { method: "POST" });
 }
 let polling = false;
@@ -481,12 +482,12 @@ $("#checkUpdates").onchange = (e) => api("/api/settings", { method: "POST", body
 $("#checkNow").onclick = async () => { $("#updateView").textContent = "Checking…"; S.updates = await api("/api/updates/check", { method: "POST" }); renderAbout(); refresh(); };
 function renderAbout() {
   const L = S.library;
-  $("#aboutInfo").innerHTML = `<p><b>Para ${esc(S.version)}</b><br><span class="muted small">Regulations library ${esc(L.version || "not installed")} · ${L.sources.length} documents</span></p>`;
+  $("#aboutInfo").innerHTML = `<p class="about"><b>Para ${esc(S.version)}</b><br><span class="meta">Regulations library ${esc(L.version || "not installed")} · ${L.sources.length} documents</span></p>`;
   const u = S.updates || {};
   let h = "";
   if (u.error) h += `<p class="muted small">Couldn't check for updates: ${esc(u.error)}</p>`;
-  if (u.app) h += `<p>Version ${esc(u.app.version)} is available. <button type="button" class="btn" id="getApp">Download</button></p>`;
-  if (u.library) h += `<p>A newer regulations library (${esc(u.library.version)}, ${(u.library.size / 2 ** 20).toFixed(0)} MB) is available. <button type="button" class="btn" id="getLib">Install</button></p><div id="libJob"></div>`;
+  if (u.app) h += `<p class="update-row">Version ${esc(u.app.version)} is available. <button type="button" class="btn" id="getApp">Download</button></p>`;
+  if (u.library) h += `<p class="update-row">A newer regulations library (${esc(u.library.version)}, ${(u.library.size / 2 ** 20).toFixed(0)} MB) is available. <button type="button" class="btn primary" id="getLib">Install</button></p><div id="libJob"></div>`;
   if (u.checked && !u.app && !u.library && !u.error) h += `<p class="muted small">You're up to date.</p>`;
   $("#updateView").innerHTML = h;
   const ga = $("#getApp"); if (ga) ga.onclick = () => openUrl(u.app.url);
@@ -495,7 +496,7 @@ function renderAbout() {
 function renderLibraryJob(j) {
   const v = $("#libJob"); if (!v) return;
   const pct = j.total ? Math.round(j.done / j.total * 100) : 0;
-  v.innerHTML = j.state === "running" ? `<div class="progress"><div style="width:${pct}%"></div></div>` : j.state === "error" ? `<div class="error">${esc(j.error)}</div>` : `<p style="color:var(--ok)">Library updated.</p>`;
+  v.innerHTML = j.state === "running" ? `<div class="progress"><div style="width:${pct}%"></div></div>` : j.state === "error" ? `<div class="error">${esc(j.error)}</div>` : `<p class="ok-line">Library updated.</p>`;
 }
 
 // ---------- files ----------
@@ -506,7 +507,7 @@ function renderFiles() {
   if (!S.files.length) { list.innerHTML = `<p class="muted small">No files yet.</p>`; return; }
   list.innerHTML = S.files.map((f) => `<div class="file-row">
     <div class="info"><div class="name">${esc(f.title)}</div>
-      <div class="muted small">${f.status === "ok" ? `${f.passages} passages` : f.status === "reading" ? "Reading…" : f.status === "empty" ? "No text found (a scan?)" : esc(f.status)}</div>
+      <div class="fstate ${esc(f.status)}">${f.status === "ok" ? `${f.passages} passages` : f.status === "reading" ? "Reading…" : f.status === "empty" ? "No text found (a scan?)" : esc(f.status)}</div>
       <input data-note="${esc(f.key)}" value="${esc(f.note || "")}" placeholder="What is this? (helps the AI, e.g. 'Fire strategy rev C for our project')"></div>
     <button class="btn" data-openfile="${esc(f.key)}">Open</button>
     <button class="btn danger" data-delfile="${esc(f.key)}">Remove</button></div>`).join("");
@@ -557,8 +558,11 @@ const KIND = { "approved-document": "Approved Documents", legislation: "Legislat
 function openLibrary() {
   const groups = {};
   for (const s of S.library.sources) (groups[s.kind] = groups[s.kind] || []).push(s);
-  $("#libSources").innerHTML = S.library.sources.length ? Object.entries(groups).map(([k, items]) => `<div class="group-title">${esc(KIND[k] || k)}</div>` +
-    items.map((s) => `<div class="lib-source" data-key="${esc(s.key)}"><span><b>${esc(s.short)}</b> ${esc(s.title)}</span><small>${esc(s.published || "")}</small></div>`).join("")).join("")
+  $("#libSources").innerHTML = S.library.sources.length ? Object.entries(groups).map(([k, items]) => `<div class="group-title">${esc(KIND[k] || k)}<span class="count">${items.length}</span></div>` +
+    items.map((s) => {
+      const dated = /^\d{4}-\d\d-\d\d$/.test(s.published || "");  // otherwise it's an edition: show it under the title
+      const title = dated || !s.published ? s.title : s.title.replace(s.published, "").replace(/[\s,(]+\)?\s*$/, "");
+      return `<div class="lib-source" data-key="${esc(s.key)}"><b>${esc(s.short)}</b><span>${esc(title)}${s.published && !dated ? `<i>${esc(s.published)}</i>` : ""}</span><small>${dated ? esc(s.published) : ""}</small></div>`; }).join("")).join("")
     : `<p class="muted">No regulations library is installed. Check for updates in Settings.</p>`;
   $$(".lib-source").forEach((el) => el.onclick = () => { dlgL.close(); openSource(el.dataset.key); });
   $("#libResults").innerHTML = "";
@@ -582,7 +586,7 @@ $("#libSearch").addEventListener("input", (e) => {
 async function offerLibrary() {
   if (S.library.sources.length || $("#libOffer")) return;
   const w = $("#welcome"); if (!w) return;
-  w.insertAdjacentHTML("afterbegin", `<div id="libOffer" class="note" style="max-width:620px;margin:0 auto 18px">No regulations library is installed yet. <button class="btn" id="getLibNow">Download it (about 15 MB)</button><div id="libJob"></div></div>`);
+  w.insertAdjacentHTML("afterbegin", `<div id="libOffer" class="note offer"><span class="eyebrow">Library</span>No regulations library is installed yet. <button class="btn primary" id="getLibNow">Download it (about 15 MB)</button><div id="libJob"></div></div>`);
   $("#getLibNow").onclick = async () => {
     try {
       if (!(S.updates && S.updates.library)) S.updates = await api("/api/updates/check", { method: "POST" });
@@ -592,6 +596,10 @@ async function offerLibrary() {
     } catch (e) { $("#libJob").textContent = e.message; }
   };
 }
+
+// ---------- phone menu (below 900 px the sidebar is a drawer) ----------
+$("#menuBtn").onclick = () => $("#sidebar").classList.add("open");
+$("#sidebar").addEventListener("click", (e) => { if (e.target.closest("button")) $("#sidebar").classList.remove("open"); });
 
 // ---------- start ----------
 refresh().then(() => {
