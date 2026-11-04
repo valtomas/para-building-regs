@@ -96,7 +96,7 @@ function renderChats() {
   for (const c of S.chats) {
     const row = document.createElement("div");
     row.className = "chat-item" + (c.id === chatId ? " active" : "");
-    row.innerHTML = `<button class="open" title="${esc(c.title)}">${esc(c.title || "Chat")}</button><button class="del" title="Delete">✕</button>`;
+    row.innerHTML = `<button class="open" title="${esc(c.title)}">${esc(c.title || "Chat")}</button><button class="del" title="Delete" aria-label="Delete chat"><svg class="x" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button>`;
     $(".open", row).onclick = () => openChat(c.id);
     $(".del", row).onclick = async () => {
       if (!confirm("Delete this chat?")) return;
