@@ -2,12 +2,15 @@
 
 python3 tests/test_app.py
 """
+import importlib.util
 import json
 import os
+import struct
 import sys
 import tempfile
 import threading
 import urllib.request
+import zlib
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
@@ -216,12 +219,24 @@ check(describe.figure_key("ADB1", "Diagram 3.8", 40) == "ADB1_Diagram-3.8_p40" a
       describe.figure_key("ADM amendments 2024", "Diagram 1.2", 5) == "ADM-amendments-2024_Diagram-1.2_p5",
       "figure keys name the document, the figure and the page")
 describe.DESC_DIR = os.path.join(TMP, "descriptions")
-other_png = TINY_PNG + b"x"
+
+
+def grey_png(w, h, shade=lambda x, y: 255):
+    """A greyscale PNG, so the tests need no image library."""
+    rows = b"".join(b"\x00" + bytes(shade(x, y) for x in range(w)) for y in range(h))
+
+    def chunk(kind, data):
+        return struct.pack(">I", len(data)) + kind + data + struct.pack(">I", zlib.crc32(kind + data))
+    return (b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", w, h, 8, 0, 0, 0, 0))
+            + chunk(b"IDAT", zlib.compress(rows)) + chunk(b"IEND", b""))
+
+
+other_png = grey_png(3, 2)
 h = describe.image_hash(TINY_PNG)
 describe.save({"key": "K_Diagram-1_p1", "image_sha256": h, "reviewed": False, "description": "A plan."})
 rec = describe.load("K_Diagram-1_p1")
-check(not describe.needs_writing(rec, h) and describe.needs_writing(rec, describe.image_hash(other_png))
-      and describe.needs_writing(None, h), "a description is written again only when its image changed")
+check(not describe.needs_writing(rec, TINY_PNG) and describe.needs_writing(rec, other_png)
+      and describe.needs_writing(None, TINY_PNG), "a description is written again only when its image changed")
 check(describe.usable("K_Diagram-1_p1", TINY_PNG) is None, "an unreviewed description stays out of the library")
 fig1 = {"key": "K_Diagram-1_p1", "png": TINY_PNG}
 describe.approve(fig1, "A plan of a flat.")
@@ -229,7 +244,7 @@ rec = describe.load("K_Diagram-1_p1")
 check(rec["reviewed"] and rec["description"] == "A plan of a flat." and rec["model_description"] == "A plan."
       and describe.usable("K_Diagram-1_p1", TINY_PNG) == "A plan of a flat.",
       "approving keeps the person's correction and what the model wrote")
-check(not describe.needs_writing(rec, describe.image_hash(other_png)) and describe.stale(rec, describe.image_hash(other_png))
+check(not describe.needs_writing(rec, other_png) and describe.stale(rec, other_png)
       and describe.usable("K_Diagram-1_p1", other_png) is None,
       "a reviewed description is never overwritten, and leaves the library if its image changes")
 
@@ -237,12 +252,59 @@ describe.save({"key": "K_Diagram-2_p2", "image_sha256": h, "reviewed": False, "d
 describe.approve({"key": "K_Diagram-2_p2", "png": TINY_PNG}, None, approved=True, rejected=True)
 rec = describe.load("K_Diagram-2_p2")
 check(rec["rejected"] and not rec["reviewed"] and describe.usable("K_Diagram-2_p2", TINY_PNG) is None
-      and not describe.needs_writing(rec, h) and describe.needs_writing(rec, describe.image_hash(other_png)),
+      and not describe.needs_writing(rec, TINY_PNG) and describe.needs_writing(rec, other_png),
       "a rejected description stays out, and is written again only for a new image")
 model_text = describe.write_description(
     Client(fake_url, "", "fake-model"),
     {"source": "ADK", "caption": "Diagram 1.1 Rise and going", "drawing_text": "Rise; Going", "png": TINY_PNG})
 check(model_text.startswith("A drawing"), "a description is written from the image through the engine's API")
+
+# descriptions: the same picture rendered by another PDF renderer still matches; a different crop doesn't
+if importlib.util.find_spec("PIL"):
+    drawing = grey_png(60, 40, lambda x, y: 0 if 10 < x < 50 and y in (10, 30) else 255)
+    shaded = grey_png(60, 40, lambda x, y: 0 if 10 < x < 50 and y in (10, 30) else 250 if y in (9, 11) else 255)
+    taller = grey_png(60, 48, lambda x, y: 0 if 10 < x < 50 and y in (10, 30) else 255)
+    rec = {"image_sha256": describe.image_hash(drawing), "image_sig": describe.image_sig(drawing)}
+    check(describe.same_image(rec, shaded) and not describe.same_image(rec, taller),
+          "a description follows its drawing across PDF renderers, but not to a different crop")
+else:
+    print("skip renderer tolerance (no Pillow)")
+
+states = {}
+for key, rec, png in [("K_Diagram-3_p3", None, TINY_PNG),
+                      ("K_Diagram-4_p4", {"image_sha256": h, "reviewed": False, "description": "x"}, TINY_PNG),
+                      ("K_Diagram-5_p5", {"image_sha256": h, "reviewed": False, "description": "x"}, other_png),
+                      ("K_Diagram-6_p6", {"image_sha256": h, "reviewed": True, "description": "x"}, other_png),
+                      ("K_Diagram-7_p7", {"image_sha256": h, "reviewed": True, "description": "x"}, TINY_PNG)]:
+    if rec:
+        describe.save({"key": key, **rec})
+    states[key] = (describe.state(describe.load(key), png), png)
+figs = [{"key": k, "source": "ADK", "label": "Diagram " + k.split("-")[1].split("_")[0], "page": 1, "png": png}
+        for k, (_st, png) in states.items()]
+pend = describe.pending(figs)
+md = describe.pending_markdown(pend, len(figs))
+check([s for s, _ in states.values()] == ["missing", "draft", "redraft", "changed", "reviewed"]
+      and [p["state"] for p in pend] == ["missing", "draft", "redraft", "changed"]
+      and "4 of the 5 diagrams" in md and "**ADK**: Diagram 6 (p 1)" in md,
+      "the drawings needing a model or a person are listed for the issue, reviewed ones left out")
+
+ramp = {"source": "ADM2", "caption": "Diagram 3 Ramp gradient", "drawing_text": "", "png": TINY_PNG}
+fake_client = Client(fake_url, "", "fake-model")
+bad = describe.check_description(fake_client, ramp, "The second point is at 4m and 1:14.")
+good = describe.check_description(fake_client, ramp, "The second point is at 5m and 1:15.")
+check(not bad["ok"] and bad["notes"] == ["'4m' should be '5m'."] and good == {"ok": True, "notes": []}
+      and describe.parse_check("Looks fine to me.")["notes"] == ["Looks fine to me."],
+      "a second model reading leaves notes for the reviewer, from JSON in a code fence or plain prose")
+describe.save({"key": "K_Diagram-8_p8", "image_sha256": h, "reviewed": False, "description": "At 4m and 1:14."})
+rec = describe.load("K_Diagram-8_p8")
+first = describe.needs_check(rec, TINY_PNG)
+rec["check"] = {**bad, "text": describe.text_hash(rec["description"])}
+describe.save(rec)
+after = describe.needs_check(describe.load("K_Diagram-8_p8"), TINY_PNG)
+describe.approve({"key": "K_Diagram-8_p8", "png": TINY_PNG}, "At 5m and 1:15.", approved=False)
+check(first and not after and describe.needs_check(describe.load("K_Diagram-8_p8"), TINY_PNG)
+      and not describe.load("K_Diagram-8_p8")["reviewed"],
+      "a draft is checked once, again after its text changes, and the check never approves it")
 
 # figures: a drawing's text is smaller than the running text, so a long label doesn't cut the drawing short
 import figures  # noqa: E402

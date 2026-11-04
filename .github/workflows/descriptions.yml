@@ -1,0 +1,104 @@
+name: Drawing descriptions
+
+# After each library build (the weekly one on Mondays, or one run by hand), list the drawings whose description is
+# missing, out of date or waiting for a person, in one open issue labelled "descriptions". No AI is used for that.
+#
+# Drafting is done overnight on a computer with a vision model (python3 library/describe.py auto). It can also run
+# here with a hosted OpenAI-compatible vision model, off unless these are set in the repository's settings:
+#   Variables: DESCRIBE_BASE_URL (e.g. https://api.example.com/v1), DESCRIBE_MODEL, DESCRIBE_LIMIT (optional)
+#   Secret:    DESCRIBE_API_KEY
+# Drafts and the AI check's notes arrive as a pull request. Nothing is approved here: only a person, on the review
+# page, can let a description into the library.
+on:
+  workflow_run:
+    workflows: ["Build and release"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  actions: read
+
+jobs:
+  pending:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event != 'push')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12" }
+      - run: pip install pillow
+      - name: Get the library from the build
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          if [ -z "$RUN_ID" ]; then
+            RUN_ID=$(gh run list --workflow release.yml --status success --json databaseId,event \
+                     -q '[.[] | select(.event != "push")][0].databaseId')
+          fi
+          gh run download "$RUN_ID" -n library -D library/dist
+      - name: List the drawings that need a description, in the "descriptions" issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python library/describe.py --library library/dist/regs.sqlite pending --markdown > pending.md
+          gh label create descriptions --color c99a4a --description "Drawing descriptions to draft or review" \
+            2>/dev/null || true
+          number=$(gh issue list --label descriptions --state open --json number -q '.[0].number')
+          if grep -q "has a description a person has checked" pending.md; then
+            [ -n "$number" ] && gh issue close "$number" --comment "$(cat pending.md)"
+          elif [ -n "$number" ]; then
+            gh issue edit "$number" --body-file pending.md
+          else
+            gh issue create --title "Drawings that need a description" --label descriptions --body-file pending.md
+          fi
+
+  draft:
+    needs: pending
+    if: vars.DESCRIBE_BASE_URL != '' && vars.DESCRIBE_MODEL != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12" }
+      - run: pip install pillow
+      - name: Get the library from the build
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          if [ -z "$RUN_ID" ]; then
+            RUN_ID=$(gh run list --workflow release.yml --status success --json databaseId,event \
+                     -q '[.[] | select(.event != "push")][0].databaseId')
+          fi
+          gh run download "$RUN_ID" -n library -D library/dist
+      - name: Draft and check with the hosted model, and open a pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DESCRIBE_API_KEY: ${{ secrets.DESCRIBE_API_KEY }}
+          BASE_URL: ${{ vars.DESCRIBE_BASE_URL }}
+          MODEL: ${{ vars.DESCRIBE_MODEL }}
+          LIMIT: ${{ vars.DESCRIBE_LIMIT || '40' }}
+        run: |
+          open=$(gh pr list --state open --json headRefName -q '[.[] | select(.headRefName | startswith("descriptions/"))] | length')
+          if [ "$open" != "0" ]; then
+            echo "A pull request of drafts is still open: review and merge it first."; exit 0
+          fi
+          args="--library library/dist/regs.sqlite"
+          python library/describe.py $args run --base-url "$BASE_URL" --model "$MODEL" --limit "$LIMIT"
+          python library/describe.py $args check --base-url "$BASE_URL" --model "$MODEL" --limit "$LIMIT"
+          git add library/descriptions
+          if git diff --cached --quiet; then echo "Nothing to draft or check."; exit 0; fi
+          branch="descriptions/$(date +%F)-hosted"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git commit -q -m "Descriptions: drafted or checked by $MODEL, to review"
+          git push -u origin "$branch"
+          gh pr create --base main --head "$branch" --title "Descriptions to review ($(date +%F), $MODEL)" \
+            --body "Drafted and checked by \`$MODEL\` in the *Drawing descriptions* workflow. Nothing here is approved: check each one against its drawing on the review page (\`python3 library/describe.py review\`), where the AI check's notes show which parts to look at first."

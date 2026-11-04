@@ -36,13 +36,14 @@ passage ids; the app checks every citation. It must stay:
 | `para/static/` | The interface: `index.html`, `app.css`, `app.js` |
 | `library/build.py` | Builds `library/dist/regs.sqlite` from gov.uk (content API + PDFs) and legislation.gov.uk (CLML XML) |
 | `library/figures.py` | Finds diagrams and tables in the PDFs from their captions, renders them to PNG, and takes drawing labels out of the running text |
-| `library/describe.py` | Descriptions of the diagrams: a vision model writes them (`run`), a person checks them on a local review page (`review`, `library/review.html`); kept in `library/descriptions/` |
+| `library/describe.py` | Descriptions of the diagrams: a vision model writes them (`run`) and a second reading leaves notes (`check`), a person approves them on a local review page (`review`, `library/review.html`); `pending` lists what's left, `auto` drafts overnight and opens a pull request; kept in `library/descriptions/` |
 | `library/legislation.py` | Turns legislation XML into passages cited as `reg 7`, `s 120D`, `Sch 1 Pt B` |
 | `library/sources.json` | What goes into the library |
 | `library/check.py` | Compares a new library with the published one and fails the build if a document is missing or much smaller, so a broken rebuild never reaches installed apps |
 | `packaging/` | PyInstaller spec and launcher; `packaging/linux/install.sh` adds the Linux app to the applications menu |
 | `para/qtprobe.py` | Linux: checks in a separate process that Qt can open a window (Qt aborts instead of raising), so the app falls back to the browser |
 | `site/` | The website, pararegs.co.uk: one static page in the app's look; download buttons read the latest GitHub release |
+| `.github/workflows/descriptions.yml` | After each library build: the "descriptions" issue of drawings to draft or review; optional drafting with a hosted model |
 | `.github/workflows/pages.yml` | Publishes `site/` to GitHub Pages, adding the app's fonts and `docs/screenshots/answer-reader.png` |
 | `.github/workflows/release.yml` | Tests on every push; on a `v*` tag: library, Mac and Windows apps, GitHub release; weekly library refresh |
 | `tests/` | `test_app.py` (end to end through the HTTP API) and `fake_llm.py` (a stand-in OpenAI-compatible server) |
@@ -90,16 +91,27 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   its reviewed description out of the library until a person approves it again. The text the AI reads for a
   diagram is its caption plus "Text in the drawing:" (the labels); never present that as a description of the
   drawing.
-- **Descriptions of drawings**: `library/describe.py run` asks a vision model (default Gemma 4 26B on Lemonade) to
-  describe each diagram from its image, and saves `library/descriptions/<key>.json` (model, date, image SHA-256,
-  `reviewed: false`). `describe.py review` opens a page where a person approves, corrects or rejects each one (reject a
-  crop that is cut short: it isn't described again until the image changes). The build adds only reviewed descriptions
-  whose image hash still matches, after the passage text and labelled "Description of the drawing (written by AI from
-  the image, checked by a person):"; the reader shows them under the image, and the prompt says they come second to the
-  document's text. Rules: never mark a description reviewed yourself (only a person, on the review page, may); never
-  regenerate one whose image is unchanged; never overwrite a reviewed one (if its image changes, it leaves the library
-  until a person approves it again). The key (`ADB1_Diagram-3.8_p40`) names the figure across builds, because rowids
+- **Descriptions of drawings**: `library/describe.py run` asks a vision model (`DEFAULT_MODEL`, on Lemonade) to
+  describe each diagram from its image, and saves `library/descriptions/<key>.json` (model, date, the image's SHA-256
+  and a 16 by 16 grey thumbnail, `reviewed: false`). `describe.py check` has a model read each draft against its image
+  and leave notes for the reviewer (`check` in the file); it's advisory and never changes a description or approves
+  one. `describe.py review` opens a page where a person approves, corrects or rejects each one (reject a crop that is
+  cut short: it isn't described again until the image changes). The build adds only reviewed descriptions of the
+  same image, after the passage text and labelled "Description of the drawing (written by AI from the image, checked
+  by a person):"; the reader shows them under the image, and the prompt says they come second to the document's
+  text. "The same image" is the same bytes, or the same size and nearly the same thumbnail (`describe.same_image`),
+  because GitHub's PDF renderer and a person's own can differ by a shade; a moved or recut crop doesn't match.
+  Rules: never mark a description reviewed yourself (only a person, on the review page, may); you may write a
+  corrected draft for a person to review (record it in `corrected_by`, keep `model_description`); never regenerate
+  one whose image is unchanged; never overwrite a reviewed one (if its image changes, it leaves the library until a
+  person approves it again). The key (`ADB1_Diagram-3.8_p40`) names the figure across builds, because rowids
   don't.
+- **The descriptions loop**: after each library build, the *Drawing descriptions* workflow lists what needs a model
+  or a person (`describe.py pending`, no AI) in one issue labelled "descriptions". Drafting runs overnight on a
+  computer with a vision model: `describe.py auto` builds the library in a worktree of the latest main, drafts and
+  checks what's missing, and opens a pull request of drafts (one at a time: it waits while one is open). The same
+  workflow can draft with a hosted model if `DESCRIBE_BASE_URL`, `DESCRIBE_MODEL` (repository variables) and
+  `DESCRIBE_API_KEY` (secret) are set; it's off otherwise.
 - **Ids**: regulations passages are `r<rowid>`, the person's files `f<rowid>`. Rowids change between library
   builds, so saved chats can point at a different passage after an update. Don't build features that assume they
   are stable across versions.
