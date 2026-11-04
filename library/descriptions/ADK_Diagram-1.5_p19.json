@@ -7,6 +7,8 @@
  "model": "Gemma-4-26B-A4B-it-GGUF",
  "date": "2026-11-04",
  "image_sha256": "220b4a62e6a607a523c0f7af9baf2d391b0e6637b59d94bd4736b668c2273f3e",
- "reviewed": false,
- "description": "This diagram, titled \"Diagram 1.5 Dividing flights\", depicts a three-dimensional perspective drawing of a flight of stairs. The drawing shows a set of stairs with handrails on both sides. A dashed vertical line extends from the top of the stairs down through the steps, indicating a division in the flight. An arrowed dimension line at the top of the stairs indicates the width of the flight, accompanied by the text: \"If more than 2m wide the flight should be divided\". Below the stairs, a text label states: \"Divisions of flights should not be more than 2m wide, measured between the inside edges of handrails\". In the top left corner, there is a reference that reads: \"See para 1.15\"."
+ "reviewed": true,
+ "description": "This diagram, titled \"Diagram 1.5 Dividing flights\", depicts a three-dimensional perspective drawing of a flight of stairs. The drawing shows a set of stairs with handrails on both sides. A dashed vertical line extends from the top of the stairs down through the steps, indicating a division in the flight. An arrowed dimension line at the top of the stairs indicates the width of the flight, accompanied by the text: \"If more than 2m wide the flight should be divided\". Below the stairs, a text label states: \"Divisions of flights should not be more than 2m wide, measured between the inside edges of handrails\". In the top left corner, there is a reference that reads: \"See para 1.15\".",
+ "rejected": false,
+ "reviewed_date": "2026-11-04"
 }

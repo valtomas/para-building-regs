@@ -7,6 +7,8 @@
  "model": "Gemma-4-26B-A4B-it-GGUF",
  "date": "2026-11-04",
  "image_sha256": "8f40c279ec684b56ab62a3251d5f35ea1989124f9780a54ee26c06f289dadae9",
- "reviewed": false,
- "description": "This diagram, titled Diagram 1.3 Minimum headroom, depicts a side section profile of a staircase connecting two levels via a flight and landings. The drawing shows a flight of stairs between two landings. A dashed line, labelled 'Pitch line', runs parallel to the slope of the stairs. \n\nThere are three vertical dimension lines indicating the required clearance. The first, on the left, shows a distance of 'At least 2m' from the upper 'Landing' to the 'Pitch line'. The second, in the middle, shows a distance of 'At least 2m' from the 'Pitch line' to the ceiling or structure above. The third, on the right, shows a distance of 'At least 2m' from the lower 'Landing' to the 'Pitch line'. A horizontal dashed line on the right is labelled 'Minimum headroom'. A note in the top left corner reads 'See para 1.11'."
+ "reviewed": true,
+ "description": "This diagram, titled Diagram 1.3 Minimum headroom, depicts a side section profile of a staircase connecting two levels via a flight and landings. The drawing shows a flight of stairs between two landings. A dashed line, labelled 'Pitch line', runs parallel to the slope of the stairs. \n\nThere are three vertical dimension lines indicating the required clearance. The first, on the left, shows a distance of 'At least 2m' from the upper 'Landing' to the 'Pitch line'. The second, in the middle, shows a distance of 'At least 2m' from the 'Pitch line' to the ceiling or structure above. The third, on the right, shows a distance of 'At least 2m' from the lower 'Landing' to the 'Pitch line'. A horizontal dashed line on the right is labelled 'Minimum headroom'. A note in the top left corner reads 'See para 1.11'.",
+ "rejected": false,
+ "reviewed_date": "2026-11-04"
 }
