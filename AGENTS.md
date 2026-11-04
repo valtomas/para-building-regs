@@ -76,8 +76,10 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   you change either, compare passage counts and refs per document before and after.
 - **Diagrams and tables**: `library/figures.py` finds each one from its caption and crops it from the page. Whether
   a document puts diagram captions above or below the drawing is decided per document by a vote; tables are always
-  captioned above. When you change it, render a few figures from ADB, ADK, ADL and ADM and look at them: a crop
-  that cuts a drawing short or swallows the next paragraph is easy to miss in the numbers. The text the AI reads for
+  captioned above. On a page set in two columns, a figure whose caption has running text beside it is cropped to its
+  own column (ADH, ADE, ADJ, ADM Vol 2); one across the page is not. When you change it, render a few figures from
+  ADB, ADE, ADH, ADK, ADL and ADM and look at them: a crop that cuts a drawing short or swallows the next paragraph
+  is easy to miss in the numbers. The text the AI reads for
   a diagram is its caption plus "Text in the drawing:" (the labels); never present that as a description of the
   drawing.
 - **Descriptions of drawings**: `library/describe.py run` asks a vision model (default Gemma 4 26B on Lemonade) to

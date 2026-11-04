@@ -85,6 +85,44 @@ def _is_body(ln, column, left=None, body_h=0):
                                                                     and at_margin)
 
 
+def _column(cap_lines, lines, w, h, body_h):
+    """The column a caption sits in, (x0, x1), when running text sits beside it in the other column: then the figure
+    is set in one column, and the text beside it mustn't cut it short. None for a figure across the page. Only lines
+    of running text a column wide count, not the cells of a table across the page."""
+    mid = w / 2
+
+    def wide(ln):  # a line of running text a column wide, away from the page's header and footer
+        return ln.x1 - ln.x0 > 0.35 * w and ln.y1 - ln.y0 >= 0.9 * body_h and 0.08 * h < ln.y0 < 0.93 * h
+    cx0, cx1 = min(x.x0 for x in cap_lines), max(x.x1 for x in cap_lines)
+    y0, y1 = min(x.y0 for x in cap_lines) - 6, max(x.y1 for x in cap_lines) + 40  # beside the caption or just below
+    if cx0 > mid - 10:
+        other = [ln for ln in lines if ln.x1 < mid + 10 and wide(ln)]
+        right = [x for x in lines if x.x0 > mid]  # starting at its own margin, past the ends of the other's lines
+        col = min([x.x0 for x in right] + [cx0]) - 6, max([x.x1 for x in right] + [cx1]) + 8
+    elif cx1 < mid + 10:
+        other = [ln for ln in lines if ln.x0 > mid - 10 and wide(ln)]
+        col = min([x.x0 for x in lines if x.x1 < mid] + [cx0]) - 8, mid
+    else:
+        return None
+    return col if any(ln.y1 > y0 and ln.y0 < y1 for ln in other) else None
+
+
+def _bounds(lines, body_h, top_limit, bottom_limit):
+    """What can end a figure, among the lines of a page or of one of its columns: (running text or captions, the
+    starts of numbered paragraphs, headings and captions)."""
+    column = max(ln.x1 for ln in lines) - min(ln.x0 for ln in lines)
+    xs = sorted(ln.x0 for ln in lines)
+    left = xs[len(xs) // 10]
+    body_or_caption = [ln for ln in lines if (_is_body(ln, column, left, body_h) or _is_caption(ln))
+                       and top_limit < ln.y0 < bottom_limit and not NOTE.match(ln.text)]
+    # Going down from a caption (tables, and diagrams captioned above), long lines may be table rows or notes,
+    # so only a numbered paragraph, a heading or another caption ends the figure.
+    starts = [ln for ln in lines if (_is_caption(ln) or HEADING.match(ln.text) or
+                                     (PARA_START.match(ln.text) and _is_body(ln, column, left, body_h)))
+              and top_limit < ln.y0 < bottom_limit]
+    return body_or_caption, starts
+
+
 def find(pdf, skip_pages=()):
     """Figures in a PDF: [{label, continued, page (1-based), box (x0, y0, x1, y1) in points, labels: [text],
     words: Counter of words inside the drawing}]."""
@@ -95,19 +133,10 @@ def find(pdf, skip_pages=()):
     for pno, (w, h, lines) in enumerate(pages, start=1):
         if pno in skip_pages or not lines:
             continue
-        column = max((ln.x1 for ln in lines), default=w) - min((ln.x0 for ln in lines), default=0)
-        xs = sorted(ln.x0 for ln in lines)
-        left = xs[len(xs) // 10]
         top_limit, bottom_limit = h * 0.08, h * 0.93
         # a page with plenty of running text has its own: pages replaced by an amendment may be set smaller
         body_h = body_height([ln for ln in lines if ln.x1 - ln.x0 >= w / 3], least=20) or doc_body_h
-        body_or_caption = [ln for ln in lines if (_is_body(ln, column, left, body_h) or _is_caption(ln))
-                           and top_limit < ln.y0 < bottom_limit and not NOTE.match(ln.text)]
-        # Going down from a caption (tables, and diagrams captioned above), long lines may be table rows or notes,
-        # so only a numbered paragraph, a heading or another caption ends the figure.
-        starts = [ln for ln in lines if (_is_caption(ln) or HEADING.match(ln.text) or
-                                         (PARA_START.match(ln.text) and _is_body(ln, column, left, body_h)))
-                  and top_limit < ln.y0 < bottom_limit]
+        bounds = {None: _bounds(lines, body_h, top_limit, bottom_limit)}
         for i, ln in enumerate(lines):
             cap = _is_caption(ln)
             if not cap or not (top_limit < ln.y0 < bottom_limit):
@@ -115,6 +144,12 @@ def find(pdf, skip_pages=()):
             # the caption's title may wrap onto the next line(s) of the same block
             cap_lines = [ln] + [x for x in lines if x.block == ln.block and x is not ln and 0 < x.y0 - ln.y0 < 40]
             cap_bottom = max(x.y1 for x in cap_lines)
+            col = _column(cap_lines, lines, w, h, body_h)
+            # a line in the other column may reach a little past the middle of the page
+            beside = (lambda x: x.x1 > col[0] + 15 and x.x0 < col[1] - 15) if col else (lambda x: True)
+            if col not in bounds:
+                bounds[col] = _bounds([x for x in lines if beside(x)], body_h, top_limit, bottom_limit)
+            body_or_caption, starts = bounds[col]
             above = max([x.y1 for x in body_or_caption if x.y1 <= ln.y0 - 1 and x not in cap_lines]
                         or [top_limit])
             below = min([x.y0 for x in body_or_caption if x.y0 >= cap_bottom + 1 and x not in cap_lines]
@@ -124,7 +159,7 @@ def find(pdf, skip_pages=()):
             gap_above, gap_below = ln.y0 - above, below - cap_bottom
             found.append({"label": cap[0], "continued": cap[1], "page": pno, "kind": cap[0].split()[0],
                           "cap": (ln.y0, cap_bottom), "above": above, "below": below_strict, "w": w, "h": h,
-                          "lines": lines, "cap_lines": cap_lines})
+                          "lines": [x for x in lines if beside(x)], "cap_lines": cap_lines, "col": col})
             # Tables have their caption above; whether diagram captions sit above or below their drawing differs
             # between documents, so each document votes with the captions where only one side has room.
             if cap[0].startswith(("Diagram", "Figure")):
@@ -143,8 +178,11 @@ def find(pdf, skip_pages=()):
             continue
         inside = [x for x in f["lines"] if x.y0 >= y0 - 1 and x.y1 <= y1 + 1]
         xs = [x.x0 for x in inside] + [x.x1 for x in inside]
-        x0 = max(0, min(xs + [f["w"] * 0.08]) - 8)
-        x1 = min(f["w"], max(xs + [f["w"] * 0.92]) + 8)
+        if f["col"]:
+            x0, x1 = f["col"]
+        else:
+            x0 = max(0, min(xs + [f["w"] * 0.08]) - 8)
+            x1 = min(f["w"], max(xs + [f["w"] * 0.92]) + 8)
         labels = _labels([x for x in inside if x not in f["cap_lines"]])
         words = collections.Counter(w for x in inside if x not in f["cap_lines"] for w in x.text.split())
         out.append({"label": f["label"], "continued": f["continued"], "kind": f["kind"], "page": f["page"],
