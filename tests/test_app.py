@@ -398,7 +398,7 @@ if os.name != "nt":
     os.makedirs(fake_dir, exist_ok=True)
     fake_server = os.path.join(fake_dir, "llama-server")
     with open(fake_server, "w") as f:
-        f.write("#!/bin/sh\nexec sleep 60\n")
+        f.write("#!/bin/sh\nsleep 60\n")  # not exec: its command line must still say llama-server
     os.chmod(fake_server, 0o755)
     small = engine.catalog()["models"][-1]
     os.makedirs(bundled.models_dir, exist_ok=True)
@@ -421,7 +421,7 @@ if os.name != "nt":
         started = str(e)
     check("stopped while loading" in started, "free memory on a graphics card counts towards a model")
     with open(fake_server, "w") as f:
-        f.write("#!/bin/sh\nexec sleep 60\n")
+        f.write("#!/bin/sh\nsleep 60\n")  # not exec: its command line must still say llama-server
     engine.available_ram_gb, engine.free_vram_gb = real_ram, real_vram
 
     left = subprocess.Popen([fake_server])  # an engine an earlier run left behind
