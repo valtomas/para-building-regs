@@ -80,17 +80,20 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   keep their numbers and paragraph refs stay in sequence (`splitter.plausible`). Two-column pages are read a column
   at a time (`splitter.unweave_columns`) and contents and index pages are skipped (`splitter.skipped_pages`): when
   you change either, compare passage counts and refs per document before and after.
-- **Diagrams and tables**: `library/figures.py` finds each one from its caption and crops it from the page. Whether
-  a document puts diagram captions above or below the drawing is decided per document by a vote; tables are always
-  captioned above. On a page set in two columns, a figure with running text or another figure's caption beside its
-  caption is cropped to its own column (ADH, ADE, ADJ, ADM Vol 2); one across the page is not. The text extractor
-  can't see the drawings, so the crop found from the text is then narrowed to where the rendered page has ink once
-  the running text is whited out (`figures.ink_box`): that stops a crop running on into an unnumbered paragraph.
-  When you change it, render a few figures from ADB, ADE, ADH, ADK, ADL and ADM and look at them: a crop that cuts a
-  drawing short or swallows the next paragraph is easy to miss in the numbers. Any change to a figure's image takes
-  its reviewed description out of the library until a person approves it again. The text the AI reads for a
-  diagram is its caption plus "Text in the drawing:" (the labels); never present that as a description of the
-  drawing.
+- **Diagrams and tables**: `library/figures.py` finds each one from its caption and crops it from the page. Whether a
+  document puts diagram captions above or below the drawing is decided by a vote, per document and kind of caption
+  (ADA captions its Diagrams above and its Figures below); tables are always captioned above. A caption can sit just
+  under the running header, at the top of a page given to the figure (ADA, ADC, ADE, ADH, ADJ, ADM Vol 2); a heading
+  ends a figure only at the margin, since one set in from it is part of the drawing (Manual Figure 7.1). On a page set
+  in two columns, a figure with running text or another figure's caption beside its caption is cropped to its own
+  column (ADH, ADE, ADJ, ADM Vol 2); one across the page is not. The text extractor can't see the drawings, so the
+  crop found from the text is then narrowed to where the rendered page has ink once the running text is whited out
+  (`figures.ink_box`), including lines only partly in the crop, such as the footer: that stops a crop running on into
+  an unnumbered paragraph. When you change it, render a few figures from ADB, ADE, ADH, ADK, ADL and ADM and look at
+  them: a crop that cuts a drawing short or swallows the next paragraph is easy to miss in the numbers. Any change to
+  a figure's image takes its reviewed description out of the library until a person approves it again. The text the AI
+  reads for a diagram is its caption plus "Text in the drawing:" (the labels); never present that as a description of
+  the drawing.
 - **Descriptions of drawings**: `library/describe.py run` asks a vision model (`DEFAULT_MODEL`, Qwen3.8 27B with
   thinking on, on Lemonade) to describe each diagram from its image, and saves `library/descriptions/<key>.json`
   (model, date, the image's SHA-256 and a 16 by 16 grey thumbnail, `reviewed: false`). The same model then reads the
@@ -109,14 +112,13 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   rowids don't. Tables are included only where their image holds more than their text (ticks, filled and empty
   circles, shading, a drawing): `run` asks the model once per table, with thinking off, and records a plain table as
   `not_needed` until its image changes.
-- **The descriptions loop**: after each library build, the *Drawing descriptions* workflow lists what needs a model
-  or a person (`describe.py pending`, no AI) in one issue labelled "descriptions". Drafting runs overnight on a
-  computer with a vision model, every night from 01:30 (`describe.py auto --until 05:30`, a systemd user timer on
-  the maintainer's PC): it builds the library in a worktree of the latest main, writes and checks one drawing after
-  another, stops in time, and opens a pull request of drafts, or adds to the one still open, so a week of nights
-  goes into one review. The same
-  workflow can draft with a hosted model if `DESCRIBE_BASE_URL`, `DESCRIBE_MODEL` (repository variables) and
-  `DESCRIBE_API_KEY` (secret) are set; it's off otherwise.
+- **The descriptions loop**: after each library build, the *Drawing descriptions* workflow lists what needs a model or
+  a person (`describe.py pending`, no AI) in one issue labelled "descriptions". Drafting runs overnight on a computer
+  with a vision model, every night from 01:30 (`describe.py auto --until 05:30`, a systemd user timer on the
+  maintainer's PC): it builds the library in a worktree of the latest main, writes one drawing after another and reads
+  it again, stops in time, and opens a pull request of drafts, or adds to the one still open, so a week of nights goes
+  into one review. The same workflow can draft with a hosted model if `DESCRIBE_BASE_URL`, `DESCRIBE_MODEL`
+  (repository variables) and `DESCRIBE_API_KEY` (secret) are set; it's off otherwise.
 - **Ids**: regulations passages are `r<rowid>`, the person's files `f<rowid>`. Rowids change between library
   builds, so saved chats can point at a different passage after an update. Don't build features that assume they
   are stable across versions.

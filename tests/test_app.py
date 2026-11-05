@@ -363,6 +363,17 @@ check(figures._column(cap, cap + beside, 595, 842, 14) == (326, 535)
                           table_head, 595, 842, 14) is None,
       "a figure set in one column of two is cropped to that column; a table across the page is not")
 
+# figures: a heading at the margin ends a figure; one set in from it is inside the drawing (Manual Figure 7.1)
+page_lines = [L(71, 100 + 14 * i, 520, 114 + 14 * i, "the guidance then explains one or more ways to show", 1)
+              for i in range(10)]
+inner, outer = L(97, 366, 451, 389, "Requirement K4: Protection against impact", 2), L(71, 700, 300, 714,
+                                                                                     "Section 2 Stairs", 3)
+_, starts = figures._bounds(page_lines + [inner, outer], 14, 60, 780)
+check(outer in starts and inner not in starts, "a heading set in from the margin doesn't cut a figure short")
+check(figures._is_caption(L(65, 58, 400, 72, "Diagram 1\u2002\x07 Size and proportion of buildings", 4))
+      and not figures._is_caption(L(182, 108, 260, 120, "Figure 2 Diagram 6 and", 5)),
+      "a caption is a caption at the top of a page; a list of references in a table cell isn't")
+
 # figures: a crop is narrowed to the drawing's ink, so a paragraph swallowed below the drawing is left out
 page = bytearray(b"\xff" * 200 * 300)
 for y in list(range(20, 120)) + list(range(200, 212)):  # a drawing, then a line of running text
