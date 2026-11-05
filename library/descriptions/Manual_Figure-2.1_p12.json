@@ -1,0 +1,27 @@
+{
+ "key": "Manual_Figure-2.1_p12",
+ "source": "Manual",
+ "label": "Figure 2.1",
+ "page": 12,
+ "caption": "Figure 2.1 The building control process",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "092401b3af996d434aeac2e6a8ba3dedd12a4ccdb8f1f96710a63c9f455c96d9",
+ "image_sig": {
+  "w": 721,
+  "h": 954,
+  "grey": "7dzo4+Tj5O7////99vb29//p5Ofs6vHw8PDw7Ovr7fP/4evq8O/r6ery7PLx8fLy/+vn5uTo6unu9O7v8/Tz9f/s3t/s4uHj4uLe5OLj4+7/7d3h6+vw9vb29vb29vb1/+ro6OLl6+7v8enn6uvx9P/q6e7v7vLy8fLr6+Xu8PH/7Ont7u7u8/Pz5+bo5e7z/+3n6e3w8/Xq8Ofu5+nu9v/k6fHe6enq7fnv9PX08/f/6ufs4+Xl5+rw6erm7vHy/+Dk5eXl6O3t9/b58/n7+//s6e3s7O3s7O/n6OXp6fb/5eLl5ebp6+/y7ezo7vLz/+Xj5OXl5eXo7+bo5ufr8Q=="
+ },
+ "reviewed": false,
+ "description": "Figure 2.1, titled 'The building control process', is a vertical flowchart of rectangular boxes linked by arrows marked 'Yes' or 'No'. It begins with 'Start' above 'Do Building Regulations apply to the work?', whose 'No' arrow points right to 'No notification required' and 'Yes' arrow down to 'Has the work commenced?'. That box's 'No' arrow leads to a box stating the work may be checked by the local authority or an approved inspector or carried out by a competent person; its 'Yes' arrow leads to 'Apply to the local authority', whose 'No' arrow asks whether all work is covered by a competent person or third-party certification scheme. Lower, two parallel columns begin: a magenta 'Local authority route' headed 'Local authority building control under the Building Regulations 2010', and a blue 'Approved inspector route' headed 'Approved inspectors under the Building (Approved Inspectors etc.) Regulations 2010'. Each column contains a sequence of boxes with text on full plans or building notice applications, initial notice, plan assessment, inspection, and certificates.",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description says 'Each column contains a sequence of boxes with text on full plans or building notice applications, initial notice, plan assessment, inspection, and certificates', but the Local authority route column has no box on initial notice and the Approved inspector route column has no box on full plans or building notice applications, so each topic appears in only one of the two columns.",
+   "The description gives the question 'Is all the building work covered by a competent person scheme or a third-party scheme for certification?' (via 'whose No arrow asks...') but omits its Yes branch, which on the drawing leads to the box 'No need to submit a notice to the local authority. The competent person or the scheme operator will notify the local authority of the work and provide them and the building occupier with a certificate of completion within 30 days of completion of the work'."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "df55bbf10ea362bb"
+ }
+}
