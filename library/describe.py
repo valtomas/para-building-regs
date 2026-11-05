@@ -34,7 +34,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 from para.llm import Client, EngineError  # noqa: E402
 
-DESC_DIR = os.path.join(HERE, "descriptions")
+DESC_DIR = os.environ.get("PARA_DESCRIPTIONS") or os.path.join(HERE, "descriptions")  # auto points it at a worktree
 LIBRARY = os.path.join(HERE, "dist", "regs.sqlite")
 LABEL = "Description of the drawing (written by AI from the image, checked by a person):"
 DEFAULT_ENGINE = "http://127.0.0.1:13305/api/v1"
@@ -515,8 +515,11 @@ def auto(args):
         model = (["--base-url", args.base_url, "--model", args.model] + (["--limit", str(args.limit)] if args.limit else [])
                  + (["--until", args.until] if args.until else []) + (["--no-think"] if args.no_think else []))
         # each drawing written and checked in turn; then any draft whose text changed is checked again
+        # this file's code (main may not have these options yet) on the worktree's library and descriptions
+        env = {**os.environ, "PARA_DESCRIPTIONS": os.path.join(wt, "library", "descriptions")}
+        lib = ["--library", os.path.join(wt, "library", "dist", "regs.sqlite")]
         for step in (["run", "--check"], ["check"]):
-            if subprocess.run([sys.executable, "library/describe.py", *step, *model], cwd=wt).returncode:
+            if subprocess.run([sys.executable, os.path.abspath(__file__), *lib, *step, *model], env=env).returncode:
                 print(f"describe.py {step[0]} stopped early; keeping what it wrote.", flush=True)
     finally:
         _publish(wt, branch, date, args.model, bool(open_prs))
