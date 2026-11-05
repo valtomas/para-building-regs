@@ -298,10 +298,15 @@ def main():
             report.append(f"EMPTY  {kw['short']}: {kw['title']}")
             return
         figs = kw.pop("figures", None) or []
+        keys = set()
         for f in figs:
             # a person's checked description of this very image, if there is one (library/describe.py)
-            f["key"] = describe.figure_key(kw["short"], f["label"], f["page"])
-            f["description"] = describe.usable(f["key"], f["png"]) if f["kind"] != "Table" else None
+            f["key"] = key = describe.figure_key(kw["short"], f["label"], f["page"])
+            n = 2
+            while f["key"] in keys:  # a table continued on the same page: each part has its own key
+                f["key"], n = f"{key}_{n}", n + 1
+            keys.add(f["key"])
+            f["description"] = describe.usable(f["key"], f["png"])
             if f["description"] and f.get("target") is not None:
                 f["target"]["text"] += f"\n\n{describe.LABEL} {f['description']}"
         store.add_source(passages=passages, license=cfg["license"], **kw)

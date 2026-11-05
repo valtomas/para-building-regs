@@ -281,13 +281,14 @@ for key, rec, png in [("K_Diagram-3_p3", None, TINY_PNG),
     if rec:
         describe.save({"key": key, **rec})
     states[key] = (describe.state(describe.load(key), png), png)
-figs = [{"key": k, "source": "ADK", "label": "Diagram " + k.split("-")[1].split("_")[0], "page": 1, "png": png}
+figs = [{"key": k, "kind": "diagram", "source": "ADK", "label": "Diagram " + k.split("-")[1].split("_")[0],
+         "page": 1, "png": png}
         for k, (_st, png) in states.items()]
 pend = describe.pending(figs)
 md = describe.pending_markdown(pend, len(figs))
 check([s for s, _ in states.values()] == ["missing", "draft", "redraft", "changed", "reviewed"]
       and [p["state"] for p in pend] == ["missing", "draft", "redraft", "changed"]
-      and "4 of the 5 diagrams" in md and "**ADK**: Diagram 6 (p 1)" in md,
+      and "4 of the 5 diagrams and tables" in md and "**ADK**: Diagram 6 (p 1)" in md,
       "the drawings needing a model or a person are listed for the issue, reviewed ones left out")
 
 ramp = {"source": "ADM2", "caption": "Diagram 3 Ramp gradient", "drawing_text": "", "png": TINY_PNG}
@@ -328,6 +329,21 @@ drafted, kept = describe.load("ADM2_Diagram-3_p2"), describe.load("ADM2_Diagram-
 check(drafted["description"].startswith("A drawing") and not drafted["reviewed"] and "notes" in drafted["check"]
       and kept["description"] == "Steps." and "check" not in kept,
       "an overnight run drafts and checks what's missing, and leaves approved descriptions alone")
+
+db = sqlite3.connect(lib)
+db.execute("INSERT INTO passages VALUES (3, 1, 'Table 1 Ramps | 1:12 | 1:15'), (4, 1, 'Table 2 Uses | \uf0fc | \uf0fc')")
+db.executemany("INSERT INTO figures (passage_id, key, label, page, png) VALUES (?, ?, ?, 2, ?)",
+               [(3, "ADM2_Table-1_p2", "Table 1", grey_png(6, 4)), (4, "ADM2_Table-2_p2", "Table 2", grey_png(7, 4))])
+db.commit()
+db.close()
+describe.main(["--library", lib, "run", "--base-url", fake_url, "--model", "fake-model"])
+plain, ticks = describe.load("ADM2_Table-1_p2"), describe.load("ADM2_Table-2_p2")
+figs_now = {f["key"]: f for f in describe.figures_in(lib)}
+check(plain["not_needed"] and "description" not in plain and ticks["description"].startswith("A drawing")
+      and describe.state(plain, figs_now["ADM2_Table-1_p2"]["png"], table=True) == "not needed"
+      and describe.state(None, b"", table=True) == "unsorted"
+      and [i["key"] for i in describe.review_items(figs_now) if i["key"].startswith("ADM2_Table")] == ["ADM2_Table-2_p2"],
+      "tables whose text says it all are set aside; a table of ticks is described and reviewed like a drawing")
 
 check(first and not after and describe.needs_check(describe.load("K_Diagram-8_p8"), TINY_PNG)
       and not describe.load("K_Diagram-8_p8")["reviewed"],

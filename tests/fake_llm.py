@@ -19,6 +19,9 @@ def respond(body):
     last_user = [m for m in msgs if m["role"] == "user"][-1]["content"]
     if isinstance(last_user, list):  # text and an image: describe the drawing, or check a description of it
         has_image = any(part.get("type") == "image_url" for part in last_user)
+        if "You sort tables" in msgs[0]["content"]:  # a table of ticks needs a description, plain text doesn't
+            text = " ".join(part.get("text", "") for part in last_user)
+            return _chunks([{"content": "yes" if "\uf0fc" in text else "no"}], "stop")
         if "You check descriptions" in msgs[0]["content"]:
             text = " ".join(part.get("text", "") for part in last_user)
             verdict = ('{"ok": true, "notes": []}' if "1:15" in text else

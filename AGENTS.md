@@ -104,8 +104,10 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   Rules: never mark a description reviewed yourself (only a person, on the review page, may); you may write a
   corrected draft for a person to review (record it in `corrected_by`, keep `model_description`); never regenerate
   one whose image is unchanged; never overwrite a reviewed one (if its image changes, it leaves the library until a
-  person approves it again). The key (`ADB1_Diagram-3.8_p40`) names the figure across builds, because rowids
-  don't.
+  person approves it again). The key (`ADB1_Diagram-3.8_p40`; a table continued on the same page adds `_2`) names
+  the figure across builds, because rowids don't. Tables are included only where their image holds more than their
+  text (ticks, filled and empty circles, shading, a drawing): `run` asks the model once per table, with thinking off,
+  and records a plain table as `not_needed` until its image changes.
 - **The descriptions loop**: after each library build, the *Drawing descriptions* workflow lists what needs a model
   or a person (`describe.py pending`, no AI) in one issue labelled "descriptions". Drafting runs overnight on a
   computer with a vision model, every night from 01:30 (`describe.py auto --until 05:30`, a systemd user timer on

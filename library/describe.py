@@ -52,7 +52,23 @@ say so. If the image is cut off or shows mostly running text rather than a drawi
 English, no headings, 60 to 200 words."""
 
 
-CHECK_PROMPT = """You check descriptions of drawings from the Approved Documents (the building regulations guidance
+TABLE_PROMPT = """You describe tables from the Approved Documents (the building regulations guidance for England) for
+people who can't see them, and for an AI that answers questions about them but sees only the table's text. That text
+was extracted from the PDF and has lost what isn't words: ticks and crosses, filled and empty circles, shading,
+colours, and any drawing inside the table.
+
+Say what the table shows, using the text you're given for the words and numbers. Above all, give what the text has
+lost: for a grid of symbols, say for each row which columns have which symbol and what the key says each symbol
+means; for shading, which cells are shaded and what it means; for a drawing, describe it as you would a diagram, with
+its labels and dimensions. Use the table's exact words. Don't state requirements beyond what the table shows, and
+don't guess at anything you can't see. Plain British English, no headings, as long as it needs to be."""
+
+TRIAGE_PROMPT = """You sort tables from the Approved Documents. You're given the table's image and the text a PDF
+extractor got from it. Does the image hold information the text loses: ticks or crosses, filled and empty circles or
+other symbols, meaningful shading or colour, or a drawing? Plain rows of words and numbers, and bullet points, don't
+count. Answer with one word: yes or no."""
+
+CHECK_PROMPT = """You check descriptions of drawings and tables from the Approved Documents (the building regulations guidance
 for England) against the drawing itself. A person reviews each description before it is used; your notes tell them
 where to look.
 
@@ -129,7 +145,8 @@ def same_image(rec, png):
 
 def needs_writing(rec, png):
     """Should a model write this figure's description? Not if a person has reviewed it (even for a changed image:
-    that's for the person to look at again), and not if the image is the one it was written from."""
+    that's for the person to look at again), not if the image is the one it was written from, and not for a table a
+    model found needs none (until its image changes)."""
     return rec is None or (not rec.get("reviewed") and not same_image(rec, png))
 
 
@@ -146,11 +163,14 @@ def usable(key, png):
     return None
 
 
-def state(rec, png):
-    """Where a figure's description stands: missing, draft (written, not yet looked at), redraft (an unreviewed one
-    whose image changed), reviewed, changed (reviewed against an older image) or rejected."""
-    if rec is None:
-        return "missing"
+def state(rec, png, table=False):
+    """Where a figure's description stands: missing (unsorted, for a table not yet looked at), not needed (a table
+    whose text says it all), draft (written, not yet looked at), redraft (an unreviewed one whose image changed),
+    reviewed, changed (reviewed against an older image) or rejected."""
+    if rec is None or (rec.get("not_needed") and not same_image(rec, png)):
+        return "unsorted" if table else "missing"
+    if rec.get("not_needed"):
+        return "not needed"
     if rec.get("reviewed"):
         return "reviewed" if same_image(rec, png) else "changed"
     if not same_image(rec, png):
@@ -159,8 +179,8 @@ def state(rec, png):
 
 
 def figures_in(library=LIBRARY, only=None):
-    """The diagrams in a built library: [{key, source, label, page, caption, drawing_text, png}]. Tables are left
-    out: their text is already their content."""
+    """The diagrams and tables in a built library: [{key, kind, source, label, page, caption, drawing_text, text,
+    png}]. Most tables need no description, since their text is their content; `run` asks a model which do."""
     db = sqlite3.connect(f"file:{library}?mode=ro", uri=True)
     try:
         rows = db.execute("SELECT f.key, f.label, s.short, f.page, p.text, f.png FROM figures f "
@@ -173,14 +193,14 @@ def figures_in(library=LIBRARY, only=None):
     wanted = [o.strip() for o in (only or "").split(",") if o.strip()]
     out = []
     for key, label, short, page, text, png in rows:
-        if not label.startswith(("Diagram", "Figure")):
+        if not label.startswith(("Diagram", "Figure", "Table")):
             continue
         if wanted and not any(short == w or key.startswith(w) for w in wanted):
             continue
         drawing = re.search(r"Text in the drawing: (.*)", text)
-        out.append({"key": key, "source": short, "label": label, "page": page,
-                    "caption": text.split("\n\n", 1)[0].strip(),
-                    "drawing_text": drawing.group(1).strip() if drawing else "", "png": png})
+        out.append({"key": key, "kind": "table" if label.startswith("Table") else "diagram", "source": short,
+                    "label": label, "page": page, "caption": text.split("\n\n", 1)[0].strip(),
+                    "drawing_text": drawing.group(1).strip() if drawing else "", "text": text, "png": png})
     return out
 
 
@@ -195,11 +215,24 @@ def _ask(client, messages, think):
     return "".join(out).strip()
 
 
+def needs_description(client, fig):
+    """Does this table hold more than its text? A quick question (thinking off): most tables are plain text."""
+    url = "data:image/png;base64," + base64.b64encode(fig["png"]).decode()
+    messages = [{"role": "system", "content": TRIAGE_PROMPT},
+                {"role": "user", "content": [{"type": "text", "text": f"{fig['source']}: extracted text:\n{fig['text']}"},
+                                             {"type": "image_url", "image_url": {"url": url}}]}]
+    return _ask(client, messages, think=False).strip().lower().startswith("yes")
+
+
 def write_description(client, fig, think=True):
     """One description, from the image (with the caption and the drawing's words to read small print by)."""
     url = "data:image/png;base64," + base64.b64encode(fig["png"]).decode()
-    words = f"\n\nWords found on the drawing (may be out of order): {fig['drawing_text']}" if fig["drawing_text"] else ""
-    messages = [{"role": "system", "content": PROMPT},
+    if fig.get("kind") == "table":
+        prompt, words = TABLE_PROMPT, f"\n\nThe table's text as extracted (symbols lost):\n{fig['text']}"
+    else:
+        prompt = PROMPT
+        words = f"\n\nWords found on the drawing (may be out of order): {fig['drawing_text']}" if fig["drawing_text"] else ""
+    messages = [{"role": "system", "content": prompt},
                 {"role": "user", "content": [{"type": "text", "text": f"{fig['source']}: {fig['caption']}{words}"},
                                              {"type": "image_url", "image_url": {"url": url}}]}]
     text = _ask(client, messages, think)
@@ -306,6 +339,12 @@ def run(args):
                 print(f"changed  {fig['key']}: reviewed against an older image; review it again", flush=True)
             continue
         try:
+            if fig["kind"] == "table" and (rec is None or rec.get("not_needed")) and not needs_description(client, fig):
+                save({"key": fig["key"], "source": fig["source"], "label": fig["label"], "page": fig["page"],
+                      "caption": fig["caption"], "model": args.model, "date": datetime.date.today().isoformat(),
+                      "image_sha256": h, "image_sig": image_sig(fig["png"]), "reviewed": False, "not_needed": True})
+                print(f"plain    {fig['key']}: its text says it all", flush=True)
+                continue
             text = write_description(client, fig, think=not args.no_think)
         except EngineError as e:
             failed += 1
@@ -325,24 +364,25 @@ def run(args):
     print(f"\n{done} written, {skipped} already done, {failed} failed")
 
 
-NAMES = {"missing": "missing", "redraft": "image changed, not reviewed", "draft": "to review",
-         "changed": "changed since review", "reviewed": "reviewed", "rejected": "rejected"}
+NAMES = {"missing": "missing", "unsorted": "tables not yet looked at", "redraft": "image changed, not reviewed",
+         "draft": "to review", "changed": "changed since review", "reviewed": "reviewed", "rejected": "rejected",
+         "not needed": "tables whose text says it all"}
 
 
 def status(args):
     figs = figures_in(args.library)
     counts = dict.fromkeys(NAMES, 0)
     for fig in figs:
-        counts[state(load(fig["key"]), fig["png"])] += 1
-    print(f"{len(figs)} diagrams: " + ", ".join(f"{v} {NAMES[k]}" for k, v in counts.items() if v or k != "redraft"))
+        counts[state(load(fig["key"]), fig["png"], fig["kind"] == "table")] += 1
+    print(f"{len(figs)} diagrams and tables: " + ", ".join(f"{v} {NAMES[k]}" for k, v in counts.items() if v or k != "redraft"))
 
 
 def pending(figs):
     """The figures that need a model (missing, redraft) or a person (draft, changed), with where each stands."""
     out = []
     for fig in figs:
-        st = state(load(fig["key"]), fig["png"])
-        if st in ("missing", "redraft", "draft", "changed"):
+        st = state(load(fig["key"]), fig["png"], fig.get("kind") == "table")
+        if st in ("missing", "unsorted", "redraft", "draft", "changed"):
             out.append({"key": fig["key"], "source": fig["source"], "label": fig["label"], "page": fig["page"],
                         "state": st})
     return out
@@ -351,12 +391,13 @@ def pending(figs):
 def pending_markdown(items, total):
     """The body of the "descriptions" issue: what needs drafting and what needs a person, document by document."""
     if not items:
-        return f"Every one of the {total} diagrams has a description a person has checked, or rejected.\n"
+        return f"Every one of the {total} diagrams and tables has a description a person has checked, or needs none.\n"
     groups = [("changed", "Reviewed, but the image has changed since: check again on the review page"),
               ("draft", "Drafted, waiting for a person on the review page"),
               ("redraft", "Drafted, but the image has changed since: to draft again"),
-              ("missing", "No description yet: to draft")]
-    lines = [f"{len(items)} of the {total} diagrams in the library need a description drafted or checked.", "",
+              ("missing", "No description yet: to draft"),
+              ("unsorted", "Tables not yet looked at: most need nothing, a model sorts out which do")]
+    lines = [f"{len(items)} of the {total} diagrams and tables in the library need a description drafted or checked.", "",
              "Drafting: `python3 library/describe.py auto` on a computer with a vision model (or the hosted model in "
              "the *Drawing descriptions* workflow, if set up). Checking: `python3 library/describe.py review`. "
              "Only descriptions a person approves go into the library.", ""]
@@ -380,7 +421,7 @@ def show_pending(args):
     else:
         for it in items:
             print(f"{NAMES[it['state']]:<28} {it['key']}")
-        print(f"\n{len(items)} of {len(figs)} diagrams need drafting or checking")
+        print(f"\n{len(items)} of {len(figs)} diagrams and tables need drafting or checking")
 
 
 # ----- review page -----
@@ -390,7 +431,7 @@ def review_items(figs):
     items = []
     for key, fig in figs.items():
         rec = load(key)
-        if rec is not None:
+        if rec is not None and not rec.get("not_needed"):
             chk = rec.get("check")
             items.append({**rec, "stale": stale(rec, fig["png"]),
                           "check_current": bool(chk and chk.get("text") == text_hash(rec.get("description") or ""))})
