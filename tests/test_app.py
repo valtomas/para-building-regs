@@ -271,6 +271,9 @@ inner, outer = L(97, 366, 451, 389, "Requirement K4: Protection against impact",
                                                                                      "Section 2 Stairs", 3)
 _, starts = figures._bounds(page_lines + [inner, outer], 14, 60, 780)
 check(outer in starts and inner not in starts, "a heading set in from the margin doesn't cut a figure short")
+check(figures._is_caption(L(65, 58, 400, 72, "Diagram 1\u2002\x07 Size and proportion of buildings", 4))
+      and not figures._is_caption(L(182, 108, 260, 120, "Figure 2 Diagram 6 and", 5)),
+      "a caption is a caption at the top of a page; a list of references in a table cell isn't")
 
 # figures: a crop is narrowed to the drawing's ink, so a paragraph swallowed below the drawing is left out
 page = bytearray(b"\xff" * 200 * 300)

@@ -52,8 +52,10 @@ def _is_caption(ln):
         return None
     rest = m.group(3).strip()
     # "Diagram 4.2 or 4.3." wrapped in a sentence, or a contents entry ending in a page number
-    # not "Diagram 1.12 (for buildings other…" continuing a sentence, nor an index or contents entry
+    # not "Diagram 1.12 (for buildings other…" continuing a sentence, nor an index or contents entry, nor a list of
+    # references in a table cell ("Figure 2 Diagram 6 and")
     if rest and (rest[0].islower() or rest[0] in ").,;:" or re.match(r"\(\s*[a-z]", rest)
+                 or re.match(r"(Diagram|Figure|Table)\s+\d", rest)
                  or re.search(r"\.{3,}|\s\d{1,3}$|;|\d\.\d+,", rest)):
         return None
     if rest.lower().startswith(("continued", "(continued")):
@@ -142,7 +144,9 @@ def find(pdf, skip_pages=()):
         bounds = {None: _bounds(lines, body_h, top_limit, bottom_limit)}
         for i, ln in enumerate(lines):
             cap = _is_caption(ln)
-            if not cap or not (top_limit < ln.y0 < bottom_limit):
+            # a caption may sit higher than running text can: at the top of a page given to the figure, just under
+            # the running header (ADA, ADC, ADE, ADH, ADJ)
+            if not cap or not (h * 0.055 < ln.y0 < bottom_limit):
                 continue
             # the caption's title may wrap onto the next line(s) of the same block
             cap_lines = [ln] + [x for x in lines if x.block == ln.block and x is not ln and 0 < x.y0 - ln.y0 < 40]
@@ -165,15 +169,21 @@ def find(pdf, skip_pages=()):
                           "lines": [x for x in lines if beside(x)], "cap_lines": cap_lines, "col": col,
                           "body_h": body_h})
             # Tables have their caption above; whether diagram captions sit above or below their drawing differs
-            # between documents, so each document votes with the captions where only one side has room.
-            if cap[0].startswith(("Diagram", "Figure")):
+            # between documents, and in ADA between its Diagrams and its Figures, so each kind in each document votes
+            # with the captions where only one side has room. A figure with parts captioned on the same page
+            # ("Figure 3" under "Figure 3a" and "Figure 3b") has their captions for neighbours, which says nothing.
+            parts = any(_is_caption(x) and _is_caption(x)[0][:-1] == cap[0] for x in lines if x is not ln)
+            if cap[0].startswith(("Diagram", "Figure")) and not parts:
                 if gap_above > 60 and gap_below < 25:
-                    votes["below"] += 1
+                    votes[cap[0].split()[0], "below"] += 1
                 elif gap_below > 60 and gap_above < 25:
-                    votes["above"] += 1
-    caption_below = votes["below"] > votes["above"]
+                    votes[cap[0].split()[0], "above"] += 1
     out, greys = [], {}
     for f in found:
+        kind_votes = [votes[f["kind"], "below"], votes[f["kind"], "above"]]
+        if not any(kind_votes):  # too few of this kind to tell: as the document's other figures
+            kind_votes = [sum(n for (_k, side), n in votes.items() if side == s) for s in ("below", "above")]
+        caption_below = kind_votes[0] > kind_votes[1]
         if f["kind"] == "Table" or not caption_below:
             y0, y1 = f["cap"][0] - 4, f["below"] - 3  # caption, then the drawing or table under it
         else:
@@ -190,7 +200,8 @@ def find(pdf, skip_pages=()):
         # then down to where the drawing's ink is, with the running text (text as big as the body's) taken out
         if f["page"] not in greys:
             greys[f["page"]] = page_grey(pdf, f["page"])
-        running = [x for x in inside if x.y1 - x.y0 >= 0.9 * f["body_h"]]
+        # including a line only partly in the box: the top of the page's footer, under a drawing at the foot of a page
+        running = [x for x in f["lines"] if x.y1 > y0 and x.y0 < y1 and x.y1 - x.y0 >= 0.9 * f["body_h"]]
         tight = ink_box(greys[f["page"]], (x0, max(0, y0), x1, min(f["h"], y1)), running, f["cap_lines"])
         if tight:
             x0, y0, x1, y1 = tight
