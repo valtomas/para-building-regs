@@ -140,10 +140,9 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   tokens and fonts; one card per drawing with the image on white, the ref in display type, the caption in italic,
   the model and dates in mono, and Approve (primary), Edit (outline) and Reject (danger outline) buttons; once
   decided, Withdraw approval or Undo rejection. A warm note says when a drawing's image has changed since its
-  description was approved. The AI check's notes sit above the description in a warm note headed "AI check by
-  <model>: look at these first", with "It can be wrong too."; when it found nothing, one muted italic line says so
-  and asks the reviewer to check the drawing all the same. A correction someone other than the model made shows as
-  "corrected by …" in the mono line.
+  description was approved. The description shown is the model's second
+  reading (its draft corrected against the image), and there's nothing else to compare: one text against one image.
+  A correction someone other than the model made shows as "corrected by …" in the mono line.
 
 ## Writing in the interface
 

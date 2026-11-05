@@ -68,18 +68,16 @@ extractor got from it. Does the image hold information the text loses: ticks or 
 other symbols, meaningful shading or colour, or a drawing? Plain rows of words and numbers, and bullet points, don't
 count. Answer with one word: yes or no."""
 
-CHECK_PROMPT = """You check descriptions of drawings and tables from the Approved Documents (the building regulations guidance
-for England) against the drawing itself. A person reviews each description before it is used; your notes tell them
-where to look.
+CORRECT_PROMPT = """You correct descriptions of drawings and tables from the Approved Documents (the building
+regulations guidance for England), written for people who can't see them and for an AI that sees only text.
 
-Compare the description with the image, statement by statement. Note every statement the image contradicts or
-doesn't support, for example: a dimension said to measure the wrong thing; items miscounted (doors, storeys, steps);
-a label attached to the wrong part; left and right, above and below confused; text that isn't on the drawing (a
-heading from the page, a remark about the image). Note anything important the description leaves out. Don't note
-style. Quote the description's words in each note, and say what the drawing shows instead.
+Compare the description with the image, statement by statement. Put right every statement the image contradicts or
+doesn't support, for example: a dimension said to measure the wrong thing; items miscounted (doors, storeys, steps); a
+label attached to the wrong part; left and right, above and below confused; text that isn't on the drawing (a heading
+from the page, a remark about the image). Add anything important it leaves out. Keep what is right as it is, in the
+same plain British English, with no headings.
 
-Answer with JSON only: {"ok": true, "notes": []} when everything matches, otherwise
-{"ok": false, "notes": ["one sentence per problem", ...]}."""
+Answer with the corrected description only, or the description unchanged if it is all right: no notes, no preamble."""
 
 
 def figure_key(short, label, page):
@@ -241,41 +239,26 @@ def write_description(client, fig, think=True):
     return text
 
 
-def text_hash(text):
-    return hashlib.sha256(text.strip().encode()).hexdigest()[:16]
-
-
-def parse_check(answer):
-    """The model's verdict as {"ok", "notes"}, from JSON that may be wrapped in prose or a code fence. A reply that
-    isn't JSON becomes a single note, so nothing the model said is lost."""
-    m = re.search(r"\{.*\}", answer, re.S)
-    try:
-        out = json.loads(m.group(0)) if m else None
-    except ValueError:
-        out = None
-    if not isinstance(out, dict) or not isinstance(out.get("notes", []), list):
-        return {"ok": False, "notes": [answer.strip()[:1500] or "The model gave no answer."]}
-    notes = [str(n).strip() for n in out.get("notes", []) if str(n).strip()]
-    return {"ok": bool(out.get("ok")) and not notes, "notes": notes}
-
-
-def check_description(client, fig, description, think=True):
-    """A second reading of the image against a description: notes for the person reviewing it. Advisory only: it
-    never changes the description or whether it is approved."""
+def correct_description(client, fig, description, think=True):
+    """A second reading of the image against the first: the description with whatever the image doesn't bear out put
+    right. A model reads a drawing better checking a description than writing one (it compares statement by
+    statement), so the person reviewing gets one text that has already had a second look."""
     url = "data:image/png;base64," + base64.b64encode(fig["png"]).decode()
     words = f"\n\nWords found on the drawing (may be out of order): {fig['drawing_text']}" if fig["drawing_text"] else ""
-    messages = [{"role": "system", "content": CHECK_PROMPT},
+    messages = [{"role": "system", "content": CORRECT_PROMPT},
                 {"role": "user", "content": [
-                    {"type": "text", "text": f"{fig['source']}: {fig['caption']}{words}\n\nDescription to check:\n"
+                    {"type": "text", "text": f"{fig['source']}: {fig['caption']}{words}\n\nDescription to correct:\n"
                                              f"{description}"},
                     {"type": "image_url", "image_url": {"url": url}}]}]
-    return parse_check(_ask(client, messages, think))
+    text = _ask(client, messages, think)
+    if not text:
+        raise EngineError("The model wrote nothing.")
+    return text
 
 
-def needs_check(rec, png):
-    """A description waiting for a person, whose text hasn't been checked yet (or has changed since)."""
-    return (rec is not None and state(rec, png) == "draft" and rec.get("description")
-            and (rec.get("check") or {}).get("text") != text_hash(rec["description"]))
+def needs_second_reading(rec, png):
+    """A draft written but not yet read again against its image (a night that stopped between the two)."""
+    return rec is not None and state(rec, png) == "draft" and bool(rec.get("description")) and "first_draft" not in rec
 
 
 def deadline(until):
@@ -289,37 +272,19 @@ def deadline(until):
 
 
 def out_of_time(end, margin=8):
-    """No time left to start another drawing: writing and checking one takes up to about six minutes."""
+    """No time left to start another drawing: writing one and reading it again takes up to about six minutes."""
     return end is not None and datetime.datetime.now() + datetime.timedelta(minutes=margin) > end
 
 
-def _check_one(client, fig, rec, args):
-    checked = rec["description"]
-    verdict = check_description(client, fig, checked, think=not args.no_think)
-    rec = load(fig["key"])  # a person may have saved it on the review page meanwhile: the check is of `checked`
-    rec["check"] = {**verdict, "model": args.model, "date": datetime.date.today().isoformat(),
-                    "text": text_hash(checked)}
+def _second_reading(client, fig, rec, args):
+    first = rec["description"]
+    text = correct_description(client, fig, first, think=not args.no_think)
+    rec = load(fig["key"])  # a person may have saved it on the review page meanwhile: then theirs stands
+    if rec.get("reviewed") or rec.get("description") != first:
+        return
+    rec.update(first_draft=first, description=text)
     save(rec)
-    print(f"checked  {fig['key']}: " + ("no problems found" if verdict["ok"] else f"{len(verdict['notes'])} notes"),
-          flush=True)
-
-
-def check(args):
-    client = Client(args.base_url, os.environ.get("DESCRIBE_API_KEY", ""), args.model)
-    end, done, failed = deadline(args.until), 0, 0
-    for fig in figures_in(args.library, args.only):
-        if (args.limit and done >= args.limit) or out_of_time(end):
-            break
-        rec = load(fig["key"])
-        if not needs_check(rec, fig["png"]):
-            continue
-        try:
-            _check_one(client, fig, rec, args)
-            done += 1
-        except EngineError as e:
-            failed += 1
-            print(f"failed   {fig['key']}: {e}", flush=True)
-    print(f"\n{done} checked, {failed} failed")
+    print(f"read again {fig['key']}: " + ("unchanged" if text.strip() == first.strip() else "corrected"), flush=True)
 
 
 def run(args):
@@ -334,6 +299,13 @@ def run(args):
             rec["image_sig"] = image_sig(fig["png"])  # written before thumbnails were kept: the very same image
             save(rec)
         if not needs_writing(rec, fig["png"]):
+            if needs_second_reading(rec, fig["png"]) and not out_of_time(end):
+                try:
+                    _second_reading(client, fig, rec, args)
+                except EngineError as e:
+                    failed += 1
+                    print(f"failed   {fig['key']} (second reading): {e}", flush=True)
+                continue
             skipped += 1
             if stale(rec, fig["png"]):
                 print(f"changed  {fig['key']}: reviewed against an older image; review it again", flush=True)
@@ -356,11 +328,10 @@ def run(args):
         save(rec)
         done += 1
         print(f"written  {fig['key']} ({len(text.split())} words)", flush=True)
-        if args.check:  # check it straight away, so a night's drafts all arrive with their notes
-            try:
-                _check_one(client, fig, rec, args)
-            except EngineError as e:
-                print(f"failed   {fig['key']} (check): {e}", flush=True)
+        try:  # then read the image again against it, and put right what it doesn't bear out
+            _second_reading(client, fig, rec, args)
+        except EngineError as e:
+            print(f"failed   {fig['key']} (second reading): {e}", flush=True)
     print(f"\n{done} written, {skipped} already done, {failed} failed")
 
 
@@ -397,7 +368,7 @@ def pending_markdown(items, total):
               ("redraft", "Drafted, but the image has changed since: to draft again"),
               ("missing", "No description yet: to draft"),
               ("unsorted", "Tables not yet looked at: most need nothing, a model sorts out which do")]
-    lines = [f"{len(items)} of the {total} diagrams and tables in the library need a description drafted or checked.", "",
+    lines = [f"{len(items)} of the {total} diagrams and tables in the library need a description drafted or reviewed.", "",
              "Drafting: `python3 library/describe.py auto` on a computer with a vision model (or the hosted model in "
              "the *Drawing descriptions* workflow, if set up). Checking: `python3 library/describe.py review`. "
              "Only descriptions a person approves go into the library.", ""]
@@ -421,7 +392,7 @@ def show_pending(args):
     else:
         for it in items:
             print(f"{NAMES[it['state']]:<28} {it['key']}")
-        print(f"\n{len(items)} of {len(figs)} diagrams and tables need drafting or checking")
+        print(f"\n{len(items)} of {len(figs)} diagrams and tables need drafting or reviewing")
 
 
 # ----- review page -----
@@ -432,9 +403,7 @@ def review_items(figs):
     for key, fig in figs.items():
         rec = load(key)
         if rec is not None and not rec.get("not_needed"):
-            chk = rec.get("check")
-            items.append({**rec, "stale": stale(rec, fig["png"]),
-                          "check_current": bool(chk and chk.get("text") == text_hash(rec.get("description") or ""))})
+            items.append({**rec, "stale": stale(rec, fig["png"])})
     return items
 
 
@@ -522,7 +491,7 @@ def _git(*args, cwd):
 
 
 def auto(args):
-    """Overnight on a computer with a vision model: draft and check descriptions for the drawings that need them, and
+    """Overnight on a computer with a vision model: draft descriptions for the drawings that need them, and
     put them in a pull request for a person to review on the review page. Works in a git worktree of its own, so the
     checkout it's started from is left as it is. If a pull request of drafts is still open, it adds to that one, so a
     week of nights can go into one review. With --until it stops in time and keeps what it has done. Never approves
@@ -555,13 +524,11 @@ def auto(args):
                        check=True)
         model = (["--base-url", args.base_url, "--model", args.model] + (["--limit", str(args.limit)] if args.limit else [])
                  + (["--until", args.until] if args.until else []) + (["--no-think"] if args.no_think else []))
-        # each drawing written and checked in turn; then any draft whose text changed is checked again
-        # this file's code (main may not have these options yet) on the worktree's library and descriptions
+        # each drawing written and read again in turn; this file's code on the worktree's library and descriptions
         env = {**os.environ, "PARA_DESCRIPTIONS": os.path.join(wt, "library", "descriptions")}
         lib = ["--library", os.path.join(wt, "library", "dist", "regs.sqlite")]
-        for step in (["run", "--check"], ["check"]):
-            if subprocess.run([sys.executable, os.path.abspath(__file__), *lib, *step, *model], env=env).returncode:
-                print(f"describe.py {step[0]} stopped early; keeping what it wrote.", flush=True)
+        if subprocess.run([sys.executable, os.path.abspath(__file__), *lib, "run", *model], env=env).returncode:
+            print("describe.py run stopped early; keeping what it wrote.", flush=True)
     finally:
         _publish(wt, branch, date, args.model, bool(open_prs))
         subprocess.run(["git", "worktree", "remove", "--force", wt], cwd=root, capture_output=True)
@@ -586,20 +553,20 @@ def _publish(wt, branch, date, model, existing):
     _git("add", "library/descriptions", cwd=wt)
     changed = _git("diff", "--cached", "--name-only", cwd=wt).split()
     if not changed:
-        print("Nothing new to draft or check.", flush=True)
+        print("Nothing new to draft.", flush=True)
         if existing:
             _git("push", "-q", "origin", branch, cwd=wt)  # the merge of main, if any
         return
-    _git("commit", "-q", "-m", f"Descriptions: {len(changed)} drafted or checked by {model} on {date}, to review",
+    _git("commit", "-q", "-m", f"Descriptions: {len(changed)} drafted by {model} on {date}, to review",
          cwd=wt)
     _git("push", "-q", "-u", "origin", branch, cwd=wt)
     if existing:
         print(f"Added {len(changed)} to the open pull request on {branch}.", flush=True)
         return
-    body = (f"Drafted and checked overnight by `{model}` with `describe.py auto`; later nights add to this pull "
-            "request while it's open. Nothing here is approved: check each one against its drawing on the review "
-            "page (`python3 library/describe.py review`), where the AI check's notes show which parts to look at "
-            "first. Only approved descriptions go into the library.")
+    body = (f"Drafted overnight by `{model}` with `describe.py auto`: each description written from the image, then "
+            "read again against it and corrected. Later nights add to this pull request while it's open. Nothing "
+            "here is approved: check each one against its drawing on the review page "
+            "(`python3 library/describe.py review`). Only approved descriptions go into the library.")
     subprocess.run(["gh", "pr", "create", "--base", "main", "--head", branch, "--title",
                     f"Descriptions to review (from {date})", "--body", body], cwd=wt, check=True)
 
@@ -608,29 +575,20 @@ def main(argv=None):
     ap = argparse.ArgumentParser(prog="describe.py", description=__doc__.split("\n\n")[0])
     ap.add_argument("--library", default=LIBRARY)
     sub = ap.add_subparsers(dest="cmd", required=True)
-    r = sub.add_parser("run", help="write descriptions for diagrams that need one")
+    r = sub.add_parser("run", help="write descriptions for the drawings that need one, each read again and corrected")
     r.add_argument("--base-url", default=DEFAULT_ENGINE)
     r.add_argument("--model", default=DEFAULT_MODEL, help="a model that reads images")
     r.add_argument("--only", help="documents or key prefixes, comma-separated (ADB1,ADK)")
     r.add_argument("--limit", type=int, default=0)
     r.add_argument("--no-think", action="store_true", help="answer straight away (much faster, far less accurate)")
-    r.add_argument("--check", action="store_true", help="check each draft straight after writing it")
     r.add_argument("--until", help="stop in time to finish by this time of day (05:30)")
     v = sub.add_parser("review", help="open the review page")
     v.add_argument("--port", type=int, default=8790)
     v.add_argument("--no-browser", action="store_true")
     sub.add_parser("status", help="how many diagrams have descriptions, and how many are reviewed")
-    c = sub.add_parser("check", help="a second model reading: notes on drafts for the person reviewing them")
-    for p in (c,):
-        p.add_argument("--base-url", default=DEFAULT_ENGINE)
-        p.add_argument("--model", default=DEFAULT_MODEL, help="a model that reads images")
-        p.add_argument("--only", help="documents or key prefixes, comma-separated (ADB1,ADK)")
-        p.add_argument("--limit", type=int, default=0)
-        p.add_argument("--no-think", action="store_true", help="answer straight away (much faster, far less accurate)")
-        p.add_argument("--until", help="stop in time to finish by this time of day (05:30)")
-    n = sub.add_parser("pending", help="the drawings that need drafting or checking (no AI)")
+    n = sub.add_parser("pending", help="the drawings that need drafting or reviewing (no AI)")
     n.add_argument("--markdown", action="store_true", help="as the body of the GitHub issue")
-    a = sub.add_parser("auto", help="draft and check on a branch of main, and open a pull request")
+    a = sub.add_parser("auto", help="draft on a branch of main overnight, and open a pull request")
     a.add_argument("--base-url", default=DEFAULT_ENGINE)
     a.add_argument("--model", default=DEFAULT_MODEL, help="a model that reads images")
     a.add_argument("--limit", type=int, default=0, help="at most this many drawings to draft in one night")
@@ -639,7 +597,7 @@ def main(argv=None):
     a.add_argument("--base", default="main", help="start new drafts from this branch until it's merged into main")
     a.add_argument("--offline", action="store_true", help="build the library from library/cache")
     args = ap.parse_args(argv)
-    {"run": run, "review": review, "status": status, "check": check, "pending": show_pending,
+    {"run": run, "review": review, "status": status, "pending": show_pending,
      "auto": auto}[args.cmd](args)
 
 

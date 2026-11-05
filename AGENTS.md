@@ -36,7 +36,7 @@ passage ids; the app checks every citation. It must stay:
 | `para/static/` | The interface: `index.html`, `app.css`, `app.js` |
 | `library/build.py` | Builds `library/dist/regs.sqlite` from gov.uk (content API + PDFs) and legislation.gov.uk (CLML XML) |
 | `library/figures.py` | Finds diagrams and tables in the PDFs from their captions, renders them to PNG, and takes drawing labels out of the running text |
-| `library/describe.py` | Descriptions of the diagrams: a vision model writes them (`run`) and a second reading leaves notes (`check`), a person approves them on a local review page (`review`, `library/review.html`); `pending` lists what's left, `auto` drafts overnight and opens a pull request; kept in `library/descriptions/` |
+| `library/describe.py` | Descriptions of the diagrams: a vision model writes them and reads each again against the image, correcting it (`run`), a person approves them on a local review page (`review`, `library/review.html`); `pending` lists what's left, `auto` drafts overnight and opens a pull request; kept in `library/descriptions/` |
 | `library/legislation.py` | Turns legislation XML into passages cited as `reg 7`, `s 120D`, `Sch 1 Pt B` |
 | `library/sources.json` | What goes into the library |
 | `library/check.py` | Compares a new library with the published one and fails the build if a document is missing or much smaller, so a broken rebuild never reaches installed apps |
@@ -91,23 +91,24 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   its reviewed description out of the library until a person approves it again. The text the AI reads for a
   diagram is its caption plus "Text in the drawing:" (the labels); never present that as a description of the
   drawing.
-- **Descriptions of drawings**: `library/describe.py run` asks a vision model (`DEFAULT_MODEL`, Qwen3.8 27B with thinking on, on Lemonade) to
-  describe each diagram from its image, and saves `library/descriptions/<key>.json` (model, date, the image's SHA-256
-  and a 16 by 16 grey thumbnail, `reviewed: false`). `describe.py check` has a model read each draft against its image
-  and leave notes for the reviewer (`check` in the file); it's advisory and never changes a description or approves
-  one. `describe.py review` opens a page where a person approves, corrects or rejects each one (reject a crop that is
-  cut short: it isn't described again until the image changes). The build adds only reviewed descriptions of the
-  same image, after the passage text and labelled "Description of the drawing (written by AI from the image, checked
-  by a person):"; the reader shows them under the image, and the prompt says they come second to the document's
-  text. "The same image" is the same bytes, or the same size and nearly the same thumbnail (`describe.same_image`),
-  because GitHub's PDF renderer and a person's own can differ by a shade; a moved or recut crop doesn't match.
-  Rules: never mark a description reviewed yourself (only a person, on the review page, may); you may write a
-  corrected draft for a person to review (record it in `corrected_by`, keep `model_description`); never regenerate
-  one whose image is unchanged; never overwrite a reviewed one (if its image changes, it leaves the library until a
-  person approves it again). The key (`ADB1_Diagram-3.8_p40`; a table continued on the same page adds `_2`) names
-  the figure across builds, because rowids don't. Tables are included only where their image holds more than their
-  text (ticks, filled and empty circles, shading, a drawing): `run` asks the model once per table, with thinking off,
-  and records a plain table as `not_needed` until its image changes.
+- **Descriptions of drawings**: `library/describe.py run` asks a vision model (`DEFAULT_MODEL`, Qwen3.8 27B with
+  thinking on, on Lemonade) to describe each diagram from its image, and saves `library/descriptions/<key>.json`
+  (model, date, the image's SHA-256 and a 16 by 16 grey thumbnail, `reviewed: false`). The same model then reads the
+  image again against its draft and puts right what the image doesn't bear out (`CORRECT_PROMPT`; the first draft is
+  kept as `first_draft`), so the person reviewing gets one text that has had a second look; it never approves one.
+  `describe.py review` opens a page where a person approves, corrects or rejects each one (reject a crop that is cut
+  short: it isn't described again until the image changes). The build adds only reviewed descriptions of the same
+  image, after the passage text and labelled "Description of the drawing (written by AI from the image, checked by a
+  person):"; the reader shows them under the image, and the prompt says they come second to the document's text. "The
+  same image" is the same bytes, or the same size and nearly the same thumbnail (`describe.same_image`), because
+  GitHub's PDF renderer and a person's own can differ by a shade; a moved or recut crop doesn't match. Rules: never
+  mark a description reviewed yourself (only a person, on the review page, may); you may write a corrected draft for a
+  person to review (record it in `corrected_by`); never regenerate one whose image is unchanged; never overwrite a
+  reviewed one (if its image changes, it leaves the library until a person approves it again). The key
+  (`ADB1_Diagram-3.8_p40`; a table continued on the same page adds `_2`) names the figure across builds, because
+  rowids don't. Tables are included only where their image holds more than their text (ticks, filled and empty
+  circles, shading, a drawing): `run` asks the model once per table, with thinking off, and records a plain table as
+  `not_needed` until its image changes.
 - **The descriptions loop**: after each library build, the *Drawing descriptions* workflow lists what needs a model
   or a person (`describe.py pending`, no AI) in one issue labelled "descriptions". Drafting runs overnight on a
   computer with a vision model, every night from 01:30 (`describe.py auto --until 05:30`, a systemd user timer on

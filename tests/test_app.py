@@ -293,18 +293,13 @@ check([s for s, _ in states.values()] == ["missing", "draft", "redraft", "change
 
 ramp = {"source": "ADM2", "caption": "Diagram 3 Ramp gradient", "drawing_text": "", "png": TINY_PNG}
 fake_client = Client(fake_url, "", "fake-model")
-bad = describe.check_description(fake_client, ramp, "The second point is at 4m and 1:14.")
-good = describe.check_description(fake_client, ramp, "The second point is at 5m and 1:15.")
-check(not bad["ok"] and bad["notes"] == ["'4m' should be '5m'."] and good == {"ok": True, "notes": []}
-      and describe.parse_check("Looks fine to me.")["notes"] == ["Looks fine to me."],
-      "a second model reading leaves notes for the reviewer, from JSON in a code fence or plain prose")
-describe.save({"key": "K_Diagram-8_p8", "image_sha256": h, "reviewed": False, "description": "At 4m and 1:14."})
-rec = describe.load("K_Diagram-8_p8")
-first = describe.needs_check(rec, TINY_PNG)
-rec["check"] = {**bad, "text": describe.text_hash(rec["description"])}
-describe.save(rec)
-after = describe.needs_check(describe.load("K_Diagram-8_p8"), TINY_PNG)
-describe.approve({"key": "K_Diagram-8_p8", "png": TINY_PNG}, "At 5m and 1:15.", approved=False)
+check(describe.correct_description(fake_client, ramp, "The second point is at 4m.") == "The second point is at 5m."
+      and describe.correct_description(fake_client, ramp, "At 5m.") == "At 5m.",
+      "a second reading puts right what the image doesn't bear out, and leaves the rest")
+describe.save({"key": "K_Diagram-8_p8", "image_sha256": h, "reviewed": False, "description": "At 4m."})
+first = describe.needs_second_reading(describe.load("K_Diagram-8_p8"), TINY_PNG)
+describe.save({**describe.load("K_Diagram-8_p8"), "first_draft": "At 4m.", "description": "At 5m."})
+after = describe.needs_second_reading(describe.load("K_Diagram-8_p8"), TINY_PNG)
 end = describe.deadline("05:30")
 check(end.strftime("%H:%M") == "05:30" and datetime.timedelta(0) < end - datetime.datetime.now()
       <= datetime.timedelta(days=1) and describe.out_of_time(datetime.datetime.now() + datetime.timedelta(minutes=5))
@@ -324,11 +319,11 @@ db.commit()
 db.close()
 describe.save({"key": "ADM2_Diagram-4_p2", "image_sha256": describe.image_hash(grey_png(5, 4)), "reviewed": True,
                "description": "Steps."})
-describe.main(["--library", lib, "run", "--check", "--base-url", fake_url, "--model", "fake-model"])
+describe.main(["--library", lib, "run", "--base-url", fake_url, "--model", "fake-model"])
 drafted, kept = describe.load("ADM2_Diagram-3_p2"), describe.load("ADM2_Diagram-4_p2")
-check(drafted["description"].startswith("A drawing") and not drafted["reviewed"] and "notes" in drafted["check"]
-      and kept["description"] == "Steps." and "check" not in kept,
-      "an overnight run drafts and checks what's missing, and leaves approved descriptions alone")
+check(drafted["description"].startswith("A drawing") and not drafted["reviewed"] and "first_draft" in drafted
+      and kept["description"] == "Steps." and "first_draft" not in kept,
+      "an overnight run drafts what's missing and reads each draft again, and leaves approved descriptions alone")
 
 db = sqlite3.connect(lib)
 db.execute("INSERT INTO passages VALUES (3, 1, 'Table 1 Ramps | 1:12 | 1:15'), (4, 1, 'Table 2 Uses | \uf0fc | \uf0fc')")
@@ -345,9 +340,8 @@ check(plain["not_needed"] and "description" not in plain and ticks["description"
       and [i["key"] for i in describe.review_items(figs_now) if i["key"].startswith("ADM2_Table")] == ["ADM2_Table-2_p2"],
       "tables whose text says it all are set aside; a table of ticks is described and reviewed like a drawing")
 
-check(first and not after and describe.needs_check(describe.load("K_Diagram-8_p8"), TINY_PNG)
-      and not describe.load("K_Diagram-8_p8")["reviewed"],
-      "a draft is checked once, again after its text changes, and the check never approves it")
+check(first and not after and not describe.load("K_Diagram-8_p8")["reviewed"],
+      "a draft is read again once, and the second reading never approves it")
 
 # figures: a drawing's text is smaller than the running text, so a long label doesn't cut the drawing short
 import figures  # noqa: E402
