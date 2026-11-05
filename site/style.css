@@ -1,8 +1,9 @@
 /* Para website. Tokens follow DESIGN.md (the app's look). Fonts are copied from para/static/fonts at deploy. */
-@font-face { font-family: "Gloock"; src: url("fonts/gloock-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
-@font-face { font-family: "Newsreader"; src: url("fonts/newsreader-400-600.woff2") format("woff2"); font-weight: 400 600; font-display: swap; }
-@font-face { font-family: "Newsreader"; src: url("fonts/newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
-@font-face { font-family: "JetBrains Mono"; src: url("fonts/jetbrains-mono-400-500.woff2") format("woff2"); font-weight: 400 500; font-display: swap; }
+@font-face { font-family: "Space Grotesk"; src: url("fonts/space-grotesk-300-700.woff2") format("woff2"); font-weight: 300 700; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url("fonts/ibm-plex-sans-100-700.woff2") format("woff2"); font-weight: 100 700; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url("fonts/ibm-plex-sans-100-700-italic.woff2") format("woff2"); font-weight: 100 700; font-display: swap; font-style: italic; }
+@font-face { font-family: "IBM Plex Mono"; src: url("fonts/ibm-plex-mono-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("fonts/ibm-plex-mono-500.woff2") format("woff2"); font-weight: 500; font-display: swap; }
 
 :root {
   --bg: #f2ebdf; --panel: #faf5ec; --panel-2: #eadfcd;
@@ -10,14 +11,14 @@
   --ink: #2b1d16; --muted: #5c4a3e; --muted-2: #7a6656; --border: #d6c7b2;
   --accent: #8a3324; --accent-hover: #6b2419; --gold: #e9b872;
   --cite: #ecdcc0; --cite-text: #8a3324; --warn-bg: #f5e6c8; --warn: #5e3a0a;
-  --display: "Gloock", Georgia, serif; --body: "Newsreader", Georgia, serif;
-  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --display: "Space Grotesk", "IBM Plex Sans", system-ui, sans-serif; --body: "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
   color-scheme: light; /* the site is always light, whatever the device's setting */
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 400 19px/1.6 var(--body); }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 18px/1.6 var(--body); }
 a { color: var(--accent); text-underline-offset: 3px; }
 a:hover { color: var(--accent-hover); }
 .wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
@@ -25,7 +26,7 @@ a:hover { color: var(--accent-hover); }
 /* header */
 .top { background: var(--sidebar); color: var(--sidebar-text); position: sticky; top: 0; z-index: 5; }
 .top-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
-.brand { font: 400 32px/1 var(--display); color: var(--sidebar-text); text-decoration: none; display: flex; align-items: baseline; gap: 4px; }
+.brand { font: 500 32px/1 var(--display); color: var(--sidebar-text); text-decoration: none; display: flex; align-items: baseline; gap: 4px; }
 .pilcrow { color: var(--gold); font-family: var(--display); }
 .top nav { display: flex; gap: 22px; flex-wrap: wrap; justify-content: flex-end; }
 .top nav a { font: 500 11.5px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--sidebar-muted); text-decoration: none; }
@@ -33,9 +34,9 @@ a:hover { color: var(--accent-hover); }
 
 /* type */
 .eyebrow { font: 500 11px/1.4 var(--mono); letter-spacing: .22em; text-transform: uppercase; color: var(--accent); margin: 0 0 14px; }
-h1 { font: 400 clamp(44px, 7vw, 92px)/1.02 var(--display); letter-spacing: -.01em; margin: 0 0 22px; }
-.section-title { font: 400 clamp(30px, 4vw, 46px)/1.08 var(--display); margin: 0 0 22px; }
-h2, h3 { font-weight: 400; font-family: var(--display); }
+h1 { font: 500 clamp(44px, 7vw, 92px)/1 var(--display); letter-spacing: -.035em; margin: 0 0 22px; }
+.section-title { font: 500 clamp(30px, 4vw, 46px)/1.08 var(--display); margin: 0 0 22px; }
+h2, h3 { font-weight: 500; font-family: var(--display); }
 h3 { font-size: 24px; margin: 0 0 8px; }
 .lede { font-size: clamp(19px, 2vw, 23px); color: var(--muted); max-width: 760px; margin: 0 0 28px; }
 .body { max-width: 760px; color: var(--muted); }
