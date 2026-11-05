@@ -13,8 +13,8 @@ when the interface changes).
 3. **Honest states.** Say plainly when an answer doesn't come from the library, when a citation was removed, when
    the engine isn't private, and when the answer was cut short. Never hide these to look cleaner.
 4. **Calm and professional.** It's a reference tool used at work, styled like a well-set printed reference:
-   parchment pages, an oxblood sidebar, one clay accent, a serif for reading and a monospace for labels. No animation
-   beyond the typing cursor, no illustrations, no emoji.
+   parchment pages, an oxblood sidebar, one clay accent, a plain sans-serif for reading and a monospace for labels.
+   No animation beyond the typing cursor, no illustrations, no emoji.
 5. **Works without explanation.** Someone who has never used an AI tool should get from install to a cited answer
    without reading anything.
 
