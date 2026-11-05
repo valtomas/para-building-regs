@@ -6,9 +6,10 @@
  "caption": "Diagram 1.3 | Minimum headroom",
  "model": "Gemma-4-26B-A4B-it-GGUF",
  "date": "2026-11-04",
- "image_sha256": "8f40c279ec684b56ab62a3251d5f35ea1989124f9780a54ee26c06f289dadae9",
- "reviewed": true,
- "description": "This diagram, titled Diagram 1.3 Minimum headroom, depicts a side section profile of a staircase connecting two levels via a flight and landings. The drawing shows a flight of stairs between two landings. A dashed line, labelled 'Pitch line', runs parallel to the slope of the stairs. \n\nThere are three vertical dimension lines indicating the required clearance. The first, on the left, shows a distance of 'At least 2m' from the upper 'Landing' to the 'Pitch line'. The second, in the middle, shows a distance of 'At least 2m' from the 'Pitch line' to the ceiling or structure above. The third, on the right, shows a distance of 'At least 2m' from the lower 'Landing' to the 'Pitch line'. A horizontal dashed line on the right is labelled 'Minimum headroom'. A note in the top left corner reads 'See para 1.11'.",
+ "image_sha256": "e95650d4bc2c148a513f944e5292dd08449f7e14618640662f16fa21bd5b66e6",
+ "reviewed": false,
+ "description": "A section through a stair showing minimum headroom (see para 1.11). A 'Flight' runs down from a 'Landing' on the left to a 'Landing' on the right, with a dashed 'Pitch line' along the nosings. A ceiling or soffit runs above, sloping down over the flight. Three dimensions, each 'At least 2m', give the headroom: from the upper landing up to the ceiling above it, from the pitch line up to the soffit over the flight, and from the lower landing up to a dashed line marked 'Minimum headroom' under the structure on the right.",
  "rejected": false,
- "reviewed_date": "2026-11-04"
+ "model_description": "This diagram, titled Diagram 1.3 Minimum headroom, depicts a side section profile of a staircase connecting two levels via a flight and landings. The drawing shows a flight of stairs between two landings. A dashed line, labelled 'Pitch line', runs parallel to the slope of the stairs. \n\nThere are three vertical dimension lines indicating the required clearance. The first, on the left, shows a distance of 'At least 2m' from the upper 'Landing' to the 'Pitch line'. The second, in the middle, shows a distance of 'At least 2m' from the 'Pitch line' to the ceiling or structure above. The third, on the right, shows a distance of 'At least 2m' from the lower 'Landing' to the 'Pitch line'. A horizontal dashed line on the right is labelled 'Minimum headroom'. A note in the top left corner reads 'See para 1.11'.",
+ "corrected_by": "Claude, checking the image (2026-11-04)"
 }

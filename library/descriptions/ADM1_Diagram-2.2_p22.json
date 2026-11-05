@@ -6,7 +6,7 @@
  "caption": "Diagram 2.2",
  "model": "Gemma-4-26B-A4B-it-GGUF",
  "date": "2026-11-04",
- "image_sha256": "8dad2821c6c050dffb63dd2b6ea8b2903ed7ebe92b0d1b4409b5f5a81fa4b57e",
+ "image_sha256": "6e05ed8faac627f536b18c34245bdbd5d7e0bb7bb933564400dec92081e676b9",
  "reviewed": true,
  "description": "This diagram, titled \"Diagram 2.2 Measurement of clear opening width and other features of external and internal doors,\" depicts a plan view of an open doorway.\n\nThe drawing identifies several parts using a key:\na is the inside face of the door (when open).\nb is the inside edge of the door frame or stop.\nc is the leading edge.\nd is the following edge.\ne is a nib to the leading edge, which is noted as 300mm min.\nf is the reveal depth, which is noted as 200mm max to the door face when closed.\n\nA dashed horizontal line spans the opening between points a and b, labeled \"distance a-b = clear opening width\". \n\nTwo notes are included:\n1. \"Handles, other door furniture and weatherboards may be ignored when measuring clear opening width.\"\n2. \"Skirting boards may be ignored when measuring door nibs (from finished wall face to inside edge of door frame).\"\n\nA footer note states \"*all dimensions are minimum except where noted\".",
  "rejected": false,

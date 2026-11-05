@@ -6,9 +6,10 @@
  "caption": "Diagram 1.7 | Cupboard onto landing",
  "model": "Gemma-4-26B-A4B-it-GGUF",
  "date": "2026-11-04",
- "image_sha256": "6f6b14dd72d4bc76b23c2c4acecc5f65c91d0b04062da854896a9839ac066d72",
- "reviewed": true,
- "description": "This diagram, titled 'Diagram 1.7 Cupboard onto landing', is a plan view showing the relationship between a cupboard door and a staircase. The drawing depicts a rectangular 'Cupboard' at the top of a flight of stairs. A door is shown swinging open from the cupboard into the landing area. To the right of the landing, a set of stairs descends, indicated by a series of parallel lines and an arrow pointing 'Up' at the bottom of the flight. A shaded rectangular area is positioned on the landing, between the cupboard door and the stairs. This shaded area is marked with a dimension line and the label '400mm minimum', indicating the required clear width of the landing space in front of the cupboard door. The text 'See para 1.21' is located in the top left corner of the diagram.",
+ "image_sha256": "c10389d797fbc00e74e2a4411c4097e379163a896a2f8bd0ae6a52f210dcd774",
+ "reviewed": false,
+ "description": "A plan of a stair with a cupboard opening onto its landing (see para 1.21). A flight marked 'Up' rises to a landing, and a second flight continues up from the landing to the right. A 'Cupboard' at the top of the landing has doors that swing out over the landing. The shaded part of the landing, between the doors' swing and the top step of the lower flight, is marked '400mm minimum'.",
  "rejected": false,
- "reviewed_date": "2026-11-04"
+ "model_description": "This diagram, titled 'Diagram 1.7 Cupboard onto landing', is a plan view showing the relationship between a cupboard door and a staircase. The drawing depicts a rectangular 'Cupboard' at the top of a flight of stairs. A door is shown swinging open from the cupboard into the landing area. To the right of the landing, a set of stairs descends, indicated by a series of parallel lines and an arrow pointing 'Up' at the bottom of the flight. A shaded rectangular area is positioned on the landing, between the cupboard door and the stairs. This shaded area is marked with a dimension line and the label '400mm minimum', indicating the required clear width of the landing space in front of the cupboard door. The text 'See para 1.21' is located in the top left corner of the diagram.",
+ "corrected_by": "Claude, checking the image (2026-11-04)"
 }
