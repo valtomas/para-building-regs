@@ -499,7 +499,7 @@ def auto(args):
                               cwd=root, capture_output=True, text=True).stdout.split()
     date = datetime.date.today().isoformat()
     branch = open_prs[0] if open_prs else f"descriptions/{date}"
-    start = f"origin/{branch}" if open_prs else "origin/main"
+    start = f"origin/{branch}" if open_prs else _base(args.base, root)
     wt = os.path.join(root, ".worktrees", "descriptions-auto")
     subprocess.run(["git", "worktree", "remove", "--force", wt], cwd=root, capture_output=True)  # a night cut short
     _git("worktree", "add", "-q", "-B", branch, wt, start, cwd=root)
@@ -524,6 +524,20 @@ def auto(args):
     finally:
         _publish(wt, branch, date, args.model, bool(open_prs))
         subprocess.run(["git", "worktree", "remove", "--force", wt], cwd=root, capture_output=True)
+
+
+def _base(base, root):
+    """Where a new branch of drafts starts: `base` while it exists and isn't yet in main (crops still to be merged, which
+    the drafts must match), else main."""
+    if base and base != "main":
+        ref = f"origin/{base}"
+        exists = subprocess.run(["git", "rev-parse", "-q", "--verify", ref], cwd=root, capture_output=True).returncode == 0
+        merged = exists and subprocess.run(["git", "merge-base", "--is-ancestor", ref, "origin/main"], cwd=root,
+                                           capture_output=True).returncode == 0
+        if exists and not merged:
+            print(f"Starting from {ref}, which isn't in main yet.", flush=True)
+            return ref
+    return "origin/main"
 
 
 def _publish(wt, branch, date, model, existing):
@@ -581,6 +595,7 @@ def main(argv=None):
     a.add_argument("--limit", type=int, default=0, help="at most this many drawings to draft in one night")
     a.add_argument("--until", help="stop in time to finish by this time of day (05:30)")
     a.add_argument("--no-think", action="store_true", help="answer straight away (much faster, far less accurate)")
+    a.add_argument("--base", default="main", help="start new drafts from this branch until it's merged into main")
     a.add_argument("--offline", action="store_true", help="build the library from library/cache")
     args = ap.parse_args(argv)
     {"run": run, "review": review, "status": status, "check": check, "pending": show_pending,
