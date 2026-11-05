@@ -118,8 +118,9 @@ def _bounds(lines, body_h, top_limit, bottom_limit):
     body_or_caption = [ln for ln in lines if (_is_body(ln, column, left, body_h) or _is_caption(ln))
                        and top_limit < ln.y0 < bottom_limit and not NOTE.match(ln.text)]
     # Going down from a caption (tables, and diagrams captioned above), long lines may be table rows or notes,
-    # so only a numbered paragraph, a heading or another caption ends the figure.
-    starts = [ln for ln in lines if (_is_caption(ln) or HEADING.match(ln.text) or
+    # so only a numbered paragraph, a heading or another caption ends the figure. A heading is at the margin: one
+    # set in from it is part of the drawing, such as a page of an approved document shown in the Manual (Figure 7.1).
+    starts = [ln for ln in lines if (_is_caption(ln) or (HEADING.match(ln.text) and ln.x0 <= left + 15) or
                                      (PARA_START.match(ln.text) and _is_body(ln, column, left, body_h)))
               and top_limit < ln.y0 < bottom_limit]
     return body_or_caption, starts
