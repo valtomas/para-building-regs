@@ -1,0 +1,26 @@
+{
+ "key": "ADB1_Diagram-3.11_p48",
+ "source": "ADB1",
+ "label": "Diagram 3.11",
+ "page": 48,
+ "caption": "Diagram 3.11 Fire resistance of areas near to external stairs",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "10f2add6469096f59245ffe1b5aec9ada13e287fdb1e8d6efdc0e02d97d295ea",
+ "image_sig": {
+  "w": 754,
+  "h": 884,
+  "grey": "8/T8/Pz57fz8/Pz8/Pz8+fv/////+/rl5ujk9vr///v7/////+zwyra64/T6///7+//////5/sSqmqT6+f//+/v/////+f29np2p+vv///v75ubo9unhuJ6bq+3t5un6++bw9/7+6Onp6Onp9fj4+/v74Nn78NPe8v////v///v78aS8+fXTqKLF2v/7///7++mkv/vz06+vqp+79P//+/vwpbj47sKanJycz+je4vr75+js+fzd5ujm4+jy///7+//////76sLAwsDH3/v/+/vp9ff/9Nq0s7OzxPP///v74N/o//vb+vr59fP8///7sZ6cnZ2enZ2dm5aWlpaWpg=="
+ },
+ "reviewed": false,
+ "description": "The drawing, titled \"Diagram 3.11 Fire resistance of areas near to external stairs\", has \"See para 3.71\" at top left and a legend defining \"Fd\" as \"Fire doorset (minimum E 30)\" and a green block as \"Fire resisting construction (minimum RE 30)\".\n\nExample a. is a section through a three-flight external stair in green, labelled \"No fire resistance required for door\", \"Fire resisting window (minimum RE 30)\", \"1100mm above top landing\", three \"1800mm\" dimensions, \"9m below stair flights and landings\", \"Fd\" doorsets, and \"Ground level or a roof or podium served by an independent stairway\" at the base.\n\nExample b. comprises Section A-A, a narrow vertical stair with a top Fd door and a \"1800mm\" dimension; Section B-B, a sloped stair labelled \"1100mm above top landing\", \"9m below stair flights and landings\", \"Fd\", \"1800mm\" and the ground-level text; and a Plan of the enclosed green stair with two \"1800mm\" dimensions and section markers A-A and B-B. A NOTE reads: \"See paras 3.69 and 3.70 for the maximum height of stair. See para 3.71e for weather protection provisions.\"",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description of Section A-A says it has \"a top Fd door\", but the door at the top of Section A-A on the drawing is an unlabelled white rectangle and is not marked \"Fd\" (the only \"Fd\" in Example b is on the door in Section B-B)."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "b9373d3d40359366"
+ }
+}

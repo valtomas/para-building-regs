@@ -1,0 +1,17 @@
+{
+ "key": "ADA_Table-8_p31",
+ "source": "ADA",
+ "label": "Table 8",
+ "page": 31,
+ "caption": "Table 8 \u0007Value of Factor ‘X’ (see Diagram 14) | Minimum",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "751b58717c7aafd469445ddcae5f1c60cc098d99a39203d5554bb7bf604fb02c",
+ "image_sig": {
+  "w": 749,
+  "h": 298,
+  "grey": "0MK+ub6+u8DI2dnZ2dnZ2ci6sLO3say0vczMzMzMzMz////////////11uP/1Nj5//////////Pt+dbo/9/Z////////0fXgv+jr2/Hc4uvg6/XT99Hv9uTu9uT95+325+Tv1ebY4vby8vLy8vLy8v//////////////////////////////////5Nnn////3dnl3OXc5eLh4eXh5eHh5eLY+Nb87vPu8fHz8fPx8fP///////P/+vn5//n/+fr/5ePy7fLn8u3t7fLu8u7u8+be+v397/Pu8fHz8fPy8fP///////P/+vn6//r/+fr/4dvb29vb29rb29vb29vb2w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

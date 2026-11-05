@@ -1,0 +1,27 @@
+{
+ "key": "ADB1_Diagram-3.7_p39",
+ "source": "ADB1",
+ "label": "Diagram 3.7",
+ "page": 39,
+ "caption": "Diagram 3.7 Horizontal escape for flats served by a single common stair",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "f05c8371f46d33a5054ed18ffc47252ee8cae828d8e3fd5daeac87cb8c810ceb",
+ "image_sig": {
+  "w": 737,
+  "h": 716,
+  "grey": "8/L0+/v7+/v7+/v7+/v7+/vy7PH////////////////78vbq3tjv8vD/////////+/f97+Ha9Pj3//////////vr6OPZ1ODr6//////////77PLk8N7p7er/////////+/f98f3s9Pj3//////////v19vH259zf7/Ln6+zq6vT78O70//36+/7z2drc6PD8+/D13tj16v//7fP2+/////v3/eTe/fP//+/T2dbe5/j79+PQ19rl///x1djY2dbv++zXztPW8///8dfY3Nri+/v3/P/x/PP///LU0tTW4ff78/Pz7vPv////////////n4eDh4eIhoeGiIaGfn19fQ=="
+ },
+ "reviewed": false,
+ "description": "This is a plan drawing titled \"Diagram 3.7 Horizontal escape for flats served by a single common stair\", headed top left by \"See para 3.27 and 3.40\". It comprises two parts. Part a, \"Corridor access flats\", is a plan of eight flats, each marked F, arranged four above and four below a horizontal central corridor, with a stair drawn in the upper central flat. Door symbols open from the corridor into the flats. Two dimensions, each reading \"7.5m max.\", span from the central door to an end door along the corridor, and an arrow in the corridor points right. A leader label, \"Stair lobby with no flat opening directly into it\", points to a vertical green line at the lower centre. Part b, \"Lobby access flats\", is a plan of four flats, each marked F, surrounding a central shaded lobby, with a stair at the top and door symbols opening from the flats into the lobby; a diagonal dimension reads \"7.5m max.\". A legend defines F as Flat, the shaded square as zones where ventilation should be provided, and the green line as fire resisting construction, followed by a numbered NOTES list.",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description says part a shows \"eight flats, each marked F\", but the drawing shows only seven flats marked F; the upper compartment containing the stair has no F label (it is the stair, not a marked flat).",
+   "The description states \"an arrow in the corridor points right\", but the drawing shows the small arrow in the corridor pointing up (toward the stair), not right."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "0e0a1071bf8f711a"
+ }
+}

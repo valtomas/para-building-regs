@@ -1,0 +1,24 @@
+{
+ "key": "ADB1_Diagram-8.3_p80",
+ "source": "ADB1",
+ "label": "Diagram 8.3",
+ "page": 80,
+ "caption": "Diagram 8.3 Fire resisting ceiling below cavity",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "3a6945ea2f96ba122728dd6f75e853448efbbde62b2506dd47d3d1eef8288c7c",
+ "image_sig": {
+  "w": 754,
+  "h": 341,
+  "grey": "5M7Ozs7Ozs7Ozs7Ozs7O3//////////////////////29/f39/f39/f39/f39/f16uv/////////////////+/r/++Dg4ODm//////////vy5uOtra2tvv/////////7+//////////e////////+/v//fz+/f7/4N3f3tzp//v7/+7qy83G+tjIz8zR4t7y+/////77///g1djc4vD++/v/49ra1dri8+vs+f////v7//////r////////////7+///5+Tl5fL/////////+/v///////////////////usmJmXl5iYl5eXl5eXl5elimxiaWtsaGRVVVVVVVVVdA=="
+ },
+ "reviewed": false,
+ "description": "This is a section diagram, titled along the bottom \"Diagram 8.3 Fire resisting ceiling below cavity\". In the top left corner the text reads \"See para 8.5\". A solid grey horizontal band near the top is labelled \"Floor or roof above\". Below this band, a left‑hand label \"Cavity\" marks the gap between that band and a thin green horizontal line further down, which is labelled \"Ceiling\" at its left end. The top face of the green line is identified by the label \"Ceiling surface/product exposed to cavity – class C-s3, d2 or better\", and its underside by the label \"Soffit of ceiling – class B-s3, d2 or better\". To the right of these elements sits a block of text headed \"NOTE:\" which reads that the ceiling should meet all of the following conditions: a. Provide a minimum fire resistance of EI 30; b. Be imperforate, except for an opening described in paragraph 5.24; c. Extend throughout the building or compartment; d. Not be easily demountable.",
+ "check": {
+  "ok": true,
+  "notes": [],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "14593f3dfd010e83"
+ }
+}

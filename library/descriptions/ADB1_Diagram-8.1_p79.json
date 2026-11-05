@@ -1,0 +1,24 @@
+{
+ "key": "ADB1_Diagram-8.1_p79",
+ "source": "ADB1",
+ "label": "Diagram 8.1",
+ "page": 79,
+ "caption": "Diagram 8.1",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "d335a1bbe62f00e01ecc3f73aad50006823a1b45c20aabda0429faebc6a26daa",
+ "image_sig": {
+  "w": 737,
+  "h": 812,
+  "grey": "8vP8/Pz8/Pz8/Pz6/Pz8/Pv///////////v14v/////7///////++Ort9d/49///+/////329uXi9PDY/v////v/7+vg9vfe3/f35v/////7/+/p6t3t4uTt7vX48/3/+//u6eHj487M1tHT7uz4//v/+P/m8fHZ0u/x4vb1///7////7t3t4tvt7Pn48/3/+//u1tPU08XD3N/V7uz4//v//+S53+Ps9+bu8Pb1///7////wfHw+fro9vf38/3/+////7TIyMjIwsXL//////v////n8/z/7Ovz9fD3/P/7///////////////89/3/q5iUl5WXmJCPj4+Pj4+Pjw=="
+ },
+ "reviewed": false,
+ "description": "This is a section through a multi-storey building with a pitched roof, showing three accommodation spaces separated by compartment floors, with a roof cavity at the top. The left external wall has a cavity, and internal compartment walls divide the building vertically. Green rectangular symbols, identified by a legend as \"Cavity barriers\", appear at the top and bottom of the external cavity, around openings in walls, at compartment floors, and around the edges of an opening in a compartment wall. A second legend reads \"Fire-stopping (same resistance as compartment)\". Green double-headed arrows labelled \"Sub-divide extensive cavities\" span the roof cavity and two floor cavities. Right-hand labels read \"Roof cavity\", \"Accommodation\", \"Floor cavity\", \"Compartment floor\" and \"Ceiling cavity\", repeated for each level. Internal walls are labelled \"Wall forming protected escape route(1)\" and \"Compartment wall\". Top left reads \"See para 8.2\"; a note reads \"1. See paragraph 8.5.\" The footer reads \"Diagram 8.1 Provisions for cavity barriers\".",
+ "check": {
+  "ok": true,
+  "notes": [],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "a4227bd4fa68aa23"
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "key": "Manual_Figure-7.1_p23",
+ "source": "Manual",
+ "label": "Figure 7.1",
+ "page": 23,
+ "caption": "Figure 7.1 The relationship between regulations and guidance in the approved documents",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "615867a3c3ef5c43b27a86f2ea52cbff9949b87a056e5e59829fc8744b4246c2",
+ "image_sig": {
+  "w": 749,
+  "h": 146,
+  "grey": "/////////////////////8vQz8LEydTLy8/G1dn////B0dSusLe6oru2qsLU////6ufn4f3///3//f///////6Sjn5z2///////////////5////////////////////7evr6+vr6+vr6+vr6+vr6/v///////////////////upl+z////////////////7h4be////////////////+46o3f////7///////////uOwM7k4OTh9P/////////7jpXe//3+/f3/////////+3BO4f////////////////vNxPv////////////////7+///////////////////+w=="
+ },
+ "reviewed": false,
+ "description": "The image shows a figure caption above a single horizontal rectangular panel. The caption reads: \"Figure 7.1 The relationship between regulations and guidance in the approved documents\".\n\nBelow the caption, the panel is enclosed by a thin blue line. On the left side of the panel is a solid green square block. Within this block, a large white capital letter \"K\" appears, followed by a smaller white numeral \"4\" set inside its own outlined box, together reading \"K4\".\n\nTo the right of the green block, in grey text and aligned to the left, are the words \"Protection against impact with glazing\". There are no other symbols, dimensions, lines, or parts visible within the panel. The panel is positioned directly beneath the caption, and no further sub-parts (a., b., c.) are present. The remainder of the image is blank white space, with a thin black band running along the very top edge.",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description says \"On the left side of the panel is a solid green square block\", but the green block is a horizontal rectangle, noticeably wider than it is tall. The description says the numeral \"4\" is \"smaller\" and \"set inside its own outlined box\", but the drawing shows the \"4\" at the same size as the \"K\" with no outlined box around it. The description says \"a thin black band running along the very top edge\", but the black band runs along the bottom edge of the image, while the top edge is plain white with the caption."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "54132649cc24f29d"
+ }
+}

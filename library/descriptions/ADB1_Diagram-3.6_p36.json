@@ -1,0 +1,26 @@
+{
+ "key": "ADB1_Diagram-3.6_p36",
+ "source": "ADB1",
+ "label": "Diagram 3.6",
+ "page": 36,
+ "caption": "Diagram 3.6 Multi-storey flat with protected entrance hall and landing",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "9a8b26671abc151f426e641dc4213b0d4376abf27c2399e6726e91dbd36da670",
+ "image_sig": {
+  "w": 754,
+  "h": 417,
+  "grey": "glVaZ2NVVVVVVVVVVVVVefny8vLy8vLy8vLy8vLy8vj5+Pj4+Pj4+Pj4+Pj4+Pj47e//////////////////+/v/8uL6///Vz/b///////v7//Pv7/j/5uHq/+/q7v/7+//1///2//b19//b3f//+/v/9f//9v/r6Pf/6eH7//v7//Hu9fT/1tLm//f4///7+//P0e/1/83Z6///////+/v/2s7/9v/W3/X///////v7/93J//b/9vD3/+Lp6//7+//bxPL0/+zp7v/X1OH/+/v//+r5////8un///////vTy8vLy8vLy8vLy8vLy8vQh2ZhZmdkZmZmZWdiVVVVcg=="
+ },
+ "reviewed": false,
+ "description": "The drawing, titled \"Diagram 3.6 Multi-storey flat with protected entrance hall and landing\", contains two floor plans and a legend. Top left reads \"See para 3.21\".\n\nPart a, labelled \"a. Entrance level\", shows a rectangular flat. A grey shaded zone, the protected landing/entrance hall, sits in the lower portion, bounded by green lines representing fire resisting construction. Two door openings marked \"Fd\" connect the hall to the flat; a vertical dimension \"9m max.\" runs between them. The bottom edge is marked \"Flat entrance\", and a \"WC\" label with a hatched area appears at the lower left.\n\nPart b, labelled \"b. Level(s) above or below entrance level\", shows a similar grey shaded protected landing/entrance hall on the left with a hatched area, and three door openings each marked \"Fd\" opening to the right. The lower right corner is marked \"Alternative exit\" beside a green line.\n\nThe legend defines the green line as \"Fire resisting construction (minimum REI 30)\", \"Fd\" as \"Fire doorset\", and the grey square as \"Protected landing/ entrance hall\". A NOTE states: \"This only applies where at least one storey is more than 4.5m above ground level.\"",
+ "check": {
+  "ok": false,
+  "notes": [
+   "For part a, the description says the vertical dimension \"9m max.\" \"runs between them\" (the two \"Fd\" door openings), but the drawing shows that dimension line running from the upper \"Fd\" down to the \"Flat entrance\" at the bottom edge, not between the two doors. For part b, the description says there are \"three door openings each marked 'Fd'\", but the drawing shows four \"Fd\" door openings along the right edge of the protected landing."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "9c78af76c49c0ebb"
+ }
+}

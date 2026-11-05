@@ -1,0 +1,24 @@
+{
+ "key": "ADB1_Diagram-11.7_p103",
+ "source": "ADB1",
+ "label": "Diagram 11.7",
+ "page": 103,
+ "caption": "Diagram 11.7 Permitted unprotected areas in small residential buildings",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "d3833aead8d8ad1d477c80508dab0266fa37a1eaba8e11d56ac02f0a8b148811",
+ "image_sig": {
+  "w": 737,
+  "h": 310,
+  "grey": "9fb29vb29vb29vb29vb29unl///////////////////7//zi5OTt////////////+//5+f//9P////////////v/+ezf7+z/+fHx8fLx/f/7//n4///z/+7PzN/Q0P//+//5+f//9P/r0NTk8fD///v/+fnr2+z/+e/y8ufy/f/7//ff5f/////5///0////+//1/f//////+P//8f////v//Pj4//////n///D9///7////+fn6///7///v+v//+///897n//////////////v///////////////////+YeX16eXl5eHp6e3l3d3d3im1famtqa2hpbWppVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a plan view accompanied by a table, titled in a green banner at the bottom \"Diagram 11.7 Permitted unprotected areas in small residential buildings\". In the top left corner is the text \"See para 11.18\". The plan shows a building outline drawn with a double line, forming a rectangle with a stepped cut on its lower edge. A green double-headed arrow spans the width of the upper part of the plan and is labelled \"24m max.\". A green dimension line marked \"a\" runs from the lower left edge of the plan down to a dashed line labelled \"Relevant boundary\". To the right, a two-column table reads, in its headers, \"Minimum distance (a) between side of building and relevant boundary (m)\" and \"Maximum total area of unprotected areas (m²)\". The rows pair the figures 1 with 5.6, 2 with 12, 3 with 18, 4 with 24, 5 with 30, and 6 with \"No limit\".",
+ "check": {
+  "ok": true,
+  "notes": [],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "9249117fe4c0e3a7"
+ }
+}

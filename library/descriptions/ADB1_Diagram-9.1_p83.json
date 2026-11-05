@@ -1,0 +1,26 @@
+{
+ "key": "ADB1_Diagram-9.1_p83",
+ "source": "ADB1",
+ "label": "Diagram 9.1",
+ "page": 83,
+ "caption": "Diagram 9.1",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "5c820690b1aebbc732032ede5e4f76a8fe2fe2d8cf8b59e07316afd05f9e0333",
+ "image_sig": {
+  "w": 737,
+  "h": 479,
+  "grey": "7Obk9/n5+fn5+fn5+fn5+fr////v+P////nw///////7///0+u/s9v/85uvr6+r++Nrb9dzl+fr//9nm6+vr+fXY0+y9zuj0///h19fi7vr47NTzzNfj8Or+3tjV6efz++3u9MPU9vb//9/Sz9Hb9/vY1urM2eP0///Z0c/W3/ry1tH4xtb/+v//2dHQ5+r1+//q77/S5+bk9uvp6erq8/v///jV6Pj5///g1+Ts6/X7///8+v//////2tjd6/n/+///+OH//////ebh4+70/Pv//+3W1eH///7U1NDT3P7q6Ojo6Ojo6Ojo5OXj5OXohmRfZGFnYWNmYVVVVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "A vertical section titled “Diagram 9.1 Enclosure for drainage or water supply pipes”. At the top left, text reads “See para 9.4 and Table 9.1”. The section shows a vertical “Stack pipe” running down through several horizontal floor levels, housed within a “Casing” on its left and bounded on the right by a “Compartment wall”. Diagonal “Branch pipe” elements enter the stack from the right at each level, and the space around the pipe is labelled “Enclosure” at two points. Three left‑hand annotations describe the floor levels: “Compartment floor carried through to seal enclosure – provide fire‑stopping between stack pipe and floor” at the top, “Intermediate floor carried through to seal enclosure – provide fire‑stopping between stack pipe and floor” in the middle, and “Compartment floor” at the base. A legend below shows a grey square for “Casing”, a light grey square for “Enclosure”, a dark green square for “Fire‑stopping around pipe”, and a light green line for “Compartment floor or wall”. To the right, a “NOTES” heading introduces three numbered points of running text.",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description says \"Diagonal 'Branch pipe' elements enter the stack from the right at each level\", but the drawing shows the diagonal branch pipes on the left side of the stack at the top and lower levels, with the middle-level pipe drawn horizontally with arrowheads at both ends, so \"from the right at each level\" is not supported. The description lists \"Three left‑hand annotations\" including \"'Compartment floor' at the base\", but the \"Compartment floor\" label is placed on the right side of the section, not the left."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "879055871419db08"
+ }
+}

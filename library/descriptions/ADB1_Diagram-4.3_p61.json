@@ -1,0 +1,27 @@
+{
+ "key": "ADB1_Diagram-4.3_p61",
+ "source": "ADB1",
+ "label": "Diagram 4.3",
+ "page": 61,
+ "caption": "Diagram 4.3 Layout restrictions on small class D-s3, d2 plastic rooflights, TP(b) rooflights and lighting diffusers",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "874b4f15130c00cba5e8af127236ff8e4c5999ea9f825cd222fbcd0cfeb096ff",
+ "image_sig": {
+  "w": 737,
+  "h": 763,
+  "grey": "8vH7+/v7+/v7+/v7+/v7+/v//v7+/v7+///////////7//3//////v//////////+//9//j1//7///////////v//fHr1r66u7vW/v7////7//3/7Lyvrq+vruv9////+//9//vBp6mwr6y77v7+//v//v//yaaouqems6zq/v/7//7+/sivqsGvq67B7/3/+//////Jr66tr67Z9/7///v/////zK+vr6+y///////7//////bTzczR6f//////+/////////n0//////////v///ng/PHz9fP08vLy///o5ubl1+PZ5ubm5ubm5ubmg15eaGlhXl1dX11hX15fWA=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a ceiling plan, titled at the bottom in a green bar as \"Diagram 4.3 Layout restrictions on small class D-s3, d2 plastic rooflights, TP(b) rooflights and lighting diffusers\", with the note \"See Table 4.2\" in the top left corner. At the centre is a large solid green rounded rectangle, the zone. To its left, partly outside, sits a vertical rectangle rooflight carrying a diagonal line marked \"dimension x\"; a horizontal green arrow labelled \"x min.\" runs from it to a second vertical rectangle rooflight set within the green zone, also marked \"dimension x\". A further horizontal green arrow labelled \"x min./\" leads from this second rectangle to a circular rooflight on the right. On the right are three circular rooflights, the middle one overlapped by a smaller green circle, with vertical and horizontal green arrows labelled \"y min.\" and a downward line labelled \"dimension y\". Dashed outlines trace a rounded rectangle around the left rooflights and dashed circles around the right ones. Below, the legend shows a green square for \"Materials within this zone – at plane of ceiling – should comply with Table 4.1\" and a rectangle-over-circle symbol for \"Rooflights\".",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description says the left rooflight is \"partly outside\" the zone, but the drawing shows it sitting entirely outside the green rounded-rectangle zone, with none of it inside the green fill.",
+   "The description calls the first \"x min.\" arrow \"horizontal\", but the drawing shows it as a diagonal line slanting upward from the bottom of the left rooflight to the top of the second rooflight."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "80b7e84cbd722f0e"
+ }
+}

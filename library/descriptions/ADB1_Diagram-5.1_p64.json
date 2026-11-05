@@ -1,0 +1,26 @@
+{
+ "key": "ADB1_Diagram-5.1_p64",
+ "source": "ADB1",
+ "label": "Diagram 5.1",
+ "page": 64,
+ "caption": "Diagram 5.1",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "4abdc950c7ffab8eaafec744c956873a6543e9cea7d63f9d215ddfaa88883cac",
+ "image_sig": {
+  "w": 756,
+  "h": 369,
+  "grey": "9PTz+Pj4+Pj4+Pj4+Pj49u7q9v////////////////v7+erY6P///f/////////79t7R0uX49+7s+v//////+/v62czh9fj88vf///////v7///9//fk+fz2+//////7+//////0mbD/+Pb/////+/v15+Tr1JBUx/f28OXm9vv7+sjM4vjOdlbL7d7Kydb0+///+/n3+cRuZ/vu5uL3+/v/6d/r9Orgt4X6//////v7//Pt8f//8+/n+v/////7+/////////3u+///////+/v//////////v////////u+rq6urq6urq6urq6urq66i2pha2hpa2ltZVVVVVVVeA=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a three‑dimensional perspective (axonometric) view of part of a building, showing the boundary between a garage and a dwellinghouse. A green‑shaded vertical wall together with an adjoining green floor slab forms the separation. Inside the green wall a dashed rectangle marks a door, indicated by a dashed leader line from the upper‑left text. The labels read, top left, \"See paras 5.6 and 5.7\"; \"Fire doors between the garage and dwellinghouse to have a minimum fire resistance of E 30 S a and be fitted with a self‑closing device\", pointing to that door; \"The door opening threshold should be a minimum of 100mm above garage floor\", pointing to the lower edge of the green wall; \"or Floor to fall away from door to the outside\", pointing to the floor slab, which carries the word \"Fall\" with an arrow sloping away from the door; and on the right, \"Wall and any floor between the garage and dwellinghouse to have a minimum fire resistance of REI 30 from the garage side\", pointing to the green wall. A green banner along the bottom reads \"Diagram 5.1 Separation between garage and dwellinghouse\".",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description says the door is \"indicated by a dashed leader line from the upper‑left text\", but the leader line running from the \"Fire doors…\" text to the dashed door rectangle is solid; the only dashed lines in that area are the hidden edges of the 3‑D box outline."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "916cceffa2333546"
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "key": "ADB1_Diagram-11.3_p99",
+ "source": "ADB1",
+ "label": "Diagram 11.3",
+ "page": 99,
+ "caption": "Diagram 11.3 Notional boundary | Unprotected areas and fire resistance",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "3843887fc1130d0357dafb68f4b2363779155d26546e8c24ff2989060a367a27",
+ "image_sig": {
+  "w": 737,
+  "h": 535,
+  "grey": "7e36+vr6+vr6+vr6+vr6+vv6+/v7+/v7+Pv7+/v7+//7/Ozg4OH99fLd4ODg7Pz/+/vp///p/f367v///+n7//v86fbx6fz18u757f/p/P/7/On//+n8+fHu////6fz/+/zp///p/f//7v///+n8//v87+Hh3/L0997h4eHv/P/78tjd3OL7+vfb29zd9/7/+/////////////////////vd8vPz9PLz8vXx9P/////78eXm6Onp6Obi6Obu7ev2++3b293c3Nrc3Nzc2+zv//vt2tzX29nb3+3s7+zs7fv3+fn5+fn5+fn5+fn5+fn5hWNeYmFgVVVVVVVVVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "This is a plan view, with a green footer bar reading \"Diagram 11.3 Notional boundary\" and the words \"See para 11.5\" in the top left corner. A large dashed rectangle, labelled \"Site boundary\", encloses the whole arrangement. Inside it stand two solid black squares set side by side: the left square is labelled \"Building A\" and the right square \"Building B\". A vertical green dashed line, labelled \"Notional boundary\", runs down the gap between the two squares. Below the squares is a horizontal dimension line carrying a small star symbol where the notional boundary line meets it. The portion of this line from Building A's right edge to the notional boundary has an arrow and is annotated \"Compliance with the provisions for space separation in respect of building A\"; the portion from the notional boundary to Building B's left edge has an arrow and is annotated \"Compliance with the provisions for space separation in respect of building B\". Beneath the diagram is a \"NOTES\" block of running text containing two numbered rules, which is text rather than part of the drawing.",
+ "check": {
+  "ok": false,
+  "notes": [
+   "{\"ok\": false, \"notes\": [\"The description says the two buildings are \\\"two solid black squares\\\", but the drawing shows two rectangles (taller than wide) drawn as black-outlined boxes with white, unfilled interiors rather than solid black shapes.\"]}}"
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "5fd89ba1662b3f14"
+ }
+}

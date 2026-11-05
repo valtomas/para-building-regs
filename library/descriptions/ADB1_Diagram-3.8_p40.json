@@ -1,0 +1,27 @@
+{
+ "key": "ADB1_Diagram-3.8_p40",
+ "source": "ADB1",
+ "label": "Diagram 3.8",
+ "page": 40,
+ "caption": "Diagram 3.8 Horizontal escape for flats served by more than one common stair",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "b0ef449beee120535ecb819563512204ee8b6cdff4c366a92d6674aedc4ab1ee",
+ "image_sig": {
+  "w": 754,
+  "h": 791,
+  "grey": "8/P1/Pz8/Pz8/Pz8/Pz8+fv//ubo5uX39vf3+Pb///v7//ze7/bu8O7u8PXZ///7+//87Obu5+nn6evv7v//+/v//vjr+vf39/f3+vn///v7//7f4d3l8O7y7/X8///7+//8++H99Pb1/fX29///+/v//Nzb4+fi69rV3+P///v7//3t7vf29/b04/b5///7+///8O7u9v7+/v//////+/v//O7y+f/54+Xn8vDz//v7//zt7vH5/tnX2OTq+v/7+//86Nzo9v3v8/v/////+/v//PDw8fv209jd2tvg/vv7//3v8/v///Xx9P3////7qJKPkZGSkZGRkZCRkYmJmw=="
+ },
+ "reviewed": false,
+ "description": "Diagram 3.8, \"Horizontal escape for flats served by more than one common stair\", comprises three horizontal plan views. At top: \"See paras 3.27 and 3.40\".\n\na. \"Corridor access without dead ends\": a long shaded grey corridor runs horizontally, lined above and below by squares labelled F, with hatched stair blocks at each end. A door marked Fd sits mid-corridor; a dimension line below reads \"30m max.\"\n\nb. \"Corridor access with dead ends\", subtitled \"The central door may be omitted if maximum travel distance is not more than 15m\": a similar corridor with F squares both sides, hatched stair blocks left and right, three doors marked Fd, and dimensions \"7.5m max.\", \"30m max.\", \"7.5m max.\"\n\nc. \"'T' junction with main corridor\": a T-shaped corridor with F squares around it, two doors marked Fd, a \"7.5m max.\" dimension, and green escape-route arrows.\n\nRight-hand key: Fd Cross-corridor fire doorset; F Flat; a shaded box for ventilation zones per paras 3.54–3.57; green line = Fire resisting construction; arrow = Escape route. Two NOTES follow.",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description quotes the top text as \"See paras 3.27 and 3.40\", but the drawing reads \"See para 3.27 and 3.40\" (singular).",
+   "For view b the description says \"hatched stair blocks left and right\", but the drawing shows the hatched stair blocks inset within the rows (one upper, one lower), with F squares occupying the left and right ends."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "19055aa0f5d4121a"
+ }
+}

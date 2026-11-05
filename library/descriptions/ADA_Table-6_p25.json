@@ -1,0 +1,17 @@
+{
+ "key": "ADA_Table-6_p25",
+ "source": "ADA",
+ "label": "Table 6",
+ "page": 25,
+ "caption": "Table 6 \u0007Declared compressive strength of masonry units complying with BS EN 771-1 to -5 (N/mm2) Masonry unit",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "460c8f02cde3b16dd49bc17675dea94ebe0a66ef46efcf2c2549b7ff76f2d58c",
+ "image_sig": {
+  "w": 759,
+  "h": 623,
+  "grey": "0b+qs7O0trq/wb27vMTY3NzQ2NPGyd3T0NHa1NfX0Nn/////6vj/7uv06tbW39vs7eXj5/n5+fn5+ero5evl7vD59erz6fPo8+n19PX19vrv+fTr7ujt6ezq8/Ty8vT25d7b3vHw8e/x8PHx8vDx8/P59Ovy6fLq8un09fP08/Xi5N/Z8Orw6u/s9vX18vPx8Pn16fHm8+Xz5vTz9fX08+rz7ubo4+fk5+Xt7+3t9/rr8vPy8v3/////////////9+fm5+fr8/Ly8vHy8vPz//Pc29ra2dnc3Nze5efn6vn34uDj5ubm6OXm5+by8/H99Ozs7fPz8/Pz8/Pz8/Pz9A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

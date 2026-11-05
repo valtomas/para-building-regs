@@ -1,0 +1,27 @@
+{
+ "key": "ADB1_Diagram-3.5_p36",
+ "source": "ADB1",
+ "label": "Diagram 3.5",
+ "page": 36,
+ "caption": "Diagram 3.5",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "bce5e0eb6defb5a939ec7661eec6e0e342e5d43c44037c0260e22b6f50729588",
+ "image_sig": {
+  "w": 754,
+  "h": 392,
+  "grey": "7/D4+Pj4+Pj4+Pj4+Pj49vP25ef////l5Pn///////v7//n7////2tjw///////7+//t7ez//+Tr4v3/////+/v/9v/y///19P/2//////v7//b85///9fT/9v/////7+//29fX//+bp//bv6Pn/+/v/5OTl///x6+72//////v7/9rv9v//2+Xa9tvd2fT7+//o8Ov//9zr//bj29n3+/v/7PLn///18//2//////v7/+Xw8v//9fT/9v/////7+//i3uv//+jr6fv/////+/v/+/T////7//r///////vIvb29vb29vb29vb29vb3EhGlhZ2llaGdnZmhpZWZbbg=="
+ },
+ "reviewed": false,
+ "description": "Diagram 3.5, captioned at the bottom in a green band \"Multi-storey flat with alternative exits from each habitable room, except at\" (the caption is cut off). At the top left it reads \"See para 3.21\". Two floor plans are shown side by side.\n\nOn the left, plan \"a. Entrance level\" shows a square divided into rooms, with a hatched room labelled \"WC\" at the bottom left and a door arc at the bottom labelled \"Flat entrance\". A central door arc has two green diagonal double-headed arrow lines running to the top-right and bottom-right corners, each labelled \"9m max.\"\n\nOn the right, plan \"b. Level(s) above or below entrance level\" shows a central room labelled \"Bathroom\" with four door arcs, surrounded by four other rooms. Green arrows point outward at the top and bottom, each labelled \"Exit\".\n\nTo the right, a green upward arrow is keyed as \"Alternative exit\", followed by \"NOTE: This only applies where at least one storey is more than 4.5m above ground level.\"",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description calls the two green diagonal 9m lines \"double-headed arrow lines\", but the drawing shows single-headed arrows with the arrowhead only at the top-right and bottom-right corners, the other end simply meeting the central door arc.",
+   "The description of plan b mentions only the \"Bathroom\" and the \"four other rooms\", but the drawing also shows a hatched room on the left edge of plan b (the equivalent of the \"WC\" in plan a), which the description does not mention."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "00e778f4a4de1961"
+ }
+}

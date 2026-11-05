@@ -11,5 +11,10 @@
  "description": "Two sections, a. and b., through a three-storey dwellinghouse with a pitched roof over an 'Unoccupied space' and a grey 'Protected stairway' down the right-hand side, enclosed by 'Fire resisting enclosure to protected stairway REI 30'. Each has a '4.5m' dimension rising from ground level. See para 2.5.\n\nIn a., the stairway and its enclosure continue up into the roof space, where a vertical 'Cavity barrier E 30 and EI 15' separates the roof space over the stairway from the rest of the roof.\n\nIn b., the stairway's enclosure stops at the top storey's ceiling, and a 'Fire resisting ceiling EI 30' runs across the whole top of the house, over both the rooms and the stairway, below the unoccupied roof space.",
  "rejected": false,
  "model_description": "This diagram, titled \"Alternative cavity barrier arrangements in roof space over protected stairway in a\", shows two cross-sectional drawings, labelled a. and b., illustrating different cavity barrier configurations.\n\nIn drawing a., a protected stairway is shown on the right, enclosed by a \"Fire resisting enclosure to protected stairway REI 30\". Above this is an \"Unoccupied space\". A \"Cavity barrier E 30 and EI 15\" is positioned horizontally, separating the unoccupied space from the area above the stairway. A dimension of \"4.5m\" indicates the height from the floor to the ceiling level.\n\nIn drawing b., the configuration differs. The \"Protected stairway\" remains enclosed by a \"Fire resisting enclosure to protected stairway REI 30\". However, instead of a cavity barrier, there is a \"Fire resisting ceiling EI 30\" separating the stairway from the \"Unoccupied space\" above. This drawing also includes a \"4.5m\" dimension for the height. A note at the top left of the entire diagram states \"See para 2.5\".",
- "corrected_by": "Claude, checking the image (2026-11-04)"
+ "corrected_by": "Claude, checking the image (2026-11-04)",
+ "image_sig": {
+  "w": 737,
+  "h": 420,
+  "grey": "6NfX19fX19fX19fX19fX2Pr5+fn5+fn5+fn5+fn5+fnv7f//////////////////+///+/v////////2//////v/+uDY+fr3/v/w3eb////7+d7k0bDm3vzm2tLa1vf7+/f//+ap9f//9///xr3Z8Pv3///mqfL8//f//8bC+/379+vr1aTe3P/v6+u6vdjs++7//+ap2un98f//xsLS+/vx8PDZqen8/e3w8L/C8P/76f//5qbm8fXz///Gvej7+/L//+ap6fb/8///xsLq//DDtra1ssb03ry2trS50//Uy8vLy8vLy8vLy8vLy8vLhWZfaGRmZWhkZWZiZ2ZmXQ=="
+ }
 }

@@ -1,0 +1,26 @@
+{
+ "key": "ADA_Diagram-22_p38",
+ "source": "ADA",
+ "label": "Diagram 22",
+ "page": 38,
+ "caption": "Diagram 22 \u0007 Piers and chimneys",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "d8d7c28c118c23768b36f2fd6fac7b433d0758f73acd94e29db2a4ea8c55e637",
+ "image_sig": {
+  "w": 733,
+  "h": 157,
+  "grey": "7+3t8Onr+v/Burq6urq6w8TBvcfGueH/v7ikp6Ghzubo4Nv9///8/8e/ybm2sdTm2M/K/f/////Ev7+/v7+/x/7///39/v//6PH///////rnxsW4xr+/9+Hy///////6+Ovv3unp7/71////////+u3IvsHHy9f/9f//////+/r44eDb2eDo//X///////D67bnO0NTb0//1///y///4+u/E2P//////9f//9//76PT32fD///////X69ev/7Oj6+/Lx9+r7+v/s5Pf7//Hu+tm5y7LDs87/4+3z4uXo4Prrze39/////+3a3dTT5Ojz9Nju///////lzcbf4s3P6w=="
+ },
+ "reviewed": false,
+ "description": "The image is divided into two areas. The left area is running text rather than a drawing, setting out mix proportions and concrete grades. The right area is the actual figure, headed \"Diagram 22 Piers and chimneys\", drawn inside a rectangular box with the note \"See para 2E2f\" in its top-left corner.\n\nThe drawing is a single horizontal line illustration, a side profile of a stepped wall or edge. A continuous stepped baseline runs across the bottom, and from it a series of projecting sections of differing heights rise at intervals. Reading from left to right there is a small projection, then a low projection, then a taller step, then a medium projection, and finally a further projection at the right end. The letter \"P\" is placed on the baseline at the second, low projection. Above four of the projections are vertical dimension markers, each drawn as a short vertical line crossed near its top by a horizontal tick, with the letter \"X\" written beside it. The parts relate as a sequence of projections of varying heights along one stepped horizontal line.",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description quotes the note in the top-left corner as \"See para 2E2f\", but the drawing shows \"See para 2E2f\"."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "e21fae43e53b7cad"
+ }
+}

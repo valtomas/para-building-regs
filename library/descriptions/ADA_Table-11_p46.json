@@ -1,0 +1,17 @@
+{
+ "key": "ADA_Table-11_p46",
+ "source": "ADA",
+ "label": "Table 11",
+ "page": 46,
+ "caption": "Table 11 \u0007Building consequence classes Consequence",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "2df393ceac081c096f8e26558cbec611e3bbee024820504ddb9f49c7823a3102",
+ "image_sig": {
+  "w": 755,
+  "h": 719,
+  "grey": "zs++xcHDxc7a2tra2tra39/k7uDi4vT6+vr6+vr6+vv///Lh3+zx8vTz8/Pz8vX29vr07O/t8O3s7/n6+vn6+/by7+Xj5fP9/v7+//////////Hg3eDm7vTz9P7////////y3+Hi5PDy8vPz9f////r68d7h4eLv7O/t7e7u7vLw8vHn8vLy8/Dx8fTy8/L////z5OTk6ebo5uf/////////9OTn5e3y8/j///////////HY3t/q8vLy9PLy8PP6+Prw3uvr6+3u7e3u7u3u+///9OTm5Ofl5fH////////m6enr6+rq6erp6urq7fX28t3g397g6enq5+ny9PT1/w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

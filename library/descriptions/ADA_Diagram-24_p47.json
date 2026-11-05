@@ -1,0 +1,27 @@
+{
+ "key": "ADA_Diagram-24_p47",
+ "source": "ADA",
+ "label": "Diagram 24",
+ "page": 47,
+ "caption": "Diagram 24 \u0007Area at risk of collapse in the event of an accident",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "59034d249a815a5ca8bad5ae55ae767e42cc3e16756c6981f09ad18864a2363f",
+ "image_sig": {
+  "w": 749,
+  "h": 541,
+  "grey": "08fFwcG/v73Bw8K93d3d3efw9/f39/f39/f39/f39/f1+fj19vz/////5uLj4///9fH67/X4//////X6+vX///X2//f7+v/////b4ODd///17PTn7fXf4d78+O369f//9fT/9/v0393b9ejj4N3///X39Ozv+N3b3Pfs4eHe///19PXs8/fc5u3+9u/69f//9fj49/v6/P///93f39z///Xt9Onu9//////q7e3p///19v/3+/r/////6u3t6P//9fb/9/v6////7OTn5+Tr//Xw8unt+P///////v/////1///t//////////Ts////6/Hx8fHx8fHx8fHx8fHx8Q=="
+ },
+ "reviewed": false,
+ "description": "The drawing is titled \"Diagram 24 Area at risk of collapse in the event of an accident\", with the note \"See para 5.1d\" at the top left. It has two parts side by side. On the left, labelled \"Plan\", is a rectangular grid of dashed lines forming four rows of columns, with small solid squares at the intersections. An irregular wavy line is drawn across the left-middle cells, enclosing a portion of the grid. On the right, labelled \"Section\", is a building shown in elevation cut through, with five storeys separated by horizontal floor lines and vertical column lines. An irregular wavy line runs down the left side, spanning the three middle storeys, with dotted horizontal lines at the storey levels inside it. Between the two drawings sits a block of text reading: \"Area at risk of collapse limited to 15% of the floor area of that storey or 100m², whichever is the lesser, and does not extend further than the immediate adjacent storeys\". Two leader lines run from this text, one pointing to the wavy area in the Plan and one to the wavy area in the Section.",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description says the Section shows 'five storeys', but the drawing shows six storeys (six bays between the roof line and the ground line).",
+   "The description says the Plan has 'small solid squares at the intersections', but the drawing shows small hollow (open) squares at the grid intersections."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "1183aef1915af4af"
+ }
+}

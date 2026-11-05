@@ -1,0 +1,17 @@
+{
+ "key": "ADB1_Table-10.1_p93",
+ "source": "ADB1",
+ "label": "Table 10.1",
+ "page": 93,
+ "caption": "Table 10.1 \u0007Reaction to fire performance of external surface of walls",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "495bdbd5d14abdba68c5ba8b9f3eee619e6b3e124c5f47a9571da9c047174a0c",
+ "image_sig": {
+  "w": 746,
+  "h": 897,
+  "grey": "y73Fv77BvcC9v8DEz8/Q0+/t7u3w/Orq7/jv7vH2+v3n4Ozl5/ns7O308Ozw8/n66On09PH78PLw+fPv9vb4+fPz/vz7/vv8/P7r6vHx8/j7///19v3y9PL66eLy8vP4+////////////+fj5Oft8vn7+/z7/fv6/Pzu6Ofv9vv29vX49f33+Pb96ufs7PD2+fz88vP67/Hv9+rm+fn5+ujs8fHz8vv8/fz9/f39/P/x4ufg5ePl4e7s9/f49/n/7Ojo6ebu8fHy8vPz8fHx/Ozn5eXg7O/u8PDw7+/u7vvw3ert7uzs9PX09/X29fb87urm6erp6vL8/Pz8/Pz8/A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

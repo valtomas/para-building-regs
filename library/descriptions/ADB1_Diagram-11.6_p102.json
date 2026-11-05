@@ -1,0 +1,24 @@
+{
+ "key": "ADB1_Diagram-11.6_p102",
+ "source": "ADB1",
+ "label": "Diagram 11.6",
+ "page": 102,
+ "caption": "Diagram 11.6 The effect of a canopy on separation distance | Roofs",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "98de564165589c0ed595d2b0c9587457b4ec8133d92d6ada5d87a15fd5f821bd",
+ "image_sig": {
+  "w": 756,
+  "h": 495,
+  "grey": "7Ov6+vr6+vr6+vr6+vr69/v///////f////////9+vv79uvv/+/f//3p6vX23fr7+//////L2P//////0tr2+/v///z75/n8///9/ef+9vv7///t5uL7/v//8u3n//r7+////eXJ2P////393dr2+/v17/j/6Pn8+e33+Of09vv79/X9/+j7/vry/fDd4vb7+///6OPM0f///+3Ntbby+/v//+/i8Ov2///14e3u8vv7///p1/b/////8dft///7+///8OX7+/z9/fnm+Pz/+/v//9/Y3dzd297a3dzz//vx8vLy8vLy8vLy8vLy8vLwhmRfZGFiYGZiYVVVVVVVdg=="
+ },
+ "reviewed": false,
+ "description": "This drawing is a section with two arrangements side by side, under the top-left heading \"See para 11.12\". The left, \"Canopy arrangement\", shows a building in section with a sloped roof to the right and a flat canopy projecting at mid-height. A dashed vertical line at left is labelled \"Relevant boundary\". A green two-way arrow between that line and the canopy's outer edge reads \"2m min.\", with a leader to \"Canopy\". A second green two-way arrow at the base runs from the boundary line to a vertical line labelled \"Building line\", captioned \"Distance to relevant boundary measured from building line\". The right, \"Loading bay arrangement\", mirrors this but the projecting element is a slab labelled \"Loading platform\", with the same \"2m min.\" arrow, \"Relevant boundary\" line and base \"Building line\" caption. A NOTE below states: \"Projections from the building line, such as a canopy or a loading platform, can be ignored when assessing separation distance. This does not apply where the canopy is enclosed by side walls.\" The green banner reads \"Diagram 11.6 The effect of a canopy on separation distance\".",
+ "check": {
+  "ok": true,
+  "notes": [],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "db847c3f3737be10"
+ }
+}

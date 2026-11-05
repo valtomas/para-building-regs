@@ -1,0 +1,26 @@
+{
+ "key": "ADB1_Diagram-7.2_p76",
+ "source": "ADB1",
+ "label": "Diagram 7.2",
+ "page": 76,
+ "caption": "Diagram 7.2 Uninsulated glazed screen separating protected shaft from lobby or corridor",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "4d8b370d8840baed924e251a0a2e47dac6d47ada707a3aa0794526f8efd29a57",
+ "image_sig": {
+  "w": 754,
+  "h": 395,
+  "grey": "8vDw+Pj4+Pj4+Pj4+Pj49vHw9f////////////////v769vI4e/63sPm/f/////7+/H19ejk+fXn9e3/////+/v7///Uxfv/5sXh6uz///v7+///2cf7/+jL5/Lw7+/7+/v//NvT+//r2urt4d/w+/vq2+7t5/nl5ffo7ujp8fv5+PX89Ovy0M/x7fHo5vn7+/rT5fPr+vvv+eft6OXv+/v65/Hx6/v/8dft8uno+/v76ezu5tr7//fv7O3h6v/7+/v///3r+////ezz7fb/+/vz9fH17vv18fX1//////vIvb29vb29vb29vb29vb3Eh2dgaGplZmlnaGVmZ2Nfcw=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a plan with two parts and a legend. Top text: 'See paras 7.24 and 7.25'; footer: 'Diagram 7.2 Uninsulated glazed screen separating protected shaft from lobby or corridor'. Part a, 'With corridor', shows an open 'Corridor' on the left bounded on the right by a wall around a ruled, hatched 'Protected shaft'; part of that wall carries the callout 'Uninsulated glazed screen (minimum RE 30)', and curved door symbols sit at the shaft's top and bottom. Part b, 'With lobby', shows the hatched 'Protected shaft' at the upper right above a smaller room, the 'Protected lobby'; the wall separating the lobby from the open space is marked 'Uninsulated glazed screen (minimum RE 30)', with curved door symbols. The right-hand legend defines line types: heavy black line, 'External wall'; heavy line, 'Fire resistance of protected shaft to be a maximum of REI 60'; grey line, 'Fire resistance of construction to be a minimum of REI 30'; broken line, 'Fire resistance of glazed screen to be a minimum of RE 30'; curved line, 'Fire doorsets that are a minimum of E 30 S,'.",
+ "check": {
+  "ok": false,
+  "notes": [
+   "In part a the description says 'curved door symbols sit at the shaft's top and bottom', but the drawing shows three curved door symbols on the shaft's left wall (top, middle and bottom), so the middle door is omitted. In part b the description says the callout marks 'the wall separating the lobby from the open space', but the leader line in the drawing points to the wall between the 'Protected shaft' and the 'Protected lobby' (the top wall of the lobby), whereas the wall between the lobby and the open space is a grey construction line."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "00c38bd64007140f"
+ }
+}

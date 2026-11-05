@@ -1,0 +1,28 @@
+{
+ "key": "ADB1_Diagram-9.5_p87",
+ "source": "ADB1",
+ "label": "Diagram 9.5",
+ "page": 87,
+ "caption": "Diagram 9.5",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "3ace2acfaea65e14cb747de8cd0a91b3f85f98c391929d2e79485ba7fda824dc",
+ "image_sig": {
+  "w": 737,
+  "h": 381,
+  "grey": "69rl//////////////////n4+Pj4+Pj4+Pj4+Pj4+Pjr6v//////////////////+/////////////////////vp3Njb2+H///Ta39np///7+uX2////////////////+/rk9Pf///////////////v/+d/Y8f//7ej//+ju///78bqyyLzd//HT7v/xxPz/+///393s+P/Xzq/y58Xl//v///Lz/////9Pv/9rC1f/78Obn5efx//Hn5uTo5+j/++LMztLW6f/jzdXn5efn//v////////////////////DtbW1tbW1tbW1tbW1tbW1iWlgaGloaWVnZlhVVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "Diagram 9.5, captioned \"Flues penetrating compartment walls or floors\", appears in a green-bordered box with the fragment \"into (Diagram 9.5).\" and the line \"See para 9.23\". Two section drawings are shown. a. \"Flue passing through compartment wall or floor\": a vertical grey wall is crossed by a horizontal grey slab; the left part of the slab is leader-labelled \"Compartment wall or floor\", a horizontal bar on the right is labelled \"Flue\", and a separate vertical bar on the right is labelled \"Flue wall\". A note beneath reads: \"Flue walls should have a fire resistance of at least one half of that required for the compartment wall or floor and be of class A1 construction.\" b. \"Flue built into compartment wall\": two similar sections, each with a horizontal slab leader-labelled \"Compartment wall\" and a square void framed by a thicker grey border; in the first a horizontal bar extends right from the frame, in the second the slab steps down on the right. A note beneath reads: \"In each case flue walls should have a fire resistance of at least one half of that required for the compartment wall and be of class A1 construction.\"",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description says \"Two section drawings are shown\", but the drawing contains three sections — one under \"a.\" and two side-by-side under \"b.\".",
+   "For \"a.\", the description says \"a vertical grey wall is crossed by a horizontal grey slab\", but the drawing shows the horizontal slab ending at the vertical bar with a separate, detached bar on the other side, so no slab visibly crosses the wall.",
+   "The description says \"a horizontal bar on the right is labelled 'Flue'\", but the 'Flue' leader points to the vertical bar — the same bar that is also labelled 'Flue wall' — leaving the right-hand horizontal bar unlabelled."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "a8503b2f16153326"
+ }
+}

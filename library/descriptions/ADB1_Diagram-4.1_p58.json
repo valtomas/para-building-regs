@@ -1,0 +1,26 @@
+{
+ "key": "ADB1_Diagram-4.1_p58",
+ "source": "ADB1",
+ "label": "Diagram 4.1",
+ "page": 58,
+ "caption": "Diagram 4.1",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "e829e315ba59c5f87ad608edb054402f8922bea13dd21276c72c44f0c2a7f8a6",
+ "image_sig": {
+  "w": 754,
+  "h": 264,
+  "grey": "9fX19fX19fX19fX19fX19OTj//////////////////v7///////////////////798jNz9/////RzcbKz8rO+Pv//f79////1sjM7v///fv7///u7fP////////////7+//88vTz////////////+/v/+///+/////////////v7/vnv7+zV3N7U1tbW1tb2+/r97e3v5Ojq4Nvc2eTk9/v6//////////r09fT8//v76vj///////br+///+//7+//9/////////evq6/n/++3s7Ozs7Ozs7Ozr6+vs7OuAYF1iZWBgYFlVVVVVVVVuiWZfZmVhY2NcVVVVVVVVdg=="
+ },
+ "reviewed": false,
+ "description": "\"See para 4.15\" appears at the top left. The drawing, captioned \"Diagram 4.1 Lighting diffuser in relation to ceiling\" on a green band along the bottom, contains two line drawings in section, labelled a and b.\n\nIn part a, \"Diffuser forming part of ceiling\", a horizontal grey bar on the right is identified by a vertical pointing line and the label \"Ceiling\". To its left sits a white trapezoidal form, broad at the bottom, holding three small circles in a row; beneath this trapezoid is a horizontal rectangle divided by short vertical lines, set level with the grey bar.\n\nIn part b, \"Diffusers of light fittings attached to the soffit of a ceiling or suspended beneath a ceiling\", the grey bar runs across the top and is likewise marked \"Ceiling\" by a pointing line. Suspended below it is a white trapezoidal form, broad at the bottom, with three small circles in a row and a lower edge indicated by short vertical ticks.",
+ "check": {
+  "ok": false,
+  "notes": [
+   "In part a, the description says the grey bar on the right is \"identified by a vertical pointing line and the label 'Ceiling'\", but the drawing shows the \"Ceiling\" label and its short vertical line on the far left of the drawing, in empty space to the left of the trapezoid, not attached to the grey bar. In part b, the description calls the suspended form \"broad at the bottom\", but the drawing shows it broad at the top where it attaches to the ceiling bar, with a narrower lower edge carrying the short vertical ticks."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "25da428c9d5c0912"
+ }
+}

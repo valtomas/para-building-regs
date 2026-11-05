@@ -1,0 +1,28 @@
+{
+ "key": "Manual_Table-A2_p31",
+ "source": "Manual",
+ "label": "Table A2",
+ "page": 31,
+ "caption": "Table A2 Requirements that apply to material changes of use",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "d9b6320fbe22abf12c94d9331c6aae08e58e0e51932ac84c7555e44706b42788",
+ "image_sig": {
+  "w": 711,
+  "h": 1061,
+  "grey": "1MfL1cfLxdDK2NfZ4+fn5eXk7vnw9/f29fb39/j5+PPm9/f69Pr6+vr6+vr6+vr23vL6/PX8/Pz8/Pz8/Pz8+OHo9/r2+vr6+vr6+vr6+vXl8/r8+fj6+vr8+vr6+vz45O/6/Pn6+vr8+vz6+vr8+On39/r0+vr6+vr6+vr6+vbe6Pr8+Pn5/Pz8/Pz8/Pz45/f3+vT6+vr6+vr6+vr69uL6+vz1/Pz8/Pz8/Pz8/Pjo6vf69vr6+vr6+vr6+vr25/r6/Pf7+/r6+vv7/Pz6+Of6+vz5+fn8/Pz7+fz8/Pjp2ubm8PHx7/P08/P09PT169vd2drd3tvg6+ny////+w=="
+ },
+ "reviewed": false,
+ "description": "Table A2 is headed “Table A2 Requirements that apply to material changes of use”. It is a grid. The first column is headed “Requirement (from Schedule 1 to the Building Regulations 2010)”. The remaining columns are grouped under the heading “Material change of use under:” and are headed, from left to right, “All cases”, “5(a)”, “5(b)”, “5(c)”, “5(d)”, “5(e)”, “5(f)”, “5(g)”, “5(h)”, “5(i)”, “5(j)” and “5(k)”. The extracted text has lost the cell symbols. In the printed table, each cell in this grid contains either a tick or a horizontal dash; there are no crosses, filled or empty circles, or other markings. No separate key is printed for these symbols. The tick is used to show that the requirement in that row applies to the material change of use in that column, and the horizontal dash is used in the cells where no tick is shown. The title row is shaded, but no key is given for that shading; within the requirement-and-column grid, no shading carries a separate meaning.\n\nThe rows, in order, are as follows. For “A1–A3”, ticks appear in “5(c)”, “5(d)”, “5(e)” and “5(f)”, and horizontal dashes appear in the remaining columns. For “B1”, “B2”, “B3”, “B4(2)”, “B5”, “C2(c)”, “F1”, “G1”, “G3(1)–(3)”, “G4”, “G5”, “G6”, “H1”, “H6”, “J1–J4” and “L1”, a tick appears in “All cases”, and horizontal dashes appear in “5(a)” to “5(k)”. For “B4(1)”, a tick with a superscript 1 appears in “All cases”, and horizontal dashes appear in “5(a)” to “5(k)”. For “Reg. 6(3)”, a tick appears in “5(k)”, and horizontal dashes appear in “All cases” and “5(a)” to “5(j)”. For “C1(2)”, ticks appear in “5(a)”, “5(b)”, “5(c)”, “5(d)”, “5(g)”, “5(h)” and “5(i)”; a tick with a superscript 2 appears in “5(f)”; and horizontal dashes appear in “All cases”, “5(e)”, “5(j)” and “5(k)”. For “C2”, a tick with a superscript 3 appears in “All cases”, and horizontal dashes appear in “5(a)” to “5(k)”. For “E1–E3”, ticks appear in “5(a)”, “5(b)”, “5(c)”, “5(g)”, “5(h)” and “5(i)”, and horizontal dashes appear in “All cases”, “5(d)”, “5(e)”, “5(f)”, “5(j)” and “5(k)”. For “E4”, a tick with a superscript 4 appears in “5(e)”, and horizontal dashes appear in the remaining columns. For “G2” and “G3(4)”, ticks appear in “5(a)” and “5(b)”, and horizontal dashes appear in the remaining columns. For “M1”, ticks appear in “5(c)”, “5(d)”, “5(e)” and “5(j)”, and horizontal dashes appear in the remaining columns. For “P1”, a tick with a superscript 5 appears in “All cases”; ticks appear in “5(a)”, “5(b)”, “5(f)” and “5(g)”; and horizontal dashes appear in “5(c)”, “5(d)”, “5(e)”, “5(h)”, “5(i)”, “5(j)” and “5(k)”. For “Q1”, ticks appear in “5(a)”, “5(b)” and “5(g)”, and horizontal dashes appear in the remaining columns. For “K1–K6” and “R1”, horizontal dashes appear in every column.\n\nBelow the grid, the word “NOTES:” appears, followed by six numbered notes. The superscript numbers in the grid refer to these notes: the 1 is on the tick in “B4(1)” under “All cases”; the 2 is on the tick in “C1(2)” under “5(f)”; the 3 is on the tick in “C2” under “All cases”; the 4 is on the tick in “E4” under “5(e)”; and the 5 is on the tick in “P1” under “All cases”. The notes say: 1. “B4(1) applies to buildings over 15m high. It applies to the whole building even if the change of use only applies to a part.” 2. “Where new residential accommodation is created.” 3. “Applies to the whole building not just the parts converted to residential use.” 4. “If the public building after the change contains a school.” 5. “P1 applies in all cases if the electricity supply is shared with a dwelling.” 6. “Regulations 7(1) and 7(2) always apply to the above requirements.”",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description says “The rows, in order, are as follows,” but the groups are listed in a tick‑pattern sequence that does not match the drawing, where rows such as B4(1), Reg. 6(3), C1(2), C2, E1–E3, E4, G2, G3(4), K1–K6, M1, P1, Q1 and R1 are interspersed (for example B4(1) sits between B3 and B4(2)).",
+   "For “C2” the description says “a tick with a superscript 3 appears in ‘All cases’, and horizontal dashes appear in ‘5(a)’ to ‘5(k)’”, but the drawing shows a horizontal dash in “All cases” (and in “5(a)”) with the tick carrying superscript 3 in the “5(b)” column.",
+   "The description says “the 3 is on the tick in ‘C2’ under ‘All cases’”, but in the drawing the superscript 3 is on a tick in the “5(b)” column of the C2 row."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "def403086d7b95e9"
+ }
+}

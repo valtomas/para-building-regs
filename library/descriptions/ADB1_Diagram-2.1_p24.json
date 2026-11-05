@@ -18,5 +18,10 @@
   "model": "Qwen3.8-27B-GGUF",
   "date": "2026-11-05",
   "text": "f17962c54f808169"
+ },
+ "image_sig": {
+  "w": 756,
+  "h": 920,
+  "grey": "9PP4/Pz8/Pz8/Pz1+fz8+fv9///+/////fTt5ert/fv7/vbx5/b7//v119n3/fL7+/Tl19bw7/7x8tnX3vXw+/Lg183Nz9ro59vLzs7S3fL7///z7vv////65eDj7f/7+/7////////9//fq8Pv/+/v///f0/f///+7g3uTK+Pv7+u7y6enk///w4+LxvPb7+/To4uHbyv/37uLh5rn2+/vv6uHp38r/9PHh4+289vv76OXd3d/J//Hv3dzmvPb78tvRx8rGzOfk1MbKzbjc8vv/9ePg7P3///3r4eT0//v7///z8Ovv9Pz////////7tKGeoKGgoaKemZmZmZmZqw=="
  }
 }

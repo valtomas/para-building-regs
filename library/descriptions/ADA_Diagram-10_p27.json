@@ -1,0 +1,26 @@
+{
+ "key": "ADA_Diagram-10_p27",
+ "source": "ADA",
+ "label": "Diagram 10",
+ "page": 27,
+ "caption": "Diagram 10 \u0007 Maximum span of floors",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "15d782d73a60cc171a9706171d16e7c44a3aa08db0fc684ba6d402e77dc19f56",
+ "image_sig": {
+  "w": 749,
+  "h": 176,
+  "grey": "3ubl6uX6///fvb29vb29vfvw4uT5////36m0iKCglsLz39vR7v///+zK2c3PytDa/vv+/fv9///r5eXl5eXl5fjLvbbHu9T/6dj8////////2s/a0djo//X+/////v///+fn7uLo8v/15ez/+eb7///Jv9H/////9dbd//TV+v////////////XW///07f//9tXPx9HO+//11P//9Ov///vg1Nvn6v3/9db///Tt////2MbW8f////XW///07f///v7+/P7+///11P//9Ov//+7dyMXCu77M9db4//Tt9///7ubr6Ofb8/XW3v307dz//93R1dzWzvH11Orx8snq8g=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a line diagram titled \"Diagram 10 Maximum span of floors\". A note in the upper left of the diagram reads \"See para 2C23\". The diagram consists of two separate cross-sectional views placed side by side, each depicting a horizontal floor line spanning between two vertical walls.\n\nIn each view the walls are drawn as pairs of closely spaced vertical lines, and the label \"Wall\" is printed to the right of the right-hand wall. A horizontal line running between the walls is labelled \"Floor\". Inside each wall, near the level of the floor line, there is a dashed vertical line.\n\nIn the left-hand view, a small open rectangular block is shown directly beneath the floor line where it meets the right-hand wall. In the right-hand view, a small solid black square is shown beneath the floor line where it meets the left-hand wall. No numerical dimensions, scale, or further symbols are visible within the diagram itself.",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description says \"the label 'Wall' is printed to the right of the right-hand wall,\" but in the drawing the \"Wall\" label sits beside the dashed vertical line in the interior of each span, not at the right-hand wall. The description says \"In each view the walls are drawn as pairs of closely spaced vertical lines,\" but only one side of each span (the left side of the left-hand view) is drawn as a close pair of vertical lines, while the other end of each span is not a pair of closely spaced vertical lines. The description says \"Inside each wall, near the level of the floor line, there is a dashed vertical line,\" but the dashed vertical line runs the full height of the diagram and lies within the open span, not inside a wall near the floor line. The description says \"a small open rectangular block is shown directly beneath the floor line where it meets the right-hand wall,\" but the open block is at the dashed vertical line in the interior of the left-hand span, not at the right-hand wall. The description says \"a small solid black square is shown beneath the floor line where it meets the left-hand wall,\" but the solid black square is at the dashed vertical line in the interior of the right-hand span, not at the left-hand wall."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "829da7875e9d16c6"
+ }
+}

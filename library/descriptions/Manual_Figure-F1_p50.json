@@ -1,0 +1,26 @@
+{
+ "key": "Manual_Figure-F1_p50",
+ "source": "Manual",
+ "label": "Figure F1",
+ "page": 50,
+ "caption": "Figure F1 Structure of the regulatory system",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "39a0e89d0a3dedcb20a6bbeabd253616469f460745ee03a904fcfbcf0e91d975",
+ "image_sig": {
+  "w": 754,
+  "h": 1071,
+  "grey": "79fi4eTi4+Dj6vLy8vP09e3n6efr6+vr6+Xf1uDm6+3t4czj6Ojo5Obm5uHV4dTl7eLb3+vp4t7j6Ovgz9zN3O/p5ubm6ujq5urm5tzl2ubr6Ofv5+vX6Nrk5+/r7+fx8e/n7+fo0Ofc4ufv6+/n8fHv5+/n6dzl2t/n7+vv5/H88ejs6Obc3tzc3Obp7Ojx9+fq6uzs7/Lw8vLz8O7v9fbm6uHj4eTk5+/x7+/s7fL/3uDi4uLf4N3f3+Hg5+Xy9uTk4uPk4+fm5+zp6+7u9f/k4ujo6erq6urs7e3v7e365ubm5+Xn5eXi4+bx8vP5/eHe3+Tk5+Ll4ubi5uPp+g=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a flow diagram titled 'Figure F1 Structure of the regulatory system'. It consists of two stacked horizontal bands. The upper band, labelled 'Legislation', contains a box at the top reading 'The Building Act 1984 (c. 55)', from which a downward arrow branches to three boxes below: a wide central box 'The Building Regulations 2010 (No. 2214)', and two narrower boxes to the right, 'The Building (Approved Inspectors etc.) Regulations 2010 (No. 2215)' and 'The Building (Local Authority Charges) Regulations 2010 (No. 404)'. A separate tall box on the left reads 'Other legislation and regulation affecting building and buildings'. The lower band, labelled 'Guidance', holds a blue box 'Other relevant guidance, such as British and European standards (to satisfy Regulation 7 and Schedule 1)' and, to its right, a green box 'Approved documents' with a vertical arrow down to a further green box 'Guidance referenced in approved documents'. Vertical connector lines run from the legislation boxes down through the Guidance band to a horizontal bar at the foot labelled 'Current Building Regulations and regulatory system'.",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description's only mention of the green box's link is that it has 'a vertical arrow down to a further green box', and of the legislation's links that 'vertical connector lines run from the legislation boxes down through the Guidance band to a horizontal bar at the foot', but the drawing also shows a separate downward arrow from the 'The Building Regulations 2010 (No. 2214)' box terminating at the green 'Approved documents' box, which the description omits."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "32311efbf92208a6"
+ }
+}

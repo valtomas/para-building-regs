@@ -1,0 +1,26 @@
+{
+ "key": "ADA_Diagram-21_p38",
+ "source": "ADA",
+ "label": "Diagram 21",
+ "page": 38,
+ "caption": "Diagram 21 Elevation of stepped foundation",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "3d9641d7ef849fd792ef24f672f7758f7dd52d048c5c087af43f2ca34e256c39",
+ "image_sig": {
+  "w": 362,
+  "h": 404,
+  "grey": "yLi7ws6ksay9uK+srtvb5cm4srXN4uLi4uLi3uLi4urW3tze5+/v7+/v7+/v7+/s6//53dfe3ubm6Oj/////9ev//fDn5+/z//////////Xr9evr5evl6fb29vX7///16/bt7e3t7ej////86P//9ev59PTp7e3q5+fu8+r///Xr////9OXl5eXl7fP3///16+7n7Obo6c7P1NLP9///9ev///////jn4urj5uTj+PXr9OTn6OTi5vH////////16+TO0M/L0tDm5uX0////9ev//////vHU0d7q/v////Xr///////////////////17e3t7e3t7e3t7e3t7e3t8Q=="
+ },
+ "reviewed": false,
+ "description": "The drawing is headed \"Diagram 21 Elevation of stepped foundation\", with the note \"See paras 2E2d and e\" beneath it. The illustration shows a stepped foundation in elevation, drawn as three horizontal grey blocks forming two downward steps running from left to right. A horizontal dimension line marked \"L\" spans the top step, accompanied by the caption \"Foundations should unite at each change in level\". At the right-hand side, two stacked vertical dimensions, \"S\" above \"T\", indicate the heights of the upper and lower steps respectively. Below the figure, the text reads \"Minimum overlap L = twice height of step, or thickness of foundation or 300mm, whichever is greater\", followed by \"S should not be greater than T\", and finally \"(For trench fill foundations, minimum overlap L = twice height of step, or 1m, whichever is greater)\".",
+ "check": {
+  "ok": false,
+  "notes": [
+   "{\"ok\": false, \"notes\": [\"\\\"drawn as three horizontal grey blocks forming two downward steps running from left to right\\\" - the drawing shows only two grey blocks (an upper and a lower step) with a single downward step from left to right. \\\"A horizontal dimension line marked 'L' spans the top step\\\" - the drawing shows L spanning only the right-hand part of the top step, between the interior vertical line and the step face, i.e. the overlap, while the top step continues to the left of L. \\\"two stacked vertical dimensions, 'S' above 'T', indicate the heights of the upper and lower steps respectively\\\" - the drawing shows S as the vertical drop (height of the step) between the two top surfaces, not the full height of the upper step; T shows the thickness of the lower step.\"}]"
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "c2b712443218a7b3"
+ }
+}

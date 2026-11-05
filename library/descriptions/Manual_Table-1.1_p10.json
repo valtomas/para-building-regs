@@ -1,0 +1,17 @@
+{
+ "key": "Manual_Table-1.1_p10",
+ "source": "Manual",
+ "label": "Table 1.1",
+ "page": 10,
+ "caption": "Table 1.1 List of the approved documents and what they cover",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "6a7c4b8b4660c05c2f85a26b131e3fe59b4bbadb9ac026431a6c713634d634b7",
+ "image_sig": {
+  "w": 753,
+  "h": 1059,
+  "grey": "3NbVzMfT1NPW08/J1OHh5PXy7fTz6+rt7u7w9PLo7fT49PHs6Ofq7ebl6ejq8PDx+Pr6+vrx7ePg7fP6+vr69/b39/fx6Ofk4+Tr8vf39/b48fD38N7e5ebg3fD38fD39ujp8/Tp6fPv4d706uHe8Pjz5OHi3/L7++vf3uDg7fjq6e3n7Ojo7PHy7Obn8/r36+Xm6ejq6uvp6+vq6+71+ubg4t3l7Ors6+zo6enr6fjo3eHk5eHf4+He4uru7O/x4tve29zd2t3c3dzZ4d7h5+nk4+Tl5+Xm8u/w8PDx7/nj3OHi3Nrf3dza5efp5OT15uPk4+Tl5ufo5ufo6ujr8g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

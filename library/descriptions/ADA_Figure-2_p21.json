@@ -1,0 +1,24 @@
+{
+ "key": "ADA_Figure-2_p21",
+ "source": "ADA",
+ "label": "Figure 2",
+ "page": 21,
+ "caption": "Figure 2 Orographic zones for Factor O | BUILDINGS",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "4b5c27bce008fa42961ddca2c41094238ed51905ba3da9f9d82dec14144dfa8b",
+ "image_sig": {
+  "w": 749,
+  "h": 70,
+  "grey": "9f////////////////////X////////////////////1/////+rr7fX+4+T/////9f/////GyK2wp627//////X/////xs+qq7a6uP/////1//////D/7/j+/v7/////9f////////////////////X////////////////////1////////////////////9f////////////////////X8/P76//v69/j89vT//P/15c3Hw8TGvcTPycvIxPX/9eO+s62rybG+xba/vrP2//X37OXi1Orl2+rf2ebc+P/S0dHR0dHR0dDR0NDR0NHR/////////////////////w=="
+ },
+ "reviewed": false,
+ "description": "The image does not contain a drawing. It shows only two lines of text set within a thin bordered box. The upper line, centred, reads \"Figure 2 Orographic zones for Factor O\". The lower line, also centred, reads \"Note: A more detailed approach for obtaining Factor O is given by Figure 3 Diagram 6.\" No plan, section, elevation, chart, map, labels, dimensions, lines, or symbols depicting ographic zones are present in the image. The illustrative figure that the title refers to is not visible here, so either it has been cut off or this extract comprises only the caption and note rather than the graphic itself. No further detail can be described.",
+ "check": {
+  "ok": true,
+  "notes": [],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "7855a7fbae2ea605"
+ }
+}

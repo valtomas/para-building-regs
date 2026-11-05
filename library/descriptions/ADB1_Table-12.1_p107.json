@@ -1,0 +1,26 @@
+{
+ "key": "ADB1_Table-12.1_p107",
+ "source": "ADB1",
+ "label": "Table 12.1",
+ "page": 107,
+ "caption": "Table 12.1 Limitations on roof coverings",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "3c03695cf001b8f97971ed57a5ad0ff321a54c5240d1e0c7a9d5095e2b62d97c",
+ "image_sig": {
+  "w": 737,
+  "h": 418,
+  "grey": "t5qfmaKelr7AwMDAwMDAwOLd3d7e4eDe3d/e3t3f4eHt5vLz+fj18+zs7err8fT19fP5+fr05/nz5/vr7/vn8+zt+Pj6+er7+Of77fL75/ju7Pj4+vny+/jk++3x++f47ez4+Pr58vv44fvr8fvm+O3t+Pj6+fP7+OH76/H75Pbt7Pj4+Pjz+Pjz+Pb2+OT13ePz/////////////////9zg8f/////////////////q5+nt6Orp6ezr6+fn5+v/7ejp5unq5uvp6unt5+n8/+HZ6url5+ru5unq5eno7//q4enp6ujo6uf8////////7+fo7Obo5v7+/////////w=="
+ },
+ "reviewed": false,
+ "description": "Table 12.1 is titled “Limitations on roof coverings” and is laid out as a grid with a shaded light green title bar and shaded light green heading rows; the green shading marks the title and headings and is not used in the table as a separate data value. The first column heading is “Designation(1) of covering of roof or part of roof”. A heading across the remaining four columns reads “Distance from any point on relevant boundary”, with four subheadings: “Less than 6m”, “At least 6m”, “At least 12m”, and “At least 20m”. The row labels are “BROOF(t4)”, “CROOF(t4)”, “DROOF(t4)”, “EROOF(t4)”, and “FROOF(t4)”, with “ROOF” set as a subscript to the preceding letter.\n\nThe grid uses two circle symbols rather than words. The key below the grid shows a solid black circle followed by “Acceptable.” and an open circle followed by “Not acceptable.” In the extracted text each circle appears as “l”, so the filled or empty nature of the circle is lost from the text alone. In the table itself, the “BROOF(t4)” row has a solid black circle in every one of the four distance columns: “Less than 6m”, “At least 6m”, “At least 12m”, and “At least 20m”. In the “CROOF(t4)” row, the cell under “Less than 6m” has an open circle, and the cells under “At least 6m”, “At least 12m”, and “At least 20m” have solid black circles. In the “DROOF(t4)” row, the cell under “Less than 6m” has an open circle; the cells under “At least 6m”, “At least 12m”, and “At least 20m” have solid black circles, each with a small superscript “(3)” beside it. In the “EROOF(t4)” row, the cell under “Less than 6m” has an open circle; the cells under “At least 6m”, “At least 12m”, and “At least 20m” have solid black circles, each with a small superscript “(3)” beside it. In the “FROOF(t4)” row, the cells under “Less than 6m”, “At least 6m”, and “At least 12m” have open circles; the cell under “At least 20m” has a solid black circle with a small superscript “(3)” beside it.\n\nBelow the key, the table contains “NOTES”. The notes read: “Separation distances do not apply to the boundary between roofs of a pair of semi-detached dwellinghouses and to enclosed/covered walkways. However, see Diagram 5.2 if the roof passes over the top of a compartment wall. Polycarbonate and uPVC rooflights that achieve a class C-s3, d2 rating by test may be regarded as having a BROOF(t4) designation. 1. The designation of external roof surfaces is explained in Appendix B. 2. Not acceptable on any of the following buildings. a. Dwellinghouses in terraces of three or more dwellinghouses. b. Any other buildings with a cubic capacity of more than 1500m3. 3. Acceptable on buildings not listed in (2) if both of the following apply. a. Part of the roof has a maximum area of 3m2 and is a minimum of 1500mm from any similar part. b. The roof between the parts is covered with a material rated class A2-s3, d2 or better.”",
+ "check": {
+  "ok": false,
+  "notes": [
+   "{\"ok\": false, \"notes\": [\"The description says the table has \\\"shaded light green heading rows\\\", but the drawing shows green shading only on the title bar; the heading rows for \\\"Distance from any point on relevant boundary\\\" and the four distance subheadings are unshaded white. [Note: the description's green-shading claim for headings is contradicted.] The description says the DROOF and EROOF rows have solid circles \\\"each with a small superscript (3) beside it\\\" and the FROOF \\\"At least 20m\\\" cell has a solid circle \\\"with a small superscript (3)\\\", but the drawing shows superscript \\\"(2)\\\" in the \\\"At least 12m\\\" and \\\"At least 20m\\\" cells of those rows, with \\\"(3)\\\" appearing only in the \\\"At least 6m\\\" cells (and the DROOF \\\"At least 20m\\\" circle carries no visible superscript at all). The description quotes the sub-items a and b of note 2 and the full text of note 3, but the drawing is cut off after the line \\\"2. Not acceptable on any of the following buildings.\\\" and none of that remaining note text appears on it. The sentence \\\"In the extracted text each circle appears as 'l', so the filled or empty nature of the circle is lost from the text alone\\\" is a remark about the text extraction, not content on the drawing.\"]"
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "fac243ae29b0c2db"
+ }
+}

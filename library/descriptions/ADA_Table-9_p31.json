@@ -1,0 +1,17 @@
+{
+ "key": "ADA_Table-9_p31",
+ "source": "ADA",
+ "label": "Table 9",
+ "page": 31,
+ "caption": "Table 9 \u0007Lateral support for walls",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "70d03cd6f5925cd2e85b7a0891c2193db3bf7292b8be0db5a0487aebd1d12ac1",
+ "image_sig": {
+  "w": 749,
+  "h": 189,
+  "grey": "yL3Av7/Av8DAwMDAwMDAwL6qhpCSlbzi4uLi4uLi4uLo4uHb4uLi4uLi4uLi4uLi2N3s7Ozfy+je0tLb7Ozs7Ojm////9dT769TZ6f/////t6+zr7Ovr7Orq6+zr6+vr4NTU+P/zzv/n0c7V09LS5OHQyfH/////5NHw////////////++rq6urq6urq6urq///////13Ovu39/k3uPf5v//////+/H38N3m8fLt8vb//////////+3l9v//////7unr6Ovq6uzp6err6urr7N/NytDe88v/5tTNytTR2//kzdTN6f//////////////4NjY2NjY2NjY2NjY2NjY2A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

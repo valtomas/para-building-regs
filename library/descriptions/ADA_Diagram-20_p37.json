@@ -1,0 +1,26 @@
+{
+ "key": "ADA_Diagram-20_p37",
+ "source": "ADA",
+ "label": "Diagram 20",
+ "page": 37,
+ "caption": "Diagram 20 Proportions for masonry chimneys | A1/2 | ONLINE VERSION",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "e6c8cbb07f6819068169b952e2be990c3d581a08ddd2aa45bd423c46d39ba114",
+ "image_sig": {
+  "w": 371,
+  "h": 260,
+  "grey": "1ra3vLKstLCzt7C3tbTB2eXAuc/Jx7O8ucG/wbO8y+vfoJ6gx+Li4uLi4uLi4uLr3dXV1dXV1dXV1dXV1dXV3uXj4/v///////////////Xr/93w6eLl///07en05f/16//s9evr6///6+bv+tH69ev/7PXq6+v///X17/ni9fXr5urZ9evr+vf19fXl4dr169zMzvXr6+fn9PX12sTP9evN1L7u3tHu8dTn7MrNv/Xr2ejM/930///44//X4Mz16+bU4fnf1NrJ1O/15dPh9ev////98tPj09XY/f////Xr///////////////////16vHx8fHx8fHx8fHx8fHx7w=="
+ },
+ "reviewed": false,
+ "description": "The drawing, titled \"Diagram 20 Proportions for masonry chimneys\", carries the reference \"A1/2 | ONLINE VERSION\" and the note \"See para 2D1\" in the top left. It shows four vertical rectangular chimney shafts arranged in two pairs, left and right, drawn above a central roof profile rendered as an inverted V whose peak sits between the two pairs. The leftmost shaft has a horizontal dimension line marked \"W\" across its width, with a set of parallel horizontal lines extending to the left of it; the second shaft has a vertical dimension line marked \"H\" alongside it, measuring from a horizontal reference line up to its top. The rightmost shaft likewise has a width dimension \"W\" with horizontal lines extending to the right, and the third shaft has a vertical dimension \"H\" to its right. Below the roof peak, the text reads \"Level of highest point of intersection\", with horizontal lines running out beneath the inner shafts to indicate this reference level. The two inner shafts sit on the slopes of the roof, their bases lower than the central peak.",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description says the drawing \"carries the reference 'A1/2 | ONLINE VERSION'\", but no such reference appears on the drawing itself — that text is part of the page heading/metadata, and the drawing shows only the title, \"See para 2D1\", the W and H dimensions, and the \"Level of highest point of intersection\" label."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "10fe36109c25d1ad"
+ }
+}

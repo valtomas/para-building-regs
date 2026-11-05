@@ -1,0 +1,28 @@
+{
+ "key": "ADB1_Diagram-11.4_p100",
+ "source": "ADB1",
+ "label": "Diagram 11.4",
+ "page": 100,
+ "caption": "Diagram 11.4 Status of materials achieving class B-s3, d2 or worse as unprotected area",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "b397a2fe5c459be247d9e8691f316cdba31bfdc932183c04c09ef3c31fc92032",
+ "image_sig": {
+  "w": 756,
+  "h": 589,
+  "grey": "7vD8/////////////////+7w+vr6+vr6+vr6+vr6+vj7///48fb+///////////7+//8+//59fz/////////+/v/4PT///z1+f////////v7/teR4////vb2/v/////7+//VY3PI+Pj18e/o39/o+/v/+Ml0Yabx+f/7697h6fv7//v/445ZkPf49PLs7//7+//6/P/zrIz///v18fX++/v/9/T6//3Q///7+PP0+vv7///99Pf/9vj38uPY2uL2+//////19Pj7+f//////+/v///////rw+/////////v7////////+v/////////7jGtnamppbGlqZ2ppa2lefg=="
+ },
+ "reviewed": false,
+ "description": "The image, captioned at the bottom \"Diagram 11.4 Status of materials achieving class B-s3, d2 or worse as unprotected area\", shows an isometric line drawing of a long rectangular block. The top edge carries the fragment \"Diagram 11.5).\" and the top-left corner reads \"See para 11.7\". A horizontal double-headed arrow along the bottom long edge is labelled \"a\", and a vertical double-headed arrow on the left edge, spanning the height of a coloured band, is labelled \"b\". On the upper face of the block a light olive-green band runs the full length; within it a darker green rectangle with a dashed outline, also running the full length, sits centred. Three leaders from the right point to features. The upper leader, to the light-green band, reads \"Area of fire resisting wall with materials more than 1mm thick and with a reaction to fire performance worse than class B-s3, d2 = a×b\". The middle leader, to the dashed darker-green rectangle, reads \"Area of wall counted as unprotected area = 0.5a×b\". The lower leader, to the unshaded white body of the block, reads \"Area of fire resisting wall with materials having a reaction to fire performance better than class B-s3, d2\".",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description says the light olive-green band is on the \"upper face of the block\", but the drawing shows the band on the long vertical (front) face, while the actual top/upper face is left unshaded white.",
+   "The description says the darker green rectangle with the dashed outline is \"also running the full length\", but the drawing shows it is shorter than the pale band, set in with gaps at both ends so it does not span the full length.",
+   "The description says the upper leader points to the \"light-green band\", but in the drawing the upper leader's arrowhead lands on the darker green rectangle (as does the middle one), and no leader points to the light-green band at all."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "d0b4d56c19d4994c"
+ }
+}

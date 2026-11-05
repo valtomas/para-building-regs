@@ -1,0 +1,29 @@
+{
+ "key": "ADB1_Diagram-4.2_p59",
+ "source": "ADB1",
+ "label": "Diagram 4.2",
+ "page": 59,
+ "caption": "Diagram 4.2 Layout restrictions on class D-s3, d2 plastic rooflights, TP(b) rooflights and TP(b) lighting diffusers",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "fbce061eb18aabd8154c0327b5cc1e0f5e9bb433f15ce89ff12e81d5e5b6f22c",
+ "image_sig": {
+  "w": 737,
+  "h": 661,
+  "grey": "8O77+/v7+/v7+/v7+/v7+/v/+e/t7fDx8+/u7O3y///7/trc7Onc7fXY3Nzc2f//+/vp+f79+fv49/n5+ff///v63e3z8e3y8Pz////8///7++Xs+/js+PTr8///+///+/zj7vb07vT46ejX1Ob///v/5en08ur2+Oft+/v6///7+/Dy8fH0/v//////////+//j5e/t5PD/7/////////v/8ev39ez2/+H35P7////7//Ln8vHv8v/k7e3x////+//24uPl4N/y//vw8f7///v/+Obu/P/////////////RxsbExMXHyMfGyMnHx8nHhGBfbGxiX1xgXmFeX2FeWQ=="
+ },
+ "reviewed": false,
+ "description": "This plan, titled Diagram 4.2 Layout restrictions on class D-s3, d2 plastic rooflights, TP(b) rooflights and TP(b) lighting diffusers, shows four dashed rectangular boundaries representing separated groups of rooflights or diffusers. Three boundaries are on the left; the top two each contain six small rectangular rooflight or diffuser symbols, and the bottom one contains two. Each left boundary is dimensioned \"5m maximum dimension of group\" along its top or bottom edge. The right-hand boundary is dimensioned \"5m max.\" vertically and contains two symbols, with the text \"5m2 is maximum area of di ̃user and rooflight in any one 5m ̃5m group\". The groups are separated by \"3m min.\" horizontally and vertically. A top reference reads \"See Table 4.2\". A legend identifies the rectangular symbols as \"Rooflight or di ̃user\" and the dashed lines as \"Separated groups of rooflights or di ̃users\". Below are NOTES: 1. Upper and lower surfaces of suspended ceiling, between plastic panels, to comply with paragraph 4.1. 2. No restriction on class D-s3, d2 di ̃users or rooflights in small rooms. 3. See note 4 to Table 4.2.",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The drawing shows only three dashed rectangular boundaries (two on the left, one on the right), not the \"four dashed rectangular boundaries\" stated.",
+   "Only two boundaries are on the left (top and bottom), not \"Three boundaries are on the left\"; the third boundary is the single right-hand one.",
+   "Only the top-left boundary contains six symbols, so \"the top two each contain six small rectangular rooflight or diffuser symbols\" is unsupported — there is no second top boundary on the left (the top-right boundary contains two symbols: one long rectangle and one square).",
+   "The description omits that the right-hand boundary is also dimensioned \"5m maximum dimension of group\" horizontally along its top edge, in addition to the \"5m max.\" vertical dimension mentioned."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "229435ce1efe53bd"
+ }
+}

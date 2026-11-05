@@ -1,0 +1,26 @@
+{
+ "key": "ADB1_Table-3.1_p38",
+ "source": "ADB1",
+ "label": "Table 3.1",
+ "page": 38,
+ "caption": "Table 3.1 Limitations on travel distance in common areas of blocks of flats Maximum travel distance from flat entrance door to storey exit or stair lobby(1)",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "01d63440b521d01b09f5f403c4fa8fb8a57528a43f5a8656d3908018700fbacc",
+ "image_sig": {
+  "w": 754,
+  "h": 249,
+  "grey": "wrS2u7y1vL6+vrCzvMDAybCYhImIiIaJhYiJkZ/AwMfl4eHh4eHh4eHh4eHh4eHi6unl5+fm6ejr5fL/////+/Hw7vL09PT08PDu7/D09PTn4+Ls9PT09eXk4+Dq9PT07Pb////////o/P//////+/D09PT09PT07/T09PT09PTP5P/////////////////78eTo6Ojn5+fo6Ofq6ufn8vLe4d3d7fT09fT19PTx9ff17/Ht8Pj//vv8/f39///77t3i197Z3dva3uPa4P//++ri29zg3tvd2d7g6/////vx7+708+/x8/D+//7////7693b393g3eDd8fT09PT08w=="
+ },
+ "reviewed": false,
+ "description": "The image shows a small table with a green border. The top two lines are on a light green shaded band. The first line reads “Table 3.1 Limitations on travel distance in common areas of blocks of flats”. The second line reads “Maximum travel distance from flat entrance door to storey exit or stair lobby(1)”.\n\nBelow the shaded band are two column headings, set left and right across the width of the table. The left heading is “Escape in one direction” and the right heading is “Escape in more than one direction”. These headings are printed in green text. The row below them gives two values: under “Escape in one direction” the text is “7.5m(2)(3)”, and under “Escape in more than one direction” the text is “30m(3)(4)”. The numbers in parentheses are note markers and correspond to the numbered notes below the table.\n\nBelow the value row is a full-width row labelled “NOTES:”, followed by the notes: “1. If travel distance is measured to a stair lobby, the lobby must not provide direct access to any storage room, flat or other space containing a fire hazard. 2. In the case of a small single stair building in accordance with Diagram 3.9, this is reduced to 4.5m. 3. Does not apply if all flats on a storey have independent alternative means of escape. 4. Sheltered housing may require reduced maximum travel distances.” The 7.5m value is marked with notes 2 and 3, and the 30m value is marked with notes 3 and 4.\n\nThere are no ticks, crosses, filled or empty circles, or drawings in the visible table. The only visible shading is the light green band across the top of the table. The extracted text supplied after the notes also includes the words “b. Lobby access flats | anywhere in the shaded area)”. Those words are not visible in the image of Table 3.1, so their position and the shaded area they refer to cannot be described from the visible table.",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description says \"The top two lines are on a light green shaded band\", but the drawing shows the green shading only behind the first line (\"Table 3.1...\"), with the second line (\"Maximum travel distance...\") on a white background."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "1b9304d6e947442c"
+ }
+}

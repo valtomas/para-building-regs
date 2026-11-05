@@ -1,0 +1,24 @@
+{
+ "key": "ADB1_Diagram-5.3_p67",
+ "source": "ADB1",
+ "label": "Diagram 5.3",
+ "page": 67,
+ "caption": "Diagram 5.3 Cavity walls excluded from provisions for cavity barriers",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "b05d9558f14f59ba7baafde2bab059c172a60a3d5d87f032004da93403f27bce",
+ "image_sig": {
+  "w": 737,
+  "h": 403,
+  "grey": "7+74+Pj4+Pj4+Pj4+Pj4+PT2///////////////////7+9L/////////////////+/euyffp6fT/6f3///////v55qnq0M/9//P6+vr7/P77+di////+///q0dXW1tX7+/nc+P//////8+no+v////vy3PPz7v///+TS0NDb5vf7+dz4///////v0NLSzM7k+/nc1P7/////9djb2enw9/v5/rLu19Xq//ne293c4/j7+P+47uDj7//v5uXo6uz/+//1xPv7////8+bp/P////v///f////////////////Jvb29vb29vb29vb29vb29iWhfZWdoZmVmZGdfVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a three-dimensional section of a cavity wall with a horizontal opening, the wall body broken by a zigzag line in the middle. It shows two grey leaves with green material between them. At the top a leader line reads \"Close cavity at top of wall (unless cavity is totally filled with insulation)\". A label \"Opening\" points to the gap in the centre. Lower down, \"Close cavity around opening\" and \"Two leaves of brick or concrete each at least 75mm thick\" point to the lower part of the wall, and \"See para 5.18\" sits at the top left. To the right, a NOTES section lists three points: 1, that cavity-closing materials need no specific fire resistance; 2, that domestic meter cupboards may be installed if a, there are no more than two per dwelling, b, the outer leaf openings are not bigger than 800×500mm each, and c, the inner leaf is not penetrated except by a fire-stopped sleeve not more than 80×80mm; and 3, that materials of class B-s3, d2 or worse may be placed in the cavity. A green banner reads \"Diagram 5.3 Cavity walls excluded from provisions for cavity barriers\".",
+ "check": {
+  "ok": true,
+  "notes": [],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "dcf33dce8a217dad"
+ }
+}

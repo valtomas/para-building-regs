@@ -1,0 +1,17 @@
+{
+ "key": "ADA_Table-2_p15",
+ "source": "ADA",
+ "label": "Table 2",
+ "page": 15,
+ "caption": "Table 2 Wall types considered in this section Residential buildings of up to three storeys",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "bea1182513c6e82bc6c56f6c9d73e37f36f5e212d201a93ea750eb99b29dd158",
+ "image_sig": {
+  "w": 749,
+  "h": 215,
+  "grey": "yLy7w8G/vMLBw8PDw8PDw8a2k5yal5+cteLi4uLi4uLUysnJysrKysrKysrKysrK1sK+zcrX//////////////Ht7e3t7e3t7e3t7e3t7e3k1f//////////////////9fLz+P///////////////+7i4O/////////////////k0uL//////////////////v///////////////////+HV8P/////////////////s6uzs6ens7e3t7e3t7e3t28rIysfHyN7//////////+zo7e3t7e3t7e3t7e3t7e3o2v//////////////////59vb7P///////////////w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

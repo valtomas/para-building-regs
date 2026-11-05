@@ -1,0 +1,26 @@
+{
+ "key": "ADB1_Diagram-11.1_p98",
+ "source": "ADB1",
+ "label": "Diagram 11.1",
+ "page": 98,
+ "caption": "Diagram 11.1 | Principles of space separation side B1 B2",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "44f5f686e44e102352387d51150c895043b9914daefa30481b452ff8c42c2f8f",
+ "image_sig": {
+  "w": 756,
+  "h": 458,
+  "grey": "7u75+fn5+fn5+fn5+fn59/j97/Hv/vTx8PX96+zv//v7/9jT1O/q1dDa+dDR6v/7+//7/v//8unp/P38////+/v/4PP//+3m///50/z///v7//Lp8f/z7uX/+unV+v/7+//7/+v/9fDq//rr6+v/+/v7+//r//v+6v/66uzr//v7//b+6fz6+urr6+Lp6f37+///99nY8vDg1N3w4NHc9/v////3+ff/+v/z/v77//v7/fjp7Pf9//70///////7+/r16+j0+/z0////////+/v/+tXX5P/2/f////////vk4eHh4eHh4eDh4eHh4eHjh2VfZWNkZVhVVVVVVVVVdg=="
+ },
+ "reviewed": false,
+ "description": "This is a three-part perspective diagram, Diagram 11.1 \"Principles of space separation\", with \"See para 11.4\" at the top left. A dashed line, identified in the bottom-left legend as the \"Relevant boundary\", runs diagonally across the lower part of the drawing. Three vertical wall slabs are arranged left to right, each with a short line meeting that dashed boundary. The left slab carries a small four-paned window high up; its caption reads \"Wall on or very close to the relevant boundary: very limited amounts of unprotected area\", and a pointer to the slab is labelled \"Fire resisting from both sides\". The middle slab has a larger rectangular opening; its caption reads \"Wall not on, or not very close to, but not sufficiently far from relevant boundary that it can be a wholly unprotected area\", and the pointer is labelled \"Fire resisting from inside: reduced insulation criterion\". The right slab shows three panelled doors; its caption reads \"Wall sufficiently distant from relevant boundary to be a 100% unprotected area\", and the pointer is labelled \"No provision for fire resistance\". Green double-headed arrows run from the dashed line to the middle and right slabs, corresponding to the legend entry \"Amount of unprotected area dependent on distance from relevant boundary\".",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description says \"Green double-headed arrows run from the dashed line to the middle and right slabs\", but the drawing shows two single-headed green arrows with arrowheads only at the slab ends; the only double-headed green arrow is the small one next to the legend text \"Amount of unprotected area dependent on distance from relevant boundary\"."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "b70a8fd6e84b2dce"
+ }
+}

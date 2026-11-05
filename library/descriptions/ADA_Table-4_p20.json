@@ -1,0 +1,17 @@
+{
+ "key": "ADA_Table-4_p20",
+ "source": "ADA",
+ "label": "Table 4",
+ "page": 20,
+ "caption": "Table 4 \u0007Imposed loads",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "83cc10354f98407c4a3ebf1ee0e492f0d829bd8358b5feb087bbfaeffa34319c",
+ "image_sig": {
+  "w": 407,
+  "h": 420,
+  "grey": "2K+5taiqrKTC0tLS0tLx5uHF0uTj5OTk5OTk5MzC9/L59vb29vb29vb25d/f3Pzz9u7////x1N7c2+DZ1tz/8/Tp9vb29vDy4ODl497h/P/14/L29vb29uHi5OXh5fz3/PH3///15eve29ve39z/9Pn29vb29vb29vb29vb2/PTLub26wcO7w7/LyLfU9P//5Njd1dfe2drj3dvd5O7/8+3n5ejc5PL//////////+zazMTNxNfHxMTVyOv////q2s3Ix8PP////////////89TNz87a0Nvb2tvZ29n4/+vo19TR0NPVytzMzs/LzvXy4tbO1tPY1djS0tzb3uP97g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

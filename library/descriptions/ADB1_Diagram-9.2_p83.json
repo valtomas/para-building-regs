@@ -1,0 +1,28 @@
+{
+ "key": "ADB1_Diagram-9.2_p83",
+ "source": "ADB1",
+ "label": "Diagram 9.2",
+ "page": 83,
+ "caption": "Diagram 9.2 Pipes penetrating fire-separating elements",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "1ae4763c794cef5a9c9f4ce8103f158566ebd92c407d46668a5f4b57126cf029",
+ "image_sig": {
+  "w": 737,
+  "h": 393,
+  "grey": "5tPT09PT09PT09PT09PT1P/////////////////////n6Pj4+Pj4+Pj4+Pj4+Pj4+/////////////////////v///Xg4/3////////////7////2PL/////////////+////9ry////1fHy8vL2//v//+7D1ff//+vb19vX7v/7//3kvNLs///jydDH1f//+//+36XC6///8ebn6Pj///v65OXU4c/q///////////7//nz1eTb8///////////+//78dvw9f////////////v////////////////////Nw8PDw8PDw8PDw8PDw8PDhWhhaGhpaGhoXFVVVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "This is a section, headed at the top left \"See para 9.5\" and captioned along the bottom \"Diagram 9.2 Pipes penetrating fire-separating elements\". A vertical grey band, labelled \"Fire-separating element\" at its top, is crossed in its middle by a horizontal cream band. Green segments sit in the vertical band immediately above and below the horizontal band. A thin vertical line, labelled on the left \"Pipe specification (b)\", passes through the horizontal band and continues downwards, overlapping the lower part of the grey band. A leader line from the label \"Fire-stopping\" points to the green segment below the horizontal band. To the right, a label reads \"Sleeve (or pipe) of specification (a) to be in contact with pipe\", referring to the vertical band around the pipe. Just above the horizontal band, two horizontal dimensions, each marked \"≥ 1000mm\", run left and right from the vertical element. On the right a \"NOTES\" block gives three numbered points on the size of the opening, the materials specification in Table 9.1, and the sleeve rating, class A1. Which element the pipe penetrates is not visually unambiguous.",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description says the right-hand label is \"referring to the vertical band around the pipe\", but the drawing shows no leader line from that label; it is positioned opposite the small green segments around the pipe, while the grey vertical band is the part labelled \"Fire-separating element\".",
+   "The description says the pipe line \"passes through the horizontal band\", but the drawing shows the thin line beginning at the horizontal band, with no pipe line drawn above it.",
+   "The description's closing remark that \"Which element the pipe penetrates is not visually unambiguous\" is not supported: the drawing clearly shows the pipe line running down through the vertical grey band that is labelled \"Fire-separating element\"."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "d0aea4befc0e67dd"
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "key": "ADB1_Diagram-3.10_p47",
+ "source": "ADB1",
+ "label": "Diagram 3.10",
+ "page": 47,
+ "caption": "Diagram 3.10 External protection to protected stairways | External escape stairs",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "f9588b0bfff30dea73e0046330074b5b26ead3ff531967f6d0400b164c337663",
+ "image_sig": {
+  "w": 737,
+  "h": 424,
+  "grey": "8O/5+fn5+fn5+fn5+fn5+fT1///////////////////7//jb4uLh8f//////////+/rz+P//+/L3//////////v7//X///v/9v/////////78OXZ8Pj05uz///Xu7u//+/Pv2fT59u/u///h5eHl9/v25eff/fLc5PP/6tXR4f/79ujg4vjv2eLt//jq6en3++/a3NXq79Ta4fj7//////v7+u309vv37Pn2///////7+/73/Pb7/ff+9v//////+/v49vj4/Pj2+Pz///////v/+Nru///y2fP////////UzMzMzMzMzMzMzMzMzMzMiGdkZ2ZlZmZmXlVVVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a cross-section elevation titled \"Configurations of stairs and external wall\", with \"See para 3.66\" at the top left and \"Diagram 3.10 External protection to protected stairways\" in a green band along the bottom. It presents two alternative sections side by side, \"Configuration A\" on the left and \"Configuration B\" on the right. Each shows a \"Stair\" drawn with vertical step lines between two storeys labelled \"Accommodation\". A legend on the right defines three fills: dark green, \"Fire resisting construction of adjacent building enclosure\"; light green, \"Fire resisting construction of protected stairway\"; and white, \"Non-fire resisting construction\". In Configuration A the upper accommodation's right-hand wall is dark green, with a vertical dimension \"1800mm min.\" beside it and a horizontal dimension \"1800mm min.\" to the right of the stair; the stair enclosure is shown in light green. In Configuration B the upper right-hand wall is white, and only the horizontal \"1800mm min.\" dimension is shown beside the stair.",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description mentions dark green only for \"the upper accommodation's right-hand wall\" in Configuration A, but the drawing also shows a dark green horizontal line at the top of the lower \"Accommodation\" (fire resisting construction of the adjacent building enclosure) extending to the right of the stair in both Configuration A and Configuration B."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "8069fef12ba33c78"
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "key": "ADB1_Diagram-11.5_p101",
+ "source": "ADB1",
+ "label": "Diagram 11.5",
+ "page": 101,
+ "caption": "Diagram 11.5 Small unprotected areas that may be disregarded in assessing the separation distance from the boundary",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "c359b3ff486f8ded8db052dc93403d95bb8b34dbf2f780090c947af526dc9c7f",
+ "image_sig": {
+  "w": 737,
+  "h": 681,
+  "grey": "7+3q7Pj7+/v7+/v7+/v7+/L0///////////////////7///4+fn5+ff5+fn2/Pz++///9vn4+fjz+fn3697P8vv///n71e7s89711rrk4/n7///5/tbe/P/p/926////+///+fve6f//297TuuTV5fv///f06OTf7Nb42Lbj1PT7///58/X/5/nt/9269fH7+///+fD0+vL7///duv////vnurm6ubq6urq6sqi6yP/77Obi5eTp/////fbb3uH/++Pe5OLn9v////348fDx//v/6OLr9//////////////Wzs7Ozs7Ozs7Ozs7Ozs7OhGBfamlpamJeYV9hYF9eVQ=="
+ },
+ "reviewed": false,
+ "description": "This is a plan view of part of a building. A rectangle at the top is labelled “Roof”. Dashed lines divide the area, labelled “Compartment floor” (running horizontally) and “Compartment wall” (running vertically). A grey shaded vertical band runs down the right‑hand edge. Scattered within the plan are larger squares and smaller shapes (single squares and pairs of vertical rectangles), some of the smaller shapes marked with the letter “b”. Green double‑headed arrows marked “a” link several of the larger squares. Two callout lines on the right point to the roof and to the grey band, reading respectively “Roofs pitched at an angle of less than 70 degrees may be disregarded for separation distance purposes” and “The unprotected area of the external wall of a stairway forming a protected shaft may be disregarded for separation distance purposes”. The top left reads “See para 11.11”. A bottom legend defines the square symbol as an unprotected area of not more than 1m² which may consist of two or more smaller areas within an area of 1000mm×1000mm, and the double‑rectangle symbol as an area of not more than 0.1m². Under “Dimensional restrictions”, arrow “a” equals 4000mm minimum distance and arrow “b” equals 1500mm minimum distance.",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description says the smaller shapes include \"pairs of vertical rectangles\" and the legend shows a \"double‑rectangle symbol\", but the drawing shows groups of three vertical rectangles, both in the plan and in the legend.",
+   "The description says the legend defines \"the double‑rectangle symbol as an area of not more than 0.1m²\", but on the drawing the text \"Represents an area of not more than 0.1m²\" is aligned with the small square symbol, while the vertical‑rectangles symbol carries no such label (it sits beside the 1 m² definition).",
+   "The description omits the thick grey horizontal band that runs along the bottom edge of the plan, below the building outline."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "6ef211096c32fc29"
+ }
+}

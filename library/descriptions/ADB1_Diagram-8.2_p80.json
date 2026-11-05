@@ -1,0 +1,26 @@
+{
+ "key": "ADB1_Diagram-8.2_p80",
+ "source": "ADB1",
+ "label": "Diagram 8.2",
+ "page": 80,
+ "caption": "Diagram 8.2 Cavity walls excluded from provisions for cavity barriers",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "3e64d50e0d8ce482c5dbaad4a8c0b99dadc09a335160e54075988740546f975f",
+ "image_sig": {
+  "w": 756,
+  "h": 424,
+  "grey": "9+Hs//////////////////n4+Pj4+Pj4+Pj4+Pj4+Pjt8P/////////////////7+/Su+///////////////+/v7zbHp19f3/+H///////v7+9e38ujq///r6Ojp6Oj7+/vX6P//////4NfV6Oj3+/v12fv+/////+vo6Ojn5/v7+dn28/P////j1NLV4ub7+/vT8P//////5c/Wzunl9fv79rHy6ufx/+rR2NLR5fX7+/+y69PY8v/q6Ofr6vT7+/33vvX8////7ert////+/v//fT///////////////vTysrKysrKysrKysrKysrRiWdgZGZoZGVlZGZaVVVVdw=="
+ },
+ "reviewed": false,
+ "description": "This is a three-dimensional isometric section of a wall segment, with a zigzag break line at the left edge. A vertical void in the middle is labelled \"Opening\". The wall has two leaves, labelled at the bottom \"Two leaves of brick or concrete each at least 75mm thick\". At the top, a label reads \"Close cavity at top of wall (unless cavity is totally filled with insulation)\", and around the void another reads \"Close cavity around opening\". A box at top left says \"See para 8.3\". To the right, a \"NOTES\" column lists three notes: 1, materials closing the cavity need no specific fire-resistance performance; 2, domestic meter cupboards may be installed if (a) there are no more than two per dwelling, (b) outer-leaf openings are not bigger than 800×500mm each, and (c) the inner leaf is not penetrated except by a fire-stopped sleeve not more than 80×80mm; 3, materials achieving class B-s3, d2 or worse may be placed within the cavity. A green banner below reads \"Diagram 8.2 Cavity walls excluded from provisions for cavity barriers\". A stray top line reads \"(Diagram 8.4).\"",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description states 'A box at top left says \"See para 8.3\"', but the drawing shows 'See para 8.3' as plain text at the top left with no box around it (only the overall drawing border is present)."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "4b93b0f1b8e7fcf1"
+ }
+}

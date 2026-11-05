@@ -1,0 +1,24 @@
+{
+ "key": "ADA_Figure-3_p22",
+ "source": "ADA",
+ "label": "Figure 3",
+ "page": 22,
+ "caption": "Figure 3 Alternative graphical method for determining Orography Factor O",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "709d11c96e1cf416176b24ccf12a09ea004845dfc74b86958bd9637ca567d946",
+ "image_sig": {
+  "w": 788,
+  "h": 162,
+  "grey": "///9/v///v7//v79/v//+v//z7+8wMK8vb3EwsT8//r///P39e719vTy8fL0///66urq6urq6urq6urq6urq+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="
+ },
+ "reviewed": false,
+ "description": "The image shows only a heading at the top, enclosed by a horizontal rule beneath it, which reads \"Figure 3 Alternative graphical method for determining Orography Factor O\". Below this line the rest of the frame is entirely blank white space. There is no visible graph, chart, plot, set of axes, scale, curve, line, symbol, label, dimension or legend anywhere in the area that would normally contain the graphical method. No parts designated a, b or c are present. The drawing therefore appears to be cut off or incomplete, with only the figure title remaining and the actual graphical content missing. I cannot describe any components, relationships, values or procedures because none are shown.",
+ "check": {
+  "ok": true,
+  "notes": [],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "cbf68762850da307"
+ }
+}

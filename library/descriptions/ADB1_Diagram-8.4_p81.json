@@ -1,0 +1,26 @@
+{
+ "key": "ADB1_Diagram-8.4_p81",
+ "source": "ADB1",
+ "label": "Diagram 8.4",
+ "page": 81,
+ "caption": "Diagram 8.4 Provisions for cavity barriers in double-skinned insulated roof sheeting",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "c0f5d4b3f53c20be319015bbc02d2bad3998f672af06d02e8463eaa717332567",
+ "image_sig": {
+  "w": 737,
+  "h": 289,
+  "grey": "9fb29vb29vb29vb29vb29ufo///////////////////7////////////////////+////+TO+P///9jS//////v//+vc3978//fe3/H////7////////////////////+///////////0u3l2Pr///v/98vV0NPc4++v2eTU6ej7/8yIgYeFjLuLaoqLqPP8+//bpqampq3LppykpLPt+fv////////////////////7/+ve3N3g39ze29/d39zx+//p4t/g4dvr/v39/f/+/fv///////////////////+Mam1qa2pra2tqbGtsamhoim5ia2ZqbWdrbGpramxVVQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a horizontal section through double-skinned insulated roof sheeting, comparing two side-by-side arrangements. At the top left is the note \"See para 8.7\".\n\nOn the left, \"Arrangement A\" is sub-labelled \"Acceptable without cavity barriers\". It shows a corrugated upper skin with repeating peaks and troughs, directly above a hatched green layer resting on a flat lower skin, with no gap between the upper skin and the hatched layer.\n\nOn the right, \"Arrangement B\" is sub-labelled \"Cavity barriers necessary\". The same corrugated upper skin is drawn with a visible gap above the hatched layer. A solid green block fills one valley of the corrugation. To the right of this arrangement, two leader lines point to the labels \"Cavity barrier\" (referring to the green block) and \"Insulation\" (referring to the hatched layer).\n\nBeneath both arrangements a line reads: \"The insulation should make contact with both skins of sheeting. See also Diagram 5.2a regarding the need for fire-stopping where such roofs pass over the top of a compartment wall.\" The bottom banner reads \"Diagram 8.4 Provisions for cavity barriers in double-skinned insulated roof sheeting\".",
+ "check": {
+  "ok": false,
+  "notes": [
+   "The description says the \"Cavity barrier\" leader line refers to the green block, but on the drawing that leader line points to the upper skin at the right-hand end of Arrangement B, and no leader line connects the \"Cavity barrier\" label to the green block."
+  ],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "1e4f84219470bc7c"
+ }
+}

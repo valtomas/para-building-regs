@@ -1,0 +1,17 @@
+{
+ "key": "ADB1_Table-4.2_p60",
+ "source": "ADB1",
+ "label": "Table 4.2",
+ "page": 60,
+ "caption": "Table 4.2 \u0007Limitations applied to thermoplastic rooflights and lighting diffusers in suspended ceilings and class D-s3, d2 plastic rooflights(1)",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "10dc73b0b4c93b4902d527366bf853d453d2893249ff76da6d56613ed9b8f56d",
+ "image_sig": {
+  "w": 754,
+  "h": 417,
+  "grey": "t56cmZSdl5Wbl5WWkqKXrczAnZagn5aekLO/v8DAv8fm6PDp4+Lq4+Pt4ubu4eLo8u76+Oz5+e31++/x/e7v+fLy/fj0//ry+Pji5Pbg8fv7///////////77O77/v/7+///////////+ebw/f//++f5+fHl+fPo+fXo+fjl+ff3+Pjv5OL6+Pj7+Pj7+Pj34uzz8/f/+///+fn//P//+/L4+Pbv8fn4+Pf1+Pn4+Pf7///w3uL+///9///+///79/j47er4+Pj4+Pj4+Pj499/u/v7+/v/+/vz+//////vt4+De5OPk4uHj8/b39vj67dje8vLu7/Hx8vXu8vHx+g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

@@ -1,0 +1,24 @@
+{
+ "key": "ADA_Figure-2_p23",
+ "source": "ADA",
+ "label": "Figure 2",
+ "page": 23,
+ "caption": "Figure 2 Orographic zones for Factor O | BUILDINGS",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "00c78127bfbb26f85c7a0ac0b93fa8096818171c7a86e60b0660426f6057ecd3",
+ "image_sig": {
+  "w": 749,
+  "h": 913,
+  "grey": "6+Lo6N3g4Ojg6erm6uTc8+bk4u3p5u7t7+7u6Onh8/Dk3Nzf4Ons7OXh5eHk6+Lq5tfZ2tja5+7m8Ofr7v/u8vH29/f29/f29vf27+f35+71//fn5+Le2eTj7+nz8///9f/17+zj3tzm5t7g4fD///X/9fv26vTr9O/x9ev1///1//X7+PH07vPu8PXq9f//9f/1+/f19fD28PP36PX///X/9fv29fX1/+/y8+r1///1//X8+PX19f/19fju9f//9f/2+PTy8vL78vL76fX//+rw7OLj4uDg5Ojr6+vt8vjr/fjf393e4Nzc6Ofo6+n66ff36eXj4+Dn7/H39/f39Q=="
+ },
+ "reviewed": false,
+ "description": "The image shows, at the top, a flowchart of five boxes joined by arrows: \"wind speed V from Figure 1 Diagram 6\"; \"Figure 2 Diagram 6 and obtain Factor O from Table a (or use Figure 3 Diagram 6)\"; \"Obtain value of Factor A from Table b\"; \"Calculate value of Factor S from: S = V × O × A\"; and \"allowable building height from Table c\". No map of zones is drawn. Below are three tables. Table a \"Factor O\" lists \"Orographic category and average slope of whole hillside, ridge, cliff or escarpment\" against \"Factor O\" in columns \"Zone 1\", \"Zone 2\" and \"Zone 3\", with rows for Categories 1 to 4. Table b \"Factor A\" pairs \"Site altitude (m)\" (0 to 500) with \"Factor A\" (1.00 to 1.50). Table c \"Maximum allowable building height in metres\" gives heights by \"Factor S\" (≤ 25 to 44) under \"Country sites\" and \"Town sites\", each split by \"Distance to the coast\" (< 2km, 2 to 20km, > 50km). A notes box follows.",
+ "check": {
+  "ok": true,
+  "notes": [],
+  "model": "Qwen3.8-27B-GGUF",
+  "date": "2026-11-05",
+  "text": "7d4783e8f51a445d"
+ }
+}

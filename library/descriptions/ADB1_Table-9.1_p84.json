@@ -1,0 +1,17 @@
+{
+ "key": "ADB1_Table-9.1_p84",
+ "source": "ADB1",
+ "label": "Table 9.1",
+ "page": 84,
+ "caption": "Table 9.1 \u0007Maximum nominal internal diameter of pipes passing through a fire-separating element",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-05",
+ "image_sha256": "fb40b5c896d9aa7ac717324580dd4dcec081b5df8497b75af84f7d3c4e832ef9",
+ "image_sig": {
+  "w": 754,
+  "h": 518,
+  "grey": "u6Weo52jn6GgoZ6dpKGiydXNrsLNzc3Nzc3Nzc3NzdLz+P/////37u7t7+7t7fb4+///////9vP0+fL1/PL09/v///////r4/vnp7Pv///vv6erp5vb0+Pr29vj49vr479vh3e7t////////////++/m5+vn6fT4+vXl5/n2+vjq2+Pp8fr1+Pr029359vr49/b29vf6+/r69uXj/Pn6+Ozd3Nrq7/f+//r9//z7//vt5OTy9fXv8/Xy8/X08fX05O77+/z8+vr7+/v4+vr9+/Hi4+Lh5ODk3uLf8fbz+Pvu5ujn5d/e3/f49/f4+Pf48OHd4uHg4ODh39/c6/Hx9A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}
