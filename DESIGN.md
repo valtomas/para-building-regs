@@ -13,8 +13,8 @@ when the interface changes).
 3. **Honest states.** Say plainly when an answer doesn't come from the library, when a citation was removed, when
    the engine isn't private, and when the answer was cut short. Never hide these to look cleaner.
 4. **Calm and professional.** It's a reference tool used at work, styled like a well-set printed reference:
-   parchment pages, an oxblood sidebar, one clay accent, a serif for reading and a monospace for labels. No animation
-   beyond the typing cursor, no illustrations, no emoji.
+   parchment pages, an oxblood sidebar, one clay accent, a plain sans-serif for reading and a monospace for labels.
+   No animation beyond the typing cursor, no illustrations, no emoji.
 5. **Works without explanation.** Someone who has never used an AI tool should get from install to a cited answer
    without reading anything.
 
@@ -55,7 +55,7 @@ time someone adds a file.
 | Answer with inline citations, activity expanded | `answer.png` |
 | Answer with the reader open at the cited table | `answer-reader.png`, `answer-reader-dark.png` |
 | Reader showing a diagram, and enlarged | `reader-diagram.png`, `reader-diagram-zoom.png` |
-| Reader: a diagram's description, checked by a person | `reader-description.png` |
+| Reader: a diagram's description, checked by a person (opened) | `reader-description.png` |
 | Library: documents by group, direct search | `library.png`, `library-search.png` |
 | Your files: permission prompt, file list with notes | `files-permission.png`, `files.png` |
 | Phone width | `narrow.png` |
@@ -91,11 +91,12 @@ Backdrop `rgba(43,29,22,.55)`; dialog shadow `0 30px 80px rgba(20,10,6,.35)`; re
 
 Type, bundled in `para/static/fonts/` so the app works offline (all SIL Open Font License):
 
-- **Display**, Gloock 400: welcome heading `clamp(40px, 5vw, 64px)`, the question `clamp(28px, 3.4vw, 42px)`,
+- **Display**, Space Grotesk 500 (the brand 600), tracked tight: welcome heading `clamp(40px, 5vw, 62px)` at -.035em,
+  the question `clamp(28px, 3.4vw, 42px)` at -.025em,
   dialog titles 32–40 px, reader title 26 px, group titles 22–24 px, sidebar links 19 px, the brand 40 px.
-- **Body**, Newsreader 400–600 and italic: answers 19 px / 1.6, dialog text 15–17 px, reader 16 px. Italic for quiet
+- **Body**, IBM Plex Sans 400–600 and italic: answers 17.5 px / 1.6, dialog text 15–17 px, reader 16 px. Italic for quiet
   notes (disclaimer, hints, "Nothing found.", "No chats yet.").
-- **Labels**, JetBrains Mono 400–500: eyebrows 11 px uppercase with .22–.24em tracking in `--accent`; button labels
+- **Labels**, IBM Plex Mono 400–500: eyebrows 11 px uppercase with .22–.24em tracking in `--accent`; button labels
   11–12 px uppercase; citations 12 px; sizes, dates and page refs 11–12.5 px.
 
 Radius: dialogs 20 px, the question box 18 px, cards 14 px, notes and errors 12 px, inputs 10 px, citations 4 px,
@@ -130,10 +131,11 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   card (the drawings are designed on white, so they stay white in dark mode). Click to enlarge to the window;
   click again to close. When the reader opens at a passage with a figure, it scrolls to the top of the figure.
 - **Description of a drawing** (`.figure-desc`): when a diagram has a description checked by a person, it sits
-  directly under the image, set off by a 2 px accent rule on the left: a mono "Description of the drawing" label,
-  the description in body text, then an italic note in `--muted`, "Written by AI from the image, checked by a
-  person. The document's text comes first." Its copy in the passage text (there for search and for the AI) isn't
-  shown again.
+  directly under the image, collapsed like the activity list: a mono "+ Description of the drawing" line. Opened, a
+  2 px accent rule on the left sets off the description in body text, then an italic note in `--muted`, "Written by
+  AI from the image, checked by a person. The document's text comes first." It's there to check what the AI was told
+  about the drawing; the image's alt text carries it too, for screen readers. Its copy in the passage text (there
+  for search and for the AI) isn't shown again.
 - **Review page** (`library/review.html`, served by `library/describe.py review`, not part of the app): the same
   tokens and fonts; one card per drawing with the image on white, the ref in display type, the caption in italic,
   the model and dates in mono, and Approve (primary), Edit (outline) and Reject (danger outline) buttons; once

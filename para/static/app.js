@@ -257,8 +257,9 @@ function setStatus(t) { $("#status").textContent = t; }
 const DESCRIPTION_LABEL = "Description of the drawing (written by AI from the image, checked by a person):";
 function figureDescription(f) {
   if (!f.description) return "";
-  return `<div class="figure-desc"><span class="lbl">Description of the drawing</span>${esc(f.description)}` +
-    `<span class="who">Written by AI from the image, checked by a person. The document's text comes first.</span></div>`;
+  // collapsed: it's there to check what the AI was told about the drawing, not to read instead of the drawing
+  return `<details class="figure-desc"><summary>Description of the drawing</summary>${esc(f.description)}` +
+    `<span class="who">Written by AI from the image, checked by a person. The document's text comes first.</span></details>`;
 }
 function withoutDescriptions(p) {
   if (!(p.figures || []).some((f) => f.description)) return p.text;
@@ -284,7 +285,7 @@ function showDoc(doc) {
   const body = $("#readerBody");
   const isPdf = /\.pdf($|[?#])/i.test(doc.url || "");
   const pageLink = (n) => (doc.url || "").split("#")[0] + "#page=" + n;
-  body.innerHTML = doc.parts.map((p) => `<div class="passage${p.id === doc.focus ? " focus" : ""}" id="p-${esc(p.id)}"><span class="ph">${esc([p.heading, p.ref].filter(Boolean).join(" · "))}${p.page && isPdf ? ` · <a href="#" data-page="${p.page}">PDF page ${p.page} ↗</a>` : ""}</span>${(p.figures || []).map((f) => `<img class="figure" src="/api/figure?id=${f.id}" ${f.width ? `width="${f.width}" height="${f.height}"` : ""} alt="${esc(p.ref || "Drawing")}" title="Click to enlarge" loading="lazy">${figureDescription(f)}`).join("")}${esc(withoutDescriptions(p))}</div>`).join("");
+  body.innerHTML = doc.parts.map((p) => `<div class="passage${p.id === doc.focus ? " focus" : ""}" id="p-${esc(p.id)}"><span class="ph">${esc([p.heading, p.ref].filter(Boolean).join(" · "))}${p.page && isPdf ? ` · <a href="#" data-page="${p.page}">PDF page ${p.page} ↗</a>` : ""}</span>${(p.figures || []).map((f) => `<img class="figure" src="/api/figure?id=${f.id}" ${f.width ? `width="${f.width}" height="${f.height}"` : ""} alt="${esc(f.description || p.ref || "Drawing")}" title="Click to enlarge" loading="lazy">${figureDescription(f)}`).join("")}${esc(withoutDescriptions(p))}</div>`).join("");
   $$("[data-page]", body).forEach((a) => { a.onclick = (e) => { e.preventDefault(); openUrl(pageLink(a.dataset.page)); }; });
   const focusPart = doc.parts.find((p) => p.id === doc.focus);
   if (isPdf && focusPart && focusPart.page) {
