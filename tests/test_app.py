@@ -2,9 +2,11 @@
 
 python3 tests/test_app.py
 """
+import datetime
 import importlib.util
 import json
 import os
+import sqlite3
 import struct
 import sys
 import tempfile
@@ -302,6 +304,31 @@ rec["check"] = {**bad, "text": describe.text_hash(rec["description"])}
 describe.save(rec)
 after = describe.needs_check(describe.load("K_Diagram-8_p8"), TINY_PNG)
 describe.approve({"key": "K_Diagram-8_p8", "png": TINY_PNG}, "At 5m and 1:15.", approved=False)
+end = describe.deadline("05:30")
+check(end.strftime("%H:%M") == "05:30" and datetime.timedelta(0) < end - datetime.datetime.now()
+      <= datetime.timedelta(days=1) and describe.out_of_time(datetime.datetime.now() + datetime.timedelta(minutes=5))
+      and not describe.out_of_time(datetime.datetime.now() + datetime.timedelta(hours=1))
+      and not describe.out_of_time(None), "a night's run stops in time to finish by the hour given")
+
+lib = os.path.join(TMP, "describe-lib.sqlite")
+db = sqlite3.connect(lib)
+db.executescript("CREATE TABLE sources (id INTEGER PRIMARY KEY, short TEXT);"
+                 "CREATE TABLE passages (id INTEGER PRIMARY KEY, source_id INT, text TEXT);"
+                 "CREATE TABLE figures (id INTEGER PRIMARY KEY, passage_id INT, key TEXT, label TEXT, page INT, png BLOB);"
+                 "INSERT INTO sources VALUES (1, 'ADM2');"
+                 "INSERT INTO passages VALUES (1, 1, 'Diagram 3 Ramp gradient'), (2, 1, 'Diagram 4 Steps');")
+db.executemany("INSERT INTO figures (passage_id, key, label, page, png) VALUES (?, ?, ?, 2, ?)",
+               [(1, "ADM2_Diagram-3_p2", "Diagram 3", grey_png(4, 4)), (2, "ADM2_Diagram-4_p2", "Diagram 4", grey_png(5, 4))])
+db.commit()
+db.close()
+describe.save({"key": "ADM2_Diagram-4_p2", "image_sha256": describe.image_hash(grey_png(5, 4)), "reviewed": True,
+               "description": "Steps."})
+describe.main(["--library", lib, "run", "--check", "--base-url", fake_url, "--model", "fake-model"])
+drafted, kept = describe.load("ADM2_Diagram-3_p2"), describe.load("ADM2_Diagram-4_p2")
+check(drafted["description"].startswith("A drawing") and not drafted["reviewed"] and "notes" in drafted["check"]
+      and kept["description"] == "Steps." and "check" not in kept,
+      "an overnight run drafts and checks what's missing, and leaves approved descriptions alone")
+
 check(first and not after and describe.needs_check(describe.load("K_Diagram-8_p8"), TINY_PNG)
       and not describe.load("K_Diagram-8_p8")["reviewed"],
       "a draft is checked once, again after its text changes, and the check never approves it")

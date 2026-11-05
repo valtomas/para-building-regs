@@ -245,37 +245,55 @@ def needs_check(rec, png):
             and (rec.get("check") or {}).get("text") != text_hash(rec["description"]))
 
 
+def deadline(until):
+    """The next time it's `until` ("05:30"), or None: a run started at 01:30 stops before 05:30 the same night."""
+    if not until:
+        return None
+    h, m = (int(x) for x in until.split(":"))
+    now = datetime.datetime.now()
+    end = now.replace(hour=h, minute=m, second=0, microsecond=0)
+    return end if end > now else end + datetime.timedelta(days=1)
+
+
+def out_of_time(end, margin=8):
+    """No time left to start another drawing: writing and checking one takes up to about six minutes."""
+    return end is not None and datetime.datetime.now() + datetime.timedelta(minutes=margin) > end
+
+
+def _check_one(client, fig, rec, args):
+    checked = rec["description"]
+    verdict = check_description(client, fig, checked, think=not args.no_think)
+    rec = load(fig["key"])  # a person may have saved it on the review page meanwhile: the check is of `checked`
+    rec["check"] = {**verdict, "model": args.model, "date": datetime.date.today().isoformat(),
+                    "text": text_hash(checked)}
+    save(rec)
+    print(f"checked  {fig['key']}: " + ("no problems found" if verdict["ok"] else f"{len(verdict['notes'])} notes"),
+          flush=True)
+
+
 def check(args):
     client = Client(args.base_url, os.environ.get("DESCRIBE_API_KEY", ""), args.model)
-    done = failed = 0
+    end, done, failed = deadline(args.until), 0, 0
     for fig in figures_in(args.library, args.only):
-        if args.limit and done >= args.limit:
+        if (args.limit and done >= args.limit) or out_of_time(end):
             break
         rec = load(fig["key"])
         if not needs_check(rec, fig["png"]):
             continue
-        checked = rec["description"]
         try:
-            verdict = check_description(client, fig, checked, think=not args.no_think)
+            _check_one(client, fig, rec, args)
+            done += 1
         except EngineError as e:
             failed += 1
             print(f"failed   {fig['key']}: {e}", flush=True)
-            continue
-        rec = load(fig["key"])  # a person may have saved it on the review page meanwhile: the check is of `checked`
-        rec["check"] = {**verdict, "model": args.model, "date": datetime.date.today().isoformat(),
-                        "text": text_hash(checked)}
-        save(rec)
-        done += 1
-        print(f"checked  {fig['key']}: " + ("no problems found" if verdict["ok"] else f"{len(verdict['notes'])} notes"),
-              flush=True)
     print(f"\n{done} checked, {failed} failed")
 
 
 def run(args):
     client = Client(args.base_url, os.environ.get("DESCRIBE_API_KEY", ""), args.model)
-    done = skipped = failed = 0
+    end, done, skipped, failed = deadline(args.until), 0, 0, 0
     for fig in figures_in(args.library, args.only):
-        if args.limit and done >= args.limit:
+        if (args.limit and done >= args.limit) or out_of_time(end):
             break
         h = image_hash(fig["png"])
         rec = load(fig["key"])
@@ -293,11 +311,17 @@ def run(args):
             failed += 1
             print(f"failed   {fig['key']}: {e}", flush=True)
             continue
-        save({"key": fig["key"], "source": fig["source"], "label": fig["label"], "page": fig["page"],
-              "caption": fig["caption"], "model": args.model, "date": datetime.date.today().isoformat(),
-              "image_sha256": h, "image_sig": image_sig(fig["png"]), "reviewed": False, "description": text})
+        rec = {"key": fig["key"], "source": fig["source"], "label": fig["label"], "page": fig["page"],
+               "caption": fig["caption"], "model": args.model, "date": datetime.date.today().isoformat(),
+               "image_sha256": h, "image_sig": image_sig(fig["png"]), "reviewed": False, "description": text}
+        save(rec)
         done += 1
         print(f"written  {fig['key']} ({len(text.split())} words)", flush=True)
+        if args.check:  # check it straight away, so a night's drafts all arrive with their notes
+            try:
+                _check_one(client, fig, rec, args)
+            except EngineError as e:
+                print(f"failed   {fig['key']} (check): {e}", flush=True)
     print(f"\n{done} written, {skipped} already done, {failed} failed")
 
 
@@ -457,9 +481,11 @@ def _git(*args, cwd):
 
 
 def auto(args):
-    """Overnight on a computer with a vision model: draft and check descriptions for the drawings that need them, on a
-    branch of the latest main, and open a pull request for a person to review on the review page. Works in a git
-    worktree of its own, so the checkout it's started from is left as it is. Never approves anything."""
+    """Overnight on a computer with a vision model: draft and check descriptions for the drawings that need them, and
+    put them in a pull request for a person to review on the review page. Works in a git worktree of its own, so the
+    checkout it's started from is left as it is. If a pull request of drafts is still open, it adds to that one, so a
+    week of nights can go into one review. With --until it stops in time and keeps what it has done. Never approves
+    anything."""
     root = os.path.dirname(HERE)
     client = Client(args.base_url, os.environ.get("DESCRIBE_API_KEY", ""), args.model)
     try:
@@ -471,38 +497,53 @@ def auto(args):
     open_prs = subprocess.run(["gh", "pr", "list", "--state", "open", "--json", "headRefName", "-q",
                                '.[] | select(.headRefName | startswith("descriptions/")) | .headRefName'],
                               cwd=root, capture_output=True, text=True).stdout.split()
-    if open_prs:
-        print(f"A pull request of drafts is still open ({', '.join(open_prs)}): review and merge it first, so the same "
-              "drawings aren't drafted twice.")
-        return
     date = datetime.date.today().isoformat()
-    branch, wt = f"descriptions/{date}", os.path.join(root, ".worktrees", f"descriptions-{date}")
-    _git("worktree", "add", "-q", "-B", branch, wt, "origin/main", cwd=root)
+    branch = open_prs[0] if open_prs else f"descriptions/{date}"
+    start = f"origin/{branch}" if open_prs else "origin/main"
+    wt = os.path.join(root, ".worktrees", "descriptions-auto")
+    subprocess.run(["git", "worktree", "remove", "--force", wt], cwd=root, capture_output=True)  # a night cut short
+    _git("worktree", "add", "-q", "-B", branch, wt, start, cwd=root)
     try:
+        if open_prs:
+            print(f"Adding to the open pull request on {branch}.", flush=True)
+            _git("merge", "-q", "--no-edit", "origin/main", cwd=wt)  # this week's library and approvals
         cache = os.path.join(root, "library", "cache")
         if os.path.isdir(cache) and not os.path.exists(os.path.join(wt, "library", "cache")):
             os.symlink(cache, os.path.join(wt, "library", "cache"))  # the PDFs already downloaded
-        py = [sys.executable, "library/build.py"] + (["--offline"] if args.offline else [])
-        subprocess.run(py, cwd=wt, check=True)
+        subprocess.run([sys.executable, "library/build.py"] + (["--offline"] if args.offline else []), cwd=wt,
+                       check=True)
         model = (["--base-url", args.base_url, "--model", args.model] + (["--limit", str(args.limit)] if args.limit else [])
-                 + (["--no-think"] if args.no_think else []))
-        subprocess.run([sys.executable, "library/describe.py", "run", *model], cwd=wt, check=True)
-        subprocess.run([sys.executable, "library/describe.py", "check", *model], cwd=wt, check=True)
-        _git("add", "library/descriptions", cwd=wt)
-        changed = _git("diff", "--cached", "--name-only", cwd=wt).split()
-        if not changed:
-            print("Nothing to draft or check.")
-            return
-        _git("commit", "-q", "-m", f"Descriptions: {len(changed)} drafted or checked by {args.model}, to review", cwd=wt)
-        _git("push", "-q", "-u", "origin", branch, cwd=wt)
-        body = (f"Drafted and checked overnight by `{args.model}` with `describe.py auto`. Nothing here is approved: "
-                "check each one against its drawing on the review page (`python3 library/describe.py review`), where "
-                "the AI check's notes show which parts to look at first. Only approved descriptions go into the "
-                "library.\n\n" + "\n".join(f"- `{os.path.basename(c)[:-5]}`" for c in changed))
-        subprocess.run(["gh", "pr", "create", "--base", "main", "--head", branch, "--title",
-                        f"Descriptions to review: {len(changed)} drawings ({date})", "--body", body], cwd=wt, check=True)
+                 + (["--until", args.until] if args.until else []) + (["--no-think"] if args.no_think else []))
+        # each drawing written and checked in turn; then any draft whose text changed is checked again
+        for step in (["run", "--check"], ["check"]):
+            if subprocess.run([sys.executable, "library/describe.py", *step, *model], cwd=wt).returncode:
+                print(f"describe.py {step[0]} stopped early; keeping what it wrote.", flush=True)
     finally:
+        _publish(wt, branch, date, args.model, bool(open_prs))
         subprocess.run(["git", "worktree", "remove", "--force", wt], cwd=root, capture_output=True)
+
+
+def _publish(wt, branch, date, model, existing):
+    """Commit what the night produced and push it: to the open pull request, or to a new one."""
+    _git("add", "library/descriptions", cwd=wt)
+    changed = _git("diff", "--cached", "--name-only", cwd=wt).split()
+    if not changed:
+        print("Nothing new to draft or check.", flush=True)
+        if existing:
+            _git("push", "-q", "origin", branch, cwd=wt)  # the merge of main, if any
+        return
+    _git("commit", "-q", "-m", f"Descriptions: {len(changed)} drafted or checked by {model} on {date}, to review",
+         cwd=wt)
+    _git("push", "-q", "-u", "origin", branch, cwd=wt)
+    if existing:
+        print(f"Added {len(changed)} to the open pull request on {branch}.", flush=True)
+        return
+    body = (f"Drafted and checked overnight by `{model}` with `describe.py auto`; later nights add to this pull "
+            "request while it's open. Nothing here is approved: check each one against its drawing on the review "
+            "page (`python3 library/describe.py review`), where the AI check's notes show which parts to look at "
+            "first. Only approved descriptions go into the library.")
+    subprocess.run(["gh", "pr", "create", "--base", "main", "--head", branch, "--title",
+                    f"Descriptions to review (from {date})", "--body", body], cwd=wt, check=True)
 
 
 def main(argv=None):
@@ -515,6 +556,8 @@ def main(argv=None):
     r.add_argument("--only", help="documents or key prefixes, comma-separated (ADB1,ADK)")
     r.add_argument("--limit", type=int, default=0)
     r.add_argument("--no-think", action="store_true", help="answer straight away (much faster, far less accurate)")
+    r.add_argument("--check", action="store_true", help="check each draft straight after writing it")
+    r.add_argument("--until", help="stop in time to finish by this time of day (05:30)")
     v = sub.add_parser("review", help="open the review page")
     v.add_argument("--port", type=int, default=8790)
     v.add_argument("--no-browser", action="store_true")
@@ -526,12 +569,14 @@ def main(argv=None):
         p.add_argument("--only", help="documents or key prefixes, comma-separated (ADB1,ADK)")
         p.add_argument("--limit", type=int, default=0)
         p.add_argument("--no-think", action="store_true", help="answer straight away (much faster, far less accurate)")
+        p.add_argument("--until", help="stop in time to finish by this time of day (05:30)")
     n = sub.add_parser("pending", help="the drawings that need drafting or checking (no AI)")
     n.add_argument("--markdown", action="store_true", help="as the body of the GitHub issue")
     a = sub.add_parser("auto", help="draft and check on a branch of main, and open a pull request")
     a.add_argument("--base-url", default=DEFAULT_ENGINE)
     a.add_argument("--model", default=DEFAULT_MODEL, help="a model that reads images")
-    a.add_argument("--limit", type=int, default=40, help="drawings to draft, and to check, in one night")
+    a.add_argument("--limit", type=int, default=0, help="at most this many drawings to draft in one night")
+    a.add_argument("--until", help="stop in time to finish by this time of day (05:30)")
     a.add_argument("--no-think", action="store_true", help="answer straight away (much faster, far less accurate)")
     a.add_argument("--offline", action="store_true", help="build the library from library/cache")
     args = ap.parse_args(argv)

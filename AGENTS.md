@@ -108,8 +108,10 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   don't.
 - **The descriptions loop**: after each library build, the *Drawing descriptions* workflow lists what needs a model
   or a person (`describe.py pending`, no AI) in one issue labelled "descriptions". Drafting runs overnight on a
-  computer with a vision model: `describe.py auto` builds the library in a worktree of the latest main, drafts and
-  checks what's missing, and opens a pull request of drafts (one at a time: it waits while one is open). The same
+  computer with a vision model, every night from 01:30 (`describe.py auto --until 05:30`, a systemd user timer on
+  the maintainer's PC): it builds the library in a worktree of the latest main, writes and checks one drawing after
+  another, stops in time, and opens a pull request of drafts, or adds to the one still open, so a week of nights
+  goes into one review. The same
   workflow can draft with a hosted model if `DESCRIBE_BASE_URL`, `DESCRIBE_MODEL` (repository variables) and
   `DESCRIBE_API_KEY` (secret) are set; it's off otherwise.
 - **Ids**: regulations passages are `r<rowid>`, the person's files `f<rowid>`. Rowids change between library
