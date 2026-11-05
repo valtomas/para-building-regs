@@ -2,12 +2,17 @@
 
 python3 tests/test_app.py
 """
+import datetime
+import importlib.util
 import json
 import os
+import sqlite3
+import struct
 import sys
 import tempfile
 import threading
 import urllib.request
+import zlib
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
@@ -216,12 +221,24 @@ check(describe.figure_key("ADB1", "Diagram 3.8", 40) == "ADB1_Diagram-3.8_p40" a
       describe.figure_key("ADM amendments 2024", "Diagram 1.2", 5) == "ADM-amendments-2024_Diagram-1.2_p5",
       "figure keys name the document, the figure and the page")
 describe.DESC_DIR = os.path.join(TMP, "descriptions")
-other_png = TINY_PNG + b"x"
+
+
+def grey_png(w, h, shade=lambda x, y: 255):
+    """A greyscale PNG, so the tests need no image library."""
+    rows = b"".join(b"\x00" + bytes(shade(x, y) for x in range(w)) for y in range(h))
+
+    def chunk(kind, data):
+        return struct.pack(">I", len(data)) + kind + data + struct.pack(">I", zlib.crc32(kind + data))
+    return (b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", w, h, 8, 0, 0, 0, 0))
+            + chunk(b"IDAT", zlib.compress(rows)) + chunk(b"IEND", b""))
+
+
+other_png = grey_png(3, 2)
 h = describe.image_hash(TINY_PNG)
 describe.save({"key": "K_Diagram-1_p1", "image_sha256": h, "reviewed": False, "description": "A plan."})
 rec = describe.load("K_Diagram-1_p1")
-check(not describe.needs_writing(rec, h) and describe.needs_writing(rec, describe.image_hash(other_png))
-      and describe.needs_writing(None, h), "a description is written again only when its image changed")
+check(not describe.needs_writing(rec, TINY_PNG) and describe.needs_writing(rec, other_png)
+      and describe.needs_writing(None, TINY_PNG), "a description is written again only when its image changed")
 check(describe.usable("K_Diagram-1_p1", TINY_PNG) is None, "an unreviewed description stays out of the library")
 fig1 = {"key": "K_Diagram-1_p1", "png": TINY_PNG}
 describe.approve(fig1, "A plan of a flat.")
@@ -229,7 +246,7 @@ rec = describe.load("K_Diagram-1_p1")
 check(rec["reviewed"] and rec["description"] == "A plan of a flat." and rec["model_description"] == "A plan."
       and describe.usable("K_Diagram-1_p1", TINY_PNG) == "A plan of a flat.",
       "approving keeps the person's correction and what the model wrote")
-check(not describe.needs_writing(rec, describe.image_hash(other_png)) and describe.stale(rec, describe.image_hash(other_png))
+check(not describe.needs_writing(rec, other_png) and describe.stale(rec, other_png)
       and describe.usable("K_Diagram-1_p1", other_png) is None,
       "a reviewed description is never overwritten, and leaves the library if its image changes")
 
@@ -237,12 +254,94 @@ describe.save({"key": "K_Diagram-2_p2", "image_sha256": h, "reviewed": False, "d
 describe.approve({"key": "K_Diagram-2_p2", "png": TINY_PNG}, None, approved=True, rejected=True)
 rec = describe.load("K_Diagram-2_p2")
 check(rec["rejected"] and not rec["reviewed"] and describe.usable("K_Diagram-2_p2", TINY_PNG) is None
-      and not describe.needs_writing(rec, h) and describe.needs_writing(rec, describe.image_hash(other_png)),
+      and not describe.needs_writing(rec, TINY_PNG) and describe.needs_writing(rec, other_png),
       "a rejected description stays out, and is written again only for a new image")
 model_text = describe.write_description(
     Client(fake_url, "", "fake-model"),
     {"source": "ADK", "caption": "Diagram 1.1 Rise and going", "drawing_text": "Rise; Going", "png": TINY_PNG})
 check(model_text.startswith("A drawing"), "a description is written from the image through the engine's API")
+
+# descriptions: the same picture rendered by another PDF renderer still matches; a different crop doesn't
+if importlib.util.find_spec("PIL"):
+    drawing = grey_png(60, 40, lambda x, y: 0 if 10 < x < 50 and y in (10, 30) else 255)
+    shaded = grey_png(60, 40, lambda x, y: 0 if 10 < x < 50 and y in (10, 30) else 250 if y in (9, 11) else 255)
+    taller = grey_png(60, 48, lambda x, y: 0 if 10 < x < 50 and y in (10, 30) else 255)
+    rec = {"image_sha256": describe.image_hash(drawing), "image_sig": describe.image_sig(drawing)}
+    check(describe.same_image(rec, shaded) and not describe.same_image(rec, taller),
+          "a description follows its drawing across PDF renderers, but not to a different crop")
+else:
+    print("skip renderer tolerance (no Pillow)")
+
+states = {}
+for key, rec, png in [("K_Diagram-3_p3", None, TINY_PNG),
+                      ("K_Diagram-4_p4", {"image_sha256": h, "reviewed": False, "description": "x"}, TINY_PNG),
+                      ("K_Diagram-5_p5", {"image_sha256": h, "reviewed": False, "description": "x"}, other_png),
+                      ("K_Diagram-6_p6", {"image_sha256": h, "reviewed": True, "description": "x"}, other_png),
+                      ("K_Diagram-7_p7", {"image_sha256": h, "reviewed": True, "description": "x"}, TINY_PNG)]:
+    if rec:
+        describe.save({"key": key, **rec})
+    states[key] = (describe.state(describe.load(key), png), png)
+figs = [{"key": k, "kind": "diagram", "source": "ADK", "label": "Diagram " + k.split("-")[1].split("_")[0],
+         "page": 1, "png": png}
+        for k, (_st, png) in states.items()]
+pend = describe.pending(figs)
+md = describe.pending_markdown(pend, len(figs))
+check([s for s, _ in states.values()] == ["missing", "draft", "redraft", "changed", "reviewed"]
+      and [p["state"] for p in pend] == ["missing", "draft", "redraft", "changed"]
+      and "4 of the 5 diagrams and tables" in md and "**ADK**: Diagram 6 (p 1)" in md,
+      "the drawings needing a model or a person are listed for the issue, reviewed ones left out")
+
+ramp = {"source": "ADM2", "caption": "Diagram 3 Ramp gradient", "drawing_text": "", "png": TINY_PNG}
+fake_client = Client(fake_url, "", "fake-model")
+check(describe.correct_description(fake_client, ramp, "The second point is at 4m.") == "The second point is at 5m."
+      and describe.correct_description(fake_client, ramp, "At 5m.") == "At 5m.",
+      "a second reading puts right what the image doesn't bear out, and leaves the rest")
+describe.save({"key": "K_Diagram-8_p8", "image_sha256": h, "reviewed": False, "description": "At 4m."})
+first = describe.needs_second_reading(describe.load("K_Diagram-8_p8"), TINY_PNG)
+describe.save({**describe.load("K_Diagram-8_p8"), "first_draft": "At 4m.", "description": "At 5m."})
+after = describe.needs_second_reading(describe.load("K_Diagram-8_p8"), TINY_PNG)
+end = describe.deadline("05:30")
+check(end.strftime("%H:%M") == "05:30" and datetime.timedelta(0) < end - datetime.datetime.now()
+      <= datetime.timedelta(days=1) and describe.out_of_time(datetime.datetime.now() + datetime.timedelta(minutes=5))
+      and not describe.out_of_time(datetime.datetime.now() + datetime.timedelta(hours=1))
+      and not describe.out_of_time(None), "a night's run stops in time to finish by the hour given")
+
+lib = os.path.join(TMP, "describe-lib.sqlite")
+db = sqlite3.connect(lib)
+db.executescript("CREATE TABLE sources (id INTEGER PRIMARY KEY, short TEXT);"
+                 "CREATE TABLE passages (id INTEGER PRIMARY KEY, source_id INT, text TEXT);"
+                 "CREATE TABLE figures (id INTEGER PRIMARY KEY, passage_id INT, key TEXT, label TEXT, page INT, png BLOB);"
+                 "INSERT INTO sources VALUES (1, 'ADM2');"
+                 "INSERT INTO passages VALUES (1, 1, 'Diagram 3 Ramp gradient'), (2, 1, 'Diagram 4 Steps');")
+db.executemany("INSERT INTO figures (passage_id, key, label, page, png) VALUES (?, ?, ?, 2, ?)",
+               [(1, "ADM2_Diagram-3_p2", "Diagram 3", grey_png(4, 4)), (2, "ADM2_Diagram-4_p2", "Diagram 4", grey_png(5, 4))])
+db.commit()
+db.close()
+describe.save({"key": "ADM2_Diagram-4_p2", "image_sha256": describe.image_hash(grey_png(5, 4)), "reviewed": True,
+               "description": "Steps."})
+describe.main(["--library", lib, "run", "--base-url", fake_url, "--model", "fake-model"])
+drafted, kept = describe.load("ADM2_Diagram-3_p2"), describe.load("ADM2_Diagram-4_p2")
+check(drafted["description"].startswith("A drawing") and not drafted["reviewed"] and "first_draft" in drafted
+      and kept["description"] == "Steps." and "first_draft" not in kept,
+      "an overnight run drafts what's missing and reads each draft again, and leaves approved descriptions alone")
+
+db = sqlite3.connect(lib)
+db.execute("INSERT INTO passages VALUES (3, 1, 'Table 1 Ramps | 1:12 | 1:15'), (4, 1, 'Table 2 Uses | \uf0fc | \uf0fc')")
+db.executemany("INSERT INTO figures (passage_id, key, label, page, png) VALUES (?, ?, ?, 2, ?)",
+               [(3, "ADM2_Table-1_p2", "Table 1", grey_png(6, 4)), (4, "ADM2_Table-2_p2", "Table 2", grey_png(7, 4))])
+db.commit()
+db.close()
+describe.main(["--library", lib, "run", "--base-url", fake_url, "--model", "fake-model"])
+plain, ticks = describe.load("ADM2_Table-1_p2"), describe.load("ADM2_Table-2_p2")
+figs_now = {f["key"]: f for f in describe.figures_in(lib)}
+check(plain["not_needed"] and "description" not in plain and ticks["description"].startswith("A drawing")
+      and describe.state(plain, figs_now["ADM2_Table-1_p2"]["png"], table=True) == "not needed"
+      and describe.state(None, b"", table=True) == "unsorted"
+      and [i["key"] for i in describe.review_items(figs_now) if i["key"].startswith("ADM2_Table")] == ["ADM2_Table-2_p2"],
+      "tables whose text says it all are set aside; a table of ticks is described and reviewed like a drawing")
+
+check(first and not after and not describe.load("K_Diagram-8_p8")["reviewed"],
+      "a draft is read again once, and the second reading never approves it")
 
 # figures: a drawing's text is smaller than the running text, so a long label doesn't cut the drawing short
 import figures  # noqa: E402
@@ -263,6 +362,17 @@ check(figures._column(cap, cap + beside, 595, 842, 14) == (326, 535)
       and figures._column([L(65, 394, 248, 408, "Table C1 Provisions for fire doorsets", 15)],
                           table_head, 595, 842, 14) is None,
       "a figure set in one column of two is cropped to that column; a table across the page is not")
+
+# figures: a heading at the margin ends a figure; one set in from it is inside the drawing (Manual Figure 7.1)
+page_lines = [L(71, 100 + 14 * i, 520, 114 + 14 * i, "the guidance then explains one or more ways to show", 1)
+              for i in range(10)]
+inner, outer = L(97, 366, 451, 389, "Requirement K4: Protection against impact", 2), L(71, 700, 300, 714,
+                                                                                     "Section 2 Stairs", 3)
+_, starts = figures._bounds(page_lines + [inner, outer], 14, 60, 780)
+check(outer in starts and inner not in starts, "a heading set in from the margin doesn't cut a figure short")
+check(figures._is_caption(L(65, 58, 400, 72, "Diagram 1\u2002\x07 Size and proportion of buildings", 4))
+      and not figures._is_caption(L(182, 108, 260, 120, "Figure 2 Diagram 6 and", 5)),
+      "a caption is a caption at the top of a page; a list of references in a table cell isn't")
 
 # figures: a crop is narrowed to the drawing's ink, so a paragraph swallowed below the drawing is left out
 page = bytearray(b"\xff" * 200 * 300)
@@ -293,7 +403,7 @@ if os.name != "nt":
     os.makedirs(fake_dir, exist_ok=True)
     fake_server = os.path.join(fake_dir, "llama-server")
     with open(fake_server, "w") as f:
-        f.write("#!/bin/sh\nexec sleep 60\n")
+        f.write("#!/bin/sh\nsleep 60\n")  # not exec: its command line must still say llama-server
     os.chmod(fake_server, 0o755)
     small = engine.catalog()["models"][-1]
     os.makedirs(bundled.models_dir, exist_ok=True)
@@ -316,7 +426,7 @@ if os.name != "nt":
         started = str(e)
     check("stopped while loading" in started, "free memory on a graphics card counts towards a model")
     with open(fake_server, "w") as f:
-        f.write("#!/bin/sh\nexec sleep 60\n")
+        f.write("#!/bin/sh\nsleep 60\n")  # not exec: its command line must still say llama-server
     engine.available_ram_gb, engine.free_vram_gb = real_ram, real_vram
 
     left = subprocess.Popen([fake_server])  # an engine an earlier run left behind

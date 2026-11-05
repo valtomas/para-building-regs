@@ -17,8 +17,14 @@ def respond(body):
     msgs = body["messages"]
     tools = body.get("tools")
     last_user = [m for m in msgs if m["role"] == "user"][-1]["content"]
-    if isinstance(last_user, list):  # text and an image: describe the drawing
+    if isinstance(last_user, list):  # text and an image: describe the drawing, or correct a description of it
         has_image = any(part.get("type") == "image_url" for part in last_user)
+        if "You sort tables" in msgs[0]["content"]:  # a table of ticks needs a description, plain text doesn't
+            text = " ".join(part.get("text", "") for part in last_user)
+            return _chunks([{"content": "yes" if "\uf0fc" in text else "no"}], "stop")
+        if "You correct descriptions" in msgs[0]["content"]:  # the drawing says 5m
+            text = " ".join(part.get("text", "") for part in last_user).split("Description to correct:\n", 1)[1]
+            return _chunks([{"content": text.replace("4m", "5m")}], "stop")
         return _chunks([{"content": "A drawing of a stair in section." if has_image else "No image."}], "stop")
     if not tools:
         if "Reply with just: OK" in last_user:

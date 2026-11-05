@@ -139,8 +139,10 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
 - **Review page** (`library/review.html`, served by `library/describe.py review`, not part of the app): the same
   tokens and fonts; one card per drawing with the image on white, the ref in display type, the caption in italic,
   the model and dates in mono, and Approve (primary), Edit (outline) and Reject (danger outline) buttons; once
-  decided, Withdraw approval or Undo rejection. A warm note
-  says when a drawing's image has changed since its description was approved.
+  decided, Withdraw approval or Undo rejection. A warm note says when a drawing's image has changed since its
+  description was approved. The description shown is the model's second
+  reading (its draft corrected against the image), and there's nothing else to compare: one text against one image.
+  A correction someone other than the model made shows as "corrected by …" in the mono line.
 
 ## Writing in the interface
 
