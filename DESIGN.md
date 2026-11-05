@@ -13,8 +13,8 @@ when the interface changes).
 3. **Honest states.** Say plainly when an answer doesn't come from the library, when a citation was removed, when
    the engine isn't private, and when the answer was cut short. Never hide these to look cleaner.
 4. **Calm and professional.** It's a reference tool used at work, styled like a well-set printed reference:
-   parchment pages, an oxblood sidebar, one clay accent, a serif for reading and a monospace for labels. No animation
-   beyond the typing cursor, no illustrations, no emoji.
+   parchment pages, an oxblood sidebar, one clay accent, a plain sans-serif for reading and a monospace for labels.
+   No animation beyond the typing cursor, no illustrations, no emoji.
 5. **Works without explanation.** Someone who has never used an AI tool should get from install to a cited answer
    without reading anything.
 
@@ -91,11 +91,12 @@ Backdrop `rgba(43,29,22,.55)`; dialog shadow `0 30px 80px rgba(20,10,6,.35)`; re
 
 Type, bundled in `para/static/fonts/` so the app works offline (all SIL Open Font License):
 
-- **Display**, Gloock 400: welcome heading `clamp(40px, 5vw, 64px)`, the question `clamp(28px, 3.4vw, 42px)`,
+- **Display**, Space Grotesk 500 (the brand 600), tracked tight: welcome heading `clamp(40px, 5vw, 62px)` at -.035em,
+  the question `clamp(28px, 3.4vw, 42px)` at -.025em,
   dialog titles 32–40 px, reader title 26 px, group titles 22–24 px, sidebar links 19 px, the brand 40 px.
-- **Body**, Newsreader 400–600 and italic: answers 19 px / 1.6, dialog text 15–17 px, reader 16 px. Italic for quiet
+- **Body**, IBM Plex Sans 400–600 and italic: answers 17.5 px / 1.6, dialog text 15–17 px, reader 16 px. Italic for quiet
   notes (disclaimer, hints, "Nothing found.", "No chats yet.").
-- **Labels**, JetBrains Mono 400–500: eyebrows 11 px uppercase with .22–.24em tracking in `--accent`; button labels
+- **Labels**, IBM Plex Mono 400–500: eyebrows 11 px uppercase with .22–.24em tracking in `--accent`; button labels
   11–12 px uppercase; citations 12 px; sizes, dates and page refs 11–12.5 px.
 
 Radius: dialogs 20 px, the question box 18 px, cards 14 px, notes and errors 12 px, inputs 10 px, citations 4 px,
