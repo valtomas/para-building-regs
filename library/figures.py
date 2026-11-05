@@ -128,6 +128,20 @@ def _bounds(lines, body_h, top_limit, bottom_limit):
     return body_or_caption, starts
 
 
+def _caption_lines(ln, lines):
+    """A caption's lines: its title may wrap onto the next lines of the same block, or be a block of its own starting
+    on the label's line to its right (ADB), and run to four lines (ADR Vol 1 Diagram 2). Followed line by line while
+    each comes straight after the one before."""
+    blocks = {ln.block} | {x.block for x in lines if abs(x.y0 - ln.y0) < 3 and ln.x1 <= x.x0 < ln.x1 + 30}
+    out, last = [ln], ln.y0
+    for x in sorted((x for x in lines if x.block in blocks and x is not ln and x.y0 >= ln.y0 - 1), key=lambda x: x.y0):
+        if x.y0 - last >= 20:
+            break
+        out.append(x)
+        last = x.y0
+    return out
+
+
 def find(pdf, skip_pages=()):
     """Figures in a PDF: [{label, continued, page (1-based), box (x0, y0, x1, y1) in points, labels: [text],
     words: Counter of words inside the drawing}]."""
@@ -148,8 +162,7 @@ def find(pdf, skip_pages=()):
             # the running header (ADA, ADC, ADE, ADH, ADJ)
             if not cap or not (h * 0.055 < ln.y0 < bottom_limit):
                 continue
-            # the caption's title may wrap onto the next line(s) of the same block
-            cap_lines = [ln] + [x for x in lines if x.block == ln.block and x is not ln and 0 < x.y0 - ln.y0 < 40]
+            cap_lines = _caption_lines(ln, lines)
             cap_bottom = max(x.y1 for x in cap_lines)
             col = _column(cap_lines, lines, w, h, body_h)
             # a line in the other column may reach a little past the middle of the page

@@ -363,6 +363,14 @@ check(figures._column(cap, cap + beside, 595, 842, 14) == (326, 535)
                           table_head, 595, 842, 14) is None,
       "a figure set in one column of two is cropped to that column; a table across the page is not")
 
+# figures: a caption's title in a block of its own beside the label keeps all its lines (ADB1 Diagram 3.5)
+cap_label = L(65, 388, 120, 402, "Diagram 3.5", 20)
+cap_title = [L(132, 388, 491, 402, "Multi-storey flat with alternative exits from each habitable room, except at", 23),
+             L(133, 402, 199, 416, "entrance level", 23)]
+far = L(62, 462, 103, 472, "See para 3.21", 23)
+check(figures._caption_lines(cap_label, [cap_label, *cap_title, far]) == [cap_label, *cap_title],
+      "a caption's title set beside its label keeps its second line, and nothing further down")
+
 # figures: a heading at the margin ends a figure; one set in from it is inside the drawing (Manual Figure 7.1)
 page_lines = [L(71, 100 + 14 * i, 520, 114 + 14 * i, "the guidance then explains one or more ways to show", 1)
               for i in range(10)]
