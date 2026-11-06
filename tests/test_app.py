@@ -340,6 +340,24 @@ check(plain["not_needed"] and "description" not in plain and ticks["description"
       and [i["key"] for i in describe.review_items(figs_now) if i["key"].startswith("ADM2_Table")] == ["ADM2_Table-2_p2"],
       "tables whose text says it all are set aside; a table of ticks is described and reviewed like a drawing")
 
+db = sqlite3.connect(lib)
+db.execute("INSERT INTO passages VALUES (5, 1, 'Diagram 5 Handrail')")
+db.execute("INSERT INTO figures (passage_id, key, label, page, png) VALUES (5, 'ADM2_Diagram-5_p2', 'Diagram 5', 2, ?)",
+           (grey_png(8, 4),))
+db.commit()
+db.close()
+cut = describe.figures_in(lib, "ADM2_Diagram-5")[0]
+describe.mark_crop(cut, True)
+describe.main(["--library", lib, "run", "--base-url", fake_url, "--model", "fake-model"])
+recut = {**cut, "png": grey_png(8, 12)}
+crops_now = {c["key"]: c for c in describe.crop_items({cut["key"]: cut})}
+check(describe.load("ADM2_Diagram-5_p2") is None and crops_now["ADM2_Diagram-5_p2"]["bad"]
+      and [p["state"] for p in describe.pending([cut])] == ["bad crop"]
+      and describe.crop_items({cut["key"]: recut})[0]["recut"] and not describe.bad_crop(describe.crop_marks(), recut),
+      "a crop marked bad isn't described until it's recut, and then shows for a person to look at again")
+describe.mark_crop(cut, False)
+check("ADM2_Diagram-5_p2" not in describe.crop_marks(), "a crop mark can be taken back")
+
 check(first and not after and not describe.load("K_Diagram-8_p8")["reviewed"],
       "a draft is read again once, and the second reading never approves it")
 
