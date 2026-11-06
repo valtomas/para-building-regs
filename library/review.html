@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Review drawing descriptions</title>
+<title>Review drawings</title>
 <style>
 @font-face { font-family: "Space Grotesk"; src: url(/fonts/space-grotesk-300-700.woff2) format("woff2"); font-weight: 300 700; }
 @font-face { font-family: "IBM Plex Sans"; src: url(/fonts/ibm-plex-sans-100-700.woff2) format("woff2"); font-weight: 100 700; }
@@ -36,7 +36,7 @@ button { font: 500 11.5px var(--mono); text-transform: uppercase; letter-spacing
   padding: 9px 16px; cursor: pointer; border: 1px solid var(--ink); background: transparent; color: var(--ink); }
 button.primary { background: var(--accent); border-color: var(--accent); color: #faf5ec; }
 button.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
-button.tab[aria-pressed="true"] { background: var(--accent-2); border-color: var(--accent); color: var(--accent); }
+button.tab[aria-pressed="true"], button.ctab[aria-pressed="true"], button.view[aria-pressed="true"] { background: var(--accent-2); border-color: var(--accent); color: var(--accent); }
 button:disabled { opacity: .4; cursor: default; }
 button:focus-visible, textarea:focus-visible { outline: 3px solid var(--accent-2); outline-offset: 1px; }
 .card { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 22px; background: var(--panel);
@@ -63,13 +63,40 @@ textarea { width: 100%; min-height: 220px; font: 16px/1.55 var(--body); color: v
   font-size: 15px; }
 .empty { font-style: italic; color: var(--muted); }
 .note ul { margin: 6px 0 0; padding-left: 20px; }
+.views { display: flex; gap: 8px; margin: 0 0 18px; }
+.state.badcrop { color: var(--danger); margin-left: 6px; }
+select { font: 12px var(--mono); color: var(--ink); background: var(--field); border: 1px solid var(--border-field);
+  border-radius: 10px; padding: 8px 10px; }
+.doc { font: 500 22px/1.2 var(--display); margin: 28px 0 12px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+.tile { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 10px;
+  display: flex; flex-direction: column; gap: 8px; }
+.tile.bad { border-color: var(--danger); box-shadow: inset 0 0 0 1px var(--danger); }
+.tile .img { background: #fff; border-radius: 8px; padding: 6px; height: 200px; display: flex; align-items: center;
+  justify-content: center; }
+.tile img { max-width: 100%; max-height: 100%; cursor: zoom-in; }
+.tile img.zoom { position: fixed; inset: 3vh 3vw; width: 94vw; height: 94vh; max-width: none; max-height: none;
+  object-fit: contain; z-index: 20; background: #fff; box-shadow: 0 30px 80px rgba(20,10,6,.35); border-radius: 14px;
+  cursor: zoom-out; }
+.tile .name { font: 500 12px var(--mono); }
+.tile .name span { color: var(--muted-2); font-weight: 400; }
+.tile label { display: flex; gap: 8px; align-items: center; font: 500 11px var(--mono); text-transform: uppercase;
+  letter-spacing: .08em; cursor: pointer; color: var(--muted); }
+.tile.bad label { color: var(--danger); }
+.tile input { accent-color: var(--danger); width: 16px; height: 16px; margin: 0; }
+.tile .note { font-size: 13px; padding: 6px 10px; margin: 0; }
 @media (max-width: 820px) { .card { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 <main>
   <div class="eyebrow">Para library · drawings</div>
-  <h1>Review drawing descriptions</h1>
+  <h1>Review drawings</h1>
+  <div class="views" role="toolbar" aria-label="Page">
+    <button class="view" data-view="descriptions" aria-pressed="true">Descriptions</button>
+    <button class="view" data-view="crops" aria-pressed="false">Crops</button>
+  </div>
+  <section id="descriptions">
   <p class="intro">A vision model wrote these from each drawing. Check each one against the image: it should say only
     what the drawing shows, with the labels and figures exactly as drawn. Correct it if needed, then approve it; reject it if the image is cut short or the description can't be put right.
     Only approved descriptions go into the library, labelled as written by AI and checked by a person.</p>
@@ -82,6 +109,20 @@ textarea { width: 100%; min-height: 220px; font: 16px/1.55 var(--body); color: v
     <span class="count" id="count"></span>
   </div>
   <div id="list"></div>
+  </section>
+  <section id="crops" hidden>
+  <p class="intro">Every diagram and table in the library, as cropped from its PDF. Tick the ones that are cut short,
+    run into text or another figure, or show the wrong thing. A drawing ticked here isn't described until its crop is
+    fixed; once it is, it shows as recut for you to look at again.</p>
+  <div class="bar" role="toolbar" aria-label="Show crops">
+    <button class="ctab" data-show="all" aria-pressed="true">All</button>
+    <button class="ctab" data-show="bad" aria-pressed="false">Marked bad</button>
+    <button class="ctab" data-show="recut" aria-pressed="false">Recut since marked</button>
+    <select id="doc" aria-label="Document"><option value="">All documents</option></select>
+    <span class="count" id="ccount"></span>
+  </div>
+  <div id="grid"></div>
+  </section>
 </main>
 <script>
 let items = [], show = "todo";
@@ -104,7 +145,7 @@ function render() {
       <div class="img"><img src="/image?key=${encodeURIComponent(it.key)}" alt="${esc(it.source + " " + it.label)}"
         title="Click to enlarge" loading="lazy"></div>
       <div>
-        <span class="state ${kind(it)}">${label[kind(it)]}</span>
+        <span class="state ${kind(it)}">${label[kind(it)]}</span>${it.bad_crop ? `<span class="state badcrop">Crop marked bad</span>` : ""}
         <div class="ref">${esc(it.source)} ${esc(it.label)}</div>
         <p class="caption">${esc(it.caption)}</p>
         <p class="meta">${esc(it.model)} · written ${esc(it.date)}${it.corrected_by ? ` · corrected by ${esc(it.corrected_by)}` : ""}${it.reviewed_date ? ` · approved ${esc(it.reviewed_date)}` : ""} · PDF page ${esc(it.page)}</p>
@@ -133,7 +174,75 @@ async function save(key, description, approve, reject = false) {
   render();
 }
 
+let crops = [], cshow = "all", doc = "";
+
+async function loadCrops() {
+  crops = await (await fetch("/api/crops")).json();
+  const sel = document.getElementById("doc");
+  sel.innerHTML = `<option value="">All documents</option>` +
+    [...new Set(crops.map((c) => c.source))].map((d) => `<option>${esc(d)}</option>`).join("");
+  sel.value = doc;
+  renderCrops();
+}
+
+function renderCrops() {
+  const shown = crops.filter((c) => (!doc || c.source === doc) && (cshow === "all" || c[cshow]));
+  const n = (k) => crops.filter((c) => c[k]).length;
+  document.getElementById("ccount").textContent =
+    `${n("bad")} marked bad · ${n("recut")} recut since marked · ${crops.length} in the library`;
+  const docs = [...new Set(shown.map((c) => c.source))];
+  document.getElementById("grid").innerHTML = docs.length ? docs.map((d) => `
+    <h2 class="doc">${esc(d)}</h2>
+    <div class="grid">${shown.filter((c) => c.source === d).map((c) => `
+      <div class="tile${c.bad ? " bad" : ""}" data-key="${esc(c.key)}">
+        <div class="img"><img src="/image?key=${encodeURIComponent(c.key)}" alt="${esc(c.source + " " + c.label)}"
+          title="Click to enlarge" loading="lazy"></div>
+        <div class="name">${esc(c.label)} <span>· p ${esc(c.page)}</span></div>
+        ${c.recut ? `<p class="note">Recut since you marked it: look again.</p>` : ""}
+        <label><input type="checkbox"${c.bad ? " checked" : ""}> Bad crop</label>
+      </div>`).join("")}</div>`).join("") : `<p class="empty">Nothing here.</p>`;
+}
+
+async function markCrop(key, bad) {
+  const r = await fetch("/api/crop", { method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ key, bad }) });
+  if (!r.ok) { alert("Couldn't save: " + (await r.text())); return loadCrops(); }
+  const c = crops.find((x) => x.key === key);
+  Object.assign(c, { bad: (await r.json()).bad, recut: false });
+  const it = items.find((x) => x.key === key);
+  if (it) it.bad_crop = c.bad;
+  const tile = document.querySelector(`.tile[data-key="${CSS.escape(key)}"]`);
+  tile.classList.toggle("bad", c.bad);
+  tile.querySelector(".note")?.remove();
+  document.getElementById("ccount").textContent =
+    `${crops.filter((x) => x.bad).length} marked bad · ${crops.filter((x) => x.recut).length} recut since marked · ${crops.length} in the library`;
+}
+
+function setView(v) {
+  document.querySelectorAll("button.view").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.view === v)));
+  document.getElementById("descriptions").hidden = v !== "descriptions";
+  document.getElementById("crops").hidden = v !== "crops";
+  if (v === "crops") loadCrops(); else render();
+}
+
+document.addEventListener("change", (e) => {
+  if (e.target.id === "doc") { doc = e.target.value; renderCrops(); return; }
+  const box = e.target.closest(".tile input");
+  if (box) markCrop(box.closest(".tile").dataset.key, box.checked);
+});
+
 document.addEventListener("click", (e) => {
+  const view = e.target.closest("button.view");
+  if (view) { location.hash = view.dataset.view === "crops" ? "crops" : ""; setView(view.dataset.view); return; }
+  const ctab = e.target.closest("button.ctab");
+  if (ctab) {
+    cshow = ctab.dataset.show;
+    document.querySelectorAll("button.ctab").forEach((b) => b.setAttribute("aria-pressed", String(b === ctab)));
+    renderCrops();
+    return;
+  }
+  const timg = e.target.closest(".tile img");
+  if (timg) { timg.classList.toggle("zoom"); return; }
   const img = e.target.closest(".card img");
   if (img) { img.classList.toggle("zoom"); return; }
   const tab = e.target.closest("button.tab");
@@ -166,7 +275,7 @@ document.addEventListener("click", (e) => {
     save(key, null, false);
   }
 });
-load();
+load().then(() => { if (location.hash === "#crops") setView("crops"); });
 </script>
 </body>
 </html>

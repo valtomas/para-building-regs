@@ -100,7 +100,10 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   image again against its draft and puts right what the image doesn't bear out (`CORRECT_PROMPT`; the first draft is
   kept as `first_draft`), so the person reviewing gets one text that has had a second look; it never approves one.
   `describe.py review` opens a page where a person approves, corrects or rejects each one (reject a crop that is cut
-  short: it isn't described again until the image changes). The build adds only reviewed descriptions of the same
+  short: it isn't described again until the image changes). Its Crops view is a grid of every diagram and table in
+  the library, where a person ticks the badly cropped ones (`descriptions/crops.json`, tied to the image like a
+  review): `run` skips them, `pending` lists them as crops to fix in `figures.py`, and once a crop is recut the tick
+  no longer counts and the tile shows as recut for the person to look at again. The build adds only reviewed descriptions of the same
   image, after the passage text and labelled "Description of the drawing (written by AI from the image, checked by a
   person):"; the reader shows them under the image, and the prompt says they come second to the document's text. "The
   same image" is the same bytes, or the same size and nearly the same thumbnail (`describe.same_image`), because
