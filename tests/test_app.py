@@ -399,6 +399,19 @@ check(outer in starts and inner not in starts, "a heading set in from the margin
 check(figures._is_caption(L(65, 58, 400, 72, "Diagram 1\u2002\x07 Size and proportion of buildings", 4))
       and not figures._is_caption(L(182, 108, 260, 120, "Figure 2 Diagram 6 and", 5)),
       "a caption is a caption at the top of a page; a list of references in a table cell isn't")
+row = [L(60, 358, 75, 370, "B3", 20), L(164, 358, 197, 370, "Table B2", 21),
+       L(230, 358, 400, 370, "Minimum periods of fire resistance", 22)]
+bare = L(228, 125, 254, 133, "Table 11", 3)
+said = [L(37, 365, 262, 377, "G10 Corrosion resistance classes are set out in", 32),
+        L(37, 377, 262, 389, "Table G3 – this is fuel dependant and expressed", 32)]
+titled = [L(65, 388, 120, 402, "Diagram 3.5", 20), L(132, 388, 491, 402, "Multi-storey flat with alternative exits", 23)]
+check(not figures._is_caption(row[1], row) and not figures._is_caption(bare, [bare])
+      and not figures._is_caption(said[1], said) and figures._is_caption(titled[0], titled)
+      and not figures._is_caption(L(291, 596, 352, 604, "Table 11 Column (B)", 8)),
+      "a mention of a figure in a table row, a drawing or a sentence isn't its caption")
+right_cap = [L(332, 555, 481, 569, "Diagram 2.17 Wall type 2.3", 30)]
+check(figures._column(right_cap, right_cap, 595, 842, 12) is not None,
+      "a figure captioned past the middle of the page is set in the right column")
 
 # figures: a crop is narrowed to the drawing's ink, so a paragraph swallowed below the drawing is left out
 page = bytearray(b"\xff" * 200 * 300)
