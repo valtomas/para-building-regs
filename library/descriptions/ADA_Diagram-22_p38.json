@@ -1,0 +1,18 @@
+{
+ "key": "ADA_Diagram-22_p38",
+ "source": "ADA",
+ "label": "Diagram 22",
+ "page": 38,
+ "caption": "Diagram 22 \u0007 Piers and chimneys",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "4337b1f9315fb0a3d3a29c9f72e294e5766c0a4597e8cb38d3acd4defa829f37",
+ "image_sig": {
+  "w": 371,
+  "h": 157,
+  "grey": "2Lq6urq6urq6urq6urq6zN+xsMCzl5+wqqSan7vi4urmva/Mws26tL63s7HB4uLq17+/v7+/v7+/v7+/v7+/zufu6vX///////////////Xo4+f4///////////////16///////////////////9ev////////////////4//Xr////////////////4//16///////5f////////L/9ev///////D/////9/Xc8vXr//X///Le8v//+t/o6f/16/Lh6O799////+j87e//9evi5u/18OLl5eXy3d7j//Xr9dvX8M7kyMjZ5+Po6PH16+nI0s2+ze3t2c3N0c7h9Q=="
+ },
+ "reviewed": false,
+ "description": "Diagram 22, headed \"Piers and chimneys\", is a stepped line drawing, shown as an outlined horizontal profile consisting of a long low base interrupted by a few raised rectangular blocks, consistent with a section. A box in the upper‑left corner contains the words \"See para 2E2f\". The profile is marked at several points. One symbol labelled \"P\" and three symbols labelled \"X\" are placed above different parts of the outline, each accompanied by a vertical pair of arrows (one up, one down) between two short horizontal lines, marking a vertical distance at that position. The \"P\" sits over a raised block towards the left, while the three \"X\"s are over the left end and over raised blocks towards the centre and the right. Two more symbols labelled \"X\" appear higher up in the diagram, each drawn as the letter X above a short horizontal line with vertical ticks at both ends. The drawing contains no numerical dimensions, and no other text is legible within the image.",
+ "first_draft": "Diagram 22, headed \"Piers and chimneys\", is a stepped line drawing, shown as an outlined horizontal profile consisting of a long low base interrupted by a few raised rectangular blocks, consistent with a section. A box in the upper‑left corner contains the words \"See para 2E2f\". The profile is marked at several points. One symbol labelled \"P\" and three symbols labelled \"X\" are placed above different parts of the outline, each accompanied by a vertical pair of arrows (one up, one down) between two short horizontal lines, marking a vertical distance at that position. The \"P\" sits over a raised block towards the left, while the three \"X\"s are over the left end and over raised blocks towards the centre and the right. Two more symbols labelled \"X\" appear higher up in the diagram, each drawn as the letter X above a short horizontal line with vertical ticks at both ends. The drawing contains no numerical dimensions, and no other text is legible within the image."
+}

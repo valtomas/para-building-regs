@@ -1,0 +1,18 @@
+{
+ "key": "ADA_Diagram-12_p29",
+ "source": "ADA",
+ "label": "Diagram 12",
+ "page": 29,
+ "caption": "Diagram 12 \u0007Openings in a buttressing wall",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "c041ad18d0472b33eb356ab27eccf97cf31835b38edff6d99fd0981f51ca57ac",
+ "image_sig": {
+  "w": 749,
+  "h": 689,
+  "grey": "0cjFv8O/v8DS2dnZ2dnZ2e74///////////v+P/////1/+zQ2eX9/v//7vL/////9f/s5unq+N3w+/Hy//////X////78+DY3O338v/////1/////+nZ9eb98vL/////9f/////08Oba1PDy//////Xk4uDi+PXo3+L24uP////17/Ht7/H17eLu9+n+////9fv8+/z37fz//uz6//////XUzczLy9r7///////////1+PX19vb3+///////////6ujz8PPx8/Px4ODe3+Dg8Org397b293r8uXe3u/y8P3r5u3x7PD9/vju8e/y7u/46ePk5ufl6u709PT09PT09A=="
+ },
+ "reviewed": false,
+ "description": "This is a three-dimensional axonometric diagram titled 'Diagram 12 Openings in a buttressing wall', with 'See para 2C26' at top left. It shows two walls meeting at a corner. The taller right-hand wall is dimensioned vertically as 'Height of supported wall'. The shorter wall across it is labelled 'Buttressing wall', with a note 'The length of the buttressing wall should be at least 1/6 of the overall height of the supported wall'. A doorway opening is cut in the buttressing wall near the corner; a dimension '550mm' marks its distance from the supported wall, with text 'An opening or recess greater than 0.1m² shall be at least 550mm from the supported wall'. A small window higher up and further from the corner is marked 'T2', with text 'There may be one opening or recess not more than 0.1m² at any position'. Further text reads 'The opening height should not be more than 0.9 times the floor to ceiling height and the depth of the lintel including any masonry over the opening should be not less than 150mm'. Numbered Notes 1 to 3 below reference bonding, the position and shape of the openings, and 'Diagram 8' for measuring the height of the supported wall.",
+ "first_draft": "This is a three-dimensional axonometric diagram titled 'Diagram 12 Openings in a buttressing wall', with 'See para 2C26' at top left. It shows two walls meeting at a corner. The taller right-hand wall is dimensioned vertically as 'Height of supported wall'. The shorter wall across it is labelled 'Buttressing wall', with a note 'The length of the buttressing wall should be at least 1/6 of the overall height of the supported wall'. A doorway opening is cut in the buttressing wall near the corner; a dimension '550mm' marks its distance from the supported wall, with text 'An opening or recess greater than 0.1m² shall be at least 550mm from the supported wall'. A small window higher up is marked 'T_z', with text 'There may be one opening or recess not more than 0.1m² at any position'. Further text reads 'The opening height should not be more than 0.9 times the floor to ceiling height and the depth of the lintel including any masonry over the opening should be not less than 150mm'. Numbered Notes 1 to 3 below reference bonding, the position and shape of the openings, and 'Diagram 8' for measuring the height of the supported wall."
+}

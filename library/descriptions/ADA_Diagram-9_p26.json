@@ -1,0 +1,18 @@
+{
+ "key": "ADA_Diagram-9_p26",
+ "source": "ADA",
+ "label": "Diagram 9",
+ "page": 26,
+ "caption": "Diagram 9 \u0007Declared compressive strength of masonry units | E R SBUILDINGS | ION | A1/2",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "9811ebc32250bad0eb9a57ec0d24c54869df267f4a1d4d73ffb886645bca27f6",
+ "image_sig": {
+  "w": 755,
+  "h": 1057,
+  "grey": "1dfY1tbU19PX0tfi5ubm5/X48u/x8///7Pf6+vX4//rz59zk8e3//+33+v7////68O/Z3enm///m6Pb29/b/+u/19/f7+///+vn1+PX9/fr1///18f/////89Ov07/n69f///Pn5////9+zO8uXx+vPo39/x5/7///juzfHb9vr18uHZ6eH////389D74/368+Ta5PHt////9eHR++Pc7O/x2tXb2uXl/fj71vPb2vHv7ebo8fTc3fXw6OPv5vv68/7///Xx/P/+/f728Pb/+uTd4uDj4+P66dnY1tzc5fPo7Ovo7O3w/+nd2OHj4Oz34tvg5eTk5e/p4ePg4+Lm8w=="
+ },
+ "reviewed": false,
+ "description": "This drawing is titled \"Diagram 9 Declared compressive strength of masonry units\", with \"See para 2C21\" at the top left. A key on the right shows three brick‑pattern symbols labelled \"Condition A\", \"Condition B\" and \"Condition C\", together with \"Where Hs Less than or equal to 1m, Condition A\" and \"Where Hs Greater than 1m, Condition B\", each shown with a solid black bar symbol. Three cross‑sections follow. \"a. One storey\" shows a wall between \"Topside of structural floor\" and \"Underside of structural roof\", with Hs marked between them. \"b. Two storeys\" shows a \"Cavity wall\" and \"Internal wall\", with two Hs dimensions, the upper between the \"Underside of structural roof\" and the \"Underside of structural floor\" and the lower between the \"Underside of structural floor\" and the \"Topside of structural floor\" at the bottom, together with a further small Hs dimension at the base between the \"Topside of structural floor\" and ground level. Part b carries a box reading \"This wall to be at least 140mm thick in blockwork or 215mm thick in brickwork below ground floor level if height Hs exceeds 1m\". \"c. Three storeys\" shows a \"Cavity wall\" and \"Internal wall\", with three Hs dimensions between the \"Underside of structural roof\", two \"Underside of structural floor\" levels and the \"Topside of structural floor\" at the bottom. Part c carries a box reading \"This wall to be at least 140mm thick blockwork or 215mm thick brickwork\". Numbered notes 1 to 4 at the bottom refer to Hs, 2.7m, Condition B, solid construction and a timber roof.",
+ "first_draft": "This drawing is titled \"Diagram 9 Declared compressive strength of masonry units\", with \"See para 2C21\" at the top left. A key on the right shows three brick‑pattern symbols labelled \"Condition A\", \"Condition B\" and \"Condition C\", together with \"Where Hs Less than or equal to 1m, Condition A\" and \"Where Hs Greater than 1m, Condition B\". Three cross‑sections follow. \"a. One storey\" shows a wall between \"Topside of structural floor\" and \"Underside of structural roof\", with Hs marked between them. \"b. Two storeys\" and \"c. Three storeys\" show a \"Cavity wall\" and \"Internal wall\", with Hs dimensions between the \"Underside of structural roof\" and two \"Underside of structural floor\" levels, and \"Topside of structural floor\" below. Part b carries a box reading \"This wall to be at least 140mm thick in blockwork or 215mm thick in brickwork below ground floor level if height Hs exceeds 1m\", and part c \"This wall to be at least 140mm thick blockwork or 215mm thick brickwork\". Numbered notes 1 to 4 at the bottom refer to Hs, 2.7m, Condition B and a timber roof."
+}

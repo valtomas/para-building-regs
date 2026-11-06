@@ -1,0 +1,18 @@
+{
+ "key": "Manual_Figure-7.1_p23",
+ "source": "Manual",
+ "label": "Figure 7.1",
+ "page": 23,
+ "caption": "Figure 7.1 The relationship between regulations and guidance in the approved documents",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "5543089063378cb9e7fcc2cb8e0288976413da065be19bfb5114bf29e55827c8",
+ "image_sig": {
+  "w": 749,
+  "h": 684,
+  "grey": "1tjZy+Dl5+Dm5eHq7v///9TS7fX6+/v7+/v7+/v7+/mIldv59/j3/P/////////78eLx8e3t8O/08fLx9v//+/vHycnj8uvr7OPs5vT///v7+ezw7fTz9PP09fL1/v/7+enHyc7W1tXW1tbW1uf++/jhuMCurq6spaSurq7Q/Pv58NHS0dDk6Ozs7Ozs8vji+fPc29rc2ubs7Ozs7PL87vny19HX3evs7Ozs7Ozy/Pv55uX08/T08/T08/Tz9vz7+fPi5+j19PT09fT08/n8+/n95+vm6enn6ejn6/T3+dn4++fn5+np6efu9P////379/j5+fn5+fn5+fn5+fn6+A=="
+ },
+ "reviewed": false,
+ "description": "Figure 7.1 is titled \"The relationship between regulations and guidance in the approved documents.\" Beneath the title a green square shows \"K4\" next to the words \"Protection against impact with glazing,\" followed by a larger green heading, \"Requirement K4: Protection against impact with glazing.\" A line of text states that this approved document deals with the following requirement from Part K of Schedule 1 to the Building Regulations 2010. Two dashed-outline boxes then appear, each tagged with a circled number on the right. The first, marked 1, carries a green header \"Requirements\" and is divided into two columns headed \"Requirement\" and \"Limits on application\"; under the first column it gives \"Protection against impact with glazing\" and the wording of K4 with sub-points (a), (b) and (c), while the second column is left blank. The second box, marked 2, has the green header \"Performance\" and, after a sentence giving the Secretary of State's view, lists approaches a, b and c. The two boxes are stacked vertically.",
+ "first_draft": "Figure 7.1 is titled \"The relationship between regulations and guidance in the approved documents.\" Beneath the title a green band shows \"K4\" in a green square next to the words \"Protection against impact with glazing,\" followed by a larger green heading, \"Requirement K4: Protection against impact with glazing.\" A line of text states that this approved document deals with a requirement from Part K of Schedule 1 to the Building Regulations 2010. Two dashed-outline boxes then appear, each tagged with a circled number on the right. The first, marked 1, carries a green header \"Requirements\" and is divided into two columns headed \"Requirement\" and \"Limits on application\"; under the first column it gives \"Protection against impact with glazing\" and the wording of K4 with sub-points (a), (b) and (c), while the second column is left blank. The second box, marked 2, has the green header \"Performance\" and lists approaches a, b and c. The two boxes are stacked vertically."
+}

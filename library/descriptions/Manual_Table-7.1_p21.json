@@ -1,0 +1,17 @@
+{
+ "key": "Manual_Table-7.1_p21",
+ "source": "Manual",
+ "label": "Table 7.1",
+ "page": 21,
+ "caption": "Table 7.1 Key technical requirements of the Building Regulations",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "f26dcdc7374b364a402a3fde2f3c9b0a9b5f485e304f5abadd623f14e0d4db3f",
+ "image_sig": {
+  "w": 751,
+  "h": 564,
+  "grey": "z8XHwsK/wcTBvL6+193d3N3Q0NDS5ejq1s3M0dHU2Oro4/L09PT09vf09PT09PTz5uTx9/b39vjr6O/6+vr69+3b3+7r7+zy+/r6+vr6+vfo5+Tx9/f6+/j2+fr6+vr35dbr6+zt+vvg2+nz+vr69+nh6OPi5OPs5+Pm9fX19fTs5evo6Pr6+/v6+vr6+vr35dzc3N7e3e77+vr6+vr69+zk5eTk8/X76+jr6+zq7vHv8fLy7/j6+/Dt9Pr6+vr35t/g4OX3+vv7+vr6+vr69+nk4uv19fX2+PX19fX19fTq3Nrf29fu9//////////74eHi4eLl4eLn5fX19fX18w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

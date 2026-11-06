@@ -1,0 +1,18 @@
+{
+ "key": "ADA_Diagram-16_p33",
+ "source": "ADA",
+ "label": "Diagram 16",
+ "page": 33,
+ "caption": "Diagram 16 \u0007Lateral support at roof level",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "14f859962a8d8adab0db757953ffe2da63ca21ff9893c2090171ce6b79845ac4",
+ "image_sig": {
+  "w": 760,
+  "h": 641,
+  "grey": "zsTCvLm/vcTW1tbW1tbW2+73+O/v89/i4vj///////r1//Hi2ubn9PTu7/b5/v/69dXc7ePy1evr4ujo8Pf/+vXw/N7f2ez5///w5u3n+vr1//fc2ODl8P//6OLw6/769f/64+34+fj//+/n5+Pd8fXw6PT99vD3///27vT28Pn1//vo8PLm6Of/5tjN+f/69f///vH6//////D+99zx+vX/9evs7P3///3n4ung9fr1/ebg4Ozv/f//5Ojg8fv69f/s1OXw7////vHt4+f3+urg8e3g8/7/6t/q7env+fr1+ujo6v/////66efk/P767fPa3/Dz8/Pz8+De2ujz8Q=="
+ },
+ "reviewed": false,
+ "description": "Diagram 16, titled Lateral support at roof level, carries the note See para 2C36 at top left and is divided into four isometric views. a, Tension strap location, shows a gable end wall supporting a pitched roof, with tension straps at not more than 2m centres (see (b)) and a tension strap at highest point that will provide a secure connection. Dimensions shown are t = sum of thicknesses of leaves + 10mm, h, x, and x/2 twice, alongside the text If h is greater than 16 t, provide restraint here at not greater than 2m centres. b, Effective strapping at gable wall, shows a pack, a strap turned over uncut block, and nogging. c, Vertical strapping at eaves – flat roofs, shows each joist fixed to wall-plate with framing anchors or skew nails, and a strap anchored to wall and turned over wall-plate. d, Vertical strapping at eaves – pitched roofs, shows a rafter fixed to wall-plate with framing anchor or truss clip, and a strap anchored to wall and rafter.",
+ "first_draft": "Diagram 16, titled Lateral support at roof level, carries the note See para 2C36 at top left and is divided into four isometric views. a, Tension strap location, shows a gable end wall supporting a pitched roof, with tension straps at not more than 2m centres and a tension strap at highest point that will provide a secure connection. Dimensions shown are t = sum of thicknesses of leaves + 10mm, h, and x/2 twice, alongside the text If h is greater than 16 t, provide restraint here at not greater than 2m centres. b, Effective strapping at gable wall, shows a pack, a strap turned over uncut block, and noggging. c, Vertical strapping at eaves – flat roofs, shows each joist fixed to wall-plate with framing anchors or skew nails, and a strap anchored to wall and turned over wall-plate. d, Vertical strapping at eaves – pitched roofs, shows a rafter fixed to wall-plate with framing anchor or truss clip, and a strap anchored to wall and rafter."
+}

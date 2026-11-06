@@ -1,0 +1,17 @@
+{
+ "key": "ADA_Table-5_p25",
+ "source": "ADA",
+ "label": "Table 5",
+ "page": 25,
+ "caption": "Table 5 \u0007Cavity wall ties",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "31211acc5c73ce123ef87abd0429d6ff2fd5bee46b8f01f394ec67755345efbc",
+ "image_sig": {
+  "w": 760,
+  "h": 382,
+  "grey": "w7SnpbjR0dHR0dHR0dHR197W09/m1dzo6Ojhz9zo6Ovc6fH5/tbt////+/L4////6e719fXp9ezk49vc3+Dc5vHz////8////+/l5ebn///z8v////P/////////////8PH////z/////////////+7v////6/v////////////49v///+/3//////////////////////////////////b19fX19fX19fX19fX19ffm7e/u7/Du7+7u7/T/////9uTk5ufl5ejs+/v8//////Xh3+Tg4OHg4OHn6+vq7P/t4OLi4uTh4OHi5+zs7Ozu9/X19fX19fX19fX19fX19w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

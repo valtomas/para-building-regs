@@ -1,0 +1,18 @@
+{
+ "key": "ADA_Diagram-14_p31",
+ "source": "ADA",
+ "label": "Diagram 14",
+ "page": 31,
+ "caption": "Diagram 14 \u0007Sizes of openings and recesses",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "3d494a1ec3633fe4941ccbd4ce080d38933f00b8e1546dde37ad129c81c62bf0",
+ "image_sig": {
+  "w": 749,
+  "h": 584,
+  "grey": "y7+8uLe2uLXF0tLS0tLS0u3t8f//+u3+///////////x39Lf8+rR2/L87NDv////6urt7e3r6unq9unl5Pn//+fp5ujm5+3n5/Po/+L3///q6fny5+Tt5+r26P/i8Nj16eLu6OXj5eDm9uHy3fT9//Xx4ere4+Pr///43+n////19vnz6PD59v/p4f//////7O////////737+zu8O3v8OfZ7O3q7Pr/9/Hw8fLw+Pfy8vHu8PD+8fz8+vz8+/r38O/y7vDu/P/z4eDe3uP39fDw7+rw7vjw79vg3d3c4fzw8PDr8O7w7O/a3eHb3t/28PLy8vLy8vLr5ury8vLy8g=="
+ },
+ "reviewed": false,
+ "description": "The drawing is titled \"Diagram 14 Sizes of openings and recesses\", with the text \"See para 2C29\" at the top left. It contains two line drawings of a wall. The left wall, broken at both ends, shows two bottom openings dimensioned W1 and W2 and a dashed recess dimensioned W3; vertical dashed lines mark the \"Centre line of buttressing wall, pier or chimney\" at each end, and a dimension line between them reads \"L = length of wall\". Spans along the base are labelled P1, P2, P3 and P4. The right wall, broken at one end, shows one opening W4 and span P5; its top edge is the \"Outer face of return wall\", a right‑hand height is marked \"H should not be greater than 2.1 m\", and the base is captioned \"corner of two external walls\". Below, a \"Notes\" panel headed \"Requirements (refer to Table 8 for values of Factor X)\" lists eight numbered items giving requirements (inequalities) for W1 to W4, L and P1 to P5, most in terms of a Factor X, item 8 stating X may be 6 where the declared compressive strength is not less than 7.3N/mm².",
+ "first_draft": "The drawing is titled \"Diagram 14 Sizes of openings and recesses\", with the text \"See para 2C29\" at the top left. It contains two line drawings of a wall. The left wall, broken at both ends, shows two bottom openings dimensioned W1 and W2 and a dashed recess dimensioned W3; vertical dashed lines mark the \"Centre line of buttressing wall, pier or chimney\" at each end, and a dimension line between them reads \"L = length of wall\". Spans along the base are labelled P1, P2, P3 and P4. The right wall, broken at one end, shows one opening W4 and span P5; its top edge is the \"Outer face of return wall\", a right‑hand height is marked \"H should not be greater than 2.1 m\", and the base is captioned \"corner of two external walls\". Below, a \"Notes\" panel headed \"Requirements (refer to Table 8 for values of Factor X)\" lists eight numbered items giving inequalities for W1, W2, W3, L and P1 to P5 in terms of a Factor X, item 8 stating X may be 6 where the declared compressive strength is not less than 7.3N/mm²."
+}
