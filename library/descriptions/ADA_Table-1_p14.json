@@ -1,0 +1,17 @@
+{
+ "key": "ADA_Table-1_p14",
+ "source": "ADA",
+ "label": "Table 1",
+ "page": 14,
+ "caption": "Table 1 Areas at risk from house longhorn beetle Geographical area",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "02534f523c8e4b931b7b3941af1d192a043b177e15a91dd2838b968226ff55b4",
+ "image_sig": {
+  "w": 755,
+  "h": 244,
+  "grey": "wb7DvcDBwsC8xsfHx8fHzsbDqKmuqqqjp9Pi4uLi4ubQydHY2NjY2NjY2NjY2Njd3tnp/////////////////9HExcTHxcbHxdrg4ODg4OT08PD29PT09PX8////////59va8f///////////////+fY3Njb29z////////////z8vP6//7+////////////8Orm9f///////////////+La1fD////////////////s7Onu////////////////9e3w9f///////////////+jW3d7g29ve3f/////////i3Nj/////////////////8e7u8PDw8PDw8PDw8PDw8g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

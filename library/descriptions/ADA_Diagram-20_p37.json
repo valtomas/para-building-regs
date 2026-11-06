@@ -1,0 +1,18 @@
+{
+ "key": "ADA_Diagram-20_p37",
+ "source": "ADA",
+ "label": "Diagram 20",
+ "page": 37,
+ "caption": "Diagram 20 Proportions for masonry chimneys | A1/2 | ONLINE VERSION",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "e6c8cbb07f6819068169b952e2be990c3d581a08ddd2aa45bd423c46d39ba114",
+ "image_sig": {
+  "w": 371,
+  "h": 260,
+  "grey": "1ra3vLKstLCzt7C3tbTB2eXAuc/Jx7O8ucG/wbO8y+vfoJ6gx+Li4uLi4uLi4uLr3dXV1dXV1dXV1dXV1dXV3uXj4/v///////////////Xr/93w6eLl///07en05f/16//s9evr6///6+bv+tH69ev/7PXq6+v///X17/ni9fXr5urZ9evr+vf19fXl4dr169zMzvXr6+fn9PX12sTP9evN1L7u3tHu8dTn7MrNv/Xr2ejM/930///44//X4Mz16+bU4fnf1NrJ1O/15dPh9ev////98tPj09XY/f////Xr///////////////////16vHx8fHx8fHx8fHx8fHx7w=="
+ },
+ "reviewed": false,
+ "description": "This is Diagram 20, titled \"Proportions for masonry chimneys\". In the top-left corner, below the title, is the note \"See para 2D1\". The drawing is a section view showing a pitched roof, drawn as an inverted V, with a horizontal line running across the drawing at the level where the roof intersects the chimneys. Below the roof apex is the label \"Level of highest point of intersection\".\n\nOn the left side of the roof, there are two flat-topped rectangular chimney stacks. The outer (left) stack is shown with horizontal hatching on its left side and contains a horizontal double-headed arrow labelled \"W\". The inner (right) stack is a plain rectangular outline. A vertical dimension line labelled \"H\" is positioned between the two stacks, running from the horizontal level line up to the top of the inner stack.\n\nOn the right side of the roof, there are two rectangular chimney stacks, each with a small trapezoidal cap on top. The inner (left) stack is a plain rectangular outline. The outer (right) stack is shown with horizontal hatching on its right side and contains a horizontal double-headed arrow labelled \"W\". A vertical dimension line labelled \"H\" is positioned between the two stacks, running from the horizontal level line up to the top of the inner stack.",
+ "first_draft": "This is Diagram 20, titled \"Proportions for masonry chimneys\". In the top-left corner is the note \"See para 2D1\". The drawing is a section view showing two masonry chimney stacks positioned on either side of a pitched roof, drawn as an inverted V. Below the roof apex is the label \"Level of highest point of intersection\".\n\nOn the left, a chimney stack is shown with a hatched brick pattern at its base; a horizontal double-headed arrow across the stack is labelled \"W\". A vertical dimension line alongside this stack, running from the roof level line up to the chimney top, is labelled \"H\". To its right is a plain rectangular outline of a chimney section.\n\nOn the right, the layout mirrors the left: a plain rectangular chimney section with a small cap on top, then a hatched brick stack marked with the horizontal dimension \"W\", and a vertical dimension line labelled \"H\" running from the roof level line to the top of the capped stack. The horizontal dimensions W indicate the chimney width, and the vertical dimensions H indicate the height above the roof intersection level."
+}

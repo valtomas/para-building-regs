@@ -1,0 +1,18 @@
+{
+ "key": "ADA_Diagram-24_p47",
+ "source": "ADA",
+ "label": "Diagram 24",
+ "page": 47,
+ "caption": "Diagram 24 \u0007Area at risk of collapse in the event of an accident",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "59034d249a815a5ca8bad5ae55ae767e42cc3e16756c6981f09ad18864a2363f",
+ "image_sig": {
+  "w": 749,
+  "h": 541,
+  "grey": "08fFwcG/v73Bw8K93d3d3efw9/f39/f39/f39/f39/f1+fj19vz/////5uLj4///9fH67/X4//////X6+vX///X2//f7+v/////b4ODd///17PTn7fXf4d78+O369f//9fT/9/v0393b9ejj4N3///X39Ozv+N3b3Pfs4eHe///19PXs8/fc5u3+9u/69f//9fj49/v6/P///93f39z///Xt9Onu9//////q7e3p///19v/3+/r/////6u3t6P//9fb/9/v6////7OTn5+Tr//Xw8unt+P///////v/////1///t//////////Ts////6/Hx8fHx8fHx8fHx8fHx8Q=="
+ },
+ "reviewed": false,
+ "description": "Diagram 24, titled \"Area at risk of collapse in the event of an accident\", carries the note \"See para 5.1d\" at the top left. It comprises two line drawings side by side with explanatory text in the centre.\n\nThe left drawing, labelled \"Plan\", shows a grid of dashed lines forming square bays, with small squares at the intersections. An irregular, freehand boundary line encloses a patch in the middle-left of the grid.\n\nThe right drawing, labelled \"Section\", shows the elevation of a five-storey building, with horizontal floor lines and vertical member lines rising from a ground line. Within it, an irregular boundary, comprising a wavy line on the right, a dashed vertical line on the left and dotted lines at the top and bottom, encloses a zone spanning roughly two central storeys.\n\nThe central text reads: \"Area at risk of collapse limited to 15% of the floor area of that storey or 100m², whichever is the lesser, and does not extend further than the immediate adjacent storeys.\" An arrow from this text points to the enclosed zone in the Plan, and a second line runs to the corresponding zone in the Section, where it divides into two arrowheads.",
+ "first_draft": "Diagram 24, titled \"Area at risk of collapse in the event of an accident\", carries the note \"See para 5.1d\" at the top left. It comprises two line drawings side by side with explanatory text in the centre.\n\nThe left drawing, labelled \"Plan\", shows a grid of dashed lines forming square bays, with small filled squares at the intersections. An irregular, freehand boundary line encloses a patch in the middle-left of the grid.\n\nThe right drawing, labelled \"Section\", shows the elevation of a five-storey building, with horizontal floor lines and vertical member lines rising from a ground line. Within it, an irregular boundary line, partly dotted, encloses a zone spanning roughly two central storeys.\n\nThe central text reads: \"Area at risk of collapse limited to 15% of the floor area of that storey or 100m², whichever is the lesser, and does not extend further than the immediate adjacent storeys.\" An arrow from this text points to the enclosed zone in the Plan, and a second arrow points to the corresponding zone in the Section."
+}

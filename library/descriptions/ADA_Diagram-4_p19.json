@@ -1,0 +1,18 @@
+{
+ "key": "ADA_Diagram-4_p19",
+ "source": "ADA",
+ "label": "Diagram 4",
+ "page": 19,
+ "caption": "Diagram 4 \u0007Parapet walls: height",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "3fd1f5a5df19038669f11a29b21865e11ef7625631f99f3ed64ee8310cfbd5af",
+ "image_sig": {
+  "w": 760,
+  "h": 644,
+  "grey": "zsTAu7u4z9bW1tbW1tbW2+75//z+///w//vt/uzc4vr1//jg8f//6vn57vj5+e359f/32/b///r/////////+vX/9Nnw///6//////////r1+ffZ5u799ezq4Pj5+e/589//3+7r7Pn///b+////+vX///X34O716tbW9/n57vn1///8////+v/////////69f/53/7///r/////////+vX/+uP////6//////////r1//Tj////+v/////////69f/24ert/fX5+en3+fnq+fPc/+ro8PPx9PTi8vT05Pn1///27tv4/v/////////67+nn5+rp+fn5+fn5+fn59Q=="
+ },
+ "reviewed": false,
+ "description": "The drawing, headed \"Diagram 4 Parapet walls: height\" on a green bar, has small text at top left reading \"See para 2C11\". On the left are two vertical cross-sections of a wall topped by a coping. The upper section is labelled \"Type A cavity wall\" and shows an outer leaf, a cavity and an inner leaf, with a dimension \"t\" above the inner leaf, \"t1\" and \"t2\" for the leaf thicknesses, \"Hp\" as the height from the top of the wall down to the roof junction level, \"T\" as the overall thickness, and a leader line to the step at the roof junction reading \"Level of junction of wall and structural roof\" with two horizontal roof lines. The lower section, \"Type B solid wall\", shows a single leaf with dimensions \"t\", \"Hp\" and \"T\" and the same junction label and roof lines. On the right is a table with columns \"Wall type\", \"Thickness (mm)\" and \"Parapet height Hp to be not more than (mm)\"; the \"Wall type\" column is left blank, the upper rows corresponding to the Type A cavity wall and the lower rows to the Type B solid wall. For the upper group the rows read, in the thickness column, \"t1 + t2 equal or less than 200\" with 600, and \"t1 + t2 greater than 200 equal or less than 250\" with 860; for the lower group the rows read \"t = 150\" 600, \"t = 190\" 760, \"t = 215\" 860. A note at the bottom reads \"Note: t should be less than or equal to T\".",
+ "first_draft": "The drawing, headed \"Diagram 4 Parapet walls: height\" on a green bar, has small text at top left reading \"See para 2C11\". On the left are two vertical cross-sections of a wall topped by a coping. The upper section is labelled \"Type A cavity wall\" and shows an outer leaf, a cavity and an inner leaf, with dimensions \"t\" across the top, \"t1\" and \"t2\" for the leaf thicknesses, \"Hp\" as the height, \"T\" as the overall thickness, and a leader line to the base reading \"Level of junction of wall and structural roof\" with two horizontal roof lines. The lower section, \"Type B solid wall\", shows a single leaf with dimensions \"t\", \"Hp\" and \"T\" and the same junction label and roof lines. On the right is a table with columns \"Wall type\", \"Thickness (mm)\" and \"Parapet height Hp to be not more than (mm)\". For the first type the rows read \"equal or less than 200\" with \"t1 + t2\" and 600, and \"greater than 200 equal or less than 250\" with \"t1 + t2\" and 860; for the second type the rows read \"t = 150\" 600, \"t = 190\" 760, \"t = 215\" 860. A note at the bottom reads \"Note: t should be less than or equal to T\"."
+}

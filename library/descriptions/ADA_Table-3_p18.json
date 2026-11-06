@@ -1,0 +1,17 @@
+{
+ "key": "ADA_Table-3_p18",
+ "source": "ADA",
+ "label": "Table 3",
+ "page": 18,
+ "caption": "Table 3 \u0007Minimum thickness of certain external walls, compartment walls and separating walls",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "4feb544dc033f76409151e630bbebc320a2f97fd228728ec1a9d226c12d52784",
+ "image_sig": {
+  "w": 756,
+  "h": 267,
+  "grey": "y8PCwMTGwcXFxcXCxcPN3c3Dtrqyv7S5urW3trm00ebkzqGhsOLi4uLi4uLi4uLm4d/l5eXl5ePf4+Xl3uDi5NrZ///////j1vf//+LU0+Pa0N7x8fHt0NHt8fHX1NPb8/Dx8fHx8fHw8fHx8fHx8uXd4N3m///f2fr//+Ti4OX////////x6+Xv8eTl5ubq////////9N3O+O7X1tDV3vPx8fHx8ezn5vDq5+rp6evj297Z6v//3df6/9/g3N7l/////////////+fe4d/h5f////////Lp4u/x4uLk4+j////////z3tD569jY0dbf5uTk5OTk3trY49vZ3Nvb3w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

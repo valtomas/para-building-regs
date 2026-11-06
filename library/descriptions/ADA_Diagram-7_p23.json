@@ -1,0 +1,18 @@
+{
+ "key": "ADA_Diagram-7_p23",
+ "source": "ADA",
+ "label": "Diagram 7",
+ "page": 23,
+ "caption": "Diagram 7 \u0007Maximum height of buildings | BUILDINGS",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "f230eb303386e4343c3162003cc161b1c74091cd6085e7376372a74c074949f4",
+ "image_sig": {
+  "w": 749,
+  "h": 990,
+  "grey": "2NXRzsfGys/h3+Dh4d7h3+vj6Ond3+Hp4urs6Ozh3fHn4eHs5uTr7fDu7+zq4e/x5N3e4OHp7O3n4+bi5uzj6ufa3d7c3urv5/Lo6+//7/Ly+Pj4+Pj49/f49/Lp+Onw9f/14uLb2dXf3Onj7O////X/9fby6eTh7O3k5+Xy///1//X79+z07PPu8fbs9f//9f/1+/fz9e7x7vL06PX///X/9fz49fX1/fDx9+n1///1//X89/X19f/y9Pbs9f//9f/1/Pf19fX/9fX96/X//+zx7Obm5ePj6Ovt7u3x+Pnr/fne39zd3tzb5eXm6Of66vj46uXk5OHn7/H29vf29Q=="
+ },
+ "reviewed": false,
+ "description": "Diagram 7, \"Maximum height of buildings\", shows a five-box flowchart over three tables and a notes block. The flowchart runs: \"Read map wind speed V from Figure 1 Diagram 6\"; \"Find the orographic zone for the site from Figure 2 Diagram 6 and obtain Factor O from Table a (or use Figure 3 Diagram 6)\"; \"Obtain value of Factor A from Table b\"; \"Calculate value of Factor S from: S = V × O × A\"; \"Obtain maximum allowable building height from Table c\". Table a (Factor O) rows the four orographic categories, from Category 1 \"Nominally flat terrain, average slope < 1/20\" to Category 4 \"Steep terrain, average slope > 1/5\", against columns Zone 1, Zone 2, Zone 3 (1.0/1.0/1.0 to 1.36/1.20/1.15). Table b (Factor A) matches Site altitude (m) 0–500 to Factor A 1.00–1.50. Table c, \"Maximum allowable building height in metres\", lists Factor S (≤25–44) beside height figures under Country sites and Town sites, by Distance to the coast: < 2km, 2 to 20km, > 50km. The notes set Factor O = 1.0 outside Table a, an altitude-base option for Table b, a 300m town-edge rule (assumed country terrain) and a 1km inland-water rule for Table c, and allow interpolation in Tables b and c.",
+ "first_draft": "Diagram 7, \"Maximum height of buildings\", shows a five-box flowchart over three tables and a notes block. The flowchart runs: \"Read map wind speed V from Figure 1 Diagram 6\"; \"Find the orographic zone for the site from Figure 2 Diagram 6 and obtain Factor O from Table a (or use Figure 3 Diagram 6)\"; \"Obtain value of Factor A from Table b\"; \"Calculate value of Factor S from: S = V × O × A\"; \"Obtain maximum allowable building height from Table c\". Table a (Factor O) rows the four orographic categories, from Category 1 \"Nominally flat terrain, average slope < 1/20\" to Category 4 \"Steep terrain, average slope > 1/5\", against columns Zone 1, Zone 2, Zone 3 (1.0/1.0/1.0 to 1.36/1.20/1.15). Table b (Factor A) matches Site altitude (m) 0–500 to Factor A 1.00–1.50. Table c, \"Maximum allowable building height in metres\", lists Factor S (≤25–44) beside height figures under Country sites and Town sites, by Distance to the coast: < 2km, 2 to 20km, > 50km. The notes set Factor O = 1.0 outside Table a, an altitude-base option for Table b, 300m and 1km water rules for Table c, and allow interpolation in Tables b and c."
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADA_Diagram-13_p30",
+ "source": "ADA",
+ "label": "Diagram 13",
+ "page": 30,
+ "caption": "Diagram 13 \u0007Buttressing | 2C29 Dimensional criteria for openings and recesses:",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "da4beb238cbd730a5a59b9faeedc71f860b50d6498f31bc93df5d50c02f3d017",
+ "image_sig": {
+  "w": 760,
+  "h": 602,
+  "grey": "zMG8tr7U1NTU1NTU1NTU2e73////9+z6//////////r1///++O3q9f/////////69f/85uPo9ubc2vD/////+vX/9/Pw2t36+v/9/v////r1//fz9+3g4Pjz3e7////69f/38/fs3eXi9fr8////+vX/8/L03er58OXp+fPh+vr1//He5Ozt1dnw29z5///69f//+Ovk4+jS2u/s+P//+vX////979787/Dx4Pj///r1+uDf4e7v5/Dq5OP4///69ffV09fx//bh3ufv8Pb/+vX/////////++rg3+7d+vr1//////////bn6PX////67fPz8/Pz8/Pw6/Pz8/Pz8A=="
+ },
+ "reviewed": false,
+ "description": "The diagram, titled \"Diagram 13 Buttressing\", is an isometric line drawing of three arrangements, with \"See para 2C27\" in the top left corner. The left view shows a wall of thickness T with a projecting buttressing wall; a dashed line marks the \"Centre line of buttressing wall\" and the projecting element is dimensioned \"min. 3 x T\". The central view shows a wall with a chimney, indicated by a rectangular flue opening at the top and a square opening at the base; dashed lines label the \"Centre line of pier (alternative arrangement)\" and the \"Centre line of chimney\", and the chimney is dimensioned \"min. 2 x T\". The right view shows a pier with a dashed \"Centre line of pier\", dimensioned \"min. 3 x T\". Text at lower left reads \"The buttressing wall, pier or chimney should provide support to the full height of the wall from base to top of wall\". At lower right, \"See paragraph 2C27\" points to the pier base, where a height dimension H is given as \"min. 190mm\".",
+ "first_draft": "The diagram, titled \"Diagram 13 Buttressing\", is an isometric line drawing of three wall arrangements, with \"See para 2C27\" in the top left corner. The left view shows a wall of thickness T with a projecting buttressing wall; a dashed line marks the \"Centre line of buttressing wall\" and the projecting element is dimensioned \"min. 3 x T\". The central view shows a wall with a chimney, indicated by a rectangular flue opening at the top and a square opening at the base; dashed lines label the \"Centre line of pier (alternative arrangement)\", the \"Centre line of chimney\", and the \"Centre line of pier\" to the right, with the dimensions \"min. 2 x T\" and \"min. 3 x T\". The right view shows a pier of thickness T with a dashed \"Centre line of pier\". Text at lower left reads \"The buttressing wall, pier or chimney should provide support to the full height of the wall from base to top of wall\". At lower right, \"See paragraph 2C27\" points to the pier base, where a height dimension H is given as \"min. 190mm\"."
+}
