@@ -567,11 +567,12 @@ def auto(args):
     start = f"origin/{branch}" if open_prs else _base(args.base, root)
     wt = os.path.join(root, ".worktrees", "descriptions-auto")
     subprocess.run(["git", "worktree", "remove", "--force", wt], cwd=root, capture_output=True)  # a night cut short
-    _git("worktree", "add", "-q", "-B", branch, wt, start, cwd=root)
+    # detached, so the branch may be checked out elsewhere (a worktree for reviewing it); pushed by name in _publish
+    _git("worktree", "add", "-q", "--detach", wt, start, cwd=root)
     try:
         if open_prs:
             print(f"Adding to the open pull request on {branch}.", flush=True)
-            _git("merge", "-q", "--no-edit", "origin/main", cwd=wt)  # this week's library and approvals
+            _git("merge", "-q", "-m", f"Merge main into {branch}", "origin/main", cwd=wt)  # this week's library, approvals
         cache = os.path.join(root, "library", "cache")
         if os.path.isdir(cache) and not os.path.exists(os.path.join(wt, "library", "cache")):
             os.symlink(cache, os.path.join(wt, "library", "cache"))  # the PDFs already downloaded
@@ -610,11 +611,11 @@ def _publish(wt, branch, date, model, existing):
     if not changed:
         print("Nothing new to draft.", flush=True)
         if existing:
-            _git("push", "-q", "origin", branch, cwd=wt)  # the merge of main, if any
+            _git("push", "-q", "origin", f"HEAD:refs/heads/{branch}", cwd=wt)  # the merge of main, if any
         return
     _git("commit", "-q", "-m", f"Descriptions: {len(changed)} drafted by {model} on {date}, to review",
          cwd=wt)
-    _git("push", "-q", "-u", "origin", branch, cwd=wt)
+    _git("push", "-q", "origin", f"HEAD:refs/heads/{branch}", cwd=wt)
     if existing:
         print(f"Added {len(changed)} to the open pull request on {branch}.", flush=True)
         return
