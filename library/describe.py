@@ -176,6 +176,40 @@ def state(rec, png, table=False):
     return "rejected" if rec.get("rejected") else "draft"
 
 
+def crop_marks():
+    """The figures a person ticked as badly cropped on the review page: {key: {image_sha256, image_sig, date}}. Kept
+    beside the descriptions, so the marks travel with a pull request of drafts and the night's run sees them."""
+    try:
+        with open(os.path.join(DESC_DIR, "crops.json"), encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return {}
+
+
+def mark_crop(fig, bad):
+    """Tick (or untick) a figure as badly cropped, for the image as it is now: once the crop is fixed and the image
+    changes, the mark no longer counts and the figure is drafted again."""
+    marks = crop_marks()
+    if bad:
+        marks[fig["key"]] = {"image_sha256": image_hash(fig["png"]), "image_sig": image_sig(fig["png"]),
+                             "date": datetime.date.today().isoformat()}
+    else:
+        marks.pop(fig["key"], None)
+    os.makedirs(DESC_DIR, exist_ok=True)
+    path = os.path.join(DESC_DIR, "crops.json")
+    with open(path + ".tmp", "w", encoding="utf-8") as f:
+        json.dump(dict(sorted(marks.items())), f, indent=1)
+        f.write("\n")
+    os.replace(path + ".tmp", path)
+    return marks.get(fig["key"])
+
+
+def bad_crop(marks, fig):
+    """Is this figure's image the one a person marked as badly cropped? Then no model describes it until it's recut."""
+    mark = marks.get(fig["key"])
+    return bool(mark) and same_image(mark, fig["png"])
+
+
 def figures_in(library=LIBRARY, only=None):
     """The diagrams and tables in a built library: [{key, kind, source, label, page, caption, drawing_text, text,
     png}]. Most tables need no description, since their text is their content; `run` asks a model which do."""
@@ -290,9 +324,13 @@ def _second_reading(client, fig, rec, args):
 def run(args):
     client = Client(args.base_url, os.environ.get("DESCRIBE_API_KEY", ""), args.model)
     end, done, skipped, failed = deadline(args.until), 0, 0, 0
+    marks = crop_marks()
     for fig in figures_in(args.library, args.only):
         if (args.limit and done >= args.limit) or out_of_time(end):
             break
+        if bad_crop(marks, fig):
+            skipped += 1
+            continue
         h = image_hash(fig["png"])
         rec = load(fig["key"])
         if rec and rec.get("image_sha256") == h and "image_sig" not in rec and image_sig(fig["png"]):
@@ -337,23 +375,24 @@ def run(args):
 
 NAMES = {"missing": "missing", "unsorted": "tables not yet looked at", "redraft": "image changed, not reviewed",
          "draft": "to review", "changed": "changed since review", "reviewed": "reviewed", "rejected": "rejected",
-         "not needed": "tables whose text says it all"}
+         "not needed": "tables whose text says it all", "bad crop": "crops marked bad, to fix"}
 
 
 def status(args):
     figs = figures_in(args.library)
-    counts = dict.fromkeys(NAMES, 0)
+    counts, marks = dict.fromkeys(NAMES, 0), crop_marks()
     for fig in figs:
-        counts[state(load(fig["key"]), fig["png"], fig["kind"] == "table")] += 1
+        counts["bad crop" if bad_crop(marks, fig) else state(load(fig["key"]), fig["png"], fig["kind"] == "table")] += 1
     print(f"{len(figs)} diagrams and tables: " + ", ".join(f"{v} {NAMES[k]}" for k, v in counts.items() if v or k != "redraft"))
 
 
 def pending(figs):
-    """The figures that need a model (missing, redraft) or a person (draft, changed), with where each stands."""
-    out = []
+    """The figures that need a model (missing, redraft), a person (draft, changed) or a crop fixed (bad crop), with
+    where each stands."""
+    out, marks = [], crop_marks()
     for fig in figs:
-        st = state(load(fig["key"]), fig["png"], fig.get("kind") == "table")
-        if st in ("missing", "unsorted", "redraft", "draft", "changed"):
+        st = "bad crop" if bad_crop(marks, fig) else state(load(fig["key"]), fig["png"], fig.get("kind") == "table")
+        if st in ("missing", "unsorted", "redraft", "draft", "changed", "bad crop"):
             out.append({"key": fig["key"], "source": fig["source"], "label": fig["label"], "page": fig["page"],
                         "state": st})
     return out
@@ -363,7 +402,8 @@ def pending_markdown(items, total):
     """The body of the "descriptions" issue: what needs drafting and what needs a person, document by document."""
     if not items:
         return f"Every one of the {total} diagrams and tables has a description a person has checked, or needs none.\n"
-    groups = [("changed", "Reviewed, but the image has changed since: check again on the review page"),
+    groups = [("bad crop", "Crops marked bad on the review page: to fix in library/figures.py"),
+              ("changed", "Reviewed, but the image has changed since: check again on the review page"),
               ("draft", "Drafted, waiting for a person on the review page"),
               ("redraft", "Drafted, but the image has changed since: to draft again"),
               ("missing", "No description yet: to draft"),
@@ -399,12 +439,21 @@ def show_pending(args):
 
 def review_items(figs):
     """The descriptions written so far, for the review page (figs: {key: figure})."""
-    items = []
+    items, marks = [], crop_marks()
     for key, fig in figs.items():
         rec = load(key)
         if rec is not None and not rec.get("not_needed"):
-            items.append({**rec, "stale": stale(rec, fig["png"])})
+            items.append({**rec, "stale": stale(rec, fig["png"]), "bad_crop": bad_crop(marks, fig)})
     return items
+
+
+def crop_items(figs):
+    """Every diagram and table in the library, for the review page's grid of crops: ticked if marked badly cropped,
+    `recut` if marked but the image has changed since (look again)."""
+    marks = crop_marks()
+    return [{"key": key, "source": fig["source"], "label": fig["label"], "page": fig["page"], "kind": fig["kind"],
+             "bad": bad_crop(marks, fig), "recut": key in marks and not bad_crop(marks, fig)}
+            for key, fig in figs.items()]
 
 
 def approve(fig, description, approved=True, rejected=False):
@@ -454,6 +503,8 @@ class ReviewHandler(http.server.BaseHTTPRequestHandler):
                     return self._send(200, f.read(), "font/woff2")
         if path == "/api/items":
             return self._send(200, review_items(self.figs))
+        if path == "/api/crops":
+            return self._send(200, crop_items(self.figs))
         if path == "/image":
             key = dict(p.split("=", 1) for p in query.split("&") if "=" in p).get("key", "")
             if key in self.figs:
@@ -464,10 +515,14 @@ class ReviewHandler(http.server.BaseHTTPRequestHandler):
         host = self.headers.get("Host", "")
         if self.headers.get("Origin") not in (f"http://{host}",):  # only the review page itself may save
             return self._send(403, {"error": "Forbidden"})
-        if self.path != "/api/save":
+        if self.path not in ("/api/save", "/api/crop"):
             return self._send(404, {"error": "Not found"})
         body = json.loads(self.rfile.read(int(self.headers.get("Content-Length") or 0)) or b"{}")
         fig = self.figs.get(str(body.get("key", "")))
+        if self.path == "/api/crop":
+            if not fig:
+                return self._send(404, {"error": "No such figure"})
+            return self._send(200, {"key": fig["key"], "bad": mark_crop(fig, bool(body.get("bad"))) is not None})
         rec = approve(fig, body.get("description"), approved=bool(body.get("approve")),
                       rejected=bool(body.get("reject"))) if fig else None
         return self._send(200 if rec else 404, rec or {"error": "No such description"})
@@ -551,7 +606,7 @@ def _base(base, root):
 def _publish(wt, branch, date, model, existing):
     """Commit what the night produced and push it: to the open pull request, or to a new one."""
     _git("add", "library/descriptions", cwd=wt)
-    changed = _git("diff", "--cached", "--name-only", cwd=wt).split()
+    changed = [f for f in _git("diff", "--cached", "--name-only", cwd=wt).split() if not f.endswith("/crops.json")]
     if not changed:
         print("Nothing new to draft.", flush=True)
         if existing:

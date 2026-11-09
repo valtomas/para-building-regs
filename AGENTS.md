@@ -84,9 +84,16 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   document puts diagram captions above or below the drawing is decided by a vote, per document and kind of caption
   (ADA captions its Diagrams above and its Figures below); tables are always captioned above. A caption can sit just
   under the running header, at the top of a page given to the figure (ADA, ADC, ADE, ADH, ADJ, ADM Vol 2); a heading
-  ends a figure only at the margin, since one set in from it is part of the drawing (Manual Figure 7.1). On a page set
-  in two columns, a figure with running text or another figure's caption beside its caption is cropped to its own
-  column (ADH, ADE, ADJ, ADM Vol 2); one across the page is not. The text extractor can't see the drawings, so the
+  ends a figure only at the margin, since one set in from it is part of the drawing (Manual Figure 7.1). Where the vote
+  says one side but nothing is drawn there and plenty on the other, the figure follows its ink (a drawing at the foot
+  of a page with its caption under it: ADL, ADO, ADP). A label is a caption only where it stands as one: not after a
+  short cell on its line ("B3 | Table B2 | …"), not carrying on a sentence from the line above, not "Table 11 Column
+  (B)" inside a drawing, and a bare label only with its title beside it. A paragraph or heading ends a figure only if
+  set bigger than the figure's own text, since a table's rows ("a. if it separates a flat…") start like paragraphs. A
+  table whose notes run on into a drawing captioned under it stops where that drawing starts, or at the first blank
+  band if the drawing claims the whole table (ADM Vol 1 Table 3.3). On a page set in two columns, a figure is cropped to
+  its own column when running text or another figure's caption sits beside it in the other column (ADE, ADH, ADJ, ADM
+  Vol 2), or when its caption starts past the middle; one across the page is not. The text extractor can't see the drawings, so the
   crop found from the text is then narrowed to where the rendered page has ink once the running text is whited out
   (`figures.ink_box`), including lines only partly in the crop, such as the footer: that stops a crop running on into
   an unnumbered paragraph. When you change it, render a few figures from ADB, ADE, ADH, ADK, ADL and ADM and look at
@@ -100,7 +107,10 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   image again against its draft and puts right what the image doesn't bear out (`CORRECT_PROMPT`; the first draft is
   kept as `first_draft`), so the person reviewing gets one text that has had a second look; it never approves one.
   `describe.py review` opens a page where a person approves, corrects or rejects each one (reject a crop that is cut
-  short: it isn't described again until the image changes). The build adds only reviewed descriptions of the same
+  short: it isn't described again until the image changes). Its Crops view is a grid of every diagram and table in
+  the library, where a person ticks the badly cropped ones (`descriptions/crops.json`, tied to the image like a
+  review): `run` skips them, `pending` lists them as crops to fix in `figures.py`, and once a crop is recut the tick
+  no longer counts and the tile shows as recut for the person to look at again. The build adds only reviewed descriptions of the same
   image, after the passage text and labelled "Description of the drawing (written by AI from the image, checked by a
   person):"; the reader shows them under the image, and the prompt says they come second to the document's text. "The
   same image" is the same bytes, or the same size and nearly the same thumbnail (`describe.same_image`), because
