@@ -5,12 +5,12 @@
  "page": 28,
  "caption": "Table A1. The buildings must continue to meet the definitions in Schedule 2 after the works are complete.",
  "model": "Qwen3.8-27B-GGUF",
- "date": "2026-11-06",
- "image_sha256": "792a23ad83b4160d005c12c255e96070af6cf8e0d3ba3507e4fb9e66b3a1b796",
+ "date": "2026-11-09",
+ "image_sha256": "94edd2d2b1938c9776a7ea9d14342b3eb2465d027b777881743ed8ea3a9a97f8",
  "image_sig": {
   "w": 710,
-  "h": 236,
-  "grey": "z8rKy9PKy83Iy8vX3d3d4MWws6CvrrOrn6inyN3d3eDo5ubm5ubm5ubm5ubm5ubn4PD1ztnW1s3d0tzU1dvp+/v/+Njm//////////////v08/jz8/Pz8/Pz8/Pz8/P03ur31czZ0dTX19Xg////+/Hx9vLz8/Px8fLx8vLz8/Tj7vrZ0NfX19Lb1NvX///76u305ufl5eTo5+fl5urz9OHl9dTV0tnV2dnc2tjZ8vPv9vnr8O7w7PP////////75en019rg3N3k8/Pz8/Pz9Ojw+uLh3OLl2+Lh4uTf+fvr7PXo5+Xm4eTo5uLn5PHz6vT55Obp4+nm5+Pn5ubj+A=="
+  "h": 396,
+  "grey": "xba5sLu2ubWttbLN3d3d4OXn6N/j4uLh4eHl4uLj5uvw+ffS4O7u6vHr7+7u8Pb76u/35ODo4ubn5uTp+Pj49+ru9+Xi5ufi4ubk5+j4+Pfq7/bm5OPi4+Pm5OXl8Pj36/D45+jm6+nq6+3s6+v49+nt9t3g4+Lg6Pj4+Pj4+Pfn6/bg4Nvf39vh397h3fP36/X43+Dm4OLj4uHi4ODh+Pv/99XZ0dTZ0dHQ1tfV9/v3+PPe4ODg4eX0+Pj4+Pj34eHo6uXr5+Xn6+Tk5+bt9+bT3trV2tXX3NXY19fb3/Ho3d7g3N/e39/f293j2OPz5+Hg4eLh39zZ4N/3+Pj49g=="
  },
  "reviewed": false,
  "not_needed": true

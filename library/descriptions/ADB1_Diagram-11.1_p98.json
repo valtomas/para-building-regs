@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-11.1_p98",
+ "source": "ADB1",
+ "label": "Diagram 11.1",
+ "page": 98,
+ "caption": "Diagram 11.1 | Principles of space separation side B1 B2",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "44f5f686e44e102352387d51150c895043b9914daefa30481b452ff8c42c2f8f",
+ "image_sig": {
+  "w": 756,
+  "h": 458,
+  "grey": "7u75+fn5+fn5+fn5+fn59/j97/Hv/vTx8PX96+zv//v7/9jT1O/q1dDa+dDR6v/7+//7/v//8unp/P38////+/v/4PP//+3m///50/z///v7//Lp8f/z7uX/+unV+v/7+//7/+v/9fDq//rr6+v/+/v7+//r//v+6v/66uzr//v7//b+6fz6+urr6+Lp6f37+///99nY8vDg1N3w4NHc9/v////3+ff/+v/z/v77//v7/fjp7Pf9//70///////7+/r16+j0+/z0////////+/v/+tXX5P/2/f////////vk4eHh4eHh4eDh4eHh4eHjh2VfZWNkZVhVVVVVVVVVdg=="
+ },
+ "reviewed": false,
+ "description": "The diagram, captioned in a green band at the bottom \"Diagram 11.1 Principles of space separation\" and headed top-left \"See para 11.4\", is a perspective sketch of three walls arranged above a diagonal dashed line. A key at bottom-left defines the dashed line as the \"Relevant boundary\" and shows a double-headed green arrow labelled \"Amount of unprotected area dependent on distance from relevant boundary\". Green arrows lead from points along the dashed line up to the middle and right walls. The left wall is a grey panel with a small window, captioned \"Wall on or very close to the relevant boundary: very limited amounts of unprotected area\", with a pointer noting \"Fire resisting from both sides\". The middle wall, grey with one window, is captioned \"Wall not on, or not very close to, but not sufficiently far from relevant boundary that it can be a wholly unprotected area\", with a pointer noting \"Fire resisting from inside: reduced insulation criterion\". The right wall, white with three framed panels, is captioned \"Wall sufficiently distant from relevant boundary to be a 100% unprotected area\", with a pointer noting \"No provision for fire resistance\".",
+ "first_draft": "The diagram, captioned in a green band at the bottom \"Diagram 11.1 Principles of space separation\" and headed top-left \"See para 11.4\", is a perspective sketch of three walls arranged above a diagonal dashed line. A key at bottom-left defines the dashed line as the \"Relevant boundary\" and shows a double-headed green arrow labelled \"Amount of unprotected area dependent on distance from relevant boundary\". Green arrows lead from points along the dashed line up to the middle and right walls. The left wall is a grey panel with a small window, captioned \"Wall on or very close to the relevant boundary: very limited amounts of unprotected area\", with a pointer noting \"Fire resisting from both sides\". The middle wall, grey with one window, is captioned \"Wall not on, or not very close to, but not sufficiently far from relevant boundary that it can be a wholly unprotected area\", with a pointer noting \"Fire resisting from inside: reduced insulation criterion\". The right wall, white with two framed panels, is captioned \"Wall sufficiently distant from relevant boundary to be a 100% unprotected area\", with a pointer noting \"No provision for fire resistance\"."
+}

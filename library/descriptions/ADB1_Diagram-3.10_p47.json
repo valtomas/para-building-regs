@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-3.10_p47",
+ "source": "ADB1",
+ "label": "Diagram 3.10",
+ "page": 47,
+ "caption": "Diagram 3.10 External protection to protected stairways | External escape stairs",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "f9588b0bfff30dea73e0046330074b5b26ead3ff531967f6d0400b164c337663",
+ "image_sig": {
+  "w": 737,
+  "h": 424,
+  "grey": "8O/5+fn5+fn5+fn5+fn5+fT1///////////////////7//jb4uLh8f//////////+/rz+P//+/L3//////////v7//X///v/9v/////////78OXZ8Pj05uz///Xu7u//+/Pv2fT59u/u///h5eHl9/v25eff/fLc5PP/6tXR4f/79ujg4vjv2eLt//jq6en3++/a3NXq79Ta4fj7//////v7+u309vv37Pn2///////7+/73/Pb7/ff+9v//////+/v49vj4/Pj2+Pz///////v/+Nru///y2fP////////UzMzMzMzMzMzMzMzMzMzMiGdkZ2ZlZmZmXlVVVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing is titled \"Diagram 3.10 External protection to protected stairways\" in a green band along the bottom, with \"See para 3.66\" at the top left and the heading \"Configurations of stairs and external wall\" centred below it. It shows two side‑by‑side vertical sections, labelled \"Configuration A\" on the left and \"Configuration B\" on the right, each depicting a slice of a building with an upper \"Accommodation\" block, a middle \"Stair\" block drawn with vertical lines, and a lower \"Accommodation\" block; zigzag break lines appear at the top of the upper accommodation, at the left side of the stair, and at the bottom of the lower accommodation. In Configuration A a light‑green line marks the top of the stair, a vertical dark‑green line (the fire‑resisting external wall) runs up the right side of the upper accommodation above the stair, and a horizontal dark‑green line at the base of the stair projects beyond the stair to the right. A vertical dimension \"1800mm min.\" beside the dark‑green line measures the height of that wall above the stair, and a horizontal dimension \"1800mm min.\" at the base measures the projection of the wall beyond the stair. Configuration B shows the stair with a light‑green band above it and a horizontal dark‑green line at the base projecting beyond the stair to the right, with a horizontal \"1800mm min.\" dimension measuring that projection. A legend on the right defines dark green as \"Fire resisting construction of adjacent building enclosure\", light green as \"Fire resisting construction of protected stairway\", and a white square as \"Non‑fire resisting construction\".",
+ "first_draft": "The drawing is titled \"Diagram 3.10 External protection to protected stairways\", with \"See para 3.66\" at the top left and the heading \"Configurations of stairs and external wall\". It shows two vertical sections, labelled \"Configuration A\" and \"Configuration B\", each depicting a slice of a building with an upper \"Accommodation\" block, a middle \"Stair\" block drawn with vertical lines, and a lower \"Accommodation\" block, separated by zigzag break lines. In Configuration A a vertical dark‑green wall runs down the right side of the upper accommodation; a vertical dimension \"1800mm min.\" spans from the top of the stair to the lower accommodation, and a horizontal dimension \"1800mm min.\" measures the wall projection beyond the stair. Configuration B shows the stair with a light‑green band above it and a horizontal \"1800mm min.\" dimension. A legend on the right defines dark green as \"Fire resisting construction of adjacent building enclosure\", light green as \"Fire resisting construction of protected stairway\", and a white square as \"Non‑fire resisting construction\"."
+}

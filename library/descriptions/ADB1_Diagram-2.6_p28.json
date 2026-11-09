@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-2.6_p28",
+ "source": "ADB1",
+ "label": "Diagram 2.6",
+ "page": 28,
+ "caption": "Diagram 2.6 Gallery floors with no alternative exit | Basements",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "294a963c50e675d75a3a0632265507b63810706153e5f1d9ce4accaed611f0e0",
+ "image_sig": {
+  "w": 756,
+  "h": 316,
+  "grey": "9fX29vb29vb29vb29vb29ezp//////////////////v7///z2v/////////////7+//86ffp///23///////+/v/5/vy8/L//N/i4OHf//v7//Hs5uzp///U1NTi///7+//g39jU8v//2tDO293z+/v/2efzy/T//+vk4uHg9Pv7/+rt5Mfr//vk3+Hn4eP7+//l9LSpvv//4d3i393u+/vczryvp7np/9DGycTQ5fv75d3nqKn4///m297Z29b4+/Dr/9ra+v//////////+/v///////////////////ufg4SEgoOCgoKCgoKCgoKXi2xiamlpa2lfVVVVVVVVeA=="
+ },
+ "reviewed": false,
+ "description": "This is an isometric cutaway diagram of a single room containing a partial upper level, the gallery, along the left wall, reached by a straight staircase at the right-hand end of the gallery. The lower floor is shaded green; a green arrow at the lower right is labelled Exit, and green dashed lines on the lower floor show the visible area from the Exit. A green dimension arrow spanning the gallery floor reads 7.5 max. A further green dimension arrow on the right side, between the staircase and the right wall, reads 3m max. A pointer labelled Visible area to be at least 50% of floor area in lower room indicates the green lower floor. The top left corner reads See para 2.15 and the green footer reads Diagram 2.6 Gallery floors with no alternative exit. To the right, a NOTES panel states: 1. This diagram does not apply where the gallery is provided with one of the following: i. An alternative escape route ii. An emergency escape window (where the gallery floor is not more than 4.5m above ground level). 2. Any cooking facilities within a room containing a gallery should comply with one of the following conditions: i. Be enclosed with fire resisting construction ii. Be remote from the stair to the gallery and positioned such that they do not prejudice escape from the gallery.",
+ "first_draft": "This is an isometric cutaway diagram of a single room containing a partial upper level, the gallery, along the left rear wall, reached by a straight staircase. The lower floor is shaded green; a green arrow at the lower right corner is labelled Exit. A green dimension arrow spanning the gallery floor reads 7.5 max. A further green dimension arrow on the right side, between the staircase and the right wall, reads 3m max. A pointer labelled Visible area to be at least 50% of floor area in lower room indicates the green lower floor. The top left corner reads See para 2.15 and the green footer reads Diagram 2.6 Gallery floors with no alternative exit. To the right, a NOTES panel states: 1. This diagram does not apply where the gallery is provided with one of the following: i. An alternative escape route ii. An emergency escape window (where the gallery floor is not more than 4.5m above ground level). 2. Any cooking facilities within a room containing a gallery should comply with one of the following conditions: i. Be enclosed with fire resisting construction ii. Be remote from the stair to the gallery and positioned such that they do not prejudice escape from the gallery."
+}
