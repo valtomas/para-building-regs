@@ -35,7 +35,7 @@ when the interface changes).
 │ Settings      │  REASONING · LENGTH  disclaimer  │                       │
 │ ● Private     │                                  │                       │
 └───────────────┴──────────────────────────────────┴───────────────────────┘
-   264 px              flexible, text ≤ 760 px          min(500 px, 46vw)
+   264 px              flexible, text ≤ 840 px          min(500 px, 46vw)
 ```
 
 The reader is an overlay on the right edge. Above 1240 px the conversation and question box make room for it;

@@ -173,7 +173,7 @@ code { font-family: var(--mono); font-size: .8em; background: var(--cite); color
 /* main */
 #main { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
 .topbar { display: none; }
-#messages { flex: 1; overflow-y: auto; padding: 48px max(40px, calc((100% - 760px) / 2)) 32px; }
+#messages { flex: 1; overflow-y: auto; padding: 48px max(40px, calc((100% - 840px) / 2)) 32px; }
 .welcome { padding-top: 6vh; display: flex; flex-direction: column; gap: 28px; }
 .welcome h1 { font: 500 clamp(40px, 5vw, 62px)/1 var(--display); letter-spacing: -.035em; margin: 0; }
 .welcome > p { font-size: 18px; line-height: 1.55; color: var(--muted); margin: 0; max-width: 600px; }
@@ -262,7 +262,7 @@ code { font-family: var(--mono); font-size: .8em; background: var(--cite); color
 @keyframes blink { 50% { opacity: 0; } }
 
 /* composer */
-#composer { padding: 16px max(40px, calc((100% - 760px) / 2)) 18px; border-top: 1px solid var(--border); background: var(--bg);
+#composer { padding: 16px max(40px, calc((100% - 840px) / 2)) 18px; border-top: 1px solid var(--border); background: var(--bg);
   display: flex; flex-direction: column; gap: 12px; }
 .composer-box { display: flex; align-items: flex-end; gap: 14px; background: var(--panel); border: 1px solid var(--line-strong);
   border-radius: 18px; padding: 14px 14px 14px 22px; }
@@ -273,8 +273,10 @@ code { font-family: var(--mono); font-size: .8em; background: var(--cite); color
 .composer-row { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; font: 11px/1.4 var(--mono);
   letter-spacing: .12em; text-transform: uppercase; color: var(--muted-2); }
 .mini { display: flex; gap: 8px; align-items: center; }
+/* sized by hand: the browser sizes a select from its options as written, not uppercase and tracked, and crops "AUTO" */
 .mini select { background: none; border: 0; border-bottom: 1px solid var(--faint); border-radius: 0; padding: 2px 0;
-  font: 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink); cursor: pointer; }
+  font: 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink); cursor: pointer;
+  min-width: 9ch; }
 .mini select option { background: var(--panel); text-transform: none; }
 .status { font: italic 15px/1.3 var(--body); letter-spacing: 0; text-transform: none; color: var(--muted-2); }
 .status:empty { display: none; }
