@@ -161,17 +161,24 @@ def run_tool(library, name, args, known):
         doc = library.read(pid)
         if not doc:
             return UNSEEN_ID, None
-        known.update(ID_IN_TEXT.findall(doc["text"]))
+        ids = ID_IN_TEXT.findall(doc["text"])
+        known.update(ids)
         if doc.get("next_id"):
             known.add(doc["next_id"])
         more = f"\n\n[More follows: read_passage(id=\"{doc['next_id']}\")]" if doc.get("next_id") else ""
         head = f"{doc['title']} ({doc['source']})"
-        return f"{head}\n\n{doc['text']}{more}", {"type": "read", **_brief(doc)}
+        return f"{head}\n\n{doc['text']}{more}", {"type": "read", **_brief(doc), "nearby": _nearby(library, ids, pid)}
     return f"Unknown tool {name}. Use search_library or read_passage.", None
 
 
 def _brief(item):
     return {k: item.get(k) for k in ("id", "source", "title", "ref", "heading", "page", "kind")}
+
+
+def _nearby(library, ids, pid):
+    """A read passage's text holds the passages around it, which may be cited too: their labels go with the read
+    event, so a citation shows as "ADK Diagram 3.1" while the answer streams, not as its id."""
+    return [_brief(info) for info in map(library.describe, dict.fromkeys(ids)) if info and info["id"] != pid]
 
 
 def _text_calls(content):
@@ -418,10 +425,11 @@ def _attach_excerpts(library, messages, read, known):
     for h in hits:
         doc = library.read(h["id"], max_chars=2500)
         if doc:
-            known.update(ID_IN_TEXT.findall(doc["text"]))
+            ids = ID_IN_TEXT.findall(doc["text"])
+            known.update(ids)
             blocks.append(f"{doc['title']} ({doc['source']}):\n{doc['text']}")
             read.setdefault(h["id"], {"type": "read", **_brief(h)})
-            yield {"type": "read", **_brief(h)}
+            yield {"type": "read", **_brief(h), "nearby": _nearby(library, ids, h["id"])}
     if blocks:
         messages[-1] = {"role": "user", "content": question + "\n\nLibrary excerpts (cite their ids in square "
                                                               "brackets):\n\n" + "\n\n".join(blocks)}

@@ -24,11 +24,20 @@ function inline(s) {
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
     .replace(/(^|[^*\w])\*([^*\n]+)\*(?!\w)/g, "$1<em>$2</em>")
     .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" data-ext>$1</a>')
-    .replace(/\[([rf]\d+)\]/g, (m, id) => citeChip(id));
+    .replace(/\[[rf]\d+\](?:[ ,;]*\[[rf]\d+\])*/g, citeRun);
+}
+// A run of citations, e.g. "[r12][r12]" or "[r12], [r13]": each label once, so a repeat doesn't show as two chips.
+function citeRun(run) {
+  const seen = new Set();
+  return run.match(/[rf]\d+/g).filter((id) => !seen.has(citeLabel(id)) && seen.add(citeLabel(id))).map(citeChip).join(" ");
+}
+function citeLabel(id) {
+  const c = citeInfo[id];
+  return c ? `${c.source}${c.ref ? " " + c.ref : ""}` : id;
 }
 function citeChip(id) {
   const c = citeInfo[id];
-  const label = c ? `${c.source}${c.ref ? " " + c.ref : ""}` : id;
+  const label = citeLabel(id);
   return `<button class="cite${id[0] === "f" ? " file" : ""}" data-pid="${esc(id)}" title="${esc(c ? (c.heading || c.title || "") : "Open passage")}">${esc(label)}</button>`;
 }
 function md(text) {
@@ -134,8 +143,19 @@ function renderProjects() {
     `<button role="menuitemradio" aria-checked="${v === project}" data-project="${esc(v)}"${v ? "" : ' class="none"'}><span>${esc(label)}</span></button>`).join("") +
     `<button role="menuitem" class="new" data-newproject>New project</button>`;
   $("#projectEdit").hidden = !project;
-  $("#question").placeholder = project ? `Ask a question about ${project}…` : "Ask a question…";
+  fitPlaceholder();
 }
+// The longest wording that fits on the box's one line: browsers cut a textarea's placeholder mid-word, without
+// an ellipsis. The box narrows when the reader opens, so it's fitted again then.
+let measure;
+function fitPlaceholder() {
+  const q = $("#question");
+  measure = measure || document.createElement("canvas").getContext("2d");
+  measure.font = getComputedStyle(q).font;
+  const options = project ? [`Ask a question about ${project}…`, `Ask about ${project}…`] : [];
+  q.placeholder = options.find((t) => measure.measureText(t).width <= q.clientWidth) || "Ask a question…";
+}
+new ResizeObserver(fitPlaceholder).observe($("#question"));
 async function setProject(name) {
   if (busy) return;
   S = await api("/api/settings", { method: "POST", body: { current_project: name } });
@@ -275,6 +295,7 @@ function addAssistant() {
       } else if (ev.type === "read" || ev.type === "show") {
         reads += ev.type === "read" ? 1 : 0;
         citeInfo[ev.id] = citeInfo[ev.id] || ev;
+        for (const r of ev.nearby || []) citeInfo[r.id] = citeInfo[r.id] || r;  // the passages read along with it
         li.innerHTML = `${ev.type === "read" ? "Read" : "Showed"} <button class="src" data-pid="${esc(ev.id)}">${esc(ev.source)} ${esc(ev.ref || "")}${ev.heading ? " · " + esc(ev.heading) : ""}</button>`;
         if (ev.type === "show") openPassage(ev.id);
       } else if (ev.type === "notice") {
@@ -370,6 +391,15 @@ function withoutDescriptions(p) {
   if (!(p.figures || []).some((f) => f.description)) return p.text;
   return p.text.split("\n\n").filter((para) => !para.startsWith(DESCRIPTION_LABEL)).join("\n\n");
 }
+// The words printed in a drawing are taken out for search and the AI. Shown collapsed, and never as a description.
+const LABELS = "Text in the drawing:";
+function passageBody(p) {
+  const paras = withoutDescriptions(p).split("\n\n");
+  const labels = paras.filter((para) => para.startsWith(LABELS));
+  return esc(paras.filter((para) => !para.startsWith(LABELS)).join("\n\n").trimEnd()) + labels.map((para) =>
+    `<details class="figure-desc drawing-text"><summary>Text in the drawing</summary>${esc(para.slice(LABELS.length).trim())}` +
+    `<span class="who">The words printed in the drawing, read out for search and the AI. Not a description of it.</span></details>`).join("");
+}
 
 async function openPassage(pid) {
   try { showDoc(await api("/api/passage?id=" + encodeURIComponent(pid))); } catch (e) { alert(e.message); }
@@ -390,7 +420,7 @@ function showDoc(doc) {
   const body = $("#readerBody");
   const isPdf = /\.pdf($|[?#])/i.test(doc.url || "");
   const pageLink = (n) => (doc.url || "").split("#")[0] + "#page=" + n;
-  body.innerHTML = doc.parts.map((p) => `<div class="passage${p.id === doc.focus ? " focus" : ""}" id="p-${esc(p.id)}"><span class="ph">${esc([p.heading, p.ref].filter(Boolean).join(" · "))}${p.page && isPdf ? ` · <a href="#" data-page="${p.page}">PDF page ${p.page} ↗</a>` : ""}</span>${(p.figures || []).map((f) => `<img class="figure" src="/api/figure?id=${f.id}" ${f.width ? `width="${f.width}" height="${f.height}"` : ""} alt="${esc(f.description || p.ref || "Drawing")}" title="Click to enlarge" loading="lazy">${figureDescription(f)}`).join("")}${esc(withoutDescriptions(p))}</div>`).join("");
+  body.innerHTML = doc.parts.map((p) => `<div class="passage${p.id === doc.focus ? " focus" : ""}" id="p-${esc(p.id)}"><span class="ph">${esc([p.heading, p.ref].filter(Boolean).join(" · "))}${p.page && isPdf ? ` · <a href="#" data-page="${p.page}">PDF page ${p.page} ↗</a>` : ""}</span>${(p.figures || []).map((f) => `<img class="figure" src="/api/figure?id=${f.id}" ${f.width ? `width="${f.width}" height="${f.height}"` : ""} alt="${esc(f.description || p.ref || "Drawing")}" title="Click to enlarge" loading="lazy">${figureDescription(f)}`).join("")}${passageBody(p)}</div>`).join("");
   $$("[data-page]", body).forEach((a) => { a.onclick = (e) => { e.preventDefault(); openUrl(pageLink(a.dataset.page)); }; });
   const focusPart = doc.parts.find((p) => p.id === doc.focus);
   if (isPdf && focusPart && focusPart.page) {
