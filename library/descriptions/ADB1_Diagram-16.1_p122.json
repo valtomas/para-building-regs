@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-16.1_p122",
+ "source": "ADB1",
+ "label": "Diagram 16.1",
+ "page": 122,
+ "caption": "Diagram 16.1 Fire resisting construction for smoke outlet shafts",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "31571368d29f9818b533d08c06d877df4e08be2ecda074e262aad6861f5eb884",
+ "image_sig": {
+  "w": 754,
+  "h": 436,
+  "grey": "7urt+fn5+fn5+fn5+fn59/b4+v///////+7q6uvz//v7///////////r6enp/P/7+////////////+Hh4ef/+/v////////////a5vP4//v7////+/////z////////7+///4PL//+fs/v//////+/v////0////+P7///////v7////5dri//jS2v/////7+//y5fLj8PHn5/D/////+/v/yb/P4P/HwPTbz/////v7//bmzt3/9f/o3Mv////7+//X0rLd/9XS0r3L////+/v/rZ6e5f+snp6e1/////vWz8/Pz8/Pz8/Pz8/Pz8/Th2ZiZGZkZGVlZVxVVVVVcw=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a cross-section in two parts, with a note at top left reading 'See paras 16.1 and 16.13' and a title band at the bottom reading 'Diagram 16.1 Fire resisting construction for smoke outlet shafts'. At top right a green square is keyed to 'Fire resisting construction of floor see Section 5 and/or Section 7', with the line 'Fire resisting construction achieving the same rating as the floor of the ground storey' beneath it. The left part shows an 'External wall' as a vertical line above a horizontal 'Ground floor' band filled green; below is a grey mass labelled 'Basement'. A shaft, outlined in green, runs diagonally up from the ground floor to the external wall, marked 'Stallboard outlet with grill or removable cover'. The right part is similar, with 'External wall', a green 'Ground floor' band and a grey 'Basement'; here a horizontal dashed line at the level of the ground floor band, running into the grey mass, is marked 'Basement outlet with break-out or openable cover'.",
+ "first_draft": "The drawing is a cross-section in two parts, with a note at top left reading 'See paras 16.1 and 16.13' and a title band at the bottom reading 'Diagram 16.1 Fire resisting construction for smoke outlet shafts'. At top right a green square is keyed to 'Fire resisting construction of floor see Section 5 and/or Section 7', with the line 'Fire resisting construction achieving the same rating as the floor of the ground storey' beneath it. The left part shows an 'External wall' as a vertical line above a horizontal 'Ground floor' band filled green; below is a grey mass labelled 'Basement'. A shaft, hatched in green, runs diagonally up through the ground floor to the external wall, marked 'Stallboard outlet with grill or removable cover'. The right part is similar, with 'External wall', a green 'Ground floor' band and a grey 'Basement'; here a horizontal dashed line within the basement is marked 'Basement outlet with break-out or openable cover'."
+}

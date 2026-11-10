@@ -1,0 +1,17 @@
+{
+ "key": "ADB2_Table-2.1_p26",
+ "source": "ADB2",
+ "label": "Table 2.1",
+ "page": 26,
+ "caption": "Table 2.1 Limitations on travel distance Maximum travel distance(1) where travel is possible in:",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "bb8e02fcaf0d9b3db159ddfe0ed2a2b590ff22f8ff05dccd025ab6ed46e30e29",
+ "image_sig": {
+  "w": 754,
+  "h": 1059,
+  "grey": "2dPP0dHP0t/f39/a2djZ4vTz+fT09PX0+Pr68uzw6fXv/Pnj4vH8/P38/P38+vz09/r44+7y+vr8+vr8+vT67/f8+uLk5fLz/Pz8/fz5/PP4/Prl7vT4/Pzx8fz68/rv9vr68PDy7/b53eH69/L37fX8+ePi4+35/fz8/fz4/PL5/Pvg5O/u7/v8/Pz89/zz6ujv7u/t8e/v7+/u7/T3+fHm6Ojm5ufn5ubm6Obn7vbv3d3e3N3p8e3t8PDu7vT6+Orp6Orn7fLz8vL5+///+/jp5+z4+vn7+/z8+/v///v36eno6ejp7Pf29vr////77+Tj5OXk4+Tl6u/v8Pb4+w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

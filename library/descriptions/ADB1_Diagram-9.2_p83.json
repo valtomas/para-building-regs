@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-9.2_p83",
+ "source": "ADB1",
+ "label": "Diagram 9.2",
+ "page": 83,
+ "caption": "Diagram 9.2 Pipes penetrating fire-separating elements",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "1ae4763c794cef5a9c9f4ce8103f158566ebd92c407d46668a5f4b57126cf029",
+ "image_sig": {
+  "w": 737,
+  "h": 393,
+  "grey": "5tPT09PT09PT09PT09PT1P/////////////////////n6Pj4+Pj4+Pj4+Pj4+Pj4+/////////////////////v///Xg4/3////////////7////2PL/////////////+////9ry////1fHy8vL2//v//+7D1ff//+vb19vX7v/7//3kvNLs///jydDH1f//+//+36XC6///8ebn6Pj///v65OXU4c/q///////////7//nz1eTb8///////////+//78dvw9f////////////v////////////////////Nw8PDw8PDw8PDw8PDw8PDhWhhaGhpaGhoXFVVVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "This is a section drawing with a green footer reading \"Diagram 9.2 Pipes penetrating fire-separating elements\" and the text \"See para 9.5\" in the top left. In the centre, a horizontal light-grey element (the pipe and sleeve) passes through a vertical grey fire-separating element, with a green block on each face of the horizontal element at the fire-separating element. The horizontal element is dimensioned \"≥ 1000mm\" to the left of the fire-separating element and \"≥ 1000mm\" to the right of it. The label \"Fire-separating element\" has a leader line to the vertical grey member. The label \"Pipe specification (b)\" points to a marked point on the horizontal element to the left of the fire-separating element; \"Fire-stopping\" points to the lower green block; and \"Sleeve (or pipe) of specification (a) to be in contact with pipe\" points to a marked point on the horizontal element to the right of the fire-separating element. On the right, a NOTES block lists: 1. Make the opening in the fire-separating element as small as possible and provide fire-stopping between pipe and fire-separating element. 2. See Table 9.1 for materials specification. 3. The sleeve should be class A1 rated.",
+ "first_draft": "This is a section drawing with a green footer reading \"Diagram 9.2 Pipes penetrating fire-separating elements\" and the text \"See para 9.5\" in the top left. In the centre, a vertical grey pipe passes through a horizontal light-grey slab, with a green block on each face of the slab at the pipe. The slab is dimensioned \"≥ 1000mm\" left of the pipe and \"≥ 1000mm\" right of the pipe. The label \"Fire-separating element\" has a leader line to the upper vertical grey member; it is not entirely clear from the drawing which part this refers to. The label \"Pipe specification (b)\" points to a marked point on the left of the horizontal slab; \"Fire-stopping\" points to the lower green block; and \"Sleeve (or pipe) of specification (a) to be in contact with pipe\" points to a marked point on the right of the slab. On the right, a NOTES block lists: 1. Make the opening in the fire-separating element as small as possible and provide fire-stopping between pipe and fire-separating element. 2. See Table 9.1 for materials specification. 3. The sleeve should be class A1 rated."
+}

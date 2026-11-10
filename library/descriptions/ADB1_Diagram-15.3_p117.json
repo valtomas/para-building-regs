@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-15.3_p117",
+ "source": "ADB1",
+ "label": "Diagram 15.3",
+ "page": 117,
+ "caption": "Diagram 15.3 Location of firefighting shafts: hose laying distances",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "cd3cdc0ec16674fe0a08a47ca4ffca3d837528b9db62cad05752c39d22ee18a4",
+ "image_sig": {
+  "w": 737,
+  "h": 1064,
+  "grey": "9Onv/Pz8/Pr8/Pz8/Pz8/Pv/9ff2+P/79/f29vf3+f/7/+j+//H/8/P//v7/8/L/+//w+PLu//P8/Pv7/Pzx//v++Pj4/P/9+Pj4+Pj4/P/78vH6/v//////////////+//v7fr+////9/b29fb2+fv/6Ov7/v//+ejq6+v29vj7/+7w9Pr///Lw7vP2////+/z9/f7///3+/v////7+//v/9PPl8//79O7m4+r0+P/7/+f+1Nf/8/X6t6jw9fL/+//v8s/X//P987Oj5v3y//v+9fTz+v/98/T29vTz+v/7///15+3t7uzu7uzt8fX9vq+srKSnpaWkpqmnp6enpw=="
+ },
+ "reviewed": false,
+ "description": "This drawing shows five floor-plan diagrams, a to e, grouped under 'With sprinklers' (a, b) and 'Without sprinklers' (c, d, e), with 'See para 15.7' above. Green squares F are fire main outlets in firefighting shafts; rectangles are floor plans. a: a square plan, one F, a solid arrow line '60m' to the corner, dotted arcs. b: a rectangle, two F's, overlapping dotted arcs. c: a narrow rectangle, one F, a dashed circle and a dotted circle, arrow lines '45m' and '60m'. d: a rectangle, F and H, a dashed circle and a dotted circle, an arrow line '45m', grey area on the right. e: a rectangle, two F's, two H's, overlapping dotted and dashed arcs, grey central band. The legend reads: dotted line 'Floor plan within 60m hose laying distance of fire main outlet'; dashed line 'Floor plan within 45m hose laying distance of fire main outlet'; arrow 'Hose reach'; F 'Fire main outlet in firefighting shaft'; H 'Dry or wet fire main'; grey 'Additional hose coverage required'. Two notes say the hose laying distance is measured along the laying route, or two-thirds of the direct distance if unknown, and the outlet is located per Section 14.",
+ "first_draft": "This drawing shows five floor-plan diagrams, a to e, grouped under 'With sprinklers' (a, b) and 'Without sprinklers' (c, d, e), with 'See para 15.7' above. Green squares F are fire main outlets in firefighting shafts; rectangles are floor plans. a: a square plan, one F, a solid arrow line '60m' to the corner, dotted arcs. b: a rectangle, two F's, overlapping dotted arcs. c: a narrow rectangle, one F, a dashed circle, arrow lines '45m' and '60m'. d: a rectangle, F and H, dashed circle, grey area. e: a rectangle, two F's, two H's, overlapping arcs, grey central band. The legend reads: dotted line 'Floor plan within 60m hose laying distance of fire main outlet'; dashed line 'Floor plan within 45m hose laying distance of fire main outlet'; arrow 'Hose reach'; F 'Fire main outlet in firefighting shaft'; H 'Dry or wet fire main'; grey 'Additional hose coverage required'. Two notes say the hose laying distance is measured along the laying route, or two-thirds of the direct distance if unknown, and the outlet is located per Section 14."
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-9.5_p87",
+ "source": "ADB1",
+ "label": "Diagram 9.5",
+ "page": 87,
+ "caption": "Diagram 9.5 | Flues penetrating compartment walls or floors | Fire‐stopping",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "ce24fd80dec57219444be77f8edd369c4200d1ee086d6a4ae64367336b50e225",
+ "image_sig": {
+  "w": 737,
+  "h": 344,
+  "grey": "9fT39/f39/f39/f39/f39+vr///////////////////7/P78//z8///9+v7//P//++nY1tbY4P//9dvb1On///v64Pb////////////////7+uP09///////////////+//539fw///t5v//5uz///v0w7jMxuL/8OX1//Dc/v/7/O/V1t7x/9rCtfT5t/n/+///5uf8/v/3v9b8vqW2//v+/v7+/v////3+/v7//v/73sXHycfW/97IyMfIyMr/++/j5uXu///w5O3//v////v///////////////////+tl5mYl5eXl5iYl5eXl5eXi2xgamtqa2hpaFhVVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "'See para 9.23' is at the top left, and a green bar along the bottom reads 'Diagram 9.5 Flues penetrating compartment walls or floors'. The drawing has two parts. Part a, headed 'a. Flue passing through compartment wall or floor', shows two upright grey rectangles with a horizontal grey band attached to the left of the left rectangle at a lower level and a horizontal grey flue between the two rectangles at a higher level. A label 'Compartment wall or floor' points to the left horizontal band, 'Flue' to the horizontal flue, and 'Flue wall' to the right upright rectangle. Explanatory text sits below. Part b, headed 'b. Flue built into compartment wall', shows two side-by-side plans, each a horizontal grey band with a hollow square grey block on it; in the left-hand plan the band is level and the square is centred on it, while in the right-hand plan the square sits on the higher left part of the band, which steps lower on the right side. Each plan is labelled 'Compartment wall', pointing to the band. Explanatory text sits below.",
+ "first_draft": "'See para 9.23' is at the top left, and a green bar along the bottom reads 'Diagram 9.5 Flues penetrating compartment walls or floors'. The drawing has two parts. Part a, headed 'a. Flue passing through compartment wall or floor', shows a horizontal grey band interrupted by a vertical gap holding two upright grey rectangles; a horizontal grey flue runs through the gap. A label 'Compartment wall or floor' points to the left horizontal band, 'Flue' to the right horizontal flue, and 'Flue wall' to the lower upright rectangle. A line of explanatory text sits below. Part b, headed 'b. Flue built into compartment wall', shows two side-by-side plans, each a horizontal grey band with a hollow square grey block centred on it; in the right-hand plan the band steps lower on the right side. Each plan is labelled 'Compartment wall', pointing to the band. A line of explanatory text sits below."
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-D6_p175",
+ "source": "ADB1",
+ "label": "Diagram D6",
+ "page": 175,
+ "caption": "Diagram D6 Height of top storey in building",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "0279b75c7036feae2b3ead5b3632b32f44163c347120950d60c61acb4205ae18",
+ "image_sig": {
+  "w": 737,
+  "h": 409,
+  "grey": "6dfX19fX19fX19fX19fX2Pr4+Pj4+Pj4+Pj4+Pj4+Pj7////////////////////+////////6CR4vD///////v//////+zR0dz////////7///////u///u////////+///////3+vr4M/P0/3///v////y3+L19eXQ3uf0///7////5dPl///u////////+////+rU3uvr5OfN//////v////ozuH//8HD9v/////7///////Yrq6b////////+/////zRpMzt7v////////v////d2v7////////////QxsbGxsbGxsbGxsbGxsbGiGhiaGVnY2VVVVVVVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "This is a section drawing, captioned in the green band at the bottom \"Diagram D6 Height of top storey in building\". It shows a multi-storey building in cross-section, drawn as a tall rectangle divided by horizontal lines into three storeys. A grey block labelled \"Plant\" sits on the flat top. On the right, a leader line points to the top edge and is labelled \"Roof\". Beneath the building is a grey ground profile that is higher on the right, stepping down at the right-hand side of the building to a lower level beneath it, and sloping down to the left. On the left, a vertical green double-headed arrow spans from the floor of the top storey (the first horizontal line below the roof, the upper floor surface of the top floor) down to the ground level on the lowest (left) side of the building; beside it the text reads \"Height of top storey measured from upper floor surface of top floor to ground level on lowest side of building\". On the right, a separate text block reads \"Height of top storey excludes roof-top plant areas and any top storeys consisting exclusively of plant rooms\".",
+ "first_draft": "This is a section drawing, captioned in the green band at the bottom \"Diagram D6 Height of top storey in building\". It shows a multi-storey building in cross-section, drawn as a tall rectangle divided by horizontal lines into four storeys. A grey block labelled \"Plant\" sits on the flat top. On the right, a leader line points to the top edge and is labelled \"Roof\". Beneath the building is a sloping grey ground profile, higher on the right and stepped down to a lower level on the left. On the left, a vertical green double-headed arrow spans from the top line of the building down to the ground on the lowest (left) side; beside it the text reads \"Height of top storey measured from upper floor surface of top floor to ground level on lowest side of building\". On the right, a separate text block reads \"Height of top storey excludes roof-top plant areas and any top storeys consisting exclusively of plant rooms\"."
+}

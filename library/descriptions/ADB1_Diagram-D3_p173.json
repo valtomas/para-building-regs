@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-D3_p173",
+ "source": "ADB1",
+ "label": "Diagram D3",
+ "page": 173,
+ "caption": "Diagram D3 Area | Building Regulations 2010",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "d02b10bfa173bf9dbe283352786dc1aa132a5cbe1d754297334fd0f9247e128e",
+ "image_sig": {
+  "w": 737,
+  "h": 620,
+  "grey": "8OXl5eXl5eXl5eXl5eXl5fn3+ff1+/v7+/v7+/v7+/v64d/f2/3/////////////9NLa/////+je3NHn9e7///v86+L4/+735/f6///18P/7+eXh8f/p9vD39P/z5/z/+9XW2//djqzz9PT9//Lt//vEnMr/35+u//Lv///95e777ent////8Of0////9+X/+/////////////////////bM2eDg7P/8zNze7/b////7+fn6/v///unp6ef8////6J+iq/////SZop2d5uHw/+ior7r////0pLCvr9/S6v/32Njh/////djY2Nj8////lHdycWtra2tra2tra2traw=="
+ },
+ "reviewed": false,
+ "description": "Diagram D3 'Area' has three parts. Part a, 'Surface area: roofs and rooflights' ('In each case measure the visible area'), shows i. a flat or monopitch roof section with a green arrow, labelled 'Measure from outermost point of roof at eaves or verge' and 'If a lean-to roof, measure from the face of wall to the outermost point of roof'; ii. a double pitch roof section with a green arrow along the slope, labelled 'Highest point of roof slope' and 'Lowest point of roof slope at eaves'; an elevation labelled 'Outermost point of roof' and 'If a hipped roof, measure to outermost point of roof at base area'; and iii. a rooflight section with a slanted 'Roof sheeting' bar, 'Rooflight' gap and green arrow. Part b, 'Floor area', shows a plan: thick black walls, green interior, door gap, labelled 'Room, garage, conservatory or outbuilding, measure to inner surface of enclosing walls'. Part c shows a similar plan with faint internal lines, labelled 'Storey, part or compartment, measure to inner surface of enclosing walls and include internal walls and partitions', and 'When there is not an outer enclosing wall, measure to the outermost edge of the floor slab'.",
+ "first_draft": "Diagram D3 'Area' has three parts. Part a, 'Surface area: roofs and rooflights' ('In each case measure the visible area'), shows i. a flat or monopitch roof section with a green arrow, labelled 'Measure from outermost point of roof at eaves or verge' and 'If a lean-to roof, measure from the face of wall to the outermost point of roof'; ii. a double pitch roof section with a green arrow along the slope, labelled 'Highest point of roof slope' and 'Lowest point of roof slope at eaves'; an elevation labelled 'Outermost point of roof' and 'If a hipped roof, measure to outermost point of roof at base area'; and iii. a rooflight section with a slanted 'Roof sheeting' bar, 'Rooflight' gap and green arrow. Part b, 'Floor area', shows a plan: thick black walls, green interior, door gap, labelled 'Room, garage, conservatory or outbuilding, measure to inner surface of enclosing walls'. Part c shows a similar plan with faint internal lines, labelled 'Storey, part or compartment, measure to inner surface of enclosing walls and include internal walls and partitions', and 'When there is not an outer enclosing wall, measure to the outermost edge of the floor slab'."
+}

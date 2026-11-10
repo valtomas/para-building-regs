@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-3.5_p36",
+ "source": "ADB1",
+ "label": "Diagram 3.5",
+ "page": 36,
+ "caption": "Diagram 3.5 Multi-storey flat with alternative exits from each habitable room, except at entrance level",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "5f0e570813788961131e0ea8f58be7690c436e461a69d918a697c34a32a875c5",
+ "image_sig": {
+  "w": 754,
+  "h": 414,
+  "grey": "7u74+Pj4+Pj4+Pj4+Pj49vb54eX////h4Pn///////v7////////3t7t///////7+//s7ur//+fq6fv/////+/v/9v/v///19P/2//////v7//b26///9fL/9v/////7+//2+fb//+fp9/bv6Pn/+/v/2eLm///m6eT27vPz+fv7/9vu9P//2evu9tzY1Pf7+//28uT//+3s//b18O/6+/v/5fLw///19P/2//////v7/93l5///6+nw+P/////7+//06P////X+9P//////++jm5ubm5ubm5ubm5ubm5ueDZ2BmZ2RmZWVlZ2hkZVtuflVaZ2NVVVVVVVVVVVVVdA=="
+ },
+ "reviewed": false,
+ "description": "The drawing, titled in a green bar at the bottom \"Diagram 3.5 Multi-storey flat with alternative exits from each habitable room, except at entrance level\", contains two floor plans, a legend, a note, and a reference \"See para 3.21\" at the top left.\n\nPart a, labelled \"Entrance level\", is a plan of a flat divided into two rooms by a central wall. A door marked \"Flat entrance\" opens at the bottom. The left room shows a stair symbol and a \"WC\". Two green diagonal lines, each labelled \"9m max.\", run from the central door to the top-right and bottom-right corners.\n\nPart b, labelled \"Level(s) above or below entrance level\", is a similar plan with a stair symbol on the left and a room labelled \"Bathroom\" on the right. The words \"Exit\" appear four times—at the top-left, top-right, bottom-left and bottom-right—each with a green arrow symbol pointing outwards.\n\nOn the right, a legend shows the green arrow symbol as \"Alternative exit\", and a NOTE reads: \"This only applies where at least one storey is more than 4.5m above ground level.\"",
+ "first_draft": "The drawing, titled in a green bar at the bottom \"Diagram 3.5 Multi-storey flat with alternative exits from each habitable room, except at entrance level\", contains two floor plans, a legend, a note, and a reference \"See para 3.21\" at the top left.\n\nPart a, labelled \"Entrance level\", is a plan of a flat divided into two rooms by a central wall. A door marked \"Flat entrance\" opens at the bottom. The left room shows a stair symbol and a \"WC\". Two green diagonal lines, each labelled \"9m max.\", run from the entrance door to the top-right and bottom-right corners.\n\nPart b, labelled \"Level(s) above or below entrance level\", is a similar plan with a stair symbol on the left and a room labelled \"Bathroom\" on the right. The words \"Exit\" appear four times—at the top-left, top-right, bottom-left and bottom-right—each with a green arrow symbol pointing outwards.\n\nOn the right, a legend shows the green arrow symbol as \"Alternative exit\", and a NOTE reads: \"This only applies where at least one storey is more than 4.5m above ground level.\""
+}

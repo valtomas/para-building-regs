@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-3.8_p40",
+ "source": "ADB1",
+ "label": "Diagram 3.8",
+ "page": 40,
+ "caption": "Diagram 3.8 Horizontal escape for flats served by more than one common stair",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "b0ef449beee120535ecb819563512204ee8b6cdff4c366a92d6674aedc4ab1ee",
+ "image_sig": {
+  "w": 754,
+  "h": 791,
+  "grey": "8/P1/Pz8/Pz8/Pz8/Pz8+fv//ubo5uX39vf3+Pb///v7//ze7/bu8O7u8PXZ///7+//87Obu5+nn6evv7v//+/v//vjr+vf39/f3+vn///v7//7f4d3l8O7y7/X8///7+//8++H99Pb1/fX29///+/v//Nzb4+fi69rV3+P///v7//3t7vf29/b04/b5///7+///8O7u9v7+/v//////+/v//O7y+f/54+Xn8vDz//v7//zt7vH5/tnX2OTq+v/7+//86Nzo9v3v8/v/////+/v//PDw8fv209jd2tvg/vv7//3v8/v///Xx9P3////7qJKPkZGSkZGRkZCRkYmJmw=="
+ },
+ "reviewed": false,
+ "description": "The drawing is titled \"Diagram 3.8 Horizontal escape for flats served by more than one common stair\", with a top reference, \"See para 3.27 and 3.40\". It contains three floor plans. a. \"Corridor access without dead ends\": a shaded horizontal corridor flanked by flats marked F, with stair boxes at each end and a cross-corridor fire doorset marked Fd; a dimension reads \"30m max.\" b. \"Corridor access with dead ends\", subtitled \"The central door may be omitted if maximum travel distance is not more than 15m\": a similar corridor with three Fd doorsets, two stair boxes, and dimensions \"7.5m max.\", \"30m max.\" and \"7.5m max.\" c. \"'T' junction with main corridor\": a vertical corridor flanked by four flats on each side, with a horizontal branch of two flats on the right; two cross-corridor fire doorsets (Fd) are shown, one at the junction with the branch and one further down the vertical corridor, and a \"7.5m max.\" dimension is marked along the branch. Green arrows mark the escape route. A legend defines Fd, F, the shaded ventilation zones, the fire resisting construction line, and the escape route. Notes state the arrangements apply to the top storey and point to Appendix C, Table C1 for doorset ratings.",
+ "first_draft": "The drawing is titled \"Diagram 3.8 Horizontal escape for flats served by more than one common stair\", with a top reference, \"See para 3.27 and 3.40\". It contains three floor plans. a. \"Corridor access without dead ends\": a shaded horizontal corridor flanked by flats marked F, with stair boxes at each end and a cross-corridor fire doorset marked Fd; a dimension reads \"30m max.\" b. \"Corridor access with dead ends\", subtitled \"The central door may be omitted if maximum travel distance is not more than 15m\": a similar corridor with three Fd doorsets, two stair boxes, and dimensions \"7.5m max.\", \"30m max.\" and \"7.5m max.\" c. \"'T' junction with main corridor\": a vertical corridor of four flats meeting a horizontal branch of two flats, with Fd at the junction and a \"7.5m max.\" dimension. Green arrows mark the escape route. A legend defines Fd, F, the shaded ventilation zones, the fire resisting construction line, and the escape route. Notes state the arrangements apply to the top storey and point to Appendix C, Table C1 for doorset ratings."
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-2.7_p29",
+ "source": "ADB1",
+ "label": "Diagram 2.7",
+ "page": 29,
+ "caption": "Diagram 2.7 Fire resistance of areas near to external stairs",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "2c6549773e31e013e96f72564f26ad4ee8b30f4c64507d4c450a4478bda3dd34",
+ "image_sig": {
+  "w": 737,
+  "h": 400,
+  "grey": "7e34+Pj4+Pj4+Pj4+Pj4+Pb5////////8Of4///////7//////////Dm+P//////+/////////b48/j49f////v////////z9fD19fL////7////////+//1///7////++/z///r6/Pkz9v/++n2//vt0Nbu9ej736Og3/To7v/7///////4++KwoLLH9P//+8rO3fbx5vLZqqKkzf////vv7v//9dj74qOgvc/q8f/7/Pv//9S7u7u0uLi5u8j/+//////////q5Pb///////v/////////7uf6///////Gu7u7u7u7u7u7u7u7u7u7h2dgZmZmZ2NnZFVVVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "This is a section drawing titled at the bottom in a green band, \"Diagram 2.7 Fire resistance of areas near to external stairs\". A legend on the left defines a green square as \"Fire resisting construction (minimum RE 30)\" and \"Fd\" as \"Fire doorset\". Top left reads \"See para 2.17\", and a NOTE states \"6m max. stair height without weather protection.\"\n\nThe central section shows an external staircase with an upper landing and flights of stairs descending to ground level (the grey line labelled \"Ground level\"), drawn with a stepped flight profile on the left and a hatched flight on the right. A green shaded mass, the fire resisting construction, forms a box around the stair, extending from above the top landing down to ground level and out at the side of the stairway. The mass is labelled \"1100mm above top landing\" at its upper left, \"9m below stair flights and landings\" with a leader line to its left face, and \"1800mm at side of stairway\" with a leader line to its right side wall. Two doorsets, each labelled \"Fd\", are shown at the right side of the stairway, one above the other, the lower one at ground level. At the top, a rectangular door opening at the upper landing is indicated by the label \"No fire resistance required for door\" with a vertical leader line. At the bottom, a vertical leader line from the label \"Fire resisting window (minimum RE 30)\" points up to the front face of the green construction at ground level.",
+ "first_draft": "This is a section drawing titled at the bottom in a green band, \"Diagram 2.7 Fire resistance of areas near to external stairs\". A legend on the left defines a green square as \"Fire resisting construction (minimum RE 30)\" and \"Fd\" as \"Fire doorset\". Top left reads \"See para 2.17\", and a NOTE states \"6m max. stair height without weather protection.\"\n\nThe central section shows a single flight of stairs descending from an upper landing to a grey line labelled \"Ground level\". A green shaded mass, the fire resisting construction, surrounds the stair's lower portion. Dimensions mark this mass: \"1100mm above top landing\" on its upper left edge and \"9m below stair flights and landings\" along its lower left edge; on the right a horizontal dimension reads \"1800mm at side of stairway\". Two doorsets, each labelled \"Fd\", stand at the base of the flight on the right. A top opening is marked by a vertical line and the label \"No fire resistance required for door\". A vertical line from the ground line at the front is labelled \"Fire resisting window (minimum RE 30)\". A roof line caps the top of the section."
+}

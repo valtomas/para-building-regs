@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-2.4_p29",
+ "source": "ADB2",
+ "label": "Diagram 2.4",
+ "page": 29,
+ "caption": "Diagram 2.4 Exits in a central core",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "0f439b5ff191aec413127ce08eb9920d13bcdb9ce2a08957670aafbc1a515e4d",
+ "image_sig": {
+  "w": 737,
+  "h": 512,
+  "grey": "7Oz6+vr6+vr6+vr6+vr6+vvg4Ojo6ODo6Ov////////77/T////2///w////////++/u8Ofu6vDs5fL49/f5+/vv897d6drn9vDTzc3Rz/D77/Tn7v/k5/bw3drZ2eD/++Pq0eb/2eD28NrT5+zx//vt69rq/NzS9fD////////77/Pj6P/f5ujp7O3w////++/00uP/2eX18N/P09Pk9/vv9ODf+ejr9vDlztXg4vL74+fm6OTU5/bw+O36////++///+/+///28P////////vk9vbq9vb26uv////////u5OPj4+Pj4+Po7+/v7+/vf11ZWlxcUE9PT09PT09PTw=="
+ },
+ "reviewed": false,
+ "description": "This is a plan titled \"Diagram 2.4 Exits in a central core\", with \"See para 2.12\" at top left. An outer rectangle of accommodation, marked \"A\" at its corners and mid-edges, surrounds an inner corridor, \"C\", off which the accommodation opens, and four doorways to the outside are shown at the mid-points of the top, left, right and bottom outer walls. At the centre is a core block. Its middle, \"S\", is marked for services, toilets, etc. On the left side of the core, a column contains a protected stairway, \"PS\", drawn with a flight of stairs, at the top and two lifts, \"L\", stacked vertically below it; on the right side, a column contains two lifts, \"L\", stacked vertically at the top and a protected stairway, \"PS\", drawn with a flight of stairs, at the bottom. Self-closing fire doorsets, \"Fd\", appear at the corridor entrances to the two stairways and at the entrances to \"S\" on its top, bottom, left and right sides. Dashed doorsets, \"Fda\", show possible alternative positions at the top and bottom of the core. A legend on the right defines L, S, Fd, Fda, C, PS and A, with Fd noted as \"Self-closing E20 S, fire doorsets\". A separate note in the right margin states that the doors at both ends of the area marked \"S\" should be self-closing fire doorsets unless the area is sub-divided such that any fire in that area will not be able to prejudice both sections of corridor at the same time, and that if that area is a lift lobby, doors should be provided as shown in Figure 9 in BS 9999.",
+ "first_draft": "This is a plan titled \"Diagram 2.4 Exits in a central core\", with \"See para 2.12\" at top left. An outer rectangle of accommodation, marked \"A\" at its corners and mid-edges, surrounds an inner corridor, \"C\", off which the accommodation opens. At the centre is a core block. Its middle, \"S\", is marked for services, toilets, etc. Flanking \"S\" are two protected stairways, \"PS\", each drawn with a flight of stairs. Between \"S\" and each stairway are two lifts, \"L\", stacked vertically on each side. Self-closing fire doorsets, \"Fd\", appear at the corridor entrances to the stairways and at the ends of \"S\"; dashed doorsets, \"Fda\", show possible alternative positions at the top and bottom of the core. A legend on the right defines L, S, Fd, Fda, C, PS and A, with Fd noted as \"Self-closing E20 S, fire doorsets\". A separate note in the right margin addresses the doors at both ends of area \"S\"."
+}

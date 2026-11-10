@@ -142,7 +142,11 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   decided, Withdraw approval or Undo rejection. A warm note says when a drawing's image has changed since its
   description was approved. The description shown is the model's second
   reading (its draft corrected against the image), and there's nothing else to compare: one text against one image.
-  A correction someone other than the model made shows as "corrected by …" in the mono line.
+  A correction someone other than the model made shows as "corrected by …" in the mono line. Two views, Descriptions
+  and Crops, switched by pills under the title. Crops is a grid of tiles by document (the image on white in a 200 px
+  box, the label and page in mono, a "Bad crop" tick box); a ticked tile has a danger-coloured border, a recut one a
+  warm note, and filters show all, marked bad or recut since marked, for one document or all. A description whose
+  crop is ticked carries a "Crop marked bad" tag.
 
 ## Writing in the interface
 

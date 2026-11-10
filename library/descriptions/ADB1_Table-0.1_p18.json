@@ -5,12 +5,12 @@
  "page": 18,
  "caption": "Table 0.1 Continued",
  "model": "Qwen3.8-27B-GGUF",
- "date": "2026-11-06",
- "image_sha256": "44a1f248d52c85f21a057e70e9844209e0bb6cd931b7db91457c7966ee424f01",
+ "date": "2026-11-09",
+ "image_sha256": "e754552455b0a3a0b86acc4286c480937bbc92f1f75c96444f753e67816934ef",
  "image_sig": {
   "w": 754,
-  "h": 839,
-  "grey": "zcC+wdDQ0NDQ0dDQ0dDQ1urr9vnx6+rq6+ns6evp7/b5/f//9N3p6erq6ur19fX7+/////fq6+ns9PX09vb0+vv////03+jo6+nq6vP08vr7////9uvr6ezo6/D29fT3+/////bi8vX19vX2+v//+/X4/Pzz5+bw9vf19fz8/Pn4/P7/9eXm6e7x8e7z8/n7+fv9/PPk5fb8/Pz8/Pz8+efk+v7z6ert9PL09PTz9fX7//n68uTk5OXk6e/w8vHz6vL8/Pfz9fXz9PXy+Pz8+e/o6Orv9PTz9PTx9PT49Pvy6ent6Ozq7Ojw9fX18/T39+zq6ff/////////////+w=="
+  "h": 1029,
+  "grey": "0szIytXU1NPU09TT1NPU2u/t+vzy4+rr7Ovt6u3r7/n7////9+rt6+z09PT8/fz7+/////bj5+Xp5ujo7/Du+fv////15e7t8O3v8/f39vj7////9+ny9/f49/f7///79Pf7/PLj4ebq7evp8vP3+fv////14+X1//////////vo5fn88ufp6/Hv8vP08vT0+fz3+e/h4+Pj4+fn7fHx8+ru9ff7//////////////vw5+nr6Oro6Ofu7/Hw8/H59uzq6vT8/Pz8+/z8/Pv7+vXt7uzu7O7t7e/u8Pf29/bz5+Tm5ejm8Pf8///////79uvq6u3t6u709fT19Pf8+Q=="
  },
  "reviewed": false,
  "not_needed": true

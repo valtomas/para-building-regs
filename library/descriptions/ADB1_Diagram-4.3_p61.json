@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-4.3_p61",
+ "source": "ADB1",
+ "label": "Diagram 4.3",
+ "page": 61,
+ "caption": "Diagram 4.3 Layout restrictions on small class D-s3, d2 plastic rooflights, TP(b) rooflights and lighting diffusers",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "874b4f15130c00cba5e8af127236ff8e4c5999ea9f825cd222fbcd0cfeb096ff",
+ "image_sig": {
+  "w": 737,
+  "h": 763,
+  "grey": "8vH7+/v7+/v7+/v7+/v7+/v//v7+/v7+///////////7//3//////v//////////+//9//j1//7///////////v//fHr1r66u7vW/v7////7//3/7Lyvrq+vruv9////+//9//vBp6mwr6y77v7+//v//v//yaaouqems6zq/v/7//7+/sivqsGvq67B7/3/+//////Jr66tr67Z9/7///v/////zK+vr6+y///////7//////bTzczR6f//////+/////////n0//////////v///ng/PHz9fP08vLy///o5ubl1+PZ5ubm5ubm5ubmg15eaGlhXl1dX11hX15fWA=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a ceiling plan, headed at top left by the text \"See Table 4.2\". A green shaded area with a dashed outline, labelled below as \"Ceiling plan\", occupies the centre. Within this green zone are one vertical rectangle and the central circle of the right-hand group; to the upper left, outside the green zone, is a second vertical rectangle enclosed by a separate dashed rounded outline. Each rectangle has a diagonal green arrow labelled \"dimension x\"; the central circle has a vertical black line labelled \"dimension y\". Green horizontal arrows labelled \"x min.\" run from the outer rectangle to the rectangle in the green zone, and from that rectangle to the central circle. Three circles are grouped on the right, each ringed by a dashed circle; a vertical green arrow \"y min.\" connects the central circle to the upper circle, and a horizontal green arrow \"y min.\" connects it to the right-hand circle. A legend at the bottom identifies the green dashed box as the zone whose materials at the plane of ceiling should comply with Table 4.1, and the rectangle-and-circle symbol as \"Rooflights\". The caption reads \"Diagram 4.3 Layout restrictions on small class D-s3, d2 plastic rooflights, TP(b) rooflights and lighting diffusers\".",
+ "first_draft": "The drawing is a ceiling plan, headed at top left by the text \"See Table 4.2\". A green shaded area with a dashed outline, labelled below as the zone whose materials at the plane of ceiling should comply with Table 4.1, occupies the centre. Within this green zone are two rectangular shapes and one circular shape; to the upper left, outside the green zone, is a third rectangle enclosed by a separate dashed rounded outline. Each rectangle has a diagonal green arrow labelled \"dimension x\"; the central circle has a vertical black arrow labelled \"dimension y\". Green horizontal arrows labelled \"x min.\" run from the outer rectangle to the first inner rectangle, and from that rectangle to the central circle. Three circles are grouped on the right, each ringed by a dashed circle; a vertical green arrow \"y min.\" connects the central circle to the upper circle, and a horizontal green arrow \"y min.\" connects it to the right-hand circle. A legend at the bottom identifies the green dashed box as the Table 4.1 materials zone and the rectangle-and-circle symbol as \"Rooflights\". The caption reads \"Diagram 4.3 Layout restrictions on small class D-s3, d2 plastic rooflights, TP(b) rooflights and lighting diffusers\"."
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-2.10_p36",
+ "source": "ADB2",
+ "label": "Diagram 2.10",
+ "page": 36,
+ "caption": "Diagram 2.10 Dead-end corridors exceeding 4.5m long | Cavity barriers",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "bf4aa9e4f97d344668581953b45403c8cee263b5cd3b043673bb182204db956c",
+ "image_sig": {
+  "w": 754,
+  "h": 534,
+  "grey": "7ev6+vr6+vr6+vr6+vr69/v/+c/j////+tHl//////v7//n3+v3///nn9/z////7+//69P/8///62Pv7////+/v/9O/z+v//9cvi+P////v7//r1/vz///rW1/j////7+//18PX09PX13f37////+/v/+vD/+ff5+vb8+/////v7//bTwrzA8/bz9Pr////7+//69f78+vn69v37////+/v/9vD49vj59tLr+P////v7//Xw9fv///XO0/P48//7+//69f78///61fj69un/+/v/+vT//P//+tj75+fn//v1+PTz8/f4+PLt7/X4+Pj1gF1bXVxcXl1dT09PT09PbQ=="
+ },
+ "reviewed": false,
+ "description": "This drawing is a building plan with two parts, labelled a. and b., and a note 'See para 2.28' at the top left. Part a., captioned ''T' junction with main corridor', shows a vertical unshaded corridor with doorways opening onto rooms, joined by a horizontal green-shaded corridor that branches off to the right to form the junction; this green corridor carries three pairs of door symbols, each pair marked 'Fd'. Part b., captioned 'Continuation past stairway', shows a vertical green-shaded corridor containing door symbols marked 'Fd' arranged in pairs and singly, with two stairways drawn to its right at the upper and lower levels. A legend on the right defines 'Fd' as 'Self-closing fire doorsets' and the green square as 'Protected corridor'. The green shading identifies the protected corridor in both parts, while the unshaded areas are rooms and the main corridor.",
+ "first_draft": "This drawing, titled 'Diagram 2.10 Dead-end corridors exceeding 4.5m long', is a building plan with two parts, labelled a. and b., and a note 'See para 2.28' at the top left. Part a., captioned ''T' junction with main corridor', shows a vertical unshaded corridor with doorways opening onto rooms, crossed by a horizontal green-shaded corridor that branches off to the right to form the junction; this green corridor carries three pairs of door symbols, each pair marked 'Fd'. Part b., captioned 'Continuation past stairway', shows a vertical green-shaded corridor containing door symbols marked 'Fd' arranged in pairs and singly, with two stairways drawn to its right at the upper and lower levels. A legend on the right defines 'Fd' as 'Self-closing fire doorsets' and the green square as 'Protected corridor'. The green shading identifies the protected corridor in both parts, while the unshaded areas are rooms and the main corridor."
+}

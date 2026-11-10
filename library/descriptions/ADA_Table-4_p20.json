@@ -5,12 +5,12 @@
  "page": 20,
  "caption": "Table 4 \u0007Imposed loads",
  "model": "Qwen3.8-27B-GGUF",
- "date": "2026-11-06",
- "image_sha256": "83cc10354f98407c4a3ebf1ee0e492f0d829bd8358b5feb087bbfaeffa34319c",
+ "date": "2026-11-09",
+ "image_sha256": "fa9a9636d02df2abec1fa0328d23d3cfac5f2d0144916c3f2124cb97476997e8",
  "image_sig": {
-  "w": 407,
-  "h": 420,
-  "grey": "2K+5taiqrKTC0tLS0tLx5uHF0uTj5OTk5OTk5MzC9/L59vb29vb29vb25d/f3Pzz9u7////x1N7c2+DZ1tz/8/Tp9vb29vDy4ODl497h/P/14/L29vb29uHi5OXh5fz3/PH3///15eve29ve39z/9Pn29vb29vb29vb29vb2/PTLub26wcO7w7/LyLfU9P//5Njd1dfe2drj3dvd5O7/8+3n5ejc5PL//////////+zazMTNxNfHxMTVyOv////q2s3Ix8PP////////////89TNz87a0Nvb2tvZ29n4/+vo19TR0NPVytzMzs/LzvXy4tbO1tPY1djS0tzb3uP97g=="
+  "w": 371,
+  "h": 189,
+  "grey": "1Lu/vcDAvr6+wMDAwMDA0+WXr6yIioeZgM7i4uLi4uvt4eLi2+Hh4uHi4uLi4uLr3sLI2NjY2NjY2NjY2M7B3/HN1//////////////fyufz7Ozs7Ozs7Ozs7Ojq6+vx///////////////dy8/N7fLP////+8vO1NTV0c/K1fH////////vzdXc1N3VztPx8+zs7Ozs6eXo4eLl4+Lf8PXq+v//////+OXp6+3j5fb75/f///////nj4ebl5ub68ens7Ozs7Ozq6uvq6+fp8PTL1f//////9MfHz87NyvH////////OyNPbz8rQ08vq8+zs7Ozs6+zs7Ozs7Ozs8g=="
  },
  "reviewed": false,
  "not_needed": true
