@@ -78,6 +78,41 @@ code { font-family: var(--mono); font-size: .8em; background: var(--cite); color
   text-transform: uppercase; color: var(--sidebar-sub); white-space: nowrap; }
 .logo { font: 500 44px/1 var(--display); color: var(--gold); }
 .brand .close { display: none; }
+/* the project picker: a button set like the sidebar's links over a rule, opening a menu of projects */
+.project-box { display: flex; flex-direction: column; gap: 4px; margin-bottom: -12px; }
+.project-pick { display: flex; flex-direction: column; gap: 4px; position: relative; }
+.project-pick > span { font: 400 10.5px/1.4 var(--mono); letter-spacing: .22em; text-transform: uppercase;
+  color: var(--sidebar-muted); }
+#projectBtn { display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; background: none;
+  border: 0; border-bottom: 1px solid var(--sidebar-line); padding: 4px 2px 8px 0; cursor: pointer; text-align: left;
+  color: var(--sidebar-text); font: 500 19px/1.25 var(--display); }
+#projectBtn span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#projectBtn::after { content: ""; flex: none; width: 7px; height: 7px; margin: 0 6px 4px 0; border-right: 1.5px solid var(--sidebar-muted);
+  border-bottom: 1.5px solid var(--sidebar-muted); transform: rotate(45deg); }
+#projectBtn[aria-expanded=true]::after { transform: rotate(-135deg); margin-bottom: -4px; }
+#projectBtn:hover::after, #projectBtn[aria-expanded=true]::after { border-color: var(--sidebar-text); }
+#projectBtn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+/* the menu: ruled rows like the chat list, on the sidebar's hover colour */
+.project-menu { position: absolute; top: calc(100% + 6px); left: -8px; right: -8px; z-index: 5; display: flex; flex-direction: column;
+  padding: 6px; background: var(--sidebar-hover); border: 1px solid var(--sidebar-line); border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(20, 10, 6, .35); max-height: 60vh; overflow-y: auto; }
+.project-menu[hidden] { display: none; }
+.project-menu button { display: flex; align-items: baseline; gap: 10px; background: none; border: 0; border-radius: 8px;
+  padding: 9px 10px; cursor: pointer; text-align: left; color: var(--sidebar-text); font-size: 15.5px; line-height: 1.3; }
+.project-menu button span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+.project-menu button:hover, .project-menu button:focus-visible { background: var(--sidebar); outline: 0; }
+/* the chosen project is marked with the pilcrow; the others keep its space so names line up */
+.project-menu button[aria-checked]::before { content: ""; width: 10px; flex: none; color: var(--gold); font: 500 15px/1 var(--display); }
+.project-menu button[aria-checked=true]::before { content: "¶"; }
+.project-menu button.none span { font-style: italic; color: var(--sidebar-sub); }
+.project-menu .new { margin-top: 4px; border-top: 1px solid var(--sidebar-line); border-radius: 0 0 8px 8px; padding-top: 11px;
+  font: 400 11px/1.4 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--sidebar-sub); }
+.project-menu .new::after { content: "+"; margin-left: auto; font: 16px/1 var(--mono); letter-spacing: 0; }
+.project-edit { align-self: flex-start; background: none; border: 0; padding: 4px 0; cursor: pointer; color: var(--sidebar-sub);
+  font: 400 11px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.project-edit:hover { color: var(--sidebar-text); text-decoration: underline; text-underline-offset: 3px; }
+#dlg-project { width: min(760px, 94vw); max-height: 90vh; padding: 30px 38px; overflow-y: auto; }
+#dlg-project.creating #projectFiles, #dlg-project.creating #projectDelete { display: none; }
 #newChat { display: flex; justify-content: space-between; align-items: center; background: var(--new-chat);
   color: var(--new-chat-text); border: 0; padding: 11px 18px; font-size: 12px; letter-spacing: .16em; }
 #newChat span:last-child { font-size: 16px; line-height: 1; letter-spacing: 0; }
@@ -351,7 +386,7 @@ input[type=checkbox]:checked { background-color: var(--accent); border-color: va
 .modal.narrow label.check:has(input:checked) { border-color: var(--accent); background: var(--accent-2); }
 .muted { color: var(--muted); }
 .small { font-size: 15px; }
-.pane > p.muted.small, .tabpane > p.muted.small, #dlg-files > p.muted.small { font-size: 15px; line-height: 1.5; }
+.pane > p.muted.small, .tabpane > p.muted.small, #dlg-files > p.muted.small, #projectFiles > p.muted.small { font-size: 15px; line-height: 1.5; }
 #externalPane > p.muted.small:last-child { font-style: italic; font-size: 14.5px; }
 #findResult { font-style: italic; font-size: 15px; }
 #machineInfo { font: 12px/1.5 var(--mono) !important; letter-spacing: .06em; color: var(--muted-2); font-style: normal !important; }
@@ -409,9 +444,9 @@ input[type=checkbox]:checked { background-color: var(--accent); border-color: va
 .drop .muted.small { font: 11.5px/1.5 var(--mono); letter-spacing: .04em; color: var(--muted-2); }
 .modal label.link { display: inline; color: var(--accent); cursor: pointer; text-decoration: underline;
   text-decoration-thickness: 1px; text-underline-offset: 4px; font-size: inherit; }
-#fileList { display: flex; flex-direction: column; border-top: 1px solid var(--ink); overflow-y: auto; min-height: 0; flex: 0 1 auto; }
-#fileList > p { margin: 0; padding: 14px 2px; font-style: italic; color: var(--muted-2); }
-#fileList > .muted.small { padding: 12px 2px; border-bottom: 1px solid var(--border); font: italic 17px/1.3 var(--body); color: var(--muted-2); }
+#fileList, #projectFileList { display: flex; flex-direction: column; border-top: 1px solid var(--ink); overflow-y: auto; min-height: 0; flex: 0 1 auto; }
+#fileList > p, #projectFileList > p { margin: 0; padding: 14px 2px; font-style: italic; color: var(--muted-2); }
+#fileList > .muted.small, #projectFileList > .muted.small { padding: 12px 2px; border-bottom: 1px solid var(--border); font: italic 17px/1.3 var(--body); color: var(--muted-2); }
 .file-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px 8px; align-items: center; padding: 12px 2px;
   border-bottom: 1px solid var(--border); }
 .file-row .info { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; min-width: 0; margin-right: 8px; }
@@ -464,6 +499,8 @@ input[type=checkbox]:checked { background-color: var(--accent); border-color: va
   #sidebar.open .brand .close { display: grid; width: 44px; height: 44px; border-color: var(--sidebar-text); color: var(--sidebar-text); }
   #sidebar.open .brand .close:hover { background: var(--sidebar-hover); }
   #sidebar.open #newChat { padding: 14px 20px; }
+  #sidebar.open #projectBtn { font-size: 22px; }
+  #sidebar.open .project-menu button { font-size: 17px; padding: 12px 10px; }
   #sidebar.open .chat-item button.open { font-size: 17px; padding: 12px 10px; }
   #sidebar.open .chat-item .del { visibility: visible; }
   #sidebar.open .side-link { font-size: 22px; padding: 10px; }

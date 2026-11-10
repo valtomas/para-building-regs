@@ -24,7 +24,7 @@ import webbrowser
 from . import VERSION, paths
 from .core import BASE_PROMPT, chat_events
 from .engine import Engine, Job, catalog, recommend, _download
-from .library import Library
+from .library import Library, Scope
 from .llm import Client, EngineError, is_local, probe_known
 from .myfiles import TYPES, MyFiles
 
@@ -56,22 +56,41 @@ def load_chat(cid):
         return None
 
 
-def save_chat(chat):
-    chat["updated"] = time.time()
+def save_chat(chat, touch=True):
+    if touch:
+        chat["updated"] = time.time()
     tmp = os.path.join(chats_dir(), chat["id"] + ".json.tmp")
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(chat, f)
     os.replace(tmp, os.path.join(chats_dir(), chat["id"] + ".json"))
 
 
-def list_chats():
-    out = []
+def list_chats_all():
     for name in os.listdir(chats_dir()):
         if name.endswith(".json"):
             c = load_chat(name[:-5])
             if c:
-                out.append({"id": c["id"], "title": c.get("title", ""), "updated": c.get("updated", 0)})
-    return sorted(out, key=lambda c: -c["updated"])[:200]
+                yield c
+
+
+def list_chats():
+    """The latest 200 chats of each project (and of chats in none), newest first."""
+    out, per_project = [], {}
+    for c in sorted(list_chats_all(), key=lambda c: -c.get("updated", 0)):
+        project = c.get("project", "")
+        per_project[project] = per_project.get(project, 0) + 1
+        if per_project[project] <= 200:
+            out.append({"id": c["id"], "title": c.get("title", ""), "updated": c.get("updated", 0),
+                        "project": project})
+    return out
+
+
+def move_chats(old, new):
+    """Point a project's chats at its new name ("" when it's deleted: they become ordinary chats)."""
+    for c in list_chats_all():
+        if c.get("project") == old:
+            c["project"] = new
+            save_chat(c, touch=False)
 
 
 # ----- updates -----
@@ -174,7 +193,7 @@ def state():
     info = library.info()
     return {"version": VERSION, "settings": public_settings(), "default_instructions": BASE_PROMPT,
             "library": {k: info[k] for k in ("version", "built", "sources")},
-            "files": myfiles.list(), "files_dir": myfiles.folder, "file_types": sorted(TYPES),
+            "files": myfiles.list(), "files_dir": myfiles.folder, "projects": myfiles.projects(), "file_types": sorted(TYPES),
             "bundled": engine.bundled.status(), "catalog": catalog()["models"],
             "recommended": (recommend() or {}).get("id"), "updates": update_info,
             "library_job": library_job["job"].view() if library_job.get("job") else None,
@@ -249,7 +268,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
                     return self._send(404, {"error": "No such figure"})
                 return self._send(200, png, "image/png")
             if path == "/api/search":
-                return self._send(200, {"results": library.search(q.get("q", ""), limit=30)})
+                keys = myfiles.keys(q["project"]) if "project" in q else None
+                return self._send(200, {"results": library.search(q.get("q", ""), limit=30, file_keys=keys)})
             if path == "/api/engines":
                 return self._send(200, {"found": probe_known()})
             if path == "/api/models":
@@ -286,6 +306,13 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if url.path == "/api/files":
             myfiles.remove(q.get("key", ""))
             return self._send(200, {"files": myfiles.list()})
+        if url.path == "/api/projects":
+            try:
+                myfiles.delete_project(q.get("name", ""))
+            except ValueError as e:
+                return self._send(400, {"error": str(e)})
+            move_chats(q.get("name", ""), "")
+            return self._send(200, state())
         return self._send(404, {"error": "Not found"})
 
     def do_POST(self):
@@ -315,8 +342,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 if n > 300 * 2**20:
                     return self._send(413, {"error": "That file is over 300 MB."})
                 data = self.rfile.read(n)
+                project = urllib.parse.unquote(self.headers.get("X-Project", ""))
                 try:
-                    myfiles.add(name, data)
+                    if project and not myfiles.project(project):
+                        raise ValueError("That project doesn't exist any more.")
+                    myfiles.add(name, data, project)
                 except ValueError as e:
                     return self._send(400, {"error": str(e)})
                 return self._send(200, {"files": myfiles.list()})
@@ -324,6 +354,29 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 body = self._json_body()
                 myfiles.set_note(body.get("key", ""), str(body.get("note", "")))
                 return self._send(200, {"files": myfiles.list()})
+            if path == "/api/projects":
+                body = self._json_body()
+                try:
+                    name = myfiles.create_project(body.get("name", ""), body.get("notes", ""))
+                except ValueError as e:
+                    return self._send(400, {"error": str(e)})
+                return self._send(200, {**state(), "project": name})
+            if path == "/api/projects/update":
+                body = self._json_body()
+                name = body.get("name", "")
+                if not myfiles.project(name):
+                    return self._send(404, {"error": "No such project"})
+                try:
+                    if "new_name" in body:
+                        new = myfiles.rename_project(name, body["new_name"])
+                        if new != name:
+                            move_chats(name, new)
+                            name = new
+                except (ValueError, OSError) as e:  # OSError: the folder is open elsewhere (Windows)
+                    return self._send(400, {"error": str(e)})
+                if "notes" in body:
+                    myfiles.set_project_notes(name, body["notes"])
+                return self._send(200, {**state(), "project": name})
             if path == "/api/files/sync":
                 myfiles.sync()
                 return self._send(200, {"files": myfiles.list()})
@@ -332,7 +385,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 if body.get("url", "").startswith(("https://", "http://")):
                     webbrowser.open(body["url"])
                 elif body.get("folder") == "files":
-                    open_path(myfiles.folder)
+                    project = body.get("project") or ""
+                    open_path(myfiles.project_folder(project) if myfiles.project(project) else myfiles.folder)
                 elif body.get("file"):
                     key = os.path.abspath(body["file"])
                     if key in {s["key"] for s in library.files.sources()} and os.path.exists(key):
@@ -374,8 +428,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
         question = str(body.get("question", "")).strip()
         if not question:
             return self._send(400, {"error": "Empty question"})
-        chat = load_chat(body.get("id")) or {"id": str(uuid.uuid4()), "title": question[:80], "messages": [],
-                                              "turns": [], "created": time.time()}
+        chat = load_chat(body.get("id"))
+        if not chat:
+            project = body.get("project") or ""
+            chat = {"id": str(uuid.uuid4()), "title": question[:80], "messages": [], "turns": [],
+                    "created": time.time(), "project": project if myfiles.project(project) else ""}
         stop = stops[chat["id"]] = threading.Event()
         self.send_response(200)
         self.send_header("Content-Type", "text/event-stream")
@@ -392,12 +449,16 @@ class Handler(http.server.BaseHTTPRequestHandler):
         try:
             send({"type": "chat", "id": chat["id"]})
             s = settings.load()
+            # A project's chat searches its files and the shared ones; any other chat only the shared ones.
+            project = chat.get("project", "")
+            s["project"] = myfiles.project(project) if project else None
+            scope = Scope(library, lambda: myfiles.keys(project if s["project"] else ""))
             if s["engine"].get("mode") == "bundled" and not engine.bundled.status()["running"]:
                 send({"type": "status", "text": "Starting the AI engine…"})
             client = engine.client(s)
             send({"type": "status", "text": "", "model": client.model})
             answer = []
-            for ev in chat_events(client, library, chat["messages"], question, s):
+            for ev in chat_events(client, scope, chat["messages"], question, s):
                 engine.bundled.touch()  # a long answer isn't idle time
                 if stop.is_set():
                     turn["stopped"] = True

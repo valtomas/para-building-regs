@@ -138,6 +138,52 @@ try:
 except urllib.error.HTTPError as e:
     check(e.code == 400, "refuses unsupported files")
 
+# projects: a folder of files searched only in the project's chats, with its own notes
+st = json.loads(call("/api/projects", {"name": "Mill Lane", "notes": "3-storey house, new build"}))
+check(st["project"] == "Mill Lane" and st["projects"][0]["notes"] == "3-storey house, new build", "creates a project")
+for bad in ("", "../up", "a/b", ".hidden"):
+    try:
+        call("/api/projects", {"name": bad})
+        check(False, f"refuses the project name {bad!r}")
+    except urllib.error.HTTPError as e:
+        check(e.code == 400, f"refuses the project name {bad!r}")
+data = b"# Stair schedule\n\n4.1 The private stair rise is 190 mm in the Part K stair schedule."
+call("/api/files", raw=data, headers={"X-Filename": "Stairs.md", "X-Project": "Mill%20Lane"})
+st = json.loads(call("/api/state"))
+mine = [f for f in st["files"] if f["project"] == "Mill Lane"]
+check(len(mine) == 1 and st["projects"][0]["files"] == 1, "adds a file to a project")
+check(os.path.dirname(mine[0]["key"]) == os.path.join(TMP, "Para Files", "Mill Lane"), "into the project's folder")
+outside = ask("What is the maximum rise of a private stair?")
+found_out = [r["id"] for e in outside if e["type"] == "search" for r in e["results"]]
+check(not any(i.startswith("f") for i in found_out), "a chat outside the project doesn't search its files")
+# the project is set when the chat is created, so ask a new chat with it
+evs = []
+for line in call("/api/ask", {"question": "What is the maximum rise of a private stair?",
+                              "project": "Mill Lane"}).decode().split("\n\n"):
+    if line.startswith("data: "):
+        evs.append(json.loads(line[6:]))
+found = [r["id"] for e in evs if e["type"] == "search" for r in e["results"]]
+check(any(i.startswith("f") for i in found), "a project's chat searches its files")
+cid_p = evs[0]["id"]
+check(json.loads(call("/api/chat?id=" + cid_p))["project"] == "Mill Lane", "the chat belongs to the project")
+from para import core  # noqa: E402
+prompt = core.system_prompt(server.library, {"project": server.myfiles.project("Mill Lane")})
+check('project "Mill Lane"' in prompt and "3-storey house" in prompt, "the project's notes go in the prompt")
+st = json.loads(call("/api/projects/update", {"name": "Mill Lane", "new_name": "Mill Lane 2", "notes": "Flats"}))
+moved = [f for f in st["files"] if f["project"] == "Mill Lane 2"]
+check(st["project"] == "Mill Lane 2" and moved and moved[0]["note"] == "" and st["projects"][0]["notes"] == "Flats"
+      and os.path.exists(moved[0]["key"]), "renames a project, moving its files")
+check(json.loads(call("/api/chat?id=" + cid_p))["project"] == "Mill Lane 2", "its chats move with it")
+try:
+    call("/api/projects?name=" + urllib.parse.quote("Mill Lane 2"), method="DELETE")
+    check(False, "won't delete a project that still has files")
+except urllib.error.HTTPError as e:
+    check(e.code == 400, "won't delete a project that still has files")
+call("/api/files?key=" + urllib.parse.quote(moved[0]["key"]), method="DELETE")
+st = json.loads(call("/api/projects?name=" + urllib.parse.quote("Mill Lane 2"), method="DELETE"))
+check(not st["projects"] and json.loads(call("/api/chat?id=" + cid_p))["project"] == "",
+      "deletes an empty project; its chats stay, in no project")
+
 # a page on another site can't drive the app
 try:
     call("/api/settings", {"project_notes": "x"}, headers={"Content-Type": "application/json",

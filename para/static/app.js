@@ -7,6 +7,7 @@ let S = null;            // /api/state
 let chatId = null;       // open chat
 let busy = false;
 let citeInfo = {};       // id -> {source, ref, heading}
+let project = "";        // the project chosen in the sidebar ("" for none)
 
 async function api(path, opts = {}) {
   const r = await fetch(path, { headers: { "Content-Type": "application/json" }, ...opts,
@@ -71,7 +72,7 @@ async function refresh() {
   $("#reasoning").value = s.reasoning || "auto";
   $("#length").value = s.length || "normal";
   $("#version").textContent = `Version ${S.version} · library ${S.library.version || "none"}`;
-  $("#filesCount").textContent = S.files.length || "";
+  $("#filesCount").textContent = S.files.filter((f) => !f.project).length || "";
   $("#libCount").textContent = S.library.sources.length || "";
   const b = $("#engineBadge");
   const e = s.engine;
@@ -85,6 +86,7 @@ async function refresh() {
     note.textContent = u.app ? `Version ${u.app.version} is available` : `Library update ${u.library.version} available`;
     note.onclick = () => { openSettings("about"); };
   } else note.hidden = true;
+  renderProjects();
   renderChats();
   return S;
 }
@@ -93,7 +95,7 @@ const hostOf = (u) => { try { return new URL(u).host; } catch { return u; } };
 function renderChats() {
   const nav = $("#chatList");
   nav.innerHTML = "";
-  for (const c of S.chats) {
+  for (const c of S.chats.filter((c) => (c.project || "") === project)) {
     const row = document.createElement("div");
     row.className = "chat-item" + (c.id === chatId ? " active" : "");
     row.innerHTML = `<button class="open" title="${esc(c.title)}">${esc(c.title || "Chat")}</button><button class="del" title="Delete" aria-label="Delete chat"><svg class="x" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button>`;
@@ -107,6 +109,92 @@ function renderChats() {
     nav.appendChild(row);
   }
 }
+
+// ---------- projects ----------
+function renderProjects() {
+  const names = S.projects.map((p) => p.name);
+  project = names.includes(S.settings.current_project) ? S.settings.current_project : "";
+  $("#projectBtn").innerHTML = `<span>${esc(project || "No project")}</span>`;
+  $("#projectMenu").innerHTML = [["", "No project"], ...names.map((n) => [n, n])].map(([v, label]) =>
+    `<button role="menuitemradio" aria-checked="${v === project}" data-project="${esc(v)}"${v ? "" : ' class="none"'}><span>${esc(label)}</span></button>`).join("") +
+    `<button role="menuitem" class="new" data-newproject>New project</button>`;
+  $("#projectEdit").hidden = !project;
+  $("#question").placeholder = project ? `Ask a question about ${project}…` : "Ask a question…";
+}
+async function setProject(name) {
+  if (busy) return;
+  S = await api("/api/settings", { method: "POST", body: { current_project: name } });
+  project = name;
+  $("#sidebar").classList.remove("open");
+  newChat();
+  refresh();
+}
+// the project menu: drawn here rather than a native select, whose list the system draws in its own style
+const pmenu = $("#projectMenu"), pbtn = $("#projectBtn");
+function projectMenu(open) {
+  pmenu.hidden = !open;
+  pbtn.setAttribute("aria-expanded", open);
+  if (open) (pmenu.querySelector("[aria-checked=true]") || pmenu.querySelector("button")).focus();
+}
+pbtn.onclick = () => projectMenu(pmenu.hidden);
+pmenu.onclick = (e) => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  projectMenu(false);
+  if ("newproject" in b.dataset) openProject(null);
+  else if (b.dataset.project !== project) setProject(b.dataset.project);
+};
+pmenu.addEventListener("keydown", (e) => {
+  const items = $$("button", pmenu), i = items.indexOf(document.activeElement);
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); items[(i + (e.key === "ArrowDown" ? 1 : items.length - 1)) % items.length].focus(); }
+  else if (e.key === "Escape") { projectMenu(false); pbtn.focus(); }
+});
+document.addEventListener("click", (e) => { if (!pmenu.hidden && !e.target.closest(".project-pick")) projectMenu(false); });
+$("#projectEdit").onclick = () => openProject(project);
+
+const dlgP = $("#dlg-project");
+let editing = null;      // the project open in the dialog, null while creating one
+function openProject(name) {
+  editing = name;
+  const p = S.projects.find((x) => x.name === name);
+  dlgP.classList.toggle("creating", !p);
+  $("#projectTitle").textContent = p ? p.name : "New project";
+  $("#projectName").value = p ? p.name : "";
+  $("#projectNotesOne").value = p ? p.notes : "";
+  $("#projectSave").textContent = p ? "Save" : "Create";
+  $("#projectMsg").textContent = "";
+  if (p) renderProjectFiles();
+  if (!dlgP.open) dlgP.showModal();
+  if (!p) $("#projectName").focus();
+  if (p) api("/api/files/sync", { method: "POST" }).then((r) => { S.files = r.files; renderProjectFiles(); });
+}
+function renderProjectFiles() {
+  renderFileList($("#projectFileList"), S.files.filter((f) => f.project === editing));
+}
+$("#projectSave").onclick = async () => {
+  const name = $("#projectName").value.trim(), notes = $("#projectNotesOne").value;
+  try {
+    const r = editing === null
+      ? await api("/api/projects", { method: "POST", body: { name, notes } })
+      : await api("/api/projects/update", { method: "POST", body: { name: editing, new_name: name, notes } });
+    S = r;
+    const created = editing === null;
+    await setProject(r.project);
+    if (created) openProject(r.project);   // carry on: add the project's files
+    else dlgP.close();
+  } catch (e) { $("#projectMsg").textContent = e.message; }
+};
+$("#projectDelete").onclick = async () => {
+  if (!confirm(`Delete the project ${editing}? Its chats are kept, outside any project.`)) return;
+  try {
+    S = await api("/api/projects?name=" + encodeURIComponent(editing), { method: "DELETE" });
+    dlgP.close();
+    await setProject("");
+  } catch (e) { $("#projectMsg").textContent = e.message; }
+};
+$("#openProjectFolder").onclick = (e) => { e.preventDefault(); api("/api/open", { method: "POST", body: { folder: "files", project: editing } }); };
+$("#projectPick").onchange = (e) => { upload([...e.target.files], editing); e.target.value = ""; };
+dropZone($("#projectDrop"), () => editing);
 
 function newChat() {
   chatId = null;
@@ -215,7 +303,7 @@ async function ask(question) {
   setStatus("Thinking…");
   let finished = false;
   try {
-    const r = await fetch("/api/ask", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: chatId, question }) });
+    const r = await fetch("/api/ask", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: chatId, question, project }) });
     if (!r.ok) throw new Error((await r.json().catch(() => ({}))).error || `HTTP ${r.status}`);
     const reader = r.body.getReader();
     const dec = new TextDecoder();
@@ -517,20 +605,21 @@ function renderLibraryJob(j) {
 // ---------- files ----------
 const dlgF = $("#dlg-files");
 function openFiles() { renderFiles(); dlgF.showModal(); api("/api/files/sync", { method: "POST" }).then((r) => { S.files = r.files; renderFiles(); }); }
-function renderFiles() {
-  const list = $("#fileList");
-  if (!S.files.length) { list.innerHTML = `<p class="muted small">No files yet.</p>`; return; }
-  list.innerHTML = S.files.map((f) => `<div class="file-row">
+function renderFiles() { renderFileList($("#fileList"), S.files.filter((f) => !f.project)); }
+function renderFileList(list, files) {
+  if (!files.length) { list.innerHTML = `<p class="muted small">No files yet.</p>`; return; }
+  list.innerHTML = files.map((f) => `<div class="file-row">
     <div class="info"><div class="name">${esc(f.title)}</div>
       <div class="fstate ${esc(f.status)}">${f.status === "ok" ? `${f.passages} passages` : f.status === "reading" ? "Reading…" : f.status === "empty" ? "No text found (a scan?)" : esc(f.status)}</div>
-      <input data-note="${esc(f.key)}" value="${esc(f.note || "")}" placeholder="What is this? (helps the AI, e.g. 'Fire strategy rev C for our project')"></div>
+      <input data-note="${esc(f.key)}" value="${esc(f.note || "")}" placeholder="What is this? (helps the AI, e.g. 'Fire strategy rev C')"></div>
     <button class="btn" data-openfile="${esc(f.key)}">Open</button>
     <button class="btn danger" data-delfile="${esc(f.key)}">Remove</button></div>`).join("");
-  $$("[data-note]").forEach((i) => i.onchange = () => api("/api/files/note", { method: "POST", body: { key: i.dataset.note, note: i.value } }));
-  $$("[data-openfile]").forEach((b) => b.onclick = () => api("/api/open", { method: "POST", body: { file: b.dataset.openfile } }));
-  $$("[data-delfile]").forEach((b) => b.onclick = async () => {
+  $$("[data-note]", list).forEach((i) => i.onchange = () => api("/api/files/note", { method: "POST", body: { key: i.dataset.note, note: i.value } }));
+  $$("[data-openfile]", list).forEach((b) => b.onclick = () => api("/api/open", { method: "POST", body: { file: b.dataset.openfile } }));
+  $$("[data-delfile]", list).forEach((b) => b.onclick = async () => {
     if (!confirm("Remove this file? It is deleted from your files folder too.")) return;
-    S.files = (await api("/api/files?key=" + encodeURIComponent(b.dataset.delfile), { method: "DELETE" })).files; renderFiles(); refresh();
+    S.files = (await api("/api/files?key=" + encodeURIComponent(b.dataset.delfile), { method: "DELETE" })).files;
+    renderFiles(); if (dlgP.open) renderProjectFiles(); refresh();
   });
 }
 function permission() {
@@ -544,28 +633,39 @@ function permission() {
     $("#permCancel").onclick = () => { d.close(); res(false); };
   });
 }
-async function upload(files) {
+// proj: the project the files go in ("" or null: shared by every chat)
+async function upload(files, proj = "") {
   if (!files.length || !(await permission())) return;
+  const list = proj ? $("#projectFileList") : $("#fileList");
   for (const f of files) {
     const row = document.createElement("div"); row.className = "muted small"; row.textContent = `Adding ${f.name}…`;
-    $("#fileList").prepend(row);
+    list.prepend(row);
     try {
-      const r = await fetch("/api/files", { method: "POST", headers: { "X-Filename": encodeURIComponent(f.name) }, body: f });
+      const r = await fetch("/api/files", { method: "POST", headers: { "X-Filename": encodeURIComponent(f.name), "X-Project": encodeURIComponent(proj || "") }, body: f });
       const data = await r.json();
       if (!r.ok) throw new Error(data.error);
       S.files = data.files;
     } catch (e) { alert(`${f.name}: ${e.message}`); }
   }
-  renderFiles(); refresh();
+  renderFiles(); if (dlgP.open) renderProjectFiles(); refresh();
 }
 $("#filePick").onchange = (e) => { upload([...e.target.files]); e.target.value = ""; };
 $("#openFolder").onclick = (e) => { e.preventDefault(); api("/api/open", { method: "POST", body: { folder: "files" } }); };
-const dz = $("#dropZone");
-dz.addEventListener("dragover", (e) => { e.preventDefault(); dz.classList.add("over"); });
-dz.addEventListener("dragleave", () => dz.classList.remove("over"));
-dz.addEventListener("drop", (e) => { e.preventDefault(); dz.classList.remove("over"); upload([...e.dataTransfer.files]); });
+function dropZone(dz, proj) {
+  dz.addEventListener("dragover", (e) => { e.preventDefault(); dz.classList.add("over"); });
+  dz.addEventListener("dragleave", () => dz.classList.remove("over"));
+  dz.addEventListener("drop", (e) => { e.preventDefault(); e.stopPropagation(); dz.classList.remove("over"); upload([...e.dataTransfer.files], proj()); });
+}
+dropZone($("#dropZone"), () => "");
 document.addEventListener("dragover", (e) => e.preventDefault());
-document.addEventListener("drop", (e) => { if (!e.target.closest("#dropZone")) { e.preventDefault(); if (e.dataTransfer.files.length) { openFiles(); upload([...e.dataTransfer.files]); } } });
+// files dropped anywhere else go to the project being worked on, or to the shared files
+document.addEventListener("drop", (e) => {
+  if (e.target.closest(".drop")) return;
+  e.preventDefault();
+  if (!e.dataTransfer.files.length) return;
+  if (project) { openProject(project); upload([...e.dataTransfer.files], project); }
+  else { openFiles(); upload([...e.dataTransfer.files]); }
+});
 
 // ---------- library ----------
 const dlgL = $("#dlg-library");
@@ -591,7 +691,7 @@ $("#libSearch").addEventListener("input", (e) => {
     const qv = e.target.value.trim();
     $("#libSources").hidden = !!qv;
     if (!qv) { $("#libResults").innerHTML = ""; return; }
-    const { results } = await api("/api/search?q=" + encodeURIComponent(qv));
+    const { results } = await api("/api/search?" + new URLSearchParams({ q: qv, project }));
     $("#libResults").innerHTML = results.length ? results.map((h) => `<div class="hit" data-hit="${esc(h.id)}"><div class="where">${esc(h.source)} ${esc(h.ref || "")}${h.heading ? " · " + esc(h.heading) : ""}</div>${esc(h.snippet)}</div>`).join("") : `<p class="muted">Nothing found.</p>`;
     $$("[data-hit]").forEach((el) => el.onclick = () => { dlgL.close(); openPassage(el.dataset.hit); });
   }, 250);
@@ -614,7 +714,7 @@ async function offerLibrary() {
 
 // ---------- phone menu (below 900 px the sidebar is a drawer) ----------
 $("#menuBtn").onclick = () => $("#sidebar").classList.add("open");
-$("#sidebar").addEventListener("click", (e) => { if (e.target.closest("button")) $("#sidebar").classList.remove("open"); });
+$("#sidebar").addEventListener("click", (e) => { if (e.target.closest("button") && !e.target.closest("#projectBtn")) $("#sidebar").classList.remove("open"); });
 
 // ---------- start ----------
 refresh().then(() => {

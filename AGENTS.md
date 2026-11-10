@@ -29,9 +29,9 @@ passage ids; the app checks every citation. It must stay:
 | `para/engine.py` | Built-in engine: downloads llama.cpp's `llama-server` and GGUF models, starts and stops it (memory check, idle stop, leftover clean-up); `Engine.client()` picks the configured engine |
 | `para/models.json` | Built-in model catalogue (also published with each release and fetched by installed apps) |
 | `para/store.py` | SQLite FTS5 store (sources, passages, BM25 search, read, document), used for both libraries |
-| `para/library.py` | The regulations library plus the person's files, searched together; ids `r…` and `f…` |
+| `para/library.py` | The regulations library plus the person's files, searched together; ids `r…` and `f…`; `Scope` limits a chat to its project's files |
 | `para/splitter.py` | Splits text into passages at paragraph numbers, tables, headings; skips contents and index pages |
-| `para/myfiles.py` | Reads the person's files (PDF, DOCX, EPUB, HTML, text) and keeps the files index in sync with their folder |
+| `para/myfiles.py` | Reads the person's files (PDF, DOCX, EPUB, HTML, text) and keeps the files index in sync with their folder; projects (a folder each, notes in `projects.json`) |
 | `para/paths.py` | App data folders, settings (`settings.json`) |
 | `para/static/` | The interface: `index.html`, `app.css`, `app.js` |
 | `library/build.py` | Builds `library/dist/regs.sqlite` from gov.uk (content API + PDFs) and legislation.gov.uk (CLML XML) |
@@ -132,6 +132,11 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
 - **Ids**: regulations passages are `r<rowid>`, the person's files `f<rowid>`. Rowids change between library
   builds, so saved chats can point at a different passage after an update. Don't build features that assume they
   are stable across versions.
+- **Projects**: a project is a folder inside the files folder. Its files are searched only in the project's chats;
+  files at the top of the folder are searched in every chat, and a chat in no project searches only those. The
+  project is fixed when a chat is created (`chat["project"]`); renaming a project moves its folder, its files' index
+  entries and its chats. Only an empty project can be deleted from the app: deleting the person's files is for them
+  to do. Plans for reading drawings and checking them against the regulations: `docs/plans/project-drawings.md`.
 - **Prompts** live in `core.py` (`BASE_PROMPT`, nudges). People can replace the instructions in Settings, so the
   app must still work (citations checked, tools offered) with any instructions.
 - **Writing**: British English in everything the person reads. Plain words, no marketing. Name documents the way

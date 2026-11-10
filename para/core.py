@@ -83,17 +83,31 @@ TOOL_MARKUP = ("<tool_call", "<function", "[TOOL_CALLS]", "<|tool_call")
 TEXT_CALL = re.compile(r"<tool_call>\s*(\{.*?\})\s*</tool_call>", re.S)
 
 
+def _notes(settings):
+    """The person's notes for the prompt: their general notes and, in a project's chat, the project's own."""
+    general = (settings.get("project_notes") or "").strip()
+    project = settings.get("project") or {}
+    if not project.get("name"):
+        return f"\n\nThe person's notes about their project (take these into account):\n{general}" if general else ""
+    out = (f"\n\nThis chat is about the person's project \"{project['name']}\"; its files are searched with the "
+           "library.")
+    if (project.get("notes") or "").strip():
+        out += f" Their notes about it (take these into account):\n{project['notes'].strip()}"
+    if general:
+        out += f"\n\nThe person's general notes:\n{general}"
+    return out
+
+
 def system_prompt(library, settings):
     custom = (settings.get("instructions") or "").strip()
     template = custom or BASE_PROMPT
     files = library.files_summary()
-    notes = (settings.get("project_notes") or "").strip()
     values = {
         "library": library.summary(),
         "files": ("\n\nThe person's own files (results with ids starting f) are also searched:\n" + files) if files
         else "",
         "today": f"{datetime.date.today().day} {datetime.date.today():%B %Y}",
-        "notes": f"\n\nThe person's notes about their project (take these into account):\n{notes}" if notes else "",
+        "notes": _notes(settings),
     }
     try:
         return template.format(**values)

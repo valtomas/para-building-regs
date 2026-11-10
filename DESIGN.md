@@ -23,7 +23,8 @@ when the interface changes).
 ```
 ┌───────────────┬──────────────────────────────────┬───────────────────────┐
 │ ¶ Para        │  YOUR QUESTION                   │  Reader (overlay,     │
-│ New chat   +  │  Question in display type        │  when open)           │
+│ PROJECT ▾     │  Question in display type        │  when open)           │
+│ New chat   +  │                                  │                       │
 │ RECENT        │  ──────────────────────────────  │   eyebrow · title  ✕  │
 │ chat list     │   + Show reasoning               │   find · Original ↗   │
 │               │   + Looked up: 2 searches, …     │   passages, cited one │
@@ -41,8 +42,8 @@ The reader is an overlay on the right edge. Above 1240 px the conversation and q
 below that it covers part of the conversation. Below 900 px the sidebar becomes a full-screen drawer opened from a
 menu button in a 56 px top bar, and the reader and dialogs fill the screen.
 
-Dialogs (native `<dialog>`): **Settings** (tabs: AI engine, Instructions, Project notes, Updates & about),
-**Your files**, **Library** (browse documents and search without AI), and the **permission** prompt shown the first
+Dialogs (native `<dialog>`): **Settings** (tabs: AI engine, Instructions, Notes, Updates & about),
+**Project** (name, notes, the project's files, Delete project and Save), **Your files** (the files shared by every chat), **Library** (browse documents and search without AI), and the **permission** prompt shown the first
 time someone adds a file.
 
 ## Screens
@@ -116,6 +117,10 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   red outline pill; disabled at 40 % opacity.
 - **Notes** (`.note`): warm background for honest-state messages; **errors** (`.error`) in danger colour, with a
   button to the setting that fixes them.
+- **Project picker**: at the top of the sidebar, a "Project" label over a native select set in display type on a
+  sidebar rule ("No project", each project, "New project…"), with a mono "Notes and files" link under it when a
+  project is chosen. Recent shows the chosen project's chats only; the question box says "Ask a question about
+  <project>…". Files dropped on the window go to the chosen project.
 - **Privacy badge**: bottom of the sidebar, a bordered box with a coloured dot. Green "Private" for the built-in
   engine or a local or LAN address, gold with the host name for anything else, coral "No AI engine set up" (opens
   Settings). On phones the dot alone sits at the right of the top bar.

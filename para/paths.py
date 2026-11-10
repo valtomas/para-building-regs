@@ -66,7 +66,8 @@ DEFAULTS = {
     "reasoning": "auto",          # auto | off | on
     "length": "normal",           # normal | long | none
     "instructions": "",           # "" = the built-in instructions
-    "project_notes": "",          # the person's notes about their project, added to every chat
+    "project_notes": "",          # the person's general notes, added to every chat (a project's own are in projects.json)
+    "current_project": "",        # the project chosen in the sidebar ("" for none)
     "files_dir": "",
     "files_warning_ok": False,
     "check_updates": True,
