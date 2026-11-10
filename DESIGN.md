@@ -112,6 +112,18 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   ink rule under it. Each turn repeats it.
 - **Citation** (`.cite`): inline mono tag, `--cite` background, label `<source> <ref>`, tooltip with the heading.
   Your files use the warm, bordered variant (`.cite.file`) so people can tell their documents from the regulations.
+- **Citation states**: a citation the AI made from a search result's extract alone, without reading the passage, has a
+  dashed outline and no fill (`.cite.extract`); so does one whose paragraph has been reworded since the answer
+  (`.cite.changed`). One whose passage is no longer in the library is struck through and opens nothing
+  (`.cite.gone`). The tooltip and the Cited list say which ("Extract only", "Text changed since this answer", "No
+  longer in the library"), and a note under the answer counts them.
+- **Figure note**: when a figure beside a citation isn't in the passage cited, a note lists it with the citation:
+  "Not found in the passage cited for it: 225 mm (ADK Table 1.1). Only the numbers are compared, so check this
+  figure against the passage."
+- **Answer actions** (`.answer-actions`): under the Cited list, quiet mono uppercase links in `--muted-2`: "Copy with
+  references" (the answer with each citation written out as the document's reference, then a References list with
+  links to the originals and the library's edition; copied as formatted and as plain text) and, under the last
+  answer only, "Ask again" (the new answer replaces it).
 - **Cited list** (`.sources`, `.source-chip`): under the answer, a "Cited" (or "Cited and read") eyebrow over an
   ink rule, then one ruled row per passage: the ref in display type, a dotted leader, the heading in mono.
 - **Activity** and **reasoning**: `<details>`, collapsed by default, a mono summary line with "+" or "−" in accent.
@@ -124,6 +136,9 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   sidebar rule ("No project", each project, "New project…"), with a mono "Notes and files" link under it when a
   project is chosen. Recent shows the chosen project's chats only; the question box says "Ask a question about
   <project>…". Files dropped on the window go to the chosen project.
+- **Chats**: above Recent, a "Find in chats" box on a sidebar rule finds words in a chat's name, questions and
+  answers, in the chosen project; results show the chat with a mono line of the matching text. On hover a chat shows
+  a pencil (rename: the name becomes a box, Enter saves, Escape leaves it) and the cross (delete).
 - **Theme**: a mono row under the privacy badge, "Theme" then Auto, Light and Dark; the chosen one in sidebar text
   with a gold underline.
 - **Privacy badge**: bottom of the sidebar, a bordered box with a coloured dot. Green "Private" for the built-in
@@ -144,6 +159,10 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   in red.
 - **Library list**: a three-column grid (short name, title with the edition in italic under it, date) so long
   edition text can't squeeze the titles.
+- **Changed in this edition** (`.lib-changes`): at the top of the Library after an update, collapsed like a drawing's
+  description: per document, mono lines of the paragraphs changed, added and removed against the edition the computer
+  had before (changed and added ones open in the reader), and an italic note that a difference can be a correction
+  to how the app reads a document. Settings → Updates & about links to it.
 - **Reader**: document short name and full title, find-in-document filter, link to the original (gov.uk or
   legislation.gov.uk) or "Open file" for the person's files, licence line in the footer. For PDFs the link opens
   the page of the cited passage ("Original, page 34 ↗") and each passage header has its own "PDF page N ↗".
@@ -185,5 +204,7 @@ no emoji anywhere.
 - **Reader find** hides non-matching passages rather than highlighting matches.
 - **App icon**: the gold ¶ on an oxblood rounded square (`packaging/make_icon.py`), used on Windows and Linux. The
   Mac app has none yet (`packaging/icon.icns`).
+- **Screenshots** don't yet show the citation states, the figure note, the answer actions, Find in chats or Changed
+  in this edition.
 - **Keyboard**: dialogs and citations are reachable by Tab, but there's no shortcut for New chat or focusing the
   question box.

@@ -101,6 +101,15 @@ class Library:
         store = self._store(pid)
         return store.describe(pid) if store else None
 
+    def text(self, pid):
+        store = self._store(pid)
+        return store.text(pid) if store else ""
+
+    def anchors(self, pid, key=None, short=None):
+        """The passages of the document a saved citation (with this id) came from, in the store its id names."""
+        store = self._store(pid)
+        return store.anchors(key, short) if store else []
+
     def document(self, pid):
         store = self._store(pid)
         return store.document(pid) if store else None

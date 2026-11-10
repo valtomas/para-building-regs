@@ -24,21 +24,33 @@ function inline(s) {
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
     .replace(/(^|[^*\w])\*([^*\n]+)\*(?!\w)/g, "$1<em>$2</em>")
     .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" data-ext>$1</a>')
-    .replace(/\[[rf]\d+\](?:[ ,;]*\[[rf]\d+\])*/g, citeRun);
+    .replace(/\[g?[rf]\d+\](?:[ ,;]*\[g?[rf]\d+\])*/g, citeRun);
 }
 // A run of citations, e.g. "[r12][r12]" or "[r12], [r13]": each label once, so a repeat doesn't show as two chips.
 function citeRun(run) {
   const seen = new Set();
-  return run.match(/[rf]\d+/g).filter((id) => !seen.has(citeLabel(id)) && seen.add(citeLabel(id))).map(citeChip).join(" ");
+  return run.match(/g?[rf]\d+/g).filter((id) => !seen.has(citeLabel(id)) && seen.add(citeLabel(id))).map(citeChip).join(" ");
 }
 function citeLabel(id) {
   const c = citeInfo[id];
   return c ? `${c.source}${c.ref ? " " + c.ref : ""}` : id;
 }
+// What's to be said about a citation besides where it points: said in its tooltip and in the Cited list.
+function citeState(c) {
+  if (!c) return "";
+  if (c.gone) return "No longer in the library";
+  if (c.changed) return "Text changed since this answer";
+  if (c.read === false) return "Extract only";
+  return "";
+}
 function citeChip(id) {
   const c = citeInfo[id];
-  const label = citeLabel(id);
-  return `<button class="cite${id[0] === "f" ? " file" : ""}" data-pid="${esc(id)}" title="${esc(c ? (c.heading || c.title || "") : "Open passage")}">${esc(label)}</button>`;
+  const label = citeLabel(id), state = citeState(c);
+  const tip = [state, c ? (c.heading || c.title || "") : "Open passage"].filter(Boolean).join(" · ");
+  const cls = "cite" + (id.replace("g", "")[0] === "f" ? " file" : "") + (c?.gone ? " gone" : c?.changed ? " changed" : c?.read === false ? " extract" : "");
+  // a passage that's gone opens nothing: its id now belongs to some other passage, or to none
+  return c?.gone ? `<span class="${cls}" title="${esc(tip)}">${esc(label)}</span>`
+    : `<button class="${cls}" data-pid="${esc(id)}" title="${esc(tip)}">${esc(label)}</button>`;
 }
 function md(text) {
   const lines = esc(text || "").split("\n");
@@ -102,23 +114,53 @@ async function refresh() {
 }
 const hostOf = (u) => { try { return new URL(u).host; } catch { return u; } };
 
+let chatHits = null;     // chats found by the box above the list; null when it's empty
 function renderChats() {
   const nav = $("#chatList");
   nav.innerHTML = "";
-  for (const c of S.chats.filter((c) => (c.project || "") === project)) {
+  if (chatHits && !chatHits.length) nav.innerHTML = `<p class="none-found">Nothing found.</p>`;
+  for (const c of chatHits || S.chats.filter((c) => (c.project || "") === project)) {
     const row = document.createElement("div");
     row.className = "chat-item" + (c.id === chatId ? " active" : "");
-    row.innerHTML = `<button class="open" title="${esc(c.title)}">${esc(c.title || "Chat")}</button><button class="del" title="Delete" aria-label="Delete chat"><svg class="x" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button>`;
+    row.innerHTML = `<button class="open" title="${esc(c.title)}"><span>${esc(c.title || "Chat")}</span>${c.snippet ? `<small>${esc(c.snippet)}</small>` : ""}</button><button class="ren" title="Rename" aria-label="Rename chat"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 10l.6-2.6L8.4 1.6l2 2L4.6 9.4z"/></svg></button><button class="del" title="Delete" aria-label="Delete chat"><svg class="x" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button>`;
     $(".open", row).onclick = () => openChat(c.id);
+    $(".ren", row).onclick = () => renameChat(row, c);
     $(".del", row).onclick = async () => {
       if (!confirm("Delete this chat?")) return;
       await api("/api/chat?id=" + encodeURIComponent(c.id), { method: "DELETE" });
       if (c.id === chatId) newChat();
-      refresh();
+      await refresh();
+      findChats();
     };
     nav.appendChild(row);
   }
 }
+// The title becomes a box to type in: Enter saves, Escape or clicking away leaves it as it was.
+function renameChat(row, c) {
+  const input = document.createElement("input");
+  input.value = c.title || ""; input.maxLength = 120; input.setAttribute("aria-label", "Chat name");
+  $(".open", row).replaceWith(input);
+  input.focus(); input.select();
+  let done = false;
+  const finish = async (save) => {
+    if (done) return; done = true;
+    const title = input.value.trim();
+    if (save && title && title !== c.title) {
+      try { S.chats = (await api("/api/chat/rename", { method: "POST", body: { id: c.id, title } })).chats; } catch (e) { alert(e.message); }
+    }
+    if (chatHits) findChats(); else renderChats();
+  };
+  input.onkeydown = (e) => { if (e.key === "Enter") finish(true); else if (e.key === "Escape") { e.stopPropagation(); finish(false); } };
+  input.onblur = () => finish(false);
+}
+let findTimer;
+async function findChats() {
+  const qv = $("#chatFind").value.trim();
+  if (qv.length < 2) { chatHits = null; renderChats(); return; }
+  chatHits = (await api("/api/chats/search?" + new URLSearchParams({ q: qv, project }))).chats;
+  if ($("#chatFind").value.trim() === qv) renderChats();
+}
+$("#chatFind").addEventListener("input", () => { clearTimeout(findTimer); findTimer = setTimeout(findChats, 250); });
 
 // ---------- theme ----------
 // Saved in Settings; kept in localStorage too so the script in index.html can set it before the page is drawn.
@@ -160,6 +202,7 @@ async function setProject(name) {
   if (busy) return;
   S = await api("/api/settings", { method: "POST", body: { current_project: name } });
   project = name;
+  $("#chatFind").value = ""; chatHits = null;
   $("#sidebar").classList.remove("open");
   newChat();
   refresh();
@@ -247,11 +290,11 @@ async function openChat(id) {
   box.innerHTML = "";
   for (const t of chat.turns || []) {
     addUser(t.question);
-    const v = addAssistant();
+    const v = addAssistant(t.question);
     Object.assign(citeInfo, t.cites || {});
     for (const ev of t.events || []) v.activity(ev);
     if (t.error) v.error(t.error);
-    v.finish({ answer: t.answer, cites: t.cites || {}, read: t.read || [], seen: t.seen || [], dropped: t.dropped || [], cut_off: t.cut_off, stopped: t.stopped });
+    v.finish({ answer: t.answer, cites: t.cites || {}, read: t.read || [], seen: t.seen || [], dropped: t.dropped || [], cut_off: t.cut_off, stopped: t.stopped, figures: t.figures || [] });
   }
   box.scrollTop = box.scrollHeight;
   renderChats();
@@ -266,7 +309,8 @@ function addUser(text) {
   $("#messages").appendChild(el);
 }
 
-function addAssistant() {
+function addAssistant(question) {
+  $$(".answer-actions .again").forEach((b) => b.remove());  // only the last answer can be asked again
   const el = document.createElement("div");
   el.className = "msg assistant";
   el.innerHTML = `<details class="reasoning" hidden><summary>Show reasoning</summary><pre></pre></details>
@@ -278,6 +322,26 @@ function addAssistant() {
   const stick = () => { if (box.scrollHeight - box.scrollTop - box.clientHeight < 160) box.scrollTop = box.scrollHeight; };
   const ans = $(".answer", el);
   const act = $(".activity", el);
+  // Under the answer: copy it with its references, or ask the question again (the last one only).
+  const actions = (done) => {
+    if ($(".answer-actions", el)) return;
+    const row = document.createElement("div");
+    row.className = "answer-actions";
+    if (done && (done.answer || "").trim()) {
+      const copy = document.createElement("button");
+      copy.type = "button"; copy.textContent = "Copy with references";
+      copy.onclick = async () => { copy.textContent = (await copyAnswer(el, done)) ? "Copied" : "Couldn't copy"; setTimeout(() => { copy.textContent = "Copy with references"; }, 2000); };
+      row.appendChild(copy);
+    }
+    if (question) {
+      const again = document.createElement("button");
+      again.type = "button"; again.className = "again"; again.textContent = "Ask again";
+      again.title = "Ask this question again; the new answer replaces this one";
+      again.onclick = () => { if (busy) return; el.previousElementSibling?.remove(); el.remove(); ask(question, true); };
+      row.appendChild(again);
+    }
+    if (row.children.length) el.appendChild(row);
+  };
   const summary = () => { $("summary", act).textContent = `Looked up: ${searches} search${searches === 1 ? "" : "es"}, read ${reads} passage${reads === 1 ? "" : "s"}`; };
   return {
     el,
@@ -290,13 +354,14 @@ function addAssistant() {
       if (ev.type === "search") {
         searches++;
         // So a citation to a passage only found by search shows its label while streaming, not its id.
-        for (const r of ev.results || []) citeInfo[r.id] = citeInfo[r.id] || r;
+        for (const r of ev.results || []) citeInfo[r.id] = r;
         li.innerHTML = `Searched “${esc(ev.query)}” · ${ev.results.length} result${ev.results.length === 1 ? "" : "s"}`;
       } else if (ev.type === "read" || ev.type === "show") {
         reads += ev.type === "read" ? 1 : 0;
-        citeInfo[ev.id] = citeInfo[ev.id] || ev;
-        for (const r of ev.nearby || []) citeInfo[r.id] = citeInfo[r.id] || r;  // the passages read along with it
-        li.innerHTML = `${ev.type === "read" ? "Read" : "Showed"} <button class="src" data-pid="${esc(ev.id)}">${esc(ev.source)} ${esc(ev.ref || "")}${ev.heading ? " · " + esc(ev.heading) : ""}</button>`;
+        citeInfo[ev.id] = ev;
+        for (const r of ev.nearby || []) citeInfo[r.id] = r;  // the passages read along with it
+        const what = `${esc(ev.source)} ${esc(ev.ref || "")}${ev.heading ? " · " + esc(ev.heading) : ""}`;
+        li.innerHTML = `${ev.type === "read" ? "Read" : "Showed"} ` + (ev.gone ? `${what} (no longer in the library)` : `<button class="src" data-pid="${esc(ev.id)}">${what}</button>`);
         if (ev.type === "show") openPassage(ev.id);
       } else if (ev.type === "notice") {
         li.textContent = ev.text;
@@ -308,6 +373,7 @@ function addAssistant() {
       ans.classList.remove("cursor");
       $(".extras", el).insertAdjacentHTML("beforeend", `<div class="error">${esc(msg)}</div>`);
       if (/engine|Settings|reach/i.test(msg)) $(".extras", el).insertAdjacentHTML("beforeend", `<p><button class="btn small" data-settings>Open AI engine settings</button></p>`);
+      actions(null);
     },
     finish(done) {
       ans.classList.remove("cursor");
@@ -318,6 +384,14 @@ function addAssistant() {
       if (done.stopped) x.insertAdjacentHTML("beforeend", `<div class="note">Stopped.</div>`);
       if (done.dropped && done.dropped.length) x.insertAdjacentHTML("beforeend", `<div class="note">The AI cited ${done.dropped.length} passage${done.dropped.length > 1 ? "s" : ""} it never looked up, so ${done.dropped.length > 1 ? "they were" : "it was"} removed. Treat the uncited parts with care.</div>`);
       const cited = Object.keys(done.cites || {});
+      const all = Object.values(done.cites || {}), n = (list, one, many) => `${list.length} ${list.length === 1 ? one : many}`;
+      const extract = all.filter((c) => c.read === false && !c.gone), changed = all.filter((c) => c.changed && !c.gone), gone = all.filter((c) => c.gone);
+      if (extract.length) x.insertAdjacentHTML("beforeend", `<div class="note">${n(extract, "citation rests", "citations rest")} on a search result's extract: the AI didn't read the whole passage. Open ${extract.length === 1 ? "it" : "them"} to check.</div>`);
+      if ((done.figures || []).length) {
+        const list = done.figures.map((f) => `${esc(f.figure)} (${f.ids.map(citeChip).join(" ")})`).join(", ");
+        x.insertAdjacentHTML("beforeend", `<div class="note"><span>Not found in the passage cited for ${done.figures.length === 1 ? "it" : "them"}: ${list}. Only the numbers are compared, so check ${done.figures.length === 1 ? "this figure" : "these figures"} against the passage.</span></div>`);
+      }
+      if (changed.length || gone.length) x.insertAdjacentHTML("beforeend", `<div class="note">The library or your files have changed since this answer. ${[changed.length ? `${n(changed, "citation opens", "citations open")} a paragraph whose text has changed` : "", gone.length ? `${n(gone, "passage it cites is", "passages it cites are")} no longer there` : ""].filter(Boolean).join(", and ")}.</div>`);
       const read = (done.read || []).filter((r) => !cited.includes(r.id));
       if (cited.length || read.length) {
         const chips = cited.map((id) => chip(done.cites[id])).join("") + read.map(chip).join("");
@@ -325,23 +399,72 @@ function addAssistant() {
       } else if ((done.answer || "").trim() && !done.stopped) {
         x.insertAdjacentHTML("beforeend", `<div class="note">No library passages were used for this answer: it comes from the AI's own knowledge. Check it against the documents.</div>`);
       }
+      actions(done);
     },
   };
 }
-const chip = (c) => `<button class="source-chip" data-pid="${esc(c.id)}" title="${esc(c.heading || c.title || "")}">${esc(c.source)}${c.ref ? " " + esc(c.ref) : ""}</button>`;
+const chip = (c) => `<button class="source-chip${c.gone ? " gone" : ""}" ${c.gone ? "disabled" : `data-pid="${esc(c.id)}"`} title="${esc([citeState(c), c.heading || c.title || ""].filter(Boolean).join(" · "))}">${esc(c.source)}${c.ref ? " " + esc(c.ref) : ""}</button>`;
 
-async function ask(question) {
+// ---------- copying an answer ----------
+// For pasting into an email or a report: each citation written out as the document's own reference, and the
+// references listed underneath with links to the originals. Copied as formatted text and as plain text.
+function citeLink(c) {
+  if (!c || !c.url) return "";
+  return c.page && /\.pdf($|[?#])/i.test(c.url) ? c.url.split("#")[0] + "#page=" + c.page : c.url;
+}
+function answerCopy(el, done) {
+  const cites = done.cites || {}, used = [];
+  const label = (id) => { const c = cites[id]; return c ? `${c.source}${c.ref ? " " + c.ref : ""}` : ""; };
+  const text = (done.answer || "").replace(/\[(g?[rf]\d+)\](?:[ ,;]*\[(g?[rf]\d+)\])*/g, (run) => {
+    const labels = [...new Set(run.match(/g?[rf]\d+/g).filter((id) => cites[id] && (used.includes(id) || used.push(id))).map(label))];
+    return labels.length ? `(${labels.join("; ")})` : "";
+  }).replace(/\*\*([^*]+)\*\*/g, "$1").replace(/^#{1,4}\s+/gm, "").replace(/`([^`]+)`/g, "$1").replace(/[ \t]+([.,;:])/g, "$1");
+  const clone = $(".answer", el).cloneNode(true);
+  $$(".cite", clone).forEach((b) => {
+    const c = cites[b.dataset.pid], url = citeLink(c), a = document.createElement(url ? "a" : "span");
+    if (url) a.href = url;
+    a.textContent = b.textContent;
+    b.replaceWith("(", a, ")");
+  });
+  const refs = used.map((id) => cites[id]);
+  const line = (c) => [`${c.source}${c.ref ? " " + c.ref : ""}`, c.heading, c.title !== c.source ? c.title : "", c.kind === "file" ? "one of my own files" : "", c.gone ? "no longer in the library" : ""].filter(Boolean).join(". ");
+  const edition = refs.some((c) => c.kind !== "file") && S.library.version ? `Para regulations library, edition ${S.library.version}.` : "";
+  const html = clone.innerHTML + (refs.length ? `<p><strong>References</strong></p><ul>${refs.map((c) => `<li>${esc(line(c))}${citeLink(c) ? ` <a href="${esc(citeLink(c))}">${esc(citeLink(c))}</a>` : ""}</li>`).join("")}</ul>${edition ? `<p>${esc(edition)}</p>` : ""}` : "");
+  const plain = text.trim() + (refs.length ? "\n\nReferences\n" + refs.map((c) => `- ${line(c)}${citeLink(c) ? " " + citeLink(c) : ""}`).join("\n") + (edition ? "\n" + edition : "") : "");
+  return { html, plain };
+}
+async function copyAnswer(el, done) {
+  const { html, plain } = answerCopy(el, done);
+  try {
+    await navigator.clipboard.write([new ClipboardItem({ "text/html": new Blob([html], { type: "text/html" }), "text/plain": new Blob([plain], { type: "text/plain" }) })]);
+    return true;
+  } catch { }
+  // windows that don't let a page write to the clipboard directly: select the formatted text and copy that
+  const box = document.createElement("div");
+  box.contentEditable = "true"; box.innerHTML = html;
+  box.style.cssText = "position:fixed;left:-9999px;top:0;white-space:pre-wrap";
+  document.body.appendChild(box);
+  const range = document.createRange(); range.selectNodeContents(box);
+  const sel = getSelection(); sel.removeAllRanges(); sel.addRange(range);
+  let ok = false;
+  try { ok = document.execCommand("copy"); } catch { }
+  sel.removeAllRanges(); box.remove();
+  return ok;
+}
+
+// again: asked again from under the last answer, which the new one replaces
+async function ask(question, again = false) {
   if (busy || !question.trim()) return;
   if (!S.settings.engine.mode) { openSettings(); return; }
   busy = true;
   $("#send").hidden = true; $("#stop").hidden = false;
   addUser(question);
-  const v = addAssistant();
+  const v = addAssistant(question);
   $("#messages").scrollTop = $("#messages").scrollHeight;
   setStatus("Thinking…");
   let finished = false;
   try {
-    const r = await fetch("/api/ask", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: chatId, question, project }) });
+    const r = await fetch("/api/ask", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: chatId, question, project, again }) });
     if (!r.ok) throw new Error((await r.json().catch(() => ({}))).error || `HTTP ${r.status}`);
     const reader = r.body.getReader();
     const dec = new TextDecoder();
@@ -372,7 +495,7 @@ async function ask(question) {
   } finally {
     busy = false; setStatus("");
     $("#send").hidden = false; $("#stop").hidden = true;
-    refresh();
+    refresh().then(() => { if (chatHits) findChats(); });
   }
 }
 function setStatus(t) { $("#status").textContent = t; }
@@ -460,7 +583,7 @@ document.addEventListener("click", (e) => {
   const fig = e.target.closest("img.figure");
   if (fig) { enlargeFigure(fig); return; }
   const pidEl = e.target.closest("[data-pid]");
-  if (pidEl) { e.preventDefault(); openPassage(pidEl.dataset.pid); return; }
+  if (pidEl) { e.preventDefault(); pidEl.closest("dialog")?.close(); openPassage(pidEl.dataset.pid); return; }
   const ext = e.target.closest("a[data-ext]");
   if (ext) { e.preventDefault(); openUrl(ext.href); return; }
   if (e.target.closest("[data-settings]")) { openSettings(); return; }
@@ -752,6 +875,8 @@ function renderAbout() {
   else if (u.app) h += `<p class="update-row">Version ${esc(u.app.version)} is available. <button type="button" class="btn" id="getApp">Download</button></p>`;
   if (u.library) h += `<p class="update-row">A newer regulations library (${esc(u.library.version)}, ${(u.library.size / 2 ** 20).toFixed(0)} MB) is available. <button type="button" class="btn primary" id="getLib">Install</button></p><div id="libJob"></div>`;
   if (u.checked && !u.app && !u.library && !u.error) h += `<p class="muted small">You're up to date.</p>`;
+  const ch = S.library_changes, differ = ch ? ch.documents.length + ch.removed.length : 0;
+  if (differ) h += `<p class="update-row">This library edition differs from the one before in ${differ} document${differ === 1 ? "" : "s"}. <button type="button" class="btn" data-open="library">See what changed</button></p>`;
   $("#updateView").innerHTML = h;
   const ga = $("#getApp"); if (ga) ga.onclick = () => openUrl(u.app.url);
   const ua = $("#updateApp");
@@ -844,10 +969,30 @@ document.addEventListener("drop", (e) => {
 // ---------- library ----------
 const dlgL = $("#dlg-library");
 const KIND = { "approved-document": "Approved Documents", legislation: "Legislation", guidance: "Government guidance" };
+// What differs from the edition this computer had before, worked out when the update was installed.
+function libraryChanges() {
+  const ch = S.library_changes;
+  if (!ch || !(ch.documents.length || ch.removed.length)) return "";
+  const name = (p) => esc(p.ref || p.heading || "untitled passage");
+  const list = (d, kind, word) => {
+    const items = d[kind] || [];
+    if (!items.length) return "";
+    const more = d[kind + "_count"] - items.length;
+    return `<div class="chg-line"><span>${word}</span><span>${items.map((p) => p.id ? `<button class="src" data-pid="${esc(p.id)}" title="${esc(p.heading || "")}">${name(p)}</button>` : name(p)).join(", ")}${more > 0 ? `, and ${more} more` : ""}</span></div>`;
+  };
+  const docs = ch.documents.map((d) => `<div class="chg-doc"><div class="chg-head"><b>${esc(d.short)}</b><span>${esc(d.title)}</span></div>` +
+    (d.new ? `<div class="chg-line"><span>New</span><span>Added to the library in this edition.</span></div>`
+      : (d.was ? `<div class="chg-line"><span>Edition</span><span>${esc(d.was)} before, now ${esc(d.published || "undated")}.</span></div>` : "") +
+        list(d, "changed", "Changed") + list(d, "added", "Added") + list(d, "removed", "Removed")) + `</div>`).join("") +
+    ch.removed.map((d) => `<div class="chg-doc"><div class="chg-head"><b>${esc(d.short)}</b><span>${esc(d.title)}</span></div><div class="chg-line"><span>Removed</span><span>No longer in the library.</span></div></div>`).join("");
+  const count = ch.documents.length + ch.removed.length;
+  return `<details class="lib-changes"><summary>Changed in this edition: ${count} document${count === 1 ? "" : "s"}</summary>${docs}` +
+    `<p class="who">Edition ${esc(ch.to)} compared, paragraph by paragraph, with ${esc(ch.from || "the one before")}, which this computer had until the update. A difference can also be a correction to how the app reads a document, not a change to the document.</p></details>`;
+}
 function openLibrary() {
   const groups = {};
   for (const s of S.library.sources) (groups[s.kind] = groups[s.kind] || []).push(s);
-  $("#libSources").innerHTML = S.library.sources.length ? Object.entries(groups).map(([k, items]) => `<div class="group-title">${esc(KIND[k] || k)}<span class="count">${items.length}</span></div>` +
+  $("#libSources").innerHTML = S.library.sources.length ? libraryChanges() + Object.entries(groups).map(([k, items]) => `<div class="group-title">${esc(KIND[k] || k)}<span class="count">${items.length}</span></div>` +
     items.map((s) => {
       const dated = /^\d{4}-\d\d-\d\d$/.test(s.published || "");  // otherwise it's an edition: show it under the title
       const title = dated || !s.published ? s.title : s.title.replace(s.published, "").replace(/[\s,(]+\)?\s*$/, "");

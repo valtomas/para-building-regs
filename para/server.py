@@ -10,6 +10,7 @@ import hashlib
 import http.server
 import json
 import os
+import re
 import signal
 import socket
 import subprocess
@@ -21,12 +22,14 @@ import urllib.request
 import uuid
 import webbrowser
 
-from . import VERSION, paths, updater
+from . import VERSION, changes, paths, updater
+from .anchors import reanchor
 from .core import BASE_PROMPT, chat_events, forget_lookups
 from .engine import Engine, Job, catalog, recommend, _download
 from .library import Library, Scope
 from .llm import HOSTED, Client, EngineError, is_local, probe_known, same_host
 from .myfiles import TYPES, MyFiles
+from .store import Store
 
 UPDATE_REPO = os.environ.get("PARA_UPDATE_REPO", "valtomas/para-building-regs")
 FEEDBACK = "mailto:hello@pararegs.co.uk?subject=Para%20feedback"  # the only mailto /api/open will open
@@ -110,6 +113,55 @@ def list_chats():
         if per_project[c["project"]] <= 200:
             out.append(c)
     return out
+
+
+def refresh_chat(chat):
+    """Points a chat's saved citations at where their passages are now (anchors.reanchor) and saves it if any
+    moved. True when something did: what the AI looked up earlier in the chat can't be relied on any more."""
+    cache, version, moved, touched = {}, library.version(), False, False
+    for turn in chat.get("turns") or []:
+        m, t = reanchor(turn, library, version, cache)
+        moved, touched = moved or m, touched or t
+    if touched:
+        save_chat(chat, touch=False)
+    return moved
+
+
+def find_chats(query, project):
+    """A project's chats with the words in their title, a question or an answer, newest first."""
+    q = " ".join(str(query or "").lower().split())
+    if len(q) < 2:
+        return []
+    out = []
+    for c in list_chats_all():
+        if c.get("project", "") != project:
+            continue
+        texts = [c.get("title", "")] + [t.get(k) or "" for t in c.get("turns") or [] for k in ("question", "answer")]
+        for text in texts:
+            # as it reads on the page: without the citations' ids or the marks for bold
+            flat = re.sub(r" ([.,;:])", r"\1", " ".join(re.sub(r"\[g?[rf]\d+\]|\*\*|`", "", text).split()))
+            at = flat.lower().find(q)
+            if at >= 0:
+                start = max(0, at - 14)
+                out.append({"id": c["id"], "title": c.get("title", ""), "updated": c.get("updated", 0),
+                            "project": project, "snippet": ("…" if start else "") + flat[start:at + len(q) + 80]})
+                break
+    return sorted(out, key=lambda c: -c["updated"])[:50]
+
+
+def drop_last_turn(chat):
+    """Takes the last question and its answer out of a chat, to ask it again: the turn, and the messages the AI
+    would otherwise read as already said."""
+    if not chat["turns"]:
+        return
+    last = chat["turns"].pop()
+    cut = last.get("from")
+    if cut is None:  # a turn saved before its place in the messages was kept: find its question
+        users = [i for i, m in enumerate(chat["messages"]) if m.get("role") == "user"
+                 and str(m.get("content") or "").startswith(last.get("question") or "\0")]
+        cut = users[-1] if users else None
+    if cut is not None:
+        chat["messages"] = chat["messages"][:cut]
 
 
 def move_chats(old, new):
@@ -196,7 +248,17 @@ def install_library_update():
             if lib.get("sha256") and h.hexdigest() != lib["sha256"]:
                 os.remove(out)
                 raise EngineError("The library download didn't match its checksum.")
+            compared = None
+            try:  # what differs from the edition in use; an update must never fail for want of it
+                if library.regs:
+                    new = Store(out, "r", readonly=True)
+                    compared = changes.diff(library.regs, new)
+                    new.close()
+            except Exception:  # noqa: BLE001
+                compared = None
             library.install_regs(out)
+            if compared:
+                changes.save(compared)
             update_info["library"] = None
             job.state = "done"
         except Exception as e:  # noqa: BLE001
@@ -270,6 +332,7 @@ def state():
     info = library.info()
     return {"version": VERSION, "settings": public_settings(), "default_instructions": BASE_PROMPT,
             "library": {k: info[k] for k in ("version", "built", "sources")},
+            "library_changes": changes.load(info["version"]),
             "files": myfiles.list(), "files_dir": myfiles.folder, "projects": myfiles.projects(), "file_types": sorted(TYPES),
             "bundled": engine.bundled.status(), "catalog": catalog()["models"],
             "recommended": (recommend() or {}).get("id"), "hosted": HOSTED, "updates": update_info,
@@ -344,7 +407,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 return self._send(200, state())
             if path == "/api/chat":
                 chat = load_chat(q.get("id"))
+                if chat:
+                    refresh_chat(chat)
                 return self._send(200 if chat else 404, chat or {"error": "No such chat"})
+            if path == "/api/chats/search":
+                return self._send(200, {"chats": find_chats(q.get("q"), q.get("project", ""))})
             if path == "/api/passage":
                 doc = library.document(q.get("id", ""))
                 return self._send(200 if doc else 404, doc or {"error": "No such passage"})
@@ -410,6 +477,15 @@ class Handler(http.server.BaseHTTPRequestHandler):
         try:
             if path == "/api/ask":
                 return self._ask(self._json_body())
+            if path == "/api/chat/rename":
+                body = self._json_body()
+                chat, title = load_chat(body.get("id")), " ".join(str(body.get("title") or "").split())[:120]
+                if not chat or not title:
+                    return self._send(404 if not chat else 400, {"error": "No such chat" if not chat
+                                                                 else "Give the chat a name."})
+                chat["title"] = title
+                save_chat(chat, touch=False)
+                return self._send(200, {"chats": list_chats()})
             if path == "/api/stop":
                 ev = stops.get(self._json_body().get("id"))
                 if ev:
@@ -544,17 +620,21 @@ class Handler(http.server.BaseHTTPRequestHandler):
             self.wfile.write(b"data: " + json.dumps(ev).encode() + b"\n\n")
             self.wfile.flush()
 
-        turn = {"question": question, "answer": "", "events": [], "time": time.time()}
+        moved = refresh_chat(chat) if chat["turns"] else False
+        if body.get("again"):  # asked again: the new answer takes the place of the last one
+            drop_last_turn(chat)
+        turn = {"question": question, "answer": "", "events": [], "time": time.time(),
+                "library": library.version(), "from": len(chat["messages"])}
         try:
             send({"type": "chat", "id": chat["id"]})
-            # The library has been replaced since this chat's earlier answers (or the chat predates this record):
-            # their passage ids may name other passages now, so the AI starts its lookups afresh.
-            if chat.get("library") != library.version():
+            # The library has been replaced or a file read again since this chat's earlier answers (or the chat
+            # predates the record): ids in what the AI looked up then may name other passages now, so it starts
+            # its lookups afresh. The answers' own citations have been pointed at the passages' new places.
+            if chat.get("library") != library.version() or moved:
                 if any(m.get("role") == "tool" for m in chat["messages"]):
                     chat["messages"] = forget_lookups(chat["messages"])
-                    notice = {"type": "notice", "text": "The library has been updated since the earlier answers in "
-                              "this chat, so the AI looked things up afresh. Citations in those earlier answers may "
-                              "open a different paragraph now."}
+                    notice = {"type": "notice", "text": "The library or your files have changed since the earlier "
+                              "answers in this chat, so the AI looked things up afresh."}
                     turn["events"].append(notice)
                     send(notice)
                 chat["library"] = library.version()
@@ -576,7 +656,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 if ev["type"] == "done":
                     chat["messages"] = ev.pop("messages")
                     turn.update(answer=ev["answer"], cites=ev["cites"], read=ev["read"], seen=ev["seen"],
-                                cut_off=ev["cut_off"], dropped=ev["dropped"])
+                                cut_off=ev["cut_off"], dropped=ev["dropped"], figures=ev["figures"])
                 elif ev["type"] in ("search", "read", "show", "notice"):
                     turn["events"].append(ev)
                 elif ev["type"] == "token":

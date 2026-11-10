@@ -12,6 +12,9 @@ paragraphs, and answers with a link to each one, so you can check exactly where 
 - **Cites the paragraph.** Answers cite passages such as *ADB Vol 1 Table 3.1* or *BR 2010 reg 7*. Click one to
   open the document at that paragraph. The app checks every citation against what the AI actually looked up and
   removes any it made up.
+- **Says what it couldn't check.** A citation made from a search extract without reading the passage is marked, and
+  so is a figure that isn't in the passage cited for it. When the library is updated, old answers still open the
+  right paragraphs, say which have been reworded since, and the Library lists what changed in the new edition.
 - **Any engine you like.** Use an AI engine you already run: Ollama, LM Studio, Lemonade, llama.cpp, Jan, vLLM or
   any other OpenAI-compatible server, on this computer or your network. Or let the app download and run one itself
   (llama.cpp with a model suited to your computer's memory). Or use an online AI service (Anthropic, Mistral,
