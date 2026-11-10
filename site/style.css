@@ -71,10 +71,11 @@ h3 { font-size: 24px; margin: 0 0 8px; }
 .steps li { display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 20px 0; border-bottom: 1px solid var(--border); color: var(--muted); }
 .steps li b { color: var(--ink); font-weight: 600; }
 .steps .num { padding-top: 7px; }
-.lib, .two { display: grid; gap: 28px; }
+.lib, .two, .three { display: grid; gap: 28px; }
 .lib { grid-template-columns: repeat(3, 1fr); }
 .two { grid-template-columns: repeat(2, 1fr); max-width: 980px; }
-.lib > div, .two > div { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+.three { grid-template-columns: repeat(3, 1fr); }
+.lib > div, .two > div, .three > div { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
 .lib p, .two p { margin: 0; color: var(--muted); font-size: 17px; }
 .downloads { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-bottom: 18px; }
 .install { max-width: 760px; color: var(--muted); font-size: 17px; }
@@ -89,7 +90,7 @@ h3 { font-size: 24px; margin: 0 0 8px; }
 
 @media (max-width: 900px) {
   .points { grid-template-columns: repeat(2, 1fr); }
-  .lib, .two { grid-template-columns: 1fr; }
+  .lib, .two, .three { grid-template-columns: 1fr; }
   .top nav a:not(:last-child):not([href="#download"]) { display: none; }
 }
 @media (max-width: 560px) {
