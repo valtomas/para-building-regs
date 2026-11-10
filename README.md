@@ -57,14 +57,21 @@ The library covers **England**. Wales, Scotland and Northern Ireland have their 
    **Open Anyway**. You only do this once.
 
 **Windows** (10 or 11, 64-bit)
-1. Download `Para-windows.zip`, right-click it and choose **Extract All**.
-2. Open the extracted folder and double-click **Para.exe**. If Windows SmartScreen appears,
-   click **More info**, then **Run anyway**.
+1. Download `Para-windows-setup.exe` and double-click it. It installs for you alone (no administrator needed) and
+   adds Para to the Start menu. If Windows SmartScreen appears, click **More info**, then **Run anyway**.
+2. To remove it: **Settings › Apps**, Para, **Uninstall**. Your chats and settings are kept.
+
+`Para-windows.zip` is the same app without an installer: extract it and run `Para.exe`.
 
 **Linux** (x86-64: Ubuntu 22.04, Debian 12, Fedora 36 or newer)
-1. Download `Para-linux.tar.gz` and extract it (`tar -xzf Para-linux.tar.gz`).
-2. Run `Para/Para`, or run `Para/install.sh` to add Para to your applications menu (`install.sh --uninstall`
-   removes it). Para opens in its own window; if your system can't show one, it opens in your web browser instead.
+- **Ubuntu, Debian, Mint, Pop!_OS:** download `Para-linux.deb`, double-click it and choose **Install** (or
+  `sudo apt install ./Para-linux.deb`). Remove it from the software centre, or with `sudo apt remove para`.
+- **Other distributions:** download `Para-linux.AppImage`, allow it to run (right-click, **Properties**, "Allow
+  executing file as program", or `chmod +x Para-linux.AppImage`) and double-click it.
+- `Para-linux.tar.gz` is the plain folder: extract it and run `Para/Para`, or `Para/install.sh` to add it to your
+  applications menu (`install.sh --uninstall` removes it).
+
+Para opens in its own window; if your system can't show one, it opens in your web browser instead.
 
 **Then** choose an AI engine in the window that opens:
 - **Use an engine I already run.** Click *Find engines on this computer*, or type the server's address

@@ -179,6 +179,7 @@ no emoji anywhere.
 - **Figure crops** are found from captions, so a few are cut short or include the next heading, and some
   diagrams without a recognisable caption have no image. "Original, page N" is always there as a fallback.
 - **Reader find** hides non-matching passages rather than highlighting matches.
-- **No app icon** yet (`packaging/icon.icns`, `packaging/icon.ico`). The ¶ mark in the sidebar is the starting point.
+- **App icon**: the gold ¶ on an oxblood rounded square (`packaging/make_icon.py`), used on Windows and Linux. The
+  Mac app has none yet (`packaging/icon.icns`).
 - **Keyboard**: dialogs and citations are reachable by Tab, but there's no shortcut for New chat or focusing the
   question box.

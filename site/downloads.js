@@ -33,13 +33,18 @@
     .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
     .then((rel) => {
       const assets = Object.fromEntries((rel.assets || []).map((a) => [a.name, a]));
-      const mac = assets["Para-mac.zip"], win = assets["Para-windows.zip"], lin = assets["Para-linux.tar.gz"];
+      // The installers, or the zip and tarball where a release has none.
+      const mac = assets["Para-mac.zip"];
+      const win = assets["Para-windows-setup.exe"] || assets["Para-windows.zip"];
+      const lin = assets["Para-linux.deb"] || assets["Para-linux.tar.gz"];
+      const appimage = assets["Para-linux.AppImage"];
       if (!mac && !win && !lin) return noRelease();
       box.textContent = "";
       const mb = (a) => Math.round(a.size / 2 ** 20) + " MB";
       if (mac) box.appendChild(link(mac.browser_download_url, "Download for Mac", mb(mac), isMac || (!isWin && !isLinux)));
       if (win) box.appendChild(link(win.browser_download_url, "Download for Windows", mb(win), isWin));
-      if (lin) box.appendChild(link(lin.browser_download_url, "Download for Linux", mb(lin), isLinux));
+      if (lin) box.appendChild(link(lin.browser_download_url, appimage ? "Ubuntu and Debian" : "Download for Linux", mb(lin), isLinux));
+      if (appimage) box.appendChild(link(appimage.browser_download_url, "Other Linux (AppImage)", mb(appimage), false));
       const v = document.createElement("p");
       v.className = "fine";
       v.textContent = "Version " + String(rel.tag_name || "").replace(/^v/, "") + ". ";
