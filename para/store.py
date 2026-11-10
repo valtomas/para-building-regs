@@ -111,10 +111,10 @@ class Store:
         with self.lock:
             rows = self.db.execute(
                 "SELECT s.id, s.key, s.title, s.short, s.kind, s.url, s.license, s.published, s.note, s.path, "
-                "s.size, s.status, (SELECT COUNT(*) FROM passages p WHERE p.source_id = s.id) FROM sources s "
+                "s.size, s.mtime, s.status, (SELECT COUNT(*) FROM passages p WHERE p.source_id = s.id) FROM sources s "
                 "ORDER BY s.kind, s.short").fetchall()
         keys = ("id", "key", "title", "short", "kind", "url", "license", "published", "note", "path", "size",
-                "status", "passages")
+                "mtime", "status", "passages")
         return [dict(zip(keys, r)) for r in rows]
 
     # ----- writing (builder and the person's files) -----

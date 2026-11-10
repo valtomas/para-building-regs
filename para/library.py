@@ -64,8 +64,9 @@ class Library:
             out.append(f"{KIND_LABELS.get(kind, kind)}:\n" + "\n".join("- " + i for i in items))
         return "\n".join(out)
 
-    def files_summary(self):
-        items = [s for s in self.files.sources() if s["status"] == "ok"]
+    def files_summary(self, file_keys=None):
+        items = [s for s in self.files.sources()
+                 if s["status"] == "ok" and (file_keys is None or s["key"] in file_keys)]
         return "\n".join(f"- {s['title']}" + (f" — {s['note']}" if s.get("note") else "") for s in items[:60])
 
     def _store(self, pid):
@@ -74,12 +75,14 @@ class Library:
                 return store
         return None
 
-    def search(self, query, limit=8):
+    def search(self, query, limit=8, file_keys=None):
+        """file_keys: the person's files to search (a project's chats search only its own and the shared ones)."""
         with self.lock:
             hits = []
-            for store in (self.regs, self.files):
-                if store:
-                    hits += store.search(query, limit=limit)
+            if self.regs:
+                hits += self.regs.search(query, limit=limit)
+            if file_keys is None or file_keys:
+                hits += self.files.search(query, limit=limit, source_keys=file_keys)
         hits.sort(key=lambda h: h["score"])
         # Keep at least a couple of the person's own files in view when they match.
         mine = [h for h in hits if h["id"].startswith("f")][:2]
@@ -110,3 +113,24 @@ class Library:
                 if pid:
                     return pid
         return None
+
+
+class Scope:
+    """The library as one chat sees it: the regulations plus the person's files in file_keys (a set, or a function
+    returning one, so files added during a chat are found). Passes everything else through to the library."""
+
+    def __init__(self, library, file_keys):
+        self.library, self._keys = library, file_keys
+
+    @property
+    def file_keys(self):
+        return self._keys() if callable(self._keys) else self._keys
+
+    def files_summary(self):
+        return self.library.files_summary(self.file_keys)
+
+    def search(self, query, limit=8):
+        return self.library.search(query, limit=limit, file_keys=self.file_keys)
+
+    def __getattr__(self, name):
+        return getattr(self.library, name)

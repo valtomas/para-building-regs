@@ -4,6 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Para</title>
+  <!-- the theme is set before the page is drawn, so a dark window doesn't flash light; app.js keeps it in step with
+       Settings and with the system when it's on Auto -->
+  <script>
+    (function () {
+      var t; try { t = localStorage.getItem("para-theme"); } catch (e) { }
+      var dark = t === "dark" || (t !== "light" && matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.dataset.theme = dark ? "dark" : "light";
+    })();
+  </script>
   <link rel="stylesheet" href="/static/app.css">
 </head>
 <body>
@@ -11,6 +20,12 @@
   <aside id="sidebar">
     <div class="brand"><span class="logo">¶</span><span>Para<br><small>Building regs, cited</small></span>
       <button class="icon close" id="closeMenu" aria-label="Close menu"><svg class="x" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button></div>
+    <div class="project-box">
+      <div class="project-pick"><span id="projectLabel">Project</span>
+        <button id="projectBtn" aria-haspopup="menu" aria-expanded="false" aria-describedby="projectLabel"></button>
+        <div id="projectMenu" class="project-menu" role="menu" hidden></div></div>
+      <button id="projectEdit" class="project-edit" hidden>Notes and files</button>
+    </div>
     <button id="newChat" class="btn primary wide"><span>New chat</span><span aria-hidden="true">+</span></button>
     <nav id="chatList" aria-label="Chats"></nav>
     <div class="side-foot">
@@ -19,6 +34,10 @@
       <button class="side-link" data-open="settings">Settings</button>
       <div id="engineBadge" class="badge" title="Where your questions go"></div>
       <div id="updateNote" class="update-note" hidden></div>
+      <div class="theme-pick" role="radiogroup" aria-labelledby="themeLabel"><span id="themeLabel">Theme</span>
+        <button role="radio" data-theme-pick="auto" title="Follow this computer's setting">Auto</button>
+        <button role="radio" data-theme-pick="light">Light</button>
+        <button role="radio" data-theme-pick="dark">Dark</button></div>
       <div class="version" id="version"></div>
     </div>
   </aside>
@@ -85,7 +104,7 @@
   <div class="tabs" role="tablist">
     <button class="tab active" data-tab="engine">AI engine</button>
     <button class="tab" data-tab="instructions">Instructions</button>
-    <button class="tab" data-tab="project">Project notes</button>
+    <button class="tab" data-tab="project">Notes</button>
     <button class="tab" data-tab="about">Updates &amp; about</button>
   </div>
 
@@ -141,8 +160,8 @@
   </section>
 
   <section class="tabpane" data-pane="project" hidden>
-    <p class="muted small">Facts about the project you're working on, added to every chat, e.g. "6-storey block of
-      flats, top floor 17 m, sprinklered, new build in London".</p>
+    <p class="muted small">Added to every chat, in any project, e.g. "We design social housing in London". Notes
+      about one project go in that project: choose it at the top of the sidebar, then Notes and files.</p>
     <textarea id="projectNotes" rows="8"></textarea>
     <div class="modal-actions"><button type="button" class="btn primary" id="saveNotes">Save</button></div>
   </section>
@@ -157,13 +176,34 @@
 </dialog>
 
 <dialog id="dlg-files" class="modal">
-  <form method="dialog" class="modal-head"><div><div class="eyebrow">Searched with the library</div><h2>Your files</h2></div><button class="icon" aria-label="Close"><svg class="x" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button></form>
+  <form method="dialog" class="modal-head"><div><div class="eyebrow">Searched in every chat</div><h2>Your files</h2></div><button class="icon" aria-label="Close"><svg class="x" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button></form>
   <p class="muted small">Add your own documents (specifications, fire strategies, building control comments,
     manufacturers' guidance) and they're searched together with the library. They stay on this computer, in
-    <a href="#" id="openFolder">your files folder</a>; files you put in that folder are picked up on their own.</p>
+    <a href="#" id="openFolder">your files folder</a>; files you put in that folder are picked up on their own.
+    Files for one project go in the project instead.</p>
   <div id="dropZone" class="drop"><span class="drop-title">Drop files here or <label class="link">choose files<input type="file" id="filePick" multiple hidden></label></span>
     <div class="muted small">PDF, Word (.docx), EPUB, HTML, Markdown or text. Scanned pages can't be read yet.</div></div>
   <div id="fileList"></div>
+</dialog>
+
+<dialog id="dlg-project" class="modal">
+  <form method="dialog" class="modal-head"><div><div class="eyebrow">Project</div><h2 id="projectTitle"></h2></div><button class="icon" aria-label="Close"><svg class="x" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button></form>
+  <label>Name <input id="projectName" maxlength="80" placeholder="e.g. 12 Mill Lane"></label>
+  <label>Notes <small class="muted">added to this project's chats</small>
+    <textarea id="projectNotesOne" rows="5" placeholder="Facts the AI should know, e.g. &quot;3-storey house, new build, top floor 7.5 m, no sprinklers&quot;"></textarea></label>
+  <div id="projectFiles" class="pane">
+    <p class="muted small">Drawings exported as PDF, specifications, fire strategies, building control comments: they're
+      searched only in this project's chats, together with the library and the files shared with every chat. They stay
+      on this computer, in <a href="#" id="openProjectFolder">the project's folder</a>.</p>
+    <div id="projectDrop" class="drop"><span class="drop-title">Drop files here or <label class="link">choose files<input type="file" id="projectPick" multiple hidden></label></span>
+      <div class="muted small">PDF, Word (.docx), EPUB, HTML, Markdown or text. Only the text is read: drawings are searched by the words on them.</div></div>
+    <div id="projectFileList"></div>
+  </div>
+  <div class="modal-actions">
+    <button type="button" class="btn danger" id="projectDelete">Delete project</button>
+    <span id="projectMsg" class="muted"></span>
+    <button type="button" class="btn primary" id="projectSave">Save</button>
+  </div>
 </dialog>
 
 <dialog id="dlg-permission" class="modal narrow">

@@ -1,8 +1,13 @@
 """The person's own documents: read, split into passages and indexed with the library, kept on this computer.
 
 Files live in a visible folder (~/Para Files by default). Files dropped into it, changed or
-removed there are picked up by sync(), which the server runs at start and every half minute."""
+removed there are picked up by sync(), which the server runs at start and every half minute.
+
+A project is a folder inside it: its files are searched only in the project's chats, while files at the top of the
+folder are searched in every chat. A folder made by hand is a project too. Project notes are kept in the app folder
+(projects.json), not in the person's folder."""
 import html.parser
+import json
 import os
 import re
 import shutil
@@ -13,6 +18,19 @@ from . import paths
 from .splitter import split
 
 TYPES = {".pdf", ".docx", ".txt", ".md", ".markdown", ".html", ".htm", ".epub", ".csv", ".rtf"}
+BAD_NAME = re.compile(r'[<>:"/\\|?*\x00-\x1f]')  # not allowed in a folder name on Windows, or a path
+
+
+def project_name(name):
+    """A name that's safe as a folder name, or ValueError saying why not."""
+    name = re.sub(r"\s+", " ", str(name or "")).strip().rstrip(".")
+    if not name:
+        raise ValueError("Give the project a name.")
+    if BAD_NAME.search(name) or name.startswith(".") or name.startswith("~$"):
+        raise ValueError('A project name can\'t start with a dot or contain < > : " / \\ | ? *')
+    if len(name) > 80:
+        raise ValueError("Keep the project name under 80 characters.")
+    return name
 
 
 class _Text(html.parser.HTMLParser):
@@ -94,13 +112,33 @@ class MyFiles:
         os.makedirs(folder, exist_ok=True)
         return folder
 
-    def add(self, name, data):
-        """Save an uploaded file into the folder and index it. Returns its key."""
+    def project_folder(self, project=""):
+        """The folder a project's files go in; the files folder itself for files shared by every chat."""
+        if not project:
+            return self.folder
+        return os.path.join(self.folder, project_name(project))
+
+    def project_of(self, key):
+        """The project a file belongs to ("" for the shared files at the top of the folder), or None if it's in
+        neither (a folder deeper down, or elsewhere)."""
+        rel = os.path.relpath(os.path.dirname(os.path.abspath(key)), os.path.abspath(self.folder))
+        if rel == ".":
+            return ""
+        return rel if os.sep not in rel and rel != ".." and not rel.startswith("..") else None
+
+    def keys(self, project=""):
+        """Keys of the files a chat in this project searches: the shared files plus the project's own."""
+        return {s["key"] for s in self.library.files.sources() if self.project_of(s["key"]) in ("", project)}
+
+    def add(self, name, data, project=""):
+        """Save an uploaded file into the folder (or a project's folder) and index it. Returns its key."""
         name = os.path.basename(name).strip() or "file"
         if os.path.splitext(name)[1].lower() not in TYPES:
             raise ValueError(f"Can't read {os.path.splitext(name)[1] or 'that kind of'} files yet. "
                              "Try PDF, Word (.docx), EPUB, HTML or text.")
-        dest = os.path.join(self.folder, name)
+        folder = self.project_folder(project)
+        os.makedirs(folder, exist_ok=True)
+        dest = os.path.join(folder, name)
         base, ext = os.path.splitext(dest)
         n = 2
         while os.path.exists(dest):
@@ -137,34 +175,42 @@ class MyFiles:
 
     def remove(self, key, delete_file=True):
         self.library.files.remove_source(key)
-        if delete_file and os.path.exists(key) and os.path.dirname(os.path.abspath(key)) == \
-                os.path.abspath(self.folder):
+        if delete_file and os.path.exists(key) and self.project_of(key) is not None:
             os.remove(key)
 
     def set_note(self, key, note):
         with self.library.files.lock, self.library.files.db:
             self.library.files.db.execute("UPDATE sources SET note=? WHERE key=?", (note[:300], key))
 
+    def _folders(self):
+        """The folders sync looks in: the files folder and each project folder in it."""
+        out = [self.folder]
+        for entry in os.scandir(self.folder):
+            if entry.is_dir() and not entry.name.startswith((".", "~$")):
+                out.append(entry.path)
+        return out
+
     def sync(self):
-        """Index new or changed files in the folder; forget ones that are gone."""
+        """Index new or changed files in the folder and its project folders; forget ones that are gone."""
         if not self.lock.acquire(blocking=False):
             return
         try:
             known = {s["key"]: s for s in self.library.files.sources()}
             present = set()
-            for entry in os.scandir(self.folder):
-                if not entry.is_file() or entry.name.startswith((".", "~$")):
-                    continue
-                if os.path.splitext(entry.name)[1].lower() not in TYPES:
-                    continue
-                key = os.path.abspath(entry.path)
-                present.add(key)
-                st = entry.stat()
-                old = known.get(key)
-                if not old or abs((old.get("mtime") or 0) - st.st_mtime) > 1 or old.get("size") != st.st_size:
-                    self.index(entry.path)
+            for folder in self._folders():
+                for entry in os.scandir(folder):
+                    if not entry.is_file() or entry.name.startswith((".", "~$")):
+                        continue
+                    if os.path.splitext(entry.name)[1].lower() not in TYPES:
+                        continue
+                    key = os.path.abspath(entry.path)
+                    present.add(key)
+                    st = entry.stat()
+                    old = known.get(key)
+                    if not old or abs((old.get("mtime") or 0) - st.st_mtime) > 1 or old.get("size") != st.st_size:
+                        self.index(entry.path)
             for key, s in known.items():
-                if key not in present and os.path.dirname(key) == os.path.abspath(self.folder):
+                if key not in present and self.project_of(key) is not None:
                     self.library.files.remove_source(key)
         finally:
             self.lock.release()
@@ -176,4 +222,92 @@ class MyFiles:
         for key in list(self.status):
             if key not in {o["key"] for o in out}:
                 out.append({"key": key, "title": os.path.basename(key), "status": "reading", "passages": 0})
+        for o in out:
+            o["project"] = self.project_of(o["key"]) or ""
         return out
+
+    # ----- projects -----
+    @property
+    def _notes_path(self):
+        return paths.data_path("projects.json")
+
+    def _notes(self):
+        try:
+            with open(self._notes_path, encoding="utf-8") as f:
+                data = json.load(f)
+            return data if isinstance(data, dict) else {}
+        except (OSError, ValueError):
+            return {}
+
+    def _save_notes(self, data):
+        tmp = self._notes_path + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=1)
+        os.replace(tmp, self._notes_path)
+
+    def projects(self):
+        notes = self._notes()
+        counts = {}
+        for s in self.library.files.sources():
+            p = self.project_of(s["key"])
+            counts[p] = counts.get(p, 0) + 1
+        out = []
+        for folder in self._folders()[1:]:
+            name = os.path.basename(folder)
+            out.append({"name": name, "notes": (notes.get(name) or {}).get("notes", ""), "files": counts.get(name, 0)})
+        return sorted(out, key=lambda p: p["name"].lower())
+
+    def project(self, name):
+        return next((p for p in self.projects() if p["name"] == name), None)
+
+    def create_project(self, name, notes=""):
+        name = project_name(name)
+        folder = self.project_folder(name)
+        if os.path.exists(folder):
+            raise ValueError(f"There's already a project or folder called {name}.")
+        os.makedirs(folder)
+        self.set_project_notes(name, notes)
+        return name
+
+    def set_project_notes(self, name, notes):
+        data = self._notes()
+        data.setdefault(name, {})["notes"] = str(notes or "")[:4000]
+        self._save_notes(data)
+
+    def rename_project(self, old, new):
+        """Renames the folder and moves its files' index entries with it, so their notes and passages stay."""
+        new = project_name(new)
+        if new == old:
+            return new
+        src, dest = self.project_folder(old), self.project_folder(new)
+        if not os.path.isdir(src):
+            raise ValueError("No such project.")
+        if os.path.exists(dest) and os.path.normcase(src) != os.path.normcase(dest):
+            raise ValueError(f"There's already a project or folder called {new}.")
+        with self.lock:  # keep sync from forgetting the files while they move
+            os.rename(src, dest)
+            store = self.library.files
+            with store.lock, store.db:
+                for s in store.sources():
+                    if os.path.dirname(s["key"]) == os.path.abspath(src):
+                        key = os.path.join(os.path.abspath(dest), os.path.basename(s["key"]))
+                        store.db.execute("UPDATE sources SET key=?, path=? WHERE id=?", (key, key, s["id"]))
+        data = self._notes()
+        if old in data:
+            data[new] = data.pop(old)
+            self._save_notes(data)
+        return new
+
+    def delete_project(self, name):
+        """Only an empty project can be deleted here: deleting someone's files is for them to do in their folder."""
+        folder = self.project_folder(name)
+        if not os.path.isdir(folder):
+            raise ValueError("No such project.")
+        left = [e for e in os.listdir(folder) if not e.startswith(".") and e.lower() != "desktop.ini"]
+        if left:
+            raise ValueError("Remove the project's files first. Its folder still has "
+                             f"{len(left)} item{'s' if len(left) != 1 else ''} in it.")
+        shutil.rmtree(folder)
+        data = self._notes()
+        if data.pop(name, None) is not None:
+            self._save_notes(data)
