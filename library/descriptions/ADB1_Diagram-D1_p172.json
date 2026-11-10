@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-D1_p172",
+ "source": "ADB1",
+ "label": "Diagram D1",
+ "page": 172,
+ "caption": "Diagram D1 | Measurement of door width | D Building dimensions",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "5e96644a47bf4ef690e9b56e1a96e28b46ca22577aa2c96f7119d5082f4a60fa",
+ "image_sig": {
+  "w": 754,
+  "h": 283,
+  "grey": "9fb29vb29vb29vb29vb29fv/9///+/v///74///3//v7/9r5/+nv///23vz/2v/7+//b2fXq7///9sDz/9v/+/v/2+z56u////bV/Pnb//v7/9vs/efv///21fz62//7+/bB2v/M0v//2b766cH0+/vwxNn/x8n//8zG+97E7Pv7///38Pn//////+v1///7+///79/6///////b7v//+/v//+vR8//////20uH///v7///yyff//////+74///7+////fb+////////////+/v///////////////////t+XVxbXF1eVVVVVVVVVVVuiWhfa2RmZFdVVVVVVVVVdQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a diagram titled \"Diagram D1 Measurement of door width\". It contains two plan views, one on the left and one on the right, each showing a door set in an opening between two walls, drawn in grey with jagged cut ends. In each view the door leaf is shown swung open, with a curved arc marking the swing path, and a hinge symbol on the leaf. A dashed vertical line indicates the closed position of the door.\n\nIn the left view, a green dimension line with end ticks lies across the opening, labelled \"Effective clear width (door stop to projecting ironmongery)\"; the measurement runs from the door stop at the left hand jamb to the projecting ironmongery on the open leaf.\n\nIn the right view, a similar green dimension line is labelled \"Effective clear width (door stop to door leaf)\", the measurement running from the door stop to the edge of the door leaf. A green footer band along the bottom contains the title text \"Diagram D1 Measurement of door width\".",
+ "first_draft": "The drawing is a diagram titled \"Diagram D1 Measurement of door width\". It contains two plan views, one on the left and one on the right, each showing a door set in an opening between two walls, drawn in grey with jagged cut ends. In each view the door leaf is shown swung open, with a curved arc marking the swing path, and a hinge symbol on the leaf. A dashed vertical line indicates the closed position of the door.\n\nIn the left view, a green dimension line with end ticks lies across the opening, labelled \"Effective clear width (door stop to projecting ironmongery)\"; the measurement runs from the door stop at the left hand jamb to the projecting ironmongery on the open leaf.\n\nIn the right view, a similar green dimension line is labelled \"Effective clear width (door stop to door leaf)\", the measurement running from the door stop to the edge of the door leaf. A green footer band along the bottom repeats the title text \"Diagram D1 Measurement of door width\"."
+}

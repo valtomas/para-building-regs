@@ -1,0 +1,17 @@
+{
+ "key": "ADB2_Table-2.2_p27",
+ "source": "ADB2",
+ "label": "Table 2.2",
+ "page": 27,
+ "caption": "Table 2.2 Minimum number of escape routes and exits from a room, tier or storey",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "e7eaf0d0b344c5d5587a606cec8416d5063c8064799cf4e82ff8addff817d51f",
+ "image_sig": {
+  "w": 737,
+  "h": 151,
+  "grey": "1MjIyMjIyMjIyMjIyMjIyKqUiZOLk5iSlIqbmJSRw8i4nJ2Zk6GQmJqdnpqfmcDI0cjIyMjIyMjIyMjIyMjIyPn9/f39/f39/f39/f39/f3n5uXi+v///+/l5eXl5v//6OHg3Onr6+vu4eDd3+Dr6/v////////////////////l//////////n/////////7Ovr6+vr6+vy6+vr6+vr6/j//////////f/////////Y//////////f/////////8O3t7e3t7e307e3t7e3t7fn7+f///////f/////////Zzez///////j/////////7uvr6+vr6+vr6+vr6+vr6w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

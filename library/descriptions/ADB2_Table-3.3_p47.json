@@ -1,0 +1,17 @@
+{
+ "key": "ADB2_Table-3.3_p47",
+ "source": "ADB2",
+ "label": "Table 3.3",
+ "page": 47,
+ "caption": "Table 3.3 Minimum width of stairs designed for phased evacuation",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "657696ef6c27f9a4ca3300503f9fbfe563cfba577b4c54db68c05f10f2a3a7bc",
+ "image_sig": {
+  "w": 742,
+  "h": 492,
+  "grey": "vqumqqWnqKKnp6a2yMjIyOjn5uXn5/Ly6+fo8vLy8vLu+fn5+fn5+e/3+fn5+fn67PT09PT09PTs9PT09PT09e/5+fn5+fn58Pj5+fn5+frt+fn5+fn5+e/4+fn5+fn67Pn5+fn5+fns9/n5+fn5+uv5+fn5+fn57Pf5+fn5+frs+fn5+fn5+e73+fn5+fn67vn5+fn5+fnv9/n5+fn5+uHr+fn5+fn5+fn5+fn5+frt5Ozt7e7t7+vt7+3w7e7z8u/q6+3t7/Hu7e3u7u3r+uzZ3ezt7+3u7u/t7fz////w4/Dy8/Tz9fP1////////7+bi4+Dk4N7s8/n5+fn5+Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

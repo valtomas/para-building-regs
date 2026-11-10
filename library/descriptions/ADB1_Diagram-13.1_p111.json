@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-13.1_p111",
+ "source": "ADB1",
+ "label": "Diagram 13.1",
+ "page": 111,
+ "caption": "Diagram 13.1 Turning facilities",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "047b8ff2d32fde69f014a03cfd92bd2a9b8a7edc8893cdfa4cc85d3138fc4d5b",
+ "image_sig": {
+  "w": 737,
+  "h": 352,
+  "grey": "9PP39/f39/f39/f39/f39+3v+fX39PX29vXz9fb4///7//bt7+7u7+7v7e/v8///+/////////////L4//////v////////p5eL4+//////7////////4uPt+/v/////+//7+vz39+Tl7/P19/f9//v/8frmy7Ourqzn/v787P37//P45MaxrKys6/v39+/++//8+v7//////vT4///9//v////9//79///7+//////7////9fDu2fDw8/v/////+/////////////P5//////v///////////////////+xnJycnZycnJycnJycnJyci2tiaWtbVVVVVVVVVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "This is a plan (top view) diagram, captioned in a green band at the bottom as \"Diagram 13.1 Turning facilities\". Top left it reads \"See para 13.4\", and across the top: \"Fire and rescue service vehicles should not have to reverse more than 20m from the end of an access road.\" On the left a rectangle is labelled \"Building\", with a dashed line dropping down from it. To its right lies a green shaded strip representing the access road; within the strip is a small outline of a vehicle. The strip runs horizontally to meet a vertical road on the right, which has a break symbol at its top and an arrow labelled \"Exit\" at its right, also with a break symbol. A leader line points to the right end of the green strip where it meets the vertical road, labelled \"Turning circle, hammerhead or other point at which vehicle can turn\". Below the green strip a double-arrow dimension line, running from the dashed building line to the vertical road, is marked \"20m max.\"",
+ "first_draft": "This is a plan (top view) diagram, captioned in a green band at the bottom as \"Diagram 13.1 Turning facilities\". Top left it reads \"See para 13.4\", and across the top: \"Fire and rescue service vehicles should not have to reverse more than 20m from the end of an access road.\" On the left a rectangle is labelled \"Building\", with a dashed line dropping down from it. To its right lies a green shaded strip representing the access road; within the strip is a small outline of a vehicle. The strip runs horizontally to meet a vertical road on the right, which has a break symbol at its top and an arrow labelled \"Exit\" at its right, also with a break symbol. A leader line points to the right end of the green strip where it meets the vertical road, labelled \"Turning circle, hammerhead or other point at which vehicle can turn\". Below the green strip a double-arrow dimension line, running from the dashed building line to the vertical road, is marked \"20m max.\""
+}

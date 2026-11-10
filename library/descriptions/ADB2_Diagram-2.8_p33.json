@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-2.8_p33",
+ "source": "ADB2",
+ "label": "Diagram 2.8",
+ "page": 33,
+ "caption": "Diagram 2.8 Extension of corridor beyond a protected stairway",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "d14e51a43b7b8c94decaef32efd3835fcc5137f19debf2ce51ec0fb21addb23b",
+ "image_sig": {
+  "w": 737,
+  "h": 493,
+  "grey": "7N3d3d3d3d3d3d3d3d3d3vn5+fn5+fn5+fn5+fn5+fnv7///////////////////+/////////////7k/f////v/////6OPt///yxvH////7////+NrO3v//0efS////+////vvm6+T9/9bu1/////v//+G4yu3X7Lm+7tf////7///t2/r/1/Pc9P/X////+///7Nf4/9fx2PL/1/////v//9+v0P/X67DC/9f////7///5+Nb/1/n21v/X////+///9OzW/tf55tb+1/////v////969bw///w0+z9///r6urq6urq6urq6urq6urqg15aXlteXl1eX1tPT09PTw=="
+ },
+ "reviewed": false,
+ "description": "This drawing is a plan, captioned at the bottom \"Diagram 2.8 Extension of corridor beyond a protected stairway\", with the note \"See para 2.24\" at the top left. It contains two side-by-side plans, labelled \"Example 1\" and \"Example 2\". Each plan shows walls in thick black line, a grey-hatched area with curved steps forming a staircase, indicated by a leader line to the label \"Protected stairway\", with a jagged break line on its left wall and another jagged break line at the bottom. In Example 1, a corridor extends vertically to the right of the stairway and opens at the top into two doorways, each drawn with a quarter-circle door leaf; a green double-headed dimension line marked \"2m max.\" measures the corridor's length from the stairway line to the top wall. In Example 2, a similar corridor extends upward to a single doorway at the top, shown with a black door leaf and a quarter-circle arc, and is again dimensioned \"2m max.\" along its length.",
+ "first_draft": "This drawing is a plan, captioned at the bottom \"Diagram 2.8 Extension of corridor beyond a protected stairway\", with the note \"See para 2.24\" at the top left. It contains two side-by-side plans, labelled \"Example 1\" and \"Example 2\". Each plan shows walls in thick black line, a grey-hatched area with curved steps forming a staircase, indicated by a leader line to the label \"Protected stairway\", with a jagged break line on its left wall and another jagged break line at the bottom. In Example 1, a corridor extends vertically to the right of the stairway and opens at the top into two doorways, each drawn with a quarter-circle door leaf; a green double-headed dimension line marked \"2m max.\" measures the corridor's length from the stairway line to the top wall. In Example 2, a similar corridor extends upward to a single doorway at the top, shown with a black door leaf and a quarter-circle arc, and is again dimensioned \"2m max.\" along its length."
+}

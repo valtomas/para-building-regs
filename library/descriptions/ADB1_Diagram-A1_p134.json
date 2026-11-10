@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-A1_p134",
+ "source": "ADB1",
+ "label": "Diagram A1",
+ "page": 134,
+ "caption": "Diagram A1 | Recessed car parking areas | 122 Approved Document B Volume 1, 2019 edition | • | Windows, doors or other openings. This does not",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "43e4482cf775a3788c506740f60bf4b7fa3756aa807f686e0fb74b2d3cb892b4",
+ "image_sig": {
+  "w": 788,
+  "h": 335,
+  "grey": "9vf39/f39/f39/f39/f39vz/8dvb29vb7P////////z8/+r//////+r////////8/P/q///////q//n4/////Pz/5ufn5+fn4v/29f////z8/+r//////+r/8tPX8//8/P/m5+fn5+fi//rw7P///Pz/6v//////6v/00uTv+/z8/+r//////+r/+c3W0Pz8/P/w18zb29ve//zPz9T1/Pz//OTl////6v/80tXU7/z848e/v87OzsTd///////8/Mytra2tra2twP///////Pz///////////////////yqlZaVlZWVlZWVlZWVlZWjiGtjaWlrYFVVVVVVVVVVcg=="
+ },
+ "reviewed": false,
+ "description": "This is a section drawing, captioned in a green band at the bottom as \"Diagram A1 Recessed car parking areas\". It shows a multi-storey building viewed in cross-section. The building is a rectangular block of three upper storeys, divided by horizontal lines, which rests on a ground level indicated by a grey horizontal band representing the ground. On the left, the ground floor is set back from the upper storeys, forming a recessed space at ground level that contains a small line drawing of a car. The recessed parking space is bounded by lines highlighted in green, which mark the compartment wall and floor separating it from the main building. To the right of the drawing is a block of text headed \"NOTE:\" which reads: \"The parking area should be both of the following: a. Open fronted. b. Separated from the remainder of the building by a compartment wall(s) and floor(s) having not less than the period of fire resistance specified in Table B2 in Appendix B.\"",
+ "first_draft": "This is a section drawing, captioned in a green band at the bottom as \"Diagram A1 Recessed car parking areas\". It shows a multi-storey building viewed in cross-section: a vertical rectangular mass on the right, divided by horizontal lines into three upper storeys, resting on a ground level indicated by a grey horizontal band representing the ground. On the left, the ground floor is set back, forming a recessed space at ground level that contains a small line drawing of a car. The recessed parking space is bounded by lines highlighted in green, which mark the compartment wall and floor separating it from the main building. To the right of the drawing is a block of text headed \"NOTE:\" which reads: \"The parking area should be both of the following: a. Open fronted. b. Separated from the remainder of the building by a compartment wall(s) and floor(s) having not less than the period of fire resistance specified in Table B2 in Appendix B.\""
+}

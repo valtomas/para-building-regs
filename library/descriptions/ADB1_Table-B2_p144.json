@@ -1,0 +1,17 @@
+{
+ "key": "ADB1_Table-B2_p144",
+ "source": "ADB1",
+ "label": "Table B2",
+ "page": 144,
+ "caption": "Table B2 Minimum periods of fire resistance",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "23657ab4cf5e491ee4fb213fa4cd5cc6b5e78f1f990bd549ea3823e8997403ce",
+ "image_sig": {
+  "w": 779,
+  "h": 1028,
+  "grey": "58LEw8XFxcfU09XZ2dnZ3vz////y6Ozz7u/w9PXz+PP8////9fT49vPy9Pf4+vTz+ezv/Pz8/Pz9/P38/f389fzv6/Lx9O308uru6uny4+/47e338vT3+fj0+ffx9u3x9+vs+fL07fPy6/Ty7vjp8/vv9Pr5+vb5+PX5+Pf77vH67unr9Pn0+Pfz+Pf1+/L1++7q8fL17/Tz7fXz8fjl8Prq6fr6/Pj7+/j8+/n++PT67O709ff09/by9/b1+erx/PPz+vn59vn59fn49/ru8frn5u32+vb5+PX5+Pf89PX66uTr+fz4+/v4/Pv5/fr28+no7Ozv6+7u6u/u7PHg6Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

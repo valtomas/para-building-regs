@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-2.7_p33",
+ "source": "ADB2",
+ "label": "Diagram 2.7",
+ "page": 33,
+ "caption": "Diagram 2.7 | Recesses off corridors",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "4ab7aa1652a088617db3df690affa19d9647e1d41df2e531a97ba0e6d542fd15",
+ "image_sig": {
+  "w": 737,
+  "h": 389,
+  "grey": "9PP4+Pj4+Pj4+Pj4+Pj4+O/w///////////////////7///////+/v7//v//////+///////4uHz3/D///////v///////76+P/+///////7//////vV0uzV4f//////+//////2y9vx1tP4+PL///v/////+vT9/f3x//vz///7/////+nu/f3/1v/69f//+///9quh5vHz8sGrwfP///v///nf4eHe0+Hh4eP////7///33+Hh4N7h4eHi////+///+vT09PT09PT09P////v///7///////////7////FuLi4uLi4uLi4uLi4uLi4h2NcY19jU09PT09PT09PTw=="
+ },
+ "reviewed": false,
+ "description": "This is a plan view, titled at the bottom \"Diagram 2.7 Recesses off corridors\", with the note \"See para 2.24\" at the top left. A horizontal grey band across the lower part is labelled \"Corridor\", its left and right ends cut with zigzag break lines. Off the upper edge of the corridor projects a recess, its perimeter drawn in heavy black line. The recess has three openings: a central door, shown by a dashed vertical leaf line and a curved quarter-circle swing line opening inwards, and two side doors, one on each flank, each also shown with a curved quarter-circle swing line opening inwards into the recess. A horizontal dashed line marks the front edge of the recess where it meets the corridor. Two dimension lines run along the top, each reading \"2m max.\", spanning from the central door to the outer wall on either side. A single vertical dimension line on the right, reading \"2m max.\", measures the recess from the front edge to its back wall.",
+ "first_draft": "This is a plan view, titled at the bottom \"Diagram 2.7 Recesses off corridors\", with the note \"See para 2.24\" at the top left. A horizontal grey band across the lower part is labelled \"Corridor\", its left and right ends cut with zigzag break lines. Off the upper edge of the corridor projects a recess, its perimeter drawn in heavy black line. The recess has three openings: a central door, shown by a dashed vertical leaf line and a curved quarter-circle swing line opening inwards, and two side doors, one on each flank, each also shown with a curved quarter-circle swing line opening inwards into the recess. A horizontal dashed line marks the front edge of the recess where it meets the corridor. Two dimension lines run along the top, each reading \"2m max.\", spanning from the central door to the outer wall on either side. A single vertical dimension line on the right, reading \"2m max.\", measures the recess from the front edge to its back wall."
+}

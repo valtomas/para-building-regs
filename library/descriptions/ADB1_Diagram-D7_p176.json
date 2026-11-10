@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-D7_p176",
+ "source": "ADB1",
+ "label": "Diagram D7",
+ "page": 176,
+ "caption": "Diagram D7 Free area of smoke ventilators | E",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "3f2f7325fe083c6ce15b385f6f639547156d7e09749d37c54d9ec1b1c06ccac3",
+ "image_sig": {
+  "w": 754,
+  "h": 313,
+  "grey": "9vb29vb29vb29vb29vb29fv///////////////////v7//v/+Pf////5///////7+////+T9////////////+/v///ro/v////////////v7///r7fPP+///69Ta///7+///5Pvy0PP///z39v//+/v/8fH98uv///////////v7/+b6//73////9vf39fr7+//p+/3/7////9fe3tr4+/v/4eXy9u7/9NPZ2tnN2Pv70eHm9fTO5+7I1NTTyMv7+/79///8//////39/v//+/v///////////////////udgoSBgoGCgYGBgYGBgYGRimxha2ZqbFxVVVVVVVVVcg=="
+ },
+ "reviewed": false,
+ "description": "Diagram D7, titled Free area of smoke ventilators, has two parts. Part a. is a side view of an open hinged vent angled upwards from a wall. A dashed line runs through the opening at an angle, marked with a 90° right-angle symbol at the wall. A green double-headed arrow, labelled Free area measured at right angles to air flow, stretches diagonally from the upper edge of the raised panel to the right-hand edge of the wall opening, perpendicular to that dashed line. Part b. is an elevation of a louvred vent showing four angled black slats set in a wall. Above the slats, five short green double-headed arrows, labelled a1, a2, a3, a4 and a5, measure the open gaps: a1 and a5 measure the gap between a slat and the edge of the opening, while a2, a3 and a4 measure the gaps between the slats. A text label above reads Free area for louvred vent = a 1 +a 2 +a 3 +a 4 +a 5.",
+ "first_draft": "Diagram D7, titled Free area of smoke ventilators, has two parts. Part a. is a side view of an open hinged vent angled upwards from a wall. A dashed line runs through the opening at an angle, marked with a 90° right-angle symbol at the wall. A green double-headed arrow, labelled Free area measured at right angles to air flow, stretches diagonally from the upper edge of the raised panel to the lower edge of the wall opening, perpendicular to that dashed line. Part b. is an elevation of a louvred vent showing five angled black slats set in a wall. Above the slats, five short green double-headed arrows, labelled a1, a2, a3, a4 and a5, measure the gaps between the slats. A text label above reads Free area for louvred vent = a 1 +a 2 +a 3 +a 4 +a 5."
+}
