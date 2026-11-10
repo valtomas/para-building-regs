@@ -75,15 +75,40 @@ def list_chats_all():
                 yield c
 
 
+_summaries = {}  # chat file name -> ((mtime, size), its line in the list)
+
+
+def chat_summaries():
+    """What the chat list shows of each chat. The list goes out with every state(), and a chat's file holds
+    every passage it ever read, so only files that have changed since last time are read again."""
+    global _summaries
+    now = {}
+    for entry in os.scandir(chats_dir()):
+        if not entry.name.endswith(".json"):
+            continue
+        try:
+            st = entry.stat()
+        except OSError:  # deleted meanwhile
+            continue
+        stamp = (st.st_mtime_ns, st.st_size)
+        if _summaries.get(entry.name, (None,))[0] == stamp:
+            now[entry.name] = _summaries[entry.name]
+            continue
+        c = load_chat(entry.name[:-5])
+        if c:
+            now[entry.name] = (stamp, {"id": c["id"], "title": c.get("title", ""), "updated": c.get("updated", 0),
+                                       "project": c.get("project", "")})
+    _summaries = now
+    return [summary for _, summary in now.values()]
+
+
 def list_chats():
     """The latest 200 chats of each project (and of chats in none), newest first."""
     out, per_project = [], {}
-    for c in sorted(list_chats_all(), key=lambda c: -c.get("updated", 0)):
-        project = c.get("project", "")
-        per_project[project] = per_project.get(project, 0) + 1
-        if per_project[project] <= 200:
-            out.append({"id": c["id"], "title": c.get("title", ""), "updated": c.get("updated", 0),
-                        "project": project})
+    for c in sorted(chat_summaries(), key=lambda c: -c["updated"]):
+        per_project[c["project"]] = per_project.get(c["project"], 0) + 1
+        if per_project[c["project"]] <= 200:
+            out.append(c)
     return out
 
 

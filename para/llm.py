@@ -72,6 +72,8 @@ class Client:
     def __init__(self, base_url, api_key="", model=""):
         self.base = base_url.rstrip("/")
         self.key, self.model = api_key, model
+        # what this server turned out not to take, so a turn's later requests aren't each refused first
+        self.length_field, self.bare = "max_tokens", False
 
     def _request(self, path, body=None, timeout=30):
         headers = {"Content-Type": "application/json"}
@@ -105,7 +107,7 @@ class Client:
         if tools:
             body["tools"] = tools
         if max_tokens and max_tokens > 0:
-            body["max_tokens"] = max_tokens
+            body[self.length_field] = max_tokens
         if reasoning == "off":
             # Understood by llama.cpp/Qwen templates and ignored by servers that don't know it.
             body["chat_template_kwargs"] = {"enable_thinking": False}
@@ -114,17 +116,28 @@ class Client:
             body["chat_template_kwargs"] = {"enable_thinking": True}
         if extra:
             body.update(extra)
-        try:
-            resp = self._request("/chat/completions", body, timeout=900)
-        except EngineError as e:
-            # Some servers reject fields they don't know: try once more with the bare request.
-            if any(k in body for k in ("chat_template_kwargs", "reasoning_effort", "stream_options")) and \
-                    re.search(r"\b(400|422)\b", str(e)):
-                for k in ("chat_template_kwargs", "reasoning_effort", "stream_options"):
-                    body.pop(k, None)
+        optional = ("chat_template_kwargs", "reasoning_effort", "stream_options")
+        if self.bare:
+            for k in optional:
+                body.pop(k, None)
+        while True:
+            try:
                 resp = self._request("/chat/completions", body, timeout=900)
-            else:
-                raise
+                break
+            except EngineError as e:
+                if not re.search(r"\b(400|422)\b", str(e)):
+                    raise
+                if "max_tokens" in body and "max_tokens" in str(e):
+                    # Newer services refuse max_tokens by name and want the same limit as max_completion_tokens.
+                    self.length_field = "max_completion_tokens"
+                    body[self.length_field] = body.pop("max_tokens")
+                elif any(k in body for k in optional):
+                    # Some servers reject fields they don't know: try again with the bare request.
+                    self.bare = True
+                    for k in optional:
+                        body.pop(k, None)
+                else:
+                    raise
         calls, finish, usage = {}, None, {}
         think = _ThinkSplitter()
         with resp:

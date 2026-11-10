@@ -212,12 +212,18 @@ class Store:
         if not terms:
             return []
         hits = []
+        # The documents to search are chosen in the query, before the best 200 are taken: chosen afterwards, a
+        # project's passages are lost whenever 200 from other projects' files match better.
+        keys = sorted(source_keys) if source_keys else []
+        scope = " WHERE fts MATCH ?" if not keys else (
+            " JOIN passages p ON p.id = fts.rowid JOIN sources s ON s.id = p.source_id WHERE fts MATCH ? "
+            f"AND s.key IN ({','.join('?' * len(keys))})")
         with self.lock:
             for joiner in (" ", " OR "):
                 try:
                     hits = self.db.execute(
-                        "SELECT rowid, bm25(fts, 0.6, 4.0, 2.0, 1.0) AS score FROM fts WHERE fts MATCH ? "
-                        "ORDER BY score LIMIT 200", (joiner.join(terms),)).fetchall()
+                        "SELECT fts.rowid, bm25(fts, 0.6, 4.0, 2.0, 1.0) AS score FROM fts" + scope +
+                        " ORDER BY score LIMIT 200", [joiner.join(terms)] + keys).fetchall()
                 except sqlite3.OperationalError:
                     hits = []
                 if len(hits) >= 4 or len(terms) == 1:
@@ -231,8 +237,6 @@ class Store:
                 f"JOIN sources s ON s.id = p.source_id WHERE p.id IN ({marks})", list(score)).fetchall()
         out, per_source = [], {}
         for r in sorted(rows, key=lambda r: score[r[0]]):
-            if source_keys and r[5] not in source_keys:
-                continue
             if per_source.get(r[5], 0) >= 3:  # leave room for other documents
                 continue
             per_source[r[5]] = per_source.get(r[5], 0) + 1

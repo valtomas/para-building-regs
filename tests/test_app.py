@@ -278,6 +278,112 @@ check(any(e["type"] == "notice" and "updated" in e["text"] for e in events) and 
       "after a library update, a chat's old lookups are forgotten and the person is told")
 check(any(e["type"] == "done" and e["cites"] for e in events), "and it looks things up afresh, with citations")
 
+# a project's files are chosen before the best matches are taken, not after
+many = Store(os.path.join(TMP, "many.sqlite"), "f")
+for n in range(210):
+    many.add_source(f"/other/{n}.txt", f"Other {n}", f"Other {n}", "file",
+                    [{"text": "Balustrade balustrade balustrade: the balustrade schedule."}])
+many.add_source("/mine/spec.txt", "Spec", "Spec", "file",
+                [{"text": "The stair has an oak handrail on steel posts, with a glass balustrade to the landing "
+                          "and a painted softwood string, all as the joiner's drawings and the schedule of finishes."}])
+found = many.search("balustrade", source_keys={"/mine/spec.txt"})
+check([h["source"] for h in found] == ["Spec"], "a project's file is found among many better matches elsewhere")
+check(len(many.search("balustrade")) == 8, "and a search of everything is as before")
+
+# the chat list reads a chat's file again only when it has changed
+listed = {c["id"]: c for c in server.list_chats()}
+check(stale in listed and listed[stale]["title"].startswith("What is the maximum rise"), "the chat list has each chat")
+real_load, reads = server.load_chat, []
+server.load_chat = lambda cid: reads.append(cid) or real_load(cid)
+server.list_chats()
+check(not reads, "an unchanged chat isn't read again for the list")
+after["title"] = "Stairs at Mill Lane"
+server.save_chat(after)
+check({c["id"]: c for c in server.list_chats()}[stale]["title"] == "Stairs at Mill Lane" and reads == [stale],
+      "a changed chat is, and only that one")
+server.load_chat = real_load
+call("/api/chat?id=" + stale, method="DELETE")
+check(stale not in {c["id"] for c in server.list_chats()}, "a deleted chat leaves the list")
+
+# the engine's log keeps its end, not everything since the app was installed
+from para import engine as eng  # noqa: E402
+
+log_file = os.path.join(TMP, "engine.log")
+with open(log_file, "wb") as f:
+    f.write(b"old line\n" * 700000 + b"the last thing that went wrong\n")
+eng._trim_log(log_file)
+with open(log_file, "rb") as f:
+    kept = f.read()
+check(len(kept) <= eng.LOG_KEEP and kept.endswith(b"the last thing that went wrong\n") and kept.startswith(b"old line"),
+      "a long engine log is cut to whole lines at its end")
+
+# downloads: a part left over that can't be carried on is thrown away, not retried for ever
+import hashlib  # noqa: E402
+import http.server  # noqa: E402
+
+PAYLOAD = bytes(range(256)) * 40
+
+
+class Files(http.server.BaseHTTPRequestHandler):
+    def log_message(self, *a):
+        pass
+
+    def do_GET(self):
+        start = int((self.headers.get("Range") or "bytes=0-")[6:].rstrip("-"))
+        if start >= len(PAYLOAD):
+            self.send_response(416)
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
+        self.send_response(206 if start else 200)
+        self.send_header("Content-Length", str(len(PAYLOAD) - start))
+        self.end_headers()
+        self.wfile.write(PAYLOAD[start:])
+
+
+files_srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), Files)
+threading.Thread(target=files_srv.serve_forever, daemon=True).start()
+file_url = f"http://127.0.0.1:{files_srv.server_address[1]}/model.gguf"
+digest = hashlib.sha256(PAYLOAD).hexdigest()
+
+
+def fetch(part, **kw):
+    dest = os.path.join(TMP, "model.gguf")
+    for path in (dest, dest + ".part"):
+        if os.path.exists(path):
+            os.remove(path)
+    if part is not None:
+        with open(dest + ".part", "wb") as f:
+            f.write(part)
+    eng._download(file_url, dest, eng.Job("install", "test"), **kw)
+    with open(dest, "rb") as f:
+        return f.read() == PAYLOAD
+
+
+check(fetch(PAYLOAD[:1000], expect_size=len(PAYLOAD), sha256=digest), "a download carries on from where it stopped")
+check(fetch(b"x" * (len(PAYLOAD) + 5), expect_size=len(PAYLOAD), sha256=digest),
+      "a leftover part bigger than the file is started again")
+check(fetch(b"x" * (len(PAYLOAD) + 5)), "so is one the server has nothing more for, when the size isn't known")
+check(fetch(PAYLOAD, expect_size=len(PAYLOAD), sha256=digest), "a part that's already whole is only checked")
+files_srv.shutdown()
+
+# a service that refuses max_tokens by name gets the limit as max_completion_tokens, and is remembered
+from para.llm import Client  # noqa: E402
+from tests import fake_llm  # noqa: E402
+
+strict = Client(fake_url, model="strict-model")
+said = "".join(e["text"] for e in strict.stream([{"role": "user", "content": "Reply with just: OK"}], max_tokens=50,
+                                                 reasoning="off") if e["type"] == "content")
+last = fake_llm.SEEN[-1]
+check(said == "OK" and last.get("max_completion_tokens") == 50 and "max_tokens" not in last
+      and "chat_template_kwargs" not in last, "a refused max_tokens is sent again as max_completion_tokens")
+before = len(fake_llm.SEEN)
+list(strict.stream([{"role": "user", "content": "Reply with just: OK"}], max_tokens=50, reasoning="off"))
+check(len(fake_llm.SEEN) == before + 1, "and the next request is right first time")
+
+# the built-in engine is a build that was tested, not whichever is newest
+check(eng.catalog()["llama_cpp"]["tag"] != "latest", "the llama.cpp build is pinned")
+
 # updating the app itself: only a copy that can replace itself is offered it, with GitHub's checksum
 from para import updater  # noqa: E402
 

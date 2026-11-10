@@ -83,6 +83,9 @@ instead.
 - **Use an engine I already run.** Click *Find engines on this computer*, or type the server's address
   (e.g. `http://127.0.0.1:11434/v1` for Ollama, `http://127.0.0.1:1234/v1` for LM Studio,
   `http://127.0.0.1:8000/api/v1` for Lemonade). Pick a model and press Save. Models with tool calling work best.
+  Give the model room to read: Para's instructions and the passages it looks up need a context of 16,000
+  tokens or more, and some engines start with far less and drop the beginning without saying so (Ollama's default
+  is 4,096: raise *Context length* in its settings, or set `OLLAMA_CONTEXT_LENGTH=32768`).
 - **Built-in engine.** The app suggests a model for your computer's memory, downloads llama.cpp and the model from
   Hugging Face, and runs them itself.
 - **Use an online AI service.** Pick Anthropic, Mistral, OpenAI or OpenRouter (or type another service's
