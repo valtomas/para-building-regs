@@ -25,7 +25,7 @@ passage ids; the app checks every citation. It must stay:
 |---|---|
 | `para/server.py` | HTTP server (stdlib `ThreadingHTTPServer`), JSON API, SSE chat stream, chats on disk, update checks, window start-up |
 | `para/core.py` | One chat turn: system prompt, tool loop (`search_library`, `read_passage`, `show_passage`), nudges, rescue, citation checking |
-| `para/llm.py` | OpenAI-compatible streaming client; splits `<think>` and `reasoning_content`; probes known local servers |
+| `para/llm.py` | OpenAI-compatible streaming client; splits `<think>` and `reasoning_content`; probes known local servers; `HOSTED`, the hosted services offered in Settings (an address each, no code of their own) |
 | `para/engine.py` | Built-in engine: downloads llama.cpp's `llama-server` and GGUF models, starts and stops it (memory check, idle stop, leftover clean-up); `Engine.client()` picks the configured engine |
 | `para/models.json` | Built-in model catalogue (also published with each release and fetched by installed apps) |
 | `para/store.py` | SQLite FTS5 store (sources, passages, BM25 search, read, document), used for both libraries |
@@ -165,4 +165,7 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
 - **A new built-in model**: add it to `para/models.json` with the exact Hugging Face repo and file, size and memory
   needed. Test it answers with citations through the built-in engine before listing it.
 - **A new API endpoint**: in `server.Handler`, return JSON through `_send`, and add a check to `tests/test_app.py`.
+- **A hosted service**: add it to `llm.HOSTED` (name, base URL, where it's based, the page for keys, an example
+  model). It must take the standard `/chat/completions` API with a Bearer key; never add code for one service. A key
+  is saved for one server only (`server.saved_key_for`): changing the address never sends it somewhere else.
 - **A new setting**: add the default to `paths.DEFAULTS` (only keys there can be saved), then the UI.
