@@ -691,11 +691,12 @@ async function pollJobs() {
   if (polling) return; polling = true;
   try {
     for (;;) {
-      const { bundled, library_job } = await api("/api/jobs");
-      S.bundled = bundled;
+      const { bundled, library_job, app_job } = await api("/api/jobs");
+      S.bundled = bundled; S.app_job = app_job;
       if (!$("#bundledPane").hidden) renderBundled();
       if (library_job) renderLibraryJob(library_job);
-      const running = (bundled.jobs.install && bundled.jobs.install.state === "running") || (library_job && library_job.state === "running");
+      if (app_job) renderAppJob(app_job);
+      const running = [bundled.jobs.install, library_job, app_job].some((j) => j && j.state === "running");
       if (!running) break;
       await new Promise((r) => setTimeout(r, 1000));
     }
@@ -745,12 +746,28 @@ function renderAbout() {
   const u = S.updates || {};
   let h = "";
   if (u.error) h += `<p class="muted small">Couldn't check for updates: ${esc(u.error)}</p>`;
-  if (u.app) h += `<p class="update-row">Version ${esc(u.app.version)} is available. <button type="button" class="btn" id="getApp">Download</button></p>`;
+  // a copy that can replace itself updates in one click; others (a zip, a folder, from source) get the release page
+  if (u.app && u.app.update) h += `<p class="update-row">Version ${esc(u.app.version)} is available. <button type="button" class="btn primary" id="updateApp">Update now</button></p><div id="appJob"></div>`;
+  else if (u.app) h += `<p class="update-row">Version ${esc(u.app.version)} is available. <button type="button" class="btn" id="getApp">Download</button></p>`;
   if (u.library) h += `<p class="update-row">A newer regulations library (${esc(u.library.version)}, ${(u.library.size / 2 ** 20).toFixed(0)} MB) is available. <button type="button" class="btn primary" id="getLib">Install</button></p><div id="libJob"></div>`;
   if (u.checked && !u.app && !u.library && !u.error) h += `<p class="muted small">You're up to date.</p>`;
   $("#updateView").innerHTML = h;
   const ga = $("#getApp"); if (ga) ga.onclick = () => openUrl(u.app.url);
+  const ua = $("#updateApp");
+  if (ua) ua.onclick = async () => {
+    ua.disabled = true;
+    try { await api("/api/updates/app", { method: "POST" }); pollJobs(); }
+    catch (e) { ua.disabled = false; $("#appJob").innerHTML = `<div class="error">${esc(e.message)}</div>`; }
+  };
+  if (S.app_job) renderAppJob(S.app_job);
   const gl = $("#getLib"); if (gl) gl.onclick = async () => { await api("/api/updates/library", { method: "POST" }); pollJobs(); };
+}
+function renderAppJob(j) {
+  const v = $("#appJob"); if (!v) return;
+  const pct = j.total ? Math.round(j.done / j.total * 100) : 0;
+  if ($("#updateApp")) $("#updateApp").disabled = j.state !== "error";
+  v.innerHTML = j.state === "running" ? `<div class="progress"><div style="width:${pct}%"></div></div>`
+    : j.state === "error" ? `<div class="error">${esc(j.error)}</div>` : `<p class="ok-line">${esc(j.note)}</p>`;
 }
 function renderLibraryJob(j) {
   const v = $("#libJob"); if (!v) return;

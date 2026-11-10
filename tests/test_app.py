@@ -222,6 +222,34 @@ try:
 except urllib.error.HTTPError as e:
     check(e.code == 403, "blocks cross-site posts")
 
+# updating the app itself: only a copy that can replace itself is offered it, with GitHub's checksum
+from para import updater  # noqa: E402
+
+check(updater.kind() is None, "running from source, the app doesn't update itself")
+release = {"Para-linux.AppImage": {"browser_download_url": "https://example.org/Para-linux.AppImage", "size": 9,
+                                   "digest": "sha256:" + "ab" * 32}}
+check(updater.offer(release) is None, "no update offered to a copy that can't replace itself")
+real_kind, updater.kind = updater.kind, lambda: "appimage"
+offered = updater.offer(release)
+updater.kind = real_kind
+check(offered == {"kind": "appimage", "url": "https://example.org/Para-linux.AppImage", "size": 9,
+                  "sha256": "ab" * 32}, "an AppImage is offered the new AppImage and its checksum")
+image = os.path.join(TMP, "Para.AppImage")
+for path, text in ((image, "old"), (image + ".new", "new")):
+    with open(path, "w") as f:
+        f.write(text)
+updater.swap_appimage(image + ".new", image)
+with open(image) as f:
+    check(f.read() == "new" and os.access(image, os.X_OK) and not os.path.exists(image + ".new"),
+          "the new AppImage takes the old one's place, ready to run")
+try:
+    call("/api/updates/app", {})
+    check(False, "won't update a copy that can't replace itself")
+except urllib.error.HTTPError as e:
+    check(e.code == 502 and "can't update itself" in json.load(e)["error"],
+          "won't update a copy that can't replace itself")
+check("app_job" in json.loads(call("/api/jobs")), "the page can follow an update's download")
+
 # engines without tools: excerpts attached
 from para import core  # noqa: E402
 from para.library import Library  # noqa: E402

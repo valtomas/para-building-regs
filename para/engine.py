@@ -161,12 +161,12 @@ class Job:
     def __init__(self, kind, label):
         self.kind, self.label = kind, label
         self.done = self.total = 0
-        self.state, self.error, self.started = "running", "", time.time()
+        self.state, self.error, self.note, self.started = "running", "", "", time.time()
         self.cancel = threading.Event()
 
     def view(self):
         return {"kind": self.kind, "label": self.label, "done": self.done, "total": self.total,
-                "state": self.state, "error": self.error}
+                "state": self.state, "error": self.error, "note": self.note}
 
 
 def _download(url, dest, job, expect_size=None, sha256=None):

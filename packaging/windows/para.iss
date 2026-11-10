@@ -34,9 +34,9 @@ Compression=lzma2/max
 SolidCompression=yes
 OutputDir=..\..\dist
 OutputBaseFilename=Para-windows-setup
-; Closes a running Para before replacing its files (an update), and offers to start it again.
+; Closes a running Para before replacing its files. Para's own updater quits before running this.
 CloseApplications=yes
-RestartApplications=yes
+RestartApplications=no
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -56,4 +56,5 @@ Name: "{userprograms}\Para"; Filename: "{app}\Para.exe"
 Name: "{userdesktop}\Para"; Filename: "{app}\Para.exe"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\Para.exe"; Description: "Open Para"; Flags: nowait postinstall skipifsilent
+; Also runs after a silent install, which is how Para updates itself (para/updater.py), so it opens again.
+Filename: "{app}\Para.exe"; Description: "Open Para"; Flags: nowait postinstall

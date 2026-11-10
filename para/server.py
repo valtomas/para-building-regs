@@ -21,7 +21,7 @@ import urllib.request
 import uuid
 import webbrowser
 
-from . import VERSION, paths
+from . import VERSION, paths, updater
 from .core import BASE_PROMPT, chat_events
 from .engine import Engine, Job, catalog, recommend, _download
 from .library import Library, Scope
@@ -38,6 +38,7 @@ engine = Engine()
 stops = {}  # chat id -> Event
 update_info = {}
 library_job = {}
+app_job = {}
 
 
 # ----- chats -----
@@ -119,7 +120,7 @@ def check_updates():
     info = {"checked": time.time(), "error": "", "app": None, "library": None}
     if _newer(rel.get("tag_name", "0"), VERSION):
         info["app"] = {"version": rel["tag_name"].lstrip("v"), "url": rel.get("html_url"),
-                       "notes": (rel.get("body") or "")[:2000]}
+                       "notes": (rel.get("body") or "")[:2000], "update": updater.offer(assets)}
     if "library.json" in assets:
         try:
             req = urllib.request.Request(assets["library.json"]["browser_download_url"],
@@ -180,6 +181,47 @@ def install_library_update():
     return job.view()
 
 
+def install_app_update():
+    """Downloads the new version, checks it against GitHub's checksum, puts it in place and, where the new copy
+    starts by itself, quits so it can."""
+    app = update_info.get("app") or {}
+    update = app.get("update")
+    if not update:
+        raise EngineError("This copy of Para can't update itself: download the new version instead.")
+    if app_job.get("job") and app_job["job"].state == "running":
+        return app_job["job"].view()
+    job = Job("app", f"Para {app['version']}")
+    app_job["job"] = job
+
+    def run():
+        try:
+            dest = updater.download_path(update)
+            _download(update["url"], dest, job, expect_size=update.get("size"), sha256=update.get("sha256"))
+            job.note, quit_now = updater.install(update, dest)
+            job.state = "done"
+            if quit_now:
+                time.sleep(2)  # time for the page to show what's happening
+                quit_app()
+        except Exception as e:  # noqa: BLE001 - a background thread: report it on the page
+            job.state, job.error = "error", str(e)
+
+    threading.Thread(target=run, daemon=True).start()
+    return job.view()
+
+
+def quit_app():
+    """Closes the window, which ends the app as if the person had closed it (stopping the built-in engine); in the
+    browser there's no window, so the engine is stopped here and the process ends."""
+    engine.bundled.stop()
+    try:
+        import webview
+        for w in list(webview.windows):
+            w.destroy()
+    except Exception:  # noqa: BLE001 - no window toolkit: nothing to close
+        pass
+    threading.Timer(5, os._exit, [0]).start()  # if closing the window didn't end it
+
+
 def saved_key_for(base_url):
     """The saved API key, but only for the server it was saved for: switching from one hosted service to another
     must never send the first one's key to the second."""
@@ -205,6 +247,7 @@ def state():
             "bundled": engine.bundled.status(), "catalog": catalog()["models"],
             "recommended": (recommend() or {}).get("id"), "hosted": HOSTED, "updates": update_info,
             "library_job": library_job["job"].view() if library_job.get("job") else None,
+            "app_job": app_job["job"].view() if app_job.get("job") else None,
             "chats": list_chats(), "platform": sys.platform}
 
 
@@ -282,7 +325,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 return self._send(200, {"found": probe_known()})
             if path == "/api/jobs":
                 return self._send(200, {"bundled": engine.bundled.status(),
-                                        "library_job": library_job["job"].view() if library_job.get("job") else None})
+                                        "library_job": library_job["job"].view() if library_job.get("job") else None,
+                                        "app_job": app_job["job"].view() if app_job.get("job") else None})
             return self._send(404, {"error": "Not found"})
         except EngineError as e:
             return self._send(502, {"error": str(e)})
@@ -420,6 +464,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 return self._send(200, check_updates())
             if path == "/api/updates/library":
                 return self._send(200, install_library_update())
+            if path == "/api/updates/app":
+                return self._send(200, install_app_update())
             return self._send(404, {"error": "Not found"})
         except EngineError as e:
             return self._send(502, {"error": str(e)})
