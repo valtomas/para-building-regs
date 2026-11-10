@@ -23,6 +23,7 @@ How to answer:
 - Search the library before answering any question about requirements, guidance, dimensions, procedures or definitions, even if you think you know, so the person can check where it came from. Use the documents' own terms (e.g. "means of escape", "travel distance", "protected stairway", "guarding", "going", "U-value", "purge ventilation"). If the first search misses, try other wording or name the Part. Read the most relevant passage before answering.
 - Lead with the direct answer, then the detail. Quote figures exactly as written, with units and any conditions or exceptions that change them.
 - Cite as you go: after each statement taken from the library, put the id of the passage it came from in square brackets, like [r1234] or [f56]. Cite only ids from your own search_library or read_passage results; the app turns them into links to the passage. Also name the document and paragraph, table or diagram in words (e.g. "ADB Vol 1, para 2.13"), because people quote those.
+- Ids starting r are the regulations library; ids starting f are the person's own files. Say something comes from their files or notes only when it does.
 - Diagrams and tables are drawings in the documents. Their passages give the caption and the words on the drawing, and the person can see the drawing itself in the reader. When an answer depends on a diagram, cite its passage and say which diagram to look at; don't describe details of a drawing you can't see in the text.
 - Some diagram passages also have a "Description of the drawing (written by AI from the image, checked by a person)". Use it to understand what the drawing shows, but it comes second: the document's own text, tables, notes and the words on the drawing take precedence, and a requirement must come from them. If the description and the document disagree, follow the document and say so.
 - Never invent paragraph numbers, figures or document names. If the library doesn't cover something, say so plainly, then give what you know marked "Not from the library:".
@@ -89,8 +90,12 @@ def _notes(settings):
     project = settings.get("project") or {}
     if not project.get("name"):
         return f"\n\nThe person's notes about their project (take these into account):\n{general}" if general else ""
-    out = (f"\n\nThis chat is about the person's project \"{project['name']}\"; its files are searched with the "
-           "library.")
+    # only say there are files to search when there are: told so with none, a model credits library passages to
+    # "your project files"
+    files = project.get("files") or 0
+    out = (f"\n\nThis chat is about the person's project \"{project['name']}\"; " +
+           (f"its {files} file{'s are' if files != 1 else ' is'} searched with the library (ids starting f)." if files
+            else "it has no files of its own."))
     if (project.get("notes") or "").strip():
         out += f" Their notes about it (take these into account):\n{project['notes'].strip()}"
     if general:
@@ -166,13 +171,19 @@ def run_tool(library, name, args, known):
         if doc.get("next_id"):
             known.add(doc["next_id"])
         more = f"\n\n[More follows: read_passage(id=\"{doc['next_id']}\")]" if doc.get("next_id") else ""
-        head = f"{doc['title']} ({doc['source']})"
-        return f"{head}\n\n{doc['text']}{more}", {"type": "read", **_brief(doc), "nearby": _nearby(library, ids, pid)}
+        return f"{_head(doc)}\n\n{doc['text']}{more}", {"type": "read", **_brief(doc), "nearby": _nearby(library, ids, pid)}
     return f"Unknown tool {name}. Use search_library or read_passage.", None
 
 
 def _brief(item):
     return {k: item.get(k) for k in ("id", "source", "title", "ref", "heading", "page", "kind")}
+
+
+def _head(doc):
+    """What a read passage is from: the document and, in an Approved Document, the requirement it's under, which the
+    passage's own heading doesn't say ("Section 3: Protection from falling" is under Requirement K2)."""
+    head = f"{doc['title']} ({doc['source']})"
+    return head + (f", under {doc['requirement']}" if doc.get("requirement") else "")
 
 
 def _nearby(library, ids, pid):
@@ -427,7 +438,7 @@ def _attach_excerpts(library, messages, read, known):
         if doc:
             ids = ID_IN_TEXT.findall(doc["text"])
             known.update(ids)
-            blocks.append(f"{doc['title']} ({doc['source']}):\n{doc['text']}")
+            blocks.append(f"{_head(doc)}:\n{doc['text']}")
             read.setdefault(h["id"], {"type": "read", **_brief(h)})
             yield {"type": "read", **_brief(h), "nearby": _nearby(library, ids, h["id"])}
     if blocks:

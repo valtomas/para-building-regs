@@ -87,6 +87,33 @@ Library first (`splitter.py`, `build.py`, `figures.py`), then the tool loop and 
   answer is set aside and the model is asked once to search. This fixed three of the 4B's answers; it still
   ignored it for the HRB question.
 
+### Run C: a question in a project, and requirements in reads
+
+Recording the website's video turned up two slips on "What height of guarding do I need at the edge of the new
+landing?", asked in a project with notes and no files (Qwen3.5-35B-A3B):
+
+- **"As noted in your project files"**, about headroom it had found in the library. The prompt told every project
+  chat that "its files are searched with the library", even with none. It now says how many files there are, or that
+  there are none, and that ids starting r are the library and f the person's files.
+- **"Requirement K3"** for guarding. Reading ADK para 3.2 ran on into the opening of K3 (vehicle barriers), while
+  the K2 heading sat in a passage before Section 3, so the read never showed it. A read now says which requirement
+  its passage is under ("…(ADK), under Requirement K2: Protection from falling") and stops where the next one
+  starts. Requirements are found from the documents' own openings ("This approved document deals with the following
+  requirement from Part K…"): ADB Vol 1 and 2, ADK (with K5.1 to K5.4), ADP and ADQ have them; the others get no
+  label rather than a guess.
+
+The landing question is now in the tests, asked in a project ("Loft test"), and the score counts answers that credit
+the person's files or notes without citing one. Run C (library 2026.11.06, 10 November 2026):
+
+| Model | Right figures | Searched | Cited | Right passage cited | Made-up ids removed | Credits their files wrongly | Median time |
+|---|---|---|---|---|---|---|---|
+| Qwen3.5-35B-A3B | 8/8 | 8/8 | 8/8 | 7/8 | 0 | 0 | 16 s |
+| Nemotron 3.5 Lightning 30B-A3B | 8/8 | 8/8 | 7/8 | 6/8 | 0 | 0 | 22 s |
+
+On the landing question both gave 900 mm from ADK Diagram 3.1; Qwen, having read para 3.2, named Requirement K2
+correctly. Nemotron answered the travel distance (7.5 m) without a citation, and cited ADK 3.3 rather than
+Diagram 3.1 for the balcony. One run each, so a slip that comes one time in four may not show yet.
+
 ## Built-in engine
 
 - `para/models.json`: every repo and file exists on Hugging Face with the listed size (checked with `HEAD` and
