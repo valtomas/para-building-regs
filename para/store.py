@@ -34,6 +34,12 @@ through to too under until up very was we were what when where which while who w
 yours need needs required requirement requirements regs regulation regulations approved document documents tell
 explain""".split())
 
+# Where an Approved Document starts on one of its requirements: "This approved document deals with the following
+# requirement from Part K…", after the requirement's name ("Requirement K2: Protection from falling").
+REQUIREMENT_STARTS = re.compile(r"(?:This|These) (?:approved document|section|sections) deals? with the following "
+                                r"requirements? from Part ([A-Z])\b")
+REQUIREMENT_NAME = re.compile(r"Requirement ([A-Z])(\d+(?:\.\d+)?): ?(.+?)(?= *(?:\||This |These |$))", re.S)
+
 # Words people use for a document, mapped to how the library names it, so "Part B" or "ADB" finds Approved Document B.
 PART_WORD = re.compile(r"\b(?:part|approved\s+document)\s+([a-t])(?![a-z])|\bad\s?([a-t])(?![a-z])", re.I)
 
@@ -83,6 +89,7 @@ class Store:
     def __init__(self, path, prefix, readonly=False):
         self.path, self.prefix, self.readonly = path, prefix, readonly
         self.lock = threading.RLock()
+        self._requirements = {}  # source id -> [(seq, name)], worked out when first read
         if readonly:
             self.db = sqlite3.connect(f"file:{path}?mode=ro", uri=True, check_same_thread=False)
         else:
@@ -255,18 +262,59 @@ class Store:
             if not r:
                 return None
             sid, seq = r[0], r[1]
+            starts = self.requirements(sid)
+            under = next((name for at, name in reversed(starts) if at <= seq), None)
+            # stop where the next requirement starts, so a passage isn't read as part of it
+            stop = next((at for at, _ in starts if at > seq), None)
             parts, size, next_id = [], 0, None
-            for rowid, ref, heading, text in self.db.execute(
-                    "SELECT id, ref, heading, text FROM passages WHERE source_id=? AND seq>=? ORDER BY seq LIMIT 40",
-                    (sid, seq)):
-                if parts and size + len(text) > max_chars:
+            for rowid, pseq, ref, heading, text in self.db.execute(
+                    "SELECT id, seq, ref, heading, text FROM passages WHERE source_id=? AND seq>=? ORDER BY seq "
+                    "LIMIT 40", (sid, seq)):
+                if parts and (size + len(text) > max_chars or (stop is not None and pseq >= stop)):
                     next_id = self.pid(rowid)
                     break
                 label = " · ".join(x for x in (heading, ref) if x)
                 parts.append((f"[{self.pid(rowid)}] {label}\n" if label else f"[{self.pid(rowid)}]\n") + text)
                 size += len(text)
         return {"id": pid, "ref": r[2], "heading": r[3], "page": r[4], "source": r[5], "title": r[6], "url": r[7],
-                "kind": r[9], "text": "\n\n".join(parts), "next_id": next_id}
+                "kind": r[9], "text": "\n\n".join(parts), "next_id": next_id, "requirement": under}
+
+    def requirements(self, sid):
+        """Where an Approved Document starts on each of its requirements: [(seq, "Requirement K2: Protection from
+        falling")]. A passage's heading only names its section ("Section 3: Protection from falling"), so without
+        this a model reading on into the next requirement's opening takes the passage to be under that one.
+
+        The requirement must be the document's own Part: the newer documents explain their layout with Part B's
+        B2 as the example, and that page is skipped too in ADB itself, being out of order. Where the opening is run
+        into a passage from the side of the page (ADK's K5.3 into para 7.4, with Section 7's diagrams still to come),
+        the requirement starts at the next section heading. Documents without these openings get none, rather than
+        a guess."""
+        with self.lock:
+            if sid in self._requirements:
+                return self._requirements[sid]
+            src = self.db.execute("SELECT short, kind FROM sources WHERE id=?", (sid,)).fetchone()
+            part = re.match(r"AD([A-Z])", src[0] or "") if src and src[1] == "approved-document" else None
+            found = []
+            rows = self.db.execute("SELECT seq, heading, text FROM passages WHERE source_id=? ORDER BY seq",
+                                   (sid,)).fetchall() if part else []
+            section = re.compile(r"Section \w+")
+            for i, (seq, heading, text) in enumerate(rows):
+                whole = f"{heading or ''} {text or ''}".replace("\n", " ")
+                for opening in REQUIREMENT_STARTS.finditer(whole):
+                    names = [n for n in REQUIREMENT_NAME.finditer(whole[:opening.start()])
+                             if n.group(1) == opening.group(1) == part.group(1)]
+                    if names:
+                        n = names[-1]
+                        at = seq
+                        if not (heading or "").startswith("Requirement"):
+                            own = section.match(heading or "")
+                            at = next((s for s, h, _ in rows[i + 1:] if section.match(h or "") and
+                                       (not own or section.match(h).group(0) != own.group(0))), seq + 1)
+                        name = f"Requirement {n.group(1)}{n.group(2)}: {n.group(3).strip()}"
+                        found.append((at, float(n.group(2)), name))
+            self._requirements[sid] = [(at, name) for i, (at, number, name) in enumerate(found)
+                                       if all(number <= later[1] for later in found[i + 1:])]
+            return self._requirements[sid]
 
     def document(self, pid):
         """The whole document holding a passage, as passages, for the reader panel."""

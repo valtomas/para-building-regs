@@ -175,6 +175,10 @@ check(json.loads(call("/api/chat?id=" + cid_p))["project"] == "Mill Lane", "the 
 from para import core  # noqa: E402
 prompt = core.system_prompt(server.library, {"project": server.myfiles.project("Mill Lane")})
 check('project "Mill Lane"' in prompt and "3-storey house" in prompt, "the project's notes go in the prompt")
+check("its 1 file is searched" in prompt, "the prompt says how many files the project has")
+empty = core.system_prompt(server.library, {"project": {"name": "Empty", "notes": "", "files": 0}})
+check("no files of its own" in empty and "searched with the library" not in empty,
+      "a project with no files isn't said to have files searched")
 st = json.loads(call("/api/projects/update", {"name": "Mill Lane", "new_name": "Mill Lane 2", "notes": "Flats"}))
 moved = [f for f in st["files"] if f["project"] == "Mill Lane 2"]
 check(st["project"] == "Mill Lane 2" and moved and moved[0]["note"] == "" and st["projects"][0]["notes"] == "Flats"
@@ -540,6 +544,24 @@ if os.name != "nt":
     busy = bundled.stop_if_idle(minutes=1)
     bundled.last_used = time.time() - 120
     check(not busy and bundled.stop_if_idle(minutes=1) and bundled.proc is None, "an idle engine is stopped")
+
+# Approved Documents: which requirement a passage is under, from the document's own "deals with the following
+# requirement" openings, also when one is run into the end of the section before
+reqs = Store(os.path.join(TMP, "requirements.sqlite"), "r")
+reqs.add_source("ADZ", "Approved Document Z", "ADZ", "approved-document", split([
+    "APPROVED DOCUMENT Z\nRequirement Z1: Walls\nThis approved document deals with the following requirement from "
+    "Part Z of Schedule 1 to the Building Regulations 2010.\nSection 1: Walls\n1.1 Walls should stand up.\n"
+    "1.2 Walls should keep the wind out.\n3",
+    "APPROVED DOCUMENT Z\nRequirement Z2: Roofs\nThis approved document deals with the following requirement from "
+    "Part Z of Schedule 1 to the Building Regulations 2010.\nSection 2: Roofs\n2.1 Roofs should keep the rain out."
+    "\n4"]))
+walls = reqs.read(f"r{reqs.passage_rowid('ADZ', 1)}")
+check(walls["requirement"] == "Requirement Z1: Walls" and "1.1 Walls" in walls["text"],
+      "a read says which requirement its passage is under")
+check("2.1 Roofs" not in walls["text"] and walls["next_id"] == f"r{reqs.passage_rowid('ADZ', 2)}",
+      "a read stops where the next requirement starts")
+check(reqs.read(f"r{reqs.passage_rowid('ADZ', 2)}")["requirement"] == "Requirement Z2: Roofs",
+      "a requirement run into the section before starts at its own section")
 
 print(f"\n{len(failures)} failed" if failures else "\nall passed")
 sys.exit(1 if failures else 0)
