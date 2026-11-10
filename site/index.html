@@ -46,9 +46,17 @@
   </section>
 
   <figure class="shot wrap">
-    <img src="screenshots/answer-reader.png" width="2560" height="1600"
-         alt="Para answering a question about the maximum rise of a private stair, with Approved Document K Table 1.1 open in the reader beside the answer.">
-    <figcaption>An answer citing ADK Table 1.1, with the table open in the reader.</figcaption>
+    <!-- recorded by docs/record_demo.py; plays only when demo.js starts it, so reduced motion keeps the poster -->
+    <video id="demo" width="1920" height="1200" muted loop playsinline preload="auto" poster="screenshots/demo.jpg"
+           aria-label="Para in use on a loft conversion project. The project is chosen in the sidebar, showing its earlier chats; a question about guarding height at a new landing is typed and sent; the answer arrives citing ADK Diagram 3.1; clicking a citation opens the diagram in the reader beside the answer, and the reader is scrolled on through the document.">
+      <source src="screenshots/demo.webm" type="video/webm">
+      <source src="screenshots/demo.mp4" type="video/mp4">
+    </video>
+    <figcaption>
+      <span>Pick a project, ask, open the cited diagram. A real answer from a model on the same computer; the time it
+        spent searching and writing is shortened, and the badge says by how much.</span>
+      <button class="btn small" id="demoToggle" type="button" hidden>Pause</button>
+    </figcaption>
   </figure>
 
   <section class="wrap points" aria-label="What Para does">
@@ -177,11 +185,12 @@
   <div class="wrap foot-row">
     <p><span class="pilcrow">¶</span> Para · © 2026 <a href="https://github.com/valtomas">Tomás Val</a> ·
       <a href="https://github.com/valtomas/para-building-regs/blob/main/LICENSE">GNU AGPL v3 or later</a></p>
-    <p class="fine">Library content: Crown copyright, Open Government Licence v3.0. Fonts: Space Grotesk, IBM Plex Sans and
-      IBM Plex Mono, SIL Open Font License. Not affiliated with any government department.</p>
+    <p class="fine">Library content: Crown copyright, Open Government Licence v3.0. Not affiliated with any government
+      department.</p>
   </div>
 </footer>
 
 <script src="downloads.js"></script>
+<script src="demo.js"></script>
 </body>
 </html>

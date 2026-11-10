@@ -30,7 +30,8 @@ jobs:
           mkdir -p _site/fonts _site/screenshots
           cp -r site/. _site/
           cp para/static/fonts/*.woff2 para/static/fonts/OFL-*.txt _site/fonts/
-          cp docs/screenshots/answer-reader.png _site/screenshots/
+          cp docs/screenshots/answer-reader.png docs/screenshots/demo.mp4 docs/screenshots/demo.webm \
+             docs/screenshots/demo.jpg _site/screenshots/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with: { path: _site }
