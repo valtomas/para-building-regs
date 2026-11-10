@@ -35,8 +35,10 @@ NOTES = "Loft conversion of a two-storey semi-detached house: a new second floor
 EARLIER = ["Does the new loft bedroom need an escape window?",
            "Fire doors to the rooms off the existing stair",
            "Headroom over the new loft stair"]
-# answered from ADK Diagram 3.1, a drawing worth showing in the reader
-QUESTION = "What height of guarding do I need at the edge of the new landing?"
+# answered from ADK Diagram 3.1, a drawing worth showing in the reader. The question gives the facts the answer
+# turns on, rather than leaving the model to guess them from the project's name and notes.
+QUESTION = ("There's a new landing at the top of the loft stair, open on one side to the stairwell below. "
+            "What height does the guarding need to be?")
 WIDTH, HEIGHT, SCALE = 1280, 800, 1.5  # frames are 1920 x 1200
 FPS = 30
 WAIT_SHOWN = 2.5    # seconds of video for the model searching and reading, however long it took
@@ -242,8 +244,8 @@ def encode(frames, marks, ffmpeg):
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--base-url", default="http://127.0.0.1:13305/api/v1")
-    # cites inline more often than Nemotron 3.5, which tends to list its citations at the end
-    ap.add_argument("--model", default="Qwen3.5-35B-A3B-GGUF")
+    # Qwen3.5-35B-A3B is faster but added wrong asides to this question (1100 mm for purge ventilation under ADO)
+    ap.add_argument("--model", default="NVIDIA-Nemotron-3.5-Lightning-30B-A3B-GGUF")
     args = ap.parse_args()
     try:
         import imageio_ffmpeg
