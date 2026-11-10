@@ -4,6 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Para</title>
+  <!-- the theme is set before the page is drawn, so a dark window doesn't flash light; app.js keeps it in step with
+       Settings and with the system when it's on Auto -->
+  <script>
+    (function () {
+      var t; try { t = localStorage.getItem("para-theme"); } catch (e) { }
+      var dark = t === "dark" || (t !== "light" && matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.dataset.theme = dark ? "dark" : "light";
+    })();
+  </script>
   <link rel="stylesheet" href="/static/app.css">
 </head>
 <body>
@@ -25,6 +34,10 @@
       <button class="side-link" data-open="settings">Settings</button>
       <div id="engineBadge" class="badge" title="Where your questions go"></div>
       <div id="updateNote" class="update-note" hidden></div>
+      <div class="theme-pick" role="radiogroup" aria-labelledby="themeLabel"><span id="themeLabel">Theme</span>
+        <button role="radio" data-theme-pick="auto" title="Follow this computer's setting">Auto</button>
+        <button role="radio" data-theme-pick="light">Light</button>
+        <button role="radio" data-theme-pick="dark">Dark</button></div>
       <div class="version" id="version"></div>
     </div>
   </aside>

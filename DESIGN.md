@@ -63,7 +63,9 @@ time someone adds a file.
 
 ## Tokens
 
-Defined on `:root` in `para/static/app.css`, redefined for dark mode under `prefers-color-scheme: dark`.
+Defined on `:root` in `para/static/app.css`, redefined for dark mode under `:root[data-theme=dark]`. The theme is
+chosen at the foot of the sidebar (Auto, Light, Dark; setting `theme`); Auto follows the system. A script in the
+page head sets `data-theme` before the page is drawn, from a copy of the setting in `localStorage`.
 
 | Token | Light | Dark | Used for |
 |---|---|---|---|
@@ -121,6 +123,8 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   sidebar rule ("No project", each project, "New project…"), with a mono "Notes and files" link under it when a
   project is chosen. Recent shows the chosen project's chats only; the question box says "Ask a question about
   <project>…". Files dropped on the window go to the chosen project.
+- **Theme**: a mono row under the privacy badge, "Theme" then Auto, Light and Dark; the chosen one in sidebar text
+  with a gold underline.
 - **Privacy badge**: bottom of the sidebar, a bordered box with a coloured dot. Green "Private" for the built-in
   engine or a local or LAN address, gold with the host name for anything else, coral "No AI engine set up" (opens
   Settings). On phones the dot alone sits at the right of the top bar.

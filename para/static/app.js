@@ -71,6 +71,7 @@ async function refresh() {
   const s = S.settings;
   $("#reasoning").value = s.reasoning || "auto";
   $("#length").value = s.length || "normal";
+  applyTheme(s.theme || "auto");
   $("#version").textContent = `Version ${S.version} · library ${S.library.version || "none"}`;
   $("#filesCount").textContent = S.files.filter((f) => !f.project).length || "";
   $("#libCount").textContent = S.library.sources.length || "";
@@ -109,6 +110,20 @@ function renderChats() {
     nav.appendChild(row);
   }
 }
+
+// ---------- theme ----------
+// Saved in Settings; kept in localStorage too so the script in index.html can set it before the page is drawn.
+const systemDark = matchMedia("(prefers-color-scheme: dark)");
+function applyTheme(t) {
+  try { localStorage.setItem("para-theme", t); } catch { }
+  document.documentElement.dataset.theme = t === "dark" || (t !== "light" && systemDark.matches) ? "dark" : "light";
+  $$("[data-theme-pick]").forEach((b) => b.setAttribute("aria-checked", b.dataset.themePick === t));
+}
+systemDark.addEventListener("change", () => applyTheme(S ? S.settings.theme : "auto"));
+$$("[data-theme-pick]").forEach((b) => b.onclick = async () => {
+  applyTheme(b.dataset.themePick);
+  S = await api("/api/settings", { method: "POST", body: { theme: b.dataset.themePick } });
+});
 
 // ---------- projects ----------
 function renderProjects() {
@@ -714,7 +729,7 @@ async function offerLibrary() {
 
 // ---------- phone menu (below 900 px the sidebar is a drawer) ----------
 $("#menuBtn").onclick = () => $("#sidebar").classList.add("open");
-$("#sidebar").addEventListener("click", (e) => { if (e.target.closest("button") && !e.target.closest("#projectBtn")) $("#sidebar").classList.remove("open"); });
+$("#sidebar").addEventListener("click", (e) => { if (e.target.closest("button") && !e.target.closest("#projectBtn, .theme-pick")) $("#sidebar").classList.remove("open"); });
 
 // ---------- start ----------
 refresh().then(() => {
