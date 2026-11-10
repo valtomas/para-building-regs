@@ -474,7 +474,7 @@ input[type=checkbox]:checked { background-color: var(--accent); border-color: va
   border-bottom: 1px solid var(--border); }
 #updateView > .update-row:first-child { border-top: 1px solid var(--border); }
 .update-row .btn { padding: 7px 16px; font-size: 11px; letter-spacing: .14em; }
-#updateView #libJob .progress { margin-top: -4px; }
+#updateView #libJob .progress, #updateView #appJob .progress { margin-top: -4px; }
 #testResult { font-size: 15px; color: var(--muted); }
 
 /* your files */

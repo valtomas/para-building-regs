@@ -73,6 +73,12 @@ The library covers **England**. Wales, Scotland and Northern Ireland have their 
 
 Para opens in its own window; if your system can't show one, it opens in your web browser instead.
 
+**Updates.** Para checks once a day for a new version (Settings › Updates & about; nothing about you is sent).
+Installed with the Windows installer, the Mac app, the .deb or the AppImage, it updates in one click with
+**Update now**: it downloads the new version, checks it against GitHub's checksum and installs it. With the .deb,
+your system asks for your password first. The Windows zip and the Linux folder link to the new release
+instead.
+
 **Then** choose an AI engine in the window that opens:
 - **Use an engine I already run.** Click *Find engines on this computer*, or type the server's address
   (e.g. `http://127.0.0.1:11434/v1` for Ollama, `http://127.0.0.1:1234/v1` for LM Studio,
@@ -145,6 +151,7 @@ question ─► AI model (any OpenAI-compatible server) ─► search_library �
 - `para/engine.py` installs and runs the built-in engine (llama.cpp's `llama-server`).
 - `para/myfiles.py` reads your own files into a separate index in the app's data folder.
 - `para/server.py` serves the page on 127.0.0.1 and opens it in a window (pywebview).
+- `para/updater.py` updates the app itself, in the way it was installed.
 - Releases are built by [.github/workflows/release.yml](.github/workflows/release.yml): push a tag like `v0.1.0`.
 
 Your settings, chats and the index of your files are kept in `~/Library/Application Support/Para`
