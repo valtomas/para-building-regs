@@ -128,6 +128,10 @@ files = json.loads(call("/api/state"))["files"]
 check(len(files) == 1 and files[0]["status"] == "ok" and files[0]["passages"] >= 1, "adds a file")
 hits = json.loads(call("/api/search?q=sprinkler"))["results"]
 check(hits and hits[0]["id"].startswith("f"), "files are searched")
+ids = [h["id"] for h in server.library.search("sprinkler")]
+server.myfiles.sync()
+check(ids and [h["id"] for h in server.library.search("sprinkler")] == ids,
+      "an unchanged file isn't read again, so its passage ids (and citations of them) stay")
 try:
     call("/api/files", raw=b"x", headers={"X-Filename": "photo.jpg"})
     check(False, "refuses unsupported files")
