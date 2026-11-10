@@ -738,7 +738,10 @@ $("#checkNow").onclick = async () => { $("#updateView").textContent = "Checking�
 function renderAbout() {
   const L = S.library;
   $("#aboutInfo").innerHTML = `<p class="about"><b>Para ${esc(S.version)}</b><br><span class="meta">Regulations library ${esc(L.version || "not installed")} · ${L.sources.length} documents</span></p>
-    <p class="muted small">Copyright (C) 2026 Tomás Val. Para is free software under the GNU Affero General Public License, version 3 or later, and comes with no warranty. <a href="https://github.com/valtomas/para-building-regs" data-ext>Source code and licence</a>. Library content is Crown copyright under the Open Government Licence v3.0.</p>`;
+    <p class="muted small">Copyright (C) 2026 Tomás Val. Para is free software under the GNU Affero General Public License, version 3 or later, and comes with no warranty. <a href="https://github.com/valtomas/para-building-regs" data-ext>Source code and licence</a>. Library content is Crown copyright under the Open Government Licence v3.0.</p>
+    <p class="muted small feedback">A wrong answer, a citation that opens the wrong paragraph, or something confusing? Tell us at
+      <a href="mailto:hello@pararegs.co.uk?subject=Para%20feedback" data-ext>hello@pararegs.co.uk</a>, with the
+      question you asked.</p>`;
   const u = S.updates || {};
   let h = "";
   if (u.error) h += `<p class="muted small">Couldn't check for updates: ${esc(u.error)}</p>`;

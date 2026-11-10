@@ -148,8 +148,8 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
 - **Code licence**: Para is AGPL-3.0-or-later (`LICENSE`). Only add dependencies, fonts or copied code under
   licences compatible with it (MIT, BSD, Apache-2.0, LGPL, GPL-3.0, OFL for fonts); check before adding. Keep the
   licence notice and source link in Settings → Updates & about.
-- **Security**: keep the Origin check in `Handler._allowed`. `/api/open` may only open http(s) URLs, the files
-  folder, or files already in the files index. Don't add endpoints that read arbitrary paths.
+- **Security**: keep the Origin check in `Handler._allowed`. `/api/open` may only open http(s) URLs, the feedback
+  address (`server.FEEDBACK`, one fixed mailto), the files folder, or files already in the files index. Don't add endpoints that read arbitrary paths.
 - **Commits**: small, with a message that says why. Run the tests first.
 - **Memory**: the built-in engine holds gigabytes, so it must never outlive the app or load what won't fit.
   `Bundled.start` checks free system memory plus free graphics-card memory (`available_ram_gb`, `free_vram_gb`)

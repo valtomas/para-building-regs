@@ -14,6 +14,28 @@
   <meta property="og:url" content="https://pararegs.co.uk/">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <!-- What search engines show for the app: free, for Windows, Mac and Linux -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Para",
+    "alternateName": "Para: building regulations, cited",
+    "description": "A free, open-source assistant for the building regulations in England. Ask about the Approved Documents, the Building Regulations 2010 and the Building Safety Act, and get answers that cite the exact paragraph. It runs on your own computer.",
+    "url": "https://pararegs.co.uk/",
+    "downloadUrl": "https://github.com/valtomas/para-building-regs/releases/latest",
+    "image": "https://pararegs.co.uk/screenshots/answer-reader.png",
+    "screenshot": "https://pararegs.co.uk/screenshots/answer-reader.png",
+    "applicationCategory": "ReferenceApplication",
+    "operatingSystem": "Windows 10, Windows 11, macOS 12 or later, Linux",
+    "inLanguage": "en-GB",
+    "isAccessibleForFree": true,
+    "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+    "author": { "@type": "Person", "name": "Tomás Val", "url": "https://github.com/valtomas" },
+    "codeRepository": "https://github.com/valtomas/para-building-regs"
+  }
+  </script>
   <link rel="preload" href="fonts/space-grotesk-300-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -178,11 +200,13 @@
   <section class="wrap band" id="open">
     <p class="eyebrow">Open source</p>
     <h2 class="section-title">Free to use, share and improve</h2>
-    <p class="body">Para is free software under the GNU Affero General Public License, version 3 or later. Report a
-      wrong answer or citation, improve how documents are read, or check AI-written descriptions of diagrams: it all
-      helps.</p>
+    <p class="body">Para is free software under the GNU Affero General Public License, version 3 or later. Tell us
+      about a wrong answer or citation at <a href="mailto:hello@pararegs.co.uk?subject=Para%20feedback">hello@pararegs.co.uk</a>
+      (with the question you asked), improve how documents are read, or check AI-written descriptions of diagrams:
+      it all helps.</p>
     <div class="actions">
-      <a class="btn" href="https://github.com/valtomas/para-building-regs/issues/new">Report a wrong answer</a>
+      <a class="btn" href="mailto:hello@pararegs.co.uk?subject=Para%20feedback">Send feedback</a>
+      <a class="btn" href="https://github.com/valtomas/para-building-regs/issues/new">Report on GitHub</a>
       <a class="btn" href="https://github.com/valtomas/para-building-regs/blob/main/CONTRIBUTING.md">Contribute</a>
     </div>
   </section>
@@ -191,7 +215,8 @@
 <footer class="foot">
   <div class="wrap foot-row">
     <p><span class="pilcrow">¶</span> Para · © 2026 <a href="https://github.com/valtomas">Tomás Val</a> ·
-      <a href="https://github.com/valtomas/para-building-regs/blob/main/LICENSE">GNU AGPL v3 or later</a></p>
+      <a href="https://github.com/valtomas/para-building-regs/blob/main/LICENSE">GNU AGPL v3 or later</a> ·
+      <a href="mailto:hello@pararegs.co.uk">hello@pararegs.co.uk</a></p>
     <p class="fine">Library content: Crown copyright, Open Government Licence v3.0. Not affiliated with any government
       department.</p>
   </div>
