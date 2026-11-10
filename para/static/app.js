@@ -496,6 +496,7 @@ function openSettings(tab = "engine") {
   $("#baseUrl").value = e.base_url || "";
   $("#apiKey").value = "";
   fillModels(e.model ? [e.model] : [], e.model);
+  if (e.mode === "external" && e.base_url) loadModels(true);  // the full list, so the menu offers every model
   $("#instructions").value = s.instructions || S.default_instructions;
   $("#projectNotes").value = s.project_notes || "";
   $("#checkUpdates").checked = s.check_updates !== false;
@@ -634,14 +635,19 @@ async function findEngines() {
   } catch (e) { $("#findResult").textContent = e.message; }
 }
 $("#findEngines").onclick = findEngines;
-$("#loadModels").onclick = async () => {
+// quiet: on opening Settings, where an engine that's stopped shouldn't greet the person with an error
+async function loadModels(quiet) {
+  const url = $("#baseUrl").value.trim();
   try {
-    const { models } = await api("/api/models", { method: "POST", body: { base_url: $("#baseUrl").value.trim(), api_key: $("#apiKey").value } });
+    const { models } = await api("/api/models", { method: "POST", body: { base_url: url, api_key: $("#apiKey").value } });
+    if (quiet && (!models.length || $("#baseUrl").value.trim() !== url)) return;
     const now = $("#modelSelect").value;
+    if (quiet && document.activeElement === mfield) { modelNames = models; return; }  // don't disturb typing
     fillModels(models, models.includes(now) ? now : models.includes(S.settings.engine.model) ? S.settings.engine.model : models[0]);
     $("#testResult").textContent = models.length ? "" : "The server has no models.";
-  } catch (e) { $("#testResult").textContent = e.message; }
-};
+  } catch (e) { if (!quiet) $("#testResult").textContent = e.message; }
+}
+$("#loadModels").onclick = () => loadModels(false);
 let chosenBundled = null;
 function renderBundled() {
   const b = S.bundled;
