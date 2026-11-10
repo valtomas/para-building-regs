@@ -14,9 +14,10 @@ paragraphs, and answers with a link to each one, so you can check exactly where 
   removes any it made up.
 - **Any engine you like.** Use an AI engine you already run: Ollama, LM Studio, Lemonade, llama.cpp, Jan, vLLM or
   any other OpenAI-compatible server, on this computer or your network. Or let the app download and run one itself
-  (llama.cpp with a model suited to your computer's memory).
+  (llama.cpp with a model suited to your computer's memory). Or use an online AI service (Anthropic, Mistral,
+  OpenAI, OpenRouter or another) with your own API key.
 - **Private.** With a local engine, your questions and files never leave your computer. The app shows whether
-  it's private, and warns you if your engine is somewhere else.
+  it's private, and warns you when your engine is somewhere else, such as an online service.
 - **Your own documents.** Add specifications, fire strategies, building control comments or manufacturers'
   guidance (PDF, Word, EPUB, HTML, text) and they're searched along with the library. The app asks you to confirm
   you're allowed to use each document this way first, because many publishers' licences (some British Standards,
@@ -71,6 +72,9 @@ The library covers **England**. Wales, Scotland and Northern Ireland have their 
   `http://127.0.0.1:8000/api/v1` for Lemonade). Pick a model and press Save. Models with tool calling work best.
 - **Built-in engine.** The app suggests a model for your computer's memory, downloads llama.cpp and the model from
   Hugging Face, and runs them itself.
+- **Use an online AI service.** Pick Anthropic, Mistral, OpenAI or OpenRouter (or type another service's
+  address), paste your API key from that service, choose a model and press Save. Your questions, and passages from
+  your own files, are sent to that company, so it isn't private.
 
 | Your computer | Suggested model | Download |
 |---|---|---|
