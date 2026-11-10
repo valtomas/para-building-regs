@@ -29,6 +29,7 @@ from .llm import HOSTED, Client, EngineError, is_local, probe_known, same_host
 from .myfiles import TYPES, MyFiles
 
 UPDATE_REPO = os.environ.get("PARA_UPDATE_REPO", "valtomas/para-building-regs")
+FEEDBACK = "mailto:hello@pararegs.co.uk?subject=Para%20feedback"  # the only mailto /api/open will open
 
 settings = paths.Settings()
 library = Library()
@@ -394,7 +395,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 return self._send(200, {"files": myfiles.list()})
             if path == "/api/open":
                 body = self._json_body()
-                if body.get("url", "").startswith(("https://", "http://")):
+                if body.get("url", "").startswith(("https://", "http://")) or body.get("url") == FEEDBACK:
                     webbrowser.open(body["url"])
                 elif body.get("folder") == "files":
                     project = body.get("project") or ""

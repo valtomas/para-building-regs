@@ -464,6 +464,7 @@ input[type=checkbox]:checked { background-color: var(--accent); border-color: va
 .progress > div { height: 100%; background: var(--accent); width: 0; transition: width .3s; }
 .about b { font: 500 24px/1.2 var(--display); }
 .about .meta { font-size: 11.5px; }
+#aboutInfo .feedback { margin-top: 10px; }
 #aboutInfo p { margin: 0; }
 #updateView { display: flex; flex-direction: column; gap: 10px; }
 #updateView:empty { display: none; }
