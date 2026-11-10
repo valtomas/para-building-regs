@@ -269,6 +269,8 @@ function addAssistant() {
       const li = document.createElement("li");
       if (ev.type === "search") {
         searches++;
+        // So a citation to a passage only found by search shows its label while streaming, not its id.
+        for (const r of ev.results || []) citeInfo[r.id] = citeInfo[r.id] || r;
         li.innerHTML = `Searched “${esc(ev.query)}” · ${ev.results.length} result${ev.results.length === 1 ? "" : "s"}`;
       } else if (ev.type === "read" || ev.type === "show") {
         reads += ev.type === "read" ? 1 : 0;
