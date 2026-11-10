@@ -136,8 +136,10 @@
       <label>API key <small class="muted" id="apiKeyHint">(only if the server needs one)</small>
         <input id="apiKey" type="password" placeholder="leave empty for local servers" autocomplete="off"></label>
       <label>Model
-        <div class="row"><input id="modelSelect" list="modelList" autocomplete="off" spellcheck="false"><datalist
-          id="modelList"></datalist><button type="button" class="btn" id="loadModels">Refresh</button></div>
+        <div class="row"><div class="combo"><input id="modelSelect" role="combobox" aria-autocomplete="list"
+          aria-expanded="false" aria-controls="modelMenu" autocomplete="off" spellcheck="false"><button type="button"
+          class="combo-arrow" id="modelArrow" tabindex="-1" aria-label="Show the models"></button><div id="modelMenu"
+          class="combo-menu" role="listbox" hidden></div></div><button type="button" class="btn" id="loadModels">Refresh</button></div>
       </label>
       <p id="remoteWarning" class="warn" hidden>This address isn't on this computer or your local network. Your
         questions, and the passages the app finds, including passages from your own files, will be sent to

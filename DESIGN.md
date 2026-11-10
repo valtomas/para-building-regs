@@ -135,6 +135,10 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   as a local engine. The model is typed or picked from the service's list. The warm warning names the host and says
   passages from the person's own files go there too. A hosted engine is saved as an external one; the card follows
   from the address.
+- **Model field**: in Settings → AI engine, a typed field with the server's models in a menu drawn like the project
+  picker's, in the dialog's colours: ruled rows in mono on `--panel`, the chosen one marked with an accent ¶. Opening it
+  shows every model (a native datalist would show only those matching the name already in the box) and selects the
+  name, so typing filters the list; any name can still be typed. It opens upwards when the dialog has no room below.
 - **Model rows**: ruled rows with a radio, name, Recommended tag (gold pill), description, mono size and memory line,
   and an action (Download, or Installed and Delete). Models too big for this computer are faded with the size line
   in red.
