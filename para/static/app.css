@@ -407,7 +407,7 @@ input[type=checkbox]:checked { background-color: var(--accent); border-color: va
 .found { display: flex; flex-wrap: wrap; gap: 8px; }
 .found:empty { display: none; }
 .found .btn { font: 14.5px/1.3 var(--body); letter-spacing: 0; text-transform: none; padding: 5px 14px; border-color: var(--border); }
-.found .btn:hover { border-color: var(--accent); background: var(--accent-2); }
+.found .btn:hover, .found .btn.on { border-color: var(--accent); background: var(--accent-2); }
 #modelCards { display: flex; flex-direction: column; border-top: 1px solid var(--ink); }
 .modal label.model-card { display: grid; grid-template-columns: 24px minmax(0, 1fr); grid-auto-flow: column; gap: 14px;
   align-items: center;

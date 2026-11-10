@@ -129,6 +129,12 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
 - **Privacy badge**: bottom of the sidebar, a bordered box with a coloured dot. Green "Private" for the built-in
   engine or a local or LAN address, gold with the host name for anything else, coral "No AI engine set up" (opens
   Settings). On phones the dot alone sits at the right of the top bar.
+- **Engine choice**: three radio cards in Settings → AI engine: an engine already running, the built-in engine, or an
+  online AI service ("hosted" in the code). It shows a pill per service (Anthropic, Mistral, OpenAI, OpenRouter; the
+  chosen one in `--accent-2`), a line saying where it's based with "Get an API key ↗", then the same address, key and model fields
+  as a local engine. The model is typed or picked from the service's list. The warm warning names the host and says
+  passages from the person's own files go there too. A hosted engine is saved as an external one; the card follows
+  from the address.
 - **Model rows**: ruled rows with a radio, name, Recommended tag (gold pill), description, mono size and memory line,
   and an action (Download, or Installed and Delete). Models too big for this computer are faded with the size line
   in red.

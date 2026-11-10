@@ -25,7 +25,7 @@ from . import VERSION, paths
 from .core import BASE_PROMPT, chat_events
 from .engine import Engine, Job, catalog, recommend, _download
 from .library import Library, Scope
-from .llm import Client, EngineError, is_local, probe_known
+from .llm import HOSTED, Client, EngineError, is_local, probe_known, same_host
 from .myfiles import TYPES, MyFiles
 
 UPDATE_REPO = os.environ.get("PARA_UPDATE_REPO", "valtomas/para-building-regs")
@@ -179,6 +179,13 @@ def install_library_update():
     return job.view()
 
 
+def saved_key_for(base_url):
+    """The saved API key, but only for the server it was saved for: switching from one hosted service to another
+    must never send the first one's key to the second."""
+    e = settings.load()["engine"]
+    return e.get("api_key", "") if same_host(base_url, e.get("base_url", "")) else ""
+
+
 # ----- state for the page -----
 def public_settings():
     s = settings.load()
@@ -195,7 +202,7 @@ def state():
             "library": {k: info[k] for k in ("version", "built", "sources")},
             "files": myfiles.list(), "files_dir": myfiles.folder, "projects": myfiles.projects(), "file_types": sorted(TYPES),
             "bundled": engine.bundled.status(), "catalog": catalog()["models"],
-            "recommended": (recommend() or {}).get("id"), "updates": update_info,
+            "recommended": (recommend() or {}).get("id"), "hosted": HOSTED, "updates": update_info,
             "library_job": library_job["job"].view() if library_job.get("job") else None,
             "chats": list_chats(), "platform": sys.platform}
 
@@ -272,9 +279,6 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 return self._send(200, {"results": library.search(q.get("q", ""), limit=30, file_keys=keys)})
             if path == "/api/engines":
                 return self._send(200, {"found": probe_known()})
-            if path == "/api/models":
-                c = Client(q.get("base_url", ""), q.get("api_key") or settings.load()["engine"].get("api_key", ""))
-                return self._send(200, {"models": c.models(timeout=8)})
             if path == "/api/jobs":
                 return self._send(200, {"bundled": engine.bundled.status(),
                                         "library_job": library_job["job"].view() if library_job.get("job") else None})
@@ -327,11 +331,19 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 if ev:
                     ev.set()
                 return self._send(200, {"ok": True})
+            if path == "/api/models":
+                # POST so an API key typed in Settings never sits in a URL
+                body = self._json_body()
+                url = body.get("base_url", "")
+                c = Client(url, body.get("api_key") or saved_key_for(url))
+                return self._send(200, {"models": c.models(timeout=8)})
             if path == "/api/settings":
                 body = self._json_body()
                 allowed = {k: v for k, v in body.items() if k in paths.DEFAULTS}
                 if "engine" in allowed:
                     allowed["engine"] = {k: v for k, v in allowed["engine"].items() if k in paths.DEFAULTS["engine"]}
+                    if "base_url" in allowed["engine"] and "api_key" not in allowed["engine"]:
+                        allowed["engine"]["api_key"] = saved_key_for(allowed["engine"]["base_url"])
                     if allowed["engine"].get("mode") != "bundled":
                         engine.bundled.stop()
                 settings.update(allowed)

@@ -87,6 +87,26 @@ check(st["settings"]["private"] is True, "local engine counts as private")
 t = json.loads(call("/api/test-engine", {}))
 check(t["ok"] and t["reply"] == "OK" and t["model"] == "fake-model", "test engine picks the first model")
 
+check({h["name"] for h in st["hosted"]} >= {"Anthropic", "Mistral", "OpenAI", "OpenRouter"} and
+      all(h["base_url"].startswith("https://") for h in st["hosted"]), "hosted services are offered by address")
+models = json.loads(call("/api/models", {"base_url": fake_url}))["models"]
+check(models and models[0] == "fake-model", "models are listed by POST, so a typed key never sits in a URL")
+
+
+def saved_engine():
+    with open(os.path.join(os.environ["PARA_APP_DIR"], "settings.json"), encoding="utf-8") as f:
+        return json.load(f)["engine"]
+
+
+call("/api/settings", {"engine": {"mode": "external", "base_url": fake_url, "api_key": "key-one", "model": ""}})
+call("/api/settings", {"engine": {"mode": "external", "base_url": fake_url + "/", "model": ""}})
+check(saved_engine()["api_key"] == "key-one", "the saved key stays for the same server")
+call("/api/settings", {"engine": {"mode": "external", "base_url": "https://api.mistral.ai/v1", "model": "m"}})
+st = json.loads(call("/api/state"))
+check(saved_engine()["api_key"] == "" and not st["settings"]["private"],
+      "a key saved for one server is never kept for another, and a hosted service isn't private")
+call("/api/settings", {"engine": {"mode": "external", "base_url": fake_url, "model": ""}})
+
 hits = json.loads(call("/api/search?q=" + urllib.parse.quote("Part K private stair rise")))["results"]
 check(hits and hits[0]["ref"].startswith("1.1"), "direct search finds the paragraph")
 

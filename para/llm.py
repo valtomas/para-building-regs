@@ -20,6 +20,21 @@ KNOWN_SERVERS = [
     ("vLLM", "http://127.0.0.1:8001/v1"),
 ]
 
+# Hosted services offered in Settings. Each speaks the same /chat/completions API, so choosing one only fills in the
+# address: there's no code for any one of them. "where" is said beside the name because it's what decides whose
+# data-protection law covers the questions and file passages sent there.
+HOSTED = [
+    {"name": "Anthropic", "base_url": "https://api.anthropic.com/v1", "where": "Claude models. Based in the US.",
+     "keys": "https://platform.claude.com/settings/keys", "example": "claude-sonnet-5-5"},
+    {"name": "Mistral", "base_url": "https://api.mistral.ai/v1", "where": "Mistral models. Based in France, under "
+     "EU data-protection law.", "keys": "https://console.mistral.ai/api-keys", "example": "mistral-large-latest"},
+    {"name": "OpenAI", "base_url": "https://api.openai.com/v1", "where": "GPT models. Based in the US.",
+     "keys": "https://platform.openai.com/api-keys", "example": "gpt-5-mini"},
+    {"name": "OpenRouter", "base_url": "https://openrouter.ai/api/v1", "where": "One key for many companies' models; "
+     "each question goes to the company that runs the model you choose.", "keys": "https://openrouter.ai/settings/keys",
+     "example": "mistralai/mistral-large"},
+]
+
 
 class EngineError(Exception):
     pass
@@ -31,6 +46,12 @@ def _context():
         return truststore.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
     except Exception:  # noqa: BLE001
         return ssl.create_default_context()
+
+
+def same_host(a, b):
+    """True when two addresses point at the same server, so a key saved for one may be sent to the other."""
+    pa, pb = urllib.parse.urlparse(a or ""), urllib.parse.urlparse(b or "")
+    return bool(pa.hostname) and (pa.scheme, pa.hostname, pa.port) == (pb.scheme, pb.hostname, pb.port)
 
 
 def is_local(base_url):
@@ -64,8 +85,9 @@ class Client:
             data = json.load(r)
         items = data.get("data") or data.get("models") or []
         ids = {m.get("id") or m.get("name") for m in items if isinstance(m, dict)} - {None}
-        # embedding and reranking models can't chat: leave them out of the choice
-        return sorted(i for i in ids if not re.search(r"embed|rerank", i, re.I))
+        # embedding, reranking, speech, image and moderation models can't chat: leave them out of the choice
+        return sorted(i for i in ids if not re.search(
+            r"embed|rerank|moderation|whisper|tts|transcribe|dall-e|image|audio|realtime|ocr|babbage|davinci", i, re.I))
 
     def stream(self, messages, tools=None, max_tokens=None, reasoning=None, extra=None):
         """Yields {"type": "content"|"reasoning", "text"}, {"type": "tool_calls", "calls": [...]}, then

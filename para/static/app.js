@@ -480,11 +480,11 @@ $$(".tab", dlgS).forEach((t) => t.onclick = () => showTab(t.dataset.tab));
 
 function openSettings(tab = "engine") {
   const s = S.settings, e = s.engine;
-  const mode = e.mode || "";
+  // a hosted service is saved as an external engine; which card is ticked follows from its address
+  const mode = e.mode === "external" && e.base_url && !isLocal(e.base_url) ? "hosted" : e.mode || "";
   $$("input[name=mode]").forEach((r) => r.checked = r.value === mode);
   $("#baseUrl").value = e.base_url || "";
   $("#apiKey").value = "";
-  $("#apiKey").placeholder = e.api_key_set ? "saved (type to replace)" : "leave empty for local servers";
   fillModels(e.model ? [e.model] : [], e.model);
   $("#instructions").value = s.instructions || S.default_instructions;
   $("#projectNotes").value = s.project_notes || "";
@@ -498,22 +498,45 @@ function openSettings(tab = "engine") {
 }
 function modeChanged() {
   const m = $("input[name=mode]:checked")?.value;
-  $("#externalPane").hidden = m !== "external";
+  $("#externalPane").hidden = m !== "external" && m !== "hosted";
+  $("#localFind").hidden = m !== "external";
+  $("#hostedPick").hidden = m !== "hosted";
   $("#bundledPane").hidden = m !== "bundled";
   if (m === "bundled") renderBundled();
+  if (m === "hosted") renderHosted();
   remoteCheck();
 }
 $$("input[name=mode]").forEach((r) => r.onchange = modeChanged);
+function isLocal(u) {
+  try { return /^(localhost|127\.|::1|\[::1\]|0\.0\.0\.0|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)|\.local$/.test(new URL(u).hostname); } catch { return true; }
+}
 function remoteCheck() {
-  const u = $("#baseUrl").value.trim();
-  let local = true;
-  try { const h = new URL(u).hostname; local = /^(localhost|127\.|::1|\[::1\]|0\.0\.0\.0|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)|\.local$/.test(h); } catch { }
-  $("#remoteWarning").hidden = !u || local || $("input[name=mode]:checked")?.value !== "external";
+  const u = $("#baseUrl").value.trim(), m = $("input[name=mode]:checked")?.value;
+  $("#remoteWarning").hidden = !u || isLocal(u) || (m !== "external" && m !== "hosted");
+  $("#remoteHost").textContent = hostOf(u);
+  // the saved key is only ever sent to the server it was saved for
+  const e = S.settings.engine, saved = e.api_key_set && hostOf(u) === hostOf(e.base_url);
+  $("#apiKey").placeholder = saved ? "saved (type to replace)" : m === "hosted" ? "paste your key from the service" : "leave empty for local servers";
+  $("#apiKeyHint").textContent = m === "hosted" ? "(from your account with the service; kept on this computer)" : "(only if the server needs one)";
+  const p = (S.hosted || []).find((h) => h.base_url === u.replace(/\/+$/, ""));
+  $$("#hostedList .btn").forEach((b) => b.classList.toggle("on", b.textContent === p?.name));
+  $("#hostedAbout").innerHTML = p ? `${esc(p.where)} <a href="#" id="hostedKeys">Get an API key ↗</a>` : "Or type the address of another OpenAI-compatible service below.";
+  if (p) $("#hostedKeys").onclick = (ev) => { ev.preventDefault(); openUrl(p.keys); };
+  $("#modelSelect").placeholder = p ? `e.g. ${p.example}` : "press Refresh, or type the model's name";
 }
 $("#baseUrl").addEventListener("input", remoteCheck);
+function renderHosted() {
+  $("#hostedList").innerHTML = "";
+  for (const h of S.hosted || []) {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "btn"; b.textContent = h.name;
+    b.onclick = () => { $("#baseUrl").value = h.base_url; $("#apiKey").value = ""; fillModels([], ""); remoteCheck(); $("#apiKey").focus(); };
+    $("#hostedList").appendChild(b);
+  }
+}
 function fillModels(models, chosen) {
-  const sel = $("#modelSelect");
-  sel.innerHTML = models.length ? models.map((m) => `<option ${m === chosen ? "selected" : ""}>${esc(m)}</option>`).join("") : `<option value="">(press Refresh)</option>`;
+  $("#modelList").innerHTML = models.map((m) => `<option value="${esc(m)}">`).join("");
+  $("#modelSelect").value = chosen || "";
 }
 async function findEngines() {
   $("#findResult").textContent = "Looking…";
@@ -537,9 +560,9 @@ async function findEngines() {
 $("#findEngines").onclick = findEngines;
 $("#loadModels").onclick = async () => {
   try {
-    const p = new URLSearchParams({ base_url: $("#baseUrl").value.trim(), api_key: $("#apiKey").value });
-    const { models } = await api("/api/models?" + p);
-    fillModels(models, S.settings.engine.model);
+    const { models } = await api("/api/models", { method: "POST", body: { base_url: $("#baseUrl").value.trim(), api_key: $("#apiKey").value } });
+    const now = $("#modelSelect").value;
+    fillModels(models, models.includes(now) ? now : models.includes(S.settings.engine.model) ? S.settings.engine.model : models[0]);
     $("#testResult").textContent = models.length ? "" : "The server has no models.";
   } catch (e) { $("#testResult").textContent = e.message; }
 };
@@ -598,8 +621,8 @@ async function pollJobs() {
 }
 function engineForm() {
   const m = $("input[name=mode]:checked")?.value || "";
-  const e = { mode: m };
-  if (m === "external") {
+  const e = { mode: m === "hosted" ? "external" : m };
+  if (e.mode === "external") {
     e.base_url = $("#baseUrl").value.trim(); e.model = $("#modelSelect").value;
     if ($("#apiKey").value) e.api_key = $("#apiKey").value;
   } else if (m === "bundled") { e.bundled_model = chosenBundled; }
@@ -609,6 +632,7 @@ $("#saveEngine").onclick = async () => {
   const e = engineForm();
   if (e.mode === "bundled" && !S.bundled.models.includes(e.bundled_model)) { $("#testResult").textContent = "Download the model first."; return; }
   if (e.mode === "external" && !e.base_url) { $("#testResult").textContent = "Enter the server address."; return; }
+  if ($("input[name=mode]:checked")?.value === "hosted" && !e.model) { $("#testResult").textContent = "Choose a model: press Refresh, or type its name."; return; }
   S = await api("/api/settings", { method: "POST", body: { engine: e } });
   await refresh();
   $("#testResult").textContent = "Saved. Testing…";

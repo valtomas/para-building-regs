@@ -116,21 +116,32 @@
       <label class="radio-card"><input type="radio" name="mode" value="bundled">
         <div><b>Built-in engine</b><br><small>The app downloads llama.cpp and a model suited to this computer and
           runs them itself. Nothing else to install.</small></div></label>
+      <label class="radio-card"><input type="radio" name="mode" value="hosted">
+        <div><b>Use an online AI service</b><br><small>With your own API key from Anthropic, Mistral, OpenAI, OpenRouter
+          or another. Not private: your questions go over the internet to that company.</small></div></label>
     </div>
 
     <div id="externalPane" class="pane" hidden>
-      <div class="row"><button type="button" class="btn" id="findEngines">Find engines on this computer</button>
-        <span id="findResult" class="muted"></span></div>
-      <div id="foundList" class="found"></div>
+      <div id="localFind">
+        <div class="row"><button type="button" class="btn" id="findEngines">Find engines on this computer</button>
+          <span id="findResult" class="muted"></span></div>
+        <div id="foundList" class="found"></div>
+      </div>
+      <div id="hostedPick">
+        <div id="hostedList" class="found"></div>
+        <p id="hostedAbout" class="muted small"></p>
+      </div>
       <label>Server address (base URL, ending in /v1 for most servers)
         <input id="baseUrl" placeholder="http://127.0.0.1:11434/v1"></label>
-      <label>API key <small class="muted">(only if the server needs one)</small>
+      <label>API key <small class="muted" id="apiKeyHint">(only if the server needs one)</small>
         <input id="apiKey" type="password" placeholder="leave empty for local servers" autocomplete="off"></label>
       <label>Model
-        <div class="row"><select id="modelSelect"></select><button type="button" class="btn" id="loadModels">Refresh</button></div>
+        <div class="row"><input id="modelSelect" list="modelList" autocomplete="off" spellcheck="false"><datalist
+          id="modelList"></datalist><button type="button" class="btn" id="loadModels">Refresh</button></div>
       </label>
       <p id="remoteWarning" class="warn" hidden>This address isn't on this computer or your local network. Your
-        questions and the passages the app finds, including from your own files, will be sent to it.</p>
+        questions, and the passages the app finds, including passages from your own files, will be sent to
+        <b id="remoteHost"></b> and kept under its terms. The regulations are public; your files may not be.</p>
       <p class="muted small">The model needs tool calling (function calling) for the best results. Models without it
         still work: the app attaches the best passages to your question instead.</p>
     </div>
