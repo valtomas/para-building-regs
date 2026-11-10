@@ -276,6 +276,8 @@ code { font-family: var(--mono); font-size: .8em; background: var(--cite); color
 .composer-box:focus-within { box-shadow: 0 0 0 3px var(--accent-2); }
 #question { flex: 1; min-width: 0; resize: none; border: 0; background: none; outline: none; padding: 6px 0;
   font: 18px/1.4 var(--body); max-height: 240px; }
+/* one line: wrapped, it would run out of the one-row box (app.js fits its wording to the width) */
+#question::placeholder { white-space: nowrap; }
 .composer-box .btn { padding: 11px 22px; font-size: 12px; letter-spacing: .18em; }
 .composer-row { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; font: 11px/1.4 var(--mono);
   letter-spacing: .12em; text-transform: uppercase; color: var(--muted-2); }
@@ -328,6 +330,7 @@ code { font-family: var(--mono); font-size: .8em; background: var(--cite); color
 .passage .figure-desc summary:hover, .passage .figure-desc[open] summary { color: var(--accent); }
 .passage .figure-desc[open] summary { margin-bottom: 4px; }
 .passage .figure-desc[open] { border-left-color: var(--accent); }
+.passage .drawing-text { margin: 10px 0 0; color: var(--muted); }
 .passage .figure-desc .who { display: block; font: italic 13px/1.45 var(--body); color: var(--muted); margin-top: 4px; }
 .passage mark { background: var(--mark); color: inherit; padding: 0 2px; border-radius: 3px; }
 #readerLicense { padding: 12px 26px; border-top: 1px solid var(--border); font: italic 12.5px/1.45 var(--body); color: var(--muted-2); }

@@ -44,7 +44,8 @@ passage ids; the app checks every citation. It must stay:
 | `para/qtprobe.py` | Linux: checks in a separate process that Qt can open a window (Qt aborts instead of raising), so the app falls back to the browser |
 | `site/` | The website, pararegs.co.uk: one static page in the app's look; download buttons read the latest GitHub release |
 | `.github/workflows/descriptions.yml` | After each library build: the "descriptions" issue of drawings to draft or review; optional drafting with a hosted model |
-| `.github/workflows/pages.yml` | Publishes `site/` to GitHub Pages, adding the app's fonts and `docs/screenshots/answer-reader.png` |
+| `.github/workflows/pages.yml` | Publishes `site/` to GitHub Pages, adding the app's fonts, `docs/screenshots/answer-reader.png` (the link preview) and the demo video |
+| `docs/record_demo.py` | Records the website's demo video (`docs/screenshots/demo.mp4`, `.webm`, `.jpg`): a real question to a real model, the wait shortened and labelled; needs Playwright and ffmpeg (`uv run --with playwright --with imageio-ffmpeg`) |
 | `.github/workflows/release.yml` | Tests on every push; on a `v*` tag: library, Mac and Windows apps, GitHub release; weekly library refresh |
 | `tests/` | `test_app.py` (end to end through the HTTP API) and `fake_llm.py` (a stand-in OpenAI-compatible server) |
 | `tests/ask_models.py` | Asks real models the test questions through a running app and scores them; results in `docs/model-tests.md` |

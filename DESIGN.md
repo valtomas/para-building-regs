@@ -60,6 +60,7 @@ time someone adds a file.
 | Library: documents by group, direct search | `library.png`, `library-search.png` |
 | Your files: permission prompt, file list with notes | `files-permission.png`, `files.png` |
 | Phone width | `narrow.png` |
+| Website demo: question, cited answer, reader (video) | `demo.mp4`, `demo.webm`, poster `demo.jpg` |
 
 ## Tokens
 
@@ -139,6 +140,8 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
 - **Figures**: diagrams and tables are shown as images above their passage's text, full reader width on a white
   card (the drawings are designed on white, so they stay white in dark mode). Click to enlarge to the window;
   click again to close. When the reader opens at a passage with a figure, it scrolls to the top of the figure.
+  The words printed in a drawing ("Text in the drawing:", there for search and the AI) sit collapsed at the end of
+  its passage, styled like the description, with a note that they aren't a description of the drawing.
 - **Description of a drawing** (`.figure-desc`): when a diagram has a description checked by a person, it sits
   directly under the image, collapsed like the activity list: a mono "+ Description of the drawing" line. Opened, a
   2 px accent rule on the left sets off the description in body text, then an italic note in `--muted`, "Written by

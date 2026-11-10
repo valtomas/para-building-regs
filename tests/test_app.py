@@ -93,6 +93,12 @@ check(hits and hits[0]["ref"].startswith("1.1"), "direct search finds the paragr
 ev = ask("What is the maximum rise of a private stair?")
 types = [e["type"] for e in ev]
 check("search" in types and "read" in types and "thinking" in types, "searches, reads, streams reasoning")
+results = [r for e in ev if e["type"] == "search" for r in e["results"]]
+check(results and all(r["id"] and r["source"] and "ref" in r and "heading" in r for r in results),
+      "search results carry what a citation's label needs while the answer streams")
+nearby = [n for e in ev if e["type"] == "read" for n in e.get("nearby", [])]
+check(nearby and all(n["id"] and n["source"] and "ref" in n for n in nearby),
+      "a read carries the labels of the passages read along with it, which may be cited too")
 done = ev[-1]
 check(done["type"] == "done", "finishes")
 check("220 mm" in done["answer"] and "checking" not in done["answer"], "answer text, <think> split off")
