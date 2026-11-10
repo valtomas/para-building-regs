@@ -197,6 +197,8 @@ def install_app_update():
         try:
             dest = updater.download_path(update)
             _download(update["url"], dest, job, expect_size=update.get("size"), sha256=update.get("sha256"))
+            if update["kind"] == "deb":
+                job.note = "Enter your password in the window that has opened to install the update."
             job.note, quit_now = updater.install(update, dest)
             job.state = "done"
             if quit_now:

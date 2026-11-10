@@ -1,9 +1,11 @@
 """Updates the app itself: downloads the new release's file for the way this copy was installed, and puts it in place.
 
 Each kind of install is replaced differently. The Windows installer runs silently over the old copy; an AppImage
-swaps its own file; a Mac app swaps its bundle; a .deb needs an administrator, so it opens in the software centre,
-which asks for the password. Copies that can't replace themselves (the Windows zip, the Linux folder, running from
-source, a Mac app macOS runs from a hidden copy) have no kind, and the page links to the release instead.
+swaps its own file; a Mac app swaps its bundle; a .deb needs an administrator, so the system asks for the
+password (pkexec) and apt installs it. The software centre can't do it: it won't upgrade an installed package.
+
+Copies that can't replace themselves (the Windows zip, the Linux folder, running from source, a Mac app macOS runs
+from a hidden copy) have no kind, and the page links to the release instead.
 """
 import os
 import shutil
@@ -124,8 +126,20 @@ def install(update, path):
         old = swap_mac(path, app)
         start_later('rm -rf "$1"; open "$0"', app, old)
         return "Updated. Para will close and open again in a moment.", True
-    # a .deb: installing it needs an administrator, which the software centre asks for
-    subprocess.Popen(["xdg-open", path], env=clean_env(), start_new_session=True,
-                     stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    return ("The update has opened in your software centre: choose Update or Install there. Para uses the new "
-            "version the next time it starts."), False
+    install_deb(path)
+    start_later('exec "$0"', "/opt/para/Para")
+    return "Updated. Para will close and open again in a moment.", True
+
+
+def install_deb(path):
+    """Installs a .deb as administrator: pkexec shows the system's password dialog and waits for it. Files the
+    running app uses are replaced as new files, so it carries on until it restarts."""
+    if not shutil.which("pkexec"):
+        raise RuntimeError(f"Can't ask for the administrator password here. Install the update with: "
+                           f"sudo apt install {path}")
+    r = subprocess.run(["pkexec", "apt-get", "install", "-y", path], env=clean_env(), capture_output=True, text=True)
+    if r.returncode in (126, 127):  # the dialog was cancelled, or the password wasn't accepted
+        raise RuntimeError("The update wasn't installed: it needs your password. Press Update now to try again.")
+    if r.returncode:
+        last = (r.stderr.strip() or r.stdout.strip()).splitlines()[-1:] or ["apt-get failed"]
+        raise RuntimeError(f"The update wasn't installed ({last[0]}).")

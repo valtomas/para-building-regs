@@ -766,7 +766,7 @@ function renderAppJob(j) {
   const v = $("#appJob"); if (!v) return;
   const pct = j.total ? Math.round(j.done / j.total * 100) : 0;
   if ($("#updateApp")) $("#updateApp").disabled = j.state !== "error";
-  v.innerHTML = j.state === "running" ? `<div class="progress"><div style="width:${pct}%"></div></div>`
+  v.innerHTML = j.state === "running" ? `<div class="progress"><div style="width:${pct}%"></div></div>${j.note ? `<p class="muted small">${esc(j.note)}</p>` : ""}`
     : j.state === "error" ? `<div class="error">${esc(j.error)}</div>` : `<p class="ok-line">${esc(j.note)}</p>`;
 }
 function renderLibraryJob(j) {

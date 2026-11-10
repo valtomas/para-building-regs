@@ -75,8 +75,8 @@ Para opens in its own window; if your system can't show one, it opens in your we
 
 **Updates.** Para checks once a day for a new version (Settings › Updates & about; nothing about you is sent).
 Installed with the Windows installer, the Mac app, the .deb or the AppImage, it updates in one click with
-**Update now**: it downloads the new version, checks it against GitHub's checksum and installs it. A .deb opens in
-your software centre, which asks for your password. The Windows zip and the Linux folder link to the new release
+**Update now**: it downloads the new version, checks it against GitHub's checksum and installs it. With the .deb,
+your system asks for your password first. The Windows zip and the Linux folder link to the new release
 instead.
 
 **Then** choose an AI engine in the window that opens:

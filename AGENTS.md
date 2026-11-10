@@ -27,7 +27,7 @@ passage ids; the app checks every citation. It must stay:
 | `para/core.py` | One chat turn: system prompt, tool loop (`search_library`, `read_passage`, `show_passage`), nudges, rescue, citation checking |
 | `para/llm.py` | OpenAI-compatible streaming client; splits `<think>` and `reasoning_content`; probes known local servers; `HOSTED`, the hosted services offered in Settings (an address each, no code of their own) |
 | `para/engine.py` | Built-in engine: downloads llama.cpp's `llama-server` and GGUF models, starts and stops it (memory check, idle stop, leftover clean-up); `Engine.client()` picks the configured engine |
-| `para/updater.py` | Updates the app itself: works out how this copy was installed (Windows installer, AppImage, .deb, Mac app, or none), downloads that release file with GitHub's checksum, and puts it in place: the installer runs silently, an AppImage or Mac app swaps itself and restarts, a .deb opens in the software centre |
+| `para/updater.py` | Updates the app itself: works out how this copy was installed (Windows installer, AppImage, .deb, Mac app, or none), downloads that release file with GitHub's checksum, and puts it in place: the installer runs silently, an AppImage or Mac app swaps itself and restarts, a .deb is installed by apt after the system's password dialog (pkexec) |
 | `para/models.json` | Built-in model catalogue (also published with each release and fetched by installed apps) |
 | `para/store.py` | SQLite FTS5 store (sources, passages, BM25 search, read, document), used for both libraries |
 | `para/library.py` | The regulations library plus the person's files, searched together; ids `r…` and `f…`; `Scope` limits a chat to its project's files |
