@@ -445,10 +445,20 @@ $("#readerFind").addEventListener("input", (e) => {
   if (first) first.scrollIntoView({ block: "start" });
 });
 
+// ---------- enlarged figures ----------
+const dlgFig = $("#dlg-figure");
+function enlargeFigure(img) {
+  const big = $("#figureBig");
+  big.src = img.src; big.alt = img.alt;
+  dlgFig.showModal();
+}
+// Any click closes it: on the drawing, on the dark area round it, or on the close button (a form, so it closes itself).
+dlgFig.addEventListener("click", (e) => { if (!e.target.closest("form")) dlgFig.close(); });
+
 // ---------- clicks anywhere ----------
 document.addEventListener("click", (e) => {
   const fig = e.target.closest("img.figure");
-  if (fig) { fig.classList.toggle("zoom"); return; }
+  if (fig) { enlargeFigure(fig); return; }
   const pidEl = e.target.closest("[data-pid]");
   if (pidEl) { e.preventDefault(); openPassage(pidEl.dataset.pid); return; }
   const ext = e.target.closest("a[data-ext]");

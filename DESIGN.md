@@ -144,8 +144,8 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   legislation.gov.uk) or "Open file" for the person's files, licence line in the footer. For PDFs the link opens
   the page of the cited passage ("Original, page 34 ↗") and each passage header has its own "PDF page N ↗".
 - **Figures**: diagrams and tables are shown as images above their passage's text, full reader width on a white
-  card (the drawings are designed on white, so they stay white in dark mode). Click to enlarge to the window;
-  click again to close. When the reader opens at a passage with a figure, it scrolls to the top of the figure.
+  card (the drawings are designed on white, so they stay white in dark mode). Click to enlarge to the window
+  (a dialog with a close button); Escape or a click anywhere closes it. When the reader opens at a passage with a figure, it scrolls to the top of the figure.
   The words printed in a drawing ("Text in the drawing:", there for search and the AI) sit collapsed at the end of
   its passage, styled like the description, with a note that they aren't a description of the drawing.
 - **Description of a drawing** (`.figure-desc`): when a diagram has a description checked by a person, it sits
