@@ -96,17 +96,40 @@ jobs:
       - name: Zip (macOS)
         if: runner.os == 'macOS'
         run: cd dist && ditto -c -k --keepParent "Para.app" "../${{ matrix.zip }}"
+      - name: Installer (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          choco install innosetup --no-progress -y
+          $iscc = (Get-ChildItem "${env:ProgramFiles(x86)}\Inno Setup *\ISCC.exe", "$env:ProgramFiles\Inno Setup *\ISCC.exe" -ErrorAction SilentlyContinue | Select-Object -First 1).FullName
+          & $iscc "/DVersion=$(python -c 'import para; print(para.VERSION)')" packaging\windows\para.iss
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          Move-Item dist\Para-windows-setup.exe .
       - name: Zip (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
         run: Compress-Archive -Path "dist/Para" -DestinationPath "${{ matrix.zip }}"
+      - name: Packages (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          packaging/linux/build.sh
+          mv dist/Para-linux.deb dist/Para-linux.AppImage .
       - name: Archive (Linux)
         if: runner.os == 'Linux'
         run: |
           cp packaging/linux/install.sh dist/Para/
+          cp packaging/icon.png dist/Para/para.png
           tar -czf "${{ matrix.zip }}" -C dist Para
       - uses: actions/upload-artifact@v4
         with: { name: "${{ matrix.zip }}", path: "${{ matrix.zip }}" }
+      - uses: actions/upload-artifact@v4
+        if: runner.os != 'macOS'
+        with:
+          name: "${{ matrix.os }}-installers"
+          path: |
+            Para-windows-setup.exe
+            Para-linux.deb
+            Para-linux.AppImage
 
   release:
     needs: [library, app]
@@ -124,7 +147,10 @@ jobs:
           fail_on_unmatched_files: false
           files: |
             out/Para-mac.zip
+            out/Para-windows-setup.exe
             out/Para-windows.zip
+            out/Para-linux.deb
+            out/Para-linux.AppImage
             out/Para-linux.tar.gz
             out/regs.sqlite.gz
             out/library.json

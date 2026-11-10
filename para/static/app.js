@@ -496,6 +496,7 @@ function openSettings(tab = "engine") {
   $("#baseUrl").value = e.base_url || "";
   $("#apiKey").value = "";
   fillModels(e.model ? [e.model] : [], e.model);
+  if (e.mode === "external" && e.base_url) loadModels(true);  // the full list, so the menu offers every model
   $("#instructions").value = s.instructions || S.default_instructions;
   $("#projectNotes").value = s.project_notes || "";
   $("#checkUpdates").checked = s.check_updates !== false;
@@ -544,10 +545,76 @@ function renderHosted() {
     $("#hostedList").appendChild(b);
   }
 }
+let modelNames = [], modelActive = -1;
 function fillModels(models, chosen) {
-  $("#modelList").innerHTML = models.map((m) => `<option value="${esc(m)}">`).join("");
+  modelNames = models;
   $("#modelSelect").value = chosen || "";
+  modelMenu(false);
 }
+// The model field: type any name, or pick from the server's list. Drawn here rather than a datalist, which shows
+// only the names matching what's in the box, so with a model chosen it listed that one alone.
+const mfield = $("#modelSelect"), mmenu = $("#modelMenu");
+function modelMenu(open, filter = "") {
+  const f = filter.toLowerCase(), shown = modelNames.filter((m) => m.toLowerCase().includes(f));
+  open = open && shown.length > 0;
+  mmenu.hidden = !open;
+  mfield.setAttribute("aria-expanded", open);
+  if (!open) return;
+  mmenu.innerHTML = shown.map((m, i) =>
+    `<div role="option" id="modelOpt${i}" aria-selected="${m === mfield.value}"><span>${esc(m)}</span></div>`).join("");
+  // opens upwards where the dialog has no room for it below the field
+  const room = mfield.closest("dialog").getBoundingClientRect().bottom - mfield.getBoundingClientRect().bottom;
+  mmenu.classList.toggle("up", room < Math.min(mmenu.scrollHeight, 280) + 24);
+  modelActive = Math.max(0, shown.indexOf(mfield.value));
+  modelHighlight();
+}
+function modelHighlight() {
+  const items = $$("[role=option]", mmenu);
+  items.forEach((el, i) => el.classList.toggle("active", i === modelActive));
+  const el = items[modelActive];  // scrolls the menu only: scrollIntoView would scroll the dialog too
+  if (el && el.offsetTop < mmenu.scrollTop) mmenu.scrollTop = el.offsetTop - 6;
+  else if (el && el.offsetTop + el.offsetHeight > mmenu.scrollTop + mmenu.clientHeight) {
+    mmenu.scrollTop = el.offsetTop + el.offsetHeight - mmenu.clientHeight + 6;
+  }
+  mfield.setAttribute("aria-activedescendant", items[modelActive]?.id || "");
+}
+function modelPick(name) {
+  mfield.value = name;
+  modelMenu(false);
+}
+mfield.addEventListener("click", () => {
+  if (mmenu.hidden) mfield.select();  // so typing searches the list, rather than adding to the chosen name
+  modelMenu(mmenu.hidden);
+});
+mfield.addEventListener("input", () => modelMenu(true, mfield.value));
+mfield.addEventListener("blur", () => modelMenu(false));
+mfield.addEventListener("keydown", (e) => {
+  const items = $$("[role=option]", mmenu);
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+    e.preventDefault();
+    if (mmenu.hidden) return modelMenu(true);
+    modelActive = (modelActive + (e.key === "ArrowDown" ? 1 : items.length - 1)) % items.length;
+    modelHighlight();
+  } else if (e.key === "Enter" && !mmenu.hidden && items[modelActive]) {
+    e.preventDefault();
+    modelPick(items[modelActive].textContent);
+  } else if (e.key === "Escape" && !mmenu.hidden) {
+    e.preventDefault();  // closes the list, not the dialog
+    e.stopPropagation();
+    modelMenu(false);
+  }
+});
+$("#modelArrow").addEventListener("mousedown", (e) => {  // mousedown, so the field keeps focus
+  e.preventDefault();
+  mfield.focus();
+  modelMenu(mmenu.hidden);
+});
+mmenu.addEventListener("mousedown", (e) => {
+  e.preventDefault();
+  const o = e.target.closest("[role=option]");
+  if (o) modelPick(o.textContent);
+});
+mmenu.addEventListener("click", (e) => e.preventDefault());  // inside a label, a click would reopen it via the field
 async function findEngines() {
   $("#findResult").textContent = "Looking…";
   $("#foundList").innerHTML = "";
@@ -568,14 +635,19 @@ async function findEngines() {
   } catch (e) { $("#findResult").textContent = e.message; }
 }
 $("#findEngines").onclick = findEngines;
-$("#loadModels").onclick = async () => {
+// quiet: on opening Settings, where an engine that's stopped shouldn't greet the person with an error
+async function loadModels(quiet) {
+  const url = $("#baseUrl").value.trim();
   try {
-    const { models } = await api("/api/models", { method: "POST", body: { base_url: $("#baseUrl").value.trim(), api_key: $("#apiKey").value } });
+    const { models } = await api("/api/models", { method: "POST", body: { base_url: url, api_key: $("#apiKey").value } });
+    if (quiet && (!models.length || $("#baseUrl").value.trim() !== url)) return;
     const now = $("#modelSelect").value;
+    if (quiet && document.activeElement === mfield) { modelNames = models; return; }  // don't disturb typing
     fillModels(models, models.includes(now) ? now : models.includes(S.settings.engine.model) ? S.settings.engine.model : models[0]);
     $("#testResult").textContent = models.length ? "" : "The server has no models.";
-  } catch (e) { $("#testResult").textContent = e.message; }
-};
+  } catch (e) { if (!quiet) $("#testResult").textContent = e.message; }
+}
+$("#loadModels").onclick = () => loadModels(false);
 let chosenBundled = null;
 function renderBundled() {
   const b = S.bundled;
