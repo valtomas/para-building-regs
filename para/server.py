@@ -22,7 +22,7 @@ import uuid
 import webbrowser
 
 from . import VERSION, paths, updater
-from .core import BASE_PROMPT, chat_events
+from .core import BASE_PROMPT, chat_events, forget_lookups
 from .engine import Engine, Job, catalog, recommend, _download
 from .library import Library, Scope
 from .llm import HOSTED, Client, EngineError, is_local, probe_known, same_host
@@ -288,8 +288,18 @@ class Handler(http.server.BaseHTTPRequestHandler):
         except ValueError:
             return {}
 
+    hosts = None  # the Host headers answered, set by main(); None answers any (shared on the network)
+
+    def _host_ok(self):
+        """Refuse requests that reached this computer under another name. A web page can point its own domain at
+        127.0.0.1 (DNS rebinding); the browser then treats the app as that page's own site, and it could read the
+        chats or change the engine. Such a request still carries the page's domain as its Host."""
+        return self.hosts is None or (self.headers.get("Host") or "").lower() in self.hosts
+
     def _allowed(self):
         """Refuse requests from other web pages (a page in the person's browser posting to localhost)."""
+        if not self._host_ok():
+            return False
         origin = self.headers.get("Origin")
         if not origin or origin == "null":
             return True
@@ -300,6 +310,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
         url = urllib.parse.urlparse(self.path)
         q = dict(urllib.parse.parse_qsl(url.query))
         path = url.path
+        if not self._host_ok():
+            return self._send(403, {"error": "Forbidden"})
         try:
             if path == "/" or path.startswith("/static/"):
                 return self._static("index.html" if path == "/" else path[len("/static/"):])
@@ -493,7 +505,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if not chat:
             project = body.get("project") or ""
             chat = {"id": str(uuid.uuid4()), "title": question[:80], "messages": [], "turns": [],
-                    "created": time.time(), "project": project if myfiles.project(project) else ""}
+                    "created": time.time(), "project": project if myfiles.project(project) else "",
+                    "library": library.version()}
         stop = stops[chat["id"]] = threading.Event()
         self.send_response(200)
         self.send_header("Content-Type", "text/event-stream")
@@ -509,6 +522,17 @@ class Handler(http.server.BaseHTTPRequestHandler):
         turn = {"question": question, "answer": "", "events": [], "time": time.time()}
         try:
             send({"type": "chat", "id": chat["id"]})
+            # The library has been replaced since this chat's earlier answers (or the chat predates this record):
+            # their passage ids may name other passages now, so the AI starts its lookups afresh.
+            if chat.get("library") != library.version():
+                if any(m.get("role") == "tool" for m in chat["messages"]):
+                    chat["messages"] = forget_lookups(chat["messages"])
+                    notice = {"type": "notice", "text": "The library has been updated since the earlier answers in "
+                              "this chat, so the AI looked things up afresh. Citations in those earlier answers may "
+                              "open a different paragraph now."}
+                    turn["events"].append(notice)
+                    send(notice)
+                chat["library"] = library.version()
             s = settings.load()
             # A project's chat searches its files and the shared ones; any other chat only the shared ones.
             project = chat.get("project", "")
@@ -566,6 +590,14 @@ class Server(http.server.ThreadingHTTPServer):
     daemon_threads = True
 
 
+def local_hosts(host, port):
+    """The Host headers a browser sends when the app is served to this computer only; None when it's shared on
+    the network, where it's reached by names the app can't know."""
+    if host not in ("127.0.0.1", "localhost", "::1"):
+        return None
+    return {f"{name}:{port}" for name in ("127.0.0.1", "localhost", "[::1]")}
+
+
 def free_port(host):
     with socket.socket() as s:
         s.bind((host, 0))
@@ -613,6 +645,7 @@ def main(argv=None):
             signal.signal(getattr(signal, name), lambda *_: sys.exit(0))
     port = args.port or free_port(args.host)
     httpd = Server((args.host, port), Handler)
+    Handler.hosts = local_hosts(args.host, port)
     threading.Thread(target=background, daemon=True).start()
     url = f"http://127.0.0.1:{port}/"
     print(f"{paths.APP_NAME} {VERSION} on http://{args.host}:{port}/", flush=True)

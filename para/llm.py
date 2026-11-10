@@ -1,5 +1,6 @@
 """A small client for any OpenAI-compatible chat server (Ollama, LM Studio, llama.cpp, Lemonade, vLLM, Jan, a cloud
 API...). Standard library only. Streams /chat/completions and turns the deltas into plain events."""
+import ipaddress
 import json
 import re
 import socket
@@ -55,9 +56,16 @@ def same_host(a, b):
 
 
 def is_local(base_url):
+    """True for this computer or the local network. The address is read as an address, not matched by how it starts:
+    "10.example.com" is a name anyone can register, and calling it private would be untrue."""
     host = (urllib.parse.urlparse(base_url).hostname or "").lower()
-    return host in ("localhost", "127.0.0.1", "::1", "0.0.0.0") or host.endswith(".local") \
-        or host.startswith(("10.", "192.168.")) or re.match(r"172\.(1[6-9]|2\d|3[01])\.", host) is not None
+    if host == "localhost" or host.endswith(".local"):
+        return True
+    try:
+        ip = ipaddress.ip_address(host)
+    except ValueError:  # any other name: somewhere else, as far as the app can tell
+        return False
+    return ip.is_loopback or ip.is_private or ip.is_link_local or ip.is_unspecified
 
 
 class Client:

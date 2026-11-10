@@ -133,7 +133,8 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   (repository variables) and `DESCRIBE_API_KEY` (secret) are set; it's off otherwise.
 - **Ids**: regulations passages are `r<rowid>`, the person's files `f<rowid>`. Rowids change between library
   builds, so saved chats can point at a different passage after an update. Don't build features that assume they
-  are stable across versions.
+  are stable across versions. A chat records its library's edition (`chat["library"]`); when that has changed, its old
+  search and read results are blanked (`core.forget_lookups`) so their ids can't be cited.
 - **Projects**: a project is a folder inside the files folder. Its files are searched only in the project's chats;
   files at the top of the folder are searched in every chat, and a chat in no project searches only those. The
   project is fixed when a chat is created (`chat["project"]`); renaming a project moves its folder, its files' index
@@ -149,7 +150,8 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
 - **Code licence**: Para is AGPL-3.0-or-later (`LICENSE`). Only add dependencies, fonts or copied code under
   licences compatible with it (MIT, BSD, Apache-2.0, LGPL, GPL-3.0, OFL for fonts); check before adding. Keep the
   licence notice and source link in Settings → Updates & about.
-- **Security**: keep the Origin check in `Handler._allowed`. `/api/open` may only open http(s) URLs, the feedback
+- **Security**: keep the Origin check in `Handler._allowed` and the Host check in `Handler._host_ok` (a page that points
+  its own domain at 127.0.0.1 must get nothing, on GET too). `/api/open` may only open http(s) URLs, the feedback
   address (`server.FEEDBACK`, one fixed mailto), the files folder, or files already in the files index. Don't add endpoints that read arbitrary paths.
 - **Commits**: small, with a message that says why. Run the tests first.
 - **Memory**: the built-in engine holds gigabytes, so it must never outlive the app or load what won't fit.

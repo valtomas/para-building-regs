@@ -47,6 +47,10 @@ class Library:
             os.replace(target + ".new", target)
             self.open_regs()
 
+    def version(self):
+        """The edition of the regulations library in use ("" for none)."""
+        return (self.regs.meta() if self.regs else {}).get("version", "")
+
     def info(self):
         meta = self.regs.meta() if self.regs else {}
         return {"version": meta.get("version", ""), "built": meta.get("built", ""), "path": self.regs_path,

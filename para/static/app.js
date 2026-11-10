@@ -518,8 +518,9 @@ function modeChanged() {
   remoteCheck();
 }
 $$("input[name=mode]").forEach((r) => r.onchange = modeChanged);
+// The same rule as llm.is_local: whole addresses only, since "10.example.com" is a name anyone can register.
 function isLocal(u) {
-  try { return /^(localhost|127\.|::1|\[::1\]|0\.0\.0\.0|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)|\.local$/.test(new URL(u).hostname); } catch { return true; }
+  try { return /^(localhost|((127|10)\.\d+|192\.168|169\.254|172\.(1[6-9]|2\d|3[01]))\.\d+\.\d+|0\.0\.0\.0|\[(::1|f[cd][0-9a-f]{2}:.*|fe[89ab][0-9a-f]:.*)\])$|\.local$/.test(new URL(u).hostname); } catch { return true; }
 }
 function remoteCheck() {
   const u = $("#baseUrl").value.trim(), m = $("input[name=mode]:checked")?.value;

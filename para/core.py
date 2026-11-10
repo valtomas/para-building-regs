@@ -68,6 +68,8 @@ LOOKUP_NUDGE = ("(Note from the app, not the person: search the library with sea
                 "cite the passages you use. If the message isn't about building regulations or guidance, just reply.)")
 RESCUE_NOTE = ("(Note from the app, not the person: you can't look anything else up. Answer the question now from "
                "these library excerpts, citing their ids in square brackets.)")
+STALE_LOOKUP = ("(Note from the app: this result came from an earlier edition of the library and its ids no longer "
+                "apply. Search again before citing anything from it.)")
 UNSEEN_ID = "No search result has that id. Use an id from your search_library results."
 BAD_ID = "That isn't a passage id. Ids look like r1234 or f56."
 
@@ -114,10 +116,17 @@ def system_prompt(library, settings):
         "today": f"{datetime.date.today().day} {datetime.date.today():%B %Y}",
         "notes": _notes(settings),
     }
-    try:
+    if not custom:
         return template.format(**values)
-    except (KeyError, IndexError, ValueError):  # custom instructions with stray braces
-        return template + "\n\n" + values["library"] + values["notes"]
+    # The person's own instructions may leave out any of the placeholders. What they'd have carried is added after,
+    # so rewriting the instructions never silently drops the project notes or the list of what can be searched.
+    try:
+        text, missing = custom.format(**values), [k for k in values if "{" + k + "}" not in custom]
+    except (KeyError, IndexError, ValueError):  # stray braces: nothing was filled in
+        text, missing = custom, list(values)
+    added = {"library": "\n\nThe library holds:\n" + values["library"], "files": values["files"],
+             "today": f"\n\nToday is {values['today']}.", "notes": values["notes"]}
+    return text + "".join(added[k] for k in missing)
 
 
 def _args(call):
@@ -218,6 +227,13 @@ def trim(messages, keep_recent=2):
             m = {**m, "content": m["content"][:400] + "\n[…shortened; search again if needed]"}
         out.append(m)
     return out
+
+
+def forget_lookups(messages):
+    """Earlier messages with their search and read results blanked. Passage ids are rowids, which change when the
+    library is rebuilt: an id from a result of an older edition now names some other passage, and a citation to it
+    would pass the check under the wrong label. Without the results the ids aren't known, so they can't be cited."""
+    return [{**m, "content": STALE_LOOKUP} if m.get("role") == "tool" else m for m in messages]
 
 
 def chat_events(client, library, history, question, settings, supports_tools=True):

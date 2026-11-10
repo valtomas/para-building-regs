@@ -6,6 +6,7 @@ import datetime
 import importlib.util
 import json
 import os
+import re
 import sqlite3
 import struct
 import sys
@@ -46,6 +47,7 @@ from para import server  # noqa: E402
 
 fake, fake_url = start()
 httpd = server.Server(("127.0.0.1", 0), server.Handler)
+server.Handler.hosts = server.local_hosts("127.0.0.1", httpd.server_address[1])  # as main() sets it
 threading.Thread(target=httpd.serve_forever, daemon=True).start()
 BASE = f"http://127.0.0.1:{httpd.server_address[1]}"
 
@@ -221,6 +223,60 @@ try:
     check(False, "blocks cross-site posts")
 except urllib.error.HTTPError as e:
     check(e.code == 403, "blocks cross-site posts")
+
+# nor can a page that points its own domain at this computer (DNS rebinding): the Host isn't the app's
+for what, path, body in (("read", "/api/state", None), ("change", "/api/settings", {"project_notes": "x"})):
+    try:
+        call(path, body, headers={"Content-Type": "application/json", "Host": "evil.example:80",
+                                  "Origin": "http://evil.example:80"})
+        check(False, f"a page under another name can't {what} anything")
+    except urllib.error.HTTPError as e:
+        check(e.code == 403, f"a page under another name can't {what} anything")
+check(server.local_hosts("0.0.0.0", 80) is None, "shared on the network, the app answers to any name")
+
+# private means an address on this computer or network, not a name that starts like one
+from para.llm import is_local  # noqa: E402
+
+check(all(is_local(u) for u in ("http://127.0.0.1:11434/v1", "http://localhost:1234/v1", "http://192.168.1.20/v1",
+                                "http://10.0.0.5:8080/v1", "http://172.20.1.1/v1", "http://[::1]:8080/v1",
+                                "http://studio.local:1234/v1")), "local and network addresses are private")
+check(not any(is_local(u) for u in ("https://10.evil.example/v1", "https://192.168.evil.example/v1",
+                                    "https://127.0.0.1.evil.example/v1", "https://api.openai.com/v1",
+                                    "https://172.15.0.1/v1", "https://8.8.8.8/v1")),
+      "a name that starts like a private address isn't private")
+
+# the person's own instructions keep what the placeholders they left out would have carried
+own = core.system_prompt(server.library, {"instructions": "Answer briefly and cite.",
+                                          "project_notes": "6-storey block, sprinklered"})
+check(own.startswith("Answer briefly and cite.") and "6-storey block, sprinklered" in own and "ADK" in own
+      and "Today is" in own, "custom instructions without placeholders keep the notes, library list and date")
+own = core.system_prompt(server.library, {"instructions": "Library:\n{library}\nBe brief.{notes}",
+                                          "project_notes": "sprinklered"})
+check(own.count("sprinklered") == 1 and own.count(server.library.summary()) == 1,
+      "placeholders that are there aren't filled in twice")
+check("sprinklered" in core.system_prompt(server.library, {"instructions": "Use {braces} freely",
+                                                           "project_notes": "sprinklered"}),
+      "stray braces in custom instructions don't lose the notes")
+
+# a chat carried over a library update: ids in its old results name other passages now, so they're forgotten
+stale = next(e for e in ask("What is the maximum rise for a private stair?") if e["type"] == "chat")["id"]
+chat_file = os.path.join(server.chats_dir(), stale + ".json")
+with open(chat_file, encoding="utf-8") as f:
+    saved = json.load(f)
+check(saved["library"] == "2026.11.03" and any(re.search(r"\[r\d+\]", m["content"]) for m in saved["messages"]
+                                               if m["role"] == "tool"), "a chat records its library's edition")
+check(not any(e["type"] == "notice" for e in ask("And the going?", stale)), "same edition: lookups are kept")
+saved["library"] = "2026.10.27"
+with open(chat_file, "w", encoding="utf-8") as f:
+    json.dump(saved, f)
+events = ask("And the pitch?", stale)
+with open(chat_file, encoding="utf-8") as f:
+    after = json.load(f)
+old_results = [m["content"] for m in after["messages"][:len(saved["messages"])] if m["role"] == "tool"]
+check(any(e["type"] == "notice" and "updated" in e["text"] for e in events) and old_results
+      and all(c == core.STALE_LOOKUP for c in old_results) and after["library"] == "2026.11.03",
+      "after a library update, a chat's old lookups are forgotten and the person is told")
+check(any(e["type"] == "done" and e["cites"] for e in events), "and it looks things up afresh, with citations")
 
 # updating the app itself: only a copy that can replace itself is offered it, with GitHub's checksum
 from para import updater  # noqa: E402
