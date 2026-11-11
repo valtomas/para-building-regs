@@ -502,18 +502,33 @@ def _cited_segments(answer, cites):
                 yield part, ids
 
 
+NAMED_FIGURE = re.compile(r"\b(Diagram|Table|Figure)s? ([A-Z]?\d+(?:\.\d+)?[a-z]?)")
+
+
+def _borne_out_by(pid, info, library):
+    """The text a figure cited to this passage may come from: the passage, and any diagram or table of the same
+    document that it names. Paragraphs often leave the figure to the drawing ("the height shown in Diagram 3.1"), and
+    citing the paragraph for it is right."""
+    text = library.text(pid)
+    named = {f"{kind} {number}" for kind, number in NAMED_FIGURE.findall(text)}
+    parts = [text, info.get("ref") or "", info.get("heading") or ""]
+    if named and info.get("key"):
+        parts += [library.text(other) for other, ref, _heading, _hash in library.anchors(pid, info["key"])
+                  if other != pid and named & set(ref.split(", "))]
+    return " ".join(parts)
+
+
 def check_figures(answer, cites, library, given=""):
     """Figures the answer gives beside a citation that aren't in the passage cited: [{"figure": "225 mm", "ids"}].
 
-    Numbers only, so it can't tell a right figure used wrongly; what it catches is a figure the cited passage doesn't
+    A figure in a diagram or table that the cited passage names counts as in it. Numbers only, so it can't tell a right figure used wrongly; what it catches is a figure the cited passage doesn't
     contain at all, which is either made up, worked out, or cited to the wrong paragraph. Figures the person gave
     themselves (in their questions or notes) aren't the passage's to bear out and are left alone."""
     out, numbers, own = [], {}, _numbers(given)
     for text, ids in _cited_segments(answer, cites):
         for pid in ids:
             if pid not in numbers:
-                info = cites[pid]
-                numbers[pid] = _numbers(" ".join([library.text(pid), info.get("ref") or "", info.get("heading") or ""]))
+                numbers[pid] = _numbers(_borne_out_by(pid, cites[pid], library))
         there = set().union(*(numbers[pid] for pid in ids))
         for m in FIGURE.finditer(ID_IN_TEXT.sub(" ", text)):
             for raw in filter(None, (m.group(1), m.group(2))):

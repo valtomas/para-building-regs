@@ -397,6 +397,13 @@ check(kept_chat["turns"][0]["library"] == "2026.11.03" and kept_chat["turns"][0]
       "a turn records its library's edition and where its messages start")
 
 
+class Library_of:
+    """A store standing in for the library, for checks that need only its text and anchors."""
+
+    def __init__(self, store):
+        self.text, self.anchors = store.text, lambda pid, key=None, short=None: store.anchors(key, short)
+
+
 class Scripted:
     """An engine that searches once, then answers citing the first result without reading it."""
     model = "scripted"
@@ -419,6 +426,17 @@ cited = next(iter(done["cites"].values()))
 check(cited["read"] is False, "a passage cited from a search result's extract alone is marked as not read")
 check([f["figure"] for f in done["figures"]] == ["900 mm", "30 minutes"] and done["figures"][0]["ids"] == [cited["id"]],
       "figures that aren't in the passage cited are flagged; ones that are, in other units, or the person's own aren't")
+
+# a paragraph that leaves its figure to a diagram ("the height shown in Diagram 3.1") bears that figure out
+drawn = Store(os.path.join(TMP, "drawn.sqlite"), "r")
+drawn.add_source("ADK", "Approved Document K", "ADK", "approved-document", [
+    {"ref": "3.2", "text": "3.2 Ensure that guarding is, as a minimum, the height shown in Diagram 3.1."},
+    {"ref": "Diagram 3.1", "text": "Diagram 3.1 Guarding design. Text in the drawing: 900mm; 1100mm"},
+    {"ref": "Diagram 3.2", "text": "Diagram 3.2 Barriers. Text in the drawing: 375mm"}])
+para = drawn.describe("r1")
+check([f["figure"] for f in core.check_figures("Guarding should be 1100 mm, not 375 mm [r1].", {"r1": para}, Library_of(drawn))]
+      == ["375 mm"], "a figure in the diagram a paragraph names counts as in the paragraph; another diagram's doesn't")
+drawn.close()
 
 # a saved citation is found again when its id has changed, by its fingerprint, then by its reference
 rows = {ref: (pid, digest) for pid, ref, _, digest in server.library.regs.anchors("ADK")}

@@ -6,6 +6,13 @@ machine with 122 GB of shared memory. Lemonade (`http://127.0.0.1:13305/api/v1`)
 
 ## The questions
 
+The results below are for the first seven questions. There are now 36 (`QUESTIONS` in `tests/ask_models.py`): one
+figure from one paragraph or table in each Part, time limits and duties from the legislation and the higher-risk
+building guidance, a sum worked out from a table, and two the library can't answer (Scotland, the NHBC Standards),
+where a right answer says so and cites nothing. Each run also records what the app itself said about the answer:
+figures it couldn't find in the passage cited, and citations made from a search extract. `ask_models.py check
+<library>` confirms the passages the questions rest on are in a library; run it after a build.
+
 | Key | Question | A right answer | The passage it rests on |
 |---|---|---|---|
 | travel | Maximum travel distance in a single-direction escape route from a flat entrance door | 7.5 m | ADB1 Table 3.1 |

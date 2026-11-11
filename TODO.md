@@ -29,8 +29,12 @@ These were written and tested against the fake engine only.
 
 ## 3. The new features, with a real model and the real window
 
-- [ ] **Figure note.** Run the seven test questions and read every "Not found in the passage cited" note. It should
-      fire only for a figure that really isn't in the cited passage. False alarms to look for: a unit the check
+- [ ] **Figure note.** Run the test questions (now 36: `tests/ask_models.py`, about 20 minutes a model) and score
+      with `--answers`. The table has two new columns, *Figures flagged* and *Extract-only citations*, and each
+      answer lists what was flagged. Read every flag: it should fire only for a figure that really isn't in the cited
+      passage or in a diagram or table that passage names. Expect one on the `flight` question (2600 mm is worked
+      out, not in the table). Against the real library, with right and wrong answers I wrote by hand, it gave no
+      false alarms in 24 and missed none of 8; what real models write is the test that counts. False alarms to look for: a unit the check
       doesn't know, a figure in a neighbouring passage, a figure worked out from two others. The units and the
       conversions are `_UNIT` and `SAME_AS` in `para/core.py`.
 - [ ] **Extract only.** See how often real models cite from a search result without reading. If it's most answers
@@ -45,6 +49,18 @@ These were written and tested against the fake engine only.
       citations. They should open the same paragraphs as before.
 - [ ] **Rename, Find in chats, Ask again.** Try each in the window, at phone width too (the pencil and cross only
       show on hover on a desktop).
+
+## Garbled passages found while writing the questions
+
+Two-column pages read across the columns, so the sentences are interleaved. The figures are still there, but a model
+quoting them would quote nonsense. For `splitter.unweave_columns`, with a rebuild:
+
+- [ ] **ADC 2.38**: "Gas control measures for non-domestic 3% to 10% of homes and full radon protective buildings
+      use the same principles…"
+- [ ] **ADG 2.3**: "The estimated consumption of Secretary of State of 125 litres/person/day of wholesome water of a
+      new dwelling should wholesome water or 110 litres/person/day be no more than…"
+- [ ] ADG's passages have no section headings at all, which makes its citations harder to read ("ADG 2.3" with no
+      heading in the Cited list).
 
 ## 4. Signed installers
 
