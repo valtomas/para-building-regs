@@ -436,6 +436,8 @@ drawn.add_source("ADK", "Approved Document K", "ADK", "approved-document", [
 para = drawn.describe("r1")
 check([f["figure"] for f in core.check_figures("Guarding should be 1100 mm, not 375 mm [r1].", {"r1": para}, Library_of(drawn))]
       == ["375 mm"], "a figure in the diagram a paragraph names counts as in the paragraph; another diagram's doesn't")
+check(core.check_figures("Between 900\u202fmm and 1\u202f100\u202fmm [r1].", {"r1": para}, Library_of(drawn)) == [],
+      "a thousand written with a narrow space (1 100 mm) is one figure, not \"100 mm\"")
 drawn.close()
 
 # a saved citation is found again when its id has changed, by its fingerprint, then by its reference

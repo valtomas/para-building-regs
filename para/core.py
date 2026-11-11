@@ -463,7 +463,9 @@ def _check_citations(answer, known, library):
 # ----- figures -----
 # A figure is a number with its unit: "220 mm", "7.5m", "30-minute", "0.26 W/m²K", "150-220 mm". Bare numbers are
 # left alone: most in an answer are paragraph and table numbers.
-_NUM = r"\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?"
+# thousands set off by a comma or, as some models write them, a narrow or non-breaking space: "1 000 mm"
+_NUM = r"\d{1,3}(?:[,\u202f\u00a0\u2009]\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?"
+_THOUSANDS = re.compile(r"[,\u202f\u00a0\u2009]")
 _UNIT = (r"W/\(?m[²2][·.\s]?K\)?|kWh|kW|kN/m[²2]|kN|kPa|Pa|l/s|litres?(?:/s)?|m[³3]/h|mm[²2]?|cm|km|m[²2³3]?|metres?|"
          r"millimetres?|°\s?C|°|degrees?|%|per ?cent|minutes?|mins?|hours?|hrs?|seconds?|storeys?|kg|lux|dB|years?|"
          r"months?|weeks?|days?")
@@ -482,7 +484,7 @@ LIST_ITEM = re.compile(r"\s*(?:[-*•]|\d+[.)])\s+|\s*\|")
 
 def _numbers(text):
     """Every number in a text, as written in figures or (up to twenty, and the tens) in words."""
-    found = {round(float(n.replace(",", "")), 6) for n in NUMBER.findall(text or "")}
+    found = {round(float(_THOUSANDS.sub("", n)), 6) for n in NUMBER.findall(text or "")}
     return found | {float(NUMBER_WORDS[w]) for w in re.findall(r"[a-z]+", (text or "").lower()) if w in NUMBER_WORDS}
 
 
@@ -534,7 +536,7 @@ def check_figures(answer, cites, library, given=""):
         there = set().union(*(numbers[pid] for pid in ids))
         for m in FIGURE.finditer(ID_IN_TEXT.sub(" ", text)):
             for raw in filter(None, (m.group(1), m.group(2))):
-                value = float(raw.replace(",", ""))
+                value = float(_THOUSANDS.sub("", raw))
                 same = {round(value, 6)} | {round(value * f, 6) for f in SAME_AS.get(m.group(3), ())}
                 figure = f"{raw} {m.group(3)}"
                 if not same & there and round(value, 6) not in own and \
