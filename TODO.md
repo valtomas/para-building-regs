@@ -50,17 +50,22 @@ These were written and tested against the fake engine only.
 - [ ] **Rename, Find in chats, Ask again.** Try each in the window, at phone width too (the pencil and cross only
       show on hover on a desktop).
 
-## Garbled passages found while writing the questions
+## The library: columns read out of order (fixed in the splitter; look before publishing)
 
-Two-column pages read across the columns, so the sentences are interleaved. The figures are still there, but a model
-quoting them would quote nonsense. For `splitter.unweave_columns`, with a rebuild:
+In the older two-column documents the columns' lines sit at slightly different heights, so the PDF tool gave them on
+alternate lines and the sentences were interleaved (ADC 2.38, ADG 2.3). `splitter.unweave_columns` now reads such
+pages a column at a time. Compared with a build from the same PDFs before the change: ADC, ADE, ADG, ADH and ADJ each
+have 45 to 155 passages reworded and 2 to 53 more with paragraph numbers; ADA and ADM Vol 2 a dozen each; the
+glossary pages of the newer documents read in order. No figure image changed, no table lost a number, and
+paragraph numbers are in sequence in every document.
 
-- [ ] **ADC 2.38**: "Gas control measures for non-domestic 3% to 10% of homes and full radon protective buildings
-      use the same principles…"
-- [ ] **ADG 2.3**: "The estimated consumption of Secretary of State of 125 litres/person/day of wholesome water of a
-      new dwelling should wholesome water or 110 litres/person/day be no more than…"
-- [ ] ADG's passages have no section headings at all, which makes its citations harder to read ("ADG 2.3" with no
-      heading in the Cited list).
+- [ ] Open a few passages in the reader from ADC, ADE, ADH and ADJ and check they read as the PDF does. I sampled
+      about thirty by eye.
+- [ ] The first library published with this will list those documents under *Changed in this edition* with
+      hundreds of paragraphs: that's this correction, not new editions, which the note there allows for.
+- [ ] Still wrong, not touched: ADM Vol 1's key terms (page 59) are still interleaved; ADG has no section headings
+      on its passages; ADG has words with a lost "fi" ("fgure", "fttings") on some pages; ADH page 25 (three small
+      tables side by side) is muddled before and after.
 
 ## 4. Signed installers
 

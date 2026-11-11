@@ -39,7 +39,7 @@ QUESTIONS = [
     ("extract", "Minimum extract rates for a kitchen and a bathroom with intermittent fans", [("ADF1", "Table 1.1")]),
     ("water", "How much water may a new dwelling be designed to use per person?", [("BR 2010", "reg 36"), ("ADG", "2.3")]),
     ("bath", "Maximum hot water temperature at a bath in a new dwelling", [("ADG", "3.65")]),
-    ("handrail", "What height should a handrail on a stair be?", [("ADK", "1.33–1.34")]),
+    ("handrail", "What height should a handrail on a stair be?", [("ADK", "1.34")]),
     ("headroom", "What headroom does a stair in a loft conversion need?", [("ADK", "Diagram 1.4"), ("ADK", "1.13")]),
     ("airtight", "What is the worst air permeability allowed for a new dwelling?", [("ADL1", "Table 4.1")]),
     ("glazing", "Limiting U-value for windows in a new dwelling", [("ADL1", "Table 4.1")]),
@@ -193,7 +193,12 @@ QUESTIONS_BY_KEY = {k: right for k, _q, right in QUESTIONS}
 
 
 def _matches(ref, wanted):
-    """A passage's ref ("3.65–3.66", "Table 3.1, Diagram 3.2", "reg 7 (part 1)") is the one wanted or starts with it."""
+    """A passage's ref ("3.65–3.66", "Table 3.1, Diagram 3.2", "reg 7 (part 1)") is the one wanted, starts with it, or
+    is a run of short paragraphs that takes it in ("2.2–2.4" for 2.3)."""
+    run = re.fullmatch(r"(\d+)\.(\d+)–\1\.(\d+)", ref)
+    one = re.fullmatch(r"(\d+)\.(\d+)", wanted or "")
+    if run and one and run.group(1) == one.group(1) and int(run.group(2)) <= int(one.group(2)) <= int(run.group(3)):
+        return True
     return wanted is None or wanted in ref.split(", ") or \
         bool(re.match(re.escape(wanted) + (r"" if wanted.endswith(".") else r"(?!\d)"), ref))
 

@@ -51,6 +51,31 @@ def _prose(cells):
         len(re.findall(r"\d", text)) < 0.08 * len(text)
 
 
+def _staggered_gutter(lines, width):
+    """The gutter of a two-column page whose columns' lines sit at slightly different heights, so that pdftotext
+    gives them on alternate lines: a line of the left column, then one of the right, few with both (ADC, ADG). There
+    is no run of lines split at the gutter to find it by. It is the place where many lines' text starts well into
+    the page, nearly every line is blank, and both sides have a column's worth of lines."""
+    text = [ln for ln in lines if ln.strip()]
+    if len(text) < 20:
+        return None
+
+    def clear(ln, x):
+        return not ln[x - 1:x + 2].strip()
+
+    best, best_n = None, 0
+    for x in range(int(width * 0.35), int(width * 0.65)):
+        n = sum(1 for ln in text if clear(ln, x) and ln[x + 2:x + 3].strip())  # right-column lines starting here
+        if n > best_n:
+            best, best_n = x, n
+    if best is None or best_n < 8:
+        return None
+    left = sum(1 for ln in text if ln[:best].strip() and not ln[best:].strip())
+    right = sum(1 for ln in text if ln[best:].strip() and not ln[:best].strip())
+    crossing = sum(1 for ln in text if not clear(ln, best))
+    return best if left >= 8 and right >= 8 and crossing <= 0.15 * len(text) else None
+
+
 def unweave_columns(page):
     """Text of a two-column page from pdftotext -layout comes out a line of each column side by side ("2.2 Where it
     is not possible…   d. there is a level landing…"). Find the gutter, and where both sides of a run of lines read
@@ -69,8 +94,11 @@ def unweave_columns(page):
         n = sum(1 for ln in long if splits_at(ln, x))
         if n > best_n:
             best, best_n = x, n
-    if best is None or best_n < 0.6 * len(long):
-        return page
+    staggered = best is None or best_n < 0.6 * len(long)
+    if staggered:
+        best = _staggered_gutter(lines, width)
+        if best is None:
+            return page
     out, run = [], []
 
     def flush():
@@ -83,14 +111,50 @@ def unweave_columns(page):
                 out.extend(run)
             run.clear()
 
-    for ln in lines:
-        if splits_at(ln, best) or (not ln.strip() and run) or (ln.strip() and len(ln) <= best and run):
+    def take(ln):
+        # a run of column text starts at a line with both columns on it; on a staggered page few lines have, so
+        # there a line of either column starts one
+        going = bool(run) or staggered
+        if splits_at(ln, best) or (not ln.strip() and run) or (ln.strip() and len(ln) <= best and going):
             run.append(ln)  # both columns, a blank line, or a line with text only in the left column
-        elif ln.strip() and ln[:best].strip() == "" and run:
+        elif ln.strip() and ln[:best].strip() == "" and going:
             run.append(ln)  # text only in the right column
         else:
             flush()
             out.append(ln)
+
+    def across(ln):
+        """Text on both sides of the gutter, or over it: a row of something as wide as the page."""
+        return bool(ln[:best].strip() and ln[best:].strip())
+
+    # On a staggered page few lines of running text have both columns on them, so a table as wide as the page stands
+    # out: its caption, then rows with text on both sides. Its rows are kept whole; cut at the gutter, a table loses
+    # its right-hand columns to the end of the page ("Walls | 40" becomes "Walls"). It ends where, after a gap,
+    # three lines in a row keep to one column again (or six without a gap). A table set in one column has no such rows and is read with its column.
+    in_table, held = False, []
+    for i, ln in enumerate(lines):
+        if in_table:
+            if not ln.strip() or not across(ln):
+                held.append(ln)
+                kept = sum(1 for h in held if h.strip())
+                # column headings stacked over one side come straight after the caption or a row: they aren't the end
+                if kept >= 6 or (kept >= 3 and not held[0].strip()):
+                    in_table = False
+                    for h in held:
+                        take(h)
+                    held = []
+                continue
+            out.extend(held + [ln])
+            held = []
+            continue
+        if staggered and ln[:best].strip() and re.match(r"Table\b", ln.strip()) and figure_start(ln.strip()) and \
+                any(across(nxt) for nxt in [x for x in lines[i + 1:i + 8] if x.strip()][:3]):
+            flush()
+            out.append(ln)
+            in_table = True
+            continue
+        take(ln)
+    out.extend(held)
     flush()
     return "\n".join(out)
 

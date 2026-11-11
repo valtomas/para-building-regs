@@ -894,6 +894,23 @@ if os.name != "nt":
     bundled.last_used = time.time() - 120
     check(not busy and bundled.stop_if_idle(minutes=1) and bundled.proc is None, "an idle engine is stopped")
 
+# two columns whose lines sit at different heights come out of pdftotext on alternate lines; a table as wide as the
+# page on such a page keeps its rows
+from para.splitter import unweave_columns  # noqa: E402
+
+words = "walls floors stairs doors roofs drains flues ramps lifts rooms halls yards".split()
+left = [f"the left column goes on about {w} at length" for w in words]
+right = [f"while the right one deals with {w} instead" for w in words]
+page = ["Table 1 Sound insulation values for walls and floors, as wide as the whole page",
+        "Walls" + " " * 70 + "40", "Floors" + " " * 69 + "45", "", ""]
+for one, two in zip(left, right):
+    page += [one, " " * 52 + two]
+unwoven = [ln.strip() for ln in unweave_columns("\n".join(page)).split("\n") if ln.strip()]
+check(unwoven[3:15] == left and unwoven[15:] == right, "staggered columns are read one after the other")
+check(unwoven[1:3] == ["Walls" + " " * 70 + "40", "Floors" + " " * 69 + "45"], "a page-wide table above them keeps its rows")
+single = "\n".join(f"{n}.1 A page of one column, whose lines run most of the way across the page, {n}" for n in range(30))
+check(unweave_columns(single) == single, "a page of one column is left as it is")
+
 # Approved Documents: which requirement a passage is under, from the document's own "deals with the following
 # requirement" openings, also when one is run into the end of the section before
 reqs = Store(os.path.join(TMP, "requirements.sqlite"), "r")

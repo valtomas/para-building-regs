@@ -82,7 +82,9 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
 - **Library quality beats model cleverness.** If answers are wrong because a passage is garbled, fix
   `splitter.py` or `build.py`, rebuild, and look at the passages (`sqlite3 library/dist/regs.sqlite`). Check tables
   keep their numbers and paragraph refs stay in sequence (`splitter.plausible`). Two-column pages are read a column
-  at a time (`splitter.unweave_columns`) and contents and index pages are skipped (`splitter.skipped_pages`): when
+  at a time (`splitter.unweave_columns`), also where the columns' lines sit at different heights and come out on
+  alternate lines (ADC, ADE, ADG, ADH, ADJ: `_staggered_gutter`); on such a page a table as wide as the page keeps its
+  rows, since cutting it at the gutter loses its right-hand columns and contents and index pages are skipped (`splitter.skipped_pages`): when
   you change either, compare passage counts and refs per document before and after.
 - **Diagrams and tables**: `library/figures.py` finds each one from its caption and crops it from the page. Whether a
   document puts diagram captions above or below the drawing is decided by a vote, per document and kind of caption
