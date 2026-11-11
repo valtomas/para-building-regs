@@ -55,7 +55,7 @@ These were written and tested against the fake engine only.
 In the older two-column documents the columns' lines sit at slightly different heights, so the PDF tool gave them on
 alternate lines and the sentences were interleaved (ADC 2.38, ADG 2.3). `splitter.unweave_columns` now reads such
 pages a column at a time. Compared with a build from the same PDFs before the change: ADC, ADE, ADG, ADH and ADJ each
-have 45 to 155 passages reworded and 2 to 53 more with paragraph numbers; ADA and ADM Vol 2 a dozen each; the
+have 42 to 159 passages reworded and up to 56 more with paragraph numbers (ADE most); ADA and ADM Vol 2 a dozen each; the
 glossary pages of the newer documents read in order. No figure image changed, no table lost a number, and
 paragraph numbers are in sequence in every document.
 
