@@ -156,7 +156,7 @@ What reading the answers adds:
 - **Qwen3 8B is not better than the 4B.** Over two runs each the 4B got 25 and 20 right, the 8B 22 and 25; the 8B
   takes five times as long, and it is the only model that made up passage ids (7 and 6 removed). In the first run it
   gave 9 m for the travel distance from a flat, from ADB Vol 2's table. On this evidence it shouldn't be recommended
-  over the 4B, and there is a case for not listing it.
+  over the 4B. It was taken out of `para/models.json` after this run; the 4B is the suggestion up to 24 GB.
 
 **The figure note.** 24 figures were flagged in these seven runs. Each was checked against the passage cited:
 
@@ -192,7 +192,7 @@ What reading the answers adds:
 - A model load that timed out left the stuck server running, so every later question got "503 Loading model". It
   is stopped now, and the message says the computer is probably short of memory.
 - gpt-oss-20b, Qwen3 8B and Qwen3 30B-A3B were each downloaded by the app and asked the 36 questions through the
-  built-in engine (run D). All three answer with citations. The pin: `para/models.json` names llama.cpp build b12078,
+  built-in engine (run D). All three answer with citations; Qwen3 8B was dropped from the list afterwards (see run D). The pin: `para/models.json` names llama.cpp build b12078,
   and all seven platform files its patterns ask for are in that release. A copy of the app that already has a
   llama.cpp build keeps it: the pin is for new installs.
 

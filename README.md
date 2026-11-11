@@ -99,8 +99,7 @@ instead.
 |---|---|---|
 | 32 GB memory or more | Qwen3 30B-A3B Instruct 2507 | 18.6 GB |
 | 24 GB | gpt-oss 20B | 12.1 GB |
-| 16 GB | Qwen3 8B | 5.0 GB |
-| 8 GB | Qwen3 4B Instruct 2507 | 2.5 GB |
+| 8 to 16 GB | Qwen3 4B Instruct 2507 | 2.5 GB |
 
 The model list ([para/models.json](para/models.json)) is also published with each release, so installed
 copies pick up better models without reinstalling.

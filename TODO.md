@@ -11,7 +11,8 @@ were worked through at the workstation on 11 November 2026 with real models and 
 - **The llama.cpp pin**: b12078 has all seven platform files. An empty app folder installed it from the pin with the
   smallest model and answered with citations, on Linux.
 - **Built-in models**: gpt-oss 20B, Qwen3 8B and Qwen3 30B-A3B were each downloaded by the app and asked the 36
-  questions. All three answer with citations, so all three are still listed.
+  questions. All three answer with citations. Qwen3 8B was taken out of the list all the same: it did no better
+  than the 4B, at five times the wait, and made up passage ids.
 - **The 36 questions on Lemonade** (Nemotron 3.5, Qwen3.5-35B, Gemma 4 E4B), every answer read, every flagged figure
   judged: 20 true, 4 false alarms from two causes, both fixed with tests.
 - **The library**: two-column pages are now read from where their lines are (`library/columns.py`). By
@@ -25,10 +26,6 @@ were worked through at the workstation on 11 November 2026 with real models and 
 
 ## Decide
 
-- [ ] **Qwen3 8B.** It did no better than the 4B on the 36 questions (25 and 22 right against 20 and 25), takes five
-      times as long, never opens a passage and is the only model that made up passage ids. `engine.recommend` picks
-      it for 16 to 23 GB, because it is the biggest that fits. Take it out of `para/models.json`, or leave it and
-      accept that.
 - [ ] **Read before you cite.** Qwen3.5-35B wrote 21 of 36 answers without opening a passage (65 of its 110
       citations are from search extracts), Nemotron 2. The answers were right and each such citation says so. If
       that's too many, make the prompt firmer in `para/core.py` and run the model tests again.
@@ -53,6 +50,8 @@ were worked through at the workstation on 11 November 2026 with real models and 
 
 ## Known and left
 
+- **Someone who installed Qwen3 8B** keeps the 5 GB file in their app folder, but the app no longer lists it and
+  asks them to choose a model again. Nothing removes the file for them.
 - **39 passages out of order** (`python3 library/order.py --list`): covers, copyright pages, lists of other approved
   documents and of standards. A few running-header fragments are still left in passages ("N EBUILDINGS VERSION").
 - **Figure boxes**: `figures.py` gives ADE Table 0.2 the whole page and ADH Table A1 the full width. The text is read
