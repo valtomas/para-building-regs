@@ -84,8 +84,8 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   keep their numbers and paragraph refs stay in sequence (`splitter.plausible`). Two-column pages are read a column
   at a time (`splitter.unweave_columns`), also where the columns' lines sit at different heights and come out on
   alternate lines (ADC, ADE, ADG, ADH, ADJ: `_staggered_gutter`); on such a page a table as wide as the page keeps its
-  rows, since cutting it at the gutter loses its right-hand columns and contents and index pages are skipped (`splitter.skipped_pages`): when
-  you change either, compare passage counts and refs per document before and after.
+  rows, since cutting it at the gutter loses its right-hand columns. Contents and index pages are skipped
+  (`splitter.skipped_pages`). When you change either, compare passage counts and refs per document before and after.
 - **Diagrams and tables**: `library/figures.py` finds each one from its caption and crops it from the page. Whether a
   document puts diagram captions above or below the drawing is decided by a vote, per document and kind of caption
   (ADA captions its Diagrams above and its Figures below); tables are always captioned above. A caption can sit just
