@@ -12,11 +12,15 @@ paragraphs, and answers with a link to each one, so you can check exactly where 
 - **Cites the paragraph.** Answers cite passages such as *ADB Vol 1 Table 3.1* or *BR 2010 reg 7*. Click one to
   open the document at that paragraph. The app checks every citation against what the AI actually looked up and
   removes any it made up.
+- **Says what it couldn't check.** A citation made from a search extract without reading the passage is marked, and
+  so is a figure that isn't in the passage cited for it. When the library is updated, old answers still open the
+  right paragraphs, say which have been reworded since, and the Library lists what changed in the new edition.
 - **Any engine you like.** Use an AI engine you already run: Ollama, LM Studio, Lemonade, llama.cpp, Jan, vLLM or
   any other OpenAI-compatible server, on this computer or your network. Or let the app download and run one itself
-  (llama.cpp with a model suited to your computer's memory).
+  (llama.cpp with a model suited to your computer's memory). Or use an online AI service (Anthropic, Mistral,
+  OpenAI, OpenRouter or another) with your own API key.
 - **Private.** With a local engine, your questions and files never leave your computer. The app shows whether
-  it's private, and warns you if your engine is somewhere else.
+  it's private, and warns you when your engine is somewhere else, such as an online service.
 - **Your own documents.** Add specifications, fire strategies, building control comments or manufacturers'
   guidance (PDF, Word, EPUB, HTML, text) and they're searched along with the library. The app asks you to confirm
   you're allowed to use each document this way first, because many publishers' licences (some British Standards,
@@ -56,21 +60,40 @@ The library covers **England**. Wales, Scotland and Northern Ireland have their 
    **Open Anyway**. You only do this once.
 
 **Windows** (10 or 11, 64-bit)
-1. Download `Para-windows.zip`, right-click it and choose **Extract All**.
-2. Open the extracted folder and double-click **Para.exe**. If Windows SmartScreen appears,
-   click **More info**, then **Run anyway**.
+1. Download `Para-windows-setup.exe` and double-click it. It installs for you alone (no administrator needed) and
+   adds Para to the Start menu. If Windows SmartScreen appears, click **More info**, then **Run anyway**.
+2. To remove it: **Settings › Apps**, Para, **Uninstall**. Your chats and settings are kept.
+
+`Para-windows.zip` is the same app without an installer: extract it and run `Para.exe`.
 
 **Linux** (x86-64: Ubuntu 22.04, Debian 12, Fedora 36 or newer)
-1. Download `Para-linux.tar.gz` and extract it (`tar -xzf Para-linux.tar.gz`).
-2. Run `Para/Para`, or run `Para/install.sh` to add Para to your applications menu (`install.sh --uninstall`
-   removes it). Para opens in its own window; if your system can't show one, it opens in your web browser instead.
+- **Ubuntu, Debian, Mint, Pop!_OS:** download `Para-linux.deb`, double-click it and choose **Install** (or
+  `sudo apt install ./Para-linux.deb`). Remove it from the software centre, or with `sudo apt remove para`.
+- **Other distributions:** download `Para-linux.AppImage`, allow it to run (right-click, **Properties**, "Allow
+  executing file as program", or `chmod +x Para-linux.AppImage`) and double-click it.
+- `Para-linux.tar.gz` is the plain folder: extract it and run `Para/Para`, or `Para/install.sh` to add it to your
+  applications menu (`install.sh --uninstall` removes it).
+
+Para opens in its own window; if your system can't show one, it opens in your web browser instead.
+
+**Updates.** Para checks once a day for a new version (Settings › Updates & about; nothing about you is sent).
+Installed with the Windows installer, the Mac app, the .deb or the AppImage, it updates in one click with
+**Update now**: it downloads the new version, checks it against GitHub's checksum and installs it. With the .deb,
+your system asks for your password first. The Windows zip and the Linux folder link to the new release
+instead.
 
 **Then** choose an AI engine in the window that opens:
 - **Use an engine I already run.** Click *Find engines on this computer*, or type the server's address
   (e.g. `http://127.0.0.1:11434/v1` for Ollama, `http://127.0.0.1:1234/v1` for LM Studio,
   `http://127.0.0.1:8000/api/v1` for Lemonade). Pick a model and press Save. Models with tool calling work best.
+  Give the model room to read: Para's instructions and the passages it looks up need a context of 16,000
+  tokens or more, and some engines start with far less and drop the beginning without saying so (Ollama's default
+  is 4,096: raise *Context length* in its settings, or set `OLLAMA_CONTEXT_LENGTH=32768`).
 - **Built-in engine.** The app suggests a model for your computer's memory, downloads llama.cpp and the model from
   Hugging Face, and runs them itself.
+- **Use an online AI service.** Pick Anthropic, Mistral, OpenAI or OpenRouter (or type another service's
+  address), paste your API key from that service, choose a model and press Save. Your questions, and passages from
+  your own files, are sent to that company, so it isn't private.
 
 | Your computer | Suggested model | Download |
 |---|---|---|
@@ -134,6 +157,7 @@ question ─► AI model (any OpenAI-compatible server) ─► search_library �
 - `para/engine.py` installs and runs the built-in engine (llama.cpp's `llama-server`).
 - `para/myfiles.py` reads your own files into a separate index in the app's data folder.
 - `para/server.py` serves the page on 127.0.0.1 and opens it in a window (pywebview).
+- `para/updater.py` updates the app itself, in the way it was installed.
 - Releases are built by [.github/workflows/release.yml](.github/workflows/release.yml): push a tag like `v0.1.0`.
 
 Your settings, chats and the index of your files are kept in `~/Library/Application Support/Para`

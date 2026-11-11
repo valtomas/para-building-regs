@@ -10,6 +10,7 @@ import hashlib
 import http.server
 import json
 import os
+import re
 import signal
 import socket
 import subprocess
@@ -21,14 +22,17 @@ import urllib.request
 import uuid
 import webbrowser
 
-from . import VERSION, paths
-from .core import BASE_PROMPT, chat_events
+from . import VERSION, changes, paths, updater
+from .anchors import reanchor
+from .core import BASE_PROMPT, chat_events, forget_lookups
 from .engine import Engine, Job, catalog, recommend, _download
-from .library import Library
-from .llm import Client, EngineError, is_local, probe_known
+from .library import Library, Scope
+from .llm import HOSTED, Client, EngineError, is_local, probe_known, same_host
 from .myfiles import TYPES, MyFiles
+from .store import Store
 
 UPDATE_REPO = os.environ.get("PARA_UPDATE_REPO", "valtomas/para-building-regs")
+FEEDBACK = "mailto:hello@pararegs.co.uk?subject=Para%20feedback"  # the only mailto /api/open will open
 
 settings = paths.Settings()
 library = Library()
@@ -37,6 +41,7 @@ engine = Engine()
 stops = {}  # chat id -> Event
 update_info = {}
 library_job = {}
+app_job = {}
 
 
 # ----- chats -----
@@ -56,22 +61,115 @@ def load_chat(cid):
         return None
 
 
-def save_chat(chat):
-    chat["updated"] = time.time()
+def save_chat(chat, touch=True):
+    if touch:
+        chat["updated"] = time.time()
     tmp = os.path.join(chats_dir(), chat["id"] + ".json.tmp")
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(chat, f)
     os.replace(tmp, os.path.join(chats_dir(), chat["id"] + ".json"))
 
 
-def list_chats():
-    out = []
+def list_chats_all():
     for name in os.listdir(chats_dir()):
         if name.endswith(".json"):
             c = load_chat(name[:-5])
             if c:
-                out.append({"id": c["id"], "title": c.get("title", ""), "updated": c.get("updated", 0)})
-    return sorted(out, key=lambda c: -c["updated"])[:200]
+                yield c
+
+
+_summaries = {}  # chat file name -> ((mtime, size), its line in the list)
+
+
+def chat_summaries():
+    """What the chat list shows of each chat. The list goes out with every state(), and a chat's file holds
+    every passage it ever read, so only files that have changed since last time are read again."""
+    global _summaries
+    now = {}
+    for entry in os.scandir(chats_dir()):
+        if not entry.name.endswith(".json"):
+            continue
+        try:
+            st = entry.stat()
+        except OSError:  # deleted meanwhile
+            continue
+        stamp = (st.st_mtime_ns, st.st_size)
+        if _summaries.get(entry.name, (None,))[0] == stamp:
+            now[entry.name] = _summaries[entry.name]
+            continue
+        c = load_chat(entry.name[:-5])
+        if c:
+            now[entry.name] = (stamp, {"id": c["id"], "title": c.get("title", ""), "updated": c.get("updated", 0),
+                                       "project": c.get("project", "")})
+    _summaries = now
+    return [summary for _, summary in now.values()]
+
+
+def list_chats():
+    """The latest 200 chats of each project (and of chats in none), newest first."""
+    out, per_project = [], {}
+    for c in sorted(chat_summaries(), key=lambda c: -c["updated"]):
+        per_project[c["project"]] = per_project.get(c["project"], 0) + 1
+        if per_project[c["project"]] <= 200:
+            out.append(c)
+    return out
+
+
+def refresh_chat(chat):
+    """Points a chat's saved citations at where their passages are now (anchors.reanchor) and saves it if any
+    moved. True when something did: what the AI looked up earlier in the chat can't be relied on any more."""
+    cache, version, moved, touched = {}, library.version(), False, False
+    for turn in chat.get("turns") or []:
+        m, t = reanchor(turn, library, version, cache)
+        moved, touched = moved or m, touched or t
+    if touched:
+        save_chat(chat, touch=False)
+    return moved
+
+
+def find_chats(query, project):
+    """A project's chats with the words in their title, a question or an answer, newest first."""
+    q = " ".join(str(query or "").lower().split())
+    if len(q) < 2:
+        return []
+    out = []
+    for c in list_chats_all():
+        if c.get("project", "") != project:
+            continue
+        texts = [c.get("title", "")] + [t.get(k) or "" for t in c.get("turns") or [] for k in ("question", "answer")]
+        for text in texts:
+            # as it reads on the page: without the citations' ids or the marks for bold
+            flat = re.sub(r" ([.,;:])", r"\1", " ".join(re.sub(r"\[g?[rf]\d+\]|\*\*|`", "", text).split()))
+            at = flat.lower().find(q)
+            if at >= 0:
+                start = max(0, at - 14)
+                out.append({"id": c["id"], "title": c.get("title", ""), "updated": c.get("updated", 0),
+                            "project": project, "snippet": ("…" if start else "") + flat[start:at + len(q) + 80]})
+                break
+    return sorted(out, key=lambda c: -c["updated"])[:50]
+
+
+def drop_last_turn(chat):
+    """Takes the last question and its answer out of a chat, to ask it again: the turn, and the messages the AI
+    would otherwise read as already said."""
+    if not chat["turns"]:
+        return
+    last = chat["turns"].pop()
+    cut = last.get("from")
+    if cut is None:  # a turn saved before its place in the messages was kept: find its question
+        users = [i for i, m in enumerate(chat["messages"]) if m.get("role") == "user"
+                 and str(m.get("content") or "").startswith(last.get("question") or "\0")]
+        cut = users[-1] if users else None
+    if cut is not None:
+        chat["messages"] = chat["messages"][:cut]
+
+
+def move_chats(old, new):
+    """Point a project's chats at its new name ("" when it's deleted: they become ordinary chats)."""
+    for c in list_chats_all():
+        if c.get("project") == old:
+            c["project"] = new
+            save_chat(c, touch=False)
 
 
 # ----- updates -----
@@ -99,7 +197,7 @@ def check_updates():
     info = {"checked": time.time(), "error": "", "app": None, "library": None}
     if _newer(rel.get("tag_name", "0"), VERSION):
         info["app"] = {"version": rel["tag_name"].lstrip("v"), "url": rel.get("html_url"),
-                       "notes": (rel.get("body") or "")[:2000]}
+                       "notes": (rel.get("body") or "")[:2000], "update": updater.offer(assets)}
     if "library.json" in assets:
         try:
             req = urllib.request.Request(assets["library.json"]["browser_download_url"],
@@ -150,7 +248,17 @@ def install_library_update():
             if lib.get("sha256") and h.hexdigest() != lib["sha256"]:
                 os.remove(out)
                 raise EngineError("The library download didn't match its checksum.")
+            compared = None
+            try:  # what differs from the edition in use; an update must never fail for want of it
+                if library.regs:
+                    new = Store(out, "r", readonly=True)
+                    compared = changes.diff(library.regs, new)
+                    new.close()
+            except Exception:  # noqa: BLE001
+                compared = None
             library.install_regs(out)
+            if compared:
+                changes.save(compared)
             update_info["library"] = None
             job.state = "done"
         except Exception as e:  # noqa: BLE001
@@ -158,6 +266,56 @@ def install_library_update():
 
     threading.Thread(target=run, daemon=True).start()
     return job.view()
+
+
+def install_app_update():
+    """Downloads the new version, checks it against GitHub's checksum, puts it in place and, where the new copy
+    starts by itself, quits so it can."""
+    app = update_info.get("app") or {}
+    update = app.get("update")
+    if not update:
+        raise EngineError("This copy of Para can't update itself: download the new version instead.")
+    if app_job.get("job") and app_job["job"].state == "running":
+        return app_job["job"].view()
+    job = Job("app", f"Para {app['version']}")
+    app_job["job"] = job
+
+    def run():
+        try:
+            dest = updater.download_path(update)
+            _download(update["url"], dest, job, expect_size=update.get("size"), sha256=update.get("sha256"))
+            if update["kind"] == "deb":
+                job.note = "Enter your password in the window that has opened to install the update."
+            job.note, quit_now = updater.install(update, dest)
+            job.state = "done"
+            if quit_now:
+                time.sleep(2)  # time for the page to show what's happening
+                quit_app()
+        except Exception as e:  # noqa: BLE001 - a background thread: report it on the page
+            job.state, job.error = "error", str(e)
+
+    threading.Thread(target=run, daemon=True).start()
+    return job.view()
+
+
+def quit_app():
+    """Closes the window, which ends the app as if the person had closed it (stopping the built-in engine); in the
+    browser there's no window, so the engine is stopped here and the process ends."""
+    engine.bundled.stop()
+    try:
+        import webview
+        for w in list(webview.windows):
+            w.destroy()
+    except Exception:  # noqa: BLE001 - no window toolkit: nothing to close
+        pass
+    threading.Timer(5, os._exit, [0]).start()  # if closing the window didn't end it
+
+
+def saved_key_for(base_url):
+    """The saved API key, but only for the server it was saved for: switching from one hosted service to another
+    must never send the first one's key to the second."""
+    e = settings.load()["engine"]
+    return e.get("api_key", "") if same_host(base_url, e.get("base_url", "")) else ""
 
 
 # ----- state for the page -----
@@ -174,10 +332,12 @@ def state():
     info = library.info()
     return {"version": VERSION, "settings": public_settings(), "default_instructions": BASE_PROMPT,
             "library": {k: info[k] for k in ("version", "built", "sources")},
-            "files": myfiles.list(), "files_dir": myfiles.folder, "file_types": sorted(TYPES),
+            "library_changes": changes.load(info["version"]),
+            "files": myfiles.list(), "files_dir": myfiles.folder, "projects": myfiles.projects(), "file_types": sorted(TYPES),
             "bundled": engine.bundled.status(), "catalog": catalog()["models"],
-            "recommended": (recommend() or {}).get("id"), "updates": update_info,
+            "recommended": (recommend() or {}).get("id"), "hosted": HOSTED, "updates": update_info,
             "library_job": library_job["job"].view() if library_job.get("job") else None,
+            "app_job": app_job["job"].view() if app_job.get("job") else None,
             "chats": list_chats(), "platform": sys.platform}
 
 
@@ -216,8 +376,18 @@ class Handler(http.server.BaseHTTPRequestHandler):
         except ValueError:
             return {}
 
+    hosts = None  # the Host headers answered, set by main(); None answers any (shared on the network)
+
+    def _host_ok(self):
+        """Refuse requests that reached this computer under another name. A web page can point its own domain at
+        127.0.0.1 (DNS rebinding); the browser then treats the app as that page's own site, and it could read the
+        chats or change the engine. Such a request still carries the page's domain as its Host."""
+        return self.hosts is None or (self.headers.get("Host") or "").lower() in self.hosts
+
     def _allowed(self):
         """Refuse requests from other web pages (a page in the person's browser posting to localhost)."""
+        if not self._host_ok():
+            return False
         origin = self.headers.get("Origin")
         if not origin or origin == "null":
             return True
@@ -228,6 +398,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
         url = urllib.parse.urlparse(self.path)
         q = dict(urllib.parse.parse_qsl(url.query))
         path = url.path
+        if not self._host_ok():
+            return self._send(403, {"error": "Forbidden"})
         try:
             if path == "/" or path.startswith("/static/"):
                 return self._static("index.html" if path == "/" else path[len("/static/"):])
@@ -235,7 +407,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 return self._send(200, state())
             if path == "/api/chat":
                 chat = load_chat(q.get("id"))
+                if chat:
+                    refresh_chat(chat)
                 return self._send(200 if chat else 404, chat or {"error": "No such chat"})
+            if path == "/api/chats/search":
+                return self._send(200, {"chats": find_chats(q.get("q"), q.get("project", ""))})
             if path == "/api/passage":
                 doc = library.document(q.get("id", ""))
                 return self._send(200 if doc else 404, doc or {"error": "No such passage"})
@@ -249,15 +425,14 @@ class Handler(http.server.BaseHTTPRequestHandler):
                     return self._send(404, {"error": "No such figure"})
                 return self._send(200, png, "image/png")
             if path == "/api/search":
-                return self._send(200, {"results": library.search(q.get("q", ""), limit=30)})
+                keys = myfiles.keys(q["project"]) if "project" in q else None
+                return self._send(200, {"results": library.search(q.get("q", ""), limit=30, file_keys=keys)})
             if path == "/api/engines":
                 return self._send(200, {"found": probe_known()})
-            if path == "/api/models":
-                c = Client(q.get("base_url", ""), q.get("api_key") or settings.load()["engine"].get("api_key", ""))
-                return self._send(200, {"models": c.models(timeout=8)})
             if path == "/api/jobs":
                 return self._send(200, {"bundled": engine.bundled.status(),
-                                        "library_job": library_job["job"].view() if library_job.get("job") else None})
+                                        "library_job": library_job["job"].view() if library_job.get("job") else None,
+                                        "app_job": app_job["job"].view() if app_job.get("job") else None})
             return self._send(404, {"error": "Not found"})
         except EngineError as e:
             return self._send(502, {"error": str(e)})
@@ -286,6 +461,13 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if url.path == "/api/files":
             myfiles.remove(q.get("key", ""))
             return self._send(200, {"files": myfiles.list()})
+        if url.path == "/api/projects":
+            try:
+                myfiles.delete_project(q.get("name", ""))
+            except ValueError as e:
+                return self._send(400, {"error": str(e)})
+            move_chats(q.get("name", ""), "")
+            return self._send(200, state())
         return self._send(404, {"error": "Not found"})
 
     def do_POST(self):
@@ -295,16 +477,33 @@ class Handler(http.server.BaseHTTPRequestHandler):
         try:
             if path == "/api/ask":
                 return self._ask(self._json_body())
+            if path == "/api/chat/rename":
+                body = self._json_body()
+                chat, title = load_chat(body.get("id")), " ".join(str(body.get("title") or "").split())[:120]
+                if not chat or not title:
+                    return self._send(404 if not chat else 400, {"error": "No such chat" if not chat
+                                                                 else "Give the chat a name."})
+                chat["title"] = title
+                save_chat(chat, touch=False)
+                return self._send(200, {"chats": list_chats()})
             if path == "/api/stop":
                 ev = stops.get(self._json_body().get("id"))
                 if ev:
                     ev.set()
                 return self._send(200, {"ok": True})
+            if path == "/api/models":
+                # POST so an API key typed in Settings never sits in a URL
+                body = self._json_body()
+                url = body.get("base_url", "")
+                c = Client(url, body.get("api_key") or saved_key_for(url))
+                return self._send(200, {"models": c.models(timeout=8)})
             if path == "/api/settings":
                 body = self._json_body()
                 allowed = {k: v for k, v in body.items() if k in paths.DEFAULTS}
                 if "engine" in allowed:
                     allowed["engine"] = {k: v for k, v in allowed["engine"].items() if k in paths.DEFAULTS["engine"]}
+                    if "base_url" in allowed["engine"] and "api_key" not in allowed["engine"]:
+                        allowed["engine"]["api_key"] = saved_key_for(allowed["engine"]["base_url"])
                     if allowed["engine"].get("mode") != "bundled":
                         engine.bundled.stop()
                 settings.update(allowed)
@@ -315,8 +514,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 if n > 300 * 2**20:
                     return self._send(413, {"error": "That file is over 300 MB."})
                 data = self.rfile.read(n)
+                project = urllib.parse.unquote(self.headers.get("X-Project", ""))
                 try:
-                    myfiles.add(name, data)
+                    if project and not myfiles.project(project):
+                        raise ValueError("That project doesn't exist any more.")
+                    myfiles.add(name, data, project)
                 except ValueError as e:
                     return self._send(400, {"error": str(e)})
                 return self._send(200, {"files": myfiles.list()})
@@ -324,15 +526,39 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 body = self._json_body()
                 myfiles.set_note(body.get("key", ""), str(body.get("note", "")))
                 return self._send(200, {"files": myfiles.list()})
+            if path == "/api/projects":
+                body = self._json_body()
+                try:
+                    name = myfiles.create_project(body.get("name", ""), body.get("notes", ""))
+                except ValueError as e:
+                    return self._send(400, {"error": str(e)})
+                return self._send(200, {**state(), "project": name})
+            if path == "/api/projects/update":
+                body = self._json_body()
+                name = body.get("name", "")
+                if not myfiles.project(name):
+                    return self._send(404, {"error": "No such project"})
+                try:
+                    if "new_name" in body:
+                        new = myfiles.rename_project(name, body["new_name"])
+                        if new != name:
+                            move_chats(name, new)
+                            name = new
+                except (ValueError, OSError) as e:  # OSError: the folder is open elsewhere (Windows)
+                    return self._send(400, {"error": str(e)})
+                if "notes" in body:
+                    myfiles.set_project_notes(name, body["notes"])
+                return self._send(200, {**state(), "project": name})
             if path == "/api/files/sync":
                 myfiles.sync()
                 return self._send(200, {"files": myfiles.list()})
             if path == "/api/open":
                 body = self._json_body()
-                if body.get("url", "").startswith(("https://", "http://")):
+                if body.get("url", "").startswith(("https://", "http://")) or body.get("url") == FEEDBACK:
                     webbrowser.open(body["url"])
                 elif body.get("folder") == "files":
-                    open_path(myfiles.folder)
+                    project = body.get("project") or ""
+                    open_path(myfiles.project_folder(project) if myfiles.project(project) else myfiles.folder)
                 elif body.get("file"):
                     key = os.path.abspath(body["file"])
                     if key in {s["key"] for s in library.files.sources()} and os.path.exists(key):
@@ -353,6 +579,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 return self._send(200, check_updates())
             if path == "/api/updates/library":
                 return self._send(200, install_library_update())
+            if path == "/api/updates/app":
+                return self._send(200, install_app_update())
             return self._send(404, {"error": "Not found"})
         except EngineError as e:
             return self._send(502, {"error": str(e)})
@@ -374,8 +602,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
         question = str(body.get("question", "")).strip()
         if not question:
             return self._send(400, {"error": "Empty question"})
-        chat = load_chat(body.get("id")) or {"id": str(uuid.uuid4()), "title": question[:80], "messages": [],
-                                              "turns": [], "created": time.time()}
+        chat = load_chat(body.get("id"))
+        if not chat:
+            project = body.get("project") or ""
+            chat = {"id": str(uuid.uuid4()), "title": question[:80], "messages": [], "turns": [],
+                    "created": time.time(), "project": project if myfiles.project(project) else "",
+                    "library": library.version()}
         stop = stops[chat["id"]] = threading.Event()
         self.send_response(200)
         self.send_header("Content-Type", "text/event-stream")
@@ -388,16 +620,35 @@ class Handler(http.server.BaseHTTPRequestHandler):
             self.wfile.write(b"data: " + json.dumps(ev).encode() + b"\n\n")
             self.wfile.flush()
 
-        turn = {"question": question, "answer": "", "events": [], "time": time.time()}
+        moved = refresh_chat(chat) if chat["turns"] else False
+        if body.get("again"):  # asked again: the new answer takes the place of the last one
+            drop_last_turn(chat)
+        turn = {"question": question, "answer": "", "events": [], "time": time.time(),
+                "library": library.version(), "from": len(chat["messages"])}
         try:
             send({"type": "chat", "id": chat["id"]})
+            # The library has been replaced or a file read again since this chat's earlier answers (or the chat
+            # predates the record): ids in what the AI looked up then may name other passages now, so it starts
+            # its lookups afresh. The answers' own citations have been pointed at the passages' new places.
+            if chat.get("library") != library.version() or moved:
+                if any(m.get("role") == "tool" for m in chat["messages"]):
+                    chat["messages"] = forget_lookups(chat["messages"])
+                    notice = {"type": "notice", "text": "The library or your files have changed since the earlier "
+                              "answers in this chat, so the AI looked things up afresh."}
+                    turn["events"].append(notice)
+                    send(notice)
+                chat["library"] = library.version()
             s = settings.load()
+            # A project's chat searches its files and the shared ones; any other chat only the shared ones.
+            project = chat.get("project", "")
+            s["project"] = myfiles.project(project) if project else None
+            scope = Scope(library, lambda: myfiles.keys(project if s["project"] else ""))
             if s["engine"].get("mode") == "bundled" and not engine.bundled.status()["running"]:
                 send({"type": "status", "text": "Starting the AI engine…"})
             client = engine.client(s)
             send({"type": "status", "text": "", "model": client.model})
             answer = []
-            for ev in chat_events(client, library, chat["messages"], question, s):
+            for ev in chat_events(client, scope, chat["messages"], question, s):
                 engine.bundled.touch()  # a long answer isn't idle time
                 if stop.is_set():
                     turn["stopped"] = True
@@ -405,7 +656,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 if ev["type"] == "done":
                     chat["messages"] = ev.pop("messages")
                     turn.update(answer=ev["answer"], cites=ev["cites"], read=ev["read"], seen=ev["seen"],
-                                cut_off=ev["cut_off"], dropped=ev["dropped"])
+                                cut_off=ev["cut_off"], dropped=ev["dropped"], figures=ev["figures"])
                 elif ev["type"] in ("search", "read", "show", "notice"):
                     turn["events"].append(ev)
                 elif ev["type"] == "token":
@@ -442,6 +693,14 @@ class Handler(http.server.BaseHTTPRequestHandler):
 
 class Server(http.server.ThreadingHTTPServer):
     daemon_threads = True
+
+
+def local_hosts(host, port):
+    """The Host headers a browser sends when the app is served to this computer only; None when it's shared on
+    the network, where it's reached by names the app can't know."""
+    if host not in ("127.0.0.1", "localhost", "::1"):
+        return None
+    return {f"{name}:{port}" for name in ("127.0.0.1", "localhost", "[::1]")}
 
 
 def free_port(host):
@@ -491,6 +750,7 @@ def main(argv=None):
             signal.signal(getattr(signal, name), lambda *_: sys.exit(0))
     port = args.port or free_port(args.host)
     httpd = Server((args.host, port), Handler)
+    Handler.hosts = local_hosts(args.host, port)
     threading.Thread(target=background, daemon=True).start()
     url = f"http://127.0.0.1:{port}/"
     print(f"{paths.APP_NAME} {VERSION} on http://{args.host}:{port}/", flush=True)

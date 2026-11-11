@@ -1,5 +1,6 @@
 """A small client for any OpenAI-compatible chat server (Ollama, LM Studio, llama.cpp, Lemonade, vLLM, Jan, a cloud
 API...). Standard library only. Streams /chat/completions and turns the deltas into plain events."""
+import ipaddress
 import json
 import re
 import socket
@@ -20,6 +21,21 @@ KNOWN_SERVERS = [
     ("vLLM", "http://127.0.0.1:8001/v1"),
 ]
 
+# Hosted services offered in Settings. Each speaks the same /chat/completions API, so choosing one only fills in the
+# address: there's no code for any one of them. "where" is said beside the name because it's what decides whose
+# data-protection law covers the questions and file passages sent there.
+HOSTED = [
+    {"name": "Anthropic", "base_url": "https://api.anthropic.com/v1", "where": "Claude models. Based in the US.",
+     "keys": "https://platform.claude.com/settings/keys", "example": "claude-sonnet-5-5"},
+    {"name": "Mistral", "base_url": "https://api.mistral.ai/v1", "where": "Mistral models. Based in France, under "
+     "EU data-protection law.", "keys": "https://console.mistral.ai/api-keys", "example": "mistral-large-latest"},
+    {"name": "OpenAI", "base_url": "https://api.openai.com/v1", "where": "GPT models. Based in the US.",
+     "keys": "https://platform.openai.com/api-keys", "example": "gpt-5-mini"},
+    {"name": "OpenRouter", "base_url": "https://openrouter.ai/api/v1", "where": "One key for many companies' models; "
+     "each question goes to the company that runs the model you choose.", "keys": "https://openrouter.ai/settings/keys",
+     "example": "mistralai/mistral-large"},
+]
+
 
 class EngineError(Exception):
     pass
@@ -33,16 +49,31 @@ def _context():
         return ssl.create_default_context()
 
 
+def same_host(a, b):
+    """True when two addresses point at the same server, so a key saved for one may be sent to the other."""
+    pa, pb = urllib.parse.urlparse(a or ""), urllib.parse.urlparse(b or "")
+    return bool(pa.hostname) and (pa.scheme, pa.hostname, pa.port) == (pb.scheme, pb.hostname, pb.port)
+
+
 def is_local(base_url):
+    """True for this computer or the local network. The address is read as an address, not matched by how it starts:
+    "10.example.com" is a name anyone can register, and calling it private would be untrue."""
     host = (urllib.parse.urlparse(base_url).hostname or "").lower()
-    return host in ("localhost", "127.0.0.1", "::1", "0.0.0.0") or host.endswith(".local") \
-        or host.startswith(("10.", "192.168.")) or re.match(r"172\.(1[6-9]|2\d|3[01])\.", host) is not None
+    if host == "localhost" or host.endswith(".local"):
+        return True
+    try:
+        ip = ipaddress.ip_address(host)
+    except ValueError:  # any other name: somewhere else, as far as the app can tell
+        return False
+    return ip.is_loopback or ip.is_private or ip.is_link_local or ip.is_unspecified
 
 
 class Client:
     def __init__(self, base_url, api_key="", model=""):
         self.base = base_url.rstrip("/")
         self.key, self.model = api_key, model
+        # what this server turned out not to take, so a turn's later requests aren't each refused first
+        self.length_field, self.bare = "max_tokens", False
 
     def _request(self, path, body=None, timeout=30):
         headers = {"Content-Type": "application/json"}
@@ -64,8 +95,9 @@ class Client:
             data = json.load(r)
         items = data.get("data") or data.get("models") or []
         ids = {m.get("id") or m.get("name") for m in items if isinstance(m, dict)} - {None}
-        # embedding and reranking models can't chat: leave them out of the choice
-        return sorted(i for i in ids if not re.search(r"embed|rerank", i, re.I))
+        # embedding, reranking, speech, image and moderation models can't chat: leave them out of the choice
+        return sorted(i for i in ids if not re.search(
+            r"embed|rerank|moderation|whisper|tts|transcribe|dall-e|image|audio|realtime|ocr|babbage|davinci", i, re.I))
 
     def stream(self, messages, tools=None, max_tokens=None, reasoning=None, extra=None):
         """Yields {"type": "content"|"reasoning", "text"}, {"type": "tool_calls", "calls": [...]}, then
@@ -75,7 +107,7 @@ class Client:
         if tools:
             body["tools"] = tools
         if max_tokens and max_tokens > 0:
-            body["max_tokens"] = max_tokens
+            body[self.length_field] = max_tokens
         if reasoning == "off":
             # Understood by llama.cpp/Qwen templates and ignored by servers that don't know it.
             body["chat_template_kwargs"] = {"enable_thinking": False}
@@ -84,17 +116,28 @@ class Client:
             body["chat_template_kwargs"] = {"enable_thinking": True}
         if extra:
             body.update(extra)
-        try:
-            resp = self._request("/chat/completions", body, timeout=900)
-        except EngineError as e:
-            # Some servers reject fields they don't know: try once more with the bare request.
-            if any(k in body for k in ("chat_template_kwargs", "reasoning_effort", "stream_options")) and \
-                    re.search(r"\b(400|422)\b", str(e)):
-                for k in ("chat_template_kwargs", "reasoning_effort", "stream_options"):
-                    body.pop(k, None)
+        optional = ("chat_template_kwargs", "reasoning_effort", "stream_options")
+        if self.bare:
+            for k in optional:
+                body.pop(k, None)
+        while True:
+            try:
                 resp = self._request("/chat/completions", body, timeout=900)
-            else:
-                raise
+                break
+            except EngineError as e:
+                if not re.search(r"\b(400|422)\b", str(e)):
+                    raise
+                if "max_tokens" in body and "max_tokens" in str(e):
+                    # Newer services refuse max_tokens by name and want the same limit as max_completion_tokens.
+                    self.length_field = "max_completion_tokens"
+                    body[self.length_field] = body.pop("max_tokens")
+                elif any(k in body for k in optional):
+                    # Some servers reject fields they don't know: try again with the bare request.
+                    self.bare = True
+                    for k in optional:
+                        body.pop(k, None)
+                else:
+                    raise
         calls, finish, usage = {}, None, {}
         think = _ThinkSplitter()
         with resp:

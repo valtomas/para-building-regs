@@ -161,18 +161,16 @@ class Job:
     def __init__(self, kind, label):
         self.kind, self.label = kind, label
         self.done = self.total = 0
-        self.state, self.error, self.started = "running", "", time.time()
+        self.state, self.error, self.note, self.started = "running", "", "", time.time()
         self.cancel = threading.Event()
 
     def view(self):
         return {"kind": self.kind, "label": self.label, "done": self.done, "total": self.total,
-                "state": self.state, "error": self.error}
+                "state": self.state, "error": self.error, "note": self.note}
 
 
-def _download(url, dest, job, expect_size=None, sha256=None):
-    """Download with resume to dest (via dest.part)."""
-    part = dest + ".part"
-    have = os.path.getsize(part) if os.path.exists(part) else 0
+def _fetch(url, part, have, job, expect_size):
+    """Appends to part from byte have on (the whole file when the server ignores the range)."""
     headers = {"User-Agent": USER_AGENT}
     if have:
         headers["Range"] = f"bytes={have}-"
@@ -192,8 +190,28 @@ def _download(url, dest, job, expect_size=None, sha256=None):
                     break
                 f.write(chunk)
                 job.done += len(chunk)
+
+
+def _download(url, dest, job, expect_size=None, sha256=None):
+    """Download with resume to dest (via dest.part)."""
+    part = dest + ".part"
+    have = os.path.getsize(part) if os.path.exists(part) else 0
+    if expect_size and have > expect_size:  # left from another version of the file: it can't be carried on
+        os.remove(part)
+        have = 0
+    if not (expect_size and have == expect_size):  # else it's all here, and only the checks below are left
+        try:
+            _fetch(url, part, have, job, expect_size)
+        except urllib.error.HTTPError as e:
+            if e.code != 416 or not have:
+                raise
+            os.remove(part)  # the server has nothing after what's here: the part isn't of this file
+            _fetch(url, part, 0, job, expect_size)
     if expect_size and os.path.getsize(part) != expect_size:
-        raise EngineError(f"The download is incomplete ({os.path.getsize(part)} of {expect_size} bytes). Try again.")
+        got = os.path.getsize(part)
+        if got > expect_size:  # more would never make it right; a short one is carried on next time
+            os.remove(part)
+        raise EngineError(f"The download is incomplete ({got} of {expect_size} bytes). Try again.")
     if sha256:
         h = hashlib.sha256()
         with open(part, "rb") as f:
@@ -203,6 +221,24 @@ def _download(url, dest, job, expect_size=None, sha256=None):
             os.remove(part)
             raise EngineError("The download didn't match its checksum, so it was deleted. Try again.")
     os.replace(part, dest)
+
+
+LOG_KEEP = 1 << 20
+
+
+def _trim_log(path, limit=5 << 20):
+    """Keeps the end of a log that has grown past limit: llama-server writes a lot, and the file is only ever
+    read for the last thing that went wrong."""
+    try:
+        if os.path.getsize(path) <= limit:
+            return
+        with open(path, "rb") as f:
+            f.seek(-LOG_KEEP, os.SEEK_END)
+            tail = f.read()
+        with open(path, "wb") as f:
+            f.write(tail[tail.find(b"\n") + 1:])
+    except OSError:  # no log yet, or it can't be rewritten: carry on with it as it is
+        pass
 
 
 def _json(url):
@@ -405,10 +441,11 @@ class Bundled:
             cmd = [server, "-m", self.model_path(model), "--host", "127.0.0.1", "--port", str(self.port),
                    "--jinja", "-c", str(ctx), "--alias", model["id"]]
             cmd += model.get("args", [])
-            log = open(self.log_path, "ab")
             flags = 0x08000000 if os.name == "nt" else 0  # CREATE_NO_WINDOW
-            self.proc = subprocess.Popen(cmd, stdout=log, stderr=log, stdin=subprocess.DEVNULL,
-                                         cwd=os.path.dirname(server), creationflags=flags)
+            _trim_log(self.log_path)
+            with open(self.log_path, "ab") as log:  # the engine keeps its own handle; ours isn't needed after
+                self.proc = subprocess.Popen(cmd, stdout=log, stderr=log, stdin=subprocess.DEVNULL,
+                                             cwd=os.path.dirname(server), creationflags=flags)
             self.model_id = model_id
             try:
                 with open(self.pid_path, "w") as f:

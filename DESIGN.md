@@ -23,7 +23,8 @@ when the interface changes).
 ```
 ┌───────────────┬──────────────────────────────────┬───────────────────────┐
 │ ¶ Para        │  YOUR QUESTION                   │  Reader (overlay,     │
-│ New chat   +  │  Question in display type        │  when open)           │
+│ PROJECT ▾     │  Question in display type        │  when open)           │
+│ New chat   +  │                                  │                       │
 │ RECENT        │  ──────────────────────────────  │   eyebrow · title  ✕  │
 │ chat list     │   + Show reasoning               │   find · Original ↗   │
 │               │   + Looked up: 2 searches, …     │   passages, cited one │
@@ -34,15 +35,15 @@ when the interface changes).
 │ Settings      │  REASONING · LENGTH  disclaimer  │                       │
 │ ● Private     │                                  │                       │
 └───────────────┴──────────────────────────────────┴───────────────────────┘
-   264 px              flexible, text ≤ 760 px          min(500 px, 46vw)
+   264 px              flexible, text ≤ 840 px          min(500 px, 46vw)
 ```
 
 The reader is an overlay on the right edge. Above 1240 px the conversation and question box make room for it;
 below that it covers part of the conversation. Below 900 px the sidebar becomes a full-screen drawer opened from a
 menu button in a 56 px top bar, and the reader and dialogs fill the screen.
 
-Dialogs (native `<dialog>`): **Settings** (tabs: AI engine, Instructions, Project notes, Updates & about),
-**Your files**, **Library** (browse documents and search without AI), and the **permission** prompt shown the first
+Dialogs (native `<dialog>`): **Settings** (tabs: AI engine, Instructions, Notes, Updates & about),
+**Project** (name, notes, the project's files, Delete project and Save), **Your files** (the files shared by every chat), **Library** (browse documents and search without AI), and the **permission** prompt shown the first
 time someone adds a file.
 
 ## Screens
@@ -59,10 +60,13 @@ time someone adds a file.
 | Library: documents by group, direct search | `library.png`, `library-search.png` |
 | Your files: permission prompt, file list with notes | `files-permission.png`, `files.png` |
 | Phone width | `narrow.png` |
+| Website demo: question, cited answer, reader (video) | `demo.mp4`, `demo.webm`, poster `demo.jpg` |
 
 ## Tokens
 
-Defined on `:root` in `para/static/app.css`, redefined for dark mode under `prefers-color-scheme: dark`.
+Defined on `:root` in `para/static/app.css`, redefined for dark mode under `:root[data-theme=dark]`. The theme is
+chosen at the foot of the sidebar (Auto, Light, Dark; setting `theme`); Auto follows the system. A script in the
+page head sets `data-theme` before the page is drawn, from a copy of the setting in `localStorage`.
 
 | Token | Light | Dark | Used for |
 |---|---|---|---|
@@ -108,6 +112,18 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   ink rule under it. Each turn repeats it.
 - **Citation** (`.cite`): inline mono tag, `--cite` background, label `<source> <ref>`, tooltip with the heading.
   Your files use the warm, bordered variant (`.cite.file`) so people can tell their documents from the regulations.
+- **Citation states**: a citation the AI made from a search result's extract alone, without reading the passage, has a
+  dashed outline and no fill (`.cite.extract`); so does one whose paragraph has been reworded since the answer
+  (`.cite.changed`). One whose passage is no longer in the library is struck through and opens nothing
+  (`.cite.gone`). The tooltip and the Cited list say which ("Extract only", "Text changed since this answer", "No
+  longer in the library"), and a note under the answer counts them.
+- **Figure note**: when a figure beside a citation isn't in the passage cited, a note lists it with the citation:
+  "Not found in the passage cited for it: 225 mm (ADK Table 1.1). Only the numbers are compared, so check this
+  figure against the passage."
+- **Answer actions** (`.answer-actions`): under the Cited list, quiet mono uppercase links in `--muted-2`: "Copy with
+  references" (the answer with each citation written out as the document's reference, then a References list with
+  links to the originals and the library's edition; copied as formatted and as plain text) and, under the last
+  answer only, "Ask again" (the new answer replaces it).
 - **Cited list** (`.sources`, `.source-chip`): under the answer, a "Cited" (or "Cited and read") eyebrow over an
   ink rule, then one ruled row per passage: the ref in display type, a dotted leader, the heading in mono.
 - **Activity** and **reasoning**: `<details>`, collapsed by default, a mono summary line with "+" or "−" in accent.
@@ -116,20 +132,45 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   red outline pill; disabled at 40 % opacity.
 - **Notes** (`.note`): warm background for honest-state messages; **errors** (`.error`) in danger colour, with a
   button to the setting that fixes them.
+- **Project picker**: at the top of the sidebar, a "Project" label over a native select set in display type on a
+  sidebar rule ("No project", each project, "New project…"), with a mono "Notes and files" link under it when a
+  project is chosen. Recent shows the chosen project's chats only; the question box says "Ask a question about
+  <project>…". Files dropped on the window go to the chosen project.
+- **Chats**: above Recent, a "Find in chats" box on a sidebar rule finds words in a chat's name, questions and
+  answers, in the chosen project; results show the chat with a mono line of the matching text. On hover a chat shows
+  a pencil (rename: the name becomes a box, Enter saves, Escape leaves it) and the cross (delete).
+- **Theme**: a mono row under the privacy badge, "Theme" then Auto, Light and Dark; the chosen one in sidebar text
+  with a gold underline.
 - **Privacy badge**: bottom of the sidebar, a bordered box with a coloured dot. Green "Private" for the built-in
   engine or a local or LAN address, gold with the host name for anything else, coral "No AI engine set up" (opens
   Settings). On phones the dot alone sits at the right of the top bar.
+- **Engine choice**: three radio cards in Settings → AI engine: an engine already running, the built-in engine, or an
+  online AI service ("hosted" in the code). It shows a pill per service (Anthropic, Mistral, OpenAI, OpenRouter; the
+  chosen one in `--accent-2`), a line saying where it's based with "Get an API key ↗", then the same address, key and model fields
+  as a local engine. The model is typed or picked from the service's list. The warm warning names the host and says
+  passages from the person's own files go there too. A hosted engine is saved as an external one; the card follows
+  from the address.
+- **Model field**: in Settings → AI engine, a typed field with the server's models in a menu drawn like the project
+  picker's, in the dialog's colours: ruled rows in mono on `--panel`, the chosen one marked with an accent ¶. Opening it
+  shows every model (a native datalist would show only those matching the name already in the box) and selects the
+  name, so typing filters the list; any name can still be typed. It opens upwards when the dialog has no room below.
 - **Model rows**: ruled rows with a radio, name, Recommended tag (gold pill), description, mono size and memory line,
   and an action (Download, or Installed and Delete). Models too big for this computer are faded with the size line
   in red.
 - **Library list**: a three-column grid (short name, title with the edition in italic under it, date) so long
   edition text can't squeeze the titles.
+- **Changed in this edition** (`.lib-changes`): at the top of the Library after an update, collapsed like a drawing's
+  description: per document, mono lines of the paragraphs changed, added and removed against the edition the computer
+  had before (changed and added ones open in the reader), and an italic note that a difference can be a correction
+  to how the app reads a document. Settings → Updates & about links to it.
 - **Reader**: document short name and full title, find-in-document filter, link to the original (gov.uk or
   legislation.gov.uk) or "Open file" for the person's files, licence line in the footer. For PDFs the link opens
   the page of the cited passage ("Original, page 34 ↗") and each passage header has its own "PDF page N ↗".
 - **Figures**: diagrams and tables are shown as images above their passage's text, full reader width on a white
-  card (the drawings are designed on white, so they stay white in dark mode). Click to enlarge to the window;
-  click again to close. When the reader opens at a passage with a figure, it scrolls to the top of the figure.
+  card (the drawings are designed on white, so they stay white in dark mode). Click to enlarge to the window
+  (a dialog with a close button); Escape or a click anywhere closes it. When the reader opens at a passage with a figure, it scrolls to the top of the figure.
+  The words printed in a drawing ("Text in the drawing:", there for search and the AI) sit collapsed at the end of
+  its passage, styled like the description, with a note that they aren't a description of the drawing.
 - **Description of a drawing** (`.figure-desc`): when a diagram has a description checked by a person, it sits
   directly under the image, collapsed like the activity list: a mono "+ Description of the drawing" line. Opened, a
   2 px accent rule on the left sets off the description in body text, then an italic note in `--muted`, "Written by
@@ -161,6 +202,9 @@ no emoji anywhere.
 - **Figure crops** are found from captions, so a few are cut short or include the next heading, and some
   diagrams without a recognisable caption have no image. "Original, page N" is always there as a fallback.
 - **Reader find** hides non-matching passages rather than highlighting matches.
-- **No app icon** yet (`packaging/icon.icns`, `packaging/icon.ico`). The ¶ mark in the sidebar is the starting point.
+- **App icon**: the gold ¶ on an oxblood rounded square (`packaging/make_icon.py`), used on Windows and Linux. The
+  Mac app has none yet (`packaging/icon.icns`).
+- **Screenshots** don't yet show the citation states, the figure note, the answer actions, Find in chats or Changed
+  in this edition.
 - **Keyboard**: dialogs and citations are reachable by Tab, but there's no shortcut for New chat or focusing the
   question box.

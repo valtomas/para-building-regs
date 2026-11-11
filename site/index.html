@@ -14,6 +14,28 @@
   <meta property="og:url" content="https://pararegs.co.uk/">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <!-- What search engines show for the app: free, for Windows, Mac and Linux -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Para",
+    "alternateName": "Para: building regulations, cited",
+    "description": "A free, open-source assistant for the building regulations in England. Ask about the Approved Documents, the Building Regulations 2010 and the Building Safety Act, and get answers that cite the exact paragraph. It runs on your own computer.",
+    "url": "https://pararegs.co.uk/",
+    "downloadUrl": "https://github.com/valtomas/para-building-regs/releases/latest",
+    "image": "https://pararegs.co.uk/screenshots/answer-reader.png",
+    "screenshot": "https://pararegs.co.uk/screenshots/answer-reader.png",
+    "applicationCategory": "ReferenceApplication",
+    "operatingSystem": "Windows 10, Windows 11, macOS 12 or later, Linux",
+    "inLanguage": "en-GB",
+    "isAccessibleForFree": true,
+    "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+    "author": { "@type": "Person", "name": "Tomás Val", "url": "https://github.com/valtomas" },
+    "codeRepository": "https://github.com/valtomas/para-building-regs"
+  }
+  </script>
   <link rel="preload" href="fonts/space-grotesk-300-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -42,13 +64,16 @@
       <a class="btn primary" href="#download">Download</a>
       <a class="btn" href="https://github.com/valtomas/para-building-regs">Source code</a>
     </div>
-    <p class="fine">Mac (Apple Silicon), Windows 10/11 and Linux · works with Lemonade, Ollama, LM Studio and other engines, or runs its own</p>
+    <p class="fine">Mac (Apple Silicon), Windows 10/11 and Linux · works with Lemonade, Ollama, LM Studio and other engines, runs its own, or uses an online AI service with your key</p>
   </section>
 
   <figure class="shot wrap">
-    <img src="screenshots/answer-reader.png" width="2560" height="1600"
-         alt="Para answering a question about the maximum rise of a private stair, with Approved Document K Table 1.1 open in the reader beside the answer.">
-    <figcaption>An answer citing ADK Table 1.1, with the table open in the reader.</figcaption>
+    <!-- recorded by docs/record_demo.py; plays only when demo.js starts it, so reduced motion keeps the poster -->
+    <video id="demo" width="1920" height="1200" muted loop playsinline preload="auto" poster="screenshots/demo.jpg"
+           aria-label="Para in use on a loft conversion project. The project is chosen in the sidebar, showing its earlier chats; a question about the height of guarding at a new landing open to the stairwell is typed and sent; the answer arrives citing ADK Diagram 3.1; clicking a citation opens the diagram in the reader beside the answer, and the reader is scrolled on through the document.">
+      <source src="screenshots/demo.webm" type="video/webm">
+      <source src="screenshots/demo.mp4" type="video/mp4">
+    </video>
   </figure>
 
   <section class="wrap points" aria-label="What Para does">
@@ -63,7 +88,7 @@
       <p class="num">02</p>
       <h2>Private by default</h2>
       <p>With a local engine, your questions and documents never leave your computer. Para shows whether it's
-        private, and warns you if your engine is somewhere else.</p>
+        private, and says so plainly when you choose an online service instead.</p>
     </article>
     <article>
       <p class="num">03</p>
@@ -119,8 +144,8 @@
 
   <section class="wrap band" id="engines">
     <p class="eyebrow">AI engines</p>
-    <h2 class="section-title">Use your engine, or let Para run one</h2>
-    <div class="two">
+    <h2 class="section-title">Use your engine, let Para run one, or bring a key</h2>
+    <div class="three">
       <div>
         <h3>An engine you already run</h3>
         <p>Lemonade, Ollama, LM Studio, llama.cpp, Jan, vLLM or any other OpenAI-compatible server, on your computer
@@ -130,6 +155,11 @@
         <h3>The built-in engine</h3>
         <p>Para suggests a model that fits your computer's memory, downloads it with llama.cpp, and runs it. Nothing
           else to install. 16 GB of memory or more recommended.</p>
+      </div>
+      <div>
+        <h3>An online AI service</h3>
+        <p>For computers that can't run a model well: Anthropic, Mistral, OpenAI, OpenRouter or another service,
+          with your own API key. Not private: your questions, and passages from your own files, go to that company.</p>
       </div>
     </div>
   </section>
@@ -144,11 +174,13 @@
       <summary>Installing, and the first-run warnings</summary>
       <p><b>Mac:</b> unzip, move Para to Applications and open it. The first time, macOS says it can't verify the
         app: open System Settings › Privacy &amp; Security and click <i>Open Anyway</i>.</p>
-      <p><b>Linux:</b> extract the archive and run <i>Para/Para</i>, or run <i>Para/install.sh</i> to add it to your
-        applications menu. Works on Ubuntu 22.04, Debian 12, Fedora 36 or newer (x86-64). If it can't open its own
-        window, Para opens in your web browser instead.</p>
-      <p><b>Windows:</b> right-click the zip, <i>Extract All</i>, then open <i>Para.exe</i>. If SmartScreen appears,
-        click <i>More info</i>, then <i>Run anyway</i>.</p>
+      <p><b>Windows:</b> double-click <i>Para-windows-setup.exe</i>. It installs for you alone, with no administrator
+        needed, and adds Para to the Start menu. If SmartScreen appears, click <i>More info</i>, then
+        <i>Run anyway</i>.</p>
+      <p><b>Linux:</b> on Ubuntu, Debian or Mint, double-click <i>Para-linux.deb</i> and choose <i>Install</i>. On
+        other distributions, download the AppImage, allow it to run as a program (right-click, Properties) and
+        double-click it. Needs Ubuntu 22.04, Debian 12, Fedora 36 or newer (x86-64). If it can't open its own window,
+        Para opens in your web browser instead.</p>
       <p>The warnings appear because the app isn't signed with a paid certificate. The source is public, and the
         builds are made by GitHub Actions from it.</p>
     </details>
@@ -163,11 +195,13 @@
   <section class="wrap band" id="open">
     <p class="eyebrow">Open source</p>
     <h2 class="section-title">Free to use, share and improve</h2>
-    <p class="body">Para is free software under the GNU Affero General Public License, version 3 or later. Report a
-      wrong answer or citation, improve how documents are read, or check AI-written descriptions of diagrams: it all
-      helps.</p>
+    <p class="body">Para is free software under the GNU Affero General Public License, version 3 or later. Tell us
+      about a wrong answer or citation at <a href="mailto:hello@pararegs.co.uk?subject=Para%20feedback">hello@pararegs.co.uk</a>
+      (with the question you asked), improve how documents are read, or check AI-written descriptions of diagrams:
+      it all helps.</p>
     <div class="actions">
-      <a class="btn" href="https://github.com/valtomas/para-building-regs/issues/new">Report a wrong answer</a>
+      <a class="btn" href="mailto:hello@pararegs.co.uk?subject=Para%20feedback">Send feedback</a>
+      <a class="btn" href="https://github.com/valtomas/para-building-regs/issues/new">Report on GitHub</a>
       <a class="btn" href="https://github.com/valtomas/para-building-regs/blob/main/CONTRIBUTING.md">Contribute</a>
     </div>
   </section>
@@ -176,12 +210,14 @@
 <footer class="foot">
   <div class="wrap foot-row">
     <p><span class="pilcrow">¶</span> Para · © 2026 <a href="https://github.com/valtomas">Tomás Val</a> ·
-      <a href="https://github.com/valtomas/para-building-regs/blob/main/LICENSE">GNU AGPL v3 or later</a></p>
-    <p class="fine">Library content: Crown copyright, Open Government Licence v3.0. Fonts: Space Grotesk, IBM Plex Sans and
-      IBM Plex Mono, SIL Open Font License. Not affiliated with any government department.</p>
+      <a href="https://github.com/valtomas/para-building-regs/blob/main/LICENSE">GNU AGPL v3 or later</a> ·
+      <a href="mailto:hello@pararegs.co.uk">hello@pararegs.co.uk</a></p>
+    <p class="fine">Library content: Crown copyright, Open Government Licence v3.0. Not affiliated with any government
+      department.</p>
   </div>
 </footer>
 
 <script src="downloads.js"></script>
+<script src="demo.js"></script>
 </body>
 </html>

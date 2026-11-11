@@ -22,9 +22,9 @@ Type=Application
 Name=Para
 Comment=Building regulations, cited
 Exec=$DEST/Para
-Icon=accessories-dictionary
+Icon=$DEST/para.png
 Terminal=false
-Categories=Office;Education;
+Categories=Office;
 EOF
 command -v update-desktop-database >/dev/null 2>&1 && update-desktop-database "$APPS" >/dev/null 2>&1 || true
 echo "Para installed. Open it from your applications menu, or run: para"

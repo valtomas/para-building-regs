@@ -6,6 +6,7 @@ One file holds:
   fts       an FTS5 index over passages (porter stemming, BM25 ranking)
   meta      key/value facts about the library (version, built date)
 """
+import hashlib
 import re
 import sqlite3
 import threading
@@ -33,6 +34,12 @@ ours out over own same she should so some such than that the their theirs them t
 through to too under until up very was we were what when where which while who whom why will with would you your
 yours need needs required requirement requirements regs regulation regulations approved document documents tell
 explain""".split())
+
+# Where an Approved Document starts on one of its requirements: "This approved document deals with the following
+# requirement from Part K…", after the requirement's name ("Requirement K2: Protection from falling").
+REQUIREMENT_STARTS = re.compile(r"(?:This|These) (?:approved document|section|sections) deals? with the following "
+                                r"requirements? from Part ([A-Z])\b")
+REQUIREMENT_NAME = re.compile(r"Requirement ([A-Z])(\d+(?:\.\d+)?): ?(.+?)(?= *(?:\||This |These |$))", re.S)
 
 # Words people use for a document, mapped to how the library names it, so "Part B" or "ADB" finds Approved Document B.
 PART_WORD = re.compile(r"\b(?:part|approved\s+document)\s+([a-t])(?![a-z])|\bad\s?([a-t])(?![a-z])", re.I)
@@ -62,6 +69,17 @@ def query_terms(query):
     return terms[:14]
 
 
+# Added to a passage's text by the library build, after the document's own words (library/build.py).
+DESCRIPTION_LABEL = "Description of the drawing (written by AI from the image, checked by a person):"
+
+
+def text_hash(text):
+    """A short fingerprint of a passage's own words, to find it again when its id has changed and to tell whether
+    its text has. Spacing doesn't count, nor does a description of a drawing added or approved since."""
+    own = (text or "").split("\n\n" + DESCRIPTION_LABEL)[0]
+    return hashlib.sha1(" ".join(own.split()).encode("utf-8")).hexdigest()[:16]
+
+
 def png_size(png):
     """(width, height) from a PNG's header."""
     if png[:8] == b"\x89PNG\r\n\x1a\n" and len(png) >= 24:
@@ -83,6 +101,7 @@ class Store:
     def __init__(self, path, prefix, readonly=False):
         self.path, self.prefix, self.readonly = path, prefix, readonly
         self.lock = threading.RLock()
+        self._requirements = {}  # source id -> [(seq, name)], worked out when first read
         if readonly:
             self.db = sqlite3.connect(f"file:{path}?mode=ro", uri=True, check_same_thread=False)
         else:
@@ -111,10 +130,10 @@ class Store:
         with self.lock:
             rows = self.db.execute(
                 "SELECT s.id, s.key, s.title, s.short, s.kind, s.url, s.license, s.published, s.note, s.path, "
-                "s.size, s.status, (SELECT COUNT(*) FROM passages p WHERE p.source_id = s.id) FROM sources s "
+                "s.size, s.mtime, s.status, (SELECT COUNT(*) FROM passages p WHERE p.source_id = s.id) FROM sources s "
                 "ORDER BY s.kind, s.short").fetchall()
         keys = ("id", "key", "title", "short", "kind", "url", "license", "published", "note", "path", "size",
-                "status", "passages")
+                "mtime", "status", "passages")
         return [dict(zip(keys, r)) for r in rows]
 
     # ----- writing (builder and the person's files) -----
@@ -205,12 +224,18 @@ class Store:
         if not terms:
             return []
         hits = []
+        # The documents to search are chosen in the query, before the best 200 are taken: chosen afterwards, a
+        # project's passages are lost whenever 200 from other projects' files match better.
+        keys = sorted(source_keys) if source_keys else []
+        scope = " WHERE fts MATCH ?" if not keys else (
+            " JOIN passages p ON p.id = fts.rowid JOIN sources s ON s.id = p.source_id WHERE fts MATCH ? "
+            f"AND s.key IN ({','.join('?' * len(keys))})")
         with self.lock:
             for joiner in (" ", " OR "):
                 try:
                     hits = self.db.execute(
-                        "SELECT rowid, bm25(fts, 0.6, 4.0, 2.0, 1.0) AS score FROM fts WHERE fts MATCH ? "
-                        "ORDER BY score LIMIT 200", (joiner.join(terms),)).fetchall()
+                        "SELECT fts.rowid, bm25(fts, 0.6, 4.0, 2.0, 1.0) AS score FROM fts" + scope +
+                        " ORDER BY score LIMIT 200", [joiner.join(terms)] + keys).fetchall()
                 except sqlite3.OperationalError:
                     hits = []
                 if len(hits) >= 4 or len(terms) == 1:
@@ -220,17 +245,16 @@ class Store:
             score = dict(hits)
             marks = ",".join("?" * len(score))
             rows = self.db.execute(
-                "SELECT p.id, p.ref, p.heading, p.page, p.text, s.key, s.short, s.title, s.kind FROM passages p "
+                "SELECT p.id, p.ref, p.heading, p.page, p.text, s.key, s.short, s.title, s.kind, s.url FROM passages p "
                 f"JOIN sources s ON s.id = p.source_id WHERE p.id IN ({marks})", list(score)).fetchall()
         out, per_source = [], {}
         for r in sorted(rows, key=lambda r: score[r[0]]):
-            if source_keys and r[5] not in source_keys:
-                continue
             if per_source.get(r[5], 0) >= 3:  # leave room for other documents
                 continue
             per_source[r[5]] = per_source.get(r[5], 0) + 1
             out.append({"id": self.pid(r[0]), "ref": r[1], "heading": r[2], "page": r[3], "source": r[6],
-                        "title": r[7], "kind": r[8], "score": score[r[0]], "snippet": snippet(r[4], terms)})
+                        "title": r[7], "kind": r[8], "score": score[r[0]], "snippet": snippet(r[4], terms),
+                        "key": r[5], "hash": text_hash(r[4]), "url": r[9]})
             if len(out) >= limit:
                 break
         return out
@@ -238,7 +262,7 @@ class Store:
     def _row(self, rowid):
         return self.db.execute(
             "SELECT p.source_id, p.seq, p.ref, p.heading, p.page, s.short, s.title, s.url, s.license, s.kind, s.key, "
-            "s.path FROM passages p JOIN sources s ON s.id = p.source_id WHERE p.id=?", (rowid,)).fetchone()
+            "s.path, p.text FROM passages p JOIN sources s ON s.id = p.source_id WHERE p.id=?", (rowid,)).fetchone()
 
     def describe(self, pid):
         with self.lock:
@@ -246,7 +270,27 @@ class Store:
         if not r:
             return None
         return {"id": pid, "ref": r[2], "heading": r[3], "page": r[4], "source": r[5], "title": r[6], "url": r[7],
-                "kind": r[9]}
+                "kind": r[9], "key": r[10], "hash": text_hash(r[12])}
+
+    def text(self, pid):
+        """A passage's own text ("" if there's no such passage)."""
+        with self.lock:
+            r = self._row(self.rowid(pid))
+        return r[12] if r else ""
+
+    def anchors(self, key=None, short=None):
+        """[(passage id, ref, heading, text hash)] of a document, by its key or, for citations saved before keys
+        were, by its short name. What a saved citation is matched against when ids have changed."""
+        with self.lock:
+            src = self.db.execute("SELECT id FROM sources WHERE key=?", (key,)).fetchone() if key else None
+            if not src and short and not key:
+                found = self.db.execute("SELECT id FROM sources WHERE short=?", (short,)).fetchall()
+                src = found[0] if len(found) == 1 else None
+            if not src:
+                return []
+            rows = self.db.execute("SELECT id, ref, heading, text FROM passages WHERE source_id=? ORDER BY seq",
+                                   (src[0],)).fetchall()
+        return [(self.pid(i), ref or "", heading or "", text_hash(text)) for i, ref, heading, text in rows]
 
     def read(self, pid, max_chars=6000):
         """The passage and those after it in the same document, about max_chars long."""
@@ -255,18 +299,60 @@ class Store:
             if not r:
                 return None
             sid, seq = r[0], r[1]
+            starts = self.requirements(sid)
+            under = next((name for at, name in reversed(starts) if at <= seq), None)
+            # stop where the next requirement starts, so a passage isn't read as part of it
+            stop = next((at for at, _ in starts if at > seq), None)
             parts, size, next_id = [], 0, None
-            for rowid, ref, heading, text in self.db.execute(
-                    "SELECT id, ref, heading, text FROM passages WHERE source_id=? AND seq>=? ORDER BY seq LIMIT 40",
-                    (sid, seq)):
-                if parts and size + len(text) > max_chars:
+            for rowid, pseq, ref, heading, text in self.db.execute(
+                    "SELECT id, seq, ref, heading, text FROM passages WHERE source_id=? AND seq>=? ORDER BY seq "
+                    "LIMIT 40", (sid, seq)):
+                if parts and (size + len(text) > max_chars or (stop is not None and pseq >= stop)):
                     next_id = self.pid(rowid)
                     break
                 label = " · ".join(x for x in (heading, ref) if x)
                 parts.append((f"[{self.pid(rowid)}] {label}\n" if label else f"[{self.pid(rowid)}]\n") + text)
                 size += len(text)
         return {"id": pid, "ref": r[2], "heading": r[3], "page": r[4], "source": r[5], "title": r[6], "url": r[7],
-                "kind": r[9], "text": "\n\n".join(parts), "next_id": next_id}
+                "kind": r[9], "key": r[10], "hash": text_hash(r[12]), "text": "\n\n".join(parts), "next_id": next_id,
+                "requirement": under}
+
+    def requirements(self, sid):
+        """Where an Approved Document starts on each of its requirements: [(seq, "Requirement K2: Protection from
+        falling")]. A passage's heading only names its section ("Section 3: Protection from falling"), so without
+        this a model reading on into the next requirement's opening takes the passage to be under that one.
+
+        The requirement must be the document's own Part: the newer documents explain their layout with Part B's
+        B2 as the example, and that page is skipped too in ADB itself, being out of order. Where the opening is run
+        into a passage from the side of the page (ADK's K5.3 into para 7.4, with Section 7's diagrams still to come),
+        the requirement starts at the next section heading. Documents without these openings get none, rather than
+        a guess."""
+        with self.lock:
+            if sid in self._requirements:
+                return self._requirements[sid]
+            src = self.db.execute("SELECT short, kind FROM sources WHERE id=?", (sid,)).fetchone()
+            part = re.match(r"AD([A-Z])", src[0] or "") if src and src[1] == "approved-document" else None
+            found = []
+            rows = self.db.execute("SELECT seq, heading, text FROM passages WHERE source_id=? ORDER BY seq",
+                                   (sid,)).fetchall() if part else []
+            section = re.compile(r"Section \w+")
+            for i, (seq, heading, text) in enumerate(rows):
+                whole = f"{heading or ''} {text or ''}".replace("\n", " ")
+                for opening in REQUIREMENT_STARTS.finditer(whole):
+                    names = [n for n in REQUIREMENT_NAME.finditer(whole[:opening.start()])
+                             if n.group(1) == opening.group(1) == part.group(1)]
+                    if names:
+                        n = names[-1]
+                        at = seq
+                        if not (heading or "").startswith("Requirement"):
+                            own = section.match(heading or "")
+                            at = next((s for s, h, _ in rows[i + 1:] if section.match(h or "") and
+                                       (not own or section.match(h).group(0) != own.group(0))), seq + 1)
+                        name = f"Requirement {n.group(1)}{n.group(2)}: {n.group(3).strip()}"
+                        found.append((at, float(n.group(2)), name))
+            self._requirements[sid] = [(at, name) for i, (at, number, name) in enumerate(found)
+                                       if all(number <= later[1] for later in found[i + 1:])]
+            return self._requirements[sid]
 
     def document(self, pid):
         """The whole document holding a passage, as passages, for the reader panel."""

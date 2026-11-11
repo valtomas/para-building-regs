@@ -11,6 +11,7 @@ import json
 import re
 import sys
 import time
+import urllib.error
 import urllib.request
 
 # key, question, the passage(s) a right answer cites: (source, ref or None for any part of it)
@@ -24,7 +25,14 @@ QUESTIONS = [
      [("HRB criteria (new build)", None), ("Building Safety Act 2022", "s 65"), ("HRB Descriptions Regs 2023", None)]),
     ("pd", "What must a principal designer be competent to do?", [("BR 2010", "reg 11G")]),
     ("bathroom", "Does a bathroom in a flat need a fire door?", [("ADB1", "Diagram 3.2")]),
+    # asked in a project with notes and no files, as in the website's video: a model has credited library text to
+    # "your project files", and called guarding requirement K3 after reading on into K3's opening
+    ("landing", "What height of guarding do I need at the edge of the new landing?",
+     [("ADK", "Diagram 3.1"), ("ADK", "3.2")]),
 ]
+PROJECT = {"name": "Loft test", "notes": "Loft conversion of a two-storey semi-detached house: a new second floor "
+                                         "with one bedroom and a shower room."}
+IN_PROJECT = {"landing"}
 
 
 def right_facts(key, a, cited_right):
@@ -45,7 +53,15 @@ def right_facts(key, a, cited_right):
     if key == "bathroom":
         return bool(re.search(r"(not|n't)\s+(need|require)", a, re.I)) and \
             bool(re.search(r"fire[- ]resisting construction", a, re.I))
+    if key == "landing":
+        return bool(re.search(r"900\s?mm", a)) and not re.search(r"\bK3\b", a)
     return False
+
+
+def credits_their_files(rec):
+    """Says something comes from the person's files or notes while citing none of their files (ids f…)."""
+    return bool(re.search(r"\b(your|their) (own |project )?(files?|notes|documents?)\b", rec["answer"], re.I)) and \
+        not any(pid.startswith("f") for pid in rec["cites"])
 
 
 def _post(base, path, body):
@@ -54,9 +70,9 @@ def _post(base, path, body):
     return urllib.request.urlopen(req, timeout=1800)
 
 
-def _ask(base, question):
+def _ask(base, question, project=""):
     t0, events, done, error = time.time(), [], None, None
-    with _post(base, "/api/ask", {"question": question}) as r:
+    with _post(base, "/api/ask", {"question": question, "project": project}) as r:
         for raw in r:
             line = raw.decode("utf-8", "replace").strip()
             if line.startswith("data:"):
@@ -85,8 +101,12 @@ def ask(base, out, models, engine="http://127.0.0.1:13305/api/v1"):
         else:
             settings = {"mode": "external", "base_url": engine, "model": model}
         _post(base, "/api/settings", {"engine": settings}).read()
+        try:
+            _post(base, "/api/projects", PROJECT).read()
+        except urllib.error.HTTPError:  # made by an earlier model's run
+            pass
         for key, question, _right in QUESTIONS:
-            seconds, events, done, error = _ask(base, question)
+            seconds, events, done, error = _ask(base, question, PROJECT["name"] if key in IN_PROJECT else "")
             cites = done.get("cites") or {}
             rec = {"model": model, "q": key, "seconds": seconds, "error": error, "answer": done.get("answer", ""),
                    "searches": [e["query"] for e in events if e["type"] == "search"],
@@ -115,8 +135,9 @@ def cited_right(rec):
 
 def score(path, answers=False):
     rows = [json.loads(line) for line in open(path, encoding="utf-8")]
-    print("| Model | Right figures | Searched | Cited | Right passage cited | Made-up ids removed | Median time |")
-    print("|---|---|---|---|---|---|---|")
+    print("| Model | Right figures | Searched | Cited | Right passage cited | Made-up ids removed "
+          "| Credits their files wrongly | Median time |")
+    print("|---|---|---|---|---|---|---|---|")
     for model in dict.fromkeys(r["model"] for r in rows):
         rs = [r for r in rows if r["model"] == model]
         times = sorted(r["seconds"] or 0 for r in rs)
@@ -124,7 +145,7 @@ def score(path, answers=False):
         print(f"| {model} | {sum(right_facts(r['q'], r['answer'], cited_right(r)) for r in rs)}/{n} | "
               f"{sum(bool(r['searches']) for r in rs)}/{n} | {sum(bool(r['cites']) for r in rs)}/{n} | "
               f"{sum(cited_right(r) for r in rs)}/{n} | {sum(len(r['dropped']) for r in rs)} | "
-              f"{times[len(times) // 2]:.0f} s |")
+              f"{sum(credits_their_files(r) for r in rs)} | {times[len(times) // 2]:.0f} s |")
     if answers:
         for r in rows:
             print(f"\n===== {r['model']} / {r['q']} {r['seconds']}s searches={r['searches']} reads={r['reads']} "
