@@ -48,6 +48,17 @@
       "licence": "Apache 2.0"
     },
     {
+      "id": "granite-4.2-8b",
+      "name": "IBM Granite 4.2 8B",
+      "repo": "ibm-granite/granite-4.2-8b-GGUF",
+      "file": "granite-4.2-8b-Q4_K_M.gguf",
+      "size_gb": 5.3,
+      "min_ram_gb": 16,
+      "context": 32768,
+      "licence": "Apache 2.0",
+      "about": "Small and careful: it opens every passage it cites and got nearly all our test questions right. Slow: it thinks first, about a minute an answer on a fast computer. For 16 GB or more."
+    },
+    {
       "id": "gemma-4-e4b",
       "name": "Gemma 4 E4B",
       "repo": "unsloth/gemma-4-E4B-it-GGUF",
@@ -56,7 +67,7 @@
       "min_ram_gb": 12,
       "context": 32768,
       "licence": "Apache 2.0",
-      "about": "Small. It searches and cites every time, but got about two in three of our test questions right, and says it can't find things that are there: check each answer against the paragraph it cites."
+      "about": "Small and quicker than Granite, for 12 GB computers. It searches and cites every time, but got about two in three of our test questions right, and says it can't find things that are there: check each answer against the paragraph it cites."
     },
     {
       "id": "qwen3-4b-2507",

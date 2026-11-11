@@ -81,7 +81,7 @@ FACTS = {
     "water": [r"125\s?(l|litres)"], "bath": [r"48\s?°\s?C|48 degrees"], "handrail": [r"900\s?mm", r"1,?000\s?mm|1\s?m\b"],
     "headroom": [r"1\.9\s?m|1,?900\s?mm", r"1\.8\s?m|1,?800\s?mm"], "airtight": [r"\b8(\.0)?\s?m", r"50\s?Pa"],
     "glazing": [r"1\.6"], "ramp": [r"1\s?:\s?15|1 in 15"], "charger": [r"7\s?kW"], "hearth": [r"125\s?mm"],
-    "sound": [r"45\s?dB"], "gigabit": [r"£\s?2,?000"], "radon": [r"200\s?Bq"], "security": [r"PAS 24"],
+    "sound": [r"45\s?dB|45 DnT"], "gigabit": [r"£\s?2,?000"], "radon": [r"200\s?Bq"], "security": [r"PAS 24"],
     "cladding": [r"A2-s1,\s?d0", r"\bA1\b"], "gateway2": [r"12 weeks|twelve weeks"], "change": [r"6 weeks|six weeks"],
     "completion": [r"8 weeks|eight weeks"], "doors": [r"12 months|annual|every year|once a year"],
     "occurrence": [r"10 (calendar )?days|ten (calendar )?days"],
@@ -98,8 +98,16 @@ PROJECT = {"name": "Loft test", "notes": "Loft conversion of a two-storey semi-d
 IN_PROJECT = {"landing"}
 
 
+def _plain(a):
+    """An answer with the typography some models use taken out, so the checks read "1 100 mm", "12 weeks" set with
+    narrow spaces and "A2-s1" with a non-breaking hyphen as what they are."""
+    a = re.sub(r"(?<=\d)[\u202f\u00a0\u2009](?=\d{3}(?!\d))", "", a)
+    return re.sub(r"[\u202f\u00a0\u2009]", " ", a).replace("\u2011", "-").replace("\u2010", "-")
+
+
 def right_facts(key, a, cited_right):
     """The figures a right answer gives."""
+    a = _plain(a)
     if key == "travel":
         return bool(re.search(r"7\.5\s?m", a))
     if key == "stair":

@@ -14,8 +14,8 @@ were worked through at the workstation on 11 November 2026 with real models and 
   questions. All three answer with citations. Qwen3 8B was taken out of the list all the same: it did no better
   than the 4B, at five times the wait, and made up passage ids.
 - **The built-in list was rewritten from the tests** (run E): Nemotron 3.5 Lightning and Qwen3.5 35B-A3B, the two
-  best on Lemonade, were run through the built-in engine and replace Qwen3 30B-A3B; Gemma 4 E4B is the suggestion
-  for 12 to 16 GB.
+  best on Lemonade, were run through the built-in engine and replace Qwen3 30B-A3B. IBM Granite 4.2 8B got 35 of 36 from a
+  5.3 GB file and is the suggestion for 16 GB, though slow; Gemma 4 E4B is for 12 GB.
 - **The 36 questions on Lemonade** (Nemotron 3.5, Qwen3.5-35B, Gemma 4 E4B), every answer read, every flagged figure
   judged: 20 true, 4 false alarms from two causes, both fixed with tests.
 - **The library**: two-column pages are now read from where their lines are (`library/columns.py`). By
@@ -29,6 +29,9 @@ were worked through at the workstation on 11 November 2026 with real models and 
 
 ## Decide
 
+- [ ] **Granite everywhere?** It got more right than the models suggested for 24 GB and up, at three times the wait
+      (57 s against 12 to 23 s here). The list suggests the biggest model that fits; one run isn't enough to turn
+      that round. Run it a second time, and time it on a 16 GB laptop, before deciding.
 - [ ] **Read before you cite.** Qwen3.5-35B wrote 21 of 36 answers without opening a passage (65 of its 110
       citations are from search extracts), Nemotron 2. The answers were right and each such citation says so. If
       that's too many, make the prompt firmer in `para/core.py` and run the model tests again.

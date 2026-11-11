@@ -132,7 +132,7 @@ by the app into an empty folder; the others on Lemonade. Every answer was read.
 | NVIDIA Nemotron 3.5 Lightning 30B-A3B | Lemonade | 34/36 | 36/36 | 35/36 | 31/36 | 0 | 3 | 16 of 91 | 24 s |
 | Qwen3.5-35B-A3B | Lemonade | 34/36 | 36/36 | 35/36 | 31/36 | 0 | 5 | 65 of 110 | 15 s |
 | Qwen3 30B-A3B Instruct 2507 | built-in | 28/36 | 33/36 | 33/36 | 27/36 | 1 | 5 | 49 of 85 | 9 s |
-| gpt-oss 20B | built-in | 27/36 | 36/36 | 33/36 | 28/36 | 0 | 3 | 9 of 53 | 12 s |
+| gpt-oss 20B | built-in | 32/36 | 36/36 | 33/36 | 28/36 | 0 | 3 | 9 of 53 | 12 s |
 | Qwen3 8B | built-in | 25/36 | 32/36 | 32/36 | 25/36 | 6 | 4 | 103 of 103 | 31 s |
 | Gemma 4 E4B | Lemonade | 22/36 | 36/36 | 36/36 | 22/36 | 0 | 1 | 46 of 73 | 19 s |
 | Qwen3 4B Instruct 2507 | built-in | 20/36 | 31/36 | 29/36 | 22/36 | 0 | 3 | 63 of 63 | 6 s |
@@ -147,7 +147,8 @@ What reading the answers adds:
 - **Qwen3.5 cites from search extracts far more than Nemotron**: 21 of its 36 answers were written without opening
   a passage, against 2 of Nemotron's. Its figures were right all the same, and the app says so on each such citation.
   If that is too many, the prompt needs a firmer "read before you cite", and these tests run again.
-- **gpt-oss 20B** reads before it cites (9 extract-only citations in 53). It wrote its citations as `【r4264】`, which
+- **gpt-oss 20B** reads before it cites (9 extract-only citations in 53); 32 right once the scoring read its
+  narrow spaces (run E). It wrote its citations as `【r4264】`, which
   the app didn't take for citations: ten answers showed as resting on no passage until that was fixed. It ended two
   questions with no answer at all (the higher-risk approval period and the fire door checks); the app now says so.
 - **The Qwen3 2507 models answer from memory first.** The 30B was told to look it up on all 36 questions and the 4B on
@@ -189,10 +190,11 @@ was downloaded by the app (llama.cpp b12078) and asked the 36 questions, with Ge
 | Model | File | Right figures | Searched | Cited | Right passage cited | Made-up ids removed | Figures flagged | Extract-only citations | Median time |
 |---|---|---|---|---|---|---|---|---|---|
 | Qwen3.5 35B-A3B | 22.2 GB | 33/36 | 36/36 | 34/36 | 29/36 | 1 | 4 | 56 of 125 | 18 s |
-| NVIDIA Nemotron 3.5 Lightning 30B-A3B | 25.5 GB | 31/36 | 36/36 | 33/36 | 29/36 | 0 | 3 | 11 of 81 | 23 s |
+| NVIDIA Nemotron 3.5 Lightning 30B-A3B | 25.5 GB | 32/36 | 36/36 | 33/36 | 29/36 | 0 | 3 | 11 of 81 | 23 s |
+| IBM Granite 4.2 8B | 5.3 GB | 35/36 | 36/36 | 36/36 | 31/36 | 0 | 1 | 7 of 72 | 57 s |
 | Gemma 4 E4B | 5.0 GB | 22/36 | 36/36 | 36/36 | 24/36 | 0 | 2 | 35 of 71 | 22 s |
 
-- **Both big models hold up**: 33 and 31 right against 28 for Qwen3 30B-A3B Instruct 2507, which they replace in the
+- **Both big models hold up**: 33 and 32 right against 28 for Qwen3 30B-A3B Instruct 2507, which they replace in the
   list. They are level on accuracy over the two engines (34 and 34 on Lemonade); Nemotron is suggested first because
   it opens the passage before citing it (11 extract-only citations against 56). On this run Qwen3.5 gave 8 weeks for
   the higher-risk approval period (it is 12) and quarterly checks for flat entrance doors (annual): both wrong, both
@@ -202,14 +204,23 @@ was downloaded by the app (llama.cpp b12078) and asked the 36 questions, with Ge
   find it"; the 4B never opens a passage and gave wrong figures from memory (150 litres a day, a window U-value of
   1.4, 40 dB). Gemma did give two wrong figures for sound insulation (55 and 58 dB), and the figure note caught both.
   It needs about 7 GB loaded, so the 4B stays as the only one for 8 GB computers.
-- All nine flags in this run are true.
+- **IBM Granite 4.2 8B was the surprise**: 35 of 36, from a 5.3 GB file. It opened a passage for every answer (7
+  extract-only citations in 72), cited something every time and made up no ids. Its one miss by the check is the
+  cladding question, where it gave A2-s1, d0 and didn't add A1. It is slow: it reasons before answering, 57 s at the
+  median here and up to three minutes, on a computer far faster than a 16 GB laptop. One run, so a slip that comes
+  one time in four may not show. It is the suggestion for 16 GB; Gemma stays for 12 GB and as the quicker choice.
+- All ten flags in this run are true.
+- **The scoring was reading typography as error.** Granite and gpt-oss write "1 100 mm" and "12 weeks" with narrow
+  spaces and "A2‑s1" with a non-breaking hyphen, and "45 DnT,w + Ctr dB" for 45 dB; the checks now read those
+  (`ask_models._plain`). Every run in runs D and E was scored again: gpt-oss 20B went from 27 to 32, Nemotron on the
+  built-in engine from 31 to 32, Granite from 31 to 35, and no other score moved.
 - **Licences**: Qwen3.5, Gemma 4, gpt-oss and Qwen3 are Apache 2.0. Nemotron 3.5 Lightning is under OpenMDW 1.1
   (NVIDIA's model card says so; the "NVIDIA Nemotron Open Model License" is for other models). Both allow use and
   redistribution with the licence kept alongside. The app doesn't redistribute any of them: it downloads each from
   Hugging Face onto the person's computer.
 
 The list in `para/models.json` after this run: Nemotron 3.5 Lightning from 48 GB, Qwen3.5 35B-A3B from 32 GB,
-gpt-oss 20B from 24 GB, Gemma 4 E4B from 12 GB, Qwen3 4B from 8 GB.
+gpt-oss 20B from 24 GB, Granite 4.2 8B from 16 GB, Gemma 4 E4B from 12 GB, Qwen3 4B from 8 GB.
 
 ## Built-in engine
 
