@@ -76,7 +76,10 @@ means the app can't be installed at all.
 - [ ] Regenerate the screenshots (`docs/screenshots/`): the answer now has actions under it, the sidebar has Find in
       chats, and there are new states to show (extract only, the figure note, Changed in this edition).
 - [ ] Run `python3 tests/test_app.py`, `python3 tests/test_check.py` and `python3 -m pyflakes para library tests`.
-- [ ] Open a pull request from the branch, bump the version, tag.
+- [ ] Open a pull request from the branch and merge it. The version is already `0.2.0` in `para/__init__.py`,
+      and the website has its new sentence (it publishes when main changes).
+- [ ] Tag `v0.2.0` on main: that builds the library and the apps and publishes the release. Do the llama.cpp pin
+      check (section 1) first, because `models.json` goes out to installed apps with the release.
 
 ## Not done, on purpose
 
