@@ -28,6 +28,7 @@ sys.path.insert(0, HERE)
 from para.myfiles import html_text  # noqa: E402
 from para.splitter import clean_pages, skipped_pages, split, unweave_columns  # noqa: E402
 from para.store import Store  # noqa: E402
+import columns  # noqa: E402
 import describe  # noqa: E402
 import figures  # noqa: E402
 import legislation  # noqa: E402
@@ -77,6 +78,11 @@ def pdf_passages(path):
     pages = pdf_pages(path)
     skip = skipped_pages(clean_pages(pages))
     figs = figures.find(path, skip_pages=skip)
+    # pages set in two columns are read again from where their lines are, a column at a time (columns.py)
+    # (contents and index pages stay as they were: that is the text they are known by, and they are left out)
+    for page, text in columns.read(path, figs).items():
+        if page not in skip:
+            pages[page - 1] = text
     for f in figs:
         if f["kind"] != "Table":  # a table's text is its content: keep it
             pages[f["page"] - 1] = figures.strip_labels(pages[f["page"] - 1], f["words"], f["labels"])

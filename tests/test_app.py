@@ -971,5 +971,38 @@ check(mend("The fgure, an overfow, a frefghting lift, su°ciently") == "The figu
       "lost ligatures are put back, two in a word and where a sign stands for one")
 check(mend("class A1fl, 250°C, a defect") == "class A1fl, 250°C, a defect", "a floor class, a temperature and a real word are left alone")
 
+# a page is read a column at a time from where its lines are (library/columns.py): the gutter, and what is set
+# across it
+import columns  # noqa: E402
+from figures import Line  # noqa: E402
+
+W, H = 600, 840
+left_col = [Line(40, 100 + 14 * n, 280, 110 + 14 * n, "left", 0) for n in range(20)]
+right_col = [Line(320, 105 + 14 * n, 560, 115 + 14 * n, "right", 1) for n in range(9)]  # shorter, and out of step
+two = left_col + right_col + [Line(40, 20, 560, 30, "RUNNING HEADER", 2), Line(40, 810, 560, 820, "footer 12", 3)]
+x = columns.gutter(W, H, two)
+check(x is not None and 280 < x < 320, "the gutter of a page with one short column, its lines out of step, is found")
+check(columns.gutter(W, H, [Line(40, 100 + 14 * n, 560, 110 + 14 * n, "across", 0) for n in range(30)]) is None,
+      "a page of one column has no gutter")
+check([b[0] for b in columns.bands(W, H, two, x)] == [True, False, True],
+      "the header and footer are read across the page, the columns between them one at a time")
+table = [Line(40, 400 + 14 * n, 150, 410 + 14 * n, "Walls", 4) for n in range(3)] + \
+        [Line(450, 400 + 14 * n, 470, 410 + 14 * n, "40", 5) for n in range(3)]
+above = [ln for ln in left_col + right_col if ln.y1 < 390]
+page = above + table + [Line(40, 500 + 14 * n, 280, 510 + 14 * n, "left", 0) for n in range(8)] + \
+    [Line(320, 500 + 14 * n, 560, 510 + 14 * n, "right", 1) for n in range(8)]
+wide, narrow = (30, 395, 570, 445), (30, 395, 290, 445)
+x = columns.gutter(W, H, page, [wide])
+check(x is not None and [b[0] for b in columns.bands(W, H, page, x, [wide])] == [False, True, False],
+      "a table as wide as the page is read across, with the columns above and below it")
+check([b[0] for b in columns.bands(W, H, page, x, [narrow])] == [False],
+      "a table in one column is read with its column")
+
+# "…as described under / paragraph 5.2 for framed…" doesn't start paragraph 5.2 (ADA 5.1d)
+crossref = split(["5.1 The requirement will be met by providing ties as described in the Standards listed under\n"
+                  "paragraph 5.2 for framed construction. " + "And more about ties and key elements to fill it. " * 9 +
+                  "\n\n5.2 Details of the ties are given in the following Standards. " + "A standard, and another. " * 16])
+check([p["ref"] for p in crossref] == ["5.1", "5.2"], "a cross-reference in words at the start of a line isn't a paragraph")
+
 print(f"\n{len(failures)} failed" if failures else "\nall passed")
 sys.exit(1 if failures else 0)

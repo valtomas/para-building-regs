@@ -3,7 +3,7 @@ or "Table 3.1" rather than at an arbitrary chunk. Used for the regulations libra
 import collections
 import re
 
-PARA = re.compile(r"""^(?:para(?:graph)?\s+)?(\d{1,2}\.\d{1,3})\.?\s+(?=[A-Za-z(\[•‘“'"])(?!(?:m|mm|kg|kN|kW|W|m2|m²|m3|s|l|litres|metres|per)\b)(?!(?:and|to|or)\s+\d)""")
+PARA = re.compile(r"""^(?:Para(?:graph)?\s+)?(\d{1,2}\.\d{1,3})\.?\s+(?=[A-Za-z(\[•‘“'"])(?!(?:m|mm|kg|kN|kW|W|m2|m²|m3|s|l|litres|metres|per)\b)(?!(?:and|to|or)\s+\d)""")
 FIGURE = re.compile(r"^(Table|Diagram|Figure)\s+(\d{1,2}[.\-]\d{1,3}[a-z]?|[A-Z]?\d{1,2}[a-z]?)\b", re.I)
 HEADING = re.compile(r"^(?:#{1,6}\s+.+|(?:Section|Chapter|Appendix|Annex|Schedule|Part)\s+[\dA-Z]{1,3}(?::|\s[-–—]|\.)?\s+[A-Z].{2,110}|"
                      r"Requirement\s+[A-T]\d+:.{0,80})$")
