@@ -8,6 +8,7 @@ across it (a heading, a wide table or drawing, the running header and footer) is
 left column is read before the right. Nothing depends on how the PDF was made, so a new edition is read the same way.
 """
 import concurrent.futures
+import re
 import subprocess
 
 import figures
@@ -16,16 +17,59 @@ EDGE = 0.07     # the running header and footer are in the top and bottom of the
 LONG = 0.22     # a line this share of the page's width is running text, not a label or a table cell
 
 
+def _inside(ln, boxes):
+    return any(b[0] - 1 <= ln.x0 and ln.x1 <= b[2] + 1 and b[1] - 1 <= (ln.y0 + ln.y1) / 2 <= b[3] + 1 for b in boxes)
+
+
+def _columns_in(lines, box, x):
+    """Does this figure's box hold a column of running text on each side of x? Then it took in the page's text (ADE
+    Table 0.2 was given the whole page). Running text is lines as wide as a column, with numbered paragraphs starting
+    at the column's edge; a table's cells and a drawing's notes have neither (ADB Vol 2 Tables 12.1 and C1)."""
+    inside = [ln for ln in lines if _inside(ln, [box])]
+    wide = [ln for ln in inside if ln.x1 - ln.x0 >= 0.32 * (box[2] - box[0])]
+    left, right = [ln for ln in wide if ln.x1 <= x + 1], [ln for ln in wide if ln.x0 >= x - 1]
+    if len(left) < 6 or len(right) < 6:
+        return False
+    edges = (min(ln.x0 for ln in left), min(ln.x0 for ln in right))
+    return sum(1 for ln in inside if re.match(r"\d{1,2}\.\d{1,3}\b", ln.text) and
+               any(abs(ln.x0 - e) <= 3 for e in edges)) >= 2
+
+
+def _beside(w, body, boxes):
+    """The gutter of a page with running text down one column and a table or drawing in the other (ADC page 15):
+    between the text's edge and the figure's."""
+    for b in boxes:
+        level = [ln for ln in body if ln.y1 > b[1] and ln.y0 < b[3] and not _inside(ln, [b])]
+        # a column's worth of text beside a figure a column wide; text across a page of one column isn't that
+        if len(level) < 5 or b[2] - b[0] > w * 0.5 or max(ln.x1 - ln.x0 for ln in level) > w * 0.46:
+            continue
+        if all(ln.x1 <= b[0] + 3 for ln in level):
+            x = (max(ln.x1 for ln in level) + b[0]) / 2
+        elif all(ln.x0 >= b[2] - 3 for ln in level):
+            x = (b[2] + min(ln.x0 for ln in level)) / 2
+        else:
+            continue
+        if w * 0.38 <= x <= w * 0.62:
+            return round(x)
+    return None
+
+
 def gutter(w, h, lines, boxes=()):
     """Where the page's two columns part, in points from the left, or None if it isn't set in two columns.
 
     The gutter is the widest upright strip near the middle that no line of running text crosses, with a column's
     worth of lines wholly on each side of it. A page of one column has lines across every such strip."""
-    def figure(ln):  # in a table or drawing: its rows say nothing about the columns of the text around it
-        return any(b[0] - 1 <= ln.x0 and ln.x1 <= b[2] + 1 and b[1] - 1 <= (ln.y0 + ln.y1) / 2 <= b[3] + 1 for b in boxes)
-
-    body = [ln for ln in lines if ln.y0 > h * EDGE and ln.y1 < h * (1 - EDGE) and ln.x1 - ln.x0 >= w * LONG
-            and not figure(ln)]
+    body = [ln for ln in lines if ln.y0 > h * EDGE and ln.y1 < h * (1 - EDGE) and ln.x1 - ln.x0 >= w * LONG]
+    if boxes:
+        # without the lines in tables and drawings first: their rows say nothing about the columns of the text around
+        # them. Failing that with every line: the box found for a table can take in the text under it (ADE Table 0.2
+        # was given the whole page)
+        x = gutter(w, h, [ln for ln in body if not _inside(ln, boxes)])
+        if x is None:
+            x = gutter(w, h, body)
+            if x is not None and not any(_columns_in(lines, b, x) for b in boxes):
+                x = None  # the two sides were a drawing and the note beside it, not columns (ADB Vol 2 Diagram 2.4)
+        return x or _beside(w, body, boxes)
     if len(body) < 8:
         return None
     best, run = None, []
@@ -55,7 +99,17 @@ def bands(w, h, lines, x, boxes=()):
     a time. Across are the header and footer, any line that crosses the gutter, and a table or drawing that does
     (boxes: (x0, y0, x1, y1) of the page's figures)."""
     # well into both columns: the box of a table in one column can reach a little past the gutter (ADH Table 6)
-    wide = [b for b in boxes if b[0] < x - 0.1 * w and b[2] > x + 0.1 * w]
+    # ...and not one with a column of running text down each side of the gutter inside it: that is the page's text,
+    # taken into the table's box by mistake
+    wide = []
+    for b in boxes:
+        if not (b[0] < x - 0.1 * w and b[2] > x + 0.1 * w):
+            continue
+        if _columns_in(lines, b, x):  # the table is what's above the columns of text its box took in
+            text = [ln for ln in lines if _inside(ln, [b]) and ln.x1 - ln.x0 >= 0.32 * (b[2] - b[0])
+                    and (ln.x1 <= x + 1 or ln.x0 >= x - 1)]
+            b = (b[0], b[1], b[2], min(ln.y0 for ln in text) - 2)
+        wide.append(b)
 
     def across(ln):
         mid = (ln.y0 + ln.y1) / 2

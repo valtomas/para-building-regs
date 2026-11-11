@@ -998,6 +998,28 @@ check(x is not None and [b[0] for b in columns.bands(W, H, page, x, [wide])] == 
 check([b[0] for b in columns.bands(W, H, page, x, [narrow])] == [False],
       "a table in one column is read with its column")
 
+# the box found for a table can take in the page's text below it (ADE Table 0.2): the columns are still read one at a
+# time, and the table's own rows across
+swallowed = (30, 390, 570, 800)
+numbered = [ln for ln in page if ln.y0 >= 400] + [Line(40, 500, 60, 510, "0.3", 6), Line(320, 598, 340, 608, "0.7", 7)]
+x = columns.gutter(W, H, numbered, [swallowed])
+check(x is not None and [b[0] for b in columns.bands(W, H, numbered, x, [swallowed])] == [True, False],
+      "a table's box that took in the columns under it doesn't make the page one table")
+check(columns.gutter(W, H, table * 4 + two[-2:], [wide]) is None, "a page that is all table has no gutter")
+# text down one column and a table in the other (ADC page 15)
+beside = left_col + [Line(330 + 120 * (n % 2), 100 + 14 * (n // 2), 380 + 120 * (n % 2), 110 + 14 * (n // 2), "cell", 8)
+                     for n in range(30)]
+x = columns.gutter(W, H, beside, [(320, 95, 570, 320)])
+check(x is not None and 280 < x < 320, "text in one column beside a table in the other is two columns")
+
+# a number that ends a caption or a cross-reference isn't the next paragraph's ("Diagram 2.37 Wall type 4.1", then a
+# heading; "…of a type 3.1 or 3.2 / separating wall": ADE lost Sections 2 and 3's numbers to these)
+ends = split(["2.1 A wall of this type should be built as shown, with ties, in\nDiagram 2.37 Wall type 4.1\n"
+              "Junction requirements for the wall, which go on for long enough. " * 6 + "\n\n"
+              "2.2 The floor should not be continuous under the core of a type 3.1 or 3.2\n"
+              "separating wall if the floor is heavy. " + "And more about floors and walls to fill it out. " * 8])
+check(not [p["ref"] for p in ends if p["ref"] in ("4.1", "3.2")], "a number ending a caption or a sentence isn't a paragraph's")
+
 # "…as described under / paragraph 5.2 for framed…" doesn't start paragraph 5.2 (ADA 5.1d)
 crossref = split(["5.1 The requirement will be met by providing ties as described in the Standards listed under\n"
                   "paragraph 5.2 for framed construction. " + "And more about ties and key elements to fill it. " * 9 +

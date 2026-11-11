@@ -3,7 +3,7 @@ or "Table 3.1" rather than at an arbitrary chunk. Used for the regulations libra
 import collections
 import re
 
-PARA = re.compile(r"""^(?:Para(?:graph)?\s+)?(\d{1,2}\.\d{1,3})\.?\s+(?=[A-Za-z(\[•‘“'"])(?!(?:m|mm|kg|kN|kW|W|m2|m²|m3|s|l|litres|metres|per)\b)(?!(?:and|to|or)\s+\d)""")
+PARA = re.compile(r"""^(?:Para(?:graph)?\s+)?(\d{1,2}\.\d{1,3})\.?\s+(?=[A-Z(\[•‘“'"])(?!(?:m|mm|kg|kN|kW|W|m2|m²|m3|s|l|litres|metres|per)\b)(?!(?:and|to|or)\s+\d)""")
 FIGURE = re.compile(r"^(Table|Diagram|Figure)\s+(\d{1,2}[.\-]\d{1,3}[a-z]?|[A-Z]?\d{1,2}[a-z]?)\b", re.I)
 HEADING = re.compile(r"^(?:#{1,6}\s+.+|(?:Section|Chapter|Appendix|Annex|Schedule|Part)\s+[\dA-Z]{1,3}(?::|\s[-–—]|\.)?\s+[A-Z].{2,110}|"
                      r"Requirement\s+[A-T]\d+:.{0,80})$")
@@ -258,8 +258,11 @@ def _unwrap_numbers(lines, state=None):
         while j < len(lines) and not lines[j].strip() and j - i < 3:
             j += 1
         nxt = lines[j].strip() if j < len(lines) else ""
-        if m and nxt and not PARA.match(nxt) and not m.group(1).rstrip().endswith((",", "paragraph", "para", "see",
-                                                                                     "and", "to", "Table", "Diagram")) \
+        # not the number a caption ends with ("Diagram 2.37 Wall type 4.1", then a heading: ADE lost Section 3's
+        # numbers to that "4.1")
+        if m and nxt and not PARA.match(nxt) and not figure_start(s) and not nxt[:1].islower() and \
+                not m.group(1).rstrip().endswith((",", "paragraph", "para", "see", "and", "to", "Table", "Diagram",
+                                                  "type", "types")) \
                 and state is not None and plausible(m.group(2), dict(state)):
             out.append(m.group(1))
             out.append(m.group(2) + " " + nxt)
