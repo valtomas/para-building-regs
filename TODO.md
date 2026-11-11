@@ -29,9 +29,10 @@ were worked through at the workstation on 11 November 2026 with real models and 
 
 ## Decide
 
-- [ ] **Granite everywhere?** It got more right than the models suggested for 24 GB and up, at three times the wait
-      (57 s against 12 to 23 s here). The list suggests the biggest model that fits; one run isn't enough to turn
-      that round. Run it a second time, and time it on a 16 GB laptop, before deciding.
+- [ ] **Granite everywhere?** Over two runs it got 35 and 33 of 36, level with or ahead of the models suggested for
+      24 GB and up, at three times the wait (about a minute an answer here). The list suggests the biggest model that
+      fits. Time it on a 16 GB laptop before deciding: if an answer takes several minutes there, Gemma may be the
+      better suggestion at 16 GB and Granite the one to offer on faster computers.
 - [ ] **Read before you cite.** Qwen3.5-35B wrote 21 of 36 answers without opening a passage (65 of its 110
       citations are from search extracts), Nemotron 2. The answers were right and each such citation says so. If
       that's too many, make the prompt firmer in `para/core.py` and run the model tests again.
