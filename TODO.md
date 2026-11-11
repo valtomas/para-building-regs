@@ -1,71 +1,70 @@
-# To do at the workstation
+# To do before releasing 0.2.0
 
-Things from the review that need your machine, a key or an account. Everything else is done on the branch
-`ccr-990cc406-2vnrqi` (not yet a pull request). Tick them off and delete this file when it's empty.
+Everything is on the branch `ccr-990cc406-2vnrqi` (not yet a pull request). The first three sections of the old list
+were worked through at the workstation on 11 November 2026 with real models and the real window; what was found is in
+`docs/model-tests.md` (run D) and in the commit messages. Delete this file when it's empty.
 
-## 1. Check what was changed blind
+## Done at the workstation
 
-These were written and tested against the fake engine only.
+- **Checks and library**: the app tests, the publishing gate and pyflakes pass; the library builds; all 36 test
+  questions find their passages.
+- **The llama.cpp pin**: b12078 has all seven platform files. An empty app folder installed it from the pin with the
+  smallest model and answered with citations, on Linux.
+- **Built-in models**: gpt-oss 20B, Qwen3 8B and Qwen3 30B-A3B were each downloaded by the app and asked the 36
+  questions. All three answer with citations, so all three are still listed.
+- **The 36 questions on Lemonade** (Nemotron 3.5, Qwen3.5-35B, Gemma 4 E4B), every answer read, every flagged figure
+  judged: 20 true, 4 false alarms from two causes, both fixed with tests.
+- **The library**: two-column pages are now read from where their lines are (`library/columns.py`). By
+  `library/order.py` 39 passages don't read in the PDF's order, from 473 on main; none is a numbered paragraph. ADM
+  Vol 1 page 59 and ADH page 25 read correctly. ADE Table 0.2, ADH Table 13, ADJ Table 1 and ADG Table 2.1 have every
+  value (ADJ Table 1 didn't before).
+- **Old chats**: asked against the published library and reopened on the rebuilt one, 31 citations in ten chats each
+  opened the same paragraph, or one marked changed where its text differs. One unnumbered passage was rightly shown as
+  gone.
+- **Screenshots and the demo** are retaken (`docs/take_screenshots.py`, `docs/record_demo.py`).
+
+## Decide
+
+- [ ] **Qwen3 8B.** It did no better than the 4B on the 36 questions (25 and 22 right against 20 and 25), takes five
+      times as long, never opens a passage and is the only model that made up passage ids. `engine.recommend` picks
+      it for 16 to 23 GB, because it is the biggest that fits. Take it out of `para/models.json`, or leave it and
+      accept that.
+- [ ] **Read before you cite.** Qwen3.5-35B wrote 21 of 36 answers without opening a passage (65 of its 110
+      citations are from search extracts), Nemotron 2. The answers were right and each such citation says so. If
+      that's too many, make the prompt firmer in `para/core.py` and run the model tests again.
+- [ ] **The first library with the new reader** will list 30 documents under *Changed in this edition*: 659
+      paragraphs changed, 306 added, 140 removed against the one published on 10 November. Nearly all of it is the
+      correction to how pages are read, which the note there allows for. Say so in the release notes.
+
+## Still to check
 
 - [ ] **OpenAI's `max_tokens`.** Settings → online AI service → OpenAI, model `gpt-5-mini`, Length on Normal. Ask one
-      question. It should answer; if it fails with a 400, send me the error text: `llm.py` looks for the words
-      `max_tokens` in it before retrying with `max_completion_tokens`.
-- [ ] **The llama.cpp pin.** `para/models.json` now says `"tag": "b12078"` (the build `docs/model-tests.md` names).
-      With an empty app folder (`PARA_APP_DIR=/tmp/para-pin python3 -m para --browser`), download the smallest
-      built-in model on Linux, Windows and the Mac and ask a question. If a platform's file is missing from that
-      release, pick the newest build that has all seven and test with that.
-- [ ] **Ollama's context.** With Ollama at its default context, ask a question that needs two or three reads and look
-      at `usage.prompt_tokens` in the reply. If it's the cut-down count (about 4,096), the app can warn when a prompt
-      was truncated; tell me and I'll add it. Also check the README's wording: I wrote *Context length* and
-      `OLLAMA_CONTEXT_LENGTH=32768` from memory, and "16,000 tokens or more" is an estimate.
-
-## 2. The built-in models (your own rule: test before listing)
-
-- [ ] Unload Lemonade's models first (`lemonade unload`), then run `tests/ask_models.py` through the built-in engine
-      for `gpt-oss-20b`, `qwen3-8b` and `qwen3-30b-a3b-2507`. Add the rows to `docs/model-tests.md`.
-- [ ] Take out of `para/models.json` any that don't answer with citations.
-- [ ] If Qwen3 8B does well, consider recommending it from 16 GB up: the 4B got 5/7 and answered the higher-risk
-      building question from memory.
-
-## 3. The new features, with a real model and the real window
-
-- [ ] **Figure note.** Run the test questions (now 36: `tests/ask_models.py`, about 20 minutes a model) and score
-      with `--answers`. The table has two new columns, *Figures flagged* and *Extract-only citations*, and each
-      answer lists what was flagged. Read every flag: it should fire only for a figure that really isn't in the cited
-      passage or in a diagram or table that passage names. Expect one on the `flight` question (2600 mm is worked
-      out, not in the table). Against the real library, with right and wrong answers I wrote by hand, it gave no
-      false alarms in 24 and missed none of 8; what real models write is the test that counts. False alarms to look for: a unit the check
-      doesn't know, a figure in a neighbouring passage, a figure worked out from two others. The units and the
-      conversions are `_UNIT` and `SAME_AS` in `para/core.py`.
-- [ ] **Extract only.** See how often real models cite from a search result without reading. If it's most answers
-      from a model, the prompt may need a firmer "read before you cite" (then rerun the model tests).
+      question. If it fails with a 400, the error text is what `llm.py` looks for before retrying with
+      `max_completion_tokens`. Needs your key.
+- [ ] **Ollama's context.** Ollama isn't installed on the workstation, so this wasn't done. With Ollama at its default
+      context, ask a question that needs two or three reads and look at `usage.prompt_tokens`. The README's *Context
+      length* and `OLLAMA_CONTEXT_LENGTH=32768` are still from memory.
+- [ ] **The pin on Windows and the Mac**: install the smallest built-in model from an empty app folder on each.
 - [ ] **Copy with references.** In each packaged window (Windows, Mac, Linux Qt), press it and paste into Word and
-      into an email. It should paste formatted, with linked references. I could only test it in Chromium; the Qt
-      window is the one most likely to refuse the clipboard.
-- [ ] **Changed in this edition.** Install last week's library (from the previous release), start the app, install
-      the library update, then open Library. Check the list is believable in size: a splitter change in the build
-      would show as hundreds of "changed" paragraphs.
-- [ ] **Old chats.** Before that update, ask a couple of questions; after it, reopen those chats and click the
-      citations. They should open the same paragraphs as before.
-- [ ] **Rename, Find in chats, Ask again.** Try each in the window, at phone width too (the pencil and cross only
-      show on hover on a desktop).
+      into an email. Only tested in Chromium.
+- [ ] **Rename, Find in chats, Ask again** in the packaged window, at phone width too.
+- [ ] **`reader-description.png`** is the old picture: no drawing's description has been checked by a person in this
+      library, so there was nothing true to photograph.
 
-## The library: columns read out of order (fixed in the splitter; look before publishing)
+## Known and left
 
-In the older two-column documents the columns' lines sit at slightly different heights, so the PDF tool gave them on
-alternate lines and the sentences were interleaved (ADC 2.38, ADG 2.3). `splitter.unweave_columns` now reads such
-pages a column at a time. Compared with a build from the same PDFs before the change: ADC, ADE, ADG, ADH and ADJ each
-have 42 to 159 passages reworded and up to 56 more with paragraph numbers (ADE most); ADA and ADM Vol 2 a dozen each; the
-glossary pages of the newer documents read in order. No figure image changed, no table lost a number, and
-paragraph numbers are in sequence in every document.
-
-- [ ] Open a few passages in the reader from ADC, ADE, ADH and ADJ and check they read as the PDF does. I sampled
-      about thirty by eye.
-- [ ] The first library published with this will list those documents under *Changed in this edition* with
-      hundreds of paragraphs: that's this correction, not new editions, which the note there allows for.
-- [ ] Still wrong, not touched: ADM Vol 1's key terms (page 59) are still interleaved; ADG has no section headings
-      on its passages; ADG has words with a lost "fi" ("fgure", "fttings") on some pages; ADH page 25 (three small
-      tables side by side) is muddled before and after.
+- **39 passages out of order** (`python3 library/order.py --list`): covers, copyright pages, lists of other approved
+  documents and of standards. A few running-header fragments are still left in passages ("N EBUILDINGS VERSION").
+- **Figure boxes**: `figures.py` gives ADE Table 0.2 the whole page and ADH Table A1 the full width. The text is read
+  correctly round them now, but their images are wrong. Changing a crop takes its description out of the library until
+  a person approves it again.
+- **ADG has no section headings** on its passages: they are only in its running header. ADG's own PDF is the one
+  properly tagged document (headings, tables, captions), the others aren't, so the tags weren't used.
+- **ADM Vol 2 "Diagram 3"** is a passage of paragraph 1.26's list, not of the diagram.
+- **A copy of the app that already has a llama.cpp build keeps it**: the pin is for new installs.
+- Warning about a truncated prompt (waits on the Ollama check).
+- Chats saved by earlier versions have no fingerprints. Their citations are matched by document and reference
+  instead, which finds most; one that can't be matched shows as no longer in the library.
 
 ## 4. Signed installers
 
@@ -92,18 +91,9 @@ means the app can't be installed at all.
 
 **Linux** needs nothing: the AppImage and .deb aren't signed, and the app checks GitHub's checksum when it updates.
 
-## 5. Before releasing
+## 5. Releasing
 
-- [ ] Regenerate the screenshots (`docs/screenshots/`): the answer now has actions under it, the sidebar has Find in
-      chats, and there are new states to show (extract only, the figure note, Changed in this edition).
-- [ ] Run `python3 tests/test_app.py`, `python3 tests/test_check.py` and `python3 -m pyflakes para library tests`.
-- [ ] Open a pull request from the branch and merge it. The version is already `0.2.0` in `para/__init__.py`,
-      and the website has its new sentence (it publishes when main changes).
-- [ ] Tag `v0.2.0` on main: that builds the library and the apps and publishes the release. Do the llama.cpp pin
-      check (section 1) first, because `models.json` goes out to installed apps with the release.
-
-## Not done, on purpose
-
-- Warning about a truncated prompt (waits on the Ollama check above).
-- Chats saved by earlier versions have no fingerprints. Their citations are matched by document and reference
-  instead, which finds most; one that can't be matched shows as no longer in the library.
+- [ ] Open a pull request from the branch and merge it. The version is already `0.2.0` in `para/__init__.py`, and
+      the website has its new sentence (it publishes when main changes).
+- [ ] Tag `v0.2.0` on main: that builds the library and the apps and publishes the release, with `models.json` (the
+      pin) for installed apps.
