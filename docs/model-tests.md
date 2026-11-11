@@ -1,6 +1,6 @@
 # Model tests
 
-Real models asked the seven test questions through a running Para (`tests/ask_models.py`), on a Strix Halo
+Real models asked the test questions (seven at first, 36 from run D) through a running Para (`tests/ask_models.py`), on a Strix Halo
 machine with 122 GB of shared memory. Lemonade (`http://127.0.0.1:13305/api/v1`) served every model except
 `bundled:qwen3-4b-2507`, which ran on the built-in engine (llama.cpp b12078, Vulkan). November 2026.
 
@@ -121,6 +121,66 @@ On the landing question both gave 900 mm from ADK Diagram 3.1; Qwen, having read
 correctly. Nemotron answered the travel distance (7.5 m) without a citation, and cited ADK 3.3 rather than
 Diagram 3.1 for the balcony. One run each, so a slip that comes one time in four may not show yet.
 
+### Run D: 36 questions, the built-in models, and the app's own notes
+
+All 36 questions (`tests/ask_models.py`), on the library built on 11 November 2026 after the column reader was
+replaced (`library/columns.py`), one model at a time. The built-in models ran on llama.cpp b12078 (Vulkan), installed
+by the app into an empty folder; the others on Lemonade. Every answer was read.
+
+| Model | Engine | Right figures | Searched | Cited | Right passage cited | Made-up ids removed | Figures flagged | Extract-only citations | Median time |
+|---|---|---|---|---|---|---|---|---|---|
+| NVIDIA Nemotron 3.5 Lightning 30B-A3B | Lemonade | 34/36 | 36/36 | 35/36 | 31/36 | 0 | 3 | 16 of 91 | 24 s |
+| Qwen3.5-35B-A3B | Lemonade | 34/36 | 36/36 | 35/36 | 31/36 | 0 | 5 | 65 of 110 | 15 s |
+| Qwen3 30B-A3B Instruct 2507 | built-in | 28/36 | 33/36 | 33/36 | 27/36 | 1 | 5 | 49 of 85 | 9 s |
+| gpt-oss 20B | built-in | 27/36 | 36/36 | 33/36 | 28/36 | 0 | 3 | 9 of 53 | 12 s |
+| Qwen3 8B | built-in | 25/36 | 32/36 | 32/36 | 25/36 | 6 | 4 | 103 of 103 | 31 s |
+| Gemma 4 E4B | Lemonade | 22/36 | 36/36 | 36/36 | 22/36 | 0 | 1 | 46 of 73 | 19 s |
+| Qwen3 4B Instruct 2507 | built-in | 20/36 | 31/36 | 29/36 | 22/36 | 0 | 3 | 63 of 63 | 6 s |
+
+What reading the answers adds:
+
+- **Nemotron and Qwen3.5** each missed the same two by the checks: the cladding question (both said the class depends
+  on height and boundary, from ADB Table 10.1, rather than A2-s1, d0 or A1 for a relevant building) and the NHBC
+  question (both said the Standards aren't in the library, then offered ADA's wall tie spacing with citations, which
+  the check counts as citing for a question the library can't answer). Nemotron answered radon without a citation;
+  Qwen3.5 the gigabit cost cap.
+- **Qwen3.5 cites from search extracts far more than Nemotron**: 21 of its 36 answers were written without opening
+  a passage, against 2 of Nemotron's. Its figures were right all the same, and the app says so on each such citation.
+  If that is too many, the prompt needs a firmer "read before you cite", and these tests run again.
+- **gpt-oss 20B** reads before it cites (9 extract-only citations in 53). It wrote its citations as `【r4264】`, which
+  the app didn't take for citations: ten answers showed as resting on no passage until that was fixed. It ended two
+  questions with no answer at all (the higher-risk approval period and the fire door checks); the app now says so.
+- **The Qwen3 2507 models answer from memory first.** The 30B was told to look it up on all 36 questions and the 4B on
+  29; after the nudge the 30B is the best of the built-in four. Neither the 4B nor the 8B ever opened a passage: every
+  citation of theirs is from a search extract.
+- **Qwen3 8B is not better than the 4B.** Over two runs each the 4B got 25 and 20 right, the 8B 22 and 25; the 8B
+  takes five times as long, and it is the only model that made up passage ids (7 and 6 removed). In the first run it
+  gave 9 m for the travel distance from a flat, from ADB Vol 2's table. On this evidence it shouldn't be recommended
+  over the 4B, and there is a case for not listing it.
+
+**The figure note.** 24 figures were flagged in these seven runs. Each was checked against the passage cited:
+
+| Model | Flags | True | False alarm | Extract-only citations |
+|---|---|---|---|---|
+| NVIDIA Nemotron 3.5 Lightning 30B-A3B | 3 | 1 | 2 | 16 |
+| Qwen3.5-35B-A3B | 5 | 4 | 1 | 65 |
+| Gemma 4 E4B | 1 | 1 | 0 | 46 |
+| gpt-oss 20B, built-in | 3 | 2 | 1 | 9 |
+| Qwen3 30B-A3B Instruct 2507, built-in | 5 | 5 | 0 | 49 |
+| Qwen3 8B, built-in | 4 | 4 | 0 | 103 |
+| Qwen3 4B Instruct 2507, built-in | 3 | 3 | 0 | 63 |
+
+- **True flags** are figures the cited passage doesn't hold: made up ("a maximum pitch of 35°" for a general access
+  stair, "43°C" for showers, a second handrail "at 350mm to 600mm", "36 metres" for an office), right but cited to the
+  wrong paragraph (45 dB cited to ADE para 0.9, 0.26 W/m²K to ADL1 Table C1, 7 kW to two diagrams), or worked out
+  (2,600 mm for the flight of 13 risers, flagged where the model put a citation on the sum; Nemotron and Qwen3.5
+  left the sum uncited, so nothing was flagged, rightly).
+- **False alarms, two causes, both fixed with a test.** Three were figures cited to ADM Vol 2 Diagram 3, a graph: the
+  figures are in Table 1's note, which says "see Diagram 3". A figure cited to a diagram or table now also counts if
+  the passage that names it holds it. One was gpt-oss writing "1 000 mm" with a narrow space, read as "000 mm"; the
+  same answer's "1 100 mm" for dwellings is a true flag.
+- After the fixes the same answers give 20 flags, none of them a false alarm.
+
 ## Built-in engine
 
 - `para/models.json`: every repo and file exists on Hugging Face with the listed size (checked with `HEAD` and
@@ -131,7 +191,10 @@ Diagram 3.1 for the balcony. One run each, so a slip that comes one time in four
   checksum verified, answered through the app with citations.
 - A model load that timed out left the stuck server running, so every later question got "503 Loading model". It
   is stopped now, and the message says the computer is probably short of memory.
-- **Not tested yet**: gpt-oss-20b, Qwen3 8B and Qwen3 30B-A3B through the built-in engine.
+- gpt-oss-20b, Qwen3 8B and Qwen3 30B-A3B were each downloaded by the app and asked the 36 questions through the
+  built-in engine (run D). All three answer with citations. The pin: `para/models.json` names llama.cpp build b12078,
+  and all seven platform files its patterns ask for are in that release. A copy of the app that already has a
+  llama.cpp build keeps it: the pin is for new installs.
 
 ## Choosing defaults
 
@@ -139,7 +202,8 @@ For the built-in list, the candidates that did best and come from the models' ow
 
 - **32 GB or more**: Nemotron 3.5 Lightning 30B-A3B or Qwen3.5-35B-A3B (both 7/7, about 30 s). Qwen3.6-35B-A3B is
   close (6/7 plain, 7/7 figures with MTP).
-- **16 GB**: Gemma 4 12B was weaker than its size suggests here; gpt-oss-20b and Qwen3 8B are still to be tested.
+- **16 to 24 GB**: Gemma 4 12B was weaker than its size suggests here. gpt-oss 20B (24 GB) is the most careful of the
+  built-in models: it reads before citing. Qwen3 8B did no better than the 4B on the 36 questions (run D).
 - **8 GB**: Qwen3 4B is fast but answers from memory sometimes; Gemma 4 E4B is better at searching but picked the
   wrong document for guarding.
 
