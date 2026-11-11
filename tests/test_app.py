@@ -1012,6 +1012,12 @@ beside = left_col + [Line(330 + 120 * (n % 2), 100 + 14 * (n // 2), 380 + 120 * 
 x = columns.gutter(W, H, beside, [(320, 95, 570, 320)])
 check(x is not None and 280 < x < 320, "text in one column beside a table in the other is two columns")
 
+# a wide box that runs into a figure keeping to one column isn't wide (ADH page 25: three tables side by side)
+both = left_col + right_col
+x = columns.gutter(W, H, both)
+check([b[0] for b in columns.bands(W, H, both, x, [(30, 200, 570, 300), (320, 150, 570, 260)])] == [False],
+      "a table's box that runs into a table in one column isn't read across the page")
+
 # a number that ends a caption or a cross-reference isn't the next paragraph's ("Diagram 2.37 Wall type 4.1", then a
 # heading; "…of a type 3.1 or 3.2 / separating wall": ADE lost Sections 2 and 3's numbers to these)
 ends = split(["2.1 A wall of this type should be built as shown, with ties, in\nDiagram 2.37 Wall type 4.1\n"
@@ -1019,6 +1025,14 @@ ends = split(["2.1 A wall of this type should be built as shown, with ties, in\n
               "2.2 The floor should not be continuous under the core of a type 3.1 or 3.2\n"
               "separating wall if the floor is heavy. " + "And more about floors and walls to fill it out. " * 8])
 check(not [p["ref"] for p in ends if p["ref"] in ("4.1", "3.2")], "a number ending a caption or a sentence isn't a paragraph's")
+
+# a numbered paragraph's passage ends where the document turns to its next requirement (ADF1 3.32 ran on into
+# regulation 39)
+turns = split(["1.1 If an extractor fan is replaced and it uses the existing cabling, this does not need to be notified.\n\n"
+               "This section deals with the requirements of Part F1(2) of Schedule 1 and regulations 39, 42 and 44.\n\n"
+               "Information about ventilation. " + "The person carrying out the work shall give information. " * 8])
+check(len(turns) == 2 and turns[0]["ref"] == "1.1" and "regulations 39" not in turns[0]["text"] and turns[1]["ref"] == "",
+      "a numbered paragraph ends where the next requirement opens")
 
 # "…as described under / paragraph 5.2 for framed…" doesn't start paragraph 5.2 (ADA 5.1d)
 crossref = split(["5.1 The requirement will be met by providing ties as described in the Standards listed under\n"

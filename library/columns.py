@@ -8,6 +8,7 @@ across it (a heading, a wide table or drawing, the running header and footer) is
 left column is read before the right. Nothing depends on how the PDF was made, so a new edition is read the same way.
 """
 import concurrent.futures
+import html
 import re
 import subprocess
 
@@ -15,6 +16,34 @@ import figures
 
 EDGE = 0.07     # the running header and footer are in the top and bottom of the page: never cut at the gutter
 LONG = 0.22     # a line this share of the page's width is running text, not a label or a table cell
+
+
+WORD = re.compile(r'<word xMin="([\d.]+)" yMin="[\d.]+" xMax="([\d.]+)" yMax="[\d.]+">([^<]*)</word>')
+GAP = 8  # points between two words: the space between words is about 3, between columns 12 or more
+
+
+def page_lines(pdf):
+    """[(width, height, [figures.Line])] like figures.page_lines, but a line pdftotext made of two columns' lines
+    (where the left one runs right up to the gutter: "…defined in legislation,   Clear opening width", ADM Vol 1 page
+    59) is two lines here, cut at the wide gap near the middle of the page."""
+    raw = subprocess.run(["pdftotext", "-bbox-layout", "-enc", "UTF-8", pdf, "-"], capture_output=True,
+                         check=True).stdout.decode("utf-8", "replace")
+    pages = []
+    for pm in figures.PAGE.finditer(raw):
+        w, h, lines = float(pm.group(1)), float(pm.group(2)), []
+        for bno, bm in enumerate(figures.BLOCK.finditer(pm.group(3))):
+            for lm in figures.LINE.finditer(bm.group(1)):
+                y0, y1 = float(lm.group(2)), float(lm.group(4))
+                words = [(float(a), float(b), html.unescape(t)) for a, b, t in WORD.findall(lm.group(5)) if t.strip()]
+                part = []
+                for i, (x0, x1, text) in enumerate(words):
+                    part.append((x0, x1, text))
+                    last = i + 1 == len(words)
+                    if last or (words[i + 1][0] - x1 >= GAP and w * 0.38 <= (x1 + words[i + 1][0]) / 2 <= w * 0.62):
+                        lines.append(figures.Line(part[0][0], y0, part[-1][1], y1, " ".join(t for _a, _b, t in part), bno))
+                        part = []
+        pages.append((w, h, sorted(lines, key=lambda ln: (ln.y0, ln.x0))))
+    return pages
 
 
 def _inside(ln, boxes):
@@ -105,6 +134,9 @@ def bands(w, h, lines, x, boxes=()):
     for b in boxes:
         if not (b[0] < x - 0.1 * w and b[2] > x + 0.1 * w):
             continue
+        if any(o is not b and not (o[0] < x - 0.1 * w and o[2] > x + 0.1 * w) and o[1] < b[3] - 20 and o[3] > b[1] + 20
+               and o[0] < b[2] and o[2] > b[0] for o in boxes):
+            continue  # it runs into a figure that keeps to one column: its own width was misjudged (ADH Table A1)
         if _columns_in(lines, b, x):  # the table is what's above the columns of text its box took in
             text = [ln for ln in lines if _inside(ln, [b]) and ln.x1 - ln.x0 >= 0.32 * (b[2] - b[0])
                     and (ln.x1 <= x + 1 or ln.x0 >= x - 1)]
@@ -145,7 +177,7 @@ def read(pdf, figs=()):
     """{page number (1-based): its text in reading order}, for the pages set in two columns. Other pages aren't in
     it: pdftotext -layout already reads them in order. figs: figures.find's, so a wide table keeps its rows."""
     jobs = []  # (page, order, crop box)
-    for page, (w, h, lines) in enumerate(figures.page_lines(pdf), start=1):
+    for page, (w, h, lines) in enumerate(page_lines(pdf), start=1):
         boxes = [f["box"] for f in figs if f["page"] == page]
         x = gutter(w, h, lines, boxes)
         if x is None:

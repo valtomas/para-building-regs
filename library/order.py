@@ -71,8 +71,11 @@ def main():
         cols, scores = columns(found[0]), []
         for ref, page, text in db.execute("SELECT ref, page, text FROM passages WHERE source_id = ? ORDER BY seq", (sid,)):
             text = text.split("Text in the drawing:")[0].split("Description of the drawing")[0]
-            if not page or re.match(r"(Table|Diagram|Figure)\b", ref or "") or len(words(text)) < 40:
-                continue  # a table's cells and a drawing's labels have no reading order to check
+            rows = [ln for ln in text.split("\n") if ln.strip()]
+            if not page or re.match(r"(Table|Diagram|Figure)\b", ref or "") or len(words(text)) < 40 or \
+                    sum(" | " in ln for ln in rows) >= len(rows) / 2:
+                continue  # a table's cells (also a table carried on from the page before) and a drawing's labels
+                #           have no reading order to check
             scores.append((score(words(text), page, cols), ref or "(no number)", page))
         low = sorted(s for s in scores if s[0] < 0.9)
         total += len(low)

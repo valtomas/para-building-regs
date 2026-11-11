@@ -88,8 +88,8 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   alternate lines (ADC, ADE, ADG, ADH, ADJ: `_staggered_gutter`); on such a page a table as wide as the page keeps its
   rows, since cutting it at the gutter loses its right-hand columns. Contents and index pages are skipped
   (`splitter.skipped_pages`). When you change either, compare passage counts and refs per document before and after. Then run
-  `library/order.py`: it counts the passages that don't read in the PDF's order (107 at the last count, mostly front matter and
-  lists of standards), and that number should only go down. Two-column pages are read by `library/columns.py`,
+  `library/order.py`: it counts the passages that don't read in the PDF's order (39 at the last count: covers, copyright pages and
+  lists of standards, no numbered paragraph), and that number should only go down. Two-column pages are read by `library/columns.py`,
   from the positions of their lines; `splitter.unweave_columns` is what's left for the person's own files and for
   pages `columns.py` doesn't take.
 - **Diagrams and tables**: `library/figures.py` finds each one from its caption and crops it from the page. Whether a

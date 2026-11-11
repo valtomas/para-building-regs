@@ -7,6 +7,9 @@ PARA = re.compile(r"""^(?:Para(?:graph)?\s+)?(\d{1,2}\.\d{1,3})\.?\s+(?=[A-Z(\[�
 FIGURE = re.compile(r"^(Table|Diagram|Figure)\s+(\d{1,2}[.\-]\d{1,3}[a-z]?|[A-Z]?\d{1,2}[a-z]?)\b", re.I)
 HEADING = re.compile(r"^(?:#{1,6}\s+.+|(?:Section|Chapter|Appendix|Annex|Schedule|Part)\s+[\dA-Z]{1,3}(?::|\s[-–—]|\.)?\s+[A-Z].{2,110}|"
                      r"Requirement\s+[A-T]\d+:.{0,80})$")
+# where a document turns to its next requirement: the paragraph before it has ended, whatever its number
+OPENS = re.compile(r"(?:This|These) (?:[Aa]pproved [Dd]ocument|section|sections) (?:deals? with the (?:following )?"
+                   r"[Rr]equirements? |gives guidance on how to meet regulation )")
 TRAILING_NO = re.compile(r"^(.{2,80}?)\s+(\d{1,2}\.\d{1,3})$")
 CONTENTS_LINE = re.compile(r"(?:\.{3,}|\s)\d{1,3}$")
 PAGE_NO = re.compile(r"^(?:page\s+)?\d{1,4}$|^\d{1,4}\s*(?:of\s+\d{1,4})?$", re.I)
@@ -377,7 +380,8 @@ def split(pages, max_chars=1800, min_chars=350):
             elif m_fig:
                 label = f"{m_fig.group(1).title()} {m_fig.group(2)}"
             fig_open = bool(cur_refs) and FIGURE.match(cur_refs[0])
-            if m_fig or (label and (size >= min_chars or fig_open)) or (size and size + len(b) > max_chars):
+            if m_fig or (label and (size >= min_chars or fig_open)) or (size and size + len(b) > max_chars) or \
+                    (cur_refs and OPENS.match(b)):
                 flush()
             while len(b) > max_chars:  # one huge block (a table read as text)
                 cut = b.rfind(". ", 0, max_chars)
