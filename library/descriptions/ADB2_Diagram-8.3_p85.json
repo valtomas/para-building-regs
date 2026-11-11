@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-8.3_p85",
+ "source": "ADB2",
+ "label": "Diagram 8.3",
+ "page": 85,
+ "caption": "Diagram 8.3 Construction of protected shafts | Uninsulated glazed screens to protected shafts",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "1db51b8989f5f636530be293c4747b4a9f215817e2b15ca2e43635d6e6eb13b2",
+ "image_sig": {
+  "w": 737,
+  "h": 517,
+  "grey": "7Or6+vr6+vr6+vr6+vr6+vv///Xr7e7t7u3t7e72///7///p1trZ7Ort6evt8v//+///////////////+e35//v//+3w8PDg8PDv8PDw8//7///0////6vDt+P////T/+///5sfc3OPb8+/c6f/0//v07/DP7e7v+fDv9+//9P/7///mxs3m4dnq88/h//T/+///9N3Y7+Pe6vjb4vj0//v///Te3Ofj5O787e369P/7///0////39Pg/v////T/+///7e/v79ff4u7v7+/0//v///Tt6+vp6uzq7evq7//w8fHl397a4d/f3uDh3Ojxf15YXVxdXl5PT09PT09PTw=="
+ },
+ "reviewed": false,
+ "description": "This is a plan (top-down) view showing three enclosed spaces labelled A, B and C, drawn with thick green lines and set within a larger rectangle drawn with thin black lines. A leader line from the label \"Compartment wall\" points to the central vertical wall, and a leader line from \"External wall\" points to the left wall of shaft A. A legend at top right reads \"Fd Fire doorset\".\n\nShaft A, on the left, is a horizontal rectangle containing a series of vertical parallel lines in its left part and one \"Fd\" door on its right edge; the caption below it reads \"Protected shaft A is bounded on three sides by compartment walls and on the fourth side by an external wall\".\n\nShaft B, in the centre, is a vertical rectangle with two \"Fd\" doors, one on its upper left wall and one on its upper right wall, and a series of horizontal parallel lines in its lower part; its caption reads \"Protected shaft B is bounded on four sides by compartment walls\".\n\nShaft C, on the right, is a smaller rectangle containing four small circles stacked along its left wall and one \"Fd\" door at its top right; its caption reads \"Protected shaft C is a services duct bounded on four sides by compartment walls\".\n\nIntroductory and concluding text appears above and below the plan.",
+ "first_draft": "This is a plan (top-down) view showing three enclosed spaces labelled A, B and C, set within a larger rectangle formed by thick green lines identified by leader lines as \"Compartment wall\" (top) and \"External wall\" (left). A legend at top right reads \"Fd Fire doorset\".\n\nShaft A, on the left, is a horizontal rectangle containing a series of vertical parallel lines and one \"Fd\" door on its right edge; the caption below it reads \"Protected shaft A is bounded on three sides by compartment walls and on the fourth side by an external wall\".\n\nShaft B, in the centre, is a vertical rectangle with two \"Fd\" doors at its top and a row of horizontal parallel lines inside; its caption reads \"Protected shaft B is bounded on four sides by compartment walls\".\n\nShaft C, on the right, is a smaller rectangle containing five small circles stacked at its left and one \"Fd\" door at its top right; its caption reads \"Protected shaft C is a services duct bounded on four sides by compartment walls\".\n\nIntroductory and concluding text appears above and below the plan."
+}

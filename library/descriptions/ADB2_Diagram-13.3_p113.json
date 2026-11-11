@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-13.3_p113",
+ "source": "ADB2",
+ "label": "Diagram 13.3",
+ "page": 113,
+ "caption": "Diagram 13.3 Notional boundary | Unprotected areas and fire resistance",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "4056946ff1e62080794c11cbab109a904b530c50057d0142fc948bfc3947b26c",
+ "image_sig": {
+  "w": 737,
+  "h": 566,
+  "grey": "7uHh4eHh4eHh4eHh4eHh4vHw+vr6+vr6+vr6+vr6+vr4+fv7+/v7+/j7+/v7+/r/+/z04+Pg/ffn5OPj4+b8//v87v//9Pn7/+n////p/P/7/O777fT59Obp/er/6fz/+/vu///0+fr26f///+n7//v86uLi2fn7/9fi4uLZ/P/7/P7///7x6/r4//7+//z/+/jg39/e+/345tzf3/L///vu9//////////////////79u7u7fDu7+7s7e39////+/PZ2dza29bZ2tzZ2d7c8Pvz3+Dd493f4t/g4uDo7fj7/O7u7u7u7+z/////////g19bX15dUlJSUlJSUlJSUg=="
+ },
+ "reviewed": false,
+ "description": "This is a plan view, marked at the top left \"See para 13.5\" and footed in a green bar as \"Diagram 13.3 Notional boundary\". A dashed rectangle, identified by a leader line as the \"Site boundary\", encloses the whole plan. Within it are two solid black rectangles: \"Building A\" on the left and \"Building B\" on the right. A vertical green dashed line runs down the gap between the two buildings and is labelled \"Notional boundary\". Across that gap at the base is a horizontal double‑headed green arrow. The portion of the arrow running from Building A's right face to the notional boundary is joined by a leader line to the text \"Compliance with the provisions for space separation in respect of building A\"; the portion running from the notional boundary to Building B's left face is joined to \"Compliance with the provisions for space separation in respect of building B\". Beneath the plan, a heading \"NOTES:\" introduces a short introductory sentence followed by two numbered paragraphs of running text.",
+ "first_draft": "This is a plan view, marked at the top left \"See para 13.5\" and footed in a green bar as \"Diagram 13.3 Notional boundary\". A dashed rectangle, identified by a leader line as the \"Site boundary\", encloses the whole plan. Within it are two solid black rectangles: \"Building A\" on the left and \"Building B\" on the right. A vertical green dashed line runs down the gap between the two buildings and is labelled \"Notional boundary\". Across that gap at the base is a horizontal double‑headed green arrow. The portion of the arrow running from Building A's right face to the notional boundary is joined by a leader line to the text \"Compliance with the provisions for space separation in respect of building A\"; the portion running from the notional boundary to Building B's left face is joined to \"Compliance with the provisions for space separation in respect of building B\". Beneath the plan, a heading \"NOTES:\" introduces two numbered paragraphs of running text."
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADB2_Table-4.1_p55",
+ "source": "ADB2",
+ "label": "Table 4.1",
+ "page": 55,
+ "caption": "Table 4.1 Maximum travel distances in small premises",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "b2dc1f483c2069438a9768c41895372ce9714c5c7dcc37155af73dc1d9045c9c",
+ "image_sig": {
+  "w": 737,
+  "h": 284,
+  "grey": "v6+sr6+qtK2twMjIyMjIyMGvqayqpq6mqLvIyMjIyMjx9vf39/f38/Lx8vb39/f36/D19fX19ezn5OXy9fX19ejh4d/u///2///////////z9fL08/P19fX19fX19fX139bd19fW9fD19fX19fX19efl4uPj9//0///////////y8fX19fX19fX19fX19fX12er//////////////////+bg3eDg3+Xg4d7g4OHb4ern4eDg4ODh49/l3+L/////7OPn5uTo5+rl5u////////by8vHu9vn6+fn8///////w5evq6+//////////////6uXk4uHf/f///////////w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

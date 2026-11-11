@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-13.1_p112",
+ "source": "ADB2",
+ "label": "Diagram 13.1",
+ "page": 112,
+ "caption": "Diagram 13.1 Principles of space separation",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "54455ade496de810b7234595907787c83ab6bee4e7c0bb0bfb89e11ce98ec7b8",
+ "image_sig": {
+  "w": 756,
+  "h": 555,
+  "grey": "7u76+vr6+vr6+vr6+vr6+Pv///////////////////v7/+Tf4PTv4t3p+drc6v/7+//z7+75793d7vzu7vv/+/v/6fn///Dy///35f////v7//Hr8v/x7Ov/9+jc/f/7+/77/+z/9vLq//fv6vD/+/v9+P/s//j/6v/45+vw//v7//334Nz37+XZ4+re1uT6+/////P79f/18On8+fr/+/v/////+P3//Pb///////v7///////99vj////////7+//88+74//78////////+/v/+enb3vr///////////v7///27e/////////////7g11ZXlxdXlNQUFBQUFBQcg=="
+ },
+ "reviewed": false,
+ "description": "Diagram 13.1, captioned \"Principles of space separation\" on a green band at the bottom, is an isometric line drawing. Top left reads \"See para 13.4\". Three vertical wall panels are set in a row, each at a different distance from a dashed line that runs diagonally across the foreground. Two green double-headed arrows link the middle and right panels to this line.\n\nThe left panel, marked with a small window near its top, is headed \"Wall on or very close to the relevant boundary: very limited amounts of unprotected area\"; a leader from its right edge reads \"Fire resisting from both sides\".\n\nThe middle panel, with a central square window, is headed \"Wall not on, or not very close to, but not sufficiently far from relevant boundary that it can be a wholly unprotected area\"; its right-edge leader reads \"Fire resisting from inside: reduced insulation criterion\".\n\nThe right panel, showing three vertical window frames, is headed \"Wall sufficiently distant from relevant boundary to be a 100% unprotected area\"; its leader reads \"No provision for fire resistance\".\n\nA legend at lower left defines the dashed line as \"Relevant boundary\" and the green arrow as \"Amount of unprotected area dependent on distance from relevant boundary\".",
+ "first_draft": "Diagram 13.1, captioned \"Principles of space separation\" on a green band at the bottom, is an isometric line drawing. Top left reads \"See para 13.4\". Three vertical wall panels are set in a row, each at a different distance from a dashed line that runs diagonally across the foreground. Green double-headed arrows link each panel to this line.\n\nThe left panel, marked with a small window near its top, is headed \"Wall on or very close to the relevant boundary: very limited amounts of unprotected area\"; a leader from its right edge reads \"Fire resisting from both sides\".\n\nThe middle panel, with a central square window, is headed \"Wall not on, or not very close to, but not sufficiently far from relevant boundary that it can be a wholly unprotected area\"; its right-edge leader reads \"Fire resisting from inside: reduced insulation criterion\".\n\nThe right panel, showing two vertical window frames, is headed \"Wall sufficiently distant from relevant boundary to be a 100% unprotected area\"; its leader reads \"No provision for fire resistance\".\n\nA legend at lower left defines the dashed line as \"Relevant boundary\" and the green arrow as \"Amount of unprotected area dependent on distance from relevant boundary\"."
+}

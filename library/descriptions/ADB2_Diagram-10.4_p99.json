@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-10.4_p99",
+ "source": "ADB2",
+ "label": "Diagram 10.4",
+ "page": 99,
+ "caption": "Diagram 10.4 Flues penetrating compartment walls or floors",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "ba0c912a1a58432e8a064ffa02500ca5ad18aeadc9ec89247d2780257b61d2c7",
+ "image_sig": {
+  "w": 737,
+  "h": 333,
+  "grey": "9fT39/f39/f39/f39/f39+rn///////////////////7////////////////////++bX09XV3f//8tXa1Ob///v54vX////////////////7+uH9////////////////+//639fy///z7f//7/H///v6383X4fH/6vf//+f5///79tPC0dPp/+q3zPr5ovn/+///39zp9//iw7321LLP//v///n5/////+r3/+vi6P/77uLj4ePv/+7k4+Dl5OT/++POz9TW5v/lztbk4ePj//v69fb2+f//+fb4//////+jiouKioqKiouLioqKioqKiWVfZmVlZmNkYlBPT09PTw=="
+ },
+ "reviewed": false,
+ "description": "The drawing is headed at top left by the words \"See para 10.23\" and carries a green banner along the bottom reading \"Diagram 10.4 Flues penetrating compartment walls or floors\". It contains two cross-sectional diagrams. The left, titled \"a. Flue passing through compartment wall or floor\", shows a horizontal element annotated \"Compartment wall or floor\", a vertical wall, and a horizontal flue passing through them; leader lines on the right point to \"Flue\" and \"Flue wall\". Beneath it is the sentence \"Flue walls should have a fire resistance of at least one half of that required for the compartment wall or floor and be of class A1 construction.\" The right diagram, titled \"b. Flue built into compartment wall\", shows two small sections of a wall each containing a square flue, one with the compartment wall line passing through the flue and one with the flue resting on top of the compartment wall line, both annotated \"Compartment wall\". Below it reads \"In each case flue walls should have a fire resistance of at least one half of that required for the compartment wall and be of class A1 construction.\"",
+ "first_draft": "The drawing is headed at top left by the words \"See para 10.23\" and carries a green banner along the bottom reading \"Diagram 10.4 Flues penetrating compartment walls or floors\". It contains two cross-sectional diagrams. The left, titled \"a. Flue passing through compartment wall or floor\", shows a horizontal element annotated \"Compartment wall or floor\", a vertical wall, and a horizontal flue passing through them; leader lines on the right point to \"Flue\" and \"Flue wall\". Beneath it is the sentence \"Flue walls should have a fire resistance of at least one half of that required for the compartment wall or floor and be of class A1 construction.\" The right diagram, titled \"b. Flue built into compartment wall\", shows two small sections of a wall each containing a square flue, one with a horizontal line and one with a stepped base, both annotated \"Compartment wall\". Below it reads \"In each case flue walls should have a fire resistance of at least one half of that required for the compartment wall and be of class A1 construction.\""
+}

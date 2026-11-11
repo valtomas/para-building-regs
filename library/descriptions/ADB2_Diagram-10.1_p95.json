@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-10.1_p95",
+ "source": "ADB2",
+ "label": "Diagram 10.1",
+ "page": 95,
+ "caption": "Diagram 10.1 Pipes penetrating fire-separating elements",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "18205b5016ef49dd60b20c1d19ec1c71fcb1a303bd69a136e16ccbc3d052ad4e",
+ "image_sig": {
+  "w": 737,
+  "h": 325,
+  "grey": "9fb29vb29vb29vb29vb29unp///////////////////7///639zz////////////+/////Hc//////////////v////x3v/////////////7////8d7////l7//+////+///9ce66P//8M/LzsfW//v//+nMwuH9//TY19bX7v/7///rwqbh///qzMvO1P//+//h4OPY4Ov//Pb09/n///v////u2tLZ///////////7//zh39vX9v//////////+/////bp//////////////v///////////////////+fh4qHh4iHh4eHh4eHh4eHhGdcaGdnZ2dnV09PT09PTw=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a section titled 'Diagram 10.1 Pipes penetrating fire-separating elements', with the text 'See para 10.5' at the top left. It shows a vertical grey member crossing a horizontal grey slab at right angles. The horizontal slab is pointed to by the label 'Fire-separating element', whose text sits at the top centre. A small green square at the intersection is pointed to by the label 'Pipe specification (b)', at the bottom left, and a second green square just below the slab is pointed to by the label 'Fire-stopping', also at the bottom left. The vertical member below the slab is pointed to by the label 'Sleeve (or pipe) of specification (a) to be in contact with pipe', at the bottom right. Two horizontal double‑headed dimension lines, each reading '≥ 1000mm', extend left and right from the central green square, positioned just above the slab. To the right, a NOTES block lists three points: make the opening in the fire-separating element as small as possible and provide fire-stopping between pipe and fire-separating element; see Table 10.1 for materials specification; the sleeve should be class A1 rated. A green footer strip repeats the diagram title.",
+ "first_draft": "The drawing is a section titled 'Diagram 10.1 Pipes penetrating fire-separating elements', with the text 'See para 10.5' at the top left. It shows a vertical grey member crossing a horizontal grey slab at right angles. A small green square, labelled 'Pipe specification (b)', sits at the intersection, and a second green square lies just below the slab, indicated by the line 'Fire-stopping'. The vertical member below the slab is pointed to by the label 'Sleeve (or pipe) of specification (a) to be in contact with pipe', and the top of the vertical member is labelled 'Fire-separating element'. Two horizontal double‑headed dimension lines, each reading '≥ 1000mm', extend left and right from the central green square at the level of the slab. To the right, a NOTES block lists three points: make the opening as small as possible and provide fire‑stopping between pipe and fire‑separating element; see Table 10.1 for materials specification; the sleeve should be class A1 rated. A green footer strip repeats the diagram title."
+}

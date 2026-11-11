@@ -1,0 +1,17 @@
+{
+ "key": "ADB2_Table-8.1_p80",
+ "source": "ADB2",
+ "label": "Table 8.1",
+ "page": 80,
+ "caption": "Table 8.1 Maximum dimensions of building or compartment (non-residential buildings)",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "43a23e3eab9959ee03188fdd9945f9874a76054bf1f30647c469432337bd997b",
+ "image_sig": {
+  "w": 754,
+  "h": 966,
+  "grey": "08bExMXJw8bHxsXFxcHJ3fv/////+vf5+PHw8PT17/bx9/n5+fjy+fn29Pn59uv36ePr6uv69fz89/v8/Pr4+fDr7Orw9u78/PPz/Pz39Pnv5/Xy8vn2/Pz49/z8+vj57u7v9f/16Oz/8ff///fx+/j5+fz89Obs9O/09/L26vf7//////z8/f309fT4+On08Ovt6/P69/z8+fj59/nz+e/p5+j6+fPz/Pb4+fv69fn28/P2/PLi7fzz9/T28+r55+jv8PHv8PDv7/Dy9PLz9e/m5ubo5+bl5e7y9vT2/fvx5eXi6e3u7uzq7ezt6/f77t/f6Orq6uvs6urq6/Dy+Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}
