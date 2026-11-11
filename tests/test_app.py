@@ -931,6 +931,17 @@ wrapped = split(["1.1 If the appliances are on the ground floor the pipe may dis
                  "is 1.3m or less. " + "And more about closets and drains to fill the passage out. " * 8])
 check([p["ref"] for p in wrapped] == ["1.1", "1.2"], "a cross-reference wrapped to a new line doesn't start a paragraph")
 
+# a table row that ends "…as in / Diagram 23." doesn't start Diagram 23: the rest of the table stays in the table
+# (ADJ Table 1, whose vent sizes were filed under the diagram)
+rows = split(["Table 1 Air supply to solid fuel appliances\n"
+              "Type of appliance                           Type and amount of ventilation\n"
+              "Open appliance, such as an open fire with   Permanently open air vents of at least 50% of the\n"
+              "no throat, e.g. a fire under a canopy as in cross sectional area of the flue.\n"
+              "Diagram 23.\n\n"
+              "Other appliance, such as a stove            300mm2/kW for the first 5kW of rated output\n"])
+check([p["ref"] for p in rows] == ["Table 1"] and "300mm2/kW" in rows[0]["text"],
+      "a label alone at the end of a sentence isn't a caption")
+
 # Approved Documents: which requirement a passage is under, from the document's own "deals with the following
 # requirement" openings, also when one is run into the end of the section before
 reqs = Store(os.path.join(TMP, "requirements.sqlite"), "r")

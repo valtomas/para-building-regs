@@ -15,8 +15,9 @@ SPACE = re.compile(r"[ \t ]+")
 
 TABLE_GAP = re.compile(r"\S {3,}\S")
 # what follows "Diagram 4.1" when it is a cross-reference wrapped onto a new line, not a caption: "Diagram 4.1).",
-# "Diagram 1.5 d. For access…", "Diagram 1.12 (for buildings…", "Table 1.1. e. Comply…"
-NOT_CAPTION = re.compile(r"^(?:[),;]|[.:]\s*[a-z(]|\(?\s*[a-z])")
+# "Diagram 1.5 d. For access…", "Diagram 1.12 (for buildings…", "Table 1.1. e. Comply…", and "Diagram 23." alone at
+# the end of a sentence (a row of ADJ Table 1 ends "…as in / Diagram 23.": the rest of the table was filed under it)
+NOT_CAPTION = re.compile(r"^(?:[),;]|[.:]\s*[a-z(]|\.\s*$|\(?\s*[a-z])")
 INDEX_REF_END = re.compile(r"(?:\d{1,2}\.\d{1,3}(?:\s*[–-]\s*\d{1,2}\.\d{1,3})?|"
                            r"(?:Tables?|Diagrams?|Appendix)\s+[\dA-Z][\d.]*|[Pp]age\s+\d{1,3})\s*[,;&]?$")
 
