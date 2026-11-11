@@ -97,7 +97,7 @@ async def shots(url, first_url, home, only):
 
     async def open_chat(page, chat):
         await page.goto(url)
-        await page.wait_for_selector("#chatList")
+        await page.wait_for_selector("#chatList", state="attached")  # in a drawer at phone width
         await page.evaluate("id => openChat(id)", chat["id"])
         await page.wait_for_selector(".msg.assistant .answer")
         await page.wait_for_timeout(400)
@@ -143,7 +143,7 @@ async def shots(url, first_url, home, only):
         # ----- the app in use -----
         await page.goto(url)
         await page.wait_for_selector("#welcome")
-        await page.evaluate("document.documentElement.dataset.theme = 'light'")
+        await page.locator('[data-theme-pick="light"]').click()  # whatever this computer's own setting is
         if wanted("welcome"):
             await page.wait_for_timeout(600)
             await save(page, "welcome")
@@ -151,6 +151,7 @@ async def shots(url, first_url, home, only):
             if wanted("answer"):
                 await open_chat(page, stair)
                 await page.locator(".msg.assistant details.activity summary").last.click()
+                await page.evaluate("const q = document.querySelector('.msg.user'); q.style.scrollMarginTop = '48px'; q.scrollIntoView()")  # the question at the top
                 await save(page, "answer")
             if wanted("answer-actions"):
                 await open_chat(page, stair)

@@ -1,7 +1,8 @@
 # DESIGN.md
 
 How Para looks and behaves, and the rules for changing it. Screenshots are in `docs/screenshots/` (regenerate them
-when the interface changes).
+when the interface changes: `docs/take_screenshots.py` takes all but `reader-description.png` from a throwaway app
+folder with real answers in it; that one needs a library with a description a person has checked).
 
 ## Principles
 
@@ -54,10 +55,15 @@ time someone adds a file.
 | Built-in engine: model cards, recommended one marked | `setup-builtin.png` |
 | Empty chat with example questions | `welcome.png` |
 | Answer with inline citations, activity expanded | `answer.png` |
+| Under an answer: the cited list, Copy with references and Ask again | `answer-actions.png` |
+| An answer whose citations rest on a search extract (dashed citations, the note, "Extract only" in the cited list) | `extract-only.png` |
+| The figure note: a figure the cited passage doesn't hold | `figure-note.png` |
+| Find in chats: the chats that hold the words, with where | `find-in-chats.png` |
 | Answer with the reader open at the cited table | `answer-reader.png`, `answer-reader-dark.png` |
 | Reader showing a diagram, and enlarged | `reader-diagram.png`, `reader-diagram-zoom.png` |
 | Reader: a diagram's description, checked by a person (opened) | `reader-description.png` |
 | Library: documents by group, direct search | `library.png`, `library-search.png` |
+| Library: Changed in this edition, opened | `library-changes.png` |
 | Your files: permission prompt, file list with notes | `files-permission.png`, `files.png` |
 | Phone width | `narrow.png` |
 | Website demo: question, cited answer, reader (video) | `demo.mp4`, `demo.webm`, poster `demo.jpg` |
