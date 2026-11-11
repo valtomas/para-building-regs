@@ -516,9 +516,19 @@ def _borne_out_by(pid, info, library):
     text = library.text(pid)
     named = {f"{kind} {number}" for kind, number in NAMED_FIGURE.findall(text)}
     parts = [text, info.get("ref") or "", info.get("heading") or ""]
-    if named and info.get("key"):
-        parts += [library.text(other) for other, ref, _heading, _hash in library.anchors(pid, info["key"])
-                  if other != pid and named & set(ref.split(", "))]
+    if not info.get("key"):
+        return " ".join(parts)
+    others = [(other, ref) for other, ref, _heading, _hash in library.anchors(pid, info["key"]) if other != pid]
+    parts += [library.text(other) for other, ref in others if named & set(ref.split(", "))]
+    # And the other way round: a figure cited to a diagram or table may be in the passage that names it. A graph has no
+    # words of its own, and the note that reads it off is in the table beside it ("1:14 for a 4m going… (see Diagram
+    # 3)", ADM Vol 2 Table 1).
+    own = {label for label in (info.get("ref") or "").split(", ") if NAMED_FIGURE.fullmatch(label)}
+    if own:
+        for other, _ref in others:
+            there = library.text(other)
+            if own & {f"{kind} {number}" for kind, number in NAMED_FIGURE.findall(there)}:
+                parts.append(there)
     return " ".join(parts)
 
 

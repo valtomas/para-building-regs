@@ -436,6 +436,13 @@ drawn.add_source("ADK", "Approved Document K", "ADK", "approved-document", [
 para = drawn.describe("r1")
 check([f["figure"] for f in core.check_figures("Guarding should be 1100 mm, not 375 mm [r1].", {"r1": para}, Library_of(drawn))]
       == ["375 mm"], "a figure in the diagram a paragraph names counts as in the paragraph; another diagram's doesn't")
+drawn.add_source("ADM2", "Approved Document M volume 2", "ADM2", "approved-document", [
+    {"ref": "Table 1", "text": "Table 1 Limits for ramp gradients. 5m | 1:15. Interpolate: 1:14 for a 4m going (see Diagram 3)."},
+    {"ref": "Diagram 3", "text": "Diagram 3 Relationship of ramp gradient to the going of a flight"}])
+graph = next(pid for pid, ref, _h, _d in drawn.anchors("ADM2") if ref == "Diagram 3")
+check([f["figure"] for f in core.check_figures(f"1:14 for a 4 m going, or 7 m [{graph}].", {graph: drawn.describe(graph)},
+                                               Library_of(drawn))] == ["7 m"],
+      "a figure cited to a diagram counts if the passage that names the diagram holds it")
 check(core.check_figures("Between 900\u202fmm and 1\u202f100\u202fmm [r1].", {"r1": para}, Library_of(drawn)) == [],
       "a thousand written with a narrow space (1 100 mm) is one figure, not \"100 mm\"")
 drawn.close()
