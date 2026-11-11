@@ -397,6 +397,13 @@ check(kept_chat["turns"][0]["library"] == "2026.11.03" and kept_chat["turns"][0]
       "a turn records its library's edition and where its messages start")
 
 
+class Library_of:
+    """A store standing in for the library, for checks that need only its text and anchors."""
+
+    def __init__(self, store):
+        self.text, self.anchors = store.text, lambda pid, key=None, short=None: store.anchors(key, short)
+
+
 class Scripted:
     """An engine that searches once, then answers citing the first result without reading it."""
     model = "scripted"
@@ -419,6 +426,40 @@ cited = next(iter(done["cites"].values()))
 check(cited["read"] is False, "a passage cited from a search result's extract alone is marked as not read")
 check([f["figure"] for f in done["figures"]] == ["900 mm", "30 minutes"] and done["figures"][0]["ids"] == [cited["id"]],
       "figures that aren't in the passage cited are flagged; ones that are, in other units, or the person's own aren't")
+
+# a paragraph that leaves its figure to a diagram ("the height shown in Diagram 3.1") bears that figure out
+drawn = Store(os.path.join(TMP, "drawn.sqlite"), "r")
+drawn.add_source("ADK", "Approved Document K", "ADK", "approved-document", [
+    {"ref": "3.2", "text": "3.2 Ensure that guarding is, as a minimum, the height shown in Diagram 3.1."},
+    {"ref": "Diagram 3.1", "text": "Diagram 3.1 Guarding design. Text in the drawing: 900mm; 1100mm"},
+    {"ref": "Diagram 3.2", "text": "Diagram 3.2 Barriers. Text in the drawing: 375mm"}])
+para = drawn.describe("r1")
+check([f["figure"] for f in core.check_figures("Guarding should be 1100 mm, not 375 mm [r1].", {"r1": para}, Library_of(drawn))]
+      == ["375 mm"], "a figure in the diagram a paragraph names counts as in the paragraph; another diagram's doesn't")
+drawn.add_source("ADM2", "Approved Document M volume 2", "ADM2", "approved-document", [
+    {"ref": "Table 1", "text": "Table 1 Limits for ramp gradients. 5m | 1:15. Interpolate: 1:14 for a 4m going (see Diagram 3)."},
+    {"ref": "Diagram 3", "text": "Diagram 3 Relationship of ramp gradient to the going of a flight"}])
+graph = next(pid for pid, ref, _h, _d in drawn.anchors("ADM2") if ref == "Diagram 3")
+check([f["figure"] for f in core.check_figures(f"1:14 for a 4 m going, or 7 m [{graph}].", {graph: drawn.describe(graph)},
+                                               Library_of(drawn))] == ["7 m"],
+      "a figure cited to a diagram counts if the passage that names the diagram holds it")
+check(core.check_figures("Between 900\u202fmm and 1\u202f100\u202fmm [r1].", {"r1": para}, Library_of(drawn)) == [],
+      "a thousand written with a narrow space (1 100 mm) is one figure, not \"100 mm\"")
+drawn.close()
+
+# a paragraph that a new edition sets in a run with its neighbour is found there, and said to have changed
+from para import anchors  # noqa: E402
+
+
+class Regrouped:
+    def anchors(self, _pid, _key, _short=None):
+        return [("r7", "1.24", "", "h1"), ("r8", "1.25–1.26", "", "h2"), ("r9", "1.27", "", "h3")]
+
+
+check(anchors.locate(Regrouped(), {"id": "r3", "key": "adm2", "ref": "1.26", "hash": "gone"}, {}) == ("r8", False) and
+      anchors.locate(Regrouped(), {"id": "r3", "key": "adm2", "ref": "1.26–1.28", "hash": "gone"}, {}) == ("r8", False) and
+      anchors.locate(Regrouped(), {"id": "r3", "key": "adm2", "ref": "1.30", "hash": "gone"}, {}) == (None, False),
+      "a citation to a paragraph now in a run with its neighbour opens that run, marked changed")
 
 # a saved citation is found again when its id has changed, by its fingerprint, then by its reference
 rows = {ref: (pid, digest) for pid, ref, _, digest in server.library.regs.anchors("ADK")}
@@ -552,6 +593,10 @@ text, cites, dropped = core._check_citations("Competence [BR 2010, reg 11G(1), r
                                              {"r12", "r20", "r22"}, StubLibrary())
 check(text == "Competence (BR 2010, reg 11G(1)) [r12]. Duties [r20][r22]. Not." and set(cites) == {"r12", "r20", "r22"}
       and dropped == ["r99"], "citations inside the model's own brackets link; made-up ones still dropped")
+text, cites, dropped = core._check_citations("Within 10 days.【r12】 And more 【r20†L4-L9】. Not 【r99】.", {"r12", "r20"},
+                                             StubLibrary())
+check(text == "Within 10 days.[r12] And more [r20]. Not." and set(cites) == {"r12", "r20"} and dropped == ["r99"],
+      "citations in gpt-oss's brackets link; made-up ones still dropped")
 
 
 
@@ -876,6 +921,52 @@ if os.name != "nt":
     bundled.last_used = time.time() - 120
     check(not busy and bundled.stop_if_idle(minutes=1) and bundled.proc is None, "an idle engine is stopped")
 
+# two columns whose lines sit at different heights come out of pdftotext on alternate lines; a table as wide as the
+# page on such a page keeps its rows
+from para.splitter import unweave_columns  # noqa: E402
+
+words = "walls floors stairs doors roofs drains flues ramps lifts rooms halls yards".split()
+left = [f"the left column goes on about {w} at length" for w in words]
+right = [f"while the right one deals with {w} instead" for w in words]
+page = ["Table 1 Sound insulation values for walls and floors, as wide as the whole page",
+        "Walls" + " " * 70 + "40", "Floors" + " " * 69 + "45", "", ""]
+for one, two in zip(left, right):
+    page += [one, " " * 52 + two]
+unwoven = [ln.strip() for ln in unweave_columns("\n".join(page)).split("\n") if ln.strip()]
+check(unwoven[3:15] == left and unwoven[15:] == right, "staggered columns are read one after the other")
+check(unwoven[1:3] == ["Walls" + " " * 70 + "40", "Floors" + " " * 69 + "45"], "a page-wide table above them keeps its rows")
+single = "\n".join(f"{n}.1 A page of one column, whose lines run most of the way across the page, {n}" for n in range(30))
+check(unweave_columns(single) == single, "a page of one column is left as it is")
+
+# a page partly in step and partly not, with a list set in from the right column's edge: more lines start at the
+# list's indent than at the column, and that isn't the gutter (ADC page 26)
+mixed = [f"the left column goes on about {w} at length".ljust(52) + f"while the right one deals with {w}" for w in words[:6]]
+mixed += [f"and the left carries on alone about {w}" for w in words]
+mixed += [" " * 52 + "a. an item of a list in the right column", " " * 55 + "set in under its letter, and running on",
+          " " * 55 + "for a third line of the same item here", " " * 55 + "and a fourth line to finish the item off"] * 5
+unmixed = [ln.strip() for ln in unweave_columns("\n".join(mixed)).split("\n") if ln.strip()]
+check(unmixed[:18] == [ln[:52].strip() for ln in mixed[:6]] + mixed[6:18] and unmixed[18] == "while the right one deals with walls",
+      "a page partly in step is read a column at a time, not cut at a list's indent")
+
+# a cross-reference wrapped to the start of a line isn't the start of that paragraph (ADH 1.8: "(See paragraphs /
+# 1.11 and 1.30.)"), so the paragraphs after it keep their own numbers
+wrapped = split(["1.1 If the appliances are on the ground floor the pipe may discharge to a stub stack. (See paragraphs\n"
+                 "1.3 and 1.30.)\n" + "It goes on for a while about stacks and gullies and drains. " * 8 + "\n\n"
+                 "1.2 A branch pipe from a ground floor closet should only discharge directly to a drain if the depth "
+                 "is 1.3m or less. " + "And more about closets and drains to fill the passage out. " * 8])
+check([p["ref"] for p in wrapped] == ["1.1", "1.2"], "a cross-reference wrapped to a new line doesn't start a paragraph")
+
+# a table row that ends "…as in / Diagram 23." doesn't start Diagram 23: the rest of the table stays in the table
+# (ADJ Table 1, whose vent sizes were filed under the diagram)
+rows = split(["Table 1 Air supply to solid fuel appliances\n"
+              "Type of appliance                           Type and amount of ventilation\n"
+              "Open appliance, such as an open fire with   Permanently open air vents of at least 50% of the\n"
+              "no throat, e.g. a fire under a canopy as in cross sectional area of the flue.\n"
+              "Diagram 23.\n\n"
+              "Other appliance, such as a stove            300mm2/kW for the first 5kW of rated output\n"])
+check([p["ref"] for p in rows] == ["Table 1"] and "300mm2/kW" in rows[0]["text"],
+      "a label alone at the end of a sentence isn't a caption")
+
 # Approved Documents: which requirement a passage is under, from the document's own "deals with the following
 # requirement" openings, also when one is run into the end of the section before
 reqs = Store(os.path.join(TMP, "requirements.sqlite"), "r")
@@ -893,6 +984,88 @@ check("2.1 Roofs" not in walls["text"] and walls["next_id"] == f"r{reqs.passage_
       "a read stops where the next requirement starts")
 check(reqs.read(f"r{reqs.passage_rowid('ADZ', 2)}")["requirement"] == "Requirement Z2: Roofs",
       "a requirement run into the section before starts at its own section")
+
+# ligatures lost from a PDF's text are put back; a real word that only looks like another is left alone
+import build as library_build  # noqa: E402
+
+mend = library_build.ligature_fixer([
+    ["See fgure 3. The fgure shows an overfow pipe."],                                  # a document that lost them
+    ["Figure 1 and figure 2 show it; see the figure. An overflow, overflow, overflow."] * 2,
+    ["A frefghting shaft; su°ciently far; class A1fl; heated to 250°C. A defect."],
+    ["A defect in the work. Another defect."],
+    ["firefighting " * 6 + "sufficiently " * 3 + "fill " * 30 + "deflect " * 4]])
+check(mend("The fgure, an overfow, a frefghting lift, su°ciently") == "The figure, an overflow, a firefighting lift, sufficiently",
+      "lost ligatures are put back, two in a word and where a sign stands for one")
+check(mend("class A1fl, 250°C, a defect") == "class A1fl, 250°C, a defect", "a floor class, a temperature and a real word are left alone")
+
+# a page is read a column at a time from where its lines are (library/columns.py): the gutter, and what is set
+# across it
+import columns  # noqa: E402
+from figures import Line  # noqa: E402
+
+W, H = 600, 840
+left_col = [Line(40, 100 + 14 * n, 280, 110 + 14 * n, "left", 0) for n in range(20)]
+right_col = [Line(320, 105 + 14 * n, 560, 115 + 14 * n, "right", 1) for n in range(9)]  # shorter, and out of step
+two = left_col + right_col + [Line(40, 20, 560, 30, "RUNNING HEADER", 2), Line(40, 810, 560, 820, "footer 12", 3)]
+x = columns.gutter(W, H, two)
+check(x is not None and 280 < x < 320, "the gutter of a page with one short column, its lines out of step, is found")
+check(columns.gutter(W, H, [Line(40, 100 + 14 * n, 560, 110 + 14 * n, "across", 0) for n in range(30)]) is None,
+      "a page of one column has no gutter")
+check([b[0] for b in columns.bands(W, H, two, x)] == [True, False, True],
+      "the header and footer are read across the page, the columns between them one at a time")
+table = [Line(40, 400 + 14 * n, 150, 410 + 14 * n, "Walls", 4) for n in range(3)] + \
+        [Line(450, 400 + 14 * n, 470, 410 + 14 * n, "40", 5) for n in range(3)]
+above = [ln for ln in left_col + right_col if ln.y1 < 390]
+page = above + table + [Line(40, 500 + 14 * n, 280, 510 + 14 * n, "left", 0) for n in range(8)] + \
+    [Line(320, 500 + 14 * n, 560, 510 + 14 * n, "right", 1) for n in range(8)]
+wide, narrow = (30, 395, 570, 445), (30, 395, 290, 445)
+x = columns.gutter(W, H, page, [wide])
+check(x is not None and [b[0] for b in columns.bands(W, H, page, x, [wide])] == [False, True, False],
+      "a table as wide as the page is read across, with the columns above and below it")
+check([b[0] for b in columns.bands(W, H, page, x, [narrow])] == [False],
+      "a table in one column is read with its column")
+
+# the box found for a table can take in the page's text below it (ADE Table 0.2): the columns are still read one at a
+# time, and the table's own rows across
+swallowed = (30, 390, 570, 800)
+numbered = [ln for ln in page if ln.y0 >= 400] + [Line(40, 500, 60, 510, "0.3", 6), Line(320, 598, 340, 608, "0.7", 7)]
+x = columns.gutter(W, H, numbered, [swallowed])
+check(x is not None and [b[0] for b in columns.bands(W, H, numbered, x, [swallowed])] == [True, False],
+      "a table's box that took in the columns under it doesn't make the page one table")
+check(columns.gutter(W, H, table * 4 + two[-2:], [wide]) is None, "a page that is all table has no gutter")
+# text down one column and a table in the other (ADC page 15)
+beside = left_col + [Line(330 + 120 * (n % 2), 100 + 14 * (n // 2), 380 + 120 * (n % 2), 110 + 14 * (n // 2), "cell", 8)
+                     for n in range(30)]
+x = columns.gutter(W, H, beside, [(320, 95, 570, 320)])
+check(x is not None and 280 < x < 320, "text in one column beside a table in the other is two columns")
+
+# a wide box that runs into a figure keeping to one column isn't wide (ADH page 25: three tables side by side)
+both = left_col + right_col
+x = columns.gutter(W, H, both)
+check([b[0] for b in columns.bands(W, H, both, x, [(30, 200, 570, 300), (320, 150, 570, 260)])] == [False],
+      "a table's box that runs into a table in one column isn't read across the page")
+
+# a number that ends a caption or a cross-reference isn't the next paragraph's ("Diagram 2.37 Wall type 4.1", then a
+# heading; "…of a type 3.1 or 3.2 / separating wall": ADE lost Sections 2 and 3's numbers to these)
+ends = split(["2.1 A wall of this type should be built as shown, with ties, in\nDiagram 2.37 Wall type 4.1\n"
+              "Junction requirements for the wall, which go on for long enough. " * 6 + "\n\n"
+              "2.2 The floor should not be continuous under the core of a type 3.1 or 3.2\n"
+              "separating wall if the floor is heavy. " + "And more about floors and walls to fill it out. " * 8])
+check(not [p["ref"] for p in ends if p["ref"] in ("4.1", "3.2")], "a number ending a caption or a sentence isn't a paragraph's")
+
+# a numbered paragraph's passage ends where the document turns to its next requirement (ADF1 3.32 ran on into
+# regulation 39)
+turns = split(["1.1 If an extractor fan is replaced and it uses the existing cabling, this does not need to be notified.\n\n"
+               "This section deals with the requirements of Part F1(2) of Schedule 1 and regulations 39, 42 and 44.\n\n"
+               "Information about ventilation. " + "The person carrying out the work shall give information. " * 8])
+check(len(turns) == 2 and turns[0]["ref"] == "1.1" and "regulations 39" not in turns[0]["text"] and turns[1]["ref"] == "",
+      "a numbered paragraph ends where the next requirement opens")
+
+# "…as described under / paragraph 5.2 for framed…" doesn't start paragraph 5.2 (ADA 5.1d)
+crossref = split(["5.1 The requirement will be met by providing ties as described in the Standards listed under\n"
+                  "paragraph 5.2 for framed construction. " + "And more about ties and key elements to fill it. " * 9 +
+                  "\n\n5.2 Details of the ties are given in the following Standards. " + "A standard, and another. " * 16])
+check([p["ref"] for p in crossref] == ["5.1", "5.2"], "a cross-reference in words at the start of a line isn't a paragraph")
 
 print(f"\n{len(failures)} failed" if failures else "\nall passed")
 sys.exit(1 if failures else 0)

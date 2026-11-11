@@ -43,6 +43,8 @@ passage ids; the app checks every citation. It must stay:
 | `library/legislation.py` | Turns legislation XML into passages cited as `reg 7`, `s 120D`, `Sch 1 Pt B` |
 | `library/sources.json` | What goes into the library |
 | `library/check.py` | Compares a new library with the published one and fails the build if a document is missing or much smaller, so a broken rebuild never reaches installed apps |
+| `library/columns.py` | Reads a PDF's two-column pages a column at a time, from where their lines are: finds the gutter, reads what is set across it whole (a heading, a wide table or drawing, the header and footer) and the left column before the right between those |
+| `library/order.py` | Checks reading order against the PDFs: reads each page a column at a time by another route and scores how much of each passage is in that order; `--list` names the passages still woven together |
 | `packaging/` | PyInstaller spec and launcher; the icon (`icon.png`, `icon.ico`, drawn by `make_icon.py`); `windows/para.iss` (Inno Setup: `Para-windows-setup.exe`); `linux/build.sh` (`Para-linux.deb` and `.AppImage`); `linux/install.sh` adds the tarball's app to the applications menu |
 | `para/qtprobe.py` | Linux: checks in a separate process that Qt can open a window (Qt aborts instead of raising), so the app falls back to the browser |
 | `site/` | The website, pararegs.co.uk: one static page in the app's look; download buttons read the latest GitHub release |
@@ -82,8 +84,14 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
 - **Library quality beats model cleverness.** If answers are wrong because a passage is garbled, fix
   `splitter.py` or `build.py`, rebuild, and look at the passages (`sqlite3 library/dist/regs.sqlite`). Check tables
   keep their numbers and paragraph refs stay in sequence (`splitter.plausible`). Two-column pages are read a column
-  at a time (`splitter.unweave_columns`) and contents and index pages are skipped (`splitter.skipped_pages`): when
-  you change either, compare passage counts and refs per document before and after.
+  at a time (`splitter.unweave_columns`), also where the columns' lines sit at different heights and come out on
+  alternate lines (ADC, ADE, ADG, ADH, ADJ: `_staggered_gutter`); on such a page a table as wide as the page keeps its
+  rows, since cutting it at the gutter loses its right-hand columns. Contents and index pages are skipped
+  (`splitter.skipped_pages`). When you change either, compare passage counts and refs per document before and after. Then run
+  `library/order.py`: it counts the passages that don't read in the PDF's order (39 at the last count: covers, copyright pages and
+  lists of standards, no numbered paragraph), and that number should only go down. Two-column pages are read by `library/columns.py`,
+  from the positions of their lines; `splitter.unweave_columns` is what's left for the person's own files and for
+  pages `columns.py` doesn't take.
 - **Diagrams and tables**: `library/figures.py` finds each one from its caption and crops it from the page. Whether a
   document puts diagram captions above or below the drawing is decided by a vote, per document and kind of caption
   (ADA captions its Diagrams above and its Figures below); tables are always captioned above. A caption can sit just

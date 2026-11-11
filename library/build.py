@@ -28,6 +28,7 @@ sys.path.insert(0, HERE)
 from para.myfiles import html_text  # noqa: E402
 from para.splitter import clean_pages, skipped_pages, split, unweave_columns  # noqa: E402
 from para.store import Store  # noqa: E402
+import columns  # noqa: E402
 import describe  # noqa: E402
 import figures  # noqa: E402
 import legislation  # noqa: E402
@@ -77,6 +78,11 @@ def pdf_passages(path):
     pages = pdf_pages(path)
     skip = skipped_pages(clean_pages(pages))
     figs = figures.find(path, skip_pages=skip)
+    # pages set in two columns are read again from where their lines are, a column at a time (columns.py)
+    # (contents and index pages stay as they were: that is the text they are known by, and they are left out)
+    for page, text in columns.read(path, figs).items():
+        if page not in skip:
+            pages[page - 1] = text
     for f in figs:
         if f["kind"] != "Table":  # a table's text is its content: keep it
             pages[f["page"] - 1] = figures.strip_labels(pages[f["page"] - 1], f["words"], f["labels"])
@@ -233,26 +239,47 @@ def legislation_items(cfg, add):
             if meta.get("modified") else "", passages=legislation.passages(xml, kind=kind))
 
 
-def ligature_fixer(texts):
-    """Some PDFs lose their fi/fl/ff ligatures in extraction ("fre resisting foor"). Words that are rare in the whole
-    library but common with "fi"/"fl"/"ffi"/"ffl" in place of an "f" are put back."""
+def ligature_fixer(docs):
+    """Some PDFs lose their fi/fl/ff ligatures in extraction ("fre resisting foor", or "su°ciently" with a stray sign
+    where the ligature was). docs: one list of texts per document. A word is put back where it is rare in the whole
+    library but common with "fi"/"fl"/"ffi"/"ffl" in place of an "f", in one place or two ("frefghting"). A word
+    found in one document only, which never has the mended word, needs no such margin ("fgure" 16 times in ADG,
+    "figure" 33 times elsewhere): that is how a document that lost its ligatures looks, and a real word that only
+    resembles another ("defect", "deflect") is in more documents than one."""
     import collections
     import unicodedata
-    counts = collections.Counter()
-    for t in texts:
-        counts.update(w.lower() for w in re.findall(r"[A-Za-z]+", unicodedata.normalize("NFKC", t)))
+    word = r"[A-Za-z]+(?:°[A-Za-z]+)*"
+    counts, where = collections.Counter(), collections.defaultdict(set)
+    for n, texts in enumerate(docs):
+        for t in texts:
+            for w in re.findall(word, unicodedata.normalize("NFKC", t)):
+                counts[w.lower()] += 1
+                where[w.lower()].add(n)
+
+    def mended(w):
+        for i, ch in enumerate(w):
+            if ch == "f":
+                for ins in ("i", "l", "fi", "fl", "f"):
+                    yield w[:i + 1] + ins + w[i + 1:]
+            elif ch == "°":
+                for lig in ("ffi", "ffl", "ff", "fi", "fl"):
+                    yield w[:i] + lig + w[i + 1:]
+
     fixes = {}
     for w, n in counts.items():
-        if "f" not in w:
+        if "f" not in w and "°" not in w:
             continue
+        once = set(mended(w))
         best = None
-        for i, ch in enumerate(w):
-            if ch != "f":
-                continue
-            for ins in ("i", "l", "fi", "fl", "f"):
-                cand = w[:i + 1] + ins + w[i + 1:]
-                if counts.get(cand, 0) >= max(3, n * 3) and (not best or counts[cand] > counts[best]):
-                    best = cand
+        # two ligatures lost only in a long word: "fl" (the floor classes, "A1fl") is not "fill" with both gone
+        twice = {c2 for c in once for c2 in mended(c)} if len(w) >= 8 else set()
+        for cand in once | twice:
+            k = counts.get(cand, 0)
+            sure = "°" in w and "°" not in cand and k >= 3  # no word has a degree sign inside it
+            common = "°" not in cand and k >= max(3, n * 3)
+            alone = cand in once and len(w) >= 5 and k >= 3 and len(where[w]) == 1 and not where[w] & where[cand]
+            if (sure or common or alone) and (not best or k > counts[best]):
+                best = cand
         if best:
             fixes[w] = best
 
@@ -265,7 +292,8 @@ def ligature_fixer(texts):
             if not new:
                 return w
             return new.capitalize() if w[0].isupper() and not w.isupper() else new.upper() if w.isupper() else new
-        return re.sub(r"[A-Za-z]+", sub, text)
+        return re.sub(word, sub, text)
+    fix.fixes = fixes
     return fix
 
 
@@ -341,7 +369,7 @@ def main():
     if "legislation" in only:
         legislation_items(cfg, add)
 
-    fix = ligature_fixer([p["text"] for kw in pending for p in kw["passages"]])
+    fix = ligature_fixer([[p["text"] for p in kw["passages"]] for kw in pending])
     for kw in pending:
         for p in kw["passages"]:
             p["text"], p["heading"] = fix(p["text"]), fix(p.get("heading") or "")
