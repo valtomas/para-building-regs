@@ -451,6 +451,8 @@ def _check_citations(answer, known, library):
         return f"({words}) {chips}".rstrip() if words else chips
 
     answer = (answer or "").replace("\x00", "")
+    # gpt-oss writes its citations in its own brackets, sometimes with a line range: 【r12】, 【r12†L4-L9】
+    answer = re.sub(r"【\s*([rf]\d+)(?:†[^】]*)?\s*】", r"[\1]", answer)
     for group in CITE_GROUPS:  # square brackets first: "(ADB Vol 1, para 2.13 [r12])"
         answer = group.sub(fix, answer)
     answer = re.sub(r"\x00([rf]\d+)\x00", r"[\1]", answer)

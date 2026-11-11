@@ -570,6 +570,10 @@ text, cites, dropped = core._check_citations("Competence [BR 2010, reg 11G(1), r
                                              {"r12", "r20", "r22"}, StubLibrary())
 check(text == "Competence (BR 2010, reg 11G(1)) [r12]. Duties [r20][r22]. Not." and set(cites) == {"r12", "r20", "r22"}
       and dropped == ["r99"], "citations inside the model's own brackets link; made-up ones still dropped")
+text, cites, dropped = core._check_citations("Within 10 days.【r12】 And more 【r20†L4-L9】. Not 【r99】.", {"r12", "r20"},
+                                             StubLibrary())
+check(text == "Within 10 days.[r12] And more [r20]. Not." and set(cites) == {"r12", "r20"} and dropped == ["r99"],
+      "citations in gpt-oss's brackets link; made-up ones still dropped")
 
 
 
