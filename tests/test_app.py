@@ -923,8 +923,6 @@ check(unmixed[:18] == [ln[:52].strip() for ln in mixed[:6]] + mixed[6:18] and un
 
 # a cross-reference wrapped to the start of a line isn't the start of that paragraph (ADH 1.8: "(See paragraphs /
 # 1.11 and 1.30.)"), so the paragraphs after it keep their own numbers
-from para.splitter import split  # noqa: E402
-
 wrapped = split(["1.1 If the appliances are on the ground floor the pipe may discharge to a stub stack. (See paragraphs\n"
                  "1.3 and 1.30.)\n" + "It goes on for a while about stacks and gullies and drains. " * 8 + "\n\n"
                  "1.2 A branch pipe from a ground floor closet should only discharge directly to a drain if the depth "
@@ -959,6 +957,19 @@ check("2.1 Roofs" not in walls["text"] and walls["next_id"] == f"r{reqs.passage_
       "a read stops where the next requirement starts")
 check(reqs.read(f"r{reqs.passage_rowid('ADZ', 2)}")["requirement"] == "Requirement Z2: Roofs",
       "a requirement run into the section before starts at its own section")
+
+# ligatures lost from a PDF's text are put back; a real word that only looks like another is left alone
+import build as library_build  # noqa: E402
+
+mend = library_build.ligature_fixer([
+    ["See fgure 3. The fgure shows an overfow pipe."],                                  # a document that lost them
+    ["Figure 1 and figure 2 show it; see the figure. An overflow, overflow, overflow."] * 2,
+    ["A frefghting shaft; su°ciently far; class A1fl; heated to 250°C. A defect."],
+    ["A defect in the work. Another defect."],
+    ["firefighting " * 6 + "sufficiently " * 3 + "fill " * 30 + "deflect " * 4]])
+check(mend("The fgure, an overfow, a frefghting lift, su°ciently") == "The figure, an overflow, a firefighting lift, sufficiently",
+      "lost ligatures are put back, two in a word and where a sign stands for one")
+check(mend("class A1fl, 250°C, a defect") == "class A1fl, 250°C, a defect", "a floor class, a temperature and a real word are left alone")
 
 print(f"\n{len(failures)} failed" if failures else "\nall passed")
 sys.exit(1 if failures else 0)
