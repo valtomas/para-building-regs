@@ -209,6 +209,12 @@ was downloaded by the app (llama.cpp b12078) and asked the 36 questions, with Ge
   cladding question, where it gave A2-s1, d0 and didn't add A1. It is slow: it reasons before answering, 57 s at the
   median here and up to three minutes, on a computer far faster than a 16 GB laptop. One run, so a slip that comes
   one time in four may not show. It is the suggestion for 16 GB; Gemma stays for 12 GB and as the quicker choice.
+- **Granite a second time** (same evening, same library): 33 of 36, every answer cited, no made-up ids, a passage
+  opened for every answer (3 extract-only citations in 72), 62 s at the median and up to four minutes. So 35 and 33
+  over two runs: it holds. Its one wrong figure was the landing in the loft project, 1100 mm for 900, read from the
+  wrong row of ADK Diagram 3.1 and cited to it, which the figure note can't catch because 1100 is in the diagram. It
+  also added details of its own (a "±100 mm build tolerance", "100 °C", a 12 mm hearth); the figure note flagged
+  every one of those, six flags in all, all true.
 - All ten flags in this run are true.
 - **The scoring was reading typography as error.** Granite and gpt-oss write "1 100 mm" and "12 weeks" with narrow
   spaces and "A2‑s1" with a non-breaking hyphen, and "45 DnT,w + Ctr dB" for 45 dB; the checks now read those
