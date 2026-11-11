@@ -447,6 +447,20 @@ check(core.check_figures("Between 900\u202fmm and 1\u202f100\u202fmm [r1].", {"r
       "a thousand written with a narrow space (1 100 mm) is one figure, not \"100 mm\"")
 drawn.close()
 
+# a paragraph that a new edition sets in a run with its neighbour is found there, and said to have changed
+from para import anchors  # noqa: E402
+
+
+class Regrouped:
+    def anchors(self, _pid, _key, _short=None):
+        return [("r7", "1.24", "", "h1"), ("r8", "1.25–1.26", "", "h2"), ("r9", "1.27", "", "h3")]
+
+
+check(anchors.locate(Regrouped(), {"id": "r3", "key": "adm2", "ref": "1.26", "hash": "gone"}, {}) == ("r8", False) and
+      anchors.locate(Regrouped(), {"id": "r3", "key": "adm2", "ref": "1.26–1.28", "hash": "gone"}, {}) == ("r8", False) and
+      anchors.locate(Regrouped(), {"id": "r3", "key": "adm2", "ref": "1.30", "hash": "gone"}, {}) == (None, False),
+      "a citation to a paragraph now in a run with its neighbour opens that run, marked changed")
+
 # a saved citation is found again when its id has changed, by its fingerprint, then by its reference
 rows = {ref: (pid, digest) for pid, ref, _, digest in server.library.regs.anchors("ADK")}
 stairs, guarding = rows["1.1–1.3"], rows["3.2"]

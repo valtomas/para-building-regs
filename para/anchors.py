@@ -6,6 +6,7 @@ has taken its id."""
 import re
 
 ID = re.compile(r"\[([rf]\d+)\]")
+PARAGRAPH = re.compile(r"(\d+)\.(\d+)")
 
 
 def locate(library, info, cache):
@@ -30,7 +31,21 @@ def locate(library, info, cache):
     named = [r for r in rows if r[1] == ref and (ref or r[2] == heading) and (ref or heading)]
     if len(named) > 1:
         named = [r for r in named if r[2] == heading]
-    return (named[0][0], not want) if len(named) == 1 else (None, False)
+    if len(named) == 1:
+        return named[0][0], not want
+    # A paragraph taken into a run with its neighbour, or let out of one ("1.26" is now in "1.25–1.26"): the
+    # passage that holds the first paragraph the citation named, as changed.
+    first = PARAGRAPH.match(ref)
+    held = [r for r in rows if first and _holds(r[1], int(first.group(1)), int(first.group(2)))] if not named else []
+    return (held[0][0], False) if len(held) == 1 else (None, False)
+
+
+def _holds(ref, section, number):
+    """Is paragraph section.number this passage's, or within its run ("2.2–2.4" holds 2.3)?"""
+    m = re.fullmatch(r"(\d+)\.(\d+)(?:–(\d+)\.(\d+))?", ref or "")
+    if not m or int(m.group(1)) != section or (m.group(3) and m.group(3) != m.group(1)):
+        return False
+    return int(m.group(2)) <= number <= int(m.group(4) or m.group(2))
 
 
 def _infos(turn):
