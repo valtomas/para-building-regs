@@ -911,6 +911,26 @@ check(unwoven[1:3] == ["Walls" + " " * 70 + "40", "Floors" + " " * 69 + "45"], "
 single = "\n".join(f"{n}.1 A page of one column, whose lines run most of the way across the page, {n}" for n in range(30))
 check(unweave_columns(single) == single, "a page of one column is left as it is")
 
+# a page partly in step and partly not, with a list set in from the right column's edge: more lines start at the
+# list's indent than at the column, and that isn't the gutter (ADC page 26)
+mixed = [f"the left column goes on about {w} at length".ljust(52) + f"while the right one deals with {w}" for w in words[:6]]
+mixed += [f"and the left carries on alone about {w}" for w in words]
+mixed += [" " * 52 + "a. an item of a list in the right column", " " * 55 + "set in under its letter, and running on",
+          " " * 55 + "for a third line of the same item here", " " * 55 + "and a fourth line to finish the item off"] * 5
+unmixed = [ln.strip() for ln in unweave_columns("\n".join(mixed)).split("\n") if ln.strip()]
+check(unmixed[:18] == [ln[:52].strip() for ln in mixed[:6]] + mixed[6:18] and unmixed[18] == "while the right one deals with walls",
+      "a page partly in step is read a column at a time, not cut at a list's indent")
+
+# a cross-reference wrapped to the start of a line isn't the start of that paragraph (ADH 1.8: "(See paragraphs /
+# 1.11 and 1.30.)"), so the paragraphs after it keep their own numbers
+from para.splitter import split  # noqa: E402
+
+wrapped = split(["1.1 If the appliances are on the ground floor the pipe may discharge to a stub stack. (See paragraphs\n"
+                 "1.3 and 1.30.)\n" + "It goes on for a while about stacks and gullies and drains. " * 8 + "\n\n"
+                 "1.2 A branch pipe from a ground floor closet should only discharge directly to a drain if the depth "
+                 "is 1.3m or less. " + "And more about closets and drains to fill the passage out. " * 8])
+check([p["ref"] for p in wrapped] == ["1.1", "1.2"], "a cross-reference wrapped to a new line doesn't start a paragraph")
+
 # Approved Documents: which requirement a passage is under, from the document's own "deals with the following
 # requirement" openings, also when one is run into the end of the section before
 reqs = Store(os.path.join(TMP, "requirements.sqlite"), "r")

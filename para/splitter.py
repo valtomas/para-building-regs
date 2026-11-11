@@ -3,7 +3,7 @@ or "Table 3.1" rather than at an arbitrary chunk. Used for the regulations libra
 import collections
 import re
 
-PARA = re.compile(r"""^(?:para(?:graph)?\s+)?(\d{1,2}\.\d{1,3})\.?\s+(?=[A-Za-z(\[•‘“'"])(?!(?:m|mm|kg|kN|kW|W|m2|m²|m3|s|l|litres|metres|per)\b)""")
+PARA = re.compile(r"""^(?:para(?:graph)?\s+)?(\d{1,2}\.\d{1,3})\.?\s+(?=[A-Za-z(\[•‘“'"])(?!(?:m|mm|kg|kN|kW|W|m2|m²|m3|s|l|litres|metres|per)\b)(?!(?:and|to|or)\s+\d)""")
 FIGURE = re.compile(r"^(Table|Diagram|Figure)\s+(\d{1,2}[.\-]\d{1,3}[a-z]?|[A-Z]?\d{1,2}[a-z]?)\b", re.I)
 HEADING = re.compile(r"^(?:#{1,6}\s+.+|(?:Section|Chapter|Appendix|Annex|Schedule|Part)\s+[\dA-Z]{1,3}(?::|\s[-–—]|\.)?\s+[A-Z].{2,110}|"
                      r"Requirement\s+[A-T]\d+:.{0,80})$")
@@ -63,17 +63,20 @@ def _staggered_gutter(lines, width):
     def clear(ln, x):
         return not ln[x - 1:x + 2].strip()
 
-    best, best_n = None, 0
-    for x in range(int(width * 0.35), int(width * 0.65)):
-        n = sum(1 for ln in text if clear(ln, x) and ln[x + 2:x + 3].strip())  # right-column lines starting here
-        if n > best_n:
-            best, best_n = x, n
-    if best is None or best_n < 8:
-        return None
-    left = sum(1 for ln in text if ln[:best].strip() and not ln[best:].strip())
-    right = sum(1 for ln in text if ln[best:].strip() and not ln[:best].strip())
-    crossing = sum(1 for ln in text if not clear(ln, best))
-    return best if left >= 8 and right >= 8 and crossing <= 0.15 * len(text) else None
+    def starts(x):
+        return sum(1 for ln in text if clear(ln, x) and ln[x + 2:x + 3].strip())  # right-column lines starting here
+
+    # The place most lines start at can be the indent of a list in the right column ("a. well compacted…" then its
+    # lines set in under it, ADC page 26), which the lines above it cross: take the best place that is a gutter.
+    for x in sorted(range(int(width * 0.35), int(width * 0.65)), key=starts, reverse=True):
+        if starts(x) < 8:
+            return None
+        left = sum(1 for ln in text if ln[:x].strip() and not ln[x:].strip())
+        right = sum(1 for ln in text if ln[x:].strip() and not ln[:x].strip())
+        crossing = sum(1 for ln in text if not clear(ln, x))
+        if left >= 8 and right >= 8 and crossing <= 0.15 * len(text):
+            return x
+    return None
 
 
 def unweave_columns(page):
