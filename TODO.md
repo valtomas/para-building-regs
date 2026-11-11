@@ -13,6 +13,9 @@ were worked through at the workstation on 11 November 2026 with real models and 
 - **Built-in models**: gpt-oss 20B, Qwen3 8B and Qwen3 30B-A3B were each downloaded by the app and asked the 36
   questions. All three answer with citations. Qwen3 8B was taken out of the list all the same: it did no better
   than the 4B, at five times the wait, and made up passage ids.
+- **The built-in list was rewritten from the tests** (run E): Nemotron 3.5 Lightning and Qwen3.5 35B-A3B, the two
+  best on Lemonade, were run through the built-in engine and replace Qwen3 30B-A3B; Gemma 4 E4B is the suggestion
+  for 12 to 16 GB.
 - **The 36 questions on Lemonade** (Nemotron 3.5, Qwen3.5-35B, Gemma 4 E4B), every answer read, every flagged figure
   judged: 20 true, 4 false alarms from two causes, both fixed with tests.
 - **The library**: two-column pages are now read from where their lines are (`library/columns.py`). By
@@ -50,8 +53,13 @@ were worked through at the workstation on 11 November 2026 with real models and 
 
 ## Known and left
 
-- **Someone who installed Qwen3 8B** keeps the 5 GB file in their app folder, but the app no longer lists it and
-  asks them to choose a model again. Nothing removes the file for them.
+- **Someone who installed Qwen3 8B or Qwen3 30B-A3B** keeps the file in their app folder (5 and 18.6 GB), but the
+  app no longer lists it and asks them to choose a model again. Nothing removes the file for them.
+- **Nemotron 3.5 Super (120B)** isn't listed: its GGUF comes in three parts (87 GB at Q4) and the engine downloads
+  one file a model. On the workstation the graphics side can address 66 GB, so part of it would run on the
+  processor.
+- **A Mac can give its graphics side about three quarters of its memory**, and `engine.recommend` goes by the whole
+  of it: a 32 GB Mac is suggested Qwen3.5, which may not fit. The memory check stops a load that won't.
 - **39 passages out of order** (`python3 library/order.py --list`): covers, copyright pages, lists of other approved
   documents and of standards. A few running-header fragments are still left in passages ("N EBUILDINGS VERSION").
 - **Figure boxes**: `figures.py` gives ADE Table 0.2 the whole page and ADH Table A1 the full width. The text is read

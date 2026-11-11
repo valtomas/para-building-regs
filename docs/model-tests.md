@@ -181,6 +181,36 @@ What reading the answers adds:
   same answer's "1 100 mm" for dwellings is a true flag.
 - After the fixes the same answers give 20 flags, none of them a false alarm.
 
+### Run E: the Lemonade models through the built-in engine, and the list rewritten
+
+The two models that did best on Lemonade had never been run on the engine the app installs, so weren't listed. Each
+was downloaded by the app (llama.cpp b12078) and asked the 36 questions, with Gemma 4 E4B as a small candidate:
+
+| Model | File | Right figures | Searched | Cited | Right passage cited | Made-up ids removed | Figures flagged | Extract-only citations | Median time |
+|---|---|---|---|---|---|---|---|---|---|
+| Qwen3.5 35B-A3B | 22.2 GB | 33/36 | 36/36 | 34/36 | 29/36 | 1 | 4 | 56 of 125 | 18 s |
+| NVIDIA Nemotron 3.5 Lightning 30B-A3B | 25.5 GB | 31/36 | 36/36 | 33/36 | 29/36 | 0 | 3 | 11 of 81 | 23 s |
+| Gemma 4 E4B | 5.0 GB | 22/36 | 36/36 | 36/36 | 24/36 | 0 | 2 | 35 of 71 | 22 s |
+
+- **Both big models hold up**: 33 and 31 right against 28 for Qwen3 30B-A3B Instruct 2507, which they replace in the
+  list. They are level on accuracy over the two engines (34 and 34 on Lemonade); Nemotron is suggested first because
+  it opens the passage before citing it (11 extract-only citations against 56). On this run Qwen3.5 gave 8 weeks for
+  the higher-risk approval period (it is 12) and quarterly checks for flat entrance doors (annual): both wrong, both
+  with a citation.
+- **Gemma 4 E4B is the safer of the two small models.** It and Qwen3 4B get about the same number right, but they fail
+  differently: Gemma searches and cites every time, and most of its misses are an incomplete answer or "I couldn't
+  find it"; the 4B never opens a passage and gave wrong figures from memory (150 litres a day, a window U-value of
+  1.4, 40 dB). Gemma did give two wrong figures for sound insulation (55 and 58 dB), and the figure note caught both.
+  It needs about 7 GB loaded, so the 4B stays as the only one for 8 GB computers.
+- All nine flags in this run are true.
+- **Licences**: Qwen3.5, Gemma 4, gpt-oss and Qwen3 are Apache 2.0. Nemotron 3.5 Lightning is under OpenMDW 1.1
+  (NVIDIA's model card says so; the "NVIDIA Nemotron Open Model License" is for other models). Both allow use and
+  redistribution with the licence kept alongside. The app doesn't redistribute any of them: it downloads each from
+  Hugging Face onto the person's computer.
+
+The list in `para/models.json` after this run: Nemotron 3.5 Lightning from 48 GB, Qwen3.5 35B-A3B from 32 GB,
+gpt-oss 20B from 24 GB, Gemma 4 E4B from 12 GB, Qwen3 4B from 8 GB.
+
 ## Built-in engine
 
 - `para/models.json`: every repo and file exists on Hugging Face with the listed size (checked with `HEAD` and
@@ -200,16 +230,16 @@ What reading the answers adds:
 
 For the built-in list, the candidates that did best and come from the models' own publishers:
 
+What the built-in list is now, and why, is at the end of run E. The earlier notes, from the seven questions:
+
 - **32 GB or more**: Nemotron 3.5 Lightning 30B-A3B or Qwen3.5-35B-A3B (both 7/7, about 30 s). Qwen3.6-35B-A3B is
   close (6/7 plain, 7/7 figures with MTP).
-- **16 to 24 GB**: Gemma 4 12B was weaker than its size suggests here. gpt-oss 20B (24 GB) is the most careful of the
-  built-in models: it reads before citing. Qwen3 8B did no better than the 4B on the 36 questions (run D).
+- **16 to 24 GB**: Gemma 4 12B was weaker than its size suggests here.
 - **8 GB**: Qwen3 4B is fast but answers from memory sometimes; Gemma 4 E4B is better at searching but picked the
   wrong document for guarding.
 
 The coding and community fine-tunes (Tiel-Coder, KAT-Coder, Muse-Glimmer, Dirk, HRX) scored well but are less
-suited as defaults. Qwen and gpt-oss are Apache 2.0; Gemma and Nemotron have their own licence terms, to be read
-before listing them.
+suited as defaults.
 
 ## Repeating the tests
 

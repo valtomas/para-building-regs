@@ -95,11 +95,21 @@ instead.
   address), paste your API key from that service, choose a model and press Save. Your questions, and passages from
   your own files, are sent to that company, so it isn't private.
 
-| Your computer | Suggested model | Download |
-|---|---|---|
-| 32 GB memory or more | Qwen3 30B-A3B Instruct 2507 | 18.6 GB |
-| 24 GB | gpt-oss 20B | 12.1 GB |
-| 8 to 16 GB | Qwen3 4B Instruct 2507 | 2.5 GB |
+**Which model the built-in engine suggests.** The app looks at your computer's memory and suggests the biggest
+model that fits. Bigger models get more right:
+
+| Your computer's memory | Suggested model | Download | Right, of our 36 test questions | Licence |
+|---|---|---|---|---|
+| 48 GB or more | NVIDIA Nemotron 3.5 Lightning 30B-A3B | 25.5 GB | 31 | OpenMDW 1.1 |
+| 32 GB | Qwen3.5 35B-A3B | 22.2 GB | 33 | Apache 2.0 |
+| 24 GB | gpt-oss 20B | 12.1 GB | 27 | Apache 2.0 |
+| 12 to 16 GB | Gemma 4 E4B | 5.0 GB | 22 | Apache 2.0 |
+| 8 GB | Qwen3 4B Instruct 2507 | 2.5 GB | 20 to 25 | Apache 2.0 |
+
+The two small models get about one question in three wrong. Gemma mostly fails by saying it can't find something
+that is in the library; the 4B sometimes gives a figure from memory. With either, open each cited paragraph before
+you rely on the answer: the app marks citations the AI didn't read in full and figures the cited paragraph doesn't
+hold. The questions and every model's results are in [docs/model-tests.md](docs/model-tests.md).
 
 The model list ([para/models.json](para/models.json)) is also published with each release, so installed
 copies pick up better models without reinstalling.
