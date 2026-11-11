@@ -2,7 +2,7 @@
   "version": 1,
   "llama_cpp": {
     "repo": "ggml-org/llama.cpp",
-    "tag": "latest",
+    "tag": "b12078",
     "assets": {
       "darwin-arm64": "bin-macos-arm64\\.(zip|tar\\.gz)$",
       "darwin-x86_64": "bin-macos-x64\\.(zip|tar\\.gz)$",

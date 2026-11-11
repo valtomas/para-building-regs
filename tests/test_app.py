@@ -6,6 +6,7 @@ import datetime
 import importlib.util
 import json
 import os
+import re
 import sqlite3
 import struct
 import sys
@@ -46,6 +47,7 @@ from para import server  # noqa: E402
 
 fake, fake_url = start()
 httpd = server.Server(("127.0.0.1", 0), server.Handler)
+server.Handler.hosts = server.local_hosts("127.0.0.1", httpd.server_address[1])  # as main() sets it
 threading.Thread(target=httpd.serve_forever, daemon=True).start()
 BASE = f"http://127.0.0.1:{httpd.server_address[1]}"
 
@@ -221,6 +223,287 @@ try:
     check(False, "blocks cross-site posts")
 except urllib.error.HTTPError as e:
     check(e.code == 403, "blocks cross-site posts")
+
+# nor can a page that points its own domain at this computer (DNS rebinding): the Host isn't the app's
+for what, path, body in (("read", "/api/state", None), ("change", "/api/settings", {"project_notes": "x"})):
+    try:
+        call(path, body, headers={"Content-Type": "application/json", "Host": "evil.example:80",
+                                  "Origin": "http://evil.example:80"})
+        check(False, f"a page under another name can't {what} anything")
+    except urllib.error.HTTPError as e:
+        check(e.code == 403, f"a page under another name can't {what} anything")
+check(server.local_hosts("0.0.0.0", 80) is None, "shared on the network, the app answers to any name")
+
+# private means an address on this computer or network, not a name that starts like one
+from para.llm import is_local  # noqa: E402
+
+check(all(is_local(u) for u in ("http://127.0.0.1:11434/v1", "http://localhost:1234/v1", "http://192.168.1.20/v1",
+                                "http://10.0.0.5:8080/v1", "http://172.20.1.1/v1", "http://[::1]:8080/v1",
+                                "http://studio.local:1234/v1")), "local and network addresses are private")
+check(not any(is_local(u) for u in ("https://10.evil.example/v1", "https://192.168.evil.example/v1",
+                                    "https://127.0.0.1.evil.example/v1", "https://api.openai.com/v1",
+                                    "https://172.15.0.1/v1", "https://8.8.8.8/v1")),
+      "a name that starts like a private address isn't private")
+
+# the person's own instructions keep what the placeholders they left out would have carried
+own = core.system_prompt(server.library, {"instructions": "Answer briefly and cite.",
+                                          "project_notes": "6-storey block, sprinklered"})
+check(own.startswith("Answer briefly and cite.") and "6-storey block, sprinklered" in own and "ADK" in own
+      and "Today is" in own, "custom instructions without placeholders keep the notes, library list and date")
+own = core.system_prompt(server.library, {"instructions": "Library:\n{library}\nBe brief.{notes}",
+                                          "project_notes": "sprinklered"})
+check(own.count("sprinklered") == 1 and own.count(server.library.summary()) == 1,
+      "placeholders that are there aren't filled in twice")
+check("sprinklered" in core.system_prompt(server.library, {"instructions": "Use {braces} freely",
+                                                           "project_notes": "sprinklered"}),
+      "stray braces in custom instructions don't lose the notes")
+
+# a chat carried over a library update: ids in its old results name other passages now, so they're forgotten
+stale = next(e for e in ask("What is the maximum rise for a private stair?") if e["type"] == "chat")["id"]
+chat_file = os.path.join(server.chats_dir(), stale + ".json")
+with open(chat_file, encoding="utf-8") as f:
+    saved = json.load(f)
+check(saved["library"] == "2026.11.03" and any(re.search(r"\[r\d+\]", m["content"]) for m in saved["messages"]
+                                               if m["role"] == "tool"), "a chat records its library's edition")
+check(not any(e["type"] == "notice" for e in ask("And the going?", stale)), "same edition: lookups are kept")
+saved["library"] = "2026.10.27"
+with open(chat_file, "w", encoding="utf-8") as f:
+    json.dump(saved, f)
+events = ask("And the pitch?", stale)
+with open(chat_file, encoding="utf-8") as f:
+    after = json.load(f)
+old_results = [m["content"] for m in after["messages"][:len(saved["messages"])] if m["role"] == "tool"]
+check(any(e["type"] == "notice" and "changed since" in e["text"] for e in events) and old_results
+      and all(c == core.STALE_LOOKUP for c in old_results) and after["library"] == "2026.11.03",
+      "after a library update, a chat's old lookups are forgotten and the person is told")
+check(any(e["type"] == "done" and e["cites"] for e in events), "and it looks things up afresh, with citations")
+
+# a project's files are chosen before the best matches are taken, not after
+many = Store(os.path.join(TMP, "many.sqlite"), "f")
+for n in range(210):
+    many.add_source(f"/other/{n}.txt", f"Other {n}", f"Other {n}", "file",
+                    [{"text": "Balustrade balustrade balustrade: the balustrade schedule."}])
+many.add_source("/mine/spec.txt", "Spec", "Spec", "file",
+                [{"text": "The stair has an oak handrail on steel posts, with a glass balustrade to the landing "
+                          "and a painted softwood string, all as the joiner's drawings and the schedule of finishes."}])
+found = many.search("balustrade", source_keys={"/mine/spec.txt"})
+check([h["source"] for h in found] == ["Spec"], "a project's file is found among many better matches elsewhere")
+check(len(many.search("balustrade")) == 8, "and a search of everything is as before")
+
+# the chat list reads a chat's file again only when it has changed
+listed = {c["id"]: c for c in server.list_chats()}
+check(stale in listed and listed[stale]["title"].startswith("What is the maximum rise"), "the chat list has each chat")
+real_load, reads = server.load_chat, []
+server.load_chat = lambda cid: reads.append(cid) or real_load(cid)
+server.list_chats()
+check(not reads, "an unchanged chat isn't read again for the list")
+after["title"] = "Stairs at Mill Lane"
+server.save_chat(after)
+check({c["id"]: c for c in server.list_chats()}[stale]["title"] == "Stairs at Mill Lane" and reads == [stale],
+      "a changed chat is, and only that one")
+server.load_chat = real_load
+call("/api/chat?id=" + stale, method="DELETE")
+check(stale not in {c["id"] for c in server.list_chats()}, "a deleted chat leaves the list")
+
+# the engine's log keeps its end, not everything since the app was installed
+from para import engine as eng  # noqa: E402
+
+log_file = os.path.join(TMP, "engine.log")
+with open(log_file, "wb") as f:
+    f.write(b"old line\n" * 700000 + b"the last thing that went wrong\n")
+eng._trim_log(log_file)
+with open(log_file, "rb") as f:
+    kept = f.read()
+check(len(kept) <= eng.LOG_KEEP and kept.endswith(b"the last thing that went wrong\n") and kept.startswith(b"old line"),
+      "a long engine log is cut to whole lines at its end")
+
+# downloads: a part left over that can't be carried on is thrown away, not retried for ever
+import hashlib  # noqa: E402
+import http.server  # noqa: E402
+
+PAYLOAD = bytes(range(256)) * 40
+
+
+class Files(http.server.BaseHTTPRequestHandler):
+    def log_message(self, *a):
+        pass
+
+    def do_GET(self):
+        start = int((self.headers.get("Range") or "bytes=0-")[6:].rstrip("-"))
+        if start >= len(PAYLOAD):
+            self.send_response(416)
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
+        self.send_response(206 if start else 200)
+        self.send_header("Content-Length", str(len(PAYLOAD) - start))
+        self.end_headers()
+        self.wfile.write(PAYLOAD[start:])
+
+
+files_srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), Files)
+threading.Thread(target=files_srv.serve_forever, daemon=True).start()
+file_url = f"http://127.0.0.1:{files_srv.server_address[1]}/model.gguf"
+digest = hashlib.sha256(PAYLOAD).hexdigest()
+
+
+def fetch(part, **kw):
+    dest = os.path.join(TMP, "model.gguf")
+    for path in (dest, dest + ".part"):
+        if os.path.exists(path):
+            os.remove(path)
+    if part is not None:
+        with open(dest + ".part", "wb") as f:
+            f.write(part)
+    eng._download(file_url, dest, eng.Job("install", "test"), **kw)
+    with open(dest, "rb") as f:
+        return f.read() == PAYLOAD
+
+
+check(fetch(PAYLOAD[:1000], expect_size=len(PAYLOAD), sha256=digest), "a download carries on from where it stopped")
+check(fetch(b"x" * (len(PAYLOAD) + 5), expect_size=len(PAYLOAD), sha256=digest),
+      "a leftover part bigger than the file is started again")
+check(fetch(b"x" * (len(PAYLOAD) + 5)), "so is one the server has nothing more for, when the size isn't known")
+check(fetch(PAYLOAD, expect_size=len(PAYLOAD), sha256=digest), "a part that's already whole is only checked")
+files_srv.shutdown()
+
+# a service that refuses max_tokens by name gets the limit as max_completion_tokens, and is remembered
+from para.llm import Client  # noqa: E402
+from tests import fake_llm  # noqa: E402
+
+strict = Client(fake_url, model="strict-model")
+said = "".join(e["text"] for e in strict.stream([{"role": "user", "content": "Reply with just: OK"}], max_tokens=50,
+                                                 reasoning="off") if e["type"] == "content")
+last = fake_llm.SEEN[-1]
+check(said == "OK" and last.get("max_completion_tokens") == 50 and "max_tokens" not in last
+      and "chat_template_kwargs" not in last, "a refused max_tokens is sent again as max_completion_tokens")
+before = len(fake_llm.SEEN)
+list(strict.stream([{"role": "user", "content": "Reply with just: OK"}], max_tokens=50, reasoning="off"))
+check(len(fake_llm.SEEN) == before + 1, "and the next request is right first time")
+
+# the built-in engine is a build that was tested, not whichever is newest
+check(eng.catalog()["llama_cpp"]["tag"] != "latest", "the llama.cpp build is pinned")
+
+# ----- what a chat keeps of a passage, and what's said about a citation -----
+events = ask("What is the maximum rise for a private stair?")
+kept = next(e for e in events if e["type"] == "chat")["id"]
+done = next(e for e in events if e["type"] == "done")
+cited = next(iter(done["cites"].values()))
+check(cited["key"] == "ADK" and len(cited["hash"]) == 16 and cited["url"].endswith("adk.pdf"),
+      "a citation is kept with its document's key, a fingerprint of its text and its address")
+check(cited["read"] is True and done["figures"] == [], "a passage that was read, with its figures in it, isn't flagged")
+kept_chat = json.loads(call("/api/chat?id=" + kept))
+check(kept_chat["turns"][0]["library"] == "2026.11.03" and kept_chat["turns"][0]["from"] == 0,
+      "a turn records its library's edition and where its messages start")
+
+
+class Scripted:
+    """An engine that searches once, then answers citing the first result without reading it."""
+    model = "scripted"
+
+    def stream(self, messages, **_):
+        found = [m for m in messages if m["role"] == "tool"]
+        if not found:
+            yield {"type": "tool_calls", "calls": [{"id": "c1", "type": "function", "function": {
+                "name": "search_library", "arguments": json.dumps({"query": "guarding balcony dwelling"})}}]}
+        else:
+            pid = re.search(r"\[(r\d+)\]", found[0]["content"]).group(1)
+            yield {"type": "content", "text": f"Guarding to a balcony should be 1100 mm high [{pid}], or 1.1 m.\n\n"
+                                              f"ADK gives these [{pid}]:\n- 900 mm on stairs\n- 1100 mm on balconies\n\n"
+                                              f"For your 17 m block that means 1100 mm [{pid}] within 30 minutes [{pid}]."}
+        yield {"type": "end", "finish": "stop", "usage": {}}
+
+
+done = [e for e in core.chat_events(Scripted(), server.library, [], "Guarding height? My block is 17 m.", {})][-1]
+cited = next(iter(done["cites"].values()))
+check(cited["read"] is False, "a passage cited from a search result's extract alone is marked as not read")
+check([f["figure"] for f in done["figures"]] == ["900 mm", "30 minutes"] and done["figures"][0]["ids"] == [cited["id"]],
+      "figures that aren't in the passage cited are flagged; ones that are, in other units, or the person's own aren't")
+
+# a saved citation is found again when its id has changed, by its fingerprint, then by its reference
+rows = {ref: (pid, digest) for pid, ref, _, digest in server.library.regs.anchors("ADK")}
+stairs, guarding = rows["1.1–1.3"], rows["3.2"]
+
+
+def saved(pid, **kw):
+    return {"id": pid, "source": "ADK", "title": "Approved Document K", "kind": "approved-document", **kw}
+
+
+moved_turn = {"question": "q", "library": "2026.10.27", "events": [], "read": [], "seen": [], "dropped": [],
+              "answer": "Rise [r901]. Guarding [r902]. Pitch [r903]. Headroom [r904].",
+              "figures": [{"figure": "5 mm", "ids": ["r901"]}],
+              "cites": {"r901": saved("r901", key="ADK", hash=stairs[1], ref="1.1–1.3", heading="Section 1: Stairs and ladders"),
+                        "r902": saved("r902", key="ADK", hash="0" * 16, ref="3.2", heading="Section 3: Guarding"),
+                        "r903": saved("r903", key="ADK", hash="1" * 16, ref="1.9", heading="Pitch"),
+                        "r904": saved("r904", ref="1.1–1.3", heading="Section 1: Stairs and ladders")}}  # before keys
+server.save_chat({"id": "moved", "title": "Moved", "messages": [], "turns": [moved_turn], "project": "", "library": "x"})
+turn = json.loads(call("/api/chat?id=moved"))["turns"][0]
+check(turn["answer"] == f"Rise [{stairs[0]}]. Guarding [{guarding[0]}]. Pitch [gr903]. Headroom [{stairs[0]}]."
+      and turn["library"] == "2026.11.03", "an old chat's citations point at where their passages are now")
+check(not turn["cites"][stairs[0]].get("changed") and turn["cites"][guarding[0]].get("changed") is True
+      and turn["cites"]["gr903"].get("gone") is True and turn["figures"][0]["ids"] == [stairs[0]],
+      "a reworded paragraph is said to have changed, and one that's gone is said to be gone")
+with open(os.path.join(server.chats_dir(), "moved.json"), encoding="utf-8") as f:
+    check(json.load(f)["turns"][0]["answer"] == turn["answer"], "and the chat is saved that way, so it's worked out once")
+check(json.loads(call("/api/chat?id=moved"))["turns"][0] == turn, "a chat that's up to date is left as it is")
+call("/api/chat?id=moved", method="DELETE")
+
+# chats: rename, find, and asking the last question again
+chats = json.loads(call("/api/chat/rename", {"id": kept, "title": "  Stairs   at Mill Lane "}))["chats"]
+check({c["id"]: c["title"] for c in chats}[kept] == "Stairs at Mill Lane", "renames a chat")
+try:
+    call("/api/chat/rename", {"id": kept, "title": " "})
+    check(False, "a chat can't be given an empty name")
+except urllib.error.HTTPError as e:
+    check(e.code == 400, "a chat can't be given an empty name")
+hits = json.loads(call("/api/chats/search?q=MILL+lane"))["chats"]
+check([h["id"] for h in hits] == [kept], "finds a chat by its name")
+hits = json.loads(call("/api/chats/search?q=" + urllib.parse.quote("220 mm (ADK")))["chats"]
+check(kept in [h["id"] for h in hits] and "[r" not in hits[0]["snippet"] and "*" not in hits[0]["snippet"],
+      "finds a chat by words in an answer, shown as they read on the page")
+check(json.loads(call("/api/chats/search?q=headroom&project=Nowhere"))["chats"] == [], "only in the chosen project")
+call("/api/ask", {"question": "And the going?", "id": kept})
+before = json.loads(call("/api/chat?id=" + kept))
+call("/api/ask", {"question": "And the going?", "id": kept, "again": True})
+again = json.loads(call("/api/chat?id=" + kept))
+check(len(before["turns"]) == 2 and len(again["turns"]) == 2 and len(again["messages"]) == len(before["messages"])
+      and [m["content"] for m in again["messages"] if m["role"] == "user"].count("And the going?") == 1,
+      "asking again replaces the last answer, in the chat and in what the AI reads next time")
+call("/api/chat?id=" + kept, method="DELETE")
+
+# what differs between two editions of the library, paragraph by paragraph
+from para import changes  # noqa: E402
+
+
+def edition(name, version, docs):
+    store = Store(os.path.join(TMP, name), "r")
+    for key, published, paras in docs:
+        store.add_source(key, f"Approved Document {key[-1]}", key, "approved-document",
+                         [{"ref": ref, "heading": "Section 1", "text": text} for ref, text in paras], published=published)
+    store.set_meta(version=version)
+    return store
+
+
+older = edition("older.sqlite", "2026.10.27", [
+    ("ADK", "2013 edition", [("1.1", "Steps should be level."), ("1.2", "Rise 220 mm."), ("1.3", "Headroom 2.0 m.")]),
+    ("ADN", "2013 edition", [("1.1", "Glazing.")]), ("ADX", "", [("1.1", "Withdrawn.")])])
+newer = edition("newer.sqlite", "2026.11.03", [
+    ("ADK", "2026 edition", [("1.1", "Steps  should be level."), ("1.2", "Rise 200 mm."), ("1.4", "Pitch 42°.")]),
+    ("ADN", "2013 edition", [("1.1", "Glazing.")]), ("ADT", "", [("1.1", "Toilets.")])])
+compared = changes.diff(older, newer)
+by_doc = {d["short"]: d for d in compared["documents"]}
+check(set(by_doc) == {"ADK", "ADT"} and by_doc["ADT"]["new"] and [d["short"] for d in compared["removed"]] == ["ADX"],
+      "the comparison lists only documents that differ, with new and removed ones")
+k = by_doc["ADK"]
+check([p["ref"] for p in k["changed"]] == ["1.2"] and [p["ref"] for p in k["added"]] == ["1.4"]
+      and [p["ref"] for p in k["removed"]] == ["1.3"] and k["was"] == "2013 edition"
+      and k["changed"][0]["id"].startswith("r") and k["removed"][0]["id"] is None,
+      "and in each, the paragraphs changed, added and removed (spacing alone isn't a change)")
+changes.save(compared)
+check(json.loads(call("/api/state"))["library_changes"]["from"] == "2026.10.27"
+      and changes.load("2026.12.01") is None, "the page gets the comparison only while it's of the library in use")
+older.close()
+newer.close()
 
 # updating the app itself: only a copy that can replace itself is offered it, with GitHub's checksum
 from para import updater  # noqa: E402

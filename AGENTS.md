@@ -25,6 +25,8 @@ passage ids; the app checks every citation. It must stay:
 |---|---|
 | `para/server.py` | HTTP server (stdlib `ThreadingHTTPServer`), JSON API, SSE chat stream, chats on disk, update checks, window start-up |
 | `para/core.py` | One chat turn: system prompt, tool loop (`search_library`, `read_passage`, `show_passage`), nudges, rescue, citation checking |
+| `para/anchors.py` | Finds a saved chat's passages again when their ids have changed (library rebuilt, a file read again): by document key and text fingerprint, then by reference; says when one has changed or is gone |
+| `para/changes.py` | What differs between two library editions, paragraph by paragraph; worked out when an update is installed, shown in Library |
 | `para/llm.py` | OpenAI-compatible streaming client; splits `<think>` and `reasoning_content`; probes known local servers; `HOSTED`, the hosted services offered in Settings (an address each, no code of their own) |
 | `para/engine.py` | Built-in engine: downloads llama.cpp's `llama-server` and GGUF models, starts and stops it (memory check, idle stop, leftover clean-up); `Engine.client()` picks the configured engine |
 | `para/updater.py` | Updates the app itself: works out how this copy was installed (Windows installer, AppImage, .deb, Mac app, or none), downloads that release file with GitHub's checksum, and puts it in place: the installer runs silently, an AppImage or Mac app swaps itself and restarts, a .deb is installed by apt after the system's password dialog (pkexec) |
@@ -132,8 +134,18 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   into one review. The same workflow can draft with a hosted model if `DESCRIBE_BASE_URL`, `DESCRIBE_MODEL`
   (repository variables) and `DESCRIBE_API_KEY` (secret) are set; it's off otherwise.
 - **Ids**: regulations passages are `r<rowid>`, the person's files `f<rowid>`. Rowids change between library
-  builds, so saved chats can point at a different passage after an update. Don't build features that assume they
-  are stable across versions.
+  builds, so saved chats can point at a different passage after an update. Never rely on an id outliving its
+  library: everything a chat saves of a passage carries its document's key and a fingerprint of its text
+  (`core._brief`, `store.text_hash`), and `anchors.reanchor` points a chat's citations at the passages' new ids
+  before the chat is shown or carried on (a reworded paragraph is marked `changed`, a missing one `gone`, with an id
+  starting `g` that opens and cites nothing). A chat and each turn record their library's edition; when it has changed,
+  or a file's passages have moved, the old search and read results are blanked (`core.forget_lookups`) so their ids
+  can't be cited.
+- **What's said about a citation**: besides dropping made-up ids, a turn records whether each cited passage was read
+  in full or only seen as a search extract (`cites[id]["read"]`), and `core.check_figures` lists figures (a number
+  with a unit) beside a citation that aren't in the passage cited. Both are shown as notes; neither removes anything.
+  The figure check compares numbers only, and must stay quiet about figures the person gave: when you change it, run
+  the test questions and read every flag, because a false alarm teaches people to ignore the note.
 - **Projects**: a project is a folder inside the files folder. Its files are searched only in the project's chats;
   files at the top of the folder are searched in every chat, and a chat in no project searches only those. The
   project is fixed when a chat is created (`chat["project"]`); renaming a project moves its folder, its files' index
@@ -149,7 +161,8 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
 - **Code licence**: Para is AGPL-3.0-or-later (`LICENSE`). Only add dependencies, fonts or copied code under
   licences compatible with it (MIT, BSD, Apache-2.0, LGPL, GPL-3.0, OFL for fonts); check before adding. Keep the
   licence notice and source link in Settings → Updates & about.
-- **Security**: keep the Origin check in `Handler._allowed`. `/api/open` may only open http(s) URLs, the feedback
+- **Security**: keep the Origin check in `Handler._allowed` and the Host check in `Handler._host_ok` (a page that points
+  its own domain at 127.0.0.1 must get nothing, on GET too). `/api/open` may only open http(s) URLs, the feedback
   address (`server.FEEDBACK`, one fixed mailto), the files folder, or files already in the files index. Don't add endpoints that read arbitrary paths.
 - **Commits**: small, with a message that says why. Run the tests first.
 - **Memory**: the built-in engine holds gigabytes, so it must never outlive the app or load what won't fit.

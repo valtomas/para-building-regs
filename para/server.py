@@ -10,6 +10,7 @@ import hashlib
 import http.server
 import json
 import os
+import re
 import signal
 import socket
 import subprocess
@@ -21,12 +22,14 @@ import urllib.request
 import uuid
 import webbrowser
 
-from . import VERSION, paths, updater
-from .core import BASE_PROMPT, chat_events
+from . import VERSION, changes, paths, updater
+from .anchors import reanchor
+from .core import BASE_PROMPT, chat_events, forget_lookups
 from .engine import Engine, Job, catalog, recommend, _download
 from .library import Library, Scope
 from .llm import HOSTED, Client, EngineError, is_local, probe_known, same_host
 from .myfiles import TYPES, MyFiles
+from .store import Store
 
 UPDATE_REPO = os.environ.get("PARA_UPDATE_REPO", "valtomas/para-building-regs")
 FEEDBACK = "mailto:hello@pararegs.co.uk?subject=Para%20feedback"  # the only mailto /api/open will open
@@ -75,16 +78,90 @@ def list_chats_all():
                 yield c
 
 
+_summaries = {}  # chat file name -> ((mtime, size), its line in the list)
+
+
+def chat_summaries():
+    """What the chat list shows of each chat. The list goes out with every state(), and a chat's file holds
+    every passage it ever read, so only files that have changed since last time are read again."""
+    global _summaries
+    now = {}
+    for entry in os.scandir(chats_dir()):
+        if not entry.name.endswith(".json"):
+            continue
+        try:
+            st = entry.stat()
+        except OSError:  # deleted meanwhile
+            continue
+        stamp = (st.st_mtime_ns, st.st_size)
+        if _summaries.get(entry.name, (None,))[0] == stamp:
+            now[entry.name] = _summaries[entry.name]
+            continue
+        c = load_chat(entry.name[:-5])
+        if c:
+            now[entry.name] = (stamp, {"id": c["id"], "title": c.get("title", ""), "updated": c.get("updated", 0),
+                                       "project": c.get("project", "")})
+    _summaries = now
+    return [summary for _, summary in now.values()]
+
+
 def list_chats():
     """The latest 200 chats of each project (and of chats in none), newest first."""
     out, per_project = [], {}
-    for c in sorted(list_chats_all(), key=lambda c: -c.get("updated", 0)):
-        project = c.get("project", "")
-        per_project[project] = per_project.get(project, 0) + 1
-        if per_project[project] <= 200:
-            out.append({"id": c["id"], "title": c.get("title", ""), "updated": c.get("updated", 0),
-                        "project": project})
+    for c in sorted(chat_summaries(), key=lambda c: -c["updated"]):
+        per_project[c["project"]] = per_project.get(c["project"], 0) + 1
+        if per_project[c["project"]] <= 200:
+            out.append(c)
     return out
+
+
+def refresh_chat(chat):
+    """Points a chat's saved citations at where their passages are now (anchors.reanchor) and saves it if any
+    moved. True when something did: what the AI looked up earlier in the chat can't be relied on any more."""
+    cache, version, moved, touched = {}, library.version(), False, False
+    for turn in chat.get("turns") or []:
+        m, t = reanchor(turn, library, version, cache)
+        moved, touched = moved or m, touched or t
+    if touched:
+        save_chat(chat, touch=False)
+    return moved
+
+
+def find_chats(query, project):
+    """A project's chats with the words in their title, a question or an answer, newest first."""
+    q = " ".join(str(query or "").lower().split())
+    if len(q) < 2:
+        return []
+    out = []
+    for c in list_chats_all():
+        if c.get("project", "") != project:
+            continue
+        texts = [c.get("title", "")] + [t.get(k) or "" for t in c.get("turns") or [] for k in ("question", "answer")]
+        for text in texts:
+            # as it reads on the page: without the citations' ids or the marks for bold
+            flat = re.sub(r" ([.,;:])", r"\1", " ".join(re.sub(r"\[g?[rf]\d+\]|\*\*|`", "", text).split()))
+            at = flat.lower().find(q)
+            if at >= 0:
+                start = max(0, at - 14)
+                out.append({"id": c["id"], "title": c.get("title", ""), "updated": c.get("updated", 0),
+                            "project": project, "snippet": ("…" if start else "") + flat[start:at + len(q) + 80]})
+                break
+    return sorted(out, key=lambda c: -c["updated"])[:50]
+
+
+def drop_last_turn(chat):
+    """Takes the last question and its answer out of a chat, to ask it again: the turn, and the messages the AI
+    would otherwise read as already said."""
+    if not chat["turns"]:
+        return
+    last = chat["turns"].pop()
+    cut = last.get("from")
+    if cut is None:  # a turn saved before its place in the messages was kept: find its question
+        users = [i for i, m in enumerate(chat["messages"]) if m.get("role") == "user"
+                 and str(m.get("content") or "").startswith(last.get("question") or "\0")]
+        cut = users[-1] if users else None
+    if cut is not None:
+        chat["messages"] = chat["messages"][:cut]
 
 
 def move_chats(old, new):
@@ -171,7 +248,17 @@ def install_library_update():
             if lib.get("sha256") and h.hexdigest() != lib["sha256"]:
                 os.remove(out)
                 raise EngineError("The library download didn't match its checksum.")
+            compared = None
+            try:  # what differs from the edition in use; an update must never fail for want of it
+                if library.regs:
+                    new = Store(out, "r", readonly=True)
+                    compared = changes.diff(library.regs, new)
+                    new.close()
+            except Exception:  # noqa: BLE001
+                compared = None
             library.install_regs(out)
+            if compared:
+                changes.save(compared)
             update_info["library"] = None
             job.state = "done"
         except Exception as e:  # noqa: BLE001
@@ -245,6 +332,7 @@ def state():
     info = library.info()
     return {"version": VERSION, "settings": public_settings(), "default_instructions": BASE_PROMPT,
             "library": {k: info[k] for k in ("version", "built", "sources")},
+            "library_changes": changes.load(info["version"]),
             "files": myfiles.list(), "files_dir": myfiles.folder, "projects": myfiles.projects(), "file_types": sorted(TYPES),
             "bundled": engine.bundled.status(), "catalog": catalog()["models"],
             "recommended": (recommend() or {}).get("id"), "hosted": HOSTED, "updates": update_info,
@@ -288,8 +376,18 @@ class Handler(http.server.BaseHTTPRequestHandler):
         except ValueError:
             return {}
 
+    hosts = None  # the Host headers answered, set by main(); None answers any (shared on the network)
+
+    def _host_ok(self):
+        """Refuse requests that reached this computer under another name. A web page can point its own domain at
+        127.0.0.1 (DNS rebinding); the browser then treats the app as that page's own site, and it could read the
+        chats or change the engine. Such a request still carries the page's domain as its Host."""
+        return self.hosts is None or (self.headers.get("Host") or "").lower() in self.hosts
+
     def _allowed(self):
         """Refuse requests from other web pages (a page in the person's browser posting to localhost)."""
+        if not self._host_ok():
+            return False
         origin = self.headers.get("Origin")
         if not origin or origin == "null":
             return True
@@ -300,6 +398,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
         url = urllib.parse.urlparse(self.path)
         q = dict(urllib.parse.parse_qsl(url.query))
         path = url.path
+        if not self._host_ok():
+            return self._send(403, {"error": "Forbidden"})
         try:
             if path == "/" or path.startswith("/static/"):
                 return self._static("index.html" if path == "/" else path[len("/static/"):])
@@ -307,7 +407,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 return self._send(200, state())
             if path == "/api/chat":
                 chat = load_chat(q.get("id"))
+                if chat:
+                    refresh_chat(chat)
                 return self._send(200 if chat else 404, chat or {"error": "No such chat"})
+            if path == "/api/chats/search":
+                return self._send(200, {"chats": find_chats(q.get("q"), q.get("project", ""))})
             if path == "/api/passage":
                 doc = library.document(q.get("id", ""))
                 return self._send(200 if doc else 404, doc or {"error": "No such passage"})
@@ -373,6 +477,15 @@ class Handler(http.server.BaseHTTPRequestHandler):
         try:
             if path == "/api/ask":
                 return self._ask(self._json_body())
+            if path == "/api/chat/rename":
+                body = self._json_body()
+                chat, title = load_chat(body.get("id")), " ".join(str(body.get("title") or "").split())[:120]
+                if not chat or not title:
+                    return self._send(404 if not chat else 400, {"error": "No such chat" if not chat
+                                                                 else "Give the chat a name."})
+                chat["title"] = title
+                save_chat(chat, touch=False)
+                return self._send(200, {"chats": list_chats()})
             if path == "/api/stop":
                 ev = stops.get(self._json_body().get("id"))
                 if ev:
@@ -493,7 +606,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if not chat:
             project = body.get("project") or ""
             chat = {"id": str(uuid.uuid4()), "title": question[:80], "messages": [], "turns": [],
-                    "created": time.time(), "project": project if myfiles.project(project) else ""}
+                    "created": time.time(), "project": project if myfiles.project(project) else "",
+                    "library": library.version()}
         stop = stops[chat["id"]] = threading.Event()
         self.send_response(200)
         self.send_header("Content-Type", "text/event-stream")
@@ -506,9 +620,24 @@ class Handler(http.server.BaseHTTPRequestHandler):
             self.wfile.write(b"data: " + json.dumps(ev).encode() + b"\n\n")
             self.wfile.flush()
 
-        turn = {"question": question, "answer": "", "events": [], "time": time.time()}
+        moved = refresh_chat(chat) if chat["turns"] else False
+        if body.get("again"):  # asked again: the new answer takes the place of the last one
+            drop_last_turn(chat)
+        turn = {"question": question, "answer": "", "events": [], "time": time.time(),
+                "library": library.version(), "from": len(chat["messages"])}
         try:
             send({"type": "chat", "id": chat["id"]})
+            # The library has been replaced or a file read again since this chat's earlier answers (or the chat
+            # predates the record): ids in what the AI looked up then may name other passages now, so it starts
+            # its lookups afresh. The answers' own citations have been pointed at the passages' new places.
+            if chat.get("library") != library.version() or moved:
+                if any(m.get("role") == "tool" for m in chat["messages"]):
+                    chat["messages"] = forget_lookups(chat["messages"])
+                    notice = {"type": "notice", "text": "The library or your files have changed since the earlier "
+                              "answers in this chat, so the AI looked things up afresh."}
+                    turn["events"].append(notice)
+                    send(notice)
+                chat["library"] = library.version()
             s = settings.load()
             # A project's chat searches its files and the shared ones; any other chat only the shared ones.
             project = chat.get("project", "")
@@ -527,7 +656,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 if ev["type"] == "done":
                     chat["messages"] = ev.pop("messages")
                     turn.update(answer=ev["answer"], cites=ev["cites"], read=ev["read"], seen=ev["seen"],
-                                cut_off=ev["cut_off"], dropped=ev["dropped"])
+                                cut_off=ev["cut_off"], dropped=ev["dropped"], figures=ev["figures"])
                 elif ev["type"] in ("search", "read", "show", "notice"):
                     turn["events"].append(ev)
                 elif ev["type"] == "token":
@@ -564,6 +693,14 @@ class Handler(http.server.BaseHTTPRequestHandler):
 
 class Server(http.server.ThreadingHTTPServer):
     daemon_threads = True
+
+
+def local_hosts(host, port):
+    """The Host headers a browser sends when the app is served to this computer only; None when it's shared on
+    the network, where it's reached by names the app can't know."""
+    if host not in ("127.0.0.1", "localhost", "::1"):
+        return None
+    return {f"{name}:{port}" for name in ("127.0.0.1", "localhost", "[::1]")}
 
 
 def free_port(host):
@@ -613,6 +750,7 @@ def main(argv=None):
             signal.signal(getattr(signal, name), lambda *_: sys.exit(0))
     port = args.port or free_port(args.host)
     httpd = Server((args.host, port), Handler)
+    Handler.hosts = local_hosts(args.host, port)
     threading.Thread(target=background, daemon=True).start()
     url = f"http://127.0.0.1:{port}/"
     print(f"{paths.APP_NAME} {VERSION} on http://{args.host}:{port}/", flush=True)

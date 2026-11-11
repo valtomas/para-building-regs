@@ -47,6 +47,10 @@ class Library:
             os.replace(target + ".new", target)
             self.open_regs()
 
+    def version(self):
+        """The edition of the regulations library in use ("" for none)."""
+        return (self.regs.meta() if self.regs else {}).get("version", "")
+
     def info(self):
         meta = self.regs.meta() if self.regs else {}
         return {"version": meta.get("version", ""), "built": meta.get("built", ""), "path": self.regs_path,
@@ -96,6 +100,15 @@ class Library:
     def describe(self, pid):
         store = self._store(pid)
         return store.describe(pid) if store else None
+
+    def text(self, pid):
+        store = self._store(pid)
+        return store.text(pid) if store else ""
+
+    def anchors(self, pid, key=None, short=None):
+        """The passages of the document a saved citation (with this id) came from, in the store its id names."""
+        store = self._store(pid)
+        return store.anchors(key, short) if store else []
 
     def document(self, pid):
         store = self._store(pid)

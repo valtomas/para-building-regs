@@ -56,6 +56,9 @@ def respond(body):
                     {"content": f"(ADK para 1.2) [{ids[0]}]. Headroom is 2.0 m [r99999]."}], "stop")
 
 
+SEEN = []  # every request body, for tests of what was sent
+
+
 class Handler(http.server.BaseHTTPRequestHandler):
     def log_message(self, *a):
         pass
@@ -74,6 +77,21 @@ class Handler(http.server.BaseHTTPRequestHandler):
 
     def do_POST(self):
         body = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
+        SEEN.append(body)
+        refusal = None
+        if body.get("model") == "strict-model" and "max_tokens" in body:
+            refusal = "Unsupported parameter: 'max_tokens' is not supported with this model. Use " \
+                      "'max_completion_tokens' instead."
+        elif body.get("model") == "strict-model" and "chat_template_kwargs" in body:
+            refusal = "Unrecognized request argument supplied: chat_template_kwargs"
+        if refusal:
+            data = json.dumps({"error": {"message": refusal}}).encode()
+            self.send_response(400)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(data)))
+            self.end_headers()
+            self.wfile.write(data)
+            return
         self.send_response(200)
         self.send_header("Content-Type", "text/event-stream")
         self.end_headers()

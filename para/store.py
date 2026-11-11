@@ -6,6 +6,7 @@ One file holds:
   fts       an FTS5 index over passages (porter stemming, BM25 ranking)
   meta      key/value facts about the library (version, built date)
 """
+import hashlib
 import re
 import sqlite3
 import threading
@@ -66,6 +67,17 @@ def query_terms(query):
         if term not in terms:
             terms.append(term)
     return terms[:14]
+
+
+# Added to a passage's text by the library build, after the document's own words (library/build.py).
+DESCRIPTION_LABEL = "Description of the drawing (written by AI from the image, checked by a person):"
+
+
+def text_hash(text):
+    """A short fingerprint of a passage's own words, to find it again when its id has changed and to tell whether
+    its text has. Spacing doesn't count, nor does a description of a drawing added or approved since."""
+    own = (text or "").split("\n\n" + DESCRIPTION_LABEL)[0]
+    return hashlib.sha1(" ".join(own.split()).encode("utf-8")).hexdigest()[:16]
 
 
 def png_size(png):
@@ -212,12 +224,18 @@ class Store:
         if not terms:
             return []
         hits = []
+        # The documents to search are chosen in the query, before the best 200 are taken: chosen afterwards, a
+        # project's passages are lost whenever 200 from other projects' files match better.
+        keys = sorted(source_keys) if source_keys else []
+        scope = " WHERE fts MATCH ?" if not keys else (
+            " JOIN passages p ON p.id = fts.rowid JOIN sources s ON s.id = p.source_id WHERE fts MATCH ? "
+            f"AND s.key IN ({','.join('?' * len(keys))})")
         with self.lock:
             for joiner in (" ", " OR "):
                 try:
                     hits = self.db.execute(
-                        "SELECT rowid, bm25(fts, 0.6, 4.0, 2.0, 1.0) AS score FROM fts WHERE fts MATCH ? "
-                        "ORDER BY score LIMIT 200", (joiner.join(terms),)).fetchall()
+                        "SELECT fts.rowid, bm25(fts, 0.6, 4.0, 2.0, 1.0) AS score FROM fts" + scope +
+                        " ORDER BY score LIMIT 200", [joiner.join(terms)] + keys).fetchall()
                 except sqlite3.OperationalError:
                     hits = []
                 if len(hits) >= 4 or len(terms) == 1:
@@ -227,17 +245,16 @@ class Store:
             score = dict(hits)
             marks = ",".join("?" * len(score))
             rows = self.db.execute(
-                "SELECT p.id, p.ref, p.heading, p.page, p.text, s.key, s.short, s.title, s.kind FROM passages p "
+                "SELECT p.id, p.ref, p.heading, p.page, p.text, s.key, s.short, s.title, s.kind, s.url FROM passages p "
                 f"JOIN sources s ON s.id = p.source_id WHERE p.id IN ({marks})", list(score)).fetchall()
         out, per_source = [], {}
         for r in sorted(rows, key=lambda r: score[r[0]]):
-            if source_keys and r[5] not in source_keys:
-                continue
             if per_source.get(r[5], 0) >= 3:  # leave room for other documents
                 continue
             per_source[r[5]] = per_source.get(r[5], 0) + 1
             out.append({"id": self.pid(r[0]), "ref": r[1], "heading": r[2], "page": r[3], "source": r[6],
-                        "title": r[7], "kind": r[8], "score": score[r[0]], "snippet": snippet(r[4], terms)})
+                        "title": r[7], "kind": r[8], "score": score[r[0]], "snippet": snippet(r[4], terms),
+                        "key": r[5], "hash": text_hash(r[4]), "url": r[9]})
             if len(out) >= limit:
                 break
         return out
@@ -245,7 +262,7 @@ class Store:
     def _row(self, rowid):
         return self.db.execute(
             "SELECT p.source_id, p.seq, p.ref, p.heading, p.page, s.short, s.title, s.url, s.license, s.kind, s.key, "
-            "s.path FROM passages p JOIN sources s ON s.id = p.source_id WHERE p.id=?", (rowid,)).fetchone()
+            "s.path, p.text FROM passages p JOIN sources s ON s.id = p.source_id WHERE p.id=?", (rowid,)).fetchone()
 
     def describe(self, pid):
         with self.lock:
@@ -253,7 +270,27 @@ class Store:
         if not r:
             return None
         return {"id": pid, "ref": r[2], "heading": r[3], "page": r[4], "source": r[5], "title": r[6], "url": r[7],
-                "kind": r[9]}
+                "kind": r[9], "key": r[10], "hash": text_hash(r[12])}
+
+    def text(self, pid):
+        """A passage's own text ("" if there's no such passage)."""
+        with self.lock:
+            r = self._row(self.rowid(pid))
+        return r[12] if r else ""
+
+    def anchors(self, key=None, short=None):
+        """[(passage id, ref, heading, text hash)] of a document, by its key or, for citations saved before keys
+        were, by its short name. What a saved citation is matched against when ids have changed."""
+        with self.lock:
+            src = self.db.execute("SELECT id FROM sources WHERE key=?", (key,)).fetchone() if key else None
+            if not src and short and not key:
+                found = self.db.execute("SELECT id FROM sources WHERE short=?", (short,)).fetchall()
+                src = found[0] if len(found) == 1 else None
+            if not src:
+                return []
+            rows = self.db.execute("SELECT id, ref, heading, text FROM passages WHERE source_id=? ORDER BY seq",
+                                   (src[0],)).fetchall()
+        return [(self.pid(i), ref or "", heading or "", text_hash(text)) for i, ref, heading, text in rows]
 
     def read(self, pid, max_chars=6000):
         """The passage and those after it in the same document, about max_chars long."""
@@ -277,7 +314,8 @@ class Store:
                 parts.append((f"[{self.pid(rowid)}] {label}\n" if label else f"[{self.pid(rowid)}]\n") + text)
                 size += len(text)
         return {"id": pid, "ref": r[2], "heading": r[3], "page": r[4], "source": r[5], "title": r[6], "url": r[7],
-                "kind": r[9], "text": "\n\n".join(parts), "next_id": next_id, "requirement": under}
+                "kind": r[9], "key": r[10], "hash": text_hash(r[12]), "text": "\n\n".join(parts), "next_id": next_id,
+                "requirement": under}
 
     def requirements(self, sid):
         """Where an Approved Document starts on each of its requirements: [(seq, "Requirement K2: Protection from

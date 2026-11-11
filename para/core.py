@@ -68,6 +68,8 @@ LOOKUP_NUDGE = ("(Note from the app, not the person: search the library with sea
                 "cite the passages you use. If the message isn't about building regulations or guidance, just reply.)")
 RESCUE_NOTE = ("(Note from the app, not the person: you can't look anything else up. Answer the question now from "
                "these library excerpts, citing their ids in square brackets.)")
+STALE_LOOKUP = ("(Note from the app: this result came from an earlier edition of the library and its ids no longer "
+                "apply. Search again before citing anything from it.)")
 UNSEEN_ID = "No search result has that id. Use an id from your search_library results."
 BAD_ID = "That isn't a passage id. Ids look like r1234 or f56."
 
@@ -114,10 +116,17 @@ def system_prompt(library, settings):
         "today": f"{datetime.date.today().day} {datetime.date.today():%B %Y}",
         "notes": _notes(settings),
     }
-    try:
+    if not custom:
         return template.format(**values)
-    except (KeyError, IndexError, ValueError):  # custom instructions with stray braces
-        return template + "\n\n" + values["library"] + values["notes"]
+    # The person's own instructions may leave out any of the placeholders. What they'd have carried is added after,
+    # so rewriting the instructions never silently drops the project notes or the list of what can be searched.
+    try:
+        text, missing = custom.format(**values), [k for k in values if "{" + k + "}" not in custom]
+    except (KeyError, IndexError, ValueError):  # stray braces: nothing was filled in
+        text, missing = custom, list(values)
+    added = {"library": "\n\nThe library holds:\n" + values["library"], "files": values["files"],
+             "today": f"\n\nToday is {values['today']}.", "notes": values["notes"]}
+    return text + "".join(added[k] for k in missing)
 
 
 def _args(call):
@@ -176,7 +185,9 @@ def run_tool(library, name, args, known):
 
 
 def _brief(item):
-    return {k: item.get(k) for k in ("id", "source", "title", "ref", "heading", "page", "kind")}
+    """What the page and a saved chat keep of a passage. key and hash name it apart from its id, which changes
+    when the library is rebuilt or a file is read again (server.reanchor)."""
+    return {k: item.get(k) for k in ("id", "source", "title", "ref", "heading", "page", "kind", "key", "hash", "url")}
 
 
 def _head(doc):
@@ -220,6 +231,13 @@ def trim(messages, keep_recent=2):
     return out
 
 
+def forget_lookups(messages):
+    """Earlier messages with their search and read results blanked. Passage ids are rowids, which change when the
+    library is rebuilt: an id from a result of an older edition now names some other passage, and a citation to it
+    would pass the check under the wrong label. Without the results the ids aren't known, so they can't be cited."""
+    return [{**m, "content": STALE_LOOKUP} if m.get("role") == "tool" else m for m in messages]
+
+
 def chat_events(client, library, history, question, settings, supports_tools=True):
     """history: earlier messages of this chat in OpenAI form (no system message). Yields events and ends with a
     "done" event carrying the messages to save."""
@@ -229,12 +247,17 @@ def chat_events(client, library, history, question, settings, supports_tools=Tru
     for m in history:
         if m.get("role") == "tool":
             known.update(ID_IN_TEXT.findall(m.get("content") or ""))
+    # ids of passages whose whole text the model was given, as against a search result's extract
+    full = set()
+    for m in history:
+        if m.get("role") == "tool" and str(m.get("name", "")).startswith("read"):
+            full.update(ID_IN_TEXT.findall(m.get("content") or ""))
     read, seen = {}, {}
     reasoning = settings.get("reasoning", "auto")
     limit = LENGTH_LIMITS.get(settings.get("length", "normal"), 6000)
     tools = TOOLS if supports_tools else None
     if not tools:
-        yield from _attach_excerpts(library, messages, read, known)
+        yield from _attach_excerpts(library, messages, read, known, full)
     usage_total, cut_off, nudge, round_no, answer = 0, False, None, 0, ""
     while True:
         use_tools = tools if round_no < MAX_TOOL_ROUNDS and nudge != THINK_NUDGE else None
@@ -282,7 +305,7 @@ def chat_events(client, library, history, question, settings, supports_tools=Tru
                     messages.pop()
                 yield {"type": "notice", "text": "This model can't use the search tools, so the app attached the "
                                                  "best-matching passages to your question instead."}
-                yield from _attach_excerpts(library, messages, read, known)
+                yield from _attach_excerpts(library, messages, read, known, full)
                 continue
             raise
         if sent:
@@ -323,6 +346,8 @@ def chat_events(client, library, history, question, settings, supports_tools=Tru
             if event:
                 if event["type"] == "read" or event["type"] == "show":
                     read.setdefault(event["id"], event)
+                if event["type"] == "read":
+                    full.update([event["id"]] + [n["id"] for n in event.get("nearby", [])])
                 for h in event.get("results", []):
                     seen.setdefault(h["id"], h)
                 yield event
@@ -330,13 +355,18 @@ def chat_events(client, library, history, question, settings, supports_tools=Tru
         round_no += 1
 
     if tools and (not answer.strip() or answer.lstrip().startswith(TOOL_MARKUP)):
-        answer = yield from _rescue(client, library, messages, question, read, seen, known)
+        answer = yield from _rescue(client, library, messages, question, read, seen, known, full)
         messages[-1] = {"role": "assistant", "content": answer}
 
     answer, cites, dropped = _check_citations(answer, known, library)
+    for pid, info in cites.items():
+        info["read"] = pid in full  # False: cited from a search result's extract alone
+    given = " ".join([question, settings.get("project_notes") or "", (settings.get("project") or {}).get("notes") or ""]
+                     + [m.get("content") or "" for m in history if m.get("role") == "user"])
     if messages and messages[-1].get("role") == "assistant":
         messages[-1]["content"] = answer
     yield {"type": "done", "answer": answer, "cites": cites, "dropped": dropped, "cut_off": cut_off,
+           "figures": check_figures(answer, cites, library, given),
            "read": list(read.values()), "seen": [s for k, s in seen.items() if k not in read][:12],
            "tokens": usage_total, "messages": messages[1:]}
 
@@ -428,7 +458,75 @@ def _check_citations(answer, known, library):
     return answer, cites, dropped
 
 
-def _attach_excerpts(library, messages, read, known):
+# ----- figures -----
+# A figure is a number with its unit: "220 mm", "7.5m", "30-minute", "0.26 W/m²K", "150-220 mm". Bare numbers are
+# left alone: most in an answer are paragraph and table numbers.
+_NUM = r"\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?"
+_UNIT = (r"W/\(?m[²2][·.\s]?K\)?|kWh|kW|kN/m[²2]|kN|kPa|Pa|l/s|litres?(?:/s)?|m[³3]/h|mm[²2]?|cm|km|m[²2³3]?|metres?|"
+         r"millimetres?|°\s?C|°|degrees?|%|per ?cent|minutes?|mins?|hours?|hrs?|seconds?|storeys?|kg|lux|dB|years?|"
+         r"months?|weeks?|days?")
+FIGURE = re.compile(rf"(?<![\w.,/])({_NUM})(?:\s?[–-]\s?({_NUM}))?[\s-]?({_UNIT})(?![A-Za-z])")
+NUMBER = re.compile(rf"(?<![\w.])(?:{_NUM})")
+NUMBER_WORDS = {w: n for n, w in enumerate(
+    "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen "
+    "eighteen nineteen twenty".split())} | {"thirty": 30, "forty": 40, "fifty": 50, "sixty": 60, "ninety": 90}
+# the same quantity in the unit the document may use instead: metres and millimetres, hours and minutes
+SAME_AS = {"m": (1000,), "metre": (1000,), "metres": (1000,), "mm": (.001,), "millimetre": (.001,),
+           "millimetres": (.001,), "cm": (10, .01), "km": (1000,), "hour": (60,), "hours": (60,), "hr": (60,),
+           "hrs": (60,), "minute": (1 / 60,), "minutes": (1 / 60,), "min": (1 / 60,), "mins": (1 / 60,), "kW": (1000,)}
+SENTENCE_END = re.compile(r"(?<=[.!?])\s+(?=[^\s\[(])")  # a citation after the full stop stays with its sentence
+LIST_ITEM = re.compile(r"\s*(?:[-*•]|\d+[.)])\s+|\s*\|")
+
+
+def _numbers(text):
+    """Every number in a text, as written in figures or (up to twenty, and the tens) in words."""
+    found = {round(float(n.replace(",", "")), 6) for n in NUMBER.findall(text or "")}
+    return found | {float(NUMBER_WORDS[w]) for w in re.findall(r"[a-z]+", (text or "").lower()) if w in NUMBER_WORDS}
+
+
+def _cited_segments(answer, cites):
+    """(text, [cited ids]) for each stretch of the answer that a citation covers: its sentence, its list item or
+    table row, and the list under a line ending in a colon that carries the citation ("ADK Table 1.1 [r5] gives:")."""
+    lead = []
+    for line in (answer or "").split("\n"):
+        ids_in_line = list(dict.fromkeys(i for i in ID_IN_TEXT.findall(line) if i in cites))
+        if LIST_ITEM.match(line):
+            if not ids_in_line and lead:
+                yield line, lead
+                continue
+        elif line.strip():
+            lead = ids_in_line if ID_IN_TEXT.sub("", line).rstrip(" *_").endswith(":") else []
+        for part in SENTENCE_END.split(line):
+            ids = list(dict.fromkeys(i for i in ID_IN_TEXT.findall(part) if i in cites))
+            if ids:
+                yield part, ids
+
+
+def check_figures(answer, cites, library, given=""):
+    """Figures the answer gives beside a citation that aren't in the passage cited: [{"figure": "225 mm", "ids"}].
+
+    Numbers only, so it can't tell a right figure used wrongly; what it catches is a figure the cited passage doesn't
+    contain at all, which is either made up, worked out, or cited to the wrong paragraph. Figures the person gave
+    themselves (in their questions or notes) aren't the passage's to bear out and are left alone."""
+    out, numbers, own = [], {}, _numbers(given)
+    for text, ids in _cited_segments(answer, cites):
+        for pid in ids:
+            if pid not in numbers:
+                info = cites[pid]
+                numbers[pid] = _numbers(" ".join([library.text(pid), info.get("ref") or "", info.get("heading") or ""]))
+        there = set().union(*(numbers[pid] for pid in ids))
+        for m in FIGURE.finditer(ID_IN_TEXT.sub(" ", text)):
+            for raw in filter(None, (m.group(1), m.group(2))):
+                value = float(raw.replace(",", ""))
+                same = {round(value, 6)} | {round(value * f, 6) for f in SAME_AS.get(m.group(3), ())}
+                figure = f"{raw} {m.group(3)}"
+                if not same & there and round(value, 6) not in own and \
+                        not any(f["figure"] == figure and f["ids"] == ids for f in out):
+                    out.append({"figure": figure, "ids": ids})
+    return out
+
+
+def _attach_excerpts(library, messages, read, known, full):
     """Without tools: put the top passages into the question."""
     question = messages[-1]["content"]
     hits = library.search(question, limit=5)
@@ -438,6 +536,7 @@ def _attach_excerpts(library, messages, read, known):
         if doc:
             ids = ID_IN_TEXT.findall(doc["text"])
             known.update(ids)
+            full.update(ids)
             blocks.append(f"{_head(doc)}:\n{doc['text']}")
             read.setdefault(h["id"], {"type": "read", **_brief(h)})
             yield {"type": "read", **_brief(h), "nearby": _nearby(library, ids, h["id"])}
@@ -446,7 +545,7 @@ def _attach_excerpts(library, messages, read, known):
                                                               "brackets):\n\n" + "\n\n".join(blocks)}
 
 
-def _rescue(client, library, messages, question, read, seen, known):
+def _rescue(client, library, messages, question, read, seen, known, full):
     """It looked things up but wrote no answer: give it the best passages and ask once more without tools."""
     ids = list(read)[:3] or list(seen)[:3]
     if not ids:
@@ -456,6 +555,7 @@ def _rescue(client, library, messages, question, read, seen, known):
         doc = library.read(pid, max_chars=2500)
         if doc:
             known.update(ID_IN_TEXT.findall(doc["text"]))
+            full.update(ID_IN_TEXT.findall(doc["text"]))
             blocks.append(doc["text"])
     msgs = [m for m in messages if m.get("role") in ("system", "user")][:1] + \
         [{"role": "user", "content": question + "\n\n" + RESCUE_NOTE + "\n\n" + "\n\n".join(blocks)}]
