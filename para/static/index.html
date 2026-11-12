@@ -56,12 +56,9 @@
         <h1>Ask about the Building Regulations</h1>
         <p>Answers come from the Approved Documents, the Building Regulations 2010, the Building Safety Act and
           its guidance, and any files you add, with a link to each paragraph used.</p>
-        <div class="examples">
-          <button>What is the maximum travel distance in a single-direction escape route from a flat?</button>
-          <button>Minimum headroom and maximum pitch for a private stair</button>
-          <button>When is a building a higher-risk building?</button>
-          <button>Guarding height for a balcony in a dwelling</button>
-        </div>
+        <div id="welcomeNews"></div>
+        <div id="welcomeStart"></div>
+        <div id="welcomeParts"></div>
       </div>
     </div>
     <form id="composer">
@@ -235,6 +232,22 @@
   <label class="check"><input type="checkbox" id="permAgree"> I'll only add documents I'm allowed to use this way</label>
   <div class="modal-actions"><button class="btn" id="permCancel">Cancel</button>
     <button class="btn primary" id="permOk" disabled>Continue</button></div>
+</dialog>
+
+<dialog id="dlg-confirm" class="modal narrow">
+  <div class="eyebrow">Please confirm</div>
+  <h2></h2>
+  <p></p>
+  <form method="dialog" class="modal-actions"><button class="btn" value="no">Cancel</button>
+    <button class="btn danger" value="yes">Delete</button></form>
+</dialog>
+
+<dialog id="dlg-unsaved" class="modal narrow">
+  <div class="eyebrow">Not saved yet</div>
+  <h2>Save your changes?</h2>
+  <form method="dialog" class="modal-actions"><button class="btn" value="keep">Keep editing</button>
+    <button class="btn" value="discard">Don't save</button>
+    <button class="btn primary" value="save">Save</button></form>
 </dialog>
 
 <dialog id="dlg-library" class="modal wide">

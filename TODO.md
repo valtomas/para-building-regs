@@ -1,8 +1,9 @@
 # To do
 
-0.2.0 was released on 12 November 2026. What follows it is on the branch `ccr-990cc406-2vnrqi`: a fix for models
-whose chat template wants turns to alternate (Mistral's), IBM Granite 4.2 3B for 8 and 12 GB computers, and each
-built-in model's test score on its row (`docs/model-tests.md`, run F). The checks below were left open at 0.2.0.
+0.2.0, 0.2.1 and 0.2.2 were released on 12 November 2026. 0.2.1 made models with a strict chat template work
+(Mistral's), added IBM Granite 4.2 3B for 8 and 12 GB computers and put each built-in model's test score on its row
+(`docs/model-tests.md`, run F). 0.2.2 fixed the packaged Linux app closing on Copy with references and opening
+nothing from its links, and reworked closing dialogs and the empty chat. The checks below were left open at 0.2.0.
 Delete this file when it's empty.
 
 ## Done at the workstation
@@ -104,9 +105,9 @@ means the app can't be installed at all.
 
 **Linux** needs nothing: the AppImage and .deb aren't signed, and the app checks GitHub's checksum when it updates.
 
-## 5. Releasing 0.2.1
+## 5. After 0.2.2
 
-- [ ] Open a pull request from the branch and merge it. The version is `0.2.1` in `para/__init__.py`.
-- [ ] Tag `v0.2.1` on main: that builds the library and the apps and publishes the release, with `models.json` for
-      installed apps. A 0.2.0 app picks up the new list from it without updating, but shows the scores and passes
-      over Gemma at 12 GB only once it is 0.2.1.
+- [ ] In the packaged Linux window: press Copy with references and paste into a document; follow Original from the
+      reader. Both fixes were checked piece by piece, not in a built app.
+- [ ] Ask a project's own questions from the empty chat with a real model and read the answers.
+- [ ] Retake `welcome.png`.

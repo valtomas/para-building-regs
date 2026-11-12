@@ -342,12 +342,26 @@ def state():
 
 
 def open_path(path):
+    """A file or folder in the program the system uses for it. On Linux with the environment as it was before the
+    packaged app changed it (`updater.clean_env`): with the app's own libraries first on LD_LIBRARY_PATH, the
+    browser or file manager xdg-open starts fails to load and nothing opens."""
     if sys.platform == "darwin":
         subprocess.Popen(["open", path])
     elif os.name == "nt":
         os.startfile(path)  # noqa: S606
     else:
-        subprocess.Popen(["xdg-open", path])
+        subprocess.Popen(["xdg-open", path], env=updater.clean_env())
+
+
+def open_url(url):
+    """A web address (or the feedback mailto) in the person's browser. On Linux through xdg-open with the clean
+    environment, for the same reason as open_path: `webbrowser` would hand the browser the app's libraries. A
+    BROWSER the person has set is theirs to choose, and `webbrowser` follows it."""
+    import shutil
+    if sys.platform.startswith("linux") and shutil.which("xdg-open") and not os.environ.get("BROWSER"):
+        subprocess.Popen(["xdg-open", url], env=updater.clean_env())
+    else:
+        webbrowser.open(url)
 
 
 # ----- HTTP -----
@@ -555,7 +569,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
             if path == "/api/open":
                 body = self._json_body()
                 if body.get("url", "").startswith(("https://", "http://")) or body.get("url") == FEEDBACK:
-                    webbrowser.open(body["url"])
+                    open_url(body["url"])
                 elif body.get("folder") == "files":
                     project = body.get("project") or ""
                     open_path(myfiles.project_folder(project) if myfiles.project(project) else myfiles.folder)
@@ -737,6 +751,29 @@ def _gui_choice():
     return {}
 
 
+def _qt_permissions():
+    """pywebview answers a page's permission request with a bare number, which PyQt6 refuses; the error is raised
+    inside Qt, and Qt then stops the whole app. Copy with references asks to write to the clipboard, so pressing it
+    closed the window. This answers properly instead: the app's own page may use the clipboard, and nothing else
+    is allowed."""
+    try:
+        from webview.platforms import qt
+        page, policy = qt.BrowserView.WebPage, qt.QWebPage.PermissionPolicy
+        clipboard = getattr(qt.QWebPage.Feature, "ClipboardReadWrite", None)
+    except Exception:  # noqa: BLE001 - another toolkit, or a Qt binding laid out differently: leave pywebview's own
+        return
+
+    def answer(self, url, feature):
+        try:
+            mine = clipboard is not None and feature == clipboard and url.host() in ("127.0.0.1", "localhost")
+            self.setFeaturePermission(url, feature,
+                                      policy.PermissionGrantedByUser if mine else policy.PermissionDeniedByUser)
+        except Exception:  # noqa: BLE001 - called by Qt: an error here would stop the app
+            pass
+
+    page.onFeaturePermissionRequested = answer
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog=paths.APP_SLUG)
     ap.add_argument("--browser", action="store_true", help="open in the web browser instead of a window")
@@ -773,13 +810,16 @@ def main(argv=None):
         if window is not None:
             import webview
             try:
+                choice = _gui_choice()
+                if choice.get("gui") == "qt":
+                    _qt_permissions()
                 webview.start(private_mode=False, storage_path=paths.data_path("webview", "x")[:-2],
-                              **_gui_choice())
+                              **choice)
             except Exception as e:  # noqa: BLE001 - no usable window toolkit (e.g. Linux without WebEngine libraries)
                 print(f"Can't open a window ({e.__class__.__name__}: {e}); opening the browser instead.", flush=True)
                 window = None
         if window is None:
-            webbrowser.open(url)
+            open_url(url)
             while True:
                 time.sleep(3600)
     except KeyboardInterrupt:

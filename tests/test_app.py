@@ -563,6 +563,26 @@ newer.close()
 from para import updater  # noqa: E402
 
 check(updater.kind() is None, "running from source, the app doesn't update itself")
+
+# links and files opened from the packaged Linux app: the browser mustn't be handed the app's own libraries
+if sys.platform.startswith("linux"):
+    import shutil  # noqa: E402
+    started = []
+    real_popen, real_which, kept = server.subprocess.Popen, shutil.which, dict(os.environ)
+    server.subprocess.Popen = lambda cmd, **kw: started.append((cmd, kw.get("env")))
+    shutil.which = lambda name: "/usr/bin/" + name
+    os.environ.pop("BROWSER", None)
+    os.environ.update(LD_LIBRARY_PATH="/opt/para/_internal", LD_LIBRARY_PATH_ORIG="/usr/local/lib")
+    try:
+        server.open_url("https://www.gov.uk/x.pdf#page=3")
+        server.open_path("/tmp/a folder")
+    finally:
+        server.subprocess.Popen, shutil.which = real_popen, real_which
+        os.environ.clear()
+        os.environ.update(kept)
+    check([c for c, _ in started] == [["xdg-open", "https://www.gov.uk/x.pdf#page=3"], ["xdg-open", "/tmp/a folder"]]
+          and all(env and env.get("LD_LIBRARY_PATH") == "/usr/local/lib" for _, env in started),
+          "a link or folder is opened with the system's libraries, not the packaged app's")
 release = {"Para-linux.AppImage": {"browser_download_url": "https://example.org/Para-linux.AppImage", "size": 9,
                                    "digest": "sha256:" + "ab" * 32}}
 check(updater.offer(release) is None, "no update offered to a copy that can't replace itself")
