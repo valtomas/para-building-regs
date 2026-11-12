@@ -1,8 +1,9 @@
-# To do before releasing 0.2.0
+# To do
 
-Everything is on the branch `ccr-990cc406-2vnrqi` (not yet a pull request). The first three sections of the old list
-were worked through at the workstation on 11 November 2026 with real models and the real window; what was found is in
-`docs/model-tests.md` (run D) and in the commit messages. Delete this file when it's empty.
+0.2.0 was released on 12 November 2026. What follows it is on the branch `ccr-990cc406-2vnrqi`: a fix for models
+whose chat template wants turns to alternate (Mistral's), IBM Granite 4.2 3B for 8 and 12 GB computers, and each
+built-in model's test score on its row (`docs/model-tests.md`, run F). The checks below were left open at 0.2.0.
+Delete this file when it's empty.
 
 ## Done at the workstation
 
@@ -15,7 +16,8 @@ were worked through at the workstation on 11 November 2026 with real models and 
   than the 4B, at five times the wait, and made up passage ids.
 - **The built-in list was rewritten from the tests** (run E): Nemotron 3.5 Lightning and Qwen3.5 35B-A3B, the two
   best on Lemonade, were run through the built-in engine and replace Qwen3 30B-A3B. IBM Granite 4.2 8B got 35 of 36 from a
-  5.3 GB file and is the suggestion for 16 GB, though slow; Gemma 4 E4B is for 12 GB.
+  5.3 GB file and is the suggestion for 16 GB, though slow. Granite 4.2 3B (29 to 31) is now the one for 8 and 12 GB;
+  Gemma 4 E4B and Qwen3 4B are listed but not suggested (run F).
 - **The 36 questions on Lemonade** (Nemotron 3.5, Qwen3.5-35B, Gemma 4 E4B), every answer read, every flagged figure
   judged: 20 true, 4 false alarms from two causes, both fixed with tests.
 - **The library**: two-column pages are now read from where their lines are (`library/columns.py`). By
@@ -102,9 +104,9 @@ means the app can't be installed at all.
 
 **Linux** needs nothing: the AppImage and .deb aren't signed, and the app checks GitHub's checksum when it updates.
 
-## 5. Releasing
+## 5. Releasing 0.2.1
 
-- [ ] Open a pull request from the branch and merge it. The version is already `0.2.0` in `para/__init__.py`, and
-      the website has its new sentence (it publishes when main changes).
-- [ ] Tag `v0.2.0` on main: that builds the library and the apps and publishes the release, with `models.json` (the
-      pin) for installed apps.
+- [ ] Open a pull request from the branch and merge it. The version is `0.2.1` in `para/__init__.py`.
+- [ ] Tag `v0.2.1` on main: that builds the library and the apps and publishes the release, with `models.json` for
+      installed apps. A 0.2.0 app picks up the new list from it without updating, but shows the scores and passes
+      over Gemma at 12 GB only once it is 0.2.1.

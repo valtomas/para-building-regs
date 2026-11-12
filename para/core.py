@@ -238,6 +238,26 @@ def forget_lookups(messages):
     return [{**m, "content": STALE_LOOKUP} if m.get("role") == "tool" else m for m in messages]
 
 
+def _add_note(messages, note):
+    """Put a note from the app at the end of the conversation for one round; returns what _take_note needs to take
+    it out again. After the person's message or a tool's result the note is added to that message, not sent as a
+    message of its own: some models' chat templates (Mistral's) refuse two user messages in a row, or a user message
+    straight after a tool's result, and the engine answers with an error."""
+    last = messages[-1]
+    if last.get("role") in ("user", "tool") and isinstance(last.get("content"), str):
+        messages[-1] = {**last, "content": last["content"] + "\n\n" + note}
+        return last
+    messages.append({"role": "user", "content": note})
+    return None
+
+
+def _take_note(messages, before):
+    if before is None:
+        messages.pop()
+    else:
+        messages[-1] = before
+
+
 def chat_events(client, library, history, question, settings, supports_tools=True):
     """history: earlier messages of this chat in OpenAI form (no system message). Yields events and ends with a
     "done" event carrying the messages to save."""
@@ -265,7 +285,7 @@ def chat_events(client, library, history, question, settings, supports_tools=Tru
             nudge = FINAL_NUDGE
         sent = nudge
         if nudge:
-            messages.append({"role": "user", "content": nudge})
+            before = _add_note(messages, nudge)
             nudge = None
         content, held, calls, thought, over, finish = [], [], [], 0, False, None
         try:
@@ -302,14 +322,14 @@ def chat_events(client, library, history, question, settings, supports_tools=Tru
                 # The server or model can't take tools: attach the best passages instead.
                 tools = None
                 if sent:
-                    messages.pop()
+                    _take_note(messages, before)
                 yield {"type": "notice", "text": "This model can't use the search tools, so the app attached the "
                                                  "best-matching passages to your question instead."}
                 yield from _attach_excerpts(library, messages, read, known, full)
                 continue
             raise
         if sent:
-            messages.pop()
+            _take_note(messages, before)
         if over:
             yield {"type": "retry", "why": "think_limit"}
             nudge = THINK_NUDGE

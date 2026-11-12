@@ -228,6 +228,70 @@ was downloaded by the app (llama.cpp b12078) and asked the 36 questions, with Ge
 The list in `para/models.json` after this run: Nemotron 3.5 Lightning from 48 GB, Qwen3.5 35B-A3B from 32 GB,
 gpt-oss 20B from 24 GB, Granite 4.2 8B from 16 GB, Gemma 4 E4B from 12 GB, Qwen3 4B from 8 GB.
 
+### Run F: models made for tool calling, a fault with Mistral's models, and every listed model again
+
+Granite did well in run E, so five more small models whose makers stress tool calling were downloaded by the app and
+asked the 36 questions (2026-11-12, llama.cpp b12078, all Q4_K_M):
+
+| Model | Right figures | Answers with no passage opened | Notes |
+|---|---|---|---|
+| IBM Granite 4.2 3B (2.2 GB) | 31/36 | 6 | 23 s at the median |
+| Qwen3.5 9B | 30/36 | 17 | 11 figures flagged; 8 weeks for the higher-risk approval period |
+| Ministral 3 8B Reasoning | 30/36 | 34 | 2 made-up ids removed; 2 answers lost to an engine error |
+| Ministral 3 14B Reasoning | 24/36 | not counted | 4 answers lost to an engine error |
+| Ministral 3 8B Instruct | 23/36 | 35 | 2 answers lost to an engine error |
+
+- **The engine errors were the app's fault.** When a model answers without looking anything up, the app sends it a
+  note ("Note from the app: …") and asks again. The note went as a user message of its own, after the person's
+  message or a tool's result, and Mistral's chat template refuses that: "conversation roles must alternate", HTTP 500.
+  The note is now added to the last message for that round and taken out again (`core._add_note`), so any model
+  with a strict template works, on the built-in engine or the person's own server.
+- **Granite 4.2 3B is the find**: 31 right from a 2.2 GB file, a passage opened for all but six answers, no made-up
+  ids. Wrong: 1100 mm for the loft landing (the 8B's mistake too), the front door's security standard, the cladding
+  class without A1, and permitted development. The Ministral answers and these five models' figure flags weren't read
+  one by one.
+- Neither Ministral nor Qwen3.5 9B is listed: they cite from search results almost every time and do no better than
+  Granite 3B at two to four times the size.
+
+Because the fix changes what every model is sent, each listed model was asked the 36 questions again, with nothing
+else using the graphics card (a first try was thrown away: a game was running, the card reset and the answers were
+slow):
+
+| Model | Right figures | Searched | Cited | Right passage cited | Made-up ids removed | Figures flagged | Extract-only citations | Median time |
+|---|---|---|---|---|---|---|---|---|
+| NVIDIA Nemotron 3.5 Lightning 30B-A3B | 35/36 | 36/36 | 30/36 | 28/36 | 0 | 4 | 11 | 21 s |
+| Qwen3.5 35B-A3B | 32/36 | 36/36 | 36/36 | 29/36 | 1 | 3 | 55 | 13 s |
+| gpt-oss 20B | 32/36 | 36/36 | 31/36 | 30/36 | 0 | 0 | 9 | 11 s |
+| IBM Granite 4.2 8B | 35/36 | 36/36 | 35/36 | 30/36 | 0 | 2 | 5 | 56 s |
+| IBM Granite 4.2 3B | 29/36 | 36/36 | 33/36 | 26/36 | 0 | 0 | 11 | 21 s |
+| Gemma 4 E4B | 27/36 | 36/36 | 36/36 | 25/36 | 3 | 2 | 39 | 15 s |
+| Qwen3 4B Instruct 2507 | 25/36 | 32/36 | 32/36 | 23/36 | 0 | 6 | 70 | 6 s |
+| Ministral 3 8B Reasoning (not listed) | 26/36 | 36/36 | 28/36 | 24/36 | 0 | 1 | 65 | 9 s |
+
+- **No engine errors**: 288 answers, none lost. Ministral's 500s are gone. Its score fell from 30 to 26 all the same,
+  so the earlier 30 was at the top of its range.
+- **Nothing got worse with the note folded in.** Nemotron 35 (32 in run E), Granite 8B 35 (35 and 33), Qwen3.5 32
+  (33), gpt-oss 32 (32), Gemma 27 (22), Qwen3 4B 25 (20 to 25). One run each, so read these as ranges: the README
+  and the app give them that way.
+- **Granite 8B and Nemotron miss only the NHBC question by the check**, and both answers are sensible: they say the
+  NHBC Standards aren't in the library, then quote ADA on wall ties with a citation. The check wants no citation
+  there. Granite 8B opened a passage for every answer again.
+- **Wrong with a citation**: Qwen3.5 gave monthly checks for flat entrance doors (annual) and 10 m³/(h·m²) for air
+  permeability (8); Gemma gave 0.70 for a new wall's U-value, from the wrong table; Qwen3 4B gave 1.4 for windows, 40
+  dB for separating walls and 3.0 "air changes" for permeability, never opening a passage in 36 answers.
+- **gpt-oss gave no answer at all to the fire doors question**: eight searches, nothing opened, and an empty answer
+  after both of the app's retries. No error was raised.
+- **The 17 figure flags on the listed models were each checked against the passage: all true**, in that the figure
+  isn't in the passage cited for it. Several are a right figure beside the wrong citation (11 m for sprinklers
+  cited to an ADB FAQ).
+- **Granite 3B over two runs: 31 and 29.** That is above Gemma (22 and 27) and Qwen3 4B (20 to 25), from a smaller
+  file, so it is now the suggestion for 8 and 12 GB. Gemma and Qwen3 4B stay in the list, marked `"suggest": false`
+  in `para/models.json`: `engine.recommend` passes over them.
+
+The list after this run: Nemotron 3.5 Lightning from 48 GB, Qwen3.5 35B-A3B from 32 GB, gpt-oss 20B from 24 GB,
+Granite 4.2 8B from 16 GB, Granite 4.2 3B from 8 GB; Gemma 4 E4B and Qwen3 4B listed but not suggested. Each entry
+carries its score (`tested`), shown on its row in Settings.
+
 ## Built-in engine
 
 - `para/models.json`: every repo and file exists on Hugging Face with the listed size (checked with `HEAD` and
