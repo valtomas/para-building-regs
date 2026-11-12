@@ -737,6 +737,29 @@ def _gui_choice():
     return {}
 
 
+def _qt_permissions():
+    """pywebview answers a page's permission request with a bare number, which PyQt6 refuses; the error is raised
+    inside Qt, and Qt then stops the whole app. Copy with references asks to write to the clipboard, so pressing it
+    closed the window. This answers properly instead: the app's own page may use the clipboard, and nothing else
+    is allowed."""
+    try:
+        from webview.platforms import qt
+        page, policy = qt.BrowserView.WebPage, qt.QWebPage.PermissionPolicy
+        clipboard = getattr(qt.QWebPage.Feature, "ClipboardReadWrite", None)
+    except Exception:  # noqa: BLE001 - another toolkit, or a Qt binding laid out differently: leave pywebview's own
+        return
+
+    def answer(self, url, feature):
+        try:
+            mine = clipboard is not None and feature == clipboard and url.host() in ("127.0.0.1", "localhost")
+            self.setFeaturePermission(url, feature,
+                                      policy.PermissionGrantedByUser if mine else policy.PermissionDeniedByUser)
+        except Exception:  # noqa: BLE001 - called by Qt: an error here would stop the app
+            pass
+
+    page.onFeaturePermissionRequested = answer
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog=paths.APP_SLUG)
     ap.add_argument("--browser", action="store_true", help="open in the web browser instead of a window")
@@ -773,8 +796,11 @@ def main(argv=None):
         if window is not None:
             import webview
             try:
+                choice = _gui_choice()
+                if choice.get("gui") == "qt":
+                    _qt_permissions()
                 webview.start(private_mode=False, storage_path=paths.data_path("webview", "x")[:-2],
-                              **_gui_choice())
+                              **choice)
             except Exception as e:  # noqa: BLE001 - no usable window toolkit (e.g. Linux without WebEngine libraries)
                 print(f"Can't open a window ({e.__class__.__name__}: {e}); opening the browser instead.", flush=True)
                 window = None
