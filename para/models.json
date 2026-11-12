@@ -23,7 +23,8 @@
       "min_ram_gb": 48,
       "context": 32768,
       "licence": "OpenMDW 1.1",
-      "about": "The most careful in our tests: it opens the passage before it cites it. Best choice for 48 GB or more."
+      "about": "The most careful in our tests: it opens the passage before it cites it. Best choice for 48 GB or more.",
+      "tested": "32 to 35 of 36"
     },
     {
       "id": "qwen3.5-35b-a3b",
@@ -34,7 +35,8 @@
       "min_ram_gb": 32,
       "context": 32768,
       "licence": "Apache 2.0",
-      "about": "As accurate as the largest in our tests. It often cites from a search result without opening the passage, which the app points out. For 32 GB or more."
+      "about": "As accurate as the largest in our tests. It often cites from a search result without opening the passage, which the app points out. For 32 GB or more.",
+      "tested": "32 or 33 of 36"
     },
     {
       "id": "gpt-oss-20b",
@@ -45,7 +47,8 @@
       "min_ram_gb": 24,
       "context": 32768,
       "about": "OpenAI's open-weight reasoning model. Opens the passage before it cites it. For 24 GB or more.",
-      "licence": "Apache 2.0"
+      "licence": "Apache 2.0",
+      "tested": "32 of 36"
     },
     {
       "id": "granite-4.2-8b",
@@ -56,7 +59,8 @@
       "min_ram_gb": 16,
       "context": 32768,
       "licence": "Apache 2.0",
-      "about": "Small and careful: it opens every passage it cites and got nearly all our test questions right. Slow: it thinks first, about a minute an answer on a fast computer. For 16 GB or more."
+      "about": "Small and careful: it opens every passage it cites and got nearly all our test questions right. Slow: about a minute an answer on a fast computer. For 16 GB or more.",
+      "tested": "33 to 35 of 36"
     },
     {
       "id": "gemma-4-e4b",
@@ -67,7 +71,21 @@
       "min_ram_gb": 12,
       "context": 32768,
       "licence": "Apache 2.0",
-      "about": "Small and quicker than Granite, for 12 GB computers. It searches and cites every time, but got about two in three of our test questions right, and says it can't find things that are there: check each answer against the paragraph it cites."
+      "about": "An alternative for 12 GB or more. It searches and cites every time, but got fewer of our test questions right than the smaller Granite 3B, and says it can't find things that are there: check each answer against the paragraph it cites.",
+      "tested": "22 to 27 of 36",
+      "suggest": false
+    },
+    {
+      "id": "granite-4.2-3b",
+      "name": "IBM Granite 4.2 3B",
+      "repo": "ibm-granite/granite-4.2-3b-GGUF",
+      "file": "granite-4.2-3b-Q4_K_M.gguf",
+      "size_gb": 2.2,
+      "min_ram_gb": 8,
+      "context": 32768,
+      "licence": "Apache 2.0",
+      "about": "The small Granite, for 8 and 12 GB computers. It opens the passage it cites for most answers and got about five in six of our test questions right, more than the other small models. Check each answer against the paragraph it cites.",
+      "tested": "29 to 31 of 36"
     },
     {
       "id": "qwen3-4b-2507",
@@ -77,8 +95,10 @@
       "size_gb": 2.5,
       "min_ram_gb": 8,
       "context": 32768,
-      "about": "The smallest, for 8 GB computers. Quick, but it got about two in three of our test questions right and sometimes gives a figure from memory: check every figure against the paragraph it cites.",
-      "licence": "Apache 2.0"
+      "about": "The quickest: a few seconds an answer, for 8 GB computers. It cites from search results without opening the passage, got about two in three of our test questions right and sometimes gives a figure from memory: check every figure against the paragraph it cites.",
+      "licence": "Apache 2.0",
+      "tested": "20 to 25 of 36",
+      "suggest": false
     }
   ]
 }

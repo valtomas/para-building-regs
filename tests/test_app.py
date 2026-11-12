@@ -881,6 +881,13 @@ engine._json = lambda url: releases
 rel, asset = engine._find_release("ggml-org/llama.cpp", "latest", r"bin-ubuntu-x64\.(zip|tar\.gz)$")
 check(rel["tag_name"] == "b2" and asset["name"].startswith("llama-b2"), "finds the newest llama.cpp build")
 
+# the suggested model: the biggest that fits, but never one a smaller model beat in our tests
+picks = {ram: (engine.recommend(ram=ram) or {}).get("id") for ram in (4, 8, 12, 16, 24, 32, 64)}
+check(picks[4] is None and picks[16] == "granite-4.2-8b" and picks[64] == "nemotron-3.5-lightning-30b",
+      "the suggested model is the biggest that fits this computer's memory")
+check(picks[8] == picks[12] == "granite-4.2-3b", "a model that a smaller one beat is listed but not suggested")
+check(all(m.get("tested") for m in engine.catalog()["models"]), "every listed model says how it did in our tests")
+
 # built-in engine memory: no load that won't fit, no engine left behind, none kept running idle
 if os.name != "nt":
     import subprocess  # noqa: E402
