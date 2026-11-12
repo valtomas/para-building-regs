@@ -3,10 +3,13 @@ or "Table 3.1" rather than at an arbitrary chunk. Used for the regulations libra
 import collections
 import re
 
-PARA = re.compile(r"""^(?:para(?:graph)?\s+)?(\d{1,2}\.\d{1,3})\.?\s+(?=[A-Za-z(\[•‘“'"])(?!(?:m|mm|kg|kN|kW|W|m2|m²|m3|s|l|litres|metres|per)\b)""")
+PARA = re.compile(r"""^(?:Para(?:graph)?\s+)?(\d{1,2}\.\d{1,3})\.?\s+(?=[A-Z(\[•‘“'"])(?!(?:m|mm|kg|kN|kW|W|m2|m²|m3|s|l|litres|metres|per)\b)(?!(?:and|to|or)\s+\d)""")
 FIGURE = re.compile(r"^(Table|Diagram|Figure)\s+(\d{1,2}[.\-]\d{1,3}[a-z]?|[A-Z]?\d{1,2}[a-z]?)\b", re.I)
 HEADING = re.compile(r"^(?:#{1,6}\s+.+|(?:Section|Chapter|Appendix|Annex|Schedule|Part)\s+[\dA-Z]{1,3}(?::|\s[-–—]|\.)?\s+[A-Z].{2,110}|"
                      r"Requirement\s+[A-T]\d+:.{0,80})$")
+# where a document turns to its next requirement: the paragraph before it has ended, whatever its number
+OPENS = re.compile(r"(?:This|These) (?:[Aa]pproved [Dd]ocument|section|sections) (?:deals? with the (?:following )?"
+                   r"[Rr]equirements? |gives guidance on how to meet regulation )")
 TRAILING_NO = re.compile(r"^(.{2,80}?)\s+(\d{1,2}\.\d{1,3})$")
 CONTENTS_LINE = re.compile(r"(?:\.{3,}|\s)\d{1,3}$")
 PAGE_NO = re.compile(r"^(?:page\s+)?\d{1,4}$|^\d{1,4}\s*(?:of\s+\d{1,4})?$", re.I)
@@ -15,8 +18,9 @@ SPACE = re.compile(r"[ \t ]+")
 
 TABLE_GAP = re.compile(r"\S {3,}\S")
 # what follows "Diagram 4.1" when it is a cross-reference wrapped onto a new line, not a caption: "Diagram 4.1).",
-# "Diagram 1.5 d. For access…", "Diagram 1.12 (for buildings…", "Table 1.1. e. Comply…"
-NOT_CAPTION = re.compile(r"^(?:[),;]|[.:]\s*[a-z(]|\(?\s*[a-z])")
+# "Diagram 1.5 d. For access…", "Diagram 1.12 (for buildings…", "Table 1.1. e. Comply…", and "Diagram 23." alone at
+# the end of a sentence (a row of ADJ Table 1 ends "…as in / Diagram 23.": the rest of the table was filed under it)
+NOT_CAPTION = re.compile(r"^(?:[),;]|[.:]\s*[a-z(]|\.\s*$|\(?\s*[a-z])")
 INDEX_REF_END = re.compile(r"(?:\d{1,2}\.\d{1,3}(?:\s*[–-]\s*\d{1,2}\.\d{1,3})?|"
                            r"(?:Tables?|Diagrams?|Appendix)\s+[\dA-Z][\d.]*|[Pp]age\s+\d{1,3})\s*[,;&]?$")
 
@@ -51,6 +55,34 @@ def _prose(cells):
         len(re.findall(r"\d", text)) < 0.08 * len(text)
 
 
+def _staggered_gutter(lines, width):
+    """The gutter of a two-column page whose columns' lines sit at slightly different heights, so that pdftotext
+    gives them on alternate lines: a line of the left column, then one of the right, few with both (ADC, ADG). There
+    is no run of lines split at the gutter to find it by. It is the place where many lines' text starts well into
+    the page, nearly every line is blank, and both sides have a column's worth of lines."""
+    text = [ln for ln in lines if ln.strip()]
+    if len(text) < 20:
+        return None
+
+    def clear(ln, x):
+        return not ln[x - 1:x + 2].strip()
+
+    def starts(x):
+        return sum(1 for ln in text if clear(ln, x) and ln[x + 2:x + 3].strip())  # right-column lines starting here
+
+    # The place most lines start at can be the indent of a list in the right column ("a. well compacted…" then its
+    # lines set in under it, ADC page 26), which the lines above it cross: take the best place that is a gutter.
+    for x in sorted(range(int(width * 0.35), int(width * 0.65)), key=starts, reverse=True):
+        if starts(x) < 8:
+            return None
+        left = sum(1 for ln in text if ln[:x].strip() and not ln[x:].strip())
+        right = sum(1 for ln in text if ln[x:].strip() and not ln[:x].strip())
+        crossing = sum(1 for ln in text if not clear(ln, x))
+        if left >= 8 and right >= 8 and crossing <= 0.15 * len(text):
+            return x
+    return None
+
+
 def unweave_columns(page):
     """Text of a two-column page from pdftotext -layout comes out a line of each column side by side ("2.2 Where it
     is not possible…   d. there is a level landing…"). Find the gutter, and where both sides of a run of lines read
@@ -69,8 +101,11 @@ def unweave_columns(page):
         n = sum(1 for ln in long if splits_at(ln, x))
         if n > best_n:
             best, best_n = x, n
-    if best is None or best_n < 0.6 * len(long):
-        return page
+    staggered = best is None or best_n < 0.6 * len(long)
+    if staggered:
+        best = _staggered_gutter(lines, width)
+        if best is None:
+            return page
     out, run = [], []
 
     def flush():
@@ -83,14 +118,50 @@ def unweave_columns(page):
                 out.extend(run)
             run.clear()
 
-    for ln in lines:
-        if splits_at(ln, best) or (not ln.strip() and run) or (ln.strip() and len(ln) <= best and run):
+    def take(ln):
+        # a run of column text starts at a line with both columns on it; on a staggered page few lines have, so
+        # there a line of either column starts one
+        going = bool(run) or staggered
+        if splits_at(ln, best) or (not ln.strip() and run) or (ln.strip() and len(ln) <= best and going):
             run.append(ln)  # both columns, a blank line, or a line with text only in the left column
-        elif ln.strip() and ln[:best].strip() == "" and run:
+        elif ln.strip() and ln[:best].strip() == "" and going:
             run.append(ln)  # text only in the right column
         else:
             flush()
             out.append(ln)
+
+    def across(ln):
+        """Text on both sides of the gutter, or over it: a row of something as wide as the page."""
+        return bool(ln[:best].strip() and ln[best:].strip())
+
+    # On a staggered page few lines of running text have both columns on them, so a table as wide as the page stands
+    # out: its caption, then rows with text on both sides. Its rows are kept whole; cut at the gutter, a table loses
+    # its right-hand columns to the end of the page ("Walls | 40" becomes "Walls"). It ends where, after a gap,
+    # three lines in a row keep to one column again (or six without a gap). A table set in one column has no such rows and is read with its column.
+    in_table, held = False, []
+    for i, ln in enumerate(lines):
+        if in_table:
+            if not ln.strip() or not across(ln):
+                held.append(ln)
+                kept = sum(1 for h in held if h.strip())
+                # column headings stacked over one side come straight after the caption or a row: they aren't the end
+                if kept >= 6 or (kept >= 3 and not held[0].strip()):
+                    in_table = False
+                    for h in held:
+                        take(h)
+                    held = []
+                continue
+            out.extend(held + [ln])
+            held = []
+            continue
+        if staggered and ln[:best].strip() and re.match(r"Table\b", ln.strip()) and figure_start(ln.strip()) and \
+                any(across(nxt) for nxt in [x for x in lines[i + 1:i + 8] if x.strip()][:3]):
+            flush()
+            out.append(ln)
+            in_table = True
+            continue
+        take(ln)
+    out.extend(held)
     flush()
     return "\n".join(out)
 
@@ -190,8 +261,11 @@ def _unwrap_numbers(lines, state=None):
         while j < len(lines) and not lines[j].strip() and j - i < 3:
             j += 1
         nxt = lines[j].strip() if j < len(lines) else ""
-        if m and nxt and not PARA.match(nxt) and not m.group(1).rstrip().endswith((",", "paragraph", "para", "see",
-                                                                                     "and", "to", "Table", "Diagram")) \
+        # not the number a caption ends with ("Diagram 2.37 Wall type 4.1", then a heading: ADE lost Section 3's
+        # numbers to that "4.1")
+        if m and nxt and not PARA.match(nxt) and not figure_start(s) and not nxt[:1].islower() and \
+                not m.group(1).rstrip().endswith((",", "paragraph", "para", "see", "and", "to", "Table", "Diagram",
+                                                  "type", "types")) \
                 and state is not None and plausible(m.group(2), dict(state)):
             out.append(m.group(1))
             out.append(m.group(2) + " " + nxt)
@@ -306,7 +380,8 @@ def split(pages, max_chars=1800, min_chars=350):
             elif m_fig:
                 label = f"{m_fig.group(1).title()} {m_fig.group(2)}"
             fig_open = bool(cur_refs) and FIGURE.match(cur_refs[0])
-            if m_fig or (label and (size >= min_chars or fig_open)) or (size and size + len(b) > max_chars):
+            if m_fig or (label and (size >= min_chars or fig_open)) or (size and size + len(b) > max_chars) or \
+                    (cur_refs and OPENS.match(b)):
                 flush()
             while len(b) > max_chars:  # one huge block (a table read as text)
                 cut = b.rfind(". ", 0, max_chars)

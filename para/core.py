@@ -451,6 +451,8 @@ def _check_citations(answer, known, library):
         return f"({words}) {chips}".rstrip() if words else chips
 
     answer = (answer or "").replace("\x00", "")
+    # gpt-oss writes its citations in its own brackets, sometimes with a line range: 【r12】, 【r12†L4-L9】
+    answer = re.sub(r"【\s*([rf]\d+)(?:†[^】]*)?\s*】", r"[\1]", answer)
     for group in CITE_GROUPS:  # square brackets first: "(ADB Vol 1, para 2.13 [r12])"
         answer = group.sub(fix, answer)
     answer = re.sub(r"\x00([rf]\d+)\x00", r"[\1]", answer)
@@ -461,7 +463,9 @@ def _check_citations(answer, known, library):
 # ----- figures -----
 # A figure is a number with its unit: "220 mm", "7.5m", "30-minute", "0.26 W/m²K", "150-220 mm". Bare numbers are
 # left alone: most in an answer are paragraph and table numbers.
-_NUM = r"\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?"
+# thousands set off by a comma or, as some models write them, a narrow or non-breaking space: "1 000 mm"
+_NUM = r"\d{1,3}(?:[,\u202f\u00a0\u2009]\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?"
+_THOUSANDS = re.compile(r"[,\u202f\u00a0\u2009]")
 _UNIT = (r"W/\(?m[²2][·.\s]?K\)?|kWh|kW|kN/m[²2]|kN|kPa|Pa|l/s|litres?(?:/s)?|m[³3]/h|mm[²2]?|cm|km|m[²2³3]?|metres?|"
          r"millimetres?|°\s?C|°|degrees?|%|per ?cent|minutes?|mins?|hours?|hrs?|seconds?|storeys?|kg|lux|dB|years?|"
          r"months?|weeks?|days?")
@@ -480,7 +484,7 @@ LIST_ITEM = re.compile(r"\s*(?:[-*•]|\d+[.)])\s+|\s*\|")
 
 def _numbers(text):
     """Every number in a text, as written in figures or (up to twenty, and the tens) in words."""
-    found = {round(float(n.replace(",", "")), 6) for n in NUMBER.findall(text or "")}
+    found = {round(float(_THOUSANDS.sub("", n)), 6) for n in NUMBER.findall(text or "")}
     return found | {float(NUMBER_WORDS[w]) for w in re.findall(r"[a-z]+", (text or "").lower()) if w in NUMBER_WORDS}
 
 
@@ -502,22 +506,47 @@ def _cited_segments(answer, cites):
                 yield part, ids
 
 
+NAMED_FIGURE = re.compile(r"\b(Diagram|Table|Figure)s? ([A-Z]?\d+(?:\.\d+)?[a-z]?)")
+
+
+def _borne_out_by(pid, info, library):
+    """The text a figure cited to this passage may come from: the passage, and any diagram or table of the same
+    document that it names. Paragraphs often leave the figure to the drawing ("the height shown in Diagram 3.1"), and
+    citing the paragraph for it is right."""
+    text = library.text(pid)
+    named = {f"{kind} {number}" for kind, number in NAMED_FIGURE.findall(text)}
+    parts = [text, info.get("ref") or "", info.get("heading") or ""]
+    if not info.get("key"):
+        return " ".join(parts)
+    others = [(other, ref) for other, ref, _heading, _hash in library.anchors(pid, info["key"]) if other != pid]
+    parts += [library.text(other) for other, ref in others if named & set(ref.split(", "))]
+    # And the other way round: a figure cited to a diagram or table may be in the passage that names it. A graph has no
+    # words of its own, and the note that reads it off is in the table beside it ("1:14 for a 4m going… (see Diagram
+    # 3)", ADM Vol 2 Table 1).
+    own = {label for label in (info.get("ref") or "").split(", ") if NAMED_FIGURE.fullmatch(label)}
+    if own:
+        for other, _ref in others:
+            there = library.text(other)
+            if own & {f"{kind} {number}" for kind, number in NAMED_FIGURE.findall(there)}:
+                parts.append(there)
+    return " ".join(parts)
+
+
 def check_figures(answer, cites, library, given=""):
     """Figures the answer gives beside a citation that aren't in the passage cited: [{"figure": "225 mm", "ids"}].
 
-    Numbers only, so it can't tell a right figure used wrongly; what it catches is a figure the cited passage doesn't
+    A figure in a diagram or table that the cited passage names counts as in it. Numbers only, so it can't tell a right figure used wrongly; what it catches is a figure the cited passage doesn't
     contain at all, which is either made up, worked out, or cited to the wrong paragraph. Figures the person gave
     themselves (in their questions or notes) aren't the passage's to bear out and are left alone."""
     out, numbers, own = [], {}, _numbers(given)
     for text, ids in _cited_segments(answer, cites):
         for pid in ids:
             if pid not in numbers:
-                info = cites[pid]
-                numbers[pid] = _numbers(" ".join([library.text(pid), info.get("ref") or "", info.get("heading") or ""]))
+                numbers[pid] = _numbers(_borne_out_by(pid, cites[pid], library))
         there = set().union(*(numbers[pid] for pid in ids))
         for m in FIGURE.finditer(ID_IN_TEXT.sub(" ", text)):
             for raw in filter(None, (m.group(1), m.group(2))):
-                value = float(raw.replace(",", ""))
+                value = float(_THOUSANDS.sub("", raw))
                 same = {round(value, 6)} | {round(value * f, 6) for f in SAME_AS.get(m.group(3), ())}
                 figure = f"{raw} {m.group(3)}"
                 if not same & there and round(value, 6) not in own and \

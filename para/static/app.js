@@ -382,6 +382,7 @@ function addAssistant(question) {
       const x = $(".extras", el);
       if (done.cut_off) x.insertAdjacentHTML("beforeend", `<div class="note">The answer hit the length limit. Ask it to continue, or raise Length below.</div>`);
       if (done.stopped) x.insertAdjacentHTML("beforeend", `<div class="note">Stopped.</div>`);
+      if (!done.stopped && !(done.answer || text || "").trim()) x.insertAdjacentHTML("beforeend", `<div class="note">The AI wrote no answer. Ask again, or try another model in Settings.</div>`);
       if (done.dropped && done.dropped.length) x.insertAdjacentHTML("beforeend", `<div class="note">The AI cited ${done.dropped.length} passage${done.dropped.length > 1 ? "s" : ""} it never looked up, so ${done.dropped.length > 1 ? "they were" : "it was"} removed. Treat the uncited parts with care.</div>`);
       const cited = Object.keys(done.cites || {});
       const all = Object.values(done.cites || {}), n = (list, one, many) => `${list.length} ${list.length === 1 ? one : many}`;
