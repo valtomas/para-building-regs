@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.3_p25",
+ "source": "ADE",
+ "label": "Diagram 2.3",
+ "page": 25,
+ "caption": "Diagram 2.3 \u0007\u0007Wall type 1.2 | N EBUILDINGS VERSION",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "774d8ad2462b736be94a6f1c0509e475d5049afbf69a3691e3f0a27a5789250a",
+ "image_sig": {
+  "w": 371,
+  "h": 426,
+  "grey": "5L66ysK/qbqyw9Th4eHh6eju7O7u7u7t7e7u7u7u7uvp//////D29vT27//////06f/////p+vL49e7/////9On/////5//8/fPz//////Tp/////+Tu8v708//////06f/////o+fvx8fH/////9On/////5P3x/fvr//////Tp/////+n49Pr78//////06f/////j8frz+uf/////9On/////6fr6+/Tz//////Tp/////+nt+vL/7//////06f/////n9Pb4+PD/////9On/////6ez/+vvt//////Tp/////+/08+7v8P/////05/b29vb29vb29vb22tjW5A=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a section, headed in a green band as \"Diagram 2.3 Wall type 1.2\". The word \"SECTION\" is printed in the lower right corner. The body of the diagram is a single tall, narrow rectangle drawn in outline, representing a wall in cross‑section. Within that rectangle the left and right edges appear as narrow plain vertical strips, while the broad central area is filled with a scattered pattern of small solid dots together with small open (hollow) triangles of varying sizes, distributed evenly from top to bottom. There are no other labels, dimensions, keys, dimension lines or symbols, and no separate parts (a, b, c). Apart from the title and the word \"SECTION\", the drawing is otherwise blank.",
+ "first_draft": "The drawing is a section, headed in a green band as \"Diagram 2.3 Wall type 1.2\", with a faint watermark reading \"N EBUILDINGS VERSION\" running across the top. The word \"SECTION\" is printed in the lower right corner. The body of the diagram is a single tall, narrow rectangle drawn in outline, representing a wall in cross‑section. Within that rectangle the left and right edges appear as narrow plain vertical strips, while the broad central area is filled with a scattered pattern of small solid dots together with small open (hollow) triangles of varying sizes, distributed evenly from top to bottom. There are no other labels, dimensions, keys, dimension lines or symbols, and no separate parts (a, b, c). Apart from the title, the word \"SECTION\" and the watermark, the drawing is otherwise blank."
+}

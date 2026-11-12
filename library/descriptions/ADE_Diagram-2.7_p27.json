@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.7_p27",
+ "source": "ADE",
+ "label": "Diagram 2.7",
+ "page": 27,
+ "caption": "Diagram 2.7 \u0007\u0007Wall type 1 – tied junction internal masonry wall",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "2e897cd6e6c22cec4b5d1ae6a1a122bbdd48372b65e0783d4cba7538f5775f04",
+ "image_sig": {
+  "w": 355,
+  "h": 404,
+  "grey": "4ri9wcnFpq+sw86ss7OtvvLp5Onp48i1ucC8scO3vb7y6enp6dm0vb23t76+suHp3+np6enp6enp6enp6enp6ej///3+/////v//7+Pl8P/o///q3Ob+9+Lf5v7/////6P////Xp6NnS6/LXyOjy/+j//u7qytrc8vvp/vP35vDo9eXq0d7m9+vp8ffg9Ob36N3e8Pn83OLy+fHd7Prn7ejZ6fPq7dfm5+zq5/vm/vXo2eDk6ujx6uHj1+vp5vj/6Pjy5/b+//rt3uft3uf//+j///////////v26+fn///o///+3uHm5eb+//vz/P//4evr6+vr6+vr6+vr6+vr6w=="
+ },
+ "reviewed": false,
+ "description": "The image is a line drawing, in isometric perspective, of a masonry wall junction, headed \"Diagram 2.7 Wall type 1 – tied junction – external cavity wall with internal masonry wall\". Two brick walls meet at an interior angle. The wall on the left is a cavity wall with an outer leaf and an inner leaf; its near end is cut square, and the cavity between the leaves is closed at that end, which is pointed to by the label \"Cavity stop\". The wall on the right is a solid brick wall, labelled \"Internal masonry wall\", drawn with horizontal mortar lines and a few vertical joints, with a recessed slot running along its top from the corner towards the far end. Along the line where the two walls join, several small tie symbols (short curved marks set in the mortar joints) are drawn, and a leader line from the label \"Tied junction\" points to this area at the top of the junction. The left wall is shown cut away along its inner face, where a recessed lower portion is revealed. Below the drawing, at the left, is the text \"Separating wall type 1\". No scale, dimensions or further figures are shown.",
+ "first_draft": "The image is a line drawing, in isometric perspective, of a masonry wall junction, headed \"Diagram 2.7 Wall type 1 – tied junction – external cavity wall with internal masonry wall\". Two brick walls meet at an interior angle. The wall on the left is a cavity wall with an outer leaf and an inner leaf; its outer leaf ends at the top in a short block pointed to by the label \"Cavity stop\". The wall on the right is a solid brick wall, labelled \"Internal masonry wall\", drawn with horizontal mortar lines and a few vertical joints. Along the line where the two walls join, several small tie symbols (short curved marks set in the mortar joints) are drawn, and a leader line from the label \"Tied junction\" points to this area at the top. The left wall is shown cut away at its near end, revealing the inner leaf and a recessed lower portion. Below the drawing, centred, is the text \"Separating wall type 1\". No scale, dimensions or further figures are shown."
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADC_Diagram-7_p30",
+ "source": "ADC",
+ "label": "Diagram 7",
+ "page": 30,
+ "caption": "Diagram 7 \u0007Typical floors exposed from below",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "f834b7eb6839eb6be2b7926cd8041a7e7f7123fe46388db853820920b938837f",
+ "image_sig": {
+  "w": 760,
+  "h": 342,
+  "grey": "xbmxq7GurK63z8/Pz8/P1dvX1dTU0NXV2eLi4uLi4uT1//////n8///////////69f/////z8v//////////+vX/////8/L///////////r1////+fn+8//////////69f////T///L/////////+vX////0///66enp6fr///r1////9P/////////6///69f////X////u6P//+v//+vX////1////+Pv7//r///r1////9f//2P//x8f2///69f////X9/fD///Pz+v//+vX////1+uLw///o4fr///r1///z5Orq4Orq5OTt///67vT09PT09PT09PT09PT08g=="
+ },
+ "reviewed": false,
+ "description": "The image is a simple line drawing titled \"Diagram 7 Typical floors exposed from below\" in a pale green header band. It shows the cross-section outline of a building resting on a horizontal ground line. The left wall rises vertically, then an inclined roof line climbs to a peak and descends to a lower horizontal roof section, which ends in a vertical wall on the right. Inside this outline stand two structures on the ground line. On the left is a narrow rectangle, labelled \"Passageway\" to its left, with a thick black horizontal line capping its top. On the right is a wider rectangle, labelled \"Parking area\" within it, also capped by a thick black horizontal line. Centred above and between these two structures is the text \"Exposed floors\", from which two thin arrows extend downwards and outwards: the left arrow points to the thick black top of the passageway rectangle, and the right arrow points to the thick black top of the parking area rectangle.",
+ "first_draft": "The image is a simple line drawing titled \"Diagram 7 Typical floors exposed from below\" in a pale green header band. It shows the cross-section outline of a building resting on a horizontal ground line. The left wall rises vertically, then an inclined roof line climbs to a peak and descends to a lower horizontal roof section, which ends in a vertical wall on the right. Inside this outline stand two structures on the ground line. On the left is a narrow rectangle, labelled \"Passageway\" to its left, with a thick black horizontal line capping its top. On the right is a wider rectangle, labelled \"Parking area\" within it, also capped by a thick black horizontal line. Centred above and between these two structures is the text \"Exposed floors\", from which two thin arrows extend downwards and outwards: the left arrow points to the thick black top of the passageway rectangle, and the right arrow points to the thick black top of the parking area rectangle."
+}

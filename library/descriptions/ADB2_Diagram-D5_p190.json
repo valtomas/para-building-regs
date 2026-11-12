@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-D5_p190",
+ "source": "ADB2",
+ "label": "Diagram D5",
+ "page": 190,
+ "caption": "Diagram D5 | Number of storeys",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "25919ee8447b4d2857b1117c82f213894457b4a85f979e5221b570a2142df825",
+ "image_sig": {
+  "w": 756,
+  "h": 550,
+  "grey": "+Pr69ff5+vr6+vr6+vr6+Pv//9rY8f////////////v7///n6Ofw8v/UztTQ1fv7+///8fDp8PL/6Ono9vn++/v//+Pl1NfZ7v////////vtv7/d6bnl5e/////////74YeHvsy/////////////+/Xi4Nzb6f////////////v7//vc2+Xs7/j////////7+///5+nV2/P/6P//////+/v///Hw3u3y/+Xb2N7a6fv7///j4c7W1evg3tjb3ub77Lm53e265ubw5e3t6+z4++GHh8TSwv///+7r9fz8/vvy3d3d3en7+/vw7e7u6/n4gl1ZXFtXT09PT09PT09Pcg=="
+ },
+ "reviewed": false,
+ "description": "This drawing is Diagram D5, \"Number of storeys\", comprising two vertical section diagrams, a block of running text, and a set of notes. The upper diagram, headed \"Building three storeys\", shows a column of four boxes stacked one above another, labelled from the top \"Second floor\", \"First floor\", \"Ground floor\" and \"Basement\". To the right of the column are two rectangular projecting volumes, one extending from the second-floor box and one from the first-floor box. A grey horizontal band runs behind the column at ground level, with the basement box positioned below it. To the right of this diagram is a paragraph of running text.\n\nThe lower diagram is headed \"Separated part three storeys\" on the left, repeating the same four stacked boxes. A green vertical line separates it from a shorter stack on the right headed \"Separated part two storeys\", which contains two boxes: the upper box holding the words \"Compartment wall\" and a blank box below it. A \"NOTES\" block on the right gives three numbered entries. A green footer bar reads \"Diagram D5 Number of storeys\".",
+ "first_draft": "This drawing is Diagram D5, \"Number of storeys\", comprising two vertical section diagrams, a block of running text, and a set of notes. The upper diagram, headed \"Building three storeys\", shows a column of four boxes stacked one above another, labelled from the top \"Second floor\", \"First floor\", \"Ground floor\" and \"Basement\". To the right of the top three boxes are two rectangular projecting volumes, one aligned with the second floor and one with the first floor. A grey horizontal band runs behind the column, marking ground level, with the basement box positioned below it. To the right of this diagram is a paragraph of running text.\n\nThe lower diagram is headed \"Separated part three storeys\" on the left, repeating the same four stacked boxes. A green vertical line, labelled \"Compartment wall\", separates it from a shorter stack on the right headed \"Separated part two storeys\", which contains a \"Ground floor\" box and an empty box above it. A \"NOTES\" block on the right gives three numbered entries. A green footer bar reads \"Diagram D5 Number of storeys\"."
+}

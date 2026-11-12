@@ -1,0 +1,18 @@
+{
+ "key": "ADC_Diagram-1_p15",
+ "source": "ADC",
+ "label": "Diagram 1",
+ "page": 15,
+ "caption": "Diagram 1 \u0007Distribution of shrinkable clays and principal sulphate/sulphide bearing strata in England and Wales",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "ada812e553cac52537e3a5697a3a98f901b0e7561600d0e7aae577e2fb85c0a3",
+ "image_sig": {
+  "w": 749,
+  "h": 677,
+  "grey": "08e4ra2xprbBwL+7wLq/x+nr5tvZ4eTm6+vr6+vr6+v1///b2uv/7/P/////////9f//2uvy+fTz//////////X//+ff/vL/6fX////////1///E3ebt9O3a9///////9f/74t7b4uf/r+T///////X/////1+iR/6Ta+v/////1/////eX/tGeyvvXz////9f////jy/75k1NP14P////X////i6uu+zMi5tP3////1/////+GsofDm6d/1////9f////j0yc7c4e/y//////X///Xm8PP26enp6uvv///1///79v///+Lb2dra8f//9fP09PT09PTx7u7u7u7u7g=="
+ },
+ "reviewed": false,
+ "description": "The title at the top reads \"Diagram 1 Distribution of shrinkable clays and principal sulphate/sulphide bearing strata in England and Wales\". The main feature is a map of the region. In the top left corner, a legend lists the strata types: London clay (green), Kimmeridge clay (grey), Oxford clay (horizontal lines), Lower Lias clay (vertical lines), Gault clay (light green), Weald clay (light grey), and Mercia Mudstone (Keuper Marl) (black). It also identifies a jagged line as the \"Limit of main areas of glacial deposits\". On the map itself, these strata are shown as distinct regions. The black Mercia Mudstone forms a large irregular area in the western and central parts. To the east, regions of Lower Lias clay (vertical lines) and Oxford clay (horizontal lines) are visible. In the southeast, areas of London clay (green) and Gault clay (light green) are shown. The jagged glacial limit line is visible in the northern part of the map. A text box in the bottom right corner notes that north of the indicated limit, much of the strata is covered by glacial deposits that are generally low in sulphate.",
+ "first_draft": "The title at the top reads \"Diagram 1 Distribution of shrinkable clays and principal sulphate/sulphide bearing strata in England and Wales\". The main feature is a map of the region. In the top left corner, a legend lists the strata types: London clay, Kimmeridge clay, Oxford clay, Lower Lias clay, Gault clay, Weald clay, and Mercia Mudstone (Keuper Marl), each with a specific color or pattern (green, grey, striped, or black). It also identifies a jagged line as the \"Limit of main areas of glacial deposits\".\n\nOn the map itself, these strata are shown as colored regions. The black Mercia Mudstone forms a large band across central England. The striped Lower Lias clay runs vertically along the East Coast. The jagged glacial limit line crosses the northern part of the country from west to east. A text box in the bottom right corner notes that north of this limit, much of the strata is covered by glacial deposits that are generally low in sulphate."
+}

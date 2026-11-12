@@ -1,0 +1,17 @@
+{
+ "key": "ADC_Table-4_p37",
+ "source": "ADC",
+ "label": "Table 4",
+ "page": 37,
+ "caption": "Table 4 Maximum recommended exposure zones for insulated masonry walls",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "ee8f4864c98c011044c994aad2fd8783df5ac7e33d083bf577d112eaa7fed09b",
+ "image_sig": {
+  "w": 749,
+  "h": 813,
+  "grey": "0MTAzMO8vrzBv8C6yMzN3+Xo8tLl39vv2uHx4OXq8vT39PXq8vPl9u/t7+7y5+/s+PX7+/z//Pz/+//7//39/////fj8//z8//z//P/9+//m3/f19/r39/r3+vf6+fj6///9+fz/+/z/+//7//39//v6+PP3+vf3+vf69/r59/rr6/z7/P/7/P77//z//f3/8fH59vn6+fn6+fr5+vr5+urt/Pz8//z8//z//P/9/f/q6v76/f/9/f/9//3+/v7/6+Pv+vr6+vr6+vr6+vr6+urw/fr8//z9//z//P79/f/r7/n9/f/9/v79//3//v7/6ufx8vT29PT29Pb09vX09g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

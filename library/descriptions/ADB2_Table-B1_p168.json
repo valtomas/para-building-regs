@@ -1,0 +1,17 @@
+{
+ "key": "ADB2_Table-B1_p168",
+ "source": "ADB2",
+ "label": "Table B1",
+ "page": 168,
+ "caption": "Table B1 Specific provisions of the test for fire resistance of elements of structure, etc.",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "8fecf29205931367fabb8333486efe0ed0630a23c851e766d22a3b52bdae4d78",
+ "image_sig": {
+  "w": 781,
+  "h": 553,
+  "grey": "3qetqqqtrqusrqqsra+81/Xu8Pn5+dzZ2tnY2Ojv7u/7///////d1tbX3uDt/v/3+///////3tzh3+fd6P7/9/jj5ert9NbY4tni2N3s6vX33tzu+fre2+LY4tjc4+z1++Xb3tzo7u3t7e3t7fn89/fZ6u/u7+ro6+jr6On6+vX45ubj5PvW29/S6c/l8u3y+///////09/d1+jP5v7/9/jq6uvt/N7n4+To3unu6PD76OT19ffq6Ovo6+jp+vr0+N3c4u/73tvj2OfY4e7o8Pfj9vn5/Ojt6ers5+349vT26Ojl5/LZ2uDV59Ph6d/u9ejv9PT06unp6enp6fT08Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

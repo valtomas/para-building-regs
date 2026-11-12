@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-D6_p190",
+ "source": "ADB2",
+ "label": "Diagram D6",
+ "page": 190,
+ "caption": "Diagram D6 Height of top storey in building",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "b380419326a94d6d1393b5ca00e9e255ea593a1f5f03ff1b3cbfd2ba22adb487",
+ "image_sig": {
+  "w": 756,
+  "h": 408,
+  "grey": "6djY2NjY2NjY2NjY2NjY5/n4+Pj4+Pj4+Pj4+Pj4+Pn7////////7O7////////7+////////5un8vX/////+/v//////+bU1ef///////v7///////n9fXr/f/+///7+///////4PX13NDU3f//+/v////m0t/r69fS4uf8//v7////5Nfn///v///////7+////+jX4/X16M7c////+/v////m0ef//7Tf//////v7///////Dpqax///////7+/////LAsuP5+///////+/v////f7/////////////vIu7u7u7u7u7u7u7u7u7vFh2NdY2BhYVxPT09PT09Pcw=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a section view of a building, titled in a green bar along the bottom as \"Diagram D6 Height of top storey in building\". A rectangular building outline is divided by three horizontal lines into four storeys. On its top sits a grey block labelled \"Plant\", and a thin leader line from the top edge points right to the label \"Roof\". The building rests on a grey sloping ground plane that rises from left to right. A vertical double-headed green arrow on the left spans from the top of the uppermost storey down to the ground level on the lowest (left) side. Beside this arrow, text reads \"Height of top storey measured from upper floor surface of top floor to ground level on lowest side of building\". To the right of the building, a second block of text reads \"Height of top storey excludes roof-top plant areas and any top storeys consisting exclusively of plant rooms\". The arrow's upper end aligns with the top of the top storey, below the plant block and roof line, while its lower end meets the sloping ground.",
+ "first_draft": "The drawing is a section view of a building, titled in a green bar along the bottom as \"Diagram D6 Height of top storey in building\". A rectangular building outline is divided by three horizontal lines into four storeys. On its top sits a grey block labelled \"Plant\", and a thin leader line from the top edge points right to the label \"Roof\". The building rests on a grey sloping ground plane that rises from left to right. A vertical double-headed green arrow on the left spans from the top of the uppermost storey down to the ground level on the lowest (left) side. Beside this arrow, text reads \"Height of top storey measured from upper floor surface of top floor to ground level on lowest side of building\". To the right of the building, a second block of text reads \"Height of top storey excludes roof-top plant areas and any top storeys consisting exclusively of plant rooms\". The arrow's upper end aligns with the top of the top storey, below the plant block and roof line, while its lower end meets the sloping ground."
+}

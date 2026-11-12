@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.10_p28",
+ "source": "ADE",
+ "label": "Diagram 2.10",
+ "page": 28,
+ "caption": "Diagram 2.10 \u0007\u0007Wall type 1 – internal timber floor",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "7876c56ff69dd08fdd7d677615c6771780eb250e2cc51ca421a99d53d37a4d09",
+ "image_sig": {
+  "w": 755,
+  "h": 353,
+  "grey": "v7eup72nvOXRtL+iq7St2uHfzauyq73y69ziq6zY3+zr6c2wscbl8uTc3NbX29zf5efn5+fn5+/0///y7///+vT17//////69P//8PP8//r05tn/////+vT//+Df/P/69OfY//////rz+/vv8/j7+PTi2f/////67/j42tn2+PX05tb/////+vH/+uzq+v/49NnM6ejq8vrx//Xo5/j/+PTd8Pbr9fT68PTq3t7w9PT01ej16vb1+vT/9vDz/P/69NnE4ebn8Pr09uzt6/7/+vTo2fX6///69P//////2+D04Nn/6e//+u7o6Ojo6Ojq9OfZ//////r38/Pz8/Pz9Q=="
+ },
+ "reviewed": false,
+ "description": "The image shows two line drawings side by side, each under a green title band. On the left, the band reads \"Diagram 2.9 Wall type 1 – external cavity wall with timber frame inner leaf\". The drawing is a cross-section showing a vertical wall, drawn with a diagonally hatched leaf on the left and a leaf filled with a zigzag pattern on the right, meeting a horizontal element rendered with a cross-hatch pattern. An arrow points to a small block placed in the gap at the junction with the horizontal element, labelled \"Cavity stop\". On the right, the band reads \"Diagram 2.10 Wall type 1 – internal timber floor\". This drawing, marked \"SECTION\" in the lower right corner, shows a vertical member of stacked cross-hatched blocks passing through a horizontal joist; the vertical member has angled ends where it meets the joist, and small dotted fixings appear either side of the joint. An arrow points to one of these fixings, labelled \"Hanger\".",
+ "first_draft": "The image shows two line drawings side by side, each under a green title band. On the left, the band reads \"Diagram 2.9 Wall type 1 – external cavity wall with timber frame inner leaf\". The drawing is a cross-section showing a vertical wall, drawn with a diagonally hatched leaf on the left and a leaf filled with a zigzag pattern on the right, meeting a horizontal element rendered with a cross-hatch pattern. An arrow points to a small block placed in the gap at the top of the wall, labelled \"Cavity stop\". On the right, the band reads \"Diagram 2.10 Wall type 1 – internal timber floor\". This drawing, marked \"SECTION\" in the lower right corner, shows a vertical member of stacked cross-hatched blocks passing through a horizontal joist; the vertical member has angled ends where it meets the joist, and small dotted fixings appear either side of the joint. An arrow points to one of these fixings, labelled \"Hanger\"."
+}

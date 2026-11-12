@@ -1,0 +1,18 @@
+{
+ "key": "ADC_Diagram-13_p39",
+ "source": "ADC",
+ "label": "Diagram 13",
+ "page": 39,
+ "caption": "Diagram 13. Alternatively an insulated finned cavity closer may be used.",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "e832a07d8f2891fc4124446804e23e2c9f535da30d4bbfd3d86abeec7f87b5af",
+ "image_sig": {
+  "w": 371,
+  "h": 406,
+  "grey": "4bq5xcKxsa26sa24va7b5e/i3uLixcG2xb26vcTBxOrv4uLi4sK3wrG6ub/Br7Ld6tvb29u8vq24tKiwuLW85ev/////8O3q6ezq8P////Xr//////Dl7enr6ej2///16//////yyeLi4uLi4uLl9evo7fj/6LOzs6ulrbOzvfXr///79Nazs7Ozs7Ozs7316+vs7fbixZ3z8/Pz8/P19ev/////9MST0NDLy9DN4/Xr/f39++zKqMe+wsK+vsr16+3r7er82sfHxbe8x8fO9ev//////9zHx8fHx8fHzvXr6+vn////8evq///////15e3t7e3t7e3t7e3t7e3t6Q=="
+ },
+ "reviewed": false,
+ "description": "This is a section drawing titled \"Diagram 13 Window reveals for use in areas of severe or very severe exposure to driving rain (see paragraph 5.32)\". It shows a cut through a window opening. A vertical grey block on the left is the window frame, and it is also labelled as the insulated cavity closer. To its right are two horizontal grey blocks, the upper labelled \"Outer leaf\" and the lower \"Inner leaf\", separated by a cavity filled with a squiggly insulation pattern. At the top of the left edge of the outer leaf a small dimensioned gap is noted with the text \"25mm rebate to allow for building tolerance and window fitting tolerance\". On the left, leader lines label \"Sealant\" at the joint between the window frame and the outer leaf, \"Window frame\" at the vertical block, and \"Insulated cavity closer\" at the same vertical block. The labels \"Checked rebate\" and \"Window jamb\" are printed at the bottom left and bottom centre of the drawing.",
+ "first_draft": "This is a section drawing titled \"Diagram 13 Window reveals for use in areas of severe or very severe exposure to driving rain (see paragraph 5.32)\". It shows a cut through a window opening. A vertical grey block in the centre is the window frame. To its right are two horizontal grey blocks, the upper labelled \"Outer leaf\" and the lower \"Inner leaf\", separated by a cavity filled with a squiggly insulation pattern. At the top of the outer leaf a small dimensioned gap is noted with the text \"25mm rebate to allow for building tolerance and window fitting tolerance\". On the left, leader lines label \"Sealant\" at the joint between the window frame and the outer leaf, \"Window frame\" at the vertical block, and \"Insulated cavity closer\" at the insulation behind the frame. A line from \"Checked rebate\" points to the left edge of the frame, and a line from \"Window jamb\" at the bottom points up into the cavity between the leaves."
+}

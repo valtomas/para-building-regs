@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.14_p29",
+ "source": "ADE",
+ "label": "Diagram 2.14",
+ "page": 29,
+ "caption": "Diagram 2.14 \u0007\u0007External cavity wall at eaves level | N EBUILDINGS VERSION | Wall type 2: cavity masonry",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "024153651e17d98ca1ebecea7e0bb6e08ca02771c985a4dddabe71e113a97a51",
+ "image_sig": {
+  "w": 362,
+  "h": 363,
+  "grey": "v6+yusGwpKemqaSuoKbS4Ofd4+Tn0quysKzk4ePk6O/W3t7e29bU1dXV297e3t7i6d/V7OHj2Oby7vT/////9Onz8f/w4+bx8e30//////Tp////8u7n7vHw9P/////06f////Xy8//q6/T/////9On////18vH/7ej0//////Tp////8eXq//Lu9P/////06f////Pu7v/y7/T/////9On////1+vT/8+/0//////Tp////9Ojn8tvl9P/////06f////Ht7v/x7fT/////9On////19PP/8vD0//////Tp////9Pbx//Pv9P/x8PHy2enp6eTh4ene3ePpztfP3Q=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a section, as indicated by the word SECTION printed at the lower right of the framed area. The green title bar above the frame reads \"Diagram 2.14 External cavity wall at eaves level\". Within the frame, the section depicts two vertical leaves of masonry set side by side with a vertical empty gap, the cavity, between them, about as wide as each leaf. The left, outer leaf is drawn as a vertical stack of rectangular blocks, each filled with single diagonal hatching; the right, inner leaf is a similar stack of blocks filled with cross-hatching. The top of the inner leaf projects higher than the top of the outer leaf, and the two leaves do not join at the top. A label at the upper left reads \"Flexible closer\", with a horizontal leader line pointing to the top of the cavity, at the level where the outer leaf ends. No further labels, dimensions or figures are present.",
+ "first_draft": "The drawing is a section, as indicated by the word SECTION printed at the lower right of the framed area. The green title bar above the frame reads \"Diagram 2.14 External cavity wall at eaves level\". Within the frame, the section depicts two vertical leaves of masonry set side by side with a narrow empty vertical gap, the cavity, between them. The left, outer leaf is drawn as a vertical stack of rectangular blocks, each filled with single diagonal hatching; the right, inner leaf is a similar stack of blocks filled with cross-hatching. The two leaves do not join at the top. A horizontal element lies across the upper part of the cavity, adjacent to the top of the outer leaf. A label at the upper left reads \"Flexible closer\", with a leader line pointing to that top closing element. No further labels, dimensions or figures are present."
+}

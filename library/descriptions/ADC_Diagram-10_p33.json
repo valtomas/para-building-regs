@@ -1,0 +1,18 @@
+{
+ "key": "ADC_Diagram-10_p33",
+ "source": "ADC",
+ "label": "Diagram 10",
+ "page": 33,
+ "caption": "Diagram 10 \u0007\u0007Protection of wall head from precipitation (see paragraph 5.9(c))",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "cd7dc31bf6ab6b89bc3485983917d947ad0e155cbc823090cd0a646ffdbdd91c",
+ "image_sig": {
+  "w": 371,
+  "h": 423,
+  "grey": "3bOxvrmwqqmrs66nqqjS3u/i3+LiwrvCvLC1vuLh4urr2tra2rm1sK6urbeswNrk6/////n/+fz/////////9ev////r/+v15ubs//////Xr////5/zk7f/////////16///7d7g1tPR7Ono5Pz/9ev//9Xb29vbz+7n9P////Xr///qtLm6o+P////////16////97t7d7w6enp6vD/9ev////e7e3e/9nU1O3///Xr////3u3t3v/u5vb////16////97t7d7/////////9ev////e7e3e//////////Xr////2eXl2P/////////15e3t7ebk5OXt7e3t7e3t6g=="
+ },
+ "reviewed": false,
+ "description": "This is a sectional drawing, Diagram 10, titled \"Protection of wall head from precipitation (see paragraph 5.9(c))\". It shows a vertical cut through the top of a wall, drawn as a grey shaded rectangle extending downwards. On top of the wall sits a grey coping, a horizontal cap whose top surface is angled and which projects slightly beyond the wall face on each side with small downward drips. Three straight vertical arrows point downward onto the coping from above; the label \"Precipitation\" is to the right of the arrows. To the right of the coping is the label \"Coping providing protection\". Beneath the coping, at the junction where it meets the top of the wall, a short dashed line spans the width of the wall; a leader line points to it from the label \"Damp-proof course (unless coping impervious to moisture)\". The wall continues downward as an unmarked grey rectangle. No dimensions are given.",
+ "first_draft": "This is a sectional drawing, Diagram 10, titled \"Protection of wall head from precipitation (see paragraph 5.9(c))\". It shows a vertical cut through the top of a wall, drawn as a grey shaded rectangular block. At the base of the block sits a grey coping, a horizontal cap whose top surface is angled and which projects slightly beyond the wall face on each side with small downward drips. Three straight vertical arrows point downward onto the coping from above, grouped under the label \"Precipitation\". To the right, a leader line points to the coping with the label \"Coping providing protection\". Beneath the coping, at the junction where it meets the top of the wall, a short dashed line spans the width of the wall; a leader line points to it from the label \"Damp-proof course (unless coping impervious to moisture)\". The wall continues downward as an unmarked grey rectangle. No dimensions are given."
+}

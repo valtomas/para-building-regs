@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.12_p29",
+ "source": "ADE",
+ "label": "Diagram 2.12",
+ "page": 29,
+ "caption": "Diagram 2.12 \u0007\u0007Wall type 1 – concrete ground floor",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "4e4b01bcd7910d22583127a2ae7a03512d6b7e1a2599873268f03f79460363bf",
+ "image_sig": {
+  "w": 749,
+  "h": 385,
+  "grey": "w7S7na2zo9/er7ihrLqkr+3n5bS03unu9Obpw7TK5enh4uLi4uLi5uvi4uLi4uLi9P//+vr///r0/+jw2/Dz//T//+nn///69Pb4/+bq8v/0///n5///+vT////s8/j/9P//6+3///r0////6v////T//+jn///69P///+v////z/v7q6P7++fTYzPXo////7PLz8/D08PH06/T+5P///+/z9vn78vT09P//+Or////0//3v8fz/+vT///nn////9P/04+Tw//r0///s3/T///T///////Ly9P/v4eDn9f/u9PT09PTh4vTx8PLZ4+b////////////0//7z4/vu/w=="
+ },
+ "reviewed": false,
+ "description": "The image shows two sections side by side. The left, titled \"Diagram 2.12 Wall type 1 – concrete ground floor\", is marked \"SECTION\" at the lower right. It depicts a horizontal slab filled with a speckled concrete pattern, with a trapezoidal void cut into its underside at the centre. A vertical cross-hatched wall rises from the top face of the slab. A label, \"Concrete ground floor slab\", is centred below the slab. The right diagram, titled \"Diagram 2.13 Wall type 1 – ceiling and roof junction\", shows a vertical cross-hatched wall interrupted by a zigzag break line, drawn wider at its lower end. At the top, a horizontal member is labelled \"Roof\", and a leader to the wall's upper edge reads \"Flexible closer\". A left-hand label, \"Mass per unit area of at least 150Kg/m²\", points to the wall. At the bottom, a horizontal line is labelled \"Ceiling\", and two leaders to the junction are labelled \"Sealed joints\".",
+ "first_draft": "The image shows two sections side by side. The left, titled \"Diagram 2.12 Wall type 1 – concrete ground floor\", is marked \"SECTION\" at the lower right. It depicts a horizontal slab filled with a speckled concrete pattern, with a trapezoidal void cut into its underside at the centre. A vertical cross-hatched wall rises from the top face of the slab. A label, \"Concrete ground floor slab\", points to the slab. The right diagram, titled \"Diagram 2.13 Wall type 1 – ceiling and roof junction\", shows a vertical cross-hatched wall interrupted by a zigzag break line. At the top, a horizontal member is labelled \"Roof\", and a leader to the wall's upper edge reads \"Flexible closer\". A left-hand label, \"Mass per unit area of at least 150kg/m²\", points to the wall. At the bottom, a horizontal line is labelled \"Ceiling\", and two leaders to the junction are labelled \"Sealed joints\"."
+}

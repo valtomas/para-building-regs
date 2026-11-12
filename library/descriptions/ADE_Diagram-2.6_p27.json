@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.6_p27",
+ "source": "ADE",
+ "label": "Diagram 2.6",
+ "page": 27,
+ "caption": "Diagram 2.6 \u0007\u0007Wall type 1 – bonded junction – masonry inner leaf of external cavity wall with solid separating wall",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "e3a457e015bdca8dbe8130752be9cd49b0fc09e4d28cf3b4d12585ae35b205f8",
+ "image_sig": {
+  "w": 755,
+  "h": 487,
+  "grey": "y724rcGywuTduMSrtbq0y+3p0q+7sbHb8+nlq62ysbzt6dWwramu0e/q6djX2NbY5unp6enp6ez0///76uv0+vT9///////69P//++js//r08/b//vj6+vT5+//////69PPr9fPn8/r0//z5+fn58/Tw7Ono3PP69P////v59Pf0+enr79/2+vTn7P/3//P39P/35+zu9Pr0////8Pn19/T///bq7vP69P///+bV3/f0////++/v+vT/+fn5+/vz9P/////89/rz+f//////+vT////////6+fb29vb29vbz9/f39/f39+rZ3tzd29ry///////////h09jZ9f79/Q=="
+ },
+ "reviewed": false,
+ "description": "The image shows two diagrams side by side. The left, headed 'Diagram 2.6 Wall type 1 – bonded junction – masonry inner leaf of external cavity wall with solid separating wall', is an isometric line drawing of a masonry corner. Two courses of bricks or blocks meet at a right angle, illustrating the bonded junction between the masonry inner leaf and the solid separating wall; no dimensions appear. The right diagram, headed 'Diagram 2.8 Wall type 1 – position of openings in masonry inner leaf of external cavity wall', is a perspective view of a wall corner with a rectangular opening drawn in its face. A label 'Separating wall' is placed on the left wall, and 'Masonry inner leaf of external cavity wall' sits below the rectangle. Two dimensions are marked: x, the horizontal distance from the corner to the left edge of the opening, and y, the vertical height of the opening. Text above reads 'x not more than 700mm and y not less than 1m'. Beneath the right diagram, a heading reads 'Junctions with an external cavity wall with timber frame inner leaf', followed by cut-off running text beginning '2.19 Where the external wall is a cavity wall'.",
+ "first_draft": "The image shows two diagrams side by side. The left, headed 'Diagram 2.6 Wall type 1 – bonded junction – masonry inner leaf of external cavity wall with solid separating wall', is an isometric line drawing of a masonry corner. Two courses of bricks or blocks meet at a right angle, illustrating a bonded junction between wall leaves; no dimensions appear. The right diagram, headed 'Diagram 2.8 Wall type 1 – position of openings in masonry inner leaf of external cavity wall', is a perspective view of a wall corner with a rectangular opening drawn in its face. A label 'Separating wall' points to the left wall, and 'Masonry inner leaf of external cavity wall' sits below the rectangle. Two dimensions are marked: x, the horizontal distance from the corner to the left edge of the opening, and y, the vertical height of the opening. Text above reads 'x not more than 700mm and y not less than 1m'. Beneath the right diagram, a heading reads 'Junctions with an external cavity wall with timber frame inner leaf', followed by cut-off running text beginning '2.19 Where the external wall is a cavity wall'."
+}
