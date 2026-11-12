@@ -42,6 +42,7 @@ lib.add_figure(lib.passage_rowid("ADK", 1), TINY_PNG, 5, "ADK_Diagram-3.1_p5", "
 lib.set_meta(version="2026.11.03", built="test")
 lib.close()
 
+from tests import fake_llm  # noqa: E402
 from tests.fake_llm import start  # noqa: E402
 from para import server  # noqa: E402
 
@@ -148,6 +149,19 @@ check(ev2[-1]["type"] == "done", "follow-up question in the same chat")
 ev3 = ask("Answer from memory: what is a higher-risk building?")
 check(any(e["type"] == "retry" for e in ev3) and any(e["type"] == "search" for e in ev3) and ev3[-1]["cites"],
       "an answer from memory is sent back to search first")
+
+def _alternates(msgs):
+    """Mistral's chat template: after the system message, user and assistant turns alternate; tool calls and their
+    results don't count."""
+    roles = [m["role"] for m in msgs if m["role"] == "user" or (m["role"] == "assistant" and not m.get("tool_calls"))]
+    return all(a != b for a, b in zip(roles, roles[1:]))
+
+
+sent = [b["messages"] for b in fake_llm.SEEN if any("Note from the app" in str(m.get("content")) for m in b["messages"])]
+check(sent and all(_alternates(m) for m in sent),
+      "the app's note to the AI goes in the last message, so user and assistant turns still alternate (Ministral)")
+check(not any("Note from the app" in str(m.get("content")) for m in json.loads(call("/api/chat?id=" + ev3[0]["id"]))
+              .get("messages", [])), "and the note isn't kept in the chat")
 
 # the person's files
 data = b"# Fire strategy\n\n2.1 The building has a sprinkler system to BS 9251.\n\n2.2 Travel distance is 7.5 m."
@@ -369,7 +383,6 @@ files_srv.shutdown()
 
 # a service that refuses max_tokens by name gets the limit as max_completion_tokens, and is remembered
 from para.llm import Client  # noqa: E402
-from tests import fake_llm  # noqa: E402
 
 strict = Client(fake_url, model="strict-model")
 said = "".join(e["text"] for e in strict.stream([{"role": "user", "content": "Reply with just: OK"}], max_tokens=50,
