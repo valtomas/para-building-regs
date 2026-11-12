@@ -342,12 +342,26 @@ def state():
 
 
 def open_path(path):
+    """A file or folder in the program the system uses for it. On Linux with the environment as it was before the
+    packaged app changed it (`updater.clean_env`): with the app's own libraries first on LD_LIBRARY_PATH, the
+    browser or file manager xdg-open starts fails to load and nothing opens."""
     if sys.platform == "darwin":
         subprocess.Popen(["open", path])
     elif os.name == "nt":
         os.startfile(path)  # noqa: S606
     else:
-        subprocess.Popen(["xdg-open", path])
+        subprocess.Popen(["xdg-open", path], env=updater.clean_env())
+
+
+def open_url(url):
+    """A web address (or the feedback mailto) in the person's browser. On Linux through xdg-open with the clean
+    environment, for the same reason as open_path: `webbrowser` would hand the browser the app's libraries. A
+    BROWSER the person has set is theirs to choose, and `webbrowser` follows it."""
+    import shutil
+    if sys.platform.startswith("linux") and shutil.which("xdg-open") and not os.environ.get("BROWSER"):
+        subprocess.Popen(["xdg-open", url], env=updater.clean_env())
+    else:
+        webbrowser.open(url)
 
 
 # ----- HTTP -----
@@ -555,7 +569,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
             if path == "/api/open":
                 body = self._json_body()
                 if body.get("url", "").startswith(("https://", "http://")) or body.get("url") == FEEDBACK:
-                    webbrowser.open(body["url"])
+                    open_url(body["url"])
                 elif body.get("folder") == "files":
                     project = body.get("project") or ""
                     open_path(myfiles.project_folder(project) if myfiles.project(project) else myfiles.folder)
@@ -805,7 +819,7 @@ def main(argv=None):
                 print(f"Can't open a window ({e.__class__.__name__}: {e}); opening the browser instead.", flush=True)
                 window = None
         if window is None:
-            webbrowser.open(url)
+            open_url(url)
             while True:
                 time.sleep(3600)
     except KeyboardInterrupt:
