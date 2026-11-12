@@ -15,7 +15,8 @@ were worked through at the workstation on 11 November 2026 with real models and 
   than the 4B, at five times the wait, and made up passage ids.
 - **The built-in list was rewritten from the tests** (run E): Nemotron 3.5 Lightning and Qwen3.5 35B-A3B, the two
   best on Lemonade, were run through the built-in engine and replace Qwen3 30B-A3B. IBM Granite 4.2 8B got 35 of 36 from a
-  5.3 GB file and is the suggestion for 16 GB, though slow; Gemma 4 E4B is for 12 GB.
+  5.3 GB file and is the suggestion for 16 GB, though slow. Granite 4.2 3B (29 to 31) is now the one for 8 and 12 GB;
+  Gemma 4 E4B and Qwen3 4B are listed but not suggested (run F).
 - **The 36 questions on Lemonade** (Nemotron 3.5, Qwen3.5-35B, Gemma 4 E4B), every answer read, every flagged figure
   judged: 20 true, 4 false alarms from two causes, both fixed with tests.
 - **The library**: two-column pages are now read from where their lines are (`library/columns.py`). By
