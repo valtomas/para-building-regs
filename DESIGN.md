@@ -47,7 +47,8 @@ Dialogs (native `<dialog>`): **Settings** (tabs: AI engine, Instructions, Notes,
 **Project** (name, notes, the project's files, Delete project and Save), **Your files** (the files shared by every chat), **Library** (browse documents and search without AI), and the **permission** prompt shown the first
 time someone adds a file.
 
-A dialog's head (eyebrow, title and the close button) stays at the top while the rest scrolls. The cross, Escape and
+A dialog's head (eyebrow, title and the close button) stays at the top while the rest scrolls, and in Settings the
+tabs stay under it. The cross, Escape and
 a click outside the dialog all close it. Settings and Project keep changes only on Save, so closing either with
 something changed asks first, in a small dialog in the app's look: "Save your changes?" with Keep editing, Don't save
 and Save (if something is missing, it stays open at the tab that says what). Deleting a chat, a project or a model, and

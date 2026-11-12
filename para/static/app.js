@@ -712,6 +712,12 @@ function showTab(name) {
 }
 $$(".tab", dlgS).forEach((t) => t.onclick = () => showTab(t.dataset.tab));
 
+// The tabs stick just under the dialog's head, wherever that ends at this width.
+function placeTabs() {
+  const head = $(".modal-head", dlgS);
+  $(".tabs", dlgS).style.top = head.offsetHeight + parseFloat(getComputedStyle(head).top) + "px";
+}
+addEventListener("resize", () => { if (dlgS.open) placeTabs(); });
 function openSettings(tab = "engine") {
   const s = S.settings, e = s.engine;
   // a hosted service is saved as an external engine; which card is ticked follows from its address
@@ -729,6 +735,7 @@ function openSettings(tab = "engine") {
   renderAbout();
   showTab(tab);
   if (!dlgS.open) { saved(dlgS); dlgS.showModal(); }
+  placeTabs();
   if (!mode) { findEngines(); }
 }
 function modeChanged() {

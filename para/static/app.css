@@ -443,7 +443,9 @@ code { font-family: var(--mono); font-size: .8em; background: var(--cite); color
 .modal-actions { display: flex; justify-content: flex-end; gap: 10px; align-items: center; margin-top: 4px; }
 .tabpane > .modal-actions, .tabpane[data-pane=about] .modal-actions { border-top: 1px solid var(--border); padding-top: 18px; }
 .modal-actions .muted { flex: 1; font-size: 15px; }
-.tabs { display: flex; gap: 26px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+/* the tabs stay under the head while a long tab scrolls; app.js sets `top` to where the head ends */
+.tabs { display: flex; gap: 26px; border-bottom: 1px solid var(--border); flex-wrap: wrap;
+  position: sticky; top: 66px; z-index: 2; background: var(--panel); padding-top: 8px; margin-top: -8px; }
 .tab { background: none; border: 0; padding: 0 0 10px; margin-bottom: -1px; cursor: pointer; border-bottom: 2px solid transparent;
   color: var(--muted-2); font: 11.5px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
 .tab:hover { color: var(--ink); }
@@ -649,7 +651,7 @@ input[type=checkbox]:checked { background-color: var(--accent); border-color: va
   .modal-head { top: -22px; margin-top: -22px; padding-top: 22px; }
   .modal h2, .modal.wide h2 { font-size: 30px; }
   .choice { grid-template-columns: 1fr; }
-  .modal label.model-card { grid-template-columns: 24px minmax(0, 1fr); }
+  .modal label.model-card { grid-template-columns: 24px minmax(0, 1fr); grid-auto-flow: row; }   /* the button goes under the text, not over it */
   .model-card > .btn, .model-card > .installed { grid-column: 2; justify-self: start; }
   .file-row { grid-template-columns: 1fr auto auto; }
   .lib-source { grid-template-columns: 84px minmax(0, 1fr); gap: 4px 12px; }
