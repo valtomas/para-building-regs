@@ -237,6 +237,22 @@
     <button class="btn primary" id="permOk" disabled>Continue</button></div>
 </dialog>
 
+<dialog id="dlg-confirm" class="modal narrow">
+  <div class="eyebrow">Please confirm</div>
+  <h2></h2>
+  <p></p>
+  <form method="dialog" class="modal-actions"><button class="btn" value="no">Cancel</button>
+    <button class="btn danger" value="yes">Delete</button></form>
+</dialog>
+
+<dialog id="dlg-unsaved" class="modal narrow">
+  <div class="eyebrow">Not saved yet</div>
+  <h2>Save your changes?</h2>
+  <form method="dialog" class="modal-actions"><button class="btn" value="keep">Keep editing</button>
+    <button class="btn" value="discard">Don't save</button>
+    <button class="btn primary" value="save">Save</button></form>
+</dialog>
+
 <dialog id="dlg-library" class="modal wide">
   <form method="dialog" class="modal-head"><div><div class="eyebrow">Browse, or search without AI</div><h2>Library</h2></div><button class="icon" aria-label="Close"><svg class="x" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button></form>
   <label class="lib-search"><span>Search</span><input id="libSearch" type="search"

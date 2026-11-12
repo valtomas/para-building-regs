@@ -126,7 +126,7 @@ function renderChats() {
     $(".open", row).onclick = () => openChat(c.id);
     $(".ren", row).onclick = () => renameChat(row, c);
     $(".del", row).onclick = async () => {
-      if (!confirm("Delete this chat?")) return;
+      if (!(await confirmBox("Delete this chat?", "", "Delete"))) return;
       await api("/api/chat?id=" + encodeURIComponent(c.id), { method: "DELETE" });
       if (c.id === chatId) newChat();
       await refresh();
@@ -230,6 +230,10 @@ pmenu.addEventListener("keydown", (e) => {
 document.addEventListener("click", (e) => { if (!pmenu.hidden && !e.target.closest(".project-pick")) projectMenu(false); });
 $("#projectEdit").onclick = () => openProject(project);
 
+// What has been typed or chosen in a dialog since it was last saved (see "closing a dialog" at the end).
+const unsaved = new Map();   // dialog -> the parts changed and not yet saved
+function changed(dlg, part) { if (!unsaved.has(dlg)) unsaved.set(dlg, new Set()); unsaved.get(dlg).add(part); }
+function saved(dlg, part) { if (part) unsaved.get(dlg)?.delete(part); else unsaved.delete(dlg); }
 const dlgP = $("#dlg-project");
 let editing = null;      // the project open in the dialog, null while creating one
 function openProject(name) {
@@ -242,14 +246,15 @@ function openProject(name) {
   $("#projectSave").textContent = p ? "Save" : "Create";
   $("#projectMsg").textContent = "";
   if (p) renderProjectFiles();
-  if (!dlgP.open) dlgP.showModal();
+  if (!dlgP.open) { saved(dlgP); dlgP.showModal(); }
   if (!p) $("#projectName").focus();
   if (p) api("/api/files/sync", { method: "POST" }).then((r) => { S.files = r.files; renderProjectFiles(); });
 }
 function renderProjectFiles() {
   renderFileList($("#projectFileList"), S.files.filter((f) => f.project === editing));
 }
-$("#projectSave").onclick = async () => {
+// Saves the project; true if it was saved. After creating one the dialog stays open for its files, unless it's closing.
+async function saveProject(closing = false) {
   const name = $("#projectName").value.trim(), notes = $("#projectNotesOne").value;
   try {
     const r = editing === null
@@ -258,12 +263,15 @@ $("#projectSave").onclick = async () => {
     S = r;
     const created = editing === null;
     await setProject(r.project);
-    if (created) openProject(r.project);   // carry on: add the project's files
+    saved(dlgP);
+    if (created && !closing) openProject(r.project);   // carry on: add the project's files
     else dlgP.close();
-  } catch (e) { $("#projectMsg").textContent = e.message; }
-};
+    return true;
+  } catch (e) { $("#projectMsg").textContent = e.message; return false; }
+}
+$("#projectSave").onclick = () => saveProject();
 $("#projectDelete").onclick = async () => {
-  if (!confirm(`Delete the project ${editing}? Its chats are kept, outside any project.`)) return;
+  if (!(await confirmBox(`Delete the project ${editing}?`, "Its chats are kept, outside any project.", "Delete"))) return;
   try {
     S = await api("/api/projects?name=" + encodeURIComponent(editing), { method: "DELETE" });
     dlgP.close();
@@ -628,7 +636,7 @@ function openSettings(tab = "engine") {
   modeChanged();
   renderAbout();
   showTab(tab);
-  if (!dlgS.open) dlgS.showModal();
+  if (!dlgS.open) { saved(dlgS); dlgS.showModal(); }
   if (!mode) { findEngines(); }
 }
 function modeChanged() {
@@ -792,12 +800,12 @@ function renderBundled() {
   $$("input[name=bmodel]").forEach((r) => r.onchange = () => { chosenBundled = r.value; renderBundled(); });
   $$("[data-install]").forEach((x) => x.onclick = async (e) => {
     e.preventDefault();
-    try { await api("/api/bundled/install", { method: "POST", body: { model: x.dataset.install, gpu: $("#gpu").checked } }); chosenBundled = x.dataset.install; pollJobs(); }
+    try { await api("/api/bundled/install", { method: "POST", body: { model: x.dataset.install, gpu: $("#gpu").checked } }); chosenBundled = x.dataset.install; changed(dlgS, "engine"); pollJobs(); }
     catch (err) { alert(err.message); }
   });
   $$("[data-remove]").forEach((x) => x.onclick = async (e) => {
     e.preventDefault();
-    if (!confirm("Delete this model from this computer?")) return;
+    if (!(await confirmBox("Delete this model?", "It is deleted from this computer. You can download it again.", "Delete"))) return;
     S.bundled = await api("/api/bundled/remove", { method: "POST", body: { model: x.dataset.remove } }); renderBundled();
   });
   renderJob(b.jobs.install);
@@ -836,29 +844,40 @@ function engineForm() {
   } else if (m === "bundled") { e.bundled_model = chosenBundled; }
   return e;
 }
-$("#saveEngine").onclick = async () => {
+// Each of these saves one part of Settings and says whether it did (the engine isn't saved while something is missing).
+async function saveEngine() {
   const e = engineForm();
-  if (e.mode === "bundled" && !S.bundled.models.includes(e.bundled_model)) { $("#testResult").textContent = "Download the model first."; return; }
-  if (e.mode === "external" && !e.base_url) { $("#testResult").textContent = "Enter the server address."; return; }
-  if ($("input[name=mode]:checked")?.value === "hosted" && !e.model) { $("#testResult").textContent = "Choose a model: press Refresh, or type its name."; return; }
+  if (e.mode === "bundled" && !S.bundled.models.includes(e.bundled_model)) { $("#testResult").textContent = "Download the model first."; return false; }
+  if (e.mode === "external" && !e.base_url) { $("#testResult").textContent = "Enter the server address."; return false; }
+  if ($("input[name=mode]:checked")?.value === "hosted" && !e.model) { $("#testResult").textContent = "Choose a model: press Refresh, or type its name."; return false; }
   S = await api("/api/settings", { method: "POST", body: { engine: e } });
   await refresh();
+  saved(dlgS, "engine");
   $("#testResult").textContent = "Saved. Testing…";
   testEngine();
-};
+  return true;
+}
+$("#saveEngine").onclick = saveEngine;
 async function testEngine() {
   $("#testResult").textContent = "Testing… (the built-in engine can take a minute to load the model)";
   const r = await api("/api/test-engine", { method: "POST" });
   $("#testResult").textContent = r.ok ? `✓ Working: ${r.model} replied “${r.reply}”` : `✗ ${r.error}`;
 }
-$("#testEngine").onclick = async () => { await api("/api/settings", { method: "POST", body: { engine: engineForm() } }); await refresh(); testEngine(); };
-$("#saveInstructions").onclick = async () => {
+$("#testEngine").onclick = async () => { await api("/api/settings", { method: "POST", body: { engine: engineForm() } }); await refresh(); saved(dlgS, "engine"); testEngine(); };
+async function saveInstructions() {
   const v = $("#instructions").value.trim();
   await api("/api/settings", { method: "POST", body: { instructions: v === S.default_instructions.trim() ? "" : v } });
-  await refresh(); dlgS.close();
-};
-$("#resetInstructions").onclick = () => { $("#instructions").value = S.default_instructions; };
-$("#saveNotes").onclick = async () => { await api("/api/settings", { method: "POST", body: { project_notes: $("#projectNotes").value } }); await refresh(); dlgS.close(); };
+  await refresh(); saved(dlgS, "instructions");
+  return true;
+}
+async function saveNotes() {
+  await api("/api/settings", { method: "POST", body: { project_notes: $("#projectNotes").value } });
+  await refresh(); saved(dlgS, "project");
+  return true;
+}
+$("#saveInstructions").onclick = async () => { await saveInstructions(); tryClose(dlgS); };
+$("#resetInstructions").onclick = () => { $("#instructions").value = S.default_instructions; changed(dlgS, "instructions"); };
+$("#saveNotes").onclick = async () => { await saveNotes(); tryClose(dlgS); };
 $("#checkUpdates").onchange = (e) => api("/api/settings", { method: "POST", body: { check_updates: e.target.checked } });
 $("#checkNow").onclick = async () => { $("#updateView").textContent = "Checking…"; S.updates = await api("/api/updates/check", { method: "POST" }); renderAbout(); refresh(); };
 function renderAbout() {
@@ -917,7 +936,7 @@ function renderFileList(list, files) {
   $$("[data-note]", list).forEach((i) => i.onchange = () => api("/api/files/note", { method: "POST", body: { key: i.dataset.note, note: i.value } }));
   $$("[data-openfile]", list).forEach((b) => b.onclick = () => api("/api/open", { method: "POST", body: { file: b.dataset.openfile } }));
   $$("[data-delfile]", list).forEach((b) => b.onclick = async () => {
-    if (!confirm("Remove this file? It is deleted from your files folder too.")) return;
+    if (!(await confirmBox("Remove this file?", "It is deleted from your files folder too.", "Remove"))) return;
     S.files = (await api("/api/files?key=" + encodeURIComponent(b.dataset.delfile), { method: "DELETE" })).files;
     renderFiles(); if (dlgP.open) renderProjectFiles(); refresh();
   });
@@ -1043,3 +1062,64 @@ refresh().then(() => {
   const running = S.bundled.jobs.install && S.bundled.jobs.install.state === "running";
   if (running) pollJobs();
 });
+
+// ---------- closing a dialog ----------
+// The cross, Escape and a click outside the dialog all close it the same way. Settings and Project hold things that
+// are only kept on Save, so what has been typed or chosen since the last save is remembered, and closing asks first.
+const SAVE = { engine: saveEngine, instructions: saveInstructions, project: saveNotes, "this project": () => saveProject(true) };
+
+// The app's own "are you sure": a question, a line of what follows, Cancel and the action. Escape is Cancel.
+function confirmBox(question, detail, action) {
+  const d = $("#dlg-confirm");
+  $("h2", d).textContent = question;
+  $("p", d).textContent = detail; $("p", d).hidden = !detail;
+  $("[value=yes]", d).textContent = action;
+  return new Promise((res) => {
+    $$("button", d).forEach((b) => b.onclick = (e) => { e.preventDefault(); res(b.value === "yes"); d.close(); });
+    d.onclose = () => res(false);
+    d.showModal();
+    $("[value=no]", d).focus();   // so Enter doesn't delete
+  });
+}
+function askUnsaved() {
+  const d = $("#dlg-unsaved");
+  return new Promise((res) => {
+    $$("button", d).forEach((b) => b.onclick = (e) => { e.preventDefault(); res(b.value); d.close(); });
+    d.onclose = () => res("keep");   // Escape: carry on editing (after a button this changes nothing)
+    d.showModal();
+  });
+}
+async function tryClose(dlg) {
+  const parts = [...(unsaved.get(dlg) || [])];
+  if (parts.length) {
+    const answer = await askUnsaved();
+    if (answer === "keep") return;
+    if (answer === "save") {
+      for (const part of parts) {
+        if (await SAVE[part]()) continue;
+        if (dlg === dlgS) showTab(part);   // something is missing: show where, and stay
+        return;
+      }
+    }
+    saved(dlg);
+  }
+  if (dlg.open) dlg.close();
+}
+for (const dlg of [dlgS, dlgP, dlgF, dlgL]) {
+  dlg.addEventListener("cancel", (e) => { e.preventDefault(); tryClose(dlg); });
+  $(".modal-head", dlg).addEventListener("submit", (e) => { e.preventDefault(); tryClose(dlg); });
+  // a click outside: pressed and let go on the backdrop, so selecting text and letting go outside doesn't close it
+  let pressedOutside = false;
+  const outside = (e) => {
+    const r = dlg.getBoundingClientRect();
+    return e.target === dlg && (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom);
+  };
+  dlg.addEventListener("mousedown", (e) => { pressedOutside = outside(e); });
+  dlg.addEventListener("click", (e) => { if (pressedOutside && outside(e)) tryClose(dlg); pressedOutside = false; });
+}
+dlgS.addEventListener("input", (e) => {
+  const pane = e.target.closest(".tabpane")?.dataset.pane;
+  if (pane in SAVE) changed(dlgS, pane);   // not Updates & about: its tick box saves itself
+});
+dlgS.addEventListener("change", (e) => { if (e.target.closest("[data-pane=engine]")) changed(dlgS, "engine"); });
+for (const id of ["#projectName", "#projectNotesOne"]) $(id).addEventListener("input", () => changed(dlgP, "this project"));
