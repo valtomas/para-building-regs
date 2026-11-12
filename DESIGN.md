@@ -60,7 +60,7 @@ focused so Enter doesn't delete); the browser's own confirm box is never used.
 |---|---|
 | First run: choose an engine | `setup-engine.png` |
 | Built-in engine: model cards, recommended one marked | `setup-builtin.png` |
-| Empty chat with example questions | `welcome.png` |
+| Empty chat: questions to try, the documents by Part | `welcome.png` |
 | Answer with inline citations, activity expanded | `answer.png` |
 | Under an answer: the cited list, Copy with references and Ask again | `answer-actions.png` |
 | An answer whose citations rest on a search extract (dashed citations, the note, "Extract only" in the cited list) | `extract-only.png` |
@@ -121,6 +121,15 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
 
 ## Components
 
+- **Empty chat** (`#welcome`): under the heading, what's offered depends on who is looking. With no chats yet, "Try
+  one": four questions drawn at random from those the models are tested on (`EXAMPLES` in `app.js`, a new four for
+  each new chat), as ruled rows numbered in mono with "Ask →". In a project, a line saying how many files it has with a
+  mono link to its notes and files, and questions about those files by name instead. Once someone has asked before,
+  the examples go. Always there: "The Approved Documents, by Part", two columns of ruled rows read downwards (the
+  letter in mono accent, the Part's name, and "Open" or "Vol 1" and "Vol 2", which open the document in the reader),
+  then "Acts and regulations" as a row of mono links and "The whole library". After a library update a warm note says
+  the edition and how much differs, with "See what changed" (the Library opens at Changed in this edition); it goes
+  once followed.
 - **Question** (`.msg.user`): a heading, not a bubble: "Your question" eyebrow, the question in display type, an
   ink rule under it. Each turn repeats it.
 - **Citation** (`.cite`): inline mono tag, `--cite` background, label `<source> <ref>`, tooltip with the heading.

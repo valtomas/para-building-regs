@@ -96,6 +96,7 @@ async function refresh() {
   $("#version").textContent = `Version ${S.version} · library ${S.library.version || "none"}`;
   $("#filesCount").textContent = S.files.filter((f) => !f.project).length || "";
   $("#libCount").textContent = S.library.sources.length || "";
+  renderWelcome();
   const b = $("#engineBadge");
   const e = s.engine;
   if (!e.mode) { b.className = "badge none"; b.textContent = "No AI engine set up"; b.onclick = () => openSettings(); }
@@ -286,6 +287,8 @@ function newChat() {
   chatId = null;
   $("#messages").innerHTML = "";
   $("#messages").appendChild(welcomeEl);
+  pickExamples();
+  if (S) renderWelcome();
   renderChats();
   $("#question").focus();
 }
@@ -610,7 +613,96 @@ $("#newChat").onclick = () => { if (!busy) newChat(); };
 $("#reasoning").onchange = (e) => api("/api/settings", { method: "POST", body: { reasoning: e.target.value } });
 $("#length").onchange = (e) => api("/api/settings", { method: "POST", body: { length: e.target.value } });
 const welcomeEl = $("#welcome");
-$$(".examples button").forEach((b) => b.onclick = () => ask(b.textContent));
+
+// ---------- the empty chat ----------
+// What it offers depends on who is looking. Someone with no chats yet gets four questions to try, drawn from the ones
+// the models are tested on (tests/ask_models.py), so a first answer is one we know comes out well. In a project the
+// questions are about its files. Anyone who has asked before gets the documents by Part instead: a contents page
+// doesn't wear out. After a library update, one line says so.
+const EXAMPLES = [
+  "What is the maximum travel distance in a single-direction escape route from a flat entrance door?",
+  "Maximum rise, minimum going and maximum pitch for a private stair",
+  "Guarding height for a balcony in a dwelling",
+  "Limiting U-value for a new external wall in a new dwelling",
+  "When is a building a higher-risk building during design and construction?",
+  "What must a principal designer be competent to do?",
+  "Does a bathroom in a flat need a fire door?",
+  "At what height does a block of flats need sprinklers?",
+  "Maximum travel distance in an office where escape is possible in one direction only",
+  "Minimum size of an emergency escape window in a house",
+  "What standard of fire alarm system does a new house need?",
+  "Minimum extract rates for a kitchen and a bathroom with intermittent fans",
+  "How much water may a new dwelling be designed to use per person?",
+  "Maximum hot water temperature at a bath in a new dwelling",
+  "What height should a handrail on a stair be?",
+  "What headroom does a stair in a loft conversion need?",
+  "What is the worst air permeability allowed for a new dwelling?",
+  "Limiting U-value for windows in a new dwelling",
+  "Maximum gradient for a ramp with a 5 m going to a building other than a dwelling",
+  "Minimum rated output of an electric vehicle charge point",
+  "How thick must a constructional hearth be?",
+  "What airborne sound insulation must a separating wall between new houses achieve?",
+  "What is the radon action level?",
+  "What standard should the front door of a new dwelling meet for security?",
+];
+const PARTS = {
+  A: "Structure", B: "Fire safety", C: "Site preparation and resistance to contaminants and moisture",
+  D: "Toxic substances", E: "Resistance to sound", F: "Ventilation", G: "Sanitation, hot water safety and water efficiency",
+  H: "Drainage and waste disposal", J: "Combustion appliances and fuel storage", K: "Protection from falling, collision and impact",
+  L: "Conservation of fuel and power", M: "Access to and use of buildings", O: "Overheating", P: "Electrical safety",
+  Q: "Security in dwellings", R: "Infrastructure for electronic communications", S: "Charging electric vehicles",
+  T: "Toilet accommodation", 7: "Materials and workmanship",
+};
+let shownExamples = [];
+function pickExamples() {
+  const pool = [...EXAMPLES];
+  shownExamples = Array.from({ length: 4 }, () => pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+}
+function renderWelcome() {
+  const w = welcomeEl;
+  if (!shownExamples.length) pickExamples();
+  // after an update: once, until the list of changes has been opened
+  const ch = S.library_changes, seen = (() => { try { return localStorage.getItem("para-changes-seen"); } catch { return null; } })();
+  const news = $("#welcomeNews", w);
+  if (ch && (ch.documents.length || ch.removed.length) && seen !== ch.to) {
+    const paras = ch.documents.reduce((n, d) => n + (d.changed_count || 0) + (d.added_count || 0) + (d.removed_count || 0), 0);
+    const docs = ch.documents.length + ch.removed.length;
+    news.innerHTML = `<div class="note edition"><span>The library is now edition ${esc(ch.to)}: ${paras ? `${paras} paragraph${paras === 1 ? "" : "s"} differ in ` : ""}${docs} document${docs === 1 ? "" : "s"}.</span><button class="link-btn" id="seeChanges">See what changed</button></div>`;
+    $("#seeChanges").onclick = () => { try { localStorage.setItem("para-changes-seen", ch.to); } catch { /* shown again next time */ } news.innerHTML = ""; openLibrary(true); };
+  } else news.innerHTML = "";
+
+  const start = $("#welcomeStart", w);
+  const files = project ? S.files.filter((f) => f.project === project && f.status !== "reading") : [];
+  const named = (f) => f.title.replace(/\.[a-z0-9]{2,5}$/i, "");
+  let questions = [], label = "";
+  if (project && files.length) {
+    label = `In ${project}`;
+    questions = files.slice(0, 3).map((f) => `What does “${named(f)}” ask for or say, and which requirements does it touch?`);
+    if (files.length > 1) questions.push("Which parts of the regulations do this project's files raise?");
+  } else if (!S.chats.length) { label = "Try one"; questions = shownExamples; }
+  start.innerHTML = (project ? `<p class="welcome-project">${files.length ? `${files.length} file${files.length === 1 ? "" : "s"} searched only in this project's chats.` : "No files in this project yet."} <button class="link-btn" id="welcomeProject">${files.length ? "Notes and files" : "Add drawings, specifications or comments"}</button></p>` : "") +
+    (questions.length ? `<div class="eyebrow">${esc(label)}</div><div class="examples">${questions.map((q) => `<button>${esc(q)}</button>`).join("")}</div>` : "");
+  $$(".examples button", start).forEach((b) => b.onclick = () => ask(b.textContent));
+  if (project) $("#welcomeProject").onclick = () => openProject(project);
+
+  // the documents by Part: the Approved Documents themselves (not their FAQs or amendment slips), then the law
+  const parts = $("#welcomeParts", w), by = {};
+  for (const s of S.library.sources) {
+    const m = /^AD([A-T7])([12])?$/.exec(s.key);
+    if (m) (by[m[1]] = by[m[1]] || []).push({ key: s.key, vol: m[2] });
+  }
+  const law = S.library.sources.filter((s) => s.kind === "legislation");
+  const rows = Object.keys(PARTS).filter((p) => by[p]).sort((a, b) => (a === "7") - (b === "7") || a.localeCompare(b)).map((p) => {
+    const docs = by[p].sort((a, b) => (a.vol || "").localeCompare(b.vol || ""));
+    const open = docs.length === 1 ? `<button class="part-open" data-key="${esc(docs[0].key)}">Open</button>`
+      : docs.map((d) => `<button class="part-open" data-key="${esc(d.key)}" title="${d.vol === "1" ? "Dwellings" : "Buildings other than dwellings"}">Vol ${d.vol}</button>`).join("");
+    return `<div class="part"><span class="part-letter">${p === "7" ? "Reg 7" : p}</span><span class="part-name">${esc(PARTS[p])}</span><span class="part-links">${open}</span></div>`;
+  }).join("");
+  parts.innerHTML = rows ? `<div class="eyebrow">The Approved Documents, by Part</div><div class="parts">${rows}</div>` +
+    (law.length ? `<div class="eyebrow">Acts and regulations</div><div class="law">${law.map((s) => `<button class="part-open" data-key="${esc(s.key)}" title="${esc(s.title)}">${esc(s.short)}</button>`).join("")}<button class="link-btn" id="wholeLibrary">The whole library</button></div>` : "") : "";
+  $$("[data-key]", parts).forEach((b) => b.onclick = () => openSource(b.dataset.key));
+  if ($("#wholeLibrary")) $("#wholeLibrary").onclick = () => openLibrary();
+}
 
 // ---------- settings ----------
 const dlgS = $("#dlg-settings");
@@ -1009,7 +1101,7 @@ function libraryChanges() {
   return `<details class="lib-changes"><summary>Changed in this edition: ${count} document${count === 1 ? "" : "s"}</summary>${docs}` +
     `<p class="who">Edition ${esc(ch.to)} compared, paragraph by paragraph, with ${esc(ch.from || "the one before")}, which this computer had until the update. A difference can also be a correction to how the app reads a document, not a change to the document.</p></details>`;
 }
-function openLibrary() {
+function openLibrary(changesOpen = false) {
   const groups = {};
   for (const s of S.library.sources) (groups[s.kind] = groups[s.kind] || []).push(s);
   $("#libSources").innerHTML = S.library.sources.length ? libraryChanges() + Object.entries(groups).map(([k, items]) => `<div class="group-title">${esc(KIND[k] || k)}<span class="count">${items.length}</span></div>` +
@@ -1021,6 +1113,7 @@ function openLibrary() {
   $$(".lib-source").forEach((el) => el.onclick = () => { dlgL.close(); openSource(el.dataset.key); });
   $("#libResults").innerHTML = "";
   $("#libSearch").value = "";
+  if (changesOpen && $(".lib-changes", dlgL)) $(".lib-changes", dlgL).open = true;
   dlgL.showModal();
 }
 let libTimer;
