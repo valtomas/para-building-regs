@@ -160,6 +160,10 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   red outline pill; disabled at 40 % opacity.
 - **Notes** (`.note`): warm background for honest-state messages; **errors** (`.error`) in danger colour, with a
   button to the setting that fixes them.
+- **A model that isn't downloaded**: when the question fails because the built-in model chosen in Settings isn't on
+  the computer, the error names it with its size ("IBM Granite 4.2 3B, the model chosen in Settings, isn't
+  downloaded yet (2.2 GB).") and offers "Download IBM Granite 4.2 3B (2.2 GB)" (primary) and "Choose another
+  model". The download's progress shows under the error, and when it's done the question is asked again.
 - **Project picker**: at the top of the sidebar, a "Project" label over a native select set in display type on a
   sidebar rule ("No project", each project, "New project…"), with a mono "Notes and files" link under it when a
   project is chosen. Recent shows the chosen project's chats only; the question box says "Ask a question about

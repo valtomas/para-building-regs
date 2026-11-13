@@ -496,8 +496,14 @@ class Bundled:
             self.stop()
             model = next((m for m in catalog()["models"] if m["id"] == model_id), None)
             server = self.server_path()
-            if not model or not server or not os.path.exists(self.model_path(model)):
-                raise EngineError("The built-in engine or its model isn't installed yet. Open Settings to set it up.")
+            if not model:
+                raise EngineError("No model is chosen for the built-in engine yet. Open Settings to choose one.")
+            if not os.path.exists(self.model_path(model)):
+                # the page offers the download under this (app.js, `error`): keep "isn't downloaded yet"
+                raise EngineError(f"{model['name']}, the model chosen in Settings, isn't downloaded yet "
+                                  f"({model.get('size_gb', '?')} GB).")
+            if not server:
+                raise EngineError(f"The built-in engine that runs {model['name']} isn't downloaded yet.")
             # A load that doesn't fit doesn't fail cleanly: it pushes everything else out of memory, and on some
             # computers the graphics driver has crashed the whole system trying.
             # llama.cpp puts what fits on the graphics card and the rest in system memory, so the two add up.

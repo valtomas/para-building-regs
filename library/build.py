@@ -376,11 +376,8 @@ def main():
         store_one(**kw)
 
     version = datetime.date.today().strftime("%Y.%m.%d")
-    digest = hashlib.sha256()
-    for row in store.db.execute("SELECT s.key, s.title, p.ref, p.text FROM passages p JOIN sources s ON s.id = "
-                                "p.source_id ORDER BY s.key, p.seq"):
-        digest.update("\x1f".join(str(x) for x in row).encode())
-    store.set_meta(content_hash=digest.hexdigest()[:16])
+    words, images = store.content_hashes()
+    store.set_meta(content_hash=words, images_hash=images)
     store.set_meta(version=version, built=datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
                    license=cfg["license"])
     store.db.execute("INSERT INTO fts(fts) VALUES('optimize')")
@@ -390,17 +387,22 @@ def main():
     os.replace(tmp, out)
     print(f"\n{out}: {os.path.getsize(out) / 2**20:.1f} MB, version {version}")
     if args.release:
-        gz = out + ".gz"
-        h = hashlib.sha256()
-        with open(out, "rb") as src, gzip.open(gz, "wb", compresslevel=9) as dst:
-            for block in iter(lambda: src.read(1 << 20), b""):
-                h.update(block)
-                dst.write(block)
-        with open(os.path.join(DIST, "library.json"), "w") as f:
-            json.dump({"version": version, "file": "regs.sqlite.gz", "sha256": h.hexdigest(),
-                       "content_hash": digest.hexdigest()[:16],
-                       "size": os.path.getsize(out)}, f, indent=1)
-        print(f"{gz}: {os.path.getsize(gz) / 2**20:.1f} MB")
+        write_release(out, version, words, images)
+
+
+def write_release(out, version, words, images):
+    """The files a release publishes beside the library: it gzipped, and library.json, which installed apps read to
+    see whether theirs is older and whether it differs."""
+    gz = out + ".gz"
+    h = hashlib.sha256()
+    with open(out, "rb") as src, gzip.open(gz, "wb", compresslevel=9) as dst:
+        for block in iter(lambda: src.read(1 << 20), b""):
+            h.update(block)
+            dst.write(block)
+    with open(os.path.join(os.path.dirname(out), "library.json"), "w") as f:
+        json.dump({"version": version, "file": "regs.sqlite.gz", "sha256": h.hexdigest(), "content_hash": words,
+                   "images_hash": images, "size": os.path.getsize(out)}, f, indent=1)
+    print(f"{gz}: {os.path.getsize(gz) / 2**20:.1f} MB")
 
 
 if __name__ == "__main__":
