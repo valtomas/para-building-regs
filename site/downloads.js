@@ -7,9 +7,9 @@
   const isWin = /Win/i.test(navigator.platform || navigator.userAgent);
   const isLinux = !isMac && !isWin && /Linux|X11/i.test(navigator.platform || navigator.userAgent);
 
-  function link(href, label, primary) {
+  function link(href, label) {
     const a = document.createElement("a");
-    a.className = "btn" + (primary ? " primary" : "");
+    a.className = "btn";
     a.href = href;
     a.textContent = label;
     return a;
@@ -38,7 +38,9 @@
     p.className = "fine";
     p.textContent = "The first release is on its way. Until then you can run Para from source with Python 3.10 or newer.";
     box.appendChild(p);
-    box.appendChild(link("https://github.com/" + REPO + "#run-from-source", "Run from source", true));
+    const src = link("https://github.com/" + REPO + "#run-from-source", "Run from source");
+    src.classList.add("primary");
+    box.appendChild(src);
   }
 
   fetch("https://api.github.com/repos/" + REPO + "/releases/latest", { headers: { Accept: "application/vnd.github+json" } })
@@ -52,10 +54,17 @@
       const appimage = assets["Para-linux.AppImage"];
       if (!mac && !win && !lin) return noRelease();
       box.textContent = "";
-      if (mac) box.appendChild(link(mac.browser_download_url, "Download for Mac", isMac || (!isWin && !isLinux)));
-      if (win) box.appendChild(link(win.browser_download_url, "Download for Windows", isWin));
-      if (lin) box.appendChild(link(lin.browser_download_url, appimage ? "Ubuntu and Debian" : "Download for Linux", isLinux));
-      if (appimage) box.appendChild(link(appimage.browser_download_url, "Other Linux (AppImage)", false));
+      // The visitor's own system first, then the others; Linux keeps its .deb and AppImage together.
+      const groups = [
+        { mine: isMac || (!isWin && !isLinux), links: [mac && link(mac.browser_download_url, "Download for Mac")] },
+        { mine: isWin, links: [win && link(win.browser_download_url, "Download for Windows")] },
+        { mine: isLinux, links: [lin && link(lin.browser_download_url, appimage ? "Ubuntu and Debian" : "Download for Linux"),
+                                 appimage && link(appimage.browser_download_url, "Other Linux (AppImage)")] },
+      ];
+      groups.sort((a, b) => b.mine - a.mine);
+      for (const g of groups) {
+        g.links.forEach((a, i) => { if (!a) return; if (g.mine && i === 0) a.classList.add("primary"); box.appendChild(a); });
+      }
       const v = document.createElement("p");
       v.className = "fine";
       v.textContent = "Version " + String(rel.tag_name || "").replace(/^v/, "") + ". ";
@@ -64,12 +73,6 @@
       notes.textContent = "What's new";
       v.appendChild(notes);
       box.appendChild(v);
-      // The button at the top of the page names the visitor's system but still leads here, to the download
-      // section, where the first-run step is said beside the buttons.
-      const hero = document.querySelector("#heroActions .btn.primary");
-      const mine = isWin ? win : isLinux ? lin : mac;
-      const label = isWin ? "Download for Windows" : isLinux ? "Download for Linux" : "Download for Mac";
-      if (hero && mine) hero.textContent = label;
       if (FIRST_RUN && (isWin ? win : mac)) box.after(firstRun());
     })
     .catch(noRelease);
