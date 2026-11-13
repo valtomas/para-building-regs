@@ -185,7 +185,8 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   collection or page path), run `library/build.py`, check its passages, and add a short name in `build.SHORT` if
   the automatic one is clumsy.
 - **A new built-in model**: add it to `para/models.json` with the exact Hugging Face repo and file, size and memory
-  needed. Test it answers with citations through the built-in engine before listing it.
+  needed. Test it answers with citations through the built-in engine before listing it. To stop offering one, mark it
+  `"retired": true`; don't delete it, or a copy someone downloaded stops working.
 - **A new API endpoint**: in `server.Handler`, return JSON through `_send`, and add a check to `tests/test_app.py`.
 - **A hosted service**: add it to `llm.HOSTED` (name, base URL, where it's based, the page for keys, an example
   model). It must take the standard `/chat/completions` API with a Bearer key; never add code for one service. A key

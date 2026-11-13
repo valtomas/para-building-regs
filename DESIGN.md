@@ -181,10 +181,13 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   picker's, in the dialog's colours: ruled rows in mono on `--panel`, the chosen one marked with an accent ¶. Opening it
   shows every model (a native datalist would show only those matching the name already in the box) and selects the
   name, so typing filters the list; any name can still be typed. It opens upwards when the dialog has no room below.
-- **Model rows**: ruled rows with a radio, name, Recommended tag (gold pill), description, mono size and memory line
-  ending in how many of the 36 test questions the model got right ("33 to 35 of 36 test questions right"),
-  and an action (Download, or Installed and Delete). Models too big for this computer are faded with the size line
-  in red.
+- **Model rows**: ruled rows with a radio, name, the gold pill "Recommended for this computer" on the one chosen from
+  the computer's memory, description, mono size and memory line ending in how many of the 36 test questions the model
+  got right ("33 to 35 of 36 test questions right"), and an action (Download, or Installed and Delete). Only the
+  recommended model and any already downloaded or in use are shown; the rest sit under a collapsed mono line, "+ Other
+  models (4)", like the activity list, so nobody has to choose between a list of names. It opens by itself when one of
+  them is chosen or downloading. Models too big for this computer are faded with the size line in red. A model no
+  longer offered (`"retired"` in `models.json`) shows only on a computer that has it.
 - **Library list**: a three-column grid (short name, title with the edition in italic under it, date) so long
   edition text can't squeeze the titles.
 - **Changed in this edition** (`.lib-changes`): at the top of the Library after an update, collapsed like a drawing's

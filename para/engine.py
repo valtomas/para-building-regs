@@ -133,11 +133,13 @@ def _process_command(pid):
 
 def recommend(models=None, ram=None):
     """The best catalogue model for this computer's memory (Macs share memory with the GPU: ~75% usable): the
-    biggest that fits. A model with "suggest": false is listed but never the suggestion: a smaller one did better
-    in our tests, so needing more memory doesn't make it the better choice."""
+    biggest that fits. A model with "suggest": false is listed but never the suggestion, and a "retired" one is no
+    longer offered at all (it stays in the catalogue so a copy someone downloaded keeps working): a smaller one did
+    better in our tests, so needing more memory doesn't make it the better choice."""
     models = models if models is not None else catalog()["models"]
     ram = total_ram_gb() if ram is None else ram
-    fits = [m for m in models if m.get("min_ram_gb", 0) <= ram + 0.5 and m.get("suggest", True)]
+    fits = [m for m in models if m.get("min_ram_gb", 0) <= ram + 0.5 and m.get("suggest", True)
+            and not m.get("retired")]
     return max(fits, key=lambda m: m.get("min_ram_gb", 0)) if fits else None
 
 

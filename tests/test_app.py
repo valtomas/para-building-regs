@@ -905,7 +905,10 @@ check(rel["tag_name"] == "b2" and asset["name"].startswith("llama-b2"), "finds t
 picks = {ram: (engine.recommend(ram=ram) or {}).get("id") for ram in (4, 8, 12, 16, 24, 32, 64)}
 check(picks[4] is None and picks[16] == "granite-4.2-8b" and picks[64] == "nemotron-3.5-lightning-30b",
       "the suggested model is the biggest that fits this computer's memory")
-check(picks[8] == picks[12] == "granite-4.2-3b", "a model that a smaller one beat is listed but not suggested")
+check(picks[8] == picks[12] == "granite-4.2-3b", "a model that a smaller one beat is never suggested")
+retired = [m for m in engine.catalog()["models"] if m.get("retired")]
+check(retired and all(m["id"] not in picks.values() for m in retired),
+      "a retired model stays in the catalogue, for copies already downloaded, and is never suggested")
 check(all(m.get("tested") for m in engine.catalog()["models"]), "every listed model says how it did in our tests")
 
 # built-in engine memory: no load that won't fit, no engine left behind, none kept running idle
