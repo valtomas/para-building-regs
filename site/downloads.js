@@ -15,8 +15,8 @@
     return a;
   }
 
-  // What the visitor will meet on first run, said beside the button that downloads the app, since most people
-  // click the button and never open the install notes below it.
+  // What the visitor will meet on first run, said beside the buttons that download the app, since most people
+  // click a button and never open the install notes below it.
   const FIRST_RUN = isWin
     ? "Windows will show a blue box, \u201cWindows protected your PC\u201d. Click More info, then Run anyway. It says this " +
       "about apps it doesn\u2019t yet recognise, not because anything is wrong, and only when you install."
@@ -64,14 +64,13 @@
       notes.textContent = "What's new";
       v.appendChild(notes);
       box.appendChild(v);
+      // The button at the top of the page names the visitor's system but still leads here, to the download
+      // section, where the first-run step is said beside the buttons.
       const hero = document.querySelector("#heroActions .btn.primary");
       const mine = isWin ? win : isLinux ? lin : mac;
       const label = isWin ? "Download for Windows" : isLinux ? "Download for Linux" : "Download for Mac";
-      if (hero && mine) { hero.href = mine.browser_download_url; hero.textContent = label; }
-      if (FIRST_RUN && (isWin ? win : mac)) {
-        box.after(firstRun());
-        if (hero && mine) hero.parentNode.after(firstRun());
-      }
+      if (hero && mine) hero.textContent = label;
+      if (FIRST_RUN && (isWin ? win : mac)) box.after(firstRun());
     })
     .catch(noRelease);
 })();
