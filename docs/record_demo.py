@@ -170,7 +170,7 @@ async def record(url, frames_dir):
             await page.mouse.move(x + 1, y + 1)  # brings the pointer into the dialog
             await page.wait_for_timeout(2800)
             await point(page.locator("#dlg-figure form button"), steps=25)
-            await page.wait_for_selector("#dlg-figure:not([open])")
+            await page.wait_for_selector("#dlg-figure:not([open])", state="attached")  # closed, so not visible
             await page.mouse.move(x, y, steps=20)  # back over the reader, so the wheel scrolls it
         await page.wait_for_timeout(1500)
         # read on down the document to the next passage, in wheel steps as a person would
