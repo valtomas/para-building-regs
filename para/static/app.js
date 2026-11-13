@@ -383,7 +383,12 @@ function addAssistant(question) {
     error(msg) {
       ans.classList.remove("cursor");
       $(".extras", el).insertAdjacentHTML("beforeend", `<div class="error">${esc(msg)}</div>`);
-      if (/engine|Settings|reach/i.test(msg)) $(".extras", el).insertAdjacentHTML("beforeend", `<p><button class="btn small" data-settings>Open AI engine settings</button></p>`);
+      // the chosen built-in model (or the engine that runs it) isn't on this computer: offer it here, by name and size
+      const eng = S.settings.engine, m = eng.mode === "bundled" && S.catalog.find((x) => x.id === eng.bundled_model);
+      if (m && /isn't (downloaded|installed) yet/.test(msg) && !(S.bundled.models.includes(m.id) && S.bundled.engine_installed))
+        $(".extras", el).insertAdjacentHTML("beforeend", `<p class="row"><button class="btn small primary" data-download="${esc(m.id)}">Download ${esc(m.name)} (${m.size_gb} GB)</button>
+          <button class="btn small" data-settings>Choose another model</button></p><div class="dl"></div>`);
+      else if (/engine|Settings|reach/i.test(msg)) $(".extras", el).insertAdjacentHTML("beforeend", `<p><button class="btn small" data-settings>Open AI engine settings</button></p>`);
       actions(null);
     },
     finish(done) {
@@ -599,6 +604,8 @@ document.addEventListener("click", (e) => {
   const ext = e.target.closest("a[data-ext]");
   if (ext) { e.preventDefault(); openUrl(ext.href); return; }
   if (e.target.closest("[data-settings]")) { openSettings(); return; }
+  const dl = e.target.closest("[data-download]");
+  if (dl) { downloadHere(dl); return; }
   const op = e.target.closest("[data-open]");
   if (op) { ({ settings: openSettings, files: openFiles, library: openLibrary })[op.dataset.open](); }
 });
@@ -934,6 +941,31 @@ function renderJob(j) {
   v.innerHTML = j.state === "running" ? `<div class="job-line"><span>Downloading ${esc(j.label)}…</span><span class="meta">${gb(j.done)} of ${j.total ? gb(j.total) : "?"} GB</span></div><div class="progress"><div style="width:${pct}%"></div></div><button type="button" class="btn small" id="cancelJob">Cancel</button>`
     : j.state === "error" ? `<div class="error">${esc(j.error)}</div>` : `<div class="ok-line">Downloaded. Press Save to use it.</div>`;
   const c = $("#cancelJob"); if (c) c.onclick = () => api("/api/bundled/cancel", { method: "POST" });
+}
+// The download offered under an answer that failed for want of the model: progress is shown there, and when it's
+// done the question is asked again, if the person is still looking at it.
+async function downloadHere(btn) {
+  const row = btn.closest("p"), view = row.nextElementSibling, gb = (n) => (n / 2 ** 30).toFixed(1);
+  try { await api("/api/bundled/install", { method: "POST", body: { model: btn.dataset.download, gpu: true } }); }
+  catch (err) { if (!/already running/.test(err.message)) { view.innerHTML = `<div class="error">${esc(err.message)}</div>`; return; } }
+  row.hidden = true;
+  pollJobs();  // keeps Settings and the sidebar in step
+  for (;;) {
+    const j = (await api("/api/jobs")).bundled.jobs.install;
+    if (!j) return;
+    if (j.state === "running") {
+      const pct = j.total ? Math.round(j.done / j.total * 100) : 0;
+      view.innerHTML = `<div class="job-line"><span>Downloading ${esc(j.label)}…</span><span class="meta">${gb(j.done)} of ${j.total ? gb(j.total) : "?"} GB</span></div><div class="progress"><div style="width:${pct}%"></div></div>`;
+    } else if (j.state === "error") { view.innerHTML = `<div class="error">${esc(j.error)}</div>`; row.hidden = false; return; }
+    else {
+      view.innerHTML = `<p class="ok-line">Downloaded.</p>`;
+      S.bundled = (await api("/api/jobs")).bundled;
+      const again = document.contains(view) && view.closest(".msg")?.querySelector(".again");
+      if (again) again.click();
+      return;
+    }
+    await new Promise((r) => setTimeout(r, 1000));
+  }
 }
 let polling = false;
 async function pollJobs() {

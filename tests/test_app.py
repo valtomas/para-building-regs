@@ -926,6 +926,15 @@ if os.name != "nt":
     small = engine.catalog()["models"][-1]
     os.makedirs(bundled.models_dir, exist_ok=True)
     open(bundled.model_path(small), "wb").close()
+    os.remove(bundled.model_path(small))
+    try:
+        bundled.start(small["id"])
+        said = ""
+    except engine.EngineError as e:
+        said = str(e)
+    check(small["name"] in said and "isn't downloaded yet" in said and str(small["size_gb"]) in said,
+          "a chosen model that isn't downloaded is named, with its size")
+    open(bundled.model_path(small), "wb").close()
     real_ram, real_vram = engine.available_ram_gb, engine.free_vram_gb
     engine.available_ram_gb, engine.free_vram_gb = (lambda: 1.0), (lambda: 0.0)
     try:
