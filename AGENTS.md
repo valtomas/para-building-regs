@@ -50,6 +50,7 @@ passage ids; the app checks every citation. It must stay:
 | `site/` | The website, pararegs.co.uk: one static page in the app's look; download buttons read the latest GitHub release |
 | `.github/workflows/descriptions.yml` | After each library build: the "descriptions" issue of drawings to draft or review; optional drafting with a hosted model |
 | `.github/workflows/pages.yml` | Publishes `site/` to GitHub Pages, adding the app's fonts, `docs/screenshots/answer-reader.png` (the link preview) and the demo video |
+| `docs/make_flow.py` | Draws the README's diagram of how a question is answered (`docs/flow.svg`, `flow-dark.svg`) in the app's colours and fonts; needs fonttools (`uv run --with fonttools --with brotli`) |
 | `docs/record_demo.py` | Records the website's demo video (`docs/screenshots/demo.mp4`, `.webm`, `.jpg`): a real question to a real model, the wait shortened and labelled; needs Playwright and ffmpeg (`uv run --with playwright --with imageio-ffmpeg`) |
 | `.github/workflows/release.yml` | Tests on every push; on a `v*` tag: library, Mac and Windows apps, GitHub release; weekly library refresh |
 | `tests/` | `test_app.py` (end to end through the HTTP API) and `fake_llm.py` (a stand-in OpenAI-compatible server) |
