@@ -115,6 +115,73 @@ def memory_needed_gb(model):
     return model.get("size_gb", 0) * 1.1 + 1.5
 
 
+def _windows_job(proc):
+    """A Windows job that kills `proc` when its last handle closes, which Windows does when the app ends in any way
+    (End task included). Returns the job's handle, to be kept open for as long as the engine should live."""
+    import ctypes
+    from ctypes import wintypes
+
+    class Basic(ctypes.Structure):
+        _fields_ = [("PerProcessUserTimeLimit", ctypes.c_longlong), ("PerJobUserTimeLimit", ctypes.c_longlong),
+                    ("LimitFlags", wintypes.DWORD), ("MinimumWorkingSetSize", ctypes.c_size_t),
+                    ("MaximumWorkingSetSize", ctypes.c_size_t), ("ActiveProcessLimit", wintypes.DWORD),
+                    ("Affinity", ctypes.c_size_t), ("PriorityClass", wintypes.DWORD),
+                    ("SchedulingClass", wintypes.DWORD)]
+
+    class Extended(ctypes.Structure):
+        _fields_ = [("BasicLimitInformation", Basic), ("IoInfo", ctypes.c_ulonglong * 6),
+                    ("ProcessMemoryLimit", ctypes.c_size_t), ("JobMemoryLimit", ctypes.c_size_t),
+                    ("PeakProcessMemoryUsed", ctypes.c_size_t), ("PeakJobMemoryUsed", ctypes.c_size_t)]
+
+    k = ctypes.WinDLL("kernel32", use_last_error=True)
+    k.CreateJobObjectW.restype = wintypes.HANDLE
+    k.CreateJobObjectW.argtypes = [ctypes.c_void_p, wintypes.LPCWSTR]
+    k.SetInformationJobObject.argtypes = [wintypes.HANDLE, ctypes.c_int, ctypes.c_void_p, wintypes.DWORD]
+    k.AssignProcessToJobObject.argtypes = [wintypes.HANDLE, wintypes.HANDLE]
+    job = k.CreateJobObjectW(None, None)
+    info = Extended()
+    info.BasicLimitInformation.LimitFlags = 0x2000  # JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE
+    if not job or not k.SetInformationJobObject(job, 9, ctypes.byref(info), ctypes.sizeof(info)) \
+            or not k.AssignProcessToJobObject(job, int(proc._handle)):
+        raise OSError(ctypes.get_last_error())
+    return job
+
+
+def guard(proc):
+    """Make sure `proc` (the engine) can't outlive the app, however the app ends: killed outright, ended from the
+    Task Manager, crashed. A normal exit stops the engine itself; this is for the exits that run no code of ours,
+    which would leave gigabytes of model in memory until the app is next started.
+
+    Windows: a job that closes with the app. Elsewhere: a small shell that waits on a pipe only the app holds, so
+    it reads end-of-file the moment the app is gone, and then stops the engine. (Not PR_SET_PDEATHSIG: that fires
+    when the thread that started the engine ends, and a request's thread ends long before the app.)
+    Returns what `unguard` needs, or None if it couldn't be set up; the engine runs either way."""
+    try:
+        if os.name == "nt":
+            return _windows_job(proc)
+        return subprocess.Popen(["/bin/sh", "-c", 'read _; kill "$1" 2>/dev/null', "sh", str(proc.pid)],
+                                stdin=subprocess.PIPE, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                                start_new_session=True)  # its own session: what kills the app's group spares it
+    except Exception:  # noqa: BLE001 - a boundary: no shell, or a Windows that refuses the job; the engine still runs
+        return None
+
+
+def unguard(g):
+    """The engine has been stopped the normal way: its guard isn't needed and mustn't act on a reused pid."""
+    try:
+        if g is None:
+            return
+        if os.name == "nt":
+            import ctypes
+            ctypes.WinDLL("kernel32").CloseHandle(ctypes.c_void_p(g))
+        else:
+            g.terminate()
+            g.stdin.close()
+            g.wait(5)
+    except Exception:  # noqa: BLE001 - nothing to do about a guard that's already gone
+        pass
+
+
 def _process_command(pid):
     """The command line of a running process, or "" when there is none (or it can't be read)."""
     try:
@@ -261,6 +328,7 @@ class Bundled:
 
     def __init__(self):
         self.proc, self.port, self.model_id = None, None, None
+        self.guard = None
         self.jobs, self.lock = {}, threading.Lock()
         self.log_path = paths.data_path("logs", "engine.log")
         self.pid_path = paths.data_path("engine.pid")
@@ -450,6 +518,7 @@ class Bundled:
             with open(self.log_path, "ab") as log:  # the engine keeps its own handle; ours isn't needed after
                 self.proc = subprocess.Popen(cmd, stdout=log, stderr=log, stdin=subprocess.DEVNULL,
                                              cwd=os.path.dirname(server), creationflags=flags)
+            self.guard = guard(self.proc)
             self.model_id = model_id
             try:
                 with open(self.pid_path, "w") as f:
@@ -462,6 +531,7 @@ class Bundled:
             deadline = time.time() + 600
             while time.time() < deadline:
                 if self.proc.poll() is not None:
+                    self.stop()  # nothing left to stop, but its guard and pid file go
                     raise EngineError(f"The built-in engine stopped while loading the model. See {self.log_path}.")
                 try:
                     with urllib.request.urlopen(f"http://127.0.0.1:{self.port}/health", timeout=2) as r:
@@ -481,12 +551,14 @@ class Bundled:
 
     def stop(self):
         p, self.proc = self.proc, None
+        g, self.guard = self.guard, None
         if p and p.poll() is None:
             p.terminate()
             try:
                 p.wait(10)
             except subprocess.TimeoutExpired:
                 p.kill()
+        unguard(g)
         if p:
             try:
                 os.remove(self.pid_path)

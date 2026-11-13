@@ -958,6 +958,25 @@ if os.name != "nt":
     check(left.returncode is not None and left.returncode != 0 and not os.path.exists(bundled.pid_path),
           "an engine left behind by an earlier run is stopped")
 
+    # the app killed outright runs none of its own code, so the engine has to be stopped from outside it
+    app = subprocess.Popen([sys.executable, "-c", (
+        "import subprocess, sys, time; from para import engine\n"
+        "p = subprocess.Popen(['sleep', '60']); g = engine.guard(p)\n"
+        "print(p.pid, flush=True); time.sleep(60)")], stdout=subprocess.PIPE, text=True, cwd=ROOT)
+    orphan = int(app.stdout.readline())
+    app.kill()
+    app.wait()
+    for _ in range(50):
+        if "sleep" not in engine._process_command(orphan):
+            break
+        time.sleep(0.1)
+    check("sleep" not in engine._process_command(orphan), "an engine doesn't outlive an app that was killed outright")
+    kept = subprocess.Popen(["sleep", "60"])
+    engine.unguard(engine.guard(kept))
+    time.sleep(0.3)
+    check(kept.poll() is None, "a guard taken off after a normal stop leaves the process alone")
+    kept.kill()
+
     bundled.proc = subprocess.Popen([fake_server])
     bundled.last_used = time.time()
     busy = bundled.stop_if_idle(minutes=1)
