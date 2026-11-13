@@ -722,7 +722,8 @@ function openSettings(tab = "engine") {
   const s = S.settings, e = s.engine;
   // a hosted service is saved as an external engine; which card is ticked follows from its address
   const mode = e.mode === "external" && e.base_url && !isLocal(e.base_url) ? "hosted" : e.mode || "";
-  $$("input[name=mode]").forEach((r) => r.checked = r.value === mode);
+  // nothing chosen yet: the built-in engine is offered, since it needs nothing the person has to know about
+  $$("input[name=mode]").forEach((r) => r.checked = r.value === (mode || "bundled"));
   $("#baseUrl").value = e.base_url || "";
   $("#apiKey").value = "";
   fillModels(e.model ? [e.model] : [], e.model);
@@ -749,6 +750,9 @@ function modeChanged() {
   remoteCheck();
 }
 $$("input[name=mode]").forEach((r) => r.onchange = modeChanged);
+const dlgHelp = $("#dlg-model-help");
+$("#modelHelp").onclick = () => dlgHelp.showModal();
+dlgHelp.addEventListener("click", (e) => { if (e.target === dlgHelp) dlgHelp.close(); });   // a click outside it
 // The same rule as llm.is_local: whole addresses only, since "10.example.com" is a name anyone can register.
 function isLocal(u) {
   try { return /^(localhost|((127|10)\.\d+|192\.168|169\.254|172\.(1[6-9]|2\d|3[01]))\.\d+\.\d+|0\.0\.0\.0|\[(::1|f[cd][0-9a-f]{2}:.*|fe[89ab][0-9a-f]:.*)\])$|\.local$/.test(new URL(u).hostname); } catch { return true; }
