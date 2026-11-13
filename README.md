@@ -162,11 +162,12 @@ python3 tests/test_app.py
 
 ## How it works
 
-```
-question ─► AI model (any OpenAI-compatible server) ─► search_library ─► SQLite FTS5 index ─► passages
-                ▲                                       read_passage   ─► paragraphs in full
-                └──── answer citing [r1234] ◄───────────┘ show_passage  ─► opens the reader
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/flow-dark.svg">
+  <img src="docs/flow.svg" width="960" alt="How Para answers: your question goes to the AI model, which searches the
+  library on your computer and reads passages from it; Para checks every citation; the answer cites paragraphs that
+  open in the reader with one click.">
+</picture>
 
 - `library/build.py` downloads the documents (gov.uk content API, legislation.gov.uk XML), splits them at their
   own paragraph numbers ("2.13", "Table 3.1", "reg 7"), keeps table rows together, repairs ligatures lost in PDF

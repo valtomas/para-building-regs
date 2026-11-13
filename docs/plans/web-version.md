@@ -76,6 +76,13 @@ Only where the browser has WebGPU and enough memory, and only after the person c
 - **Left out at first:** Your files, projects, drawings, online AI services (a key typed into a web page is a
   different promise from one saved on your own computer).
 
+## Considered and not pursued
+
+- **Para's library as a service for ChatGPT, Claude and the like** (a public API or MCP server that their
+  assistants call; 13 November 2026). Not pursued: Para is first and foremost something a person runs on their own
+  hardware. A server of ours would have to run all the time, the questions would go to someone else's model, and the
+  citations couldn't be checked, because the answer is written in another company's interface.
+
 ## What to settle before starting
 
 - How big `regs.sqlite` is with and without its images, and how long a first search takes over range requests.
