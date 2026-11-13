@@ -15,6 +15,23 @@
     return a;
   }
 
+  // What the visitor will meet on first run, said beside the button that downloads the app, since most people
+  // click the button and never open the install notes below it.
+  const FIRST_RUN = isWin
+    ? "Windows will show a blue box, \u201cWindows protected your PC\u201d. Click More info, then Run anyway. It says this " +
+      "about apps it doesn\u2019t yet recognise, not because anything is wrong, and only when you install."
+    : isMac
+    ? "The first time you open Para, macOS says it can\u2019t verify it. Open System Settings \u203a Privacy & Security, " +
+      "scroll down and click Open Anyway. You only do this once."
+    : "";
+
+  function firstRun() {
+    const p = document.createElement("p");
+    p.className = "first-run";
+    p.textContent = FIRST_RUN;
+    return p;
+  }
+
   function noRelease() {
     box.textContent = "";
     const p = document.createElement("p");
@@ -51,6 +68,10 @@
       const mine = isWin ? win : isLinux ? lin : mac;
       const label = isWin ? "Download for Windows" : isLinux ? "Download for Linux" : "Download for Mac";
       if (hero && mine) { hero.href = mine.browser_download_url; hero.textContent = label; }
+      if (FIRST_RUN && (isWin ? win : mac)) {
+        box.after(firstRun());
+        if (hero && mine) hero.parentNode.after(firstRun());
+      }
     })
     .catch(noRelease);
 })();

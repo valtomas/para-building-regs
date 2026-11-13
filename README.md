@@ -60,9 +60,13 @@ The library covers **England**. Wales, Scotland and Northern Ireland have their 
    **Open Anyway**. You only do this once.
 
 **Windows** (10 or 11, 64-bit)
-1. Download `Para-windows-setup.exe` and double-click it. It installs for you alone (no administrator needed) and
-   adds Para to the Start menu. If Windows SmartScreen appears, click **More info**, then **Run anyway**.
-2. To remove it: **Settings › Apps**, Para, **Uninstall**. Your chats and settings are kept.
+1. Download `Para-windows-setup.exe` and double-click it.
+2. Windows shows a blue box, "Windows protected your PC", with only a **Don't run** button. Click **More info**
+   under the message, and a **Run anyway** button appears: click it. Windows says this about apps it doesn't yet
+   recognise, usually ones from small publishers; it doesn't mean anything has been found wrong with Para. You see
+   it once, when you install; updates don't ask again.
+3. Para installs for you alone (no administrator needed) and adds itself to the Start menu.
+4. To remove it: **Settings › Apps**, Para, **Uninstall**. Your chats and settings are kept.
 
 `Para-windows.zip` is the same app without an installer: extract it and run `Para.exe`.
 
