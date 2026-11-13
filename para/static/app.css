@@ -334,10 +334,14 @@ code { font-family: var(--mono); font-size: .8em; background: var(--cite); color
   font: 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink); cursor: pointer;
   min-width: 9ch; }
 .mini select option { background: var(--panel); text-transform: none; }
-.status { font: italic 15px/1.3 var(--body); letter-spacing: 0; text-transform: none; color: var(--muted-2); }
+/* What the AI is doing takes the disclaimer's place while it works, in the room the disclaimer already has: a line
+   of its own, or squeezing the disclaimer onto two, moved the question box up and down as the words changed. */
+.composer-note { flex: 1; min-width: 240px; position: relative; text-align: right; }
+.status { position: absolute; left: 0; right: 0; top: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  font: italic 15px/1.3 var(--body); letter-spacing: 0; text-transform: none; color: var(--muted-2); }
 .status:empty { display: none; }
-.disclaimer { flex: 1; text-align: right; font: italic 14px/1.4 var(--body); letter-spacing: 0; text-transform: none;
-  min-width: 240px; }
+.status:not(:empty) + .disclaimer { visibility: hidden; }
+.disclaimer { display: block; font: italic 14px/1.4 var(--body); letter-spacing: 0; text-transform: none; }
 
 /* reader: an overlay on the right; wide windows make room for it */
 #reader { position: absolute; top: 0; right: 0; bottom: 0; z-index: 5; width: var(--reader-w); background: var(--panel);
@@ -443,7 +447,9 @@ code { font-family: var(--mono); font-size: .8em; background: var(--cite); color
 .modal-actions { display: flex; justify-content: flex-end; gap: 10px; align-items: center; margin-top: 4px; }
 .tabpane > .modal-actions, .tabpane[data-pane=about] .modal-actions { border-top: 1px solid var(--border); padding-top: 18px; }
 .modal-actions .muted { flex: 1; font-size: 15px; }
-.tabs { display: flex; gap: 26px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+/* the tabs stay under the head while a long tab scrolls; app.js sets `top` to where the head ends */
+.tabs { display: flex; gap: 26px; border-bottom: 1px solid var(--border); flex-wrap: wrap;
+  position: sticky; top: 66px; z-index: 2; background: var(--panel); padding-top: 8px; margin-top: -8px; }
 .tab { background: none; border: 0; padding: 0 0 10px; margin-bottom: -1px; cursor: pointer; border-bottom: 2px solid transparent;
   color: var(--muted-2); font: 11.5px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
 .tab:hover { color: var(--ink); }
@@ -636,7 +642,7 @@ input[type=checkbox]:checked { background-color: var(--accent); border-color: va
   #question { font-size: 17px; padding: 10px 0; }
   .composer-box .btn { height: 44px; padding: 0 18px; font-size: 11px; letter-spacing: .16em; }
   .composer-row { gap: 14px; }
-  .disclaimer { text-align: left; min-width: 0; flex-basis: 100%; }
+  .composer-note { text-align: left; min-width: 0; flex-basis: 100%; }
   #reader { position: fixed; inset: 0; width: 100%; z-index: 8; border-left: 0; box-shadow: none; }
   #reader header { padding: 18px 20px 10px; }
   .reader-title { font-size: 22px; }
@@ -649,7 +655,7 @@ input[type=checkbox]:checked { background-color: var(--accent); border-color: va
   .modal-head { top: -22px; margin-top: -22px; padding-top: 22px; }
   .modal h2, .modal.wide h2 { font-size: 30px; }
   .choice { grid-template-columns: 1fr; }
-  .modal label.model-card { grid-template-columns: 24px minmax(0, 1fr); }
+  .modal label.model-card { grid-template-columns: 24px minmax(0, 1fr); grid-auto-flow: row; }   /* the button goes under the text, not over it */
   .model-card > .btn, .model-card > .installed { grid-column: 2; justify-self: start; }
   .file-row { grid-template-columns: 1fr auto auto; }
   .lib-source { grid-template-columns: 84px minmax(0, 1fr); gap: 4px 12px; }

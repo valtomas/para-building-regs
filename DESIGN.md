@@ -47,7 +47,8 @@ Dialogs (native `<dialog>`): **Settings** (tabs: AI engine, Instructions, Notes,
 **Project** (name, notes, the project's files, Delete project and Save), **Your files** (the files shared by every chat), **Library** (browse documents and search without AI), and the **permission** prompt shown the first
 time someone adds a file.
 
-A dialog's head (eyebrow, title and the close button) stays at the top while the rest scrolls. The cross, Escape and
+A dialog's head (eyebrow, title and the close button) stays at the top while the rest scrolls, and in Settings the
+tabs stay under it. The cross, Escape and
 a click outside the dialog all close it. Settings and Project keep changes only on Save, so closing either with
 something changed asks first, in a small dialog in the app's look: "Save your changes?" with Keep editing, Don't save
 and Save (if something is missing, it stays open at the tab that says what). Deleting a chat, a project or a model, and
@@ -132,6 +133,10 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   once followed.
 - **Question** (`.msg.user`): a heading, not a bubble: "Your question" eyebrow, the question in display type, an
   ink rule under it. Each turn repeats it.
+- **Question box** (`#composer`): the box, then a mono row of Reasoning and Length with the disclaimer in italic at
+  the right. While the AI works, what it's doing ("Searching “…”…", "Writing…") takes the disclaimer's place, on one
+  line, cut short with an ellipsis if it's long; the disclaimer comes back when the answer ends. The row keeps its
+  height throughout, so the box never moves while an answer arrives.
 - **Citation** (`.cite`): inline mono tag, `--cite` background, label `<source> <ref>`, tooltip with the heading.
   Your files use the warm, bordered variant (`.cite.file`) so people can tell their documents from the regulations.
 - **Citation states**: a citation the AI made from a search result's extract alone, without reading the passage, has a
