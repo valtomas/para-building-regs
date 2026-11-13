@@ -292,6 +292,42 @@ The list after this run: Nemotron 3.5 Lightning from 48 GB, Qwen3.5 35B-A3B from
 Granite 4.2 8B from 16 GB, Granite 4.2 3B from 8 GB; Gemma 4 E4B and Qwen3 4B listed but not suggested. Each entry
 carries its score (`tested`), shown on its row in Settings.
 
+### Run G: 1-bit and 2-bit models (Bonsai), and Phi-4
+
+PrismML's Bonsai models keep one or two bits per weight, so a 27B model is a 4 to 8 GB file. If one answered like the
+listed models it would suit small computers, and a version of Para in the browser (`docs/plans/web-version.md`). Five
+models were downloaded by the app and asked the 36 questions (2026-11-13, llama.cpp b12078, nothing else using the
+graphics card, one run each):
+
+| Model | File | Right figures | Searched | Cited | Right passage cited | Made-up ids removed | Figures flagged | Extract-only citations | Median time |
+|---|---|---|---|---|---|---|---|---|---|
+| Ternary Bonsai 2 27B (Q2_0, from Qwen3.8 27B) | 7.6 GB | 33/36 | 36/36 | 36/36 | 32/36 | 0 | 8 | 33 | 76 s |
+| Bonsai 27B (Q1_0, from Qwen3.6 27B) | 3.8 GB | 29/36 | 35/36 | 34/36 | 27/36 | 0 | 9 | 17 | 93 s |
+| Bonsai 8B (Q1_0) | 1.2 GB | 20/36 | 35/36 | 20/36 | 13/36 | 1 | 5 | 48 | 4 s |
+| Phi-4 14B (Q4_K_M) | 8.9 GB | 10/36 | 0/36 | 0/36 | 2/36 | 5 | 0 | 0 | 19 s |
+| Phi-4 mini (Q4_K_M) | 2.5 GB | 1/36 | 0/36 | 0/36 | 2/36 | 23 | 0 | 0 | 4 s |
+
+- **The files load on the llama.cpp build the app ships.** PrismML's cards say to use their own build; b12078 already
+  has the Q1_0 and Q2_0 weight types, and all 180 answers came back with no engine error.
+- **Ternary Bonsai 2 27B answers like the best listed models, slowly.** 33 right, a passage opened for all but two
+  answers. Wrong: a fire door for a flat's bathroom (and that answer credited the person's files, which the question
+  doesn't have), the cladding class, and Scotland's stair rise given from memory. It writes at about 24 tokens a
+  second on a Strix Halo and thinks at length: 76 s at the median, five answers over three minutes. Granite 4.2 8B
+  gets 33 to 35 from a 5.3 GB file in 56 s, so this isn't listed.
+- **Bonsai 27B matches Granite 4.2 3B's score from a file not much bigger, at four times the wait.** 29 right; 16
+  answers with no passage opened. Wrong with a citation: 6.0 for air permeability (8), 1100 mm for the loft landing,
+  and wall-tie spacing from ADA presented as "the NHBC Standards". Not listed.
+- **Bonsai 8B is quick and weak**: 20 right, never opened a passage, cited nothing on 16 questions.
+- **Neither Phi-4 model called a tool, on any question.** They answered from memory and wrote passage ids of their
+  own ("[r1234]"), which the app removed. Whether that's the models or their chat templates under llama.cpp wasn't
+  looked into; as they stand they can't be used.
+- **The 22 figure flags on the Bonsai models were each checked against the library: all true**, in that the figure
+  isn't in the passage cited for it. Most are a right figure beside the paragraph next door: 12 weeks cited to reg 6
+  of the higher-risk procedures (it's in reg 5), 48°C cited to ADG 3.63–3.64 (3.65), the letter plate's 260 mm by 40
+  mm cited to ADQ 1.1 (1.3). One is the model's own sum (half of a 1,000 mm stair).
+
+Nothing in the catalogue changed. The smaller Ternary Bonsai 2 models (2B, 4B, 9B) weren't tried.
+
 ## Built-in engine
 
 - `para/models.json`: every repo and file exists on Hugging Face with the listed size (checked with `HEAD` and

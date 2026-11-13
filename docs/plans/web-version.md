@@ -51,8 +51,10 @@ One day's work to decide whether step 3 is worth it.
 - Go on only if a cited answer arrives in well under a minute on that laptop.
 
 Which model: at the last count Granite 4.2 3B (2.2 GB, 29 to 31 of 36 test questions) is the smallest that's
-listed and suggested. Much smaller files that might do as well are being tried (see `docs/model-tests.md`); a model
-of 1 to 1.5 GB that scores like Granite 3B would change this plan a good deal.
+listed and suggested. Models kept at one or two bits per weight were tried on 13 November (run G in
+`docs/model-tests.md`): a 3.8 GB one matched Granite 3B's score but took a minute and a half per answer on a fast
+desktop, and the 1.2 GB one got 20 of 36. A model of 1 to 1.5 GB that scores like Granite 3B would change this plan
+a good deal; none has turned up yet.
 
 ### 3. "Ask here", as an opt-in on the library page
 
