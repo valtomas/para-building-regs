@@ -73,6 +73,7 @@
       "licence": "Apache 2.0",
       "about": "An alternative for 12 GB or more. It searches and cites every time, but got fewer of our test questions right than the smaller Granite 3B, and says it can't find things that are there: check each answer against the paragraph it cites.",
       "tested": "22 to 27 of 36",
+      "suggest": false,
       "retired": true
     },
     {
@@ -98,6 +99,7 @@
       "about": "The quickest: a few seconds an answer, for 8 GB computers. It cites from search results without opening the passage, got about two in three of our test questions right and sometimes gives a figure from memory: check every figure against the paragraph it cites.",
       "licence": "Apache 2.0",
       "tested": "20 to 25 of 36",
+      "suggest": false,
       "retired": true
     }
   ]

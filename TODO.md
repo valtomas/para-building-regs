@@ -3,7 +3,10 @@
 0.2.0, 0.2.1 and 0.2.2 were released on 12 November 2026. 0.2.1 made models with a strict chat template work
 (Mistral's), added IBM Granite 4.2 3B for 8 and 12 GB computers and put each built-in model's test score on its row
 (`docs/model-tests.md`, run F). 0.2.2 fixed the packaged Linux app closing on Copy with references and opening
-nothing from its links, and reworked closing dialogs and the empty chat. The checks below were left open at 0.2.0.
+nothing from its links, and reworked closing dialogs and the empty chat. 0.2.3 (13 November) put the built-in engine
+first with one recommended model, added "What is a model?", stopped offering Gemma 4 E4B and Qwen3 4B, and made the
+engine stop when the app is killed or crashes: that last one is not yet tried on Windows (End task in the Task
+Manager with a model loaded, then check llama-server is gone). The checks below were left open at 0.2.0.
 Delete this file when it's empty.
 
 ## Done at the workstation
