@@ -61,6 +61,7 @@ focused so Enter doesn't delete); the browser's own confirm box is never used.
 |---|---|
 | First run: choose an engine | `setup-engine.png` |
 | Built-in engine: model cards, recommended one marked | `setup-builtin.png` |
+| "What is a model?", opened from the built-in engine's list | `model-help.png` |
 | Empty chat: questions to try, the documents by Part | `welcome.png` |
 | Answer with inline citations, activity expanded | `answer.png` |
 | Under an answer: the cited list, Copy with references and Ask again | `answer-actions.png` |
@@ -171,7 +172,10 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
 - **Privacy badge**: bottom of the sidebar, a bordered box with a coloured dot. Green "Private" for the built-in
   engine or a local or LAN address, gold with the host name for anything else, coral "No AI engine set up" (opens
   Settings). On phones the dot alone sits at the right of the top bar.
-- **Engine choice**: three radio cards in Settings → AI engine: an engine already running, the built-in engine, or an
+- **Engine choice**: three radio cards in Settings → AI engine. The built-in engine comes first, across the full
+  width with a gold "Easiest" pill, and is the one ticked when nothing has been chosen yet (unless exactly one
+  engine is found running, which is then filled in): most people don't know what an engine is and shouldn't need
+  to. Under it, side by side: an engine already running, or an
   online AI service ("hosted" in the code). It shows a pill per service (Anthropic, Mistral, OpenAI, OpenRouter; the
   chosen one in `--accent-2`), a line saying where it's based with "Get an API key ↗", then the same address, key and model fields
   as a local engine. The model is typed or picked from the service's list. The warm warning names the host and says
@@ -181,10 +185,17 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   picker's, in the dialog's colours: ruled rows in mono on `--panel`, the chosen one marked with an accent ¶. Opening it
   shows every model (a native datalist would show only those matching the name already in the box) and selects the
   name, so typing filters the list; any name can still be typed. It opens upwards when the dialog has no room below.
-- **Model rows**: ruled rows with a radio, name, Recommended tag (gold pill), description, mono size and memory line
-  ending in how many of the 36 test questions the model got right ("33 to 35 of 36 test questions right"),
-  and an action (Download, or Installed and Delete). Models too big for this computer are faded with the size line
-  in red.
+- **Model rows**: ruled rows with a radio, name, the gold pill "Recommended for this computer" on the one chosen from
+  the computer's memory, description, mono size and memory line ending in how many of the 36 test questions the model
+  got right ("33 to 35 of 36 test questions right"), and an action (Download, or Installed and Delete). Only the
+  recommended model and any already downloaded or in use are shown; the rest sit under a collapsed mono line, "+ Other
+  models (4)", like the activity list, so nobody has to choose between a list of names. It opens by itself when one of
+  them is chosen or downloading. Models too big for this computer are faded with the size line in red. A model no
+  longer offered (`"retired"` in `models.json`) shows only on a computer that has it.
+- **What is a model?** (`#dlg-model-help`): a mono link at the end of the line above the model rows opens a small
+  dialog in the app's look: "In plain words" eyebrow, the question as its title, four short paragraphs (what a model
+  is, that the regulations are in the library and not in the model, why bigger is better and still fallible, that it
+  runs without the internet) and Close. No jargon in it: no "LLM", "weights", "tokens" or "inference".
 - **Library list**: a three-column grid (short name, title with the edition in italic under it, date) so long
   edition text can't squeeze the titles.
 - **Changed in this edition** (`.lib-changes`): at the top of the Library after an update, collapsed like a drawing's

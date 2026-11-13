@@ -722,7 +722,8 @@ function openSettings(tab = "engine") {
   const s = S.settings, e = s.engine;
   // a hosted service is saved as an external engine; which card is ticked follows from its address
   const mode = e.mode === "external" && e.base_url && !isLocal(e.base_url) ? "hosted" : e.mode || "";
-  $$("input[name=mode]").forEach((r) => r.checked = r.value === mode);
+  // nothing chosen yet: the built-in engine is offered, since it needs nothing the person has to know about
+  $$("input[name=mode]").forEach((r) => r.checked = r.value === (mode || "bundled"));
   $("#baseUrl").value = e.base_url || "";
   $("#apiKey").value = "";
   fillModels(e.model ? [e.model] : [], e.model);
@@ -749,6 +750,9 @@ function modeChanged() {
   remoteCheck();
 }
 $$("input[name=mode]").forEach((r) => r.onchange = modeChanged);
+const dlgHelp = $("#dlg-model-help");
+$("#modelHelp").onclick = () => dlgHelp.showModal();
+dlgHelp.addEventListener("click", (e) => { if (e.target === dlgHelp) dlgHelp.close(); });   // a click outside it
 // The same rule as llm.is_local: whole addresses only, since "10.example.com" is a name anyone can register.
 function isLocal(u) {
   try { return /^(localhost|((127|10)\.\d+|192\.168|169\.254|172\.(1[6-9]|2\d|3[01]))\.\d+\.\d+|0\.0\.0\.0|\[(::1|f[cd][0-9a-f]{2}:.*|fe[89ab][0-9a-f]:.*)\])$|\.local$/.test(new URL(u).hostname); } catch { return true; }
@@ -880,22 +884,35 @@ async function loadModels(quiet) {
   } catch (e) { if (!quiet) $("#testResult").textContent = e.message; }
 }
 $("#loadModels").onclick = () => loadModels(false);
-let chosenBundled = null;
+let chosenBundled = null, othersOpen = false;
 function renderBundled() {
   const b = S.bundled;
   $("#machineInfo").textContent = `This computer has ${b.ram_gb} GB of memory and ${b.free_gb} GB of free disk space.`;
   chosenBundled = chosenBundled || S.settings.engine.bundled_model || S.recommended;
-  $("#modelCards").innerHTML = S.catalog.map((m) => {
+  // One model is put forward: the one suggested for this computer, with any already downloaded or in use. The rest
+  // wait under "Other models", so nobody has to choose between seven. A retired model shows only if it's here.
+  const mine = (m) => b.models.includes(m.id) || m.id === S.settings.engine.bundled_model;
+  const offered = S.catalog.filter((m) => !m.retired || mine(m));
+  const first = (m) => m.id === S.recommended || mine(m);
+  const card = (m) => {
     const installed = b.models.includes(m.id);
     const tooBig = m.min_ram_gb > b.ram_gb + 0.5;
     return `<label class="model-card ${m.id === chosenBundled ? "selected" : ""}${tooBig ? " too-big" : ""}">
       <input type="radio" name="bmodel" value="${esc(m.id)}" ${m.id === chosenBundled ? "checked" : ""}>
-      <div class="info"><b>${esc(m.name)}</b>${m.id === S.recommended ? '<span class="tag">Recommended</span>' : ""}<br>
+      <div class="info"><b>${esc(m.name)}</b>${m.id === S.recommended ? '<span class="tag">Recommended for this computer</span>' : ""}<br>
       <small class="muted">${esc(m.about)}</small><small class="meta">${m.size_gb} GB download · needs ${m.min_ram_gb} GB memory${m.tested ? ` · ${esc(m.tested)} test questions right` : ""}${tooBig ? " — too big for this computer" : ""}</small></div>
       ${installed ? `<span class="installed">Installed</span> <button type="button" class="btn danger" data-remove="${esc(m.id)}">Delete</button>`
         : `<button type="button" class="btn" data-install="${esc(m.id)}">Download</button>`}
     </label>`;
-  }).join("");
+  };
+  const shown = offered.filter(first), others = offered.filter((m) => !first(m));
+  const job = b.jobs.install;
+  if (others.some((m) => m.id === chosenBundled) || (job && job.state === "running")) othersOpen = true;
+  $("#modelCards").innerHTML = !shown.length ? offered.map(card).join("")
+    : shown.map(card).join("") + (others.length ? `<details class="other-models"${othersOpen ? " open" : ""}>
+      <summary>Other models (${others.length})</summary>${others.map(card).join("")}</details>` : "");
+  const more = $("#modelCards details");
+  if (more) more.ontoggle = () => { othersOpen = more.open; };
   $$("input[name=bmodel]").forEach((r) => r.onchange = () => { chosenBundled = r.value; renderBundled(); });
   $$("[data-install]").forEach((x) => x.onclick = async (e) => {
     e.preventDefault();

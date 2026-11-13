@@ -457,6 +457,11 @@ code { font-family: var(--mono); font-size: .8em; background: var(--cite); color
 .tabpane { display: flex; flex-direction: column; gap: 16px; min-height: 0; }
 .tabpane > p { margin: 0; }
 .choice { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.choice .radio-card.first { grid-column: 1 / -1; }
+.radio-card .tag { display: inline-block; vertical-align: 2px; margin-left: 10px; background: var(--gold); color: #2b1d16;
+  border-radius: 999px; padding: 2px 9px; font: 10px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.modal.explain > p + p { color: var(--ink); }
+#modelHelp { margin-left: 6px; }
 .modal label.radio-card { flex-direction: row; gap: 14px; border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px;
   cursor: pointer; }
 .radio-card:hover { background: var(--panel-2); }
@@ -501,13 +506,20 @@ input[type=checkbox]:checked { background-color: var(--accent); border-color: va
 .model-card input[type=radio] { margin: 0; }
 .model-card .info { display: block; min-width: 0; }
 .model-card .info small { display: block; margin-top: 3px; }
-.model-card .info b { font: 500 19px/1.3 var(--display); }
+.model-card .info b { font: 500 19px/1.3 var(--display); margin-right: 10px; }   /* not on the tag: it can wrap under the name */
 .model-card .info br { display: none; }
 .model-card .info small.muted { font-size: 15px; line-height: 1.4; }
 .model-card .meta { font: 11.5px/1.4 var(--mono); letter-spacing: .04em; color: var(--muted-2); }
-.model-card .tag { display: inline-block; vertical-align: 3px; margin-left: 10px; background: var(--gold); color: #2b1d16;
+.model-card .tag { display: inline-block; vertical-align: 3px; background: var(--gold); color: #2b1d16;
   border-radius: 999px; padding: 2px 9px; font: 10px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
 .model-card .btn { padding: 8px 16px; font-size: 11px; letter-spacing: .14em; }
+.other-models summary { cursor: pointer; user-select: none; list-style: none; display: flex; gap: 8px; padding: 14px 12px;
+  border-bottom: 1px solid var(--border); font: 11.5px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted-2); }
+.other-models summary::-webkit-details-marker { display: none; }
+.other-models summary::before { content: "+"; color: var(--accent); width: 10px; }
+.other-models[open] summary::before { content: "\2212"; }
+.other-models summary:hover, .other-models[open] summary { color: var(--accent); }
 .installed { font: 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--ok); }
 #jobView:not(:empty) { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; padding: 14px 16px;
   border: 1px solid var(--border); border-radius: 12px; font-size: 15px; }

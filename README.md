@@ -111,22 +111,18 @@ each model too:
 | 16 GB | IBM Granite 4.2 8B | 5.3 GB | 33 to 35 | Apache 2.0 |
 | 8 or 12 GB | IBM Granite 4.2 3B | 2.2 GB | 29 to 31 | Apache 2.0 |
 
-Two more are listed but not suggested, because the small Granite did better:
-
-| Needs | Model | Download | Right, of 36 | Licence |
-|---|---|---|---|---|
-| 12 GB | Gemma 4 E4B | 5.0 GB | 22 to 27 | Apache 2.0 |
-| 8 GB | Qwen3 4B Instruct 2507 | 2.5 GB | 20 to 25 | Apache 2.0 |
+The app puts that one model forward, marked "Recommended for this computer"; the others are a click away under
+"Other models".
 
 Granite 4.2 8B is small and got as many right as the biggest, but it is slow: about a minute an answer on a fast
 computer and longer on a laptop. You can pick it on a bigger computer too, or the 3B on a 16 GB one if you'd rather
 have quicker answers and check them more.
 
-The small models get more wrong: Granite 3B about one question in six, Gemma and the Qwen3 4B about one in three.
-Gemma mostly fails by saying it can't find something that is in the library; the 4B answers in a few seconds but
-never opens the passage it cites and sometimes gives a figure from memory. With any of them, open each cited
-paragraph before you rely on the answer: the app marks citations the AI didn't read in full and figures the cited
-paragraph doesn't hold. The questions and every model's results are in [docs/model-tests.md](docs/model-tests.md).
+The small model gets more wrong: Granite 3B about one question in six. Open each cited paragraph before you rely
+on an answer: the app marks citations the AI didn't read in full and figures the cited paragraph doesn't hold.
+Gemma 4 E4B and Qwen3 4B Instruct 2507 were offered until November 2026 and no longer are, because the small
+Granite did better; a copy you already downloaded keeps working. The questions and every model's results are in
+[docs/model-tests.md](docs/model-tests.md).
 
 The model list ([para/models.json](para/models.json)) is also published with each release, so installed
 copies pick up better models without reinstalling.

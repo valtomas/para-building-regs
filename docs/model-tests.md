@@ -326,7 +326,31 @@ graphics card, one run each):
   of the higher-risk procedures (it's in reg 5), 48°C cited to ADG 3.63–3.64 (3.65), the letter plate's 260 mm by 40
   mm cited to ADQ 1.1 (1.3). One is the model's own sum (half of a 1,000 mm stair).
 
-Nothing in the catalogue changed. The smaller Ternary Bonsai 2 models (2B, 4B, 9B) weren't tried.
+The smaller models of the same family (Q2_0 files, from Qwen3.5 9B, 4B and 2B) were asked the same day:
+
+| Model | File | Right figures | Searched | Cited | Right passage cited | Made-up ids removed | Figures flagged | Extract-only citations | Median time |
+|---|---|---|---|---|---|---|---|---|---|
+| Ternary Bonsai 2 9B | 2.6 GB | 31/36 | 36/36 | 34/36 | 29/36 | 0 | 3 | 8 | 52 s |
+| Ternary Bonsai 2 4B, first run | 1.2 GB | 32/36 | 36/36 | 34/36 | 27/36 | 1 | 6 | 23 | 10 s |
+| Ternary Bonsai 2 4B, second run | | 30/36 | 36/36 | 34/36 | 26/36 | 0 | 5 | 9 | 10 s |
+| Ternary Bonsai 2 4B, third run | | 29/36 | 36/36 | 34/36 | 27/36 | 1 | 0 | 12 | 10 s |
+| Ternary Bonsai 2 2B | 0.55 GB | 23/36 | 36/36 | 19/36 | 13/36 | 0 | 0 | 11 | 4 s |
+
+- **Ternary Bonsai 2 4B does what Granite 4.2 3B does from half the file in half the time**: 29 to 32 right over
+  three runs (Granite 3B: 29 and 31), 1.2 GB against 2.2 GB, 10 s at the median against 21 s, about 190 tokens a
+  second on a Strix Halo. It opened a passage for all but three to seven answers. Wrong in all three runs: a fire
+  door for a flat's bathroom, the front door's security standard, and the cladding class. Wrong in one or two: what
+  electrical work is notifiable, the fire doors' checks, the loft landing, sprinklers, air permeability, and citing
+  ADA for the NHBC question.
+- **The 9B is no better than the 4B and five times slower**: it thinks at length. The 2B cites nothing on 17
+  questions.
+- **No engine errors** in 180 answers. The nine figure flags on the 9B and the 4B's first run were each checked
+  against the passage named: all true, two of them the model's own sum (13 risers of 200 mm). The five on the 4B's
+  second run weren't all checked.
+- **Tried only on Linux with Vulkan.** Whether llama.cpp's Windows, Mac and no-graphics-card builds read two-bit
+  files as fast, or at all, isn't known, and that matters most on the small computers this model would be for.
+
+Nothing in the catalogue changed.
 
 ## Built-in engine
 

@@ -53,8 +53,9 @@ One day's work to decide whether step 3 is worth it.
 Which model: at the last count Granite 4.2 3B (2.2 GB, 29 to 31 of 36 test questions) is the smallest that's
 listed and suggested. Models kept at one or two bits per weight were tried on 13 November (run G in
 `docs/model-tests.md`): a 3.8 GB one matched Granite 3B's score but took a minute and a half per answer on a fast
-desktop, and the 1.2 GB one got 20 of 36. A model of 1 to 1.5 GB that scores like Granite 3B would change this plan
-a good deal; none has turned up yet.
+desktop, and the 1.2 GB one got 20 of 36. One has since done it: Ternary Bonsai 2 4B, a 1.2 GB file at two bits per
+weight, got 29 to 32 of 36 over three runs at 10 s an answer on that desktop. It is the model to measure in the
+browser first, if wllama or WebLLM can read its two-bit weights, which hasn't been checked.
 
 ### 3. "Ask here", as an opt-in on the library page
 
