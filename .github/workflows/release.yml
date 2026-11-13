@@ -54,6 +54,13 @@ jobs:
             echo "No published library yet: checking the new one on its own."
           fi
           python library/check.py library/dist/regs.sqlite previous/regs.sqlite --report "$GITHUB_STEP_SUMMARY" $ACCEPT
+      - name: Keep the published edition if nothing differs
+        # A rebuild from unchanged documents keeps the published library's date, so installed apps aren't offered
+        # "a newer library" that holds the same words and images.
+        run: |
+          if [ -f previous/regs.sqlite ]; then
+            python library/edition.py library/dist/regs.sqlite previous/regs.sqlite | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
       - uses: actions/upload-artifact@v4
         with:
           name: library
@@ -168,8 +175,9 @@ jobs:
       - env: { GH_TOKEN: "${{ github.token }}" }
         run: |
           tag=$(gh release view --repo "$GITHUB_REPOSITORY" --json tagName -q .tagName) || exit 0
-          old=$(gh release download "$tag" --repo "$GITHUB_REPOSITORY" -p library.json -O - | jq -r .content_hash || echo none)
-          new=$(jq -r .content_hash out/library.json)
+          # the library job has already given an unchanged library the published edition, so the edition says it all
+          old=$(gh release download "$tag" --repo "$GITHUB_REPOSITORY" -p library.json -O - | jq -r .version || echo none)
+          new=$(jq -r .version out/library.json)
           if [ "$old" != "$new" ]; then
             gh release upload "$tag" out/regs.sqlite.gz out/library.json --clobber --repo "$GITHUB_REPOSITORY"
           fi

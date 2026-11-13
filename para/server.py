@@ -205,7 +205,9 @@ def check_updates():
             with urllib.request.urlopen(req, timeout=20) as r:
                 lib = json.load(r)
             current = library.info()["version"]
-            if lib.get("version") and lib["version"] > (current or "") and lib.get("file") in assets:
+            # A later date isn't enough: each release builds the library again, mostly from unchanged documents.
+            same = bool(library.regs) and library.regs.same_content(lib)
+            if lib.get("version") and lib["version"] > (current or "") and lib.get("file") in assets and not same:
                 a = assets[lib["file"]]
                 info["library"] = {**lib, "url": a["browser_download_url"], "size": a["size"]}
         except Exception:  # noqa: BLE001

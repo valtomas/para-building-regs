@@ -43,6 +43,7 @@ passage ids; the app checks every citation. It must stay:
 | `library/legislation.py` | Turns legislation XML into passages cited as `reg 7`, `s 120D`, `Sch 1 Pt B` |
 | `library/sources.json` | What goes into the library |
 | `library/check.py` | Compares a new library with the published one and fails the build if a document is missing or much smaller, so a broken rebuild never reaches installed apps |
+| `library/edition.py` | After a rebuild, gives the library the published one's edition if its words and images are the same (`Store.content_hashes`), so installed apps aren't offered an update that holds nothing new |
 | `library/columns.py` | Reads a PDF's two-column pages a column at a time, from where their lines are: finds the gutter, reads what is set across it whole (a heading, a wide table or drawing, the header and footer) and the left column before the right between those |
 | `library/order.py` | Checks reading order against the PDFs: reads each page a column at a time by another route and scores how much of each passage is in that order; `--list` names the passages still woven together |
 | `packaging/` | PyInstaller spec and launcher; the icon (`icon.png`, `icon.ico`, drawn by `make_icon.py`); `windows/para.iss` (Inno Setup: `Para-windows-setup.exe`); `linux/build.sh` (`Para-linux.deb` and `.AppImage`); `linux/install.sh` adds the tarball's app to the applications menu |
