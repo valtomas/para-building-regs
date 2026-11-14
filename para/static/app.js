@@ -104,9 +104,9 @@ async function refresh() {
   else { b.className = "badge remote"; b.textContent = "Questions go to " + hostOf(e.base_url); b.onclick = () => openSettings(); }
   const u = S.updates || {};
   const note = $("#updateNote");
-  if (u.app || u.library) {
+  if (u.app || u.library || u.engine) {
     note.hidden = false;
-    note.textContent = u.app ? `Version ${u.app.version} is available` : `Library update ${u.library.version} available`;
+    note.textContent = u.app ? `Version ${u.app.version} is available` : u.library ? `Library update ${u.library.version} available` : "Engine update available";
     note.onclick = () => { openSettings("about"); };
   } else note.hidden = true;
   renderProjects();
@@ -1003,7 +1003,8 @@ async function pollJobs() {
       if (!$("#bundledPane").hidden) renderBundled();
       if (library_job) renderLibraryJob(library_job);
       if (app_job) renderAppJob(app_job);
-      const running = [bundled.jobs.install, library_job, app_job].some((j) => j && j.state === "running");
+      renderEngineJob(bundled.jobs.engine);
+      const running = [bundled.jobs.install, bundled.jobs.engine, library_job, app_job].some((j) => j && j.state === "running");
       if (!running) break;
       await new Promise((r) => setTimeout(r, 1000));
     }
@@ -1068,7 +1069,9 @@ function renderAbout() {
   if (u.app && u.app.update) h += `<p class="update-row">Version ${esc(u.app.version)} is available. <button type="button" class="btn primary" id="updateApp">Update now</button></p><div id="appJob"></div>`;
   else if (u.app) h += `<p class="update-row">Version ${esc(u.app.version)} is available. <button type="button" class="btn" id="getApp">Download</button></p>`;
   if (u.library) h += `<p class="update-row">A newer regulations library (${esc(u.library.version)}, ${(u.library.size / 2 ** 20).toFixed(0)} MB) is available. <button type="button" class="btn primary" id="getLib">Install</button></p><div id="libJob"></div>`;
-  if (u.checked && !u.app && !u.library && !u.error) h += `<p class="muted small">You're up to date.</p>`;
+  if (u.engine) h += `<p class="update-row">A newer AI engine (llama.cpp ${esc(u.engine.tag)}${u.engine.size ? `, ${(u.engine.size / 2 ** 20).toFixed(0)} MB` : ""}) is available. <button type="button" class="btn primary" id="getEngine">Install</button></p><div id="engineJob"></div>`;
+  if (S.bundled.engine_fell_back) h += `<p class="note">The AI engine update didn't work on this computer, so the earlier one is still in use.</p>`;
+  if (u.checked && !u.app && !u.library && !u.engine && !u.error) h += `<p class="muted small">You're up to date.</p>`;
   const ch = S.library_changes, differ = ch ? ch.documents.length + ch.removed.length : 0;
   if (differ) h += `<p class="update-row">This library edition differs from the one before in ${differ} document${differ === 1 ? "" : "s"}. <button type="button" class="btn" data-open="library">See what changed</button></p>`;
   $("#updateView").innerHTML = h;
@@ -1080,6 +1083,13 @@ function renderAbout() {
     catch (e) { ua.disabled = false; $("#appJob").innerHTML = `<div class="error">${esc(e.message)}</div>`; }
   };
   if (S.app_job) renderAppJob(S.app_job);
+  const ge = $("#getEngine");
+  if (ge) ge.onclick = async () => {
+    ge.disabled = true;
+    try { await api("/api/updates/engine", { method: "POST" }); pollJobs(); }
+    catch (e) { ge.disabled = false; $("#engineJob").innerHTML = `<div class="error">${esc(e.message)}</div>`; }
+  };
+  renderEngineJob(S.bundled.jobs.engine);
   const gl = $("#getLib"); if (gl) gl.onclick = async () => { await api("/api/updates/library", { method: "POST" }); pollJobs(); };
 }
 function renderAppJob(j) {
@@ -1087,6 +1097,13 @@ function renderAppJob(j) {
   const pct = j.total ? Math.round(j.done / j.total * 100) : 0;
   if ($("#updateApp")) $("#updateApp").disabled = j.state !== "error";
   v.innerHTML = j.state === "running" ? `<div class="progress"><div style="width:${pct}%"></div></div>${j.note ? `<p class="muted small">${esc(j.note)}</p>` : ""}`
+    : j.state === "error" ? `<div class="error">${esc(j.error)}</div>` : `<p class="ok-line">${esc(j.note)}</p>`;
+}
+function renderEngineJob(j) {
+  const v = $("#engineJob"); if (!v || !j) return;
+  const pct = j.total ? Math.round(j.done / j.total * 100) : 0;
+  if ($("#getEngine")) $("#getEngine").disabled = j.state !== "error";
+  v.innerHTML = j.state === "running" ? `<div class="progress"><div style="width:${pct}%"></div></div><p class="muted small">${esc(j.label)}…</p>`
     : j.state === "error" ? `<div class="error">${esc(j.error)}</div>` : `<p class="ok-line">${esc(j.note)}</p>`;
 }
 function renderLibraryJob(j) {

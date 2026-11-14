@@ -28,7 +28,7 @@ passage ids; the app checks every citation. It must stay:
 | `para/anchors.py` | Finds a saved chat's passages again when their ids have changed (library rebuilt, a file read again): by document key and text fingerprint, then by reference; says when one has changed or is gone |
 | `para/changes.py` | What differs between two library editions, paragraph by paragraph; worked out when an update is installed, shown in Library |
 | `para/llm.py` | OpenAI-compatible streaming client; splits `<think>` and `reasoning_content`; probes known local servers; `HOSTED`, the hosted services offered in Settings (an address each, no code of their own) |
-| `para/engine.py` | Built-in engine: downloads llama.cpp's `llama-server` and GGUF models, starts and stops it (memory check, idle stop, leftover clean-up); `Engine.client()` picks the configured engine |
+| `para/engine.py` | Built-in engine: downloads llama.cpp's `llama-server` and GGUF models, starts and stops it (memory check, idle stop, leftover clean-up); updates the engine (`engine/current.json` says which build is in use; the earlier one is kept until the new one has started a model, and a first start that fails goes back to it); `Engine.client()` picks the configured engine |
 | `para/updater.py` | Updates the app itself: works out how this copy was installed (Windows installer, AppImage, .deb, Mac app, or none), downloads that release file with GitHub's checksum, and puts it in place: the installer runs silently, an AppImage or Mac app swaps itself and restarts, a .deb is installed by apt after the system's password dialog (pkexec) |
 | `para/models.json` | Built-in model catalogue (also published with each release and fetched by installed apps) |
 | `para/store.py` | SQLite FTS5 store (sources, passages, BM25 search, read, document), used for both libraries |
@@ -195,4 +195,11 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
 - **A hosted service**: add it to `llm.HOSTED` (name, base URL, where it's based, the page for keys, an example
   model). It must take the standard `/chat/completions` API with a Bearer key; never add code for one service. A key
   is saved for one server only (`server.saved_key_for`): changing the address never sends it somewhere else.
+- **A new llama.cpp build**: change `llama_cpp.tag` in `para/models.json` only after the 36 questions have been run on
+  it through the built-in engine for the recommended models (`tests/ask_models.py`, compared in `docs/model-tests.md`),
+  and check the asset names still match `llama_cpp.assets`. Installed apps then *offer* the build in Settings → Updates
+  & about; none installs it unasked. Set `llama_cpp.min_app` to the first app version that can update the engine if
+  older apps can't work with the build (they still use `tag` for a fresh install, so check that the flags
+  `Bundled.start` passes mean the same). A build that fails its first start on someone's computer is remembered in
+  `current.json` and not offered there again. Plan: `docs/plans/engine-updates.md`.
 - **A new setting**: add the default to `paths.DEFAULTS` (only keys there can be saved), then the UI.

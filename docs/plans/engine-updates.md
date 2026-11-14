@@ -1,6 +1,6 @@
 # Plan: updating the built-in engine
 
-Status: not started. Written for an agent to carry out. Read `AGENTS.md` and `DESIGN.md` first.
+Status: step 1 of "Order of work" is built (engine code, page and tests); the pin is unchanged. Written for an agent to carry out. Read `AGENTS.md` and `DESIGN.md` first.
 
 ## Why
 
