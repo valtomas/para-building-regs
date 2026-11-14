@@ -1,6 +1,6 @@
 # Plan: updating the built-in engine
 
-Status: step 1 of "Order of work" is built (engine code, page and tests); the pin is unchanged. Written for an agent to carry out. Read `AGENTS.md` and `DESIGN.md` first.
+Status: done. Step 1 (engine code, page and tests) is built; step 2 is Run H in `docs/model-tests.md`; step 3 moved the pin to `b12359` (no `min_app`: the flags older apps pass mean the same). Written for an agent to carry out. Read `AGENTS.md` and `DESIGN.md` first.
 
 ## Why
 
