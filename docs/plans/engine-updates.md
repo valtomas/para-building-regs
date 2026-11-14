@@ -126,5 +126,7 @@ for anything new to the map in `AGENTS.md` and a line under "Memory" or "Adding 
 
 - Updating the engine without being asked, or at app start.
 - Choosing between Vulkan, ROCm and CUDA builds: the `assets` patterns stay as they are unless 1.0.0 renamed files.
+  (Since done for CUDA, separately: an NVIDIA card gets a CUDA build, Vulkan kept to go back to; see `AGENTS.md`,
+  "Graphics-card builds". ROCm is still not offered.)
 - External engines (Lemonade, Ollama, LM Studio): they update themselves.
 - Multi-token-prediction (MTP) models in the built-in list: a separate question, answered by the test run in step 2.

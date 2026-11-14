@@ -10,7 +10,15 @@
       "windows-cpu": "bin-win-cpu-x64\\.zip$",
       "windows-arm64": "bin-win-cpu-arm64\\.zip$",
       "linux-gpu": "bin-ubuntu-vulkan-x64\\.(zip|tar\\.gz)$",
-      "linux-cpu": "bin-ubuntu-x64\\.(zip|tar\\.gz)$"
+      "linux-cpu": "bin-ubuntu-x64\\.(zip|tar\\.gz)$",
+      "linux-arm64-gpu": "bin-ubuntu-vulkan-arm64\\.(zip|tar\\.gz)$",
+      "linux-arm64-cpu": "bin-ubuntu-arm64\\.(zip|tar\\.gz)$",
+      "windows-cuda-12": ["^llama-.*-bin-win-cuda-12\\.\\d+-x64\\.zip$", "^cudart-llama-.*bin-win-cuda-12\\.\\d+-x64\\.zip$"],
+      "windows-cuda-13": ["^llama-.*-bin-win-cuda-13\\.\\d+-x64\\.zip$", "^cudart-llama-.*bin-win-cuda-13\\.\\d+-x64\\.zip$"],
+      "linux-cuda-12": ["^llama-.*-bin-ubuntu-cuda-12\\.\\d+-x64\\.tar\\.gz$",
+                        "^cudart-llama-.*bin-ubuntu-cuda-12\\.\\d+-x64\\.tar\\.gz$"],
+      "linux-cuda-13": ["^llama-.*-bin-ubuntu-cuda-13\\.\\d+-x64\\.tar\\.gz$",
+                        "^cudart-llama-.*bin-ubuntu-cuda-13\\.\\d+-x64\\.tar\\.gz$"]
     }
   },
   "models": [

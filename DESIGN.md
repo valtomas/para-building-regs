@@ -217,7 +217,9 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   used from the next question." Nothing is downloaded until the button is pressed. The sidebar's update note says
   "Engine update available" after the app and the library. If the new engine wouldn't start a model and the earlier
   one was put back, a `.note` in the tab says "The AI engine update didn't work on this computer, so the earlier one is
-  still in use."; that build isn't offered again.
+  still in use."; that build isn't offered again. For an NVIDIA card the row says "(llama.cpp b12359 for NVIDIA cards,
+  620 MB)", and if the NVIDIA version wouldn't start a model the note says "The NVIDIA version of the AI engine didn't
+  work on this computer, so the version for any graphics card is in use."
 - **Library list**: a three-column grid (short name, title with the edition in italic under it, date) so long
   edition text can't squeeze the titles.
 - **Changed in this edition** (`.lib-changes`): at the top of the Library after an update, collapsed like a drawing's

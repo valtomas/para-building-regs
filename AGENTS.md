@@ -28,7 +28,7 @@ passage ids; the app checks every citation. It must stay:
 | `para/anchors.py` | Finds a saved chat's passages again when their ids have changed (library rebuilt, a file read again): by document key and text fingerprint, then by reference; says when one has changed or is gone |
 | `para/changes.py` | What differs between two library editions, paragraph by paragraph; worked out when an update is installed, shown in Library |
 | `para/llm.py` | OpenAI-compatible streaming client; splits `<think>` and `reasoning_content`; probes known local servers; `HOSTED`, the hosted services offered in Settings (an address each, no code of their own) |
-| `para/engine.py` | Built-in engine: downloads llama.cpp's `llama-server` and GGUF models, starts and stops it (memory check, idle stop, leftover clean-up); updates the engine (`engine/current.json` says which build is in use; the earlier one is kept until the new one has started a model, and a first start that fails goes back to it); `Engine.client()` picks the configured engine |
+| `para/engine.py` | Built-in engine: downloads llama.cpp's `llama-server` and GGUF models, starts and stops it (memory check, idle stop, leftover clean-up); updates the engine (`engine/current.json` says which build is in use; the earlier one is kept until the new one has started a model, and a first start that fails goes back to it); which build: Vulkan for any graphics card, CUDA for an NVIDIA card that can run it (`nvidia_cuda`, `_build_key`), the CPU build if the person unticks the graphics card; `Engine.client()` picks the configured engine |
 | `para/updater.py` | Updates the app itself: works out how this copy was installed (Windows installer, AppImage, .deb, Mac app, or none), downloads that release file with GitHub's checksum, and puts it in place: the installer runs silently, an AppImage or Mac app swaps itself and restarts, a .deb is installed by apt after the system's password dialog (pkexec) |
 | `para/models.json` | Built-in model catalogue (also published with each release and fetched by installed apps) |
 | `para/store.py` | SQLite FTS5 store (sources, passages, BM25 search, read, document), used for both libraries |
@@ -202,4 +202,14 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   older apps can't work with the build (they still use `tag` for a fresh install, so check that the flags
   `Bundled.start` passes mean the same). A build that fails its first start on someone's computer is remembered in
   `current.json` and not offered there again. Plan: `docs/plans/engine-updates.md`.
+- **Graphics-card builds**: `llama_cpp.assets` maps each kind of computer to a release file. Vulkan (`windows-gpu`,
+  `linux-gpu`) runs on NVIDIA, AMD and Intel cards and is what everyone else gets. An NVIDIA card gets a CUDA build
+  (`windows-cuda-12`, `-13`, `linux-cuda-12`, `-13`: the build and its runtime, a list of two patterns; CUDA 13 needs
+  driver 580 and a Turing card or newer, `engine.cuda_kind`). It goes in `engine/<tag>-cuda/` with the runtime's
+  libraries beside `llama-server`, and must list a CUDA device (`--list-devices`), since a CUDA build that can't load
+  its CUDA library runs on the CPU without a word. A first install keeps the Vulkan build beside it until it has
+  loaded a model; a CUDA build that doesn't find the card, or won't load a model the first time, is replaced by the
+  Vulkan one, and `no_cuda` in `current.json` keeps that computer on Vulkan from then on. Apps before this one read
+  only the string keys, so keep those as strings. The CUDA builds have not yet been run on an NVIDIA card: test the
+  36 questions on one before saying they're supported.
 - **A new setting**: add the default to `paths.DEFAULTS` (only keys there can be saved), then the UI.

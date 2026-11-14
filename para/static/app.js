@@ -1069,8 +1069,10 @@ function renderAbout() {
   if (u.app && u.app.update) h += `<p class="update-row">Version ${esc(u.app.version)} is available. <button type="button" class="btn primary" id="updateApp">Update now</button></p><div id="appJob"></div>`;
   else if (u.app) h += `<p class="update-row">Version ${esc(u.app.version)} is available. <button type="button" class="btn" id="getApp">Download</button></p>`;
   if (u.library) h += `<p class="update-row">A newer regulations library (${esc(u.library.version)}, ${(u.library.size / 2 ** 20).toFixed(0)} MB) is available. <button type="button" class="btn primary" id="getLib">Install</button></p><div id="libJob"></div>`;
-  if (u.engine) h += `<p class="update-row">A newer AI engine (llama.cpp ${esc(u.engine.tag)}${u.engine.size ? `, ${(u.engine.size / 2 ** 20).toFixed(0)} MB` : ""}) is available. <button type="button" class="btn primary" id="getEngine">Install</button></p><div id="engineJob"></div>`;
-  if (S.bundled.engine_fell_back) h += `<p class="note">The AI engine update didn't work on this computer, so the earlier one is still in use.</p>`;
+  if (u.engine) h += `<p class="update-row">A newer AI engine (llama.cpp ${esc(u.engine.tag)}${u.engine.cuda ? " for NVIDIA cards" : ""}${u.engine.size ? `, ${(u.engine.size / 2 ** 20).toFixed(0)} MB` : ""}) is available. <button type="button" class="btn primary" id="getEngine">Install</button></p><div id="engineJob"></div>`;
+  const fb = S.bundled.engine_fell_back;
+  if (fb) h += `<p class="note">${fb.cuda ? "The NVIDIA version of the AI engine didn't work on this computer, so the version for any graphics card is in use."
+    : "The AI engine update didn't work on this computer, so the earlier one is still in use."}</p>`;
   if (u.checked && !u.app && !u.library && !u.engine && !u.error) h += `<p class="muted small">You're up to date.</p>`;
   const ch = S.library_changes, differ = ch ? ch.documents.length + ch.removed.length : 0;
   if (differ) h += `<p class="update-row">This library edition differs from the one before in ${differ} document${differ === 1 ? "" : "s"}. <button type="button" class="btn" data-open="library">See what changed</button></p>`;

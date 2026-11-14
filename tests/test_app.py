@@ -414,6 +414,21 @@ before = len(fake_llm.SEEN)
 list(strict.stream([{"role": "user", "content": "Reply with just: OK"}], max_tokens=50, reasoning="off"))
 check(len(fake_llm.SEEN) == before + 1, "and the next request is right first time")
 
+# which CUDA build an NVIDIA card can run, from nvidia-smi's driver version and compute capability
+check(eng.cuda_kind("580.95.05, 8.9\n") == "cuda-13", "a recent driver and card: CUDA 13")
+check(eng.cuda_kind("580.95.05, 6.1") == "cuda-12", "a card from before 2018 stays on CUDA 12, whatever the driver")
+check(eng.cuda_kind("550.54.14, 8.6") == "cuda-12", "a driver before 580: CUDA 12")
+check(eng.cuda_kind("470.256.02, 7.5") is None and eng.cuda_kind("") is None, "an old driver, or none: no CUDA")
+check(eng.cuda_kind("590.10, 8.9\n590.10, 6.1\n") == "cuda-12", "with two cards the older one decides")
+check(eng.cuda_kind("581.15, [N/A]") == "cuda-12", "a card that doesn't say its capability: CUDA 12")
+machine = eng.platform.machine
+eng.platform.machine = lambda: "aarch64"
+if sys.platform.startswith("linux"):
+    check(eng.platform_key(True) == "linux-arm64-gpu" and eng.platform_key(False) == "linux-arm64-cpu"
+          and all(k in eng.catalog()["llama_cpp"]["assets"] for k in ("linux-arm64-gpu", "linux-arm64-cpu")),
+          "an ARM Linux computer gets the ARM builds")
+eng.platform.machine = machine
+
 # the built-in engine is a build that was tested, not whichever is newest
 check(eng.catalog()["llama_cpp"]["tag"] != "latest", "the llama.cpp build is pinned")
 
@@ -433,7 +448,11 @@ MODE = "{mode}"
 if "--version" in sys.argv:
     print("version: stand-in", MODE)
     sys.exit(1 if MODE == "novers" else 0)
-if MODE == "dies":
+if "--list-devices" in sys.argv:  # a CUDA build lists the NVIDIA card only where it can use it
+    print("Available devices:")
+    print("  " + ("CUDA0: stand-in (8192 MiB)" if MODE in ("cuda", "diescuda") else "(none)"))
+    sys.exit(0)
+if MODE.startswith("dies"):
     sys.exit(1)
 import http.server
 sys.path.insert(0, {root!r})
@@ -474,13 +493,26 @@ http.server.ThreadingHTTPServer(("127.0.0.1", int(sys.argv[sys.argv.index("--por
         return buf.getvalue()
 
     RELEASES = {}  # tag -> (how its llama-server behaves, whether its checksum is wrong)
+    CUDA = {}  # tag -> how its CUDA build's llama-server behaves
+
+    def blob(tag, kind):
+        """The archive of a release file: the general build, the CUDA build, or the CUDA runtime ("rt"), which on
+        Linux comes in a folder of its own."""
+        if kind != "rt":
+            return archive(CUDA[tag] if kind == "cuda" else RELEASES[tag][0])
+        buf = io.BytesIO()
+        with tarfile.open(fileobj=buf, mode="w:gz") as t:
+            info = tarfile.TarInfo(f"cudart-llama-{tag}/libcudart.so.12")
+            info.size = 3
+            t.addfile(info, io.BytesIO(b"lib"))
+        return buf.getvalue()
 
     class Releases(http.server.BaseHTTPRequestHandler):
         def log_message(self, *a):
             pass
 
         def do_GET(self):
-            data = archive(RELEASES[self.path.strip("/")][0])
+            data = blob(*self.path.strip("/").split("/"))
             self.send_response(200)
             self.send_header("Content-Length", str(len(data)))
             self.end_headers()
@@ -493,10 +525,11 @@ http.server.ThreadingHTTPServer(("127.0.0.1", int(sys.argv[sys.argv.index("--por
 
     def fake_find_release(repo, tag, pattern):
         asked.append(pattern)
-        mode, bad = RELEASES[tag]
-        data = archive(mode)
-        return ({"tag_name": tag}, {"name": f"llama-{tag}-bin-ubuntu-x64.tar.gz", "size": len(data),
-                                    "browser_download_url": f"http://127.0.0.1:{releases_srv.server_address[1]}/{tag}",
+        kind = "rt" if pattern.startswith("^cudart") else "cuda" if "cuda" in pattern else "gen"
+        data, bad = blob(tag, kind), kind == "gen" and RELEASES[tag][1]
+        url = f"http://127.0.0.1:{releases_srv.server_address[1]}/{tag}/{kind}"
+        return ({"tag_name": tag}, {"name": f"llama-{tag}-{kind}.tar.gz", "size": len(data),
+                                    "browser_download_url": url,
                                     "digest": "sha256:" + ("0" * 64 if bad else hashlib.sha256(data).hexdigest())})
 
     def pin(tag, **extra):
@@ -525,7 +558,8 @@ http.server.ThreadingHTTPServer(("127.0.0.1", int(sys.argv[sys.argv.index("--por
     def stray():  # an archive or partial download left in the engine folder
         return [f for f in os.listdir(bundled.engine_dir) if f.endswith((".gz", ".zip", ".part", ".tmp"))]
 
-    real = (server._gh, eng._find_release, eng.available_ram_gb, eng.free_vram_gb)
+    real = (server._gh, eng._find_release, eng.available_ram_gb, eng.free_vram_gb, eng.nvidia_cuda)
+    eng.nvidia_cuda = lambda: None  # the tests above are of the general build, whatever card runs them
     server._gh = lambda path: {"tag_name": "v0.0.1", "assets": []}
     eng._find_release = fake_find_release
     eng.available_ram_gb = lambda: None
@@ -645,9 +679,85 @@ http.server.ThreadingHTTPServer(("127.0.0.1", int(sys.argv[sys.argv.index("--por
           and state["failed"] == ["b2"] and builds() == ["b3", "b6"],
           "if the old build fails too the model is at fault, and nothing is changed")
 
+    # an NVIDIA card gets the CUDA build, with the general one kept until the CUDA one has loaded a model
+    if eng.platform_key(True) == "linux-gpu":  # the stand-ins are Linux archives
+        def fresh(tag, cuda, general="ok"):
+            """An app that has no engine yet, with the catalogue pinning `tag`; install it as a first model would."""
+            bundled.stop()
+            shutil.rmtree(bundled.engine_dir, ignore_errors=True)
+            RELEASES[tag], CUDA[tag] = (general, False), cuda
+            pin(tag)
+            job = eng.Job("install", "a model")
+            bundled._install_server(job, True)
+            return job
+
+        eng.nvidia_cuda = lambda: "cuda-12"
+        fresh("b7", "cuda")
+        state, server_bin = bundled._state(), bundled.server_path()
+        check(builds() == ["b7", "b7-cuda"] and state["tag"] == "b7-cuda" and state["previous"] == "b7"
+              and state["proven"] is False and state["build"] == "linux-cuda-12" and not stray()
+              and bundled.installed_tag() == "b7" and json.loads(call("/api/state"))["bundled"]["engine_cuda"],
+              "an NVIDIA card gets the CUDA build, with the general one beside it")
+        check(os.path.exists(os.path.join(os.path.dirname(server_bin), "libcudart.so.12")),
+              "the CUDA runtime's libraries are put beside llama-server")
+        check(asked[-3:] == [kinds["linux-cuda-12"][0], kinds["linux-cuda-12"][1], kinds["linux-gpu"]],
+              "the CUDA build and its runtime come from the release, then the general build")
+        ev = ask("stair rise?")
+        check(ev[-1]["type"] == "done" and builds() == ["b7-cuda"] and bundled._state()["proven"] is True,
+              "once the CUDA build has loaded a model the general one is removed")
+        check(bundled._build_key(False) == "linux-cpu", "someone who chose the processor never gets CUDA")
+
+        # an update of a CUDA install is a CUDA build, and one that won't load goes back to the earlier CUDA build
+        RELEASES["b8"], CUDA["b8"] = ("ok", False), "diescuda"
+        pin("b8")
+        offer = check_engine_update()
+        check(offer["tag"] == "b8" and offer["cuda"] is True and offer["size"] > len(blob("b8", "cuda")),
+              "an update for NVIDIA is offered as such, with the runtime counted in its size")
+        check(update_job()["state"] == "done" and builds() == ["b7-cuda", "b8-cuda"], "the CUDA update is installed")
+        ev = ask("stair rise?")
+        state = bundled._state()
+        check(ev[-1]["type"] == "done" and state["tag"] == "b7-cuda" and "b8-cuda" in state["failed"]
+              and not state.get("no_cuda") and state["fell_back"]["cuda"] is False,
+              "a CUDA update that won't load goes back to the CUDA build before it, and CUDA stays in use")
+
+        # a CUDA build that runs but won't load a model on the first start: the general build, from then on
+        fresh("b9", "diescuda")
+        ev = ask("stair rise?")
+        state = bundled._state()
+        check(ev[-1]["type"] == "done" and "220 mm" in ev[-1]["answer"] and state["tag"] == "b9"
+              and state["no_cuda"] is True and "b9-cuda" in state["failed"] and builds() == ["b9"],
+              "a CUDA build that won't load a model on its first start: the general build answers, and is kept")
+        check(json.loads(call("/api/state"))["bundled"]["engine_fell_back"]["cuda"] is True,
+              "the page is told it was the NVIDIA build that didn't work")
+        RELEASES["b10"], CUDA["b10"] = ("ok", False), "cuda"
+        pin("b10")
+        check(check_engine_update()["cuda"] is False and update_job()["state"] == "done"
+              and builds() == ["b10", "b9"] and asked[-1] == kinds["linux-gpu"],
+              "after that, updates are of the general build")
+
+        # a CUDA build that doesn't find the card (no driver it can use): the general build alone
+        fresh("b11", "nocuda")
+        state = bundled._state()
+        check(builds() == ["b11"] and state["tag"] == "b11" and state["no_cuda"] is True and state["proven"] is True
+              and not stray(), "a CUDA build that doesn't find the card is replaced by the general build")
+        with open(bundled.log_path, encoding="utf-8", errors="replace") as f:
+            check("NVIDIA (CUDA) build" in f.read(), "and the engine log says why")
+
+        # someone on the general build with an NVIDIA card is updated to CUDA where it works, else stays general
+        bundled.stop()
+        shutil.rmtree(bundled.engine_dir, ignore_errors=True)
+        put_build("b12", "ok")
+        bundled._save_state({"tag": "b12", "gpu": True})
+        RELEASES["b13"], CUDA["b13"] = ("ok", False), "nocuda"
+        pin("b13")
+        state = (update_job(), bundled._state())[1]
+        check(state["tag"] == "b13" and state["previous"] == "b12" and state["no_cuda"] is True
+              and builds() == ["b12", "b13"] and not stray(),
+              "an update whose CUDA build doesn't find the card installs the general build in the same go")
+
     bundled.stop()
     releases_srv.shutdown()
-    server._gh, eng._find_release, eng.available_ram_gb, eng.free_vram_gb = real
+    server._gh, eng._find_release, eng.available_ram_gb, eng.free_vram_gb, eng.nvidia_cuda = real
     os.remove(os.path.join(os.environ["PARA_APP_DIR"], "models.json"))
     os.remove(bundled.model_path(pin_model))
     shutil.rmtree(bundled.engine_dir, ignore_errors=True)

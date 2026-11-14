@@ -212,14 +212,71 @@ def recommend(models=None, ram=None):
 
 
 def platform_key(gpu=True):
+    """The general build for this computer: Vulkan, which runs on NVIDIA, AMD and Intel graphics cards alike, or the
+    CPU build. An NVIDIA card can have a CUDA build instead (Bundled._build_key)."""
     machine = platform.machine().lower()
+    arm = machine in ("arm64", "aarch64")
     if sys.platform == "darwin":
-        return "darwin-arm64" if machine in ("arm64", "aarch64") else "darwin-x86_64"
+        return "darwin-arm64" if arm else "darwin-x86_64"
     if os.name == "nt":
-        if machine in ("arm64", "aarch64"):
+        if arm:
             return "windows-arm64"
         return "windows-gpu" if gpu else "windows-cpu"
+    if arm:
+        return "linux-arm64-gpu" if gpu else "linux-arm64-cpu"
     return "linux-gpu" if gpu else "linux-cpu"
+
+
+def cuda_kind(smi_output):
+    """Which CUDA build an NVIDIA card can run, from `nvidia-smi --query-gpu=driver_version,compute_cap`: "cuda-13"
+    needs driver 580 or later and a card from 2018 on (compute capability 7.5, Turing); "cuda-12" runs on older
+    cards with driver 528 or later; None means none will (an older driver: Vulkan is used). With several cards the
+    oldest decides."""
+    drivers, caps = [], []
+    for line in smi_output.splitlines():
+        m = re.match(r"\s*(\d+)(?:\.\d+)*\s*,\s*(\d+\.\d+|\[N/A\]|N/A)?", line)
+        if m:
+            drivers.append(int(m.group(1)))
+            caps.append(float(m.group(2)) if m.group(2) and m.group(2)[0].isdigit() else 0.0)
+    if not drivers:
+        return None
+    driver, cap = min(drivers), min(caps)
+    if driver >= 580 and cap >= 7.5:
+        return "cuda-13"
+    return "cuda-12" if driver >= 528 else None
+
+
+_NVIDIA = []  # nvidia_cuda's answer, asked once: the page reads the update offer every few seconds
+
+
+def nvidia_cuda():
+    """The CUDA build this computer's NVIDIA card can run ("cuda-12", "cuda-13"), or None: no NVIDIA card, an old
+    driver, or a Mac or ARM computer (llama.cpp's CUDA builds for those aren't offered)."""
+    if _NVIDIA:
+        return _NVIDIA[0]
+    kind = None
+    try:
+        if sys.platform != "darwin" and platform.machine().lower() in ("x86_64", "amd64") \
+                and shutil.which("nvidia-smi"):
+            out = subprocess.run(["nvidia-smi", "--query-gpu=driver_version,compute_cap", "--format=csv,noheader"],
+                                 capture_output=True, text=True, timeout=10,
+                                 creationflags=0x08000000 if os.name == "nt" else 0)
+            kind = cuda_kind(out.stdout) if out.returncode == 0 else None
+    except Exception:  # noqa: BLE001 - a program of the driver's at the edge: no answer means the general build
+        kind = None
+    _NVIDIA.append(kind)
+    return kind
+
+
+def _tag_of(folder):
+    """The llama.cpp tag of a build's folder: an NVIDIA build's folder is the tag with "-cuda" after it, so that it
+    can sit beside the general build of the same tag."""
+    return folder[:-len("-cuda")] if folder and folder.endswith("-cuda") else folder
+
+
+def _kept(state):
+    """What current.json keeps whichever build is in use: the builds that failed here, and whether a CUDA one did."""
+    return {"failed": state.get("failed", []), **({"no_cuda": True} if state.get("no_cuda") else {})}
 
 
 def free_disk_gb(path):
@@ -417,10 +474,12 @@ class Bundled:
     def models_dir(self):
         return os.path.join(paths.app_dir(), "models")
 
-    # engine/current.json: {"tag": the build in use, "previous": the one it replaced and is kept until the new one
-    # has started, "proven": whether the build in use has started a model, "failed": tags that wouldn't work on this
-    # computer, "gpu": which kind of build, "fell_back": the tag an update went back from}. Installs made before it
-    # have none: the first llama-server found under engine/ is theirs.
+    # engine/current.json: {"tag": the folder of the build in use (its llama.cpp tag, with "-cuda" after it for an
+    # NVIDIA build), "previous": the one it replaced and is kept until the new one has started, "proven": whether the
+    # build in use has started a model, "failed": folders of builds that wouldn't work on this computer, "gpu":
+    # graphics card or processor, "build": the release file's kind ("linux-cuda-12"), "no_cuda": a CUDA build failed
+    # here, so the general one is used from now on, "fell_back": the build that was gone back from}. Installs made
+    # before it have none: the first llama-server found under engine/ is theirs.
     @property
     def state_path(self):
         return os.path.join(self.engine_dir, "current.json")
@@ -460,7 +519,11 @@ class Bundled:
         return found or self._binary_in(self.engine_dir)
 
     def installed_tag(self):
-        """The tag of the build in use: from current.json, else the folder llama-server is found in, else None."""
+        """The llama.cpp tag of the build in use, or None."""
+        return _tag_of(self._current())
+
+    def _current(self):
+        """The folder of the build in use: from current.json, else the folder llama-server is found in, else None."""
         tag = self._state().get("tag")
         folder = self._tag_dir(tag)
         if folder and os.path.isdir(folder) and self._binary_in(folder):
@@ -484,6 +547,7 @@ class Bundled:
                 "jobs": {k: j.view() for k, j in self.jobs.items()},
                 "ram_gb": round(total_ram_gb(), 1), "free_gb": round(free_disk_gb(paths.app_dir()), 1),
                 "platform": platform_key(), "engine_tag": self.installed_tag(),
+                "engine_cuda": (self._current() or "").endswith("-cuda"),
                 "engine_fell_back": self._state().get("fell_back")}
 
     # ----- installing -----
@@ -525,42 +589,89 @@ class Bundled:
             job.state, job.error = "error", str(e) or e.__class__.__name__
 
     def _install_server(self, job, gpu):
-        """The first install of the engine: the pinned build, with nothing to go back to."""
-        tag = self._fetch_build(job, gpu)
-        state = self._state()
-        self._save_state({"tag": tag, "proven": True, "failed": state.get("failed", []), "gpu": gpu})
+        """The first install of the engine: the pinned build. An NVIDIA card gets the CUDA build, with the general one
+        beside it to go back to if the CUDA one won't load a model (38 MB next to its 600); if the CUDA build won't
+        even run, the general one alone."""
+        key = self._build_key(gpu)
+        keep = _kept(self._state())
+        if "cuda" in key:
+            try:
+                cuda = self._fetch_build(job, key)
+            except EngineError as e:
+                if job.cancel.is_set():
+                    raise
+                self._no_cuda(e)
+                keep["no_cuda"], cuda = True, None
+            if cuda:
+                self._save_state({"tag": cuda, "proven": True, "gpu": gpu, "build": key, **keep})
+                try:
+                    back = self._fetch_build(job, platform_key(gpu))
+                except EngineError:  # the CUDA build is installed and runs: it goes on without one to go back to
+                    if job.cancel.is_set():
+                        raise
+                    return
+                self._save_state({"tag": cuda, "previous": back, "proven": False, "gpu": gpu, "build": key, **keep})
+                return
+            key = platform_key(gpu)
+        tag = self._fetch_build(job, key)
+        self._save_state({"tag": tag, "proven": True, "gpu": gpu, "build": key, **keep})
 
-    def _fetch_build(self, job, gpu, verify=False):
-        """Downloads the pinned build into engine/<tag>/, next to any other build, and returns the tag. With verify
-        the binary must also run (--version). A build that fails is removed again; nothing else is touched."""
+    def _build_key(self, gpu):
+        """Which kind of build to fetch (a key of llama_cpp.assets): a CUDA build where there's an NVIDIA card that
+        can run one, the catalogue lists it and no CUDA build has failed here; else the general build."""
+        key = platform_key(gpu)
+        if gpu and key in ("windows-gpu", "linux-gpu") and not self._state().get("no_cuda"):
+            kind = nvidia_cuda()
+            cuda = f"{key.split('-')[0]}-{kind}" if kind else None
+            if cuda and ((catalog().get("llama_cpp") or {}).get("assets") or {}).get(cuda):
+                return cuda
+        return key
+
+    def _no_cuda(self, why):
+        """A CUDA build wouldn't work here: say so in the engine log, and use the general build from now on."""
+        self._save_state({**self._state(), "no_cuda": True})
+        with open(self.log_path, "ab") as log:
+            log.write(f"\nThe NVIDIA (CUDA) build of the AI engine won't be used on this computer: {why}\n".encode())
+
+    def _fetch_build(self, job, key, verify=False):
+        """Downloads the pinned build of this kind into engine/<tag>/ (engine/<tag>-cuda/ for CUDA), next to any
+        other build, and returns that folder's name. With verify the binary must also run (--version); a CUDA build
+        must always find the card (--list-devices). A build that fails is removed again; nothing else is touched."""
         info = catalog().get("llama_cpp") or {}
         repo, tag = info.get("repo", "ggml-org/llama.cpp"), info.get("tag", "latest")
-        pattern = (info.get("assets") or {}).get(platform_key(gpu))
-        rel, asset = _find_release(repo, tag, pattern)
-        if not asset:
-            raise EngineError(f"No llama.cpp build for this computer ({platform_key(gpu)}) in release "
+        patterns = (info.get("assets") or {}).get(key)
+        patterns = list(patterns) if isinstance(patterns, list) else [patterns]
+        cuda = "cuda" in key
+        rel, assets = _find_assets(repo, tag, patterns)
+        if not assets:
+            raise EngineError(f"No llama.cpp build for this computer ({key}) in release "
                               f"{rel.get('tag_name')}. Use an engine you install yourself instead.")
         os.makedirs(self.engine_dir, exist_ok=True)
-        archive = os.path.join(self.engine_dir, asset["name"])
-        target = os.path.join(self.engine_dir, rel.get("tag_name", "llama.cpp"))
-        if os.path.basename(target) == self.installed_tag():
+        archives = [os.path.join(self.engine_dir, a["name"]) for a in assets]
+        target = os.path.join(self.engine_dir, rel.get("tag_name", "llama.cpp") + ("-cuda" if cuda else ""))
+        runtime = target + ".runtime"
+        if os.path.basename(target) == self._current():
             raise EngineError("That build of the AI engine is already installed.")
-        digest = (asset.get("digest") or "").removeprefix("sha256:") or None
         began = False  # a download that fails has touched nothing: a build kept to go back to may be this one
         try:
-            _download(asset["browser_download_url"], archive, job, expect_size=asset.get("size"), sha256=digest)
+            for asset, archive in zip(assets, archives):
+                digest = (asset.get("digest") or "").removeprefix("sha256:") or None
+                _download(asset["browser_download_url"], archive, job, expect_size=asset.get("size"), sha256=digest)
             began = True
-            shutil.rmtree(target, ignore_errors=True)  # what an earlier attempt left of this build
-            if archive.endswith(".zip"):
-                with zipfile.ZipFile(archive) as z:
-                    z.extractall(target)
-            else:
-                with tarfile.open(archive) as t:
-                    t.extractall(target, filter="data") if hasattr(tarfile, "data_filter") else t.extractall(target)
-            os.remove(archive)
+            for folder, archive in zip([target] + [runtime] * (len(archives) - 1), archives):
+                if folder == target:
+                    shutil.rmtree(target, ignore_errors=True)  # what an earlier attempt left of this build
+                _unpack(archive, folder)
+                os.remove(archive)
             server = self._binary_in(target)
             if not server:
                 raise EngineError("The llama.cpp download had no llama-server in it.")
+            # The CUDA runtime comes in an archive of its own (on Linux in a folder of its own); its libraries go
+            # beside llama-server, where the CUDA library looks for them ($ORIGIN, or the program's folder).
+            for root, _d, files in os.walk(runtime):
+                for f in files:
+                    os.replace(os.path.join(root, f), os.path.join(os.path.dirname(server), f))
+            shutil.rmtree(runtime, ignore_errors=True)
             if os.name != "nt":
                 for root, _d, files in os.walk(target):
                     for f in files:
@@ -569,15 +680,35 @@ class Bundled:
                             os.chmod(p, 0o755)
                 if sys.platform == "darwin":
                     subprocess.run(["xattr", "-dr", "com.apple.quarantine", target], capture_output=True)
-            if verify:
+            if cuda:
+                self._check_cuda(server)
+            elif verify:
                 self._check_runs(server)
         except BaseException:  # a half-built folder would be found by the walk: take it away, then say why
             if began:
                 shutil.rmtree(target, ignore_errors=True)
-            if os.path.exists(archive) and not os.path.exists(archive + ".part"):
-                os.remove(archive)
+            shutil.rmtree(runtime, ignore_errors=True)
+            for archive in archives:
+                if os.path.exists(archive) and not os.path.exists(archive + ".part"):
+                    os.remove(archive)
             raise
         return os.path.basename(target)
+
+    def _check_cuda(self, server):
+        """A CUDA build loads its CUDA library only as it starts, and where that can't load (no NVIDIA driver, one
+        too old, a card it wasn't built for) it runs on the processor instead without a word. So it must list a
+        CUDA device, or the general build is better."""
+        flags = 0x08000000 if os.name == "nt" else 0
+        try:
+            done = subprocess.run([server, "--list-devices"], capture_output=True, stdin=subprocess.DEVNULL,
+                                  timeout=60, cwd=os.path.dirname(server), creationflags=flags)
+        except (OSError, subprocess.TimeoutExpired) as e:
+            raise EngineError(f"the NVIDIA build won't run ({e.__class__.__name__})") from e
+        out = done.stdout + done.stderr
+        with open(self.log_path, "ab") as log:
+            log.write(out)
+        if done.returncode != 0 or not re.search(rb"^\s*CUDA\d+:", out, re.M):
+            raise EngineError("the NVIDIA build doesn't find the graphics card")
 
     def _check_runs(self, server):
         """The binary starts and says its version, with a time limit: a build that can't run here (a missing
@@ -607,15 +738,16 @@ class Bundled:
             return True
         rel = os.path.relpath(server, self.engine_dir)
         folder = os.path.join(self.engine_dir, rel.split(os.sep)[0]) if os.sep in rel else self.engine_dir
-        return any("vulkan" in f.lower() for _r, _d, files in os.walk(folder) for f in files)
+        return any(k in f.lower() for _r, _d, files in os.walk(folder) for f in files for k in ("vulkan", "cuda"))
 
     def update_wanted(self):
         """The pinned tag if installing it would be an update of this computer's engine, else None."""
         info = catalog().get("llama_cpp") or {}
         tag = info.get("tag")
-        if not tag or tag == "latest" or not self.server_path():
+        if not tag or tag == "latest" or not self.server_path() or tag == self.installed_tag():
             return None
-        if tag == self.installed_tag() or tag in self._state().get("failed", []):
+        folder = tag + ("-cuda" if "cuda" in self._build_key(self._gpu()) else "")
+        if folder in self._state().get("failed", []):
             return None
         if info.get("min_app") and newer(info["min_app"], VERSION):  # the pin is for a later app than this one
             return None
@@ -628,15 +760,16 @@ class Bundled:
         if not tag:
             return None
         info = catalog().get("llama_cpp") or {}
-        gpu = self._gpu()
+        key = self._build_key(self._gpu())
+        patterns = (info.get("assets") or {}).get(key)
         size = None
         try:
-            _rel, asset = _find_release(info.get("repo", "ggml-org/llama.cpp"), tag,
-                                        (info.get("assets") or {}).get(platform_key(gpu)))
-            size = asset.get("size") if asset else None
+            _rel, assets = _find_assets(info.get("repo", "ggml-org/llama.cpp"), tag,
+                                        list(patterns) if isinstance(patterns, list) else [patterns])
+            size = sum(a.get("size") or 0 for a in assets) or None
         except Exception:  # noqa: BLE001 - a network call at the edge: the offer can be made without a size
             pass
-        return {"tag": tag, "size": size}
+        return {"tag": tag, "size": size, "cuda": "cuda" in key}
 
     def update_engine(self, gpu=None):
         """Installs the pinned build beside the one in use, in the background. It is used from the next start; the
@@ -654,8 +787,16 @@ class Bundled:
     def _update(self, job, gpu):
         target = None
         try:
-            old = self.installed_tag()
-            tag = self._fetch_build(job, gpu, verify=True)
+            old = self._current()
+            key = self._build_key(gpu)
+            try:
+                tag = self._fetch_build(job, key, verify=True)
+            except EngineError as e:  # a CUDA build that won't run here: the general one instead, in the same job
+                if "cuda" not in key or job.cancel.is_set():
+                    raise
+                self._no_cuda(e)
+                key = platform_key(gpu)
+                tag = self._fetch_build(job, key, verify=True)
             target = self._tag_dir(tag)
             job.label, job.done, job.total = "Switching to the new AI engine", 0, 0
             deadline = time.time() + 600
@@ -664,8 +805,8 @@ class Bundled:
                     if not self.users:  # never in the middle of an answer, however long the model is silent
                         self.stop()
                         state = self._state()
-                        self._save_state({"tag": tag, "previous": old, "proven": False, "gpu": gpu,
-                                          "failed": state.get("failed", [])})
+                        self._save_state({"tag": tag, "previous": old, "proven": False, "gpu": gpu, "build": key,
+                                          **_kept(state)})
                         break
                 if job.cancel.is_set() or time.time() > deadline:
                     raise EngineError("Cancelled" if job.cancel.is_set() else
@@ -674,7 +815,7 @@ class Bundled:
             job.note = "Installed. It will be used from the next question."
             job.state = "done"
         except Exception as e:  # noqa: BLE001 - a background thread: report it on the page
-            if target and self.installed_tag() != os.path.basename(target):
+            if target and self._current() != os.path.basename(target):
                 shutil.rmtree(target, ignore_errors=True)
             job.state, job.error = "error", str(e) or e.__class__.__name__
 
@@ -778,12 +919,14 @@ class Bundled:
             url = self._launch(self._binary_in(self._tag_dir(back)), model, ctx)
         except EngineError:
             raise failure from None
-        self._save_state({"tag": back, "proven": True, "gpu": self._gpu(),
+        cuda = failed.endswith("-cuda") and not back.endswith("-cuda")  # a CUDA build that never worked here
+        self._save_state({"tag": back, "proven": True, "gpu": self._gpu(), **_kept(state),
                           "failed": sorted(set(state.get("failed", [])) | {failed}),
-                          "fell_back": {"tag": failed, "at": time.strftime("%Y-%m-%d %H:%M")}})
+                          **({"no_cuda": True} if cuda else {}),
+                          "fell_back": {"tag": _tag_of(failed), "cuda": cuda, "at": time.strftime("%Y-%m-%d %H:%M")}})
         shutil.rmtree(self._tag_dir(failed), ignore_errors=True)
         with open(self.log_path, "ab") as log:
-            log.write(f"\nThe AI engine update {failed} didn't start {model['id']}; went back to {back}.\n".encode())
+            log.write(f"\nThe AI engine build {failed} didn't start {model['id']}; went back to {back}.\n".encode())
         return url
 
     def _prove(self):
@@ -816,6 +959,30 @@ class Bundled:
                 os.remove(self.pid_path)
             except OSError:
                 pass
+
+
+def _unpack(archive, folder):
+    if archive.endswith(".zip"):
+        with zipfile.ZipFile(archive) as z:
+            z.extractall(folder)
+    else:
+        with tarfile.open(archive) as t:
+            t.extractall(folder, filter="data") if hasattr(tarfile, "data_filter") else t.extractall(folder)
+
+
+def _find_assets(repo, tag, patterns):
+    """(release, [one asset per pattern]), all from the same release: a CUDA build comes with its runtime in a file of
+    its own. The list is empty if any is missing."""
+    rel, first = _find_release(repo, tag, patterns[0] if patterns else None)
+    if not first:
+        return rel, []
+    found = [first]
+    for pattern in patterns[1:]:
+        _rel, asset = _find_release(repo, rel.get("tag_name", tag), pattern)
+        if not asset:
+            return rel, []
+        found.append(asset)
+    return rel, found
 
 
 def _find_release(repo, tag, pattern):
