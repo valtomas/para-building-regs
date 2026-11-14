@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-D1_p187",
+ "source": "ADB2",
+ "label": "Diagram D1",
+ "page": 187,
+ "caption": "Diagram D1 | Measurement of door width | Building dimensions",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "4c91fafb61f4a240ea29c06558f3556bd5f4e8145518d802c75254ebf3d7f069",
+ "image_sig": {
+  "w": 737,
+  "h": 283,
+  "grey": "9fX19fX19fX19fX19fX19fv/9/////f////3///3///7/9b5//vd////1/j/1v//+//X2fT73v///8nh+9f///v/1+r6+t7////Z7PjX///7/9fq//be////2ez61///+/e+1f/cw/3/57/o877o//vyxNX/zcP8/9jE7+7E2f/7///47vf///////Ht////+///89/1///////h5v////v//+7S7f/////+09j9///7///1yfH///////Py////+////vb8//////////////v///////////////////93UlVQUVNSUU9PT09PT09PhWlbaWRkZFRPT09PT09PTw=="
+ },
+ "reviewed": false,
+ "description": "This drawing, captioned in a green band at the bottom \"Diagram D1 Measurement of door width\", is a plan view showing two side‑by‑side arrangements of a door within a doorway. In each arrangement two grey wall piers, each with a horizontal flange, form the opening, and a thin door leaf is drawn, with a curved arc tracing its swing path and a small circle marking the ironmongery near its top edge; the leaf is closed and in line with the door stop in the left arrangement and open at an angle in the right arrangement. A vertical dashed line in each case marks the door stop at the frame.\n\nIn the left arrangement a horizontal dimension line with end and centre ticks runs from the dashed door‑stop line to the outer edge of the projecting ironmongery, and is labelled \"Effective clear width (door stop to projecting ironmongery)\". In the right arrangement the dimension line runs from the door stop to the edge of the door leaf, labelled \"Effective clear width (door stop to door leaf)\".",
+ "first_draft": "This drawing, captioned in a green band at the bottom \"Diagram D1 Measurement of door width\", is a plan view showing two side‑by‑side arrangements of a door within a doorway. In each arrangement two grey wall piers, each with a horizontal flange, form the opening, and a thin door leaf is drawn partly open, with a curved arc tracing its swing path and a small circle marking the ironmongery near its top edge. A vertical dashed line in each case marks the door stop at the frame.\n\nIn the left arrangement a horizontal dimension line with end and centre ticks runs from the dashed door‑stop line to the outer edge of the projecting ironmongery, and is labelled \"Effective clear width (door stop to projecting ironmongery)\". In the right arrangement the door leaf is set at a different angle, and the dimension line runs from the door stop to the edge of the door leaf, labelled \"Effective clear width (door stop to door leaf)\"."
+}

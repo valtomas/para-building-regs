@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-4.2_p56",
+ "source": "ADB2",
+ "label": "Diagram 4.2",
+ "page": 56,
+ "caption": "Diagram 4.2 Maximum travel distances in a small three storey premises with a single open stair",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "9e02c637cd20f67be53f2d5239af5f66c44910e75b3f1f604b9bf7cdb533b2d4",
+ "image_sig": {
+  "w": 754,
+  "h": 587,
+  "grey": "7u/6+vr6+vr6+vr6+vr6+Pv/5ePj4+Pq//////////v7/+T8///75f/////////7+//p7P7+8On/////////+/v/6f328v3p//////////v7/+n67fb/6f/////////7+//d0sPa3eP/7fr/////+/v///Xr6/n//+7i5eTi8/v7//Xx8fHx+P/y6uzr7/v7+//g8PDw693/7+Dh4Ofx+/v/6f//9Pvp//////////v7/+n/7/n/6f/////////7+//p9/z//+n/////////+/v+18jJ4+Pg//////////v7//n46u7////////////7imljaGdoZmZoZ2dnZmhoeQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing, footed \"Diagram 4.2 Maximum travel distances in a small three storey premises with a single open stair\", carries \"See para 4.6\" top left. It contains two square plan outlines and a notes block.\n\nThe upper plan, captioned \"Basement or first storey\", has small circles at its two upper corners. Two green lines run from those corners inward to meet at a hatched rectangle at the bottom edge; each line is labelled \"18m max.\"\n\nThe lower plan, captioned \"Ground storey\", shows a single green line from the upper right corner to the lower left, labelled \"27m max.\" A hatched rectangle sits near the bottom edge and an open door symbol appears at the lower left. A dimension \"3m max.\" spans the lower left between the door and a small circle.\n\nTo the right, under \"NOTES:\", four numbered lines read: \"1. Maximum floor area in any one storey 90m².\" \"2. The premises may not be used as a restaurant or bar.\" \"3. Only acceptable in two storey premises (first + ground storey or basement + ground storey).\" \"4. Travel distances are set out in Table 4.1.\"",
+ "first_draft": "The drawing, footed \"Diagram 4.2 Maximum travel distances in a small three storey premises with a single open stair\", carries \"See para 4.6\" top left. It contains two square plan outlines and a notes block.\n\nThe upper plan, captioned \"Basement or first storey\", has small circles at its two upper corners. Two green lines run from those corners inward to meet at a hatched rectangle at the bottom edge; each line is labelled \"18m max.\"\n\nThe lower plan, captioned \"Ground storey\", shows a single green line from the upper right corner to the lower left, labelled \"27m max.\" A hatched rectangle sits near the bottom edge and an open door symbol appears at the lower left. A dimension \"3m max.\" spans the lower left between the door and a small circle.\n\nTo the right, under \"NOTES:\", four numbered lines read: \"1. Maximum floor area in any one storey 90m².\" \"2. The premises may not be used as a restaurant or bar.\" \"3. Only acceptable in two storey premises (first + ground storey or basement + ground storey).\" \"4. Travel distances are set out in Table 4.1.\""
+}

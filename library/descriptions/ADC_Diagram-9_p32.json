@@ -1,0 +1,18 @@
+{
+ "key": "ADC_Diagram-9_p32",
+ "source": "ADC",
+ "label": "Diagram 9",
+ "page": 32,
+ "caption": "Diagram 9 \u0007Protecting inner leaf (see paragraph 5.5(c))",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "58580785ed0fb4b04172510e0253c45aa992d731cd73487d9bdf1b588b1cd95a",
+ "image_sig": {
+  "w": 755,
+  "h": 681,
+  "grey": "xsK+uru7vre7uM/T09PT2PX/++Xs8f/////44+/1//rz/P3j7Pb9/vz99+Xs/P357evtqsLL5O7y7922rdff7ubg57jIrtzs5eTguq/K3O/v5eK1zJ2w1PLk2L+xpaPh9f//tcS7x97///C2vNTT7e7z8tDe6PL4///44eP29ffz/P3x+Pz////////////69e3itrnk/v//////////+vXp7KO18P////////////r1//+eu/D////////////69f//ts/w////////////+vX//8na9P////////////rz/v744On////////////65ebn6/T09PT09PT09PT08Q=="
+ },
+ "reviewed": false,
+ "description": "The image is headed \"Diagram 9 Protecting inner leaf (see paragraph 5.5(c))\" and has two parts. Part (a), \"Cavity carried down\", shows two side-by-side sectional drawings of a cavity wall. Each is labelled \"At least 225mm clear wall cavity depth\" across the gap between the outer and inner leaves. A \"Damp-proof course\" is indicated by a hatched band in both leaves; both drawings note \"dpc at least 150mm above ground level\", measured from a \"Ground level\" line marked with a triangle. In the right drawing the inner leaf's damp-proof course sits higher, above a stippled block and a lattice mesh, with rubble below ground level, and the outer leaf's cavity edge is cut at a slope below ground. Part (b), \"Damp proof (cavity) tray\", is a section labelled \"Outside\" and \"Inside\". A tray, drawn as a thick black line, forms a channel with a \"Weep hole\"; a dimension reads \"Minimum 150mm drop to tray\", and the channel is captioned \"Tray leading water to outside wall\".",
+ "first_draft": "The image is headed \"Diagram 9 Protecting inner leaf (see paragraph 5.5(c))\" and has two parts. Part (a), \"Cavity carried down\", shows two side-by-side sectional drawings of a cavity wall. Each is labelled \"At least 225mm clear wall cavity depth\" across the gap between the outer and inner leaves. A \"Damp-proof course\" is indicated by a hatched band in both leaves; the left drawing also notes \"dpc at least 150mm above ground level\", measured from a \"Ground level\" line marked with a triangle. In the right drawing the inner leaf's damp-proof course sits higher, above a stippled block and a lattice mesh, with rubble below ground level, and the outer leaf's cavity edge is cut at a slope below ground. Part (b), \"Damp proof (cavity) tray\", is a section labelled \"Outside\" and \"Inside\". A tray, drawn as a thick black line, forms a channel with a \"Weep hole\"; a dimension reads \"Minimum 150mm drop to tray\", and the channel is captioned \"Tray leading water to outside wall\"."
+}

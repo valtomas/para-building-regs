@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-D7_p191",
+ "source": "ADB2",
+ "label": "Diagram D7",
+ "page": 191,
+ "caption": "Diagram D7 Free area of smoke ventilators",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "e167b09745eead32c8514ac98cd77dfe6279f5f333dc6d93ca216ffb2dd5bec9",
+ "image_sig": {
+  "w": 737,
+  "h": 313,
+  "grey": "9vb29vb29vb29vb29vb29vv////////////////////7//r//fL////5////////+////+f5//////////////v///3k/v/////////////7///t8PHK+P//+c3S+///+///4/v10uz///739P7///v/9O789+T////////////7/+b5///1////9/f39/f/+//p+/3/7/3//+Dd3d3n//v/4uTw9uz//87V2dnZy//71t/j9fXZ3P691NTU0b//+/79///8//////7+/v7///v///////////////////+ZfX58fX19fHx8fHx8fHx8iWdcZWJlaFpPT09PT09PTw=="
+ },
+ "reviewed": false,
+ "description": "Diagram D7, \"Free area of smoke ventilators\", has two parts. Part a. is an elevation of an open hinged window panel, pivoted at its base at the left-hand grey reveal block, the opening being set between the two grey reveal blocks. From the hinge a dashed line projects diagonally upwards to the right and is continued as a short dashed line below the horizontal line on the other side of the hinge. A solid horizontal line (the bottom of the opening) runs from the hinge to the right-hand block, and a right-angle symbol marked 90° is shown at the hinge between this horizontal line and the dashed line. A green double-headed arrow, drawn at right angles to the dashed line, runs from the dashed line to the right-hand edge of the opening and is labelled \"Free area measured at right angles to air flow\". Part b. is an elevation of a closed louvred vent showing five inclined slats set between two grey frame blocks; dashed lines extend the plane of each slat. Above each slat sits a small green double-headed arrow, labelled in turn a₁, a₂, a₃, a₄ and a₅. The accompanying text reads \"Free area for louvred vent = a₁ +a₂ +a₃ +a₄ +a₅\".",
+ "first_draft": "Diagram D7, \"Free area of smoke ventilators\", has two parts. Part a. is an elevation of an open hinged window panel, pivoted at its base between two grey reveal blocks. A dashed line projects from the hinge, and a second dashed line crosses it at a 90° angle, marked with a right-angle symbol. A green double-headed arrow runs along this perpendicular line and is labelled \"Free area measured at right angles to air flow\". Part b. is an elevation of a closed louvred vent showing five inclined slats set between two grey frame blocks; dashed lines extend the plane of each slat. Above each slat sits a small green double-headed arrow, labelled in turn a₁, a₂, a₃, a₄ and a₅. The accompanying text reads \"Free area for louvred vent = a₁ +a₂ +a₃ +a₄ +a₅\"."
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADA_Table-10_p39",
+ "source": "ADA",
+ "label": "Table 10",
+ "page": 39,
+ "caption": "Table 10 \u0007Minimum width of strip footings Total load of load-bearing walling not more than (kN/linear metre)",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "64c7c8f20f624312b7a9e7bc15aeacc94e068d37f05a8bf321a01f6bed523481",
+ "image_sig": {
+  "w": 754,
+  "h": 588,
+  "grey": "zMKxubW3trTS0tLS0tLS0v////////////Xr3NXb7PTi2u/s/+32///16ufn5+ry6uPk2/fb3+7v+NjY2NXa9/X/8t/u5d7l7v/9/Pz9/f/t6+/p9N7a3OLz7+/v7u/59vn5+fni3dze7fHw8O/w+Ov18Pz//fz7/P79/v3+/f/t+fL3+e3q6Or57+/u8O757O/y9/nt6urp+e/y+fn5+ebz8fT/5uDg5P3///D6+/3v8PT1+ezq7e757/Lf2dbq5Pbp+///////////8u/u+e7v8ff58/Pz8vb58vLz+fns//Ht//j19/b8//f09v//4eDl4fPz8/Pz8/Pz8/Pz8w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

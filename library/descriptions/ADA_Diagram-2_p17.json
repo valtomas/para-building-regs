@@ -1,0 +1,20 @@
+{
+ "key": "ADA_Diagram-2_p17",
+ "source": "ADA",
+ "label": "Diagram 2",
+ "page": 17,
+ "caption": "Diagram 2 \u0007Size and proportion of non-residential buildings and annexes",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "4095d77d0f6f1e9c87cfc14b181f6d1b5ddbe2e306dad8eddbc7ccee866ae049",
+ "image_sig": {
+  "w": 749,
+  "h": 996,
+  "grey": "2NLQ1NTT19XR09DU1dnk5PXt6+nv/P///Pf5/ezw/f/16vj08fX8//j39O7y7vr/9fr47uzl6///+Pjr6+jk/fX//fXy/f//////8vX0///19/D/////////////////9f/t6Pf+//Du9uzy9vry/Orw7/D69/z/9vDz+e3w8P/o7+nr6fj///bd3+br5Pz/8fHs7u71/P//9ezu7u77//X//fXz/f//////5/P2///v9vv7+/z///L1+fHq5fP96NjX1uP5//33/vTy/vf//+3r7fb2+vvo4+3r8uXU8+z1///////77O759vnt6fj58Pj4+Pj4+Pj4+Pjf7u74+A=="
+ },
+ "reviewed": true,
+ "description": "Diagram 2, 'Size and proportion of non-residential buildings and annexes', notes 'See paras 2C4b and 2C4c' and shows line-drawn blocks. Part a, 'Non-residential buildings', has two. Left, 'Flat roof buildings': a block with a window on the left face and a door on the front face, with the right side dimensioned '3.0m max' and 'H'. Right, 'Pitched roof buildings': a block with a sloped roof, 'Maximum roof slope 40°'; right side '3.0m max', '3.6m max', 'H max', with a small vertical double-line symbol between the eave and the ridge. Part b, 'Annexes', has three blocks each joined to an outline 'Residential building'. First, 'Flat roof annexes': the 'Annexe' marked '3.0m max' and 'H'. Second, 'Pitched roof annexes (type 1)': the 'Annexe' with 'Maximum roof slope 40°', left side '3.5m max', '3.0m max', 'H', right side '4.5m max', 'H'. Third, 'Pitched roof annexes (type 2)': the 'Annexe' with 'Maximum roof slope 40°', left side '3.0m max', 'H', right side '3.5m max', '4.5m max', 'H'. A boxed note reads: 'Height H should be measured from top of the foundation or from the underside of the floor slab where this provides effective lateral restraint.'",
+ "first_draft": "Diagram 2, 'Size and proportion of non-residential buildings and annexes', notes 'See paras 2C4b and 2C4c' and shows line-drawn blocks. Part a, 'Non-residential buildings', has two. Left, 'Flat roof buildings': a block with window and door, right face dimensioned '3.0m max' and 'H'. Right, 'Pitched roof buildings': a block with sloped roof, 'Maximum roof slope 40°'; right side '3.0m max', '3.6m max', 'H max', with a small vertical double-line symbol at the ridge. Part b, 'Annexes', has three blocks each joined to an outline 'Residential building'. First, 'Flat roof annexes': the 'Annexe' marked '3.0m max' and 'H'. Second, 'Pitched roof annexes (type 1)': the 'Annexe' with 'Maximum roof slope 40°', left side '3.5m max', '3.0m max', 'H', right side '4.5m max', 'H'. Third, 'Pitched roof annexes (type 2)': the 'Annexe' with 'Maximum roof slope 40°', left side '3.0m max', 'H', right side '3.5m max', '4.5m max', 'H'. A boxed note reads: 'Height H should be measured from top of the foundation or from the underside of the floor slab where this provides effective lateral restraint.'",
+ "rejected": false,
+ "reviewed_date": "2026-11-06"
+}

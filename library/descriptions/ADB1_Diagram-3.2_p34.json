@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-3.2_p34",
+ "source": "ADB1",
+ "label": "Diagram 3.2",
+ "page": 34,
+ "caption": "Diagram 3.2 Flat where all habitable rooms have direct access to an entrance hall",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "e1c4346bbcb4d24abafa1bbb62ecfd567f0869148bcc4bc708b0be563bed2756",
+ "image_sig": {
+  "w": 754,
+  "h": 380,
+  "grey": "9/j4+Pj4+Pj4+Pj4+Pj49uzo//////////////////v78O/v6+/v6+/v+urk5f77++v///X///X///ft5fr/+/vr///1///1///16Obn9vv76//88P//9f//99rL5v/7++v/+Ob///X///bn4ubo+/Tjuse9vb3U9v/338rJ7fv11tjR187X4uzs9+/m9v/7++HJ7eD76fT///fo8vLy+vvr///k+/f////31dbY1/P76///9f/3////98zN1+f1++v///X/9/////f/////+/v37+/u7+/v7+/9//////vEt7e3t7e3t7e3t7e3t7fAh2hiZ2ZsZWdnZmVmZlpVcg=="
+ },
+ "reviewed": false,
+ "description": "This is a floor plan, with its caption \"Diagram 3.2 Flat where all habitable rooms have direct access to an entrance hall\" shown in a green banner along the bottom. A note at the top left reads \"See para 3.18a\". A horizontal band runs across the middle of the plan; this is the entrance hall, bounded by thick green lines and dimensioned \"9m max.\" by a double-headed arrow along its length, with the left, entrance end shaded grey (the protected entrance hall). That left end is marked \"Flat entrance\" with a door-swing arc. Rooms open onto the hall through doors labelled \"Fd\", each drawn with a swing arc: two on the upper side, four on the lower side, and one at the right end. The left external wall is a thick black line. A legend on the right defines the green line as \"Fire resisting construction (minimum REI 0)\", \"Fd\" as \"Fire doorset (minimum E 20)\", the grey square as \"Protected entrance hall (minimum REI 30)\", and the black line as \"See Appendix B for compartment walls separating a flat from any other part of the building or other occupancies\". A NOTE adds that bathrooms do not need fire doorsets provided the bathroom is separated by fire resisting construction from the adjacent rooms.",
+ "first_draft": "This is a floor plan, captioned \"Diagram 3.2 Flat where all habitable rooms have direct access to an entrance hall\". A note at the top left reads \"See para 3.18a\". A grey-shaded horizontal band runs across the middle of the plan; this is the entrance hall, dimensioned \"9m max.\" by a double-headed arrow along its length. Its left end is marked \"Flat entrance\" with a door-swing arc. The hall is bounded by thick green lines. Rooms open onto the hall through doors labelled \"Fd\", each drawn with a swing arc: two on the upper side, four on the lower side, and one at the right end. The left external wall is a thick black line. A legend on the right defines the green line as \"Fire resisting construction (minimum REI 30)\", \"Fd\" as \"Fire doorset (minimum E 20)\", the grey square as \"Protected entrance hall (minimum REI 30)\", and the black line as \"See Appendix B for compartment walls separating a flat from any other part of the building or other occupancies\". A NOTE adds that bathrooms do not need fire doorsets provided the bathroom is separated by fire resisting construction from the adjacent rooms."
+}

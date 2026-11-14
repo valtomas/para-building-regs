@@ -1,0 +1,20 @@
+{
+ "key": "Manual_Figure-F1_p50",
+ "source": "Manual",
+ "label": "Figure F1",
+ "page": 50,
+ "caption": "Figure F1 Structure of the regulatory system",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "61a5907853e5efc4e5c9e89825e869bbe657c19d8c264fd94f7c79a3c678cf77",
+ "image_sig": {
+  "w": 754,
+  "h": 585,
+  "grey": "/97n3uLf4drg7v///////9/R3uTn5+fn5+Te3t7l5+rt5+vn6+vr6+vi2dDc5Ovt7efg5+vr6+jm5ube5ebl7e3gzOPm5ubh5ubm5djk1ubt3cje6+vr6+vr6+DN3NDg7eTd4Ovn29Pc5uvg1N/N3O3n6+Dr6+vr6+vr4MzdzN3x6+Pp4+rm6uPq4+ri6N7q5eHm7ubr3OjY6Obu6u7m8PHv5+/n6tXm3N7n7+vv5/Hx7+fv5+fO6eXn5+/r7+fx8e/n7+fq1ePS3Ofv6+/n8fHv5+/n6d/l3N/n7+vv5/Hw7eXt5enc5dje5e3p7eXw/+zg4+DZycrKysnZ4OPg7A=="
+ },
+ "reviewed": true,
+ "description": "The drawing is a flow diagram titled \"Figure F1 Structure of the regulatory system\". It is arranged in two horizontal bands stacked above a single base box. The top band, outlined in purple and labelled \"Legislation\" at its left, contains five boxes. At the top centre is \"The Building Act 1984 (c. 55)\", from which arrows point down to three boxes: a wide central box reading \"The Building Regulations 2010 (No. 2214)\", and to its right two narrower boxes reading \"The Building (Approved Inspectors etc.) Regulations 2010 (No. 2215)\" and \"The Building (Local Authority Charges) Regulations 2010 (No. 404)\". A vertical box at the left of this band reads \"Other legislation and regulation affecting building and buildings\". The middle band, outlined in blue and labelled \"Guidance\", holds a blue box reading \"Other relevant guidance, such as British and European standards (to satisfy Regulation 7 and Schedule 1)\" and two green boxes, the upper \"Approved documents\" with an arrow down to the lower \"Guidance referenced in approved documents\". The base box is a single long box reading \"Current Building Regulations and regulatory system\". Vertical arrows run from each box in the Legislation band down to this base box, and in the Guidance band the blue box and the lower green box each have an arrow down to it, while the upper green box has no arrow to the base box, only the arrow down to the lower green box.",
+ "first_draft": "The drawing is a flow diagram titled \"Figure F1 Structure of the regulatory system\". It is arranged in three horizontal bands stacked above a single base box. The top band, outlined in purple and labelled \"Legislation\" at its left, contains five boxes. At the top centre is \"The Building Act 1984 (c. 55)\", from which arrows point down to three boxes: a wide central box reading \"The Building Regulations 2010 (No. 2214)\", and to its right two narrower boxes reading \"The Building (Approved Inspectors etc.) Regulations 2010 (No. 2215)\" and \"The Building (Local Authority Charges) Regulations 2010 (No. 404)\". A vertical box at the left of this band reads \"Other legislation and regulation affecting building and buildings\". The middle band, outlined in blue and labelled \"Guidance\", holds a blue box reading \"Other relevant guidance, such as British and European standards (to satisfy Regulation 7 and Schedule 1)\" and two green boxes, the upper \"Approved documents\" with an arrow down to the lower \"Guidance referenced in approved documents\". The bottom band is a single long box reading \"Current Building Regulations and regulatory system\". Vertical arrows run from each box in the upper two bands down to this base box.",
+ "rejected": false,
+ "reviewed_date": "2026-11-06"
+}

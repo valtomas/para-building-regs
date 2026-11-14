@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-4.1_p55",
+ "source": "ADB2",
+ "label": "Diagram 4.1",
+ "page": 55,
+ "caption": "Diagram 4.1 | Maximum travel distances in a small two or three storey premises with a single protected stairway to each storey | ax. | 18m",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "4b316018ff70de8ca20918412b163821e91a7bed3708c0c01ab1264b93ca0879",
+ "image_sig": {
+  "w": 737,
+  "h": 675,
+  "grey": "8PH7+/v7+/v7+/v7+/v7+/v/////6eLn5+fd8v/////7/////+r68//97e7/////+//////q/+n58fju//////v/////6v/c4fH57v/////7//////Dl0tfb4vf/////+///////+evr7P////////v/////8eHh4eHf9//////7/////+n3/P//+e7/////+//////p7PHs//nu//////v/////5/f+/Pf57v/////7/////+zSwMPT2vH/////+/////////br+/////////v/8PHy8vLx8PHx8fLy///NwcLCwcLCwcLCwcHCwsLBgVpYZWRkZGJbWFlaWldbUQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing contains two rectangular floor plans, one above the other, with the text \"See para 4.6\" at the top left. The upper plan is captioned \"Basement and/or first storey\". At the centre of its lower edge is a hatched stair symbol labelled \"Protected stairway\"; from this point two green arrowed lines run to the top-left and top-right corners, each marked \"18m max\". The lower plan is captioned \"Ground storey\". A hatched stair symbol at the centre of its lower edge is labelled \"Protected stairway\" by a leader line from the left, and a single green arrowed line runs from the bottom-right corner across to the upper-left edge, marked \"27m max\". Beneath the plans is the line \"NOTE: Maximum floor area in any one storey 280m². Restricted accommodation if used as a restaurant or bar.\" A green banner at the foot reads \"Diagram 4.1 Maximum travel distances in a small two or three storey premises with a single protected stairway to each storey\".",
+ "first_draft": "The drawing contains two rectangular floor plans, one above the other, with the text \"See para 4.6\" at the top left. The upper plan is captioned \"Basement and/or first storey\". At the centre of its lower edge is a hatched stair symbol labelled \"Protected stairway\"; from this point two green arrowed lines run to the top-left and top-right corners, each marked \"18m max\". The lower plan is captioned \"Ground storey\". A hatched stair symbol at the lower left is labelled \"Protected stairway\", and a single green arrowed line runs from the bottom-right corner across to the upper-left edge, marked \"27m max\". Beneath the plans is the line \"NOTE: Maximum floor area in any one storey 280m². Restricted accommodation if used as a restaurant or bar.\" A green banner at the foot reads \"Diagram 4.1 Maximum travel distances in a small two or three storey premises with a single protected stairway to each storey\"."
+}

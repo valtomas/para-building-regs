@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-17.1_p130",
+ "source": "ADB2",
+ "label": "Diagram 17.1",
+ "page": 130,
+ "caption": "Diagram 17.1 | Components of a firefighting shaft | Provision of firefighting shafts",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "adea275b96574f49ec235bc22669de6c576b9fad7a60fb16c37296ac3d7edf82",
+ "image_sig": {
+  "w": 756,
+  "h": 655,
+  "grey": "7/H7+/v7+/v7+/v7+/v7+Pv///////jo/f////////v7////+e/8///////////7+/////+/2dXZzv//////+/v/////4On46d////////v7//////X/6/bc///////7+//////H4Nrl0P//////+/v/////ztng6ND///////v7/////7rOzdrM///////7+//+//z+//7/////////+/vU4eHj5OHv+f////////v74/Hw8fHy8/H+///////7++nx8e/x8PLw5ubm5+fz+/vs4ujm5Onv69vc3uHu/vv79PD7+/v7/PXx8fDx8Pv7lndyd3V2eXhsbGxsbGxsiA=="
+ },
+ "reviewed": false,
+ "description": "A plan, \"Diagram 17.1 Components of a firefighting shaft\", titled \"Any building\", headed \"See para 17.1\". A rectangle is divided by internal walls into a left part and a right part. The left part has the \"Firefighting lobby\" at the top, with a small circle in its top-left corner and a leader line \"Fire main outlet\" pointing to it from above the rectangle, and a box labelled \"Firefighting lift in lift shaft\" at the bottom. The right part is the \"Firefighting stairs\", the label being at the top and the stair treads drawn as a set of horizontal lines in the lower part, with an up arrow above the treads and a down arrow below them. Doors connect the lobby to the stairs, the lobby to the lift, and the lift to the stairs. Outer wall, dark green: \"Minimum fire resistance REI 120 from accommodation side and REI 60 from inside the shaft with E 60 S a fire doors\". Internal walls, light green: \"Minimum fire resistance REI 60 from both sides with E 30 S a fire doors\". Notes: 1. \"Outlets from a fire main should be located in the firefighting lobby.\" 2. \"A firefighting lift is required if the building has a floor more than 18m above, or more than 10m below, fire service vehicle access level.\" 3. \"This diagram is only to illustrate the basic components and is not meant to represent the only acceptable layout. The firefighting shaft should be constructed generally in accordance with Section 6 of BS 9999.\" 4. \"For the minimum fire resistance of lift doors see Table C1.\"",
+ "first_draft": "A plan, \"Diagram 17.1 Components of a firefighting shaft\", titled \"Any building\", headed \"See para 17.1\". A rectangle holds four areas: top-left \"Firefighting lobby\" with a circle at the top and a leader line \"Fire main outlet\"; top-right \"Firefighting stairs\" with horizontal lines; bottom-left a box \"Firefighting lift in lift shaft\" with up and down arrows; bottom-right a grid. Outer wall, dark green: \"Minimum fire resistance REI 120 from accommodation side and REI 60 from inside the shaft with E 60 S a fire doors\". Internal walls, light green: \"Minimum fire resistance REI 60 from both sides with E 30 S a fire doors\". Door swings connect the lobby, stairs and lift. Notes: 1. \"Outlets from a fire main should be located in the firefighting lobby.\" 2. \"A firefighting lift is required if the building has a floor more than 18m above, or more than 10m below, fire service vehicle access level.\" 3. \"This diagram is only to illustrate the basic components and is not meant to represent the only acceptable layout. The firefighting shaft should be constructed generally in accordance with Section 6 of BS 9999.\" 4. \"For the minimum fire resistance of lift doors see Table C1.\""
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-11.7_p103",
+ "source": "ADB1",
+ "label": "Diagram 11.7",
+ "page": 103,
+ "caption": "Diagram 11.7 Permitted unprotected areas in small residential buildings",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "d3833aead8d8ad1d477c80508dab0266fa37a1eaba8e11d56ac02f0a8b148811",
+ "image_sig": {
+  "w": 737,
+  "h": 310,
+  "grey": "9fb29vb29vb29vb29vb29unl///////////////////7//zi5OTt////////////+//5+f//9P////////////v/+ezf7+z/+fHx8fLx/f/7//n4///z/+7PzN/Q0P//+//5+f//9P/r0NTk8fD///v/+fnr2+z/+e/y8ufy/f/7//ff5f/////5///0////+//1/f//////+P//8f////v//Pj4//////n///D9///7////+fn6///7///v+v//+///897n//////////////v///////////////////+YeX16eXl5eHp6e3l3d3d3im1famtqa2hpbWppVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "The image is a diagram titled \"Diagram 11.7 Permitted unprotected areas in small residential buildings\". The text \"See para 11.18\" appears at the top left.\n\nOn the left is a plan view of a building shown in outline. Part of its perimeter, along the bottom edge and a notch, is drawn in green. A green double-headed arrow spanning the width of the building is labelled \"24m max.\" A second green double-headed arrow, labelled \"a\", runs from the green side of the building down to a dashed line labelled \"Relevant boundary\".\n\nOn the right is a table with two columns, headed \"Minimum distance (a) between side of building and relevant boundary (m)\" and \"Maximum total area of unprotected areas (m²)\". The rows read: 1, 5.6; 2, 12; 3, 18; 4, 24; 5, 30; 6, No limit. The label \"a\" in the table corresponds to the distance arrow in the plan.",
+ "first_draft": "The image is a diagram titled \"Diagram 11.7 Permitted unprotected areas in small residential buildings\". The text \"See para 11.18\" appears at the top left.\n\nOn the left is a plan view of a building shown in outline. Part of its perimeter, along the bottom edge and a notch, is drawn in green. A green double-headed arrow spanning the width of the building is labelled \"24m max.\" A second green double-headed arrow, labelled \"a\", runs from the green side of the building down to a dashed line labelled \"Relevant boundary\".\n\nOn the right is a table with two columns, headed \"Minimum distance (a) between side of building and relevant boundary (m)\" and \"Maximum total area of unprotected areas (m²)\". The rows read: 1, 5.6; 2, 12; 3, 18; 4, 24; 5, 30; 6, No limit. The label \"a\" in the table corresponds to the distance arrow in the plan."
+}

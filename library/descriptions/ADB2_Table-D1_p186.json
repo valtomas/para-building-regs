@@ -1,0 +1,17 @@
+{
+ "key": "ADB2_Table-D1_p186",
+ "source": "ADB2",
+ "label": "Table D1",
+ "page": 186,
+ "caption": "Table D1 Floor space factors(1)",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "fc84722784658d4a1ea986fcd66c8c6ac6f4760abfdcca2c8cd2e8110a02594f",
+ "image_sig": {
+  "w": 754,
+  "h": 930,
+  "grey": "0sfFxMnV29vb29vX1tbV3O3j5fDv7/Hv8PL59/f49/fv39/g4N7f4eDr/Pn8/Pz57uHk4unt7Ozq7Pb3/Pz8+e/j5OTk5efi8vf4+Pn5+fft5e/5+fn5+fn5+fT5+fn36ufu8fDv8fDw8vny+fn59+rh5PL2+fn5+fn58vn5+ffq4+Ph8PDx9vn5+e/5+fn35+n5+fn5+fn5+fn08PDu9O7h5OPt7Ovs7Ozs6u3r7vfv4uXt6+7s7O3t7ert7vD67+Dg4+Hi4ePi5e7q7O/u+/Hh4+jt7e/39vb29fb29/vw4+Ll4+Lj4uLl4uPk4+D08N7f4eDg4+fp6ejo6ubv9w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

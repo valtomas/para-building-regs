@@ -1,0 +1,17 @@
+{
+ "key": "ADC_Table-1_p15",
+ "source": "ADC",
+ "label": "Table 1",
+ "page": 15,
+ "caption": "Table 1 \u0007Volume change potential for some common clays",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "d78c7449f37c3583fe5a8b580c003a758813a763e382d92d25c2c828b9871135",
+ "image_sig": {
+  "w": 371,
+  "h": 433,
+  "grey": "6bbFx621v7Cvu7Szqr3R5e/i4ta8w8G6usiyz+Li4urx1dPw8/Pz89/W2NPX09729t7g9vb29vbr7vb29vb2+frq8///////8Ort6/T////66evp6+bz//Dy////////+uvt9//////v6Pn///////vn/v//////8eru7PT////65vj///////Dy////////9N/g3uP29vbr5OTh9Pb2+f/////////////////////////////////////////////////////////////////////////////////////69vb29vb29v7///////////vt7u/x8O/v8v7+/vv//w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

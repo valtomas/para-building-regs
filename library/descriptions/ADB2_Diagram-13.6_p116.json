@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-13.6_p116",
+ "source": "ADB2",
+ "label": "Diagram 13.6",
+ "page": 116,
+ "caption": "Diagram 13.6 The effect of a canopy on separation distance | Roofs",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "3243d916a911c6b12bdfa6bddc0206d7dd00617073fda0eee4f4d6b3b815e958",
+ "image_sig": {
+  "w": 756,
+  "h": 478,
+  "grey": "7Or5+fn5+fn5+fn5+fn59/r///////L////////5+fv79urv/+zj//3o6fXz4Pv7+//////N2P//////1Nr2+/v///795/j8///+/uf+9vv7///r4+L7/v//8Ozn//r7+////eTJ2P////3829r2+/v28fj/6Pn9++73+Obz+Pv79fP9/+j7/fnw/ffu8vf7+///5+LI0P///+3Gpqbv+/v///Dq7+r2///16e3t8fv7///o0PX/////8dHs///7+///9+P///////zj+f//+/v//9nZ3Nrd3d7Y3dvw//vn5eXh3+Hh4ODh4ODh5eXmhF9aX1xdW2FdXE9PT09Pcg=="
+ },
+ "reviewed": false,
+ "description": "This drawing, Diagram 13.6 \"The effect of a canopy on separation distance\", shows two side-by-side building sections, with a \"See para 13.13\" note at the top left.\n\nThe left section, headed \"Canopy arrangement\", shows a wall and roof in section, with a horizontal slab projecting from the wall at an upper level, labelled \"Canopy\". A green double-headed arrow labelled \"2m min.\" spans between a dashed line at the canopy's outer edge and a dashed line on the left labelled \"Relevant boundary\". A lower green double-headed arrow spans from that same left dashed line to the building line, is labelled \"Distance to relevant boundary measured from building line\", and is longer than the \"2m min.\" arrow; \"Building line\" points to the wall face.\n\nThe right section, headed \"Loading bay arrangement\", shows the same building layout but with a raised slab projecting from the wall at ground level, labelled \"Loading platform\", instead of the canopy. It carries identical \"2m min.\", \"Relevant boundary\", \"Distance to relevant boundary measured from building line\" and \"Building line\" labels.\n\nA NOTE at the bottom reads: \"Projections from the building line, such as a canopy or a loading platform, can be ignored when assessing separation distance. This does not apply where the canopy is enclosed by side walls.\"",
+ "first_draft": "This drawing, Diagram 13.6 \"The effect of a canopy on separation distance\", shows two side-by-side building sections, each with a \"See para 13.13\" note at top left.\n\nThe left section, headed \"Canopy arrangement\", shows a wall and roof in section, with a horizontal slab projecting from the wall labelled \"Canopy\". A green double-headed arrow labelled \"2m min.\" spans between a dashed line at the canopy's outer edge and a dashed line on the left labelled \"Relevant boundary\". A lower green double-headed arrow over the same span is labelled \"Distance to relevant boundary measured from building line\", with \"Building line\" pointing to the wall face.\n\nThe right section, headed \"Loading bay arrangement\", shows the same layout but with a raised slab labelled \"Loading platform\" instead of a canopy. It carries identical \"2m min.\", \"Relevant boundary\", \"Distance to relevant boundary measured from building line\" and \"Building line\" labels.\n\nA NOTE at the bottom reads: \"Projections from the building line, such as a canopy or a loading platform, can be ignored when assessing separation distance. This does not apply where the canopy is enclosed by side walls.\""
+}

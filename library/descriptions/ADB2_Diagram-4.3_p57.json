@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-4.3_p57",
+ "source": "ADB2",
+ "label": "Diagram 4.3",
+ "page": 57,
+ "caption": "Diagram 4.3 Maximum travel distances in a small three storey premises with a single stair to each storey",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "ef5fad4e47c6ae5e2abd2d831e3e090f9585d69411836ef4a58cf11cb08eca2d",
+ "image_sig": {
+  "w": 737,
+  "h": 1030,
+  "grey": "9Pb89/L8/Pz8/Pz87vr8/Pvk6u/v79b///Hn5dfu7+n76f7w/vDk///u9PD99Pnp++Ldyc/i2f//797u7+/q5fv9+fn0///////3/vL7///74+HW7+/X///w39Po7+/m++ft/PH94///7ub48/j/6fvm38ve4tb///Pc2Nbf6ej79u/k4e/v///97uzi6e/4++n/6fH94///7vL2///05/vp9fj/8OL//+73+vj3+uj76O3q5e/b///03dq92e7t+/////L///////////////v////v7O3t7Pb29vb4///7////8Ozu7vL4////////jm1sdHFtbWxubW1sbW5sZw=="
+ },
+ "reviewed": false,
+ "description": "This drawing, captioned Diagram 4.3 Maximum travel distances in a small three storey premises with a single stair to each storey, with \"See para 4.6\" at top left, shows six floor plans in two columns. The left column is headed Example 1 and contains, top to bottom, a First storey plan, a Ground storey plan and a Basement plan; the right column is headed Example 2 with the same three storeys. Each plan is a rectangle with hatched stair symbols; green diagonal lines mark travel distances. The First storey and Basement plans each show two green diagonal lines from the corners of the plan to the stair, each labelled 18m max.; in the Example 1 First storey plan and the Example 2 Basement plan a \"Protected stairway\" label also points to the stair. The Ground storey plans show a green diagonal line corner to corner labelled 27m max., a 3m max. dimension above an upper stair, and a label Protected stairway pointing to a lower stair. Below the plans, NOTES read: 1. Maximum floor area in any one storey 90m²; 2. Enclosed stair at ground storey level may be from either the basement or the first storey; 3. The premises may not be used as a restaurant or bar; 4. Travel distances are set out in Table 4.1.",
+ "first_draft": "This drawing, captioned Diagram 4.3 Maximum travel distances in a small three storey premises with a single stair to each storey, with \"See para 4.6\" at top left, shows six floor plans in two columns. The left column is headed Example 1 and contains, top to bottom, a First storey plan, a Ground storey plan and a Basement plan; the right column is headed Example 2 with the same three storeys. Each plan is a rectangle with hatched stair symbols; green diagonal lines mark travel distances. The First storey and Basement plans show two green lines to the stair corners, each labelled 18m max. The Ground storey plans show a green line across the room labelled 27m max., a 3m max. dimension above an upper stair, and a label Protected stairway pointing to a lower stair. Below the plans, NOTES read: 1. Maximum floor area in any one storey 90m²; 2. Enclosed stair at ground storey level may be from either the basement or the first storey; 3. The premises may not be used as a restaurant or bar; 4. Travel distances are set out in Table 4.1."
+}

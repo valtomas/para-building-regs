@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-13.7_p117",
+ "source": "ADB2",
+ "label": "Diagram 13.7",
+ "page": 117,
+ "caption": "Diagram 13.7 Permitted unprotected areas in small residential buildings",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "7bca7c907daf9fd0cdf1edf00cb2b3694202f1a34baf697832a332f2de435a4b",
+ "image_sig": {
+  "w": 737,
+  "h": 310,
+  "grey": "9fb29vb29vb29vb29vb29ujl///////////////////7//zi5OTt////////////+//5+f//9P////////////v/+ezf7+z/+fLy8vLy/f/7//n4///y/+7PzN/Qz///+//5+f//9P/r0NTk8fD///v/+fnu4/D/+e/y8ufy/f/7//ff4//////5///0////+//1/P//////+P//8f////v/+/j5//////n///D9///7////+Pn6///7///v+///+///897n//////////////v///////////////////+Vdnp2dnZ2dXd3eHZ1dXV1iWhbZ2dmZ2RlaWZlT09PTw=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a plan (footprint) of a small building, with a table to its right and a green banner at the bottom reading \"Diagram 13.7 Permitted unprotected areas in small residential buildings\". At the top left it says \"See para 13.19\".\n\nThe building is drawn as an outline shaped like a rectangle with a rectangular notch removed from its lower right corner. A horizontal dimension arrow near the top of the plan, spanning its full width, reads \"24m max.\". On the left side of the plan, a vertical dimension arrow labelled \"a\" spans the gap between the bottom of the left wall of the building and a dashed line below it, which is labelled \"Relevant boundary\". The two horizontal segments that form the lower edge of the building (the lower-left edge and the horizontal step into the notch) are highlighted in green; the right edge is not highlighted.\n\nThe table on the right has two columns headed \"Minimum distance (a) between side of building and relevant boundary (m)\" and \"Maximum total area of unprotected areas (m²)\". The paired rows are: 1 with 5.6; 2 with 12; 3 with 18; 4 with 24; 5 with 30; and 6 with No limit.",
+ "first_draft": "The drawing is a plan (footprint) of a small building, with a table to its right and a green banner at the bottom reading \"Diagram 13.7 Permitted unprotected areas in small residential buildings\". At the top left it says \"See para 13.19\".\n\nThe building is drawn as an outline shaped like a rectangle with a rectangular notch removed from its lower right corner. A horizontal dimension arrow across the top of the plan reads \"24m max.\". On the left side of the plan, a vertical dimension arrow labelled \"a\" spans the gap between the left wall of the building and a dashed line below it, which is labelled \"Relevant boundary\". Parts of the lower and right edges of the plan are highlighted in green.\n\nThe table on the right has two columns headed \"Minimum distance (a) between side of building and relevant boundary (m)\" and \"Maximum total area of unprotected areas (m²)\". The paired rows are: 1 with 5.6; 2 with 12; 3 with 18; 4 with 24; 5 with 30; and 6 with No limit."
+}

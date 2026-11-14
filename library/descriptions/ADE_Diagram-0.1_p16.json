@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-0.1_p16",
+ "source": "ADE",
+ "label": "Diagram 0.1",
+ "page": 16,
+ "caption": "Diagram 0.1 \u0007Requirement E1 | PERFORMANCE | ONLINE VERSION | E",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "93033509646f9bebacf26d53375f8649621bc0f8da18278c8e27487ccf0c76ff",
+ "image_sig": {
+  "w": 755,
+  "h": 600,
+  "grey": "x8HBtrnH2NjY2NjY2NjY3fH4+Pj4+Pj9//////////rp8PHy7fDx+v/////////66eff493c5Pr/////////+ury8vLy8vL5//////////rh19bN0djU8P/////////67/Ps19ru8vz/////////+tXc09LU1NvN6uXW19jc6fPZ9dfT1tbyzunp19fT1ub01+Xe2N3c4szo+OnDy+f48+3o4czT5Ov2/vj4+Pj4+PjezszU6+vn+v/////////66fPy9O3w8/T48vLl6/Ly8unk1O3p1eP0+u/q6Obl//To7d717+Hv8/nv4uLj3/Pz6fHx8fHx8fHx8fHx8fHx7w=="
+ },
+ "reviewed": false,
+ "description": "This schematic diagram, headed \"Diagram 0.1 Requirement E1\", arranges six bordered text boxes with rows and a column of dots between them. The top box reads \"Flat or room for residential purposes; Other parts of the same building\". Beneath it, a line of solid black dots above a line of open circles is captioned \"Separating floor\". In the middle, a thick-bordered box on the left reads \"Any dwelling-house, flat or room for residential purposes to which Requirement E1 applies\". To its right, a vertical column of open circles is labelled \"Separating wall\", and beyond these a box reads \"Adjoining dwelling-house, flat or room for residential purposes; Other parts of the same building; Adjoining building; Refuse chutes\". Below the thick box a second \"Separating floor\" is shown as a row of solid black dots above a row of open circles, the solid dots covering only the left column and the open circles spanning both columns. The bottom row holds three boxes: \"Flat or room for residential purposes\", \"Other parts of the same building\", and a \"KEY:\" box in which a solid dot means \"Impact sound insulation\" and an open circle means \"Airborne sound insulation\".",
+ "first_draft": "This schematic diagram, headed \"Diagram 0.1 Requirement E1\", arranges four text boxes with rows of dots between them. The top box reads \"Flat or room for residential purposes; Other parts of the same building\". Beneath it, a line of solid black dots above a line of open circles is captioned \"Separating floor\". In the middle, a thick-bordered box on the left reads \"Any dwelling-house, flat or room for residential purposes to which Requirement E1 applies\". To its right, vertical columns of solid dots and open circles are labelled \"Separating wall\", and beyond these a box reads \"Adjoining dwelling-house, flat or room for residential purposes; Other parts of the same building; Adjoining building; Refuse chutes\". A second \"Separating floor\" of dots sits below the thick box. The bottom row holds three boxes: \"Flat or room for residential purposes\", \"Other parts of the same building\", and a \"KEY:\" box in which a solid dot means \"Impact sound insulation\" and an open circle means \"Airborne sound insulation\"."
+}

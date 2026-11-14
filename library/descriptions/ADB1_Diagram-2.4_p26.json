@@ -1,0 +1,20 @@
+{
+ "key": "ADB1_Diagram-2.4_p26",
+ "source": "ADB1",
+ "label": "Diagram 2.4",
+ "page": 26,
+ "caption": "Diagram 2.4 Fire separation in a dwellinghouse with two or more storeys more than 4.5m above ground level",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "9c3ae76f252d304b811b6f976bbfb2ada9c9442df53ef0a8aa8ea7cf19d2d504",
+ "image_sig": {
+  "w": 756,
+  "h": 344,
+  "grey": "9vb39/f39/f39/f39/f39u3r//////////////////vStLS0o7S0xv/////t/v/72P///+b//97i9//x+Ov/+9j////m///e3Oj/w6Ok6/vY///23P//3tPd/8Okq+f51MzK5NHMzMvj8/Pz//b/+9j59//////q5vH56url//vY/u3////14dTf7uv/9v/72P/m/8zO4dn5++7j7Ob/+9j/5v/V2+fR5/317//2//vetKu0qKuw0v//6cnJyej7+///////////////////+66YmJiYmJmYmJiYmJiYmKmIamJraWZuZ2hkZ2loZ2l9glVeaWNVVVVVVVVVVVVVeg=="
+ },
+ "reviewed": true,
+ "description": "The drawing, titled at the bottom \"Diagram 2.4 Fire separation in a dwellinghouse with two or more storeys more than 4.5m above ground level\", has two parts. The left part is a floor plan of a dwelling showing rooms, a staircase with an arrow indicating direction, and door symbols. A leader line to a green-filled wall reads \"Fire resisting construction minimum REI 30\"; another to a door by the stairs reads \"Fire door\"; a third to a green arrow at the right reads \"Example of alternative exit in para 2.6(a) (see definition in Appendix A)\". The text \"See para 2.6\" appears at the top left. The right part is a side section of a pitched-roof house divided into storeys by horizontal lines, the top storey shaded green and labelled \"Storey over 7.5m\". To its left, two vertical dimension arrows extend from the ground line: the upper one marked \"7.5m\" and the lower one \"4.5m\".",
+ "first_draft": "The drawing, titled at the bottom \"Diagram 2.4 Fire separation in a dwellinghouse with two or more storeys more than 4.5m above ground level\", has two parts. The left part is a floor plan of a dwelling showing rooms, a staircase with an arrow indicating direction, and door symbols. A leader line to a green-filled wall reads \"Fire resisting construction minimum REI 30\"; another to a door by the stairs reads \"Fire door\"; a third to a door at upper right reads \"Example of alternative exit in para 2.6(a) (see definition in Appendix A)\". The text \"See para 2.6\" appears at the top left. The right part is a side section of a pitched-roof house divided into storeys by horizontal lines, the top storey shaded green and labelled \"Storey over 7.5m\". To its left, two vertical dimension arrows extend from the ground line: the upper one marked \"7.5m\" and the lower one \"4.5m\".",
+ "rejected": false,
+ "reviewed_date": "2026-11-06"
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-9.1_p88",
+ "source": "ADB2",
+ "label": "Diagram 9.1",
+ "page": 88,
+ "caption": "Diagram 9.1 Provisions for cavity barriers",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "46d2af0104dd5877dbe6d0e42593bdc9bb1f7c03c10c99ad1030371cbd9d80c4",
+ "image_sig": {
+  "w": 756,
+  "h": 817,
+  "grey": "8vT8/Pz8/Pz8/Pz6/Pz8+fv///////////n15P////v7///////99+vt+N/0+//7+/////z19uTi8PPZ////+/v/7e7f9/fe4Pf36f////v7/+3r6s3x5OTp8Pn19P/7+//s7d7f4MvIzdDZ6u/9+/v/+P/n7/Xe2PX36fT5//v7////7dXy5N7o8vr19P/7+//s0NDS1MbG297a6O79+/v//+u+1ubu9t318fb5//v7////xfP0+/vi//f19P/7+////7fJycnJwsnb////+/v////j8/7/5+7z+OXz/vv7///////////////18P37qJCLj46PkIaGhoaGhoaGnQ=="
+ },
+ "reviewed": false,
+ "description": "This is a section drawing, titled at the bottom \"Diagram 9.1 Provisions for cavity barriers\", with \"See para 9.2\" at top left. It shows a cut through a multi‑storey building with a pitched roof and three \"Accommodation\" levels, with the lowest level set back under a stepped ground line. Grey lines mark the \"Compartment wall\" and \"Compartment floor\", and a \"Wall forming bedroom(1) or protected escape route(2)\" divides internal spaces. Solid green blocks, defined in the legend as \"Cavity barriers\" with \"Fire-stopping (same resistance as compartment)\", are placed at the \"top of cavity\", \"around openings\", at the \"compartment floor\", at the \"bottom of cavity\" and \"around edges\". Green double‑headed arrows labelled \"Sub-divide extensive cavities\" span the \"Roof cavity\", the middle \"Floor cavity\"/\"Ceiling cavity\" layer and the lowest \"Accommodation\" level. Notes read \"1. See paragraph 9.7.\" and \"2. See paragraph 9.5.\"",
+ "first_draft": "This is a section drawing, titled at the bottom \"Diagram 9.1 Provisions for cavity barriers\", with \"See para 9.2\" at top left. It shows a cut through a multi‑storey building with a pitched roof, three \"Accommodation\" levels and a lower storey set back beneath a stepped ground line. Grey lines mark the \"Compartment wall\" and \"Compartment floor\", and a \"Wall forming bedroom(1) or protected escape route(2)\" divides internal spaces. Solid green blocks, defined in the legend as \"Cavity barriers\" with \"Fire-stopping (same resistance as compartment)\", are placed at the \"top of cavity\", \"around openings\", at the \"compartment floor\", at the \"bottom of cavity\" and \"around edges\". Green double‑headed arrows labelled \"Sub-divide extensive cavities\" span the \"Roof cavity\", the \"Floor cavity\"/\"Ceiling cavity\" layers and the lower space. Notes read \"1. See paragraph 9.7.\" and \"2. See paragraph 9.5.\""
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-15.2_p116",
+ "source": "ADB1",
+ "label": "Diagram 15.2",
+ "page": 116,
+ "caption": "Diagram 15.2 Provision of firefighting shafts | a. | b.\nd. | e.",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "b23354522e4668d3d312256d25557aa5f5aa606aeae5b7761e0d9b206d34318d",
+ "image_sig": {
+  "w": 754,
+  "h": 721,
+  "grey": "8fL7+/v6+vn6+vv7+/v7+Pv/////7NzY2dzj+P////v7//LU5vLV4ej96dbm9f/7+//02ef75PHy9/jx8fD/+/v/7b3y/P////////////v7/9yg+/f29vv////////7+//cofvy///3////////+/v405/78v//9//69vb2//v78tCk++/G+vf/6OL/9f/7+9eX0deKne+QgY/F99Of+/vTgoKCe5f3h32Ao7qmkvv704KCgn6Y5oqCgoKCgpL7+/Tc2ODb3ODg0d/g4ODk+/v/8+np7tz3/+vk5e/x/vv7//Pn9/Dr/f/u4ePy9v/7oomGiIeLiYJ/f39/f39/kQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a diagram titled \"Buildings in which firefighting shafts should be provided, showing which storeys need to be served\", with \"See para 15.2\" at top left. It has three vertical building sections labelled a, b and c, each headed \"Any building\", and in each section the part of the building not served by the shaft is shown in white (unshaded). In a, a green shaft with stair and lift symbols rises above a ground line marked \"Fire service vehicle access level\", with a double-headed vertical arrow on its left marked \"> 18m\"; the caption reads \"The upper storeys in any building with a storey more than 18m above fire service vehicle access level\". In b, a green shaft with stair and lift symbols is below ground, with a double-headed vertical arrow on its left marked \"> 10m\"; the caption reads \"The basement storeys in any building with a basement more than 10m below fire service vehicle access level\". In c, a green shaft with stair and lift symbols is below ground, with an unlabelled double-headed vertical arrow on its right, and in the ground between b and c, to the left of this shaft, is a darker grey block labelled \"Two or more basement storeys each exceeding 900m²\"; the caption reads \"The basement storey(s) in any building with two or more basements each exceeding 900m²\". At bottom left, two small symbols are keyed \"Extent of firefighting stair\" and \"Extent of firefighting lift\". A NOTES block states: \"1. Height excludes any top storey(s) consisting exclusively of plant rooms. 2. Firefighting shafts should serve all floors through which they pass.\"",
+ "first_draft": "The drawing is a diagram titled \"Buildings in which firefighting shafts should be provided, showing which storeys need to be served\", with \"See para 15.2\" at top left. It has three vertical building sections labelled a, b and c, each headed \"Any building\". In a, a green shaft with stair and lift symbols rises above a ground line marked \"Fire service vehicle access level\", with a vertical arrow \"> 18m\"; the caption reads \"The upper storeys in any building with a storey more than 18m above fire service vehicle access level\". In b, the green shaft is below ground with a \"> 10m\" arrow, captioned \"The basement storeys in any building with a basement more than 10m below fire service vehicle access level\". In c, the green shaft is below ground beside a grey block labelled \"Two or more basement storeys each exceeding 900m²\", captioned \"The basement storey(s) in any building with two or more basements each exceeding 900m²\". At bottom left, two small symbols are keyed \"Extent of firefighting stair\" and \"Extent of firefighting lift\". A NOTES block states: \"1. Height excludes any top storey(s) consisting exclusively of plant rooms. 2. Firefighting shafts should serve all floors through which they pass.\""
+}

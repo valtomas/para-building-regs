@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-0.2_p17",
+ "source": "ADE",
+ "label": "Diagram 0.2",
+ "page": 17,
+ "caption": "Diagram 0.2 \u0007Requirement E2(a)",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "25510cec56bb0bcf93919cf71019bb90491aff0f73fa1d33487020fee3374952",
+ "image_sig": {
+  "w": 749,
+  "h": 462,
+  "grey": "yru6rLCn0tnZ2dnZ2dnZ2ezy8vLy8vLy8vLy8vLy8vL0////////////////////2tPT09PT09PT09PT09PT2dn07e3t7e3r/PLt7e3t7uTZ+v//+Pv/+t7v+fb6+vTk2fjh4sjU3Ojp8djJzs/u5Nn6//////764u///v//9OTZ9O3t7e3t7Pn07e3t7e/k2f////DY4eXl5d3c3f//5N/T09PT09PT09PT09PT0930//////////TY5M7T0dDs9P/////////48PDx8fHx8/T////////////////////q7e3t7e3t7e3t7e3t7e3t+Pb29vb29vb29vb29vb29g=="
+ },
+ "reviewed": false,
+ "description": "The diagram, headed \"Diagram 0.2 Requirement E2(a)\", is a plan layout. A thick-lined outer rectangle contains, toward the bottom, the text \"Dwelling-house, flat or room for residential purposes\". Inside it, above this text, are two inner rectangles placed side by side. The left rectangle is labelled \"Any room to which requirement E2(a) applies\"; the right rectangle is labelled \"Bedroom or a room containing a water closet\". The space between the two rectangles contains a vertical column of six open circles, to the left of which the words \"Internal wall\" are written vertically. Below the main drawing, to the right, a boxed key reads \"KEY:\" followed by a single open circle and the text \"Airborne sound insulation\", indicating what the circles represent. A horizontal rule runs across the bottom of the page above a small grey bar.",
+ "first_draft": "The diagram, headed \"Diagram 0.2 Requirement E2(a)\", is a plan layout. A thick-lined outer rectangle is captioned, along its lower edge, \"Dwelling-house, flat or room for residential purposes\". Inside it are two inner rectangles placed side by side. The left rectangle is labelled \"Any room to which requirement E2(a) applies\"; the right rectangle is labelled \"Bedroom or a room containing a water closet\". The space between the two rectangles contains a vertical column of six open circles, beside which the words \"Internal wall\" are written vertically. Below the main drawing, to the right, a boxed key reads \"KEY:\" followed by a single open circle and the text \"Airborne sound insulation\", indicating what the circles represent. A horizontal rule runs across the bottom of the page above a small grey bar."
+}

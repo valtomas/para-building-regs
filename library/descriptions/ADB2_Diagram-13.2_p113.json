@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-13.2_p113",
+ "source": "ADB2",
+ "label": "Diagram 13.2",
+ "page": 113,
+ "caption": "Diagram 13.2 Relevant boundary",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "ef67be2c1a065fab5a292379a4f6c446c783778833c543ed0804142ea4944338",
+ "image_sig": {
+  "w": 737,
+  "h": 490,
+  "grey": "7Ov5+fn5+fn5+fn5+fn5+fv///////////76///////7///////////5/P79////++7b4OTz9/f3//3x5/f1//vz5/P7/f/8/f/9787X7//7///////++v///fHX6fr/+///////8e38//z47O3t//v//////+Ti7P7989fn8v/79enr/P/t/NnR+/ne5PL/++3b5vr25vHS4fn2zdvs//v//////+Hf6P7999HV6P/77Nby9/f1+v///f7r6f//+/nw8vr//Pn7/P3///////vq1dTr9/r8+/z9///////r6enp6enp6enp6enp6enpg19aX11aT09PT09PT09PTw=="
+ },
+ "reviewed": false,
+ "description": "Plan diagram \"Diagram 13.2 Relevant boundary\"; \"See para 13.5\" top left. A central black rectangle labelled \"Building\", sides marked \"C\" (top), \"A\" (left), \"B1\" (right), \"B2\" (bottom), is surrounded by dashed lines. Callouts with pointer lines read: \"This boundary coincides with and is therefore relevant to side A\"; \"This boundary is parallel to and therefore relevant to side B1\"; \"The boundary is parallel to side B2\"; and, at the angled top-right line marked \"< 80°\", \"This boundary is at less than 80 degrees to side C and is therefore relevant to side C\". A long horizontal dashed line below is described by \"But the relevant boundary may be the centre line of a road, railway, canal or river\". Right-hand \"NOTES:\" text states the diagram sets out the rules for a relevant boundary, listing: a. Coincide with the side of the building (A); b. Be parallel to the side of the building (B1 or B2); c. Be at an angle of maximum 80 degrees to the side of the building (C).",
+ "first_draft": "Plan diagram \"Diagram 13.2 Relevant boundary\"; \"See para 13.5\" top left. A central black rectangle labelled \"Building\", sides marked \"C\" (top), \"A\" (left), \"B1\" (right), \"B2\" (bottom), is surrounded by dashed lines. Callouts with pointer lines read: \"This boundary coincides with and is therefore relevant to side A\"; \"This boundary is parallel to and therefore relevant to side B1\"; \"The boundary is parallel to side B2\"; and, at the angled top-right line marked \"< 80°\", \"This boundary is at less than 80 degrees to side C and is therefore relevant to side C\". A long horizontal dashed line below is described by \"But the relevant boundary may be the centre line of a road, railway, canal or river\". Right-hand \"NOTES:\" text states the diagram sets out the rules for a relevant boundary, listing: a. Coincide with the side of the building (A); b. Be parallel to the side of the building (B1 or B2); c. Be at an angle of maximum 80 degrees to the side of the building (C)."
+}

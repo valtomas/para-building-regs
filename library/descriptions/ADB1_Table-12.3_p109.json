@@ -1,0 +1,17 @@
+{
+ "key": "ADB1_Table-12.3_p109",
+ "source": "ADB1",
+ "label": "Table 12.3",
+ "page": 109,
+ "caption": "Table 12.3 TP(a) and TP(b) thermoplastic rooflights: limitations on use and boundary distance",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "eb4850bb0c931e015167b67fb3cd7f66dda538f9f042452c1b07b43a97e03e6d",
+ "image_sig": {
+  "w": 737,
+  "h": 583,
+  "grey": "uqSioZygpJqioqakoKKtwOzt+vLy8PL5+/Lq6enr7fXz8vf////////16/H39/j68Ov78Ozs6+z28Pb6/OPq+vDx++vn5Obn5/Lq8fzz+vr7///y5efn8Pf/////////+///7eTm5vL1/f////////v///Pr6ev3+v3+/v/+///7///u5PHv8fX47/b/9///7/T67/P6+vr6+vr6+vr6+unr8e3x8PDw8Pn////////m4OHg5/Hx8vHv7uzw8O38597h49/h4eLj497i4t/n/Ojr7vHv7/L2///////////v5+jn6Ofp6PT1/v//////7ePk4+jl5+Pr9Pr6+vr6+g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADB2_Table-6.1_p67",
+ "source": "ADB2",
+ "label": "Table 6.1",
+ "page": 67,
+ "caption": "Table 6.1 Classification of linings",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "3d915fa374bfc5028ba32aa1aff8725686bc3b1aa9a1beda7b2dd51840c36ad6",
+ "image_sig": {
+  "w": 737,
+  "h": 268,
+  "grey": "wLOwq7GzyMjIyMjIyMjIyL6oo6Kpm8jIyMjIyMjIyMjx8vLy8vLy8vLy8vLw8PLy5+j19fX19fX19fX16t7z9ejm5+Xi5Pr///////D1///3+fr7+vn9///////7/P//6OLb3Nv6/////////////+3r5+bp5//////////////v7+zr7Or19fX19fX49fX15eLe1+X/////////7vL//+zs7PD09PT09PT09PLs9PTn39vl9fX19fX19fXn6/X10/D///////////////////Hu8O7x2uTx8PHx7fHy8f/u4N7m4ubn6+3v7u3v7PL/7OHf4d319fX19fX19fX19Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

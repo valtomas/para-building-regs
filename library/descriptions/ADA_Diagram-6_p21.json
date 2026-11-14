@@ -1,0 +1,20 @@
+{
+ "key": "ADA_Diagram-6_p21",
+ "source": "ADA",
+ "label": "Diagram 6",
+ "page": 21,
+ "caption": "Diagram 6 \u0007Map showing wind speeds in m/s for maximum height of buildings",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "f2a8461e25d5217fdcafe7ffc04cc92fd0c6069d7f691195127f3eef554b00f1",
+ "image_sig": {
+  "w": 749,
+  "h": 921,
+  "grey": "1tDR0dHMzM3P09DQ0s7U4/X///////H06ff7///////1///////s6fXx9v7/////9f/////969/k6ubx/f////X////96OLr7ubv9vP////1////9e7j8PPr9ufy/v//9f//9/Pu4ub3+evm+P////X///f78e3r5vHv8/b9///1///z7e3o8vXx7/H+////9f////zz9e/x7vH2/////+/t/f/57/Hq9e33///////z+O3p7/j4+vf3+f//////9f749vj5+/f7+Pfx6OXq+/L59vX9+Ozu9e/2+/D7+/3w6+7t+vT39Pj4+Pj4+Pj79f759vT5+/j//////////w=="
+ },
+ "reviewed": true,
+ "description": "The image is headed \"Diagram 6 Map showing wind speeds in m/s for maximum height of buildings\", with \"See para 2C16\" beneath. The upper part is an outline map of Great Britain captioned \"Figure 1 Map of wind speeds (V) in m/s\". It carries contour lines labelled 25, 24.5, 24, 23.5, 23, 22.5, 22 and 21.5, and named points marked by dots including Carlisle, Newcastle, York, Kingston upon Hull, Leeds, Liverpool, Manchester, Sheffield, Nottingham, Birmingham, Leicester, Norwich, Oxford, London, Bristol, Cardiff, Swansea, Plymouth and Brighton; a note reads \"Channel Islands 24m/s\". Below are two cross-section profiles, each with a right-pointing \"Wind direction\" arrow. The first, labelled \"Hills and ridges\", shows a triangular ridge with zones 2, 1 and 2 above it; the dimension line beneath the zones reads 0.4Lu, 0.4Lu, 0.4Ld and 0.4Ld, and the slopes below are dimensioned Lu and Ld, keyed as \"Lu - is slope on upwind side\" and \"Ld - is slope on downwind side\". The second, \"Cliffs and escarpments\", shows a rising slope and a vertical face with zones 2, 1, 2 and 3 above it; the dimension line beneath the zones reads 0.25Lu, 0.25Lu, 0.4Lu, 0.4Lu and 1.5Lu, and the slope below is dimensioned Lu.",
+ "first_draft": "The image is headed \"Diagram 6 Map showing wind speeds in m/s for maximum height of buildings\", with \"See para 2C16\" beneath. The upper part is an outline map of England captioned \"Figure 1 Map of wind speeds (V) in m/s\". It carries closed contour lines labelled 25, 24.5, 24, 23.5, 23, 22.5, 22 and 21.5, and named points marked by dots including Carlisle, Newcastle, York, Kingston upon Hull, Leeds, Liverpool, Manchester, Sheffield, Nottingham, Birmingham, Leicester, Norwich, Oxford, London, Bristol, Cardiff, Swansea, Plymouth and Brighton; a note reads \"Channel Islands 24m/s\". Below are two cross-section profiles, each with a right-pointing \"Wind direction\" arrow. The first, labelled \"Hills and ridges\", shows a triangular ridge with zones 2, 1, 2 above it dimensioned 0.4Lu, 0.4Ld, 0.4Ld, and slopes Lu and Ld below, keyed as \"Lu - is slope on upwind side\" and \"Ld - is slope on downwind side\". The second, \"Cliffs and escarpments\", shows a rising slope and vertical face with zones 2, 1, 2, 3 above dimensioned 0.25Lu, 0.25Lu, 0.4Lu, 1.5Lu and Lu below.",
+ "rejected": false,
+ "reviewed_date": "2026-11-06"
+}

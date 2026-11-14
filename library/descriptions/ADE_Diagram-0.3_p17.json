@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-0.3_p17",
+ "source": "ADE",
+ "label": "Diagram 0.3",
+ "page": 17,
+ "caption": "Diagram 0.3 \u0007Requirement E2(b)",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "8d2ae11ab20c41451c04cf3d5bef14bd1f657adc4cfe96c986214ead4a434ed7",
+ "image_sig": {
+  "w": 749,
+  "h": 599,
+  "grey": "zb++s7eu0dfX19fX19fX1/T////////////////////0/+Hd3d3d3d3d3d3d3P3/9P/j//fy8vLy8vL4/+70//T/4//0//7u6fz++v/u9P/0/+P/9PDq5unn5/r/7vT/9P/j//v4+Ofn9vj7/+70//T/4//329/V1dvf8f/u9P/0/+P/9P//+/v///r/7vT/9P/j//Tw6NnX4+b6/+70//T/4//08vLy8vLy9v/u9P/0/+P94+jn6unm5ub17vT/9P/g3d3d3dPOztHR0M/4//T////////u6uLc3N3j+P/0////////////////////6vHx8fHx8fHx8fHx8fHx8Q=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a schematic diagram set beneath a shaded band reading \"Diagram 0.3 Requirement E2(b)\". A thick black rectangular outline encloses the whole arrangement, with the words \"Dwelling-house, flat or room for residential purposes\" written inside it near the lower edge. Inside this outline, two smaller rectangles are stacked one above the other, each inscribed with the words \"Any room to which requirement E2(b) applies\". Separating the two rectangles is a horizontal row of small open circles, with the label \"Internal floor\" placed just above the row. To the lower right, outside the thick outline, a separate box headed \"KEY:\" shows a single open circle next to the words \"Airborne sound insulation\", indicating that the row of circles denotes this feature. No dimensions, scale or other symbols are shown.",
+ "first_draft": "The drawing is a schematic diagram set beneath a shaded band reading \"Diagram 0.3 Requirement E2(b)\". A thick black rectangular outline encloses the whole arrangement, and is labelled along its lower edge \"Dwelling-house, flat or room for residential purposes\". Inside this outline, two smaller rectangles are stacked one above the other, each inscribed with the words \"Any room to which requirement E2(b) applies\". Separating the two rectangles is a horizontal row of small open circles, with the label \"Internal floor\" placed just above the row. To the lower right, outside the thick outline, a separate box headed \"KEY:\" shows a single open circle next to the words \"Airborne sound insulation\", indicating that the row of circles denotes this feature. No dimensions, scale or other symbols are shown."
+}

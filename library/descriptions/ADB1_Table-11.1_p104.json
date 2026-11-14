@@ -1,0 +1,17 @@
+{
+ "key": "ADB1_Table-11.1_p104",
+ "source": "ADB1",
+ "label": "Table 11.1",
+ "page": 104,
+ "caption": "Table 11.1 Permitted unprotected areas in small buildings or compartments",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "b8e5f6a1ab597fb204ad5b428f201d81a81118463d5cf91ad9b496e67b64695e",
+ "image_sig": {
+  "w": 756,
+  "h": 354,
+  "grey": "tpyYmJiZm5iVmpyXp8DAytbMzMvJy8vLy8fKy83Q0Nbw7u7u8Or2//Dv7ezv7e777ejo8/j4+Pn5+Pj4+Pj49ujZ7vf39/f59Pf39/f39/b4//////////n////////77vf39/f39/nw9/f39/f39vT39/f39/f58ff39/f39/bz9/f39/f3+fX39/f39/f28vf39/f39/nx9/f39/f39u/39/f39/f57ff39/f39/bs+Pj4+Pj4+Ov4+Pj4+Pj23ez/////////////////++vj6efj5+L3//////////vx5+Xk5eXo5uPo5OXm5+jr7t/f3t3h3tre3vf39/f39Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

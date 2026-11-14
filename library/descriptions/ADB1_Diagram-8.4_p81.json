@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-8.4_p81",
+ "source": "ADB1",
+ "label": "Diagram 8.4",
+ "page": 81,
+ "caption": "Diagram 8.4 Provisions for cavity barriers in double-skinned insulated roof sheeting",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "c0f5d4b3f53c20be319015bbc02d2bad3998f672af06d02e8463eaa717332567",
+ "image_sig": {
+  "w": 737,
+  "h": 289,
+  "grey": "9fb29vb29vb29vb29vb29ufo///////////////////7////////////////////+////+TO+P///9jS//////v//+vc3978//fe3/H////7////////////////////+///////////0u3l2Pr///v/98vV0NPc4++v2eTU6ej7/8yIgYeFjLuLaoqLqPP8+//bpqampq3LppykpLPt+fv////////////////////7/+ve3N3g39ze29/d39zx+//p4t/g4dvr/v39/f/+/fv///////////////////+Mam1qa2pra2tqbGtsamhoim5ia2ZqbWdrbGpramxVVQ=="
+ },
+ "reviewed": false,
+ "description": "This is a cross-sectional diagram. The text 'See para 8.7' appears at the top left, and a green band running along the bottom carries the title 'Diagram 8.4 Provisions for cavity barriers in double-skinned insulated roof sheeting'. It contains two side-by-side sections of roof sheeting. The left, labelled 'Arrangement A' and 'Acceptable without cavity barriers', shows a corrugated top skin resting directly on a hatched green insulation layer above a flat bottom skin. The right, labelled 'Arrangement B' and 'Cavity barriers necessary', shows the same corrugated top skin, but set above the hatched insulation so that a gap is left between them, with a solid green vertical block rising from the insulation to the top skin beneath a trough of the top skin. On the right, two leader lines identify the 'Cavity barrier' and the 'Insulation'. Beneath both sections, running text reads: 'The insulation should make contact with both skins of sheeting. See also Diagram 5.2a regarding the need for fire-stopping where such roofs pass over the top of a compartment wall.'",
+ "first_draft": "This is a cross-sectional diagram titled 'Diagram 8.4 Provisions for cavity barriers in double-skinned insulated roof sheeting', with a green band at the top left reading 'See para 8.7'. It contains two side-by-side sections of roof sheeting. The left, labelled 'Arrangement A' and 'Acceptable without cavity barriers', shows a corrugated top skin resting directly on a hatched green insulation layer above a flat bottom skin. The right, labelled 'Arrangement B' and 'Cavity barriers necessary', shows the same corrugated top skin and hatched insulation, but with a solid green vertical block set into the insulation and rising beneath a trough of the top skin. On the right, two leader lines identify the 'Cavity barrier' and the 'Insulation'. Beneath both sections, running text reads: 'The insulation should make contact with both skins of sheeting. See also Diagram 5.2a regarding the need for fire-stopping where such roofs pass over the top of a compartment wall.'"
+}

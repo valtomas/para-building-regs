@@ -1,0 +1,17 @@
+{
+ "key": "ADB2_Table-15.1_p123",
+ "source": "ADB2",
+ "label": "Table 15.1",
+ "page": 123,
+ "caption": "Table 15.1 Fire and rescue service vehicle access to buildings not fitted with fire mains",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "5e837d2a60db90d31b159b5a012d1edea92c5cb81dccd7c6d47e37a4995b01c6",
+ "image_sig": {
+  "w": 737,
+  "h": 379,
+  "grey": "uZ2nn6Kim6KilqCenp+ryOHc3Nzc3Nzc3NzY3N3d3N3t6PD/++jp7fXp7f/98Oz77+n3+Pjq7vX67fT2+vf4+O7s///43////9TQ8vrZ+f/t6/j4+Oz4+Pro6PT46vf49PX///nm////39zz+934/+Tg9vj35vj4+uLh7/fo+Pj7////++3////o5vb84/j/5uDw+Pbm+Pj6497x9+j4+Pf4+Pj25/j4+uPe8fje8fjs5v//++z////m5vT77v//9/j4+PPn+Pj44ODt9d7x+N/t///////////////////v6ujm6Orj5eTn////////6uDe3t7e4d3k4eHe3vf4+A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

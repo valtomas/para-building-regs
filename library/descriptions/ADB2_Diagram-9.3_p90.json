@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-9.3_p90",
+ "source": "ADB2",
+ "label": "Diagram 9.3",
+ "page": 90,
+ "caption": "Diagram 9.3 Fire resisting ceiling below cavity",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "1d145c7f473c622435f47c82d59028a40e5e1de0872be6149f2299b0e2adaa42",
+ "image_sig": {
+  "w": 754,
+  "h": 346,
+  "grey": "5M/Pz8/Pz8/Pz8/Pz8/P3//////////////////////19vf39/f39/f39/f39/f16+7/////////////////+/v///////////////////vx5+e1tbW1wv/////////7+//+7Ozs7O//////////+/v/////////xeLl4uXo//v7/+3x4d7i+Ojd4t/i+vr3+///+Ojq5f/bx8rJydbj9fv/8ujo4+js7eLi8v////v7//Lw8Ovw8v/////////7+///6eTl5fD/////////+/v////9//////////////uvnJycnJycnJycnJycnJyphWVeYmVnYV5PT09PT09Pbg=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a simple vertical section diagram. At the top left it reads \"See para 9.5\". A horizontal grey bar is labelled \"Floor or roof above\". Beneath it is an empty gap labelled \"Cavity\". Below the cavity is a horizontal line representing the ceiling, with the label \"Ceiling\" at its left end. A small tick marks the upper face of this line, labelled \"Ceiling surface/product exposed to cavity – class C-s3, d2 or better\". A second tick marks the lower face, labelled \"Soffit of ceiling – class B-s3, d2 or better\". To the right of the section is a text block headed \"NOTE:\" stating the ceiling should meet all of the following conditions: a. Provide a minimum fire resistance of EI 30. b. Be imperforate, except for an opening described in paragraph 9.17. c. Extend throughout the building or compartment. d. Not be easily demountable. A green banner along the bottom reads \"Diagram 9.3 Fire resisting ceiling below cavity\".",
+ "first_draft": "The drawing is a simple vertical section diagram. At the top left it reads \"See para 9.5\". A horizontal grey bar is labelled \"Floor or roof above\". Beneath it is an empty gap labelled \"Cavity\". Below the cavity is a horizontal line representing the ceiling, with the label \"Ceiling\" at its left end. A small tick marks the upper face of this line, labelled \"Ceiling surface/product exposed to cavity – class C-s3, d2 or better\". A second tick marks the lower face, labelled \"Soffit of ceiling – class B-s3, d2 or better\". To the right of the section is a text block headed \"NOTE:\" stating the ceiling should meet all of the following conditions: a. Provide a minimum fire resistance of EI 30. b. Be imperforate, except for an opening described in paragraph 9.17. c. Extend throughout the building or compartment. d. Not be easily demountable. A green banner along the bottom reads \"Diagram 9.3 Fire resisting ceiling below cavity\"."
+}

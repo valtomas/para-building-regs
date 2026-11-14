@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-D2_p188",
+ "source": "ADB2",
+ "label": "Diagram D2",
+ "page": 188,
+ "caption": "Diagram D2 | Cubic capacity\nDiagram D3 | Area | 176 Approved Document B Volume 2, 2019 edition",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "2d730e8c12f72e4d4e81180ab73810dac2e29c6eb3e49f017d4aafcd18106b21",
+ "image_sig": {
+  "w": 756,
+  "h": 367,
+  "grey": "9vf39/f39/f39/f39/f39vv///////////////To5PX7///////////////r0eH7+//Q5////+fQ////+/b4+/vZsbLq5O2zsdjo8/Xm5/r7zrSv2eXktLHH6Pbw0fH7+8yxsdjl3K+vvdvf+vb++/vOtLTp/+S0r8nb2ezM6vv4uqSk0P3VpKO89P/21N37+eTk5OT97OTk5PX/99rl+/vr6eT4/+3q6Ob9//bP4/X78/Dz+f/mydHO/v/27PH7+///////////////79jf+/v///////////////Pl8Pu6qKioqKioqKioqKioqKi1h2RbYWNPT09PT09PT09Pcw=="
+ },
+ "reviewed": false,
+ "description": "The image shows two line diagrams in section of a gabled building, both filled green with grid lines, on a grey ground slab, with a block of text to the right and a green footer band reading \"Diagram D2 Cubic capacity\". The left diagram, captioned \"a. Cubic capacity of a building\", has two leader lines: \"Internal wall or partition\" pointing to a vertical internal line, and \"Enclosing wall\" pointing to the outer wall. The right diagram, captioned \"b. Cubic capacity of compartments or separated part of a building\", is divided by a horizontal line and a vertical line; its leader lines read \"Internal wall or partition\", \"Enclosing wall\", \"Compartment floor\", and \"Compartment wall\". The right-hand text reads: \"In every case measure the volume contained by all of the following. a. Under surface of roof. b. Upper surface of lowest floor. c. Inner surface of enclosing walls. When there is not an outer enclosing wall, measure to the outermost edge of the floor slab. The measured volume should include internal walls and partitions.\"",
+ "first_draft": "The image shows two line diagrams in section of a gabled building, both filled green with grid lines, on a grey ground slab, with a block of text to the right and a green footer band reading \"Diagram D2 Cubic capacity\". The left diagram, captioned \"a. Cubic capacity of a building\", has two leader lines: \"Internal wall or partition\" pointing to a vertical internal line, and \"Enclosing wall\" pointing to the outer wall. The right diagram, captioned \"b. Cubic capacity of compartments or separated part of a building\", is divided by a horizontal line and a vertical line; its leader lines read \"Internal wall or partition\", \"Enclosing wall\", \"Compartment floor\", and \"Compartment wall\". The right-hand text reads: \"In every case measure the volume contained by all of the following. a. Under surface of roof. b. Upper surface of lowest floor. c. Inner surface of enclosing walls. When there is not an outer enclosing wall, measure to the outermost edge of the floor slab. The measured volume should include internal walls and partitions.\""
+}

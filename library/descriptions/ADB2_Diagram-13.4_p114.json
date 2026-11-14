@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-13.4_p114",
+ "source": "ADB2",
+ "label": "Diagram 13.4",
+ "page": 114,
+ "caption": "Diagram 13.4 Status of materials achieving class B-s3, d2 or worse as unprotected area",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "e357eb9b3591afe083b1d0dceeeacd8990e029acacc83f1e2c2fd140b5c31799",
+ "image_sig": {
+  "w": 756,
+  "h": 559,
+  "grey": "7e76+vr6+vr6+vr6+vr6+Pv//fL2/v////////////v7//n/+fX8///////////7++/1///79Pr/////////+/vqsOz///319/////////v76XGE2/////Xy+O/t8v/7+/axX23B9vb39u7Y2df1+/v7/MpwXK3x//v79vX4//v7+///4IZh4vn179ze9v/7+/n1/v/tquj/+///////+/v+9/T8//Xs+fX06Ojr//v7///68/r/+/349OLi5fT7+/////rz9/f5////////+/v///////X0//////////v7/v7+/v7+/f7+/v7+/v76g11ZXVxcX1tcWlxcXVtQcg=="
+ },
+ "reviewed": false,
+ "description": "This is an isometric line drawing of a rectangular block, representing a section of wall, shown from a three-quarter view so that its top, front and right-hand faces are visible. The top face and right-hand end face are left blank (white). The long front face is partly coloured: a lighter green band runs across the upper part, enclosing a darker green rectangle set within it, while the lower part of the front face remains white.\n\nTwo green dimension lines are drawn beside the front face. A vertical line to the left of the face is labelled \"b\" and spans the height of the lighter green band only, not the white lower part. A line along the bottom edge of the face, drawn at an angle in the isometric view, is labelled \"a\". In the top-left corner the text \"See para 13.7\" appears.\n\nOn the right, three labels with leader lines point to the front face. The top label, \"Area of fire resisting wall with materials more than 1mm thick and with a reaction to fire performance worse than class B-s3, d2 = a×b\", points to the lighter green band. The middle label, \"Area of wall counted as unprotected area = 0.5a×b\", points to the darker green rectangle. The bottom label, \"Area of fire resisting wall with materials having a reaction to fire performance better than class B-s3, d2\", points to the white lower area of the front face. A green banner along the bottom reads \"Diagram 13.4 Status of materials achieving class B-s3, d2 or worse as unprotected area\".",
+ "first_draft": "This is an isometric line drawing of a rectangular block, representing a section of wall, shown from a three-quarter view so that its top, front and right-hand faces are visible. The top face and right-hand end face are left blank (white). The long front face is partly coloured: a lighter green band runs across the upper part, enclosing a darker green rectangle set within it, while the lower part of the front face remains white.\n\nTwo green dimension lines frame the front face. A vertical line on the left edge is labelled \"b\", and a horizontal line along the bottom edge is labelled \"a\". In the top-left corner the text \"See para 13.7\" appears.\n\nOn the right, three labels with leader lines point to the front face. The top label, \"Area of fire resisting wall with materials more than 1mm thick and with a reaction to fire performance worse than class B-s3, d2 = a×b\", points to the lighter green band. The middle label, \"Area of wall counted as unprotected area = 0.5a×b\", points to the darker green rectangle. The bottom label, \"Area of fire resisting wall with materials having a reaction to fire performance better than class B-s3, d2\", points to the white lower area of the front face. A green banner along the bottom reads \"Diagram 13.4 Status of materials achieving class B-s3, d2 or worse as unprotected area\"."
+}

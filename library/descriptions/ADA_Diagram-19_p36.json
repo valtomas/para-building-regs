@@ -1,0 +1,20 @@
+{
+ "key": "ADA_Diagram-19_p36",
+ "source": "ADA",
+ "label": "Diagram 19",
+ "page": 36,
+ "caption": "Diagram 19 \u0007Lateral restraint at roof level",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "16497a27d192c5b712dfd448bdc090fc5b5eb37f2b10714c5e9cc31a75c4aa15",
+ "image_sig": {
+  "w": 762,
+  "h": 710,
+  "grey": "08rHwsHDxMfZ2dnZ2dnZ3u/4////+/////////////r1///19fPp+P/////58PH69f/h/v////Hu+vr19PD8+vX/9ev4////++nk8vDe3vr1//f/9+799/D26+Xz///69f/3////5vj/+vz/8fn/+vX/9Pr///X09vHw9PP4//r1///59P71+P/v9f/z+P/69f/////17O/15ev16Pf/+vX///////////////////r17//////////////////69ern6efw////////////+vXq4+Pj5/////////////r18O/t8e7v7Pj////////68vr6+vr6+vr6+vr6+vr69g=="
+ },
+ "reviewed": true,
+ "description": "This is an isometric line drawing of a single-storey building with a gable roof, titled \"Diagram 19 Lateral restraint at roof level\", with the text \"See para 2C38\" in the top left corner. The building shows a side eaves wall on the left carrying a row of short vertical bar symbols along its top edge, and a front gable wall containing two rectangular openings. Three \"X\" symbols are spaced along the top edge of the front gable wall, and three small circle symbols are spaced along the visible roof slope. Two leader lines on the right identify particular symbols: \"Fixing near ridge position\" points to a circle symbol close to the ridge, and \"Fixing at isolated column position\" points to a central \"X\" symbol. A key at the bottom left defines the symbols: the vertical bar \"denotes fixings at eaves level\", \"X denotes fixings at base of gable\", and the circle \"denotes fixings along roof slope\". A note below the key reads \"Fixings should be in accordance with Diagram 16.\"",
+ "first_draft": "This is an isometric line drawing of a single-storey building with a gable roof, titled \"Diagram 19 Lateral restraint at roof level\", with the text \"See para 2C38\" in the top left corner. The building shows a side eaves wall on the left carrying a row of short vertical bar symbols along its top edge, and a front gable wall containing two rectangular openings. A line of \"X\" symbols runs along the top edge of the front gable wall, and a line of small circle symbols is placed along the visible roof slope. Two leader lines on the right identify particular symbols: \"Fixing near ridge position\" points to a circle symbol close to the ridge, and \"Fixing at isolated column position\" points to a central \"X\" symbol. A key at the bottom left defines the symbols: the vertical bar \"denotes fixings at eaves level\", \"X denotes fixings at base of gable\", and the circle \"denotes fixings along roof slope\". A note below the key reads \"Fixings should be in accordance with Diagram 16.\"",
+ "rejected": false,
+ "reviewed_date": "2026-11-06"
+}

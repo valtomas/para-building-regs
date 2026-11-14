@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-14.1_p120",
+ "source": "ADB2",
+ "label": "Diagram 14.1",
+ "page": 120,
+ "caption": "Diagram 14.1 Limitations on spacing and size of plastic rooflights that have a class D-s3, d2 or TP(b) lower surface",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "36dac2690bf34bd8f0b87e5e37a06ac6898c570c16b92d613765bc02381921e3",
+ "image_sig": {
+  "w": 756,
+  "h": 470,
+  "grey": "7uns+fn5+fn5+fn5+fn59/j75M7OzuT///////////v7/8GHh4e8///////////7+//Bh3mGvP//////////+/v/wYV9hbz///////////v7/8WPjY/B/+/s5+rt7P/7+/////Lr///j1tLY1tP6+/v////q1f3/4tbU2Nrq/Pv7////8+r7//D////////7+//Lmpeax//l7/Dw8O34+/v/wYeHh7z/6+fm5/D6/vv7/8GFcIS8/+LW2+zt/f/7+//Bh4eHvP/s6uvo6Or2+/v/4cXFxd//8Ons6fD///uOcGtxbHFvbnFwcHBubm18fVBVYV1bUE9PT09PT09PdA=="
+ },
+ "reviewed": false,
+ "description": "This is a schematic diagram labelled at the bottom, on a green banner in white text, \"Diagram 14.1 Limitations on spacing and size of plastic rooflights that have a class D-s3, d2 or TP(b) lower surface\". At the top left is the text \"See paras 14.5 and 14.6\".\n\nThe left part of the drawing shows two plain grey rectangles, one above the other. Each contains the centred text \"Rooflight* max. area 5m²\". A vertical double-headed arrow spans the gap between the two rectangles, labelled \"3m† minimum between any two rooflights in any direction\".\n\nTo the right are two footnote lines. The asterisk reads \"* Or group of rooflights amounting to no more than 5m²\". The dagger reads \"† Class D-s3, d2 rooflights to rooms in industrial and other non-residential purpose groups may be spaced 1800mm apart provided the rooflights are evenly distributed and do not exceed 20% of the area of the room\".\n\nBelow these, under the heading \"NOTES:\", are three numbered items: \"1. There are restrictions on the use of plastic rooflights in the guidance to requirement B2 in Section 6.\"; \"2. Surrounding roof covering to be class B-s3, d2 for at least 3m distance.\"; \"3. Where Diagram 8.2a or 8.2b applies, rooflights should be at least 1500mm from the compartment wall.\"",
+ "first_draft": "This is a schematic diagram labelled at the bottom, on a green banner in white text, \"Diagram 14.1 Limitations on spacing and size of plastic rooflights that have a class D-s3, d2 or TP(b) lower surface\". At the top left is the text \"See paras 14.5 and 14.6\".\n\nThe left part of the drawing shows two plain grey rectangles, one above the other. Each contains the centred text \"Rooflight* max. area 5m²\". A vertical double-headed arrow spans the gap between the two rectangles, labelled \"3m† minimum between any two rooflights in any direction\".\n\nTo the right are two footnote lines. The asterisk reads \"* Or group of rooflights amounting to no more than 5m²\". The dagger reads \"† Class D-s3, d2 rooflights to rooms in industrial and other non-residential purpose groups may be spaced 1800mm apart provided the rooflights are evenly distributed and do not exceed 20% of the area of the room\".\n\nBelow these, under the heading \"NOTES:\", are three numbered items: \"1. There are restrictions on the use of plastic rooflights in the guidance to requirement B2 in Section 6.\"; \"2. Surrounding roof covering to be class B-s3, d2 for at least 3m distance.\"; \"3. Where Diagram 8.2a or 8.2b applies, rooflights should be at least 1500mm from the compartment wall.\""
+}

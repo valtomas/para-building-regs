@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-6.2_p70",
+ "source": "ADB2",
+ "label": "Diagram 6.2",
+ "page": 70,
+ "caption": "Diagram 6.2 Layout restrictions on class D-s3, d2 plastic rooflights, TP(b) rooflights and TP(b) lighting diffusers",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "17104cfa842f88e13616fc8450c569a14dd7ea281f4eb81b7ae50ed3a32d49b6",
+ "image_sig": {
+  "w": 756,
+  "h": 637,
+  "grey": "7/D7+/v7+/v7+/v7+/v7+Pv/8uXj5Ojr6enl4+T0//v7/NfV9uTQ/PLQ2dnZ4//7+/bx//////31//////3/+/v14On47uT87P/////8//v79urt/fbt/PHr+P///P/7+/fl6vrx5/317t7V0Pj/+/v/4+j48Ob99eby/Pv8//v79vX19fX6///////////7+//h3evj2vr79f//////+/v/7+r68Of99ent7f////v7/+7r8/Ty9/vm7+/2///7+//26evr6Of6/fbu8v//+/v/9+Pv9fPx/P////////vIurStrLi7vLu7u728urrEgFtZaGZmWldaWVpYXFlQcg=="
+ },
+ "reviewed": false,
+ "description": "This is a plan‑view layout diagram headed \"See para 6.17\" in the top left. Dashed lines enclose \"Separated groups of rooflights or diffusers\", each containing double‑bordered shapes representing a \"Rooflight or diffuser\" (shown in a small legend as a square and thin rectangles). The top‑left group is a dashed square dimensioned \"5m maximum dimension of group\" both across and down, holding six small double‑bordered rectangles in two columns of three. A \"3m min.\" gap separates it from the top‑right group, dimensioned \"5m max.\" vertically and \"5m maximum dimension of group\" horizontally, holding one long double‑bordered rectangle and one double‑bordered square, beside the note \"5m² is maximum area of diffuser and rooflight in any one 5m ×5m group\". A \"3m min.\" gap below the left group leads to a lower group, \"5m maximum dimension of group\" wide, with two double‑bordered rectangles. Notes read: 1. Upper and lower surfaces of suspended ceiling, between plastic panels, to comply with paragraph 6.1. 2. No restriction on class D-s3, d2 diffusers or rooflights in small rooms. 3. See note 4 to Table 6.2. A green footer repeats the title \"Diagram 6.2 Layout restrictions on class D-s3, d2 plastic rooflights, TP(b) rooflights and TP(b) lighting diffusers\".",
+ "first_draft": "This is a plan‑view layout diagram headed \"See para 6.17\" in the top left. Dashed rectangles enclose \"Separated groups of rooflights or diffusers\", each containing solid shapes representing a \"Rooflight or diffuser\" (shown in a small legend as a square and a thin bar). The top‑left group is a dashed square dimensioned \"5m maximum dimension of group\" both across and down, holding six small rectangles in two columns of three. A \"3m min.\" gap separates it from the top‑right group, dimensioned \"5m max.\" vertically and \"5m maximum dimension of group\" horizontally, holding one long bar and one square, beside the note \"5m² is maximum area of diffuser and rooflight in any one 5m ×5m group\". A \"3m min.\" gap below the left group leads to a lower group, \"5m maximum dimension of group\" wide, with two rectangles. Notes read: 1. Upper and lower surfaces of suspended ceiling, between plastic panels, to comply with paragraph 6.1. 2. No restriction on class D-s3, d2 diffusers or rooflights in small rooms. 3. See note 4 to Table 6.2. A green footer repeats the title \"Diagram 6.2 Layout restrictions on class D-s3, d2 plastic rooflights, TP(b) rooflights and TP(b) lighting diffusers\"."
+}

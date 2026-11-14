@@ -1,0 +1,17 @@
+{
+ "key": "ADB2_Table-5.1_p62",
+ "source": "ADB2",
+ "label": "Table 5.1",
+ "page": 62,
+ "caption": "Table 5.1 Provisions for escape lighting",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "168957ffed57f9b7294c3a008dc9a566f99176dd47b59557f6d84fc022afab65",
+ "image_sig": {
+  "w": 754,
+  "h": 692,
+  "grey": "x7q2trixuM3Nzc3Nzc3N1O3p8fPz8fbn6ejr8vLw8fjo5u/t7vT56ezs7Ozt+Pn4+Pv//////Onq+//+////+/v///////3l5+bm5fLz/Pvw8O/v7vv34OLl4+fv+/v4+////////Onq/P//////+/v///////3l5+bm5fLy/Pv7///////55OTm5Ojx8PP3+////////9vf6O3t9PTz9/v////////p6Obs7/v///vx7e7z+/v67Ov0+Pr7+/r49/n5+/v7+d/g3eHf3t/m9/b19P////rk5uLm8fHy9vv5+/v7+/v35ejn7/Ly8vf44ufu7vH7+/v7+/v7+/v7+A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

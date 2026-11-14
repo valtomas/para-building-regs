@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-17.2_p132",
+ "source": "ADB2",
+ "label": "Diagram 17.2",
+ "page": 132,
+ "caption": "Diagram 17.2 Provision of firefighting shafts | Location of firefighting shafts",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "2a0a26fbc29b58ebf746e9f71b94b4859861b779dfe281aed65f990e90807413",
+ "image_sig": {
+  "w": 756,
+  "h": 709,
+  "grey": "8PL7+/fn6OXo5+b7+/v7+Pv58P766+jq3e348vj///v79NXq+dXy/tTv/9fl///7+/LZ8PfY5v7U5v/Z5///+/vtwvT68v7+2+Dy//////v73Kf7+PX1+tDQ4//////7+9ym+/P///TO9Pf/////+/TSpvvz///orv/29fX1/Pvu0Kn78NH9567/9tH///b72aLW45ik8p3W5qWi9van39CHh4eBnPqOh4eFk87OjtjQh4eHhaX6joeHh3F4h4fY7dTR2NLS18vR2NjV2NjY8Pv05+vu4fj04uTr8fv///v78+X27+z89OHj7/P////7nYF+gYCDg3p3d3d3d3d3kA=="
+ },
+ "reviewed": false,
+ "description": "Diagram 17.2, 'Provision of firefighting shafts', 'See para 17.2', titled 'Buildings in which firefighting shafts should be provided, showing which storeys need to be served', is a set of four building sections (a–d) rising above and sinking below a grey ground line, each containing a green vertical band. a. 'Any building': 'The upper storeys in any building with a storey more than 18m above fire service vehicle access level'; left dimension '> 18m' from the 'Fire service vehicle access level' line. b. 'Any building': 'The basement storeys in any building with a basement more than 10m below fire service vehicle access level'; basement dimension '> 10m'. c. 'Shop and commercial', 'assembly and recreation' and 'industrial' buildings (purpose groups 4, 5 and 6)': 'The upper storeys in purpose groups 4, 5 and 6 buildings with a storey of 900m² or more which is more than 7.5m above fire service vehicle access level'; dimension '> 7.5m'. d. 'Any building': 'The basement storeys in any building with two or more basements each exceeding 900m²'; text below: 'Two or more basement storeys each exceeding 900m²'. Legend: diagonal-lined box 'Extent of firefighting stair'; narrow box with square 'Extent of firefighting lift'. NOTES: 1. Height excludes any top storey(s) consisting exclusively of plant rooms. 2. Firefighting shafts should serve all floors through which they pass.",
+ "first_draft": "Diagram 17.2, 'Provision of firefighting shafts', 'See para 17.2', is a set of four building sections (a–d) rising above and sinking below a grey ground line, each containing a green vertical band. a. 'Any building': 'The upper storeys in any building with a storey more than 18m above fire service vehicle access level'; left dimension '> 18m' from the 'Fire service vehicle access level' line. b. 'Any building': 'The basement storeys in any building with a basement more than 10m below fire service vehicle access level'; basement dimension '> 10m'. c. ''Shop and commercial', 'assembly and recreation' and 'industrial' buildings (purpose groups 4, 5 and 6)': 'The upper storeys in purpose groups 4, 5 and 6 buildings with a storey of 900m² or more which is more than 7.5m above fire service vehicle access level'; dimension '> 7.5m'. d. 'Any building': 'The basement storeys in any building with two or more basements each exceeding 900m²'; text below: 'Two or more basement storeys each exceeding 900m²'. Legend: diagonal-lined box 'Extent of firefighting stair'; narrow box with square 'Extent of firefighting lift'. NOTES: 1. Height excludes any top storey(s) consisting exclusively of plant rooms. 2. Firefighting shafts should serve all floors through which they pass."
+}

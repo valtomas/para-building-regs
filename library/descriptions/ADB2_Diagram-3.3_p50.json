@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-3.3_p50",
+ "source": "ADB2",
+ "label": "Diagram 3.3",
+ "page": 50,
+ "caption": "Diagram 3.3 | External protection to protected stairways External escape stairs",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "2458fff85e31b7a2495a96e2f4552d569bddd52d4ff8f2ee28e07c36e21ed266",
+ "image_sig": {
+  "w": 754,
+  "h": 400,
+  "grey": "8vD4+Pj4+Pj4+Pj4+Pj49vH0/vHz8/T5//////////v7//7m7Orq9f/////////7+/rw9f//+/D1////////+/v7//b///v/9v////////v79ebb7v315un///ju8PP7+/v+6Onx+/71///c39zg9vv029ro/PHO4Pf/7dHP5fv79u/d4vry2OLu//nx8/L4+/bj3tfp89Xc3/r59vL0+Pv48/Pv8fTz8fHz//////v7+/7n7fv39ub19f/////7+/v38vf1+ffy9/f/////+/v//tnp///02PH///////vGurq6urq6urq6urq6urrChGNaYWNgYWBjVE9PT09Pbg=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a section titled \"Configurations of stairs and external wall\", with \"See para 3.29\" at the top left. A legend on the right shows three symbols: a dark green square for \"Fire resisting construction of adjacent building enclosure\", a light green square for \"Fire resisting construction of protected stairway\", and a white square for \"Non-fire resisting construction\". Two side-by-side sections are labelled \"Configuration A\" and \"Configuration B\". Each shows an upper \"Accommodation\" block, a hatched \"Stair\" flight bounded by light green stairway walls, and a lower \"Accommodation\" block, with zig-zag break lines at the edges. In Configuration A a dark green vertical wall stands at the outer edge of the stair, rising into the upper accommodation; in Configuration B the dark green construction appears only as a short horizontal segment at floor level beside the stair. Both configurations carry a vertical dimension \"1800mm min.\" on the upper accommodation and a horizontal dimension \"1800mm min.\" on the stair. A green banner at the bottom reads \"Diagram 3.3 External protection to protected stairways\".",
+ "first_draft": "The drawing is a section titled \"Configurations of stairs and external wall\", with \"See para 3.29\" at the top left. A legend on the right shows three symbols: a dark green square for \"Fire resisting construction of adjacent building enclosure\", a light green square for \"Fire resisting construction of protected stairway\", and a white square for \"Non-fire resisting construction\". Two side-by-side sections are labelled \"Configuration A\" and \"Configuration B\". Each shows an upper \"Accommodation\" block, a hatched \"Stair\" flight bounded by light green stairway walls, and a lower \"Accommodation\" block, with zig-zag break lines at the edges. In Configuration A a dark green vertical wall stands at the outer edge of the stair, rising into the upper accommodation; in Configuration B the dark green construction appears only as a short horizontal segment at floor level beside the stair. Both configurations carry a vertical dimension \"1800mm min.\" on the upper accommodation and a horizontal dimension \"1800mm min.\" on the stair. A green banner at the bottom reads \"Diagram 3.3 External protection to protected stairways\"."
+}

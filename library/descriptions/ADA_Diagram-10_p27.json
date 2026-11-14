@@ -1,0 +1,18 @@
+{
+ "key": "ADA_Diagram-10_p27",
+ "source": "ADA",
+ "label": "Diagram 10",
+ "page": 27,
+ "caption": "Diagram 10 \u0007 Maximum span of floors",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "c58a6a982985f414ab0b95320333d7e3b9201192bc9a7a2b0536671d11fe2685",
+ "image_sig": {
+  "w": 371,
+  "h": 402,
+  "grey": "3LGwvLilpaiqrKawq6zB3ubg3OTq6urq6ujq6urq6urq9O32+/////33+fz////16+XS5ej////y59zr////9evl0vT/////8ufp//////Xr5dH0//////Lm6f/////16+XQ797n+P/y19z22uz59evl1fT29vj/8uie9fb2+fXr5dLy/P////Ln6fr////16+XO28vK0f/y4tnNy8n19evl0e/y9Pb/8ubm8vX2/fXr7Nvn9f////Hd5vH////16/Dk4Pr////04+D0////9ev02b/GvdP/9OS+ycDo//Xr//nz8ff2///p0MnK///15e3t7e3t7e3t7e3t7e3t6Q=="
+ },
+ "reviewed": false,
+ "description": "The drawing is titled \"Diagram 10 Maximum span of floors\", with the note \"See para 2C23\" at the top left. It has two parts. Part a., captioned \"Floor member bearing on wall\", shows a group of vertical lines on the left labelled \"Wall\", with a vertical dashed line at the right-hand side labelled \"Centre line of bearing\". Two horizontal lines to the right are labelled \"Floor\", and a vertical dimension line between them reads \"Floor span maximum 6m\". Part b., captioned \"Floor member bearing on joist hanger\", shows a single vertical line labelled \"Wall\" with the same \"Centre line of bearing\" line to its right; a small solid black triangle sits at the junction of this dashed line and the upper horizontal line. The horizontal lines are labelled \"Floor\" and the vertical dimension line reads \"Floor span maximum 6m\". In part a. the floor lines meet the centre line of bearing directly, while in part b. they meet it at the triangular symbol.",
+ "first_draft": "The drawing is titled \"Diagram 10 Maximum span of floors\", with the note \"See para 2C23\" at the top left. It has two parts. Part a., captioned \"Floor member bearing on wall\", shows a group of vertical lines on the left labelled \"Wall\", through which runs a vertical dashed line labelled \"Centre line of bearing\". Two horizontal lines to the right are labelled \"Floor\", and a vertical dimension line between them reads \"Floor span maximum 6m\". Part b., captioned \"Floor member bearing on joist hanger\", shows a single vertical line labelled \"Wall\" with the same \"Centre line of bearing\" line; a small solid black triangle sits at the junction of the wall line and the upper horizontal line. The horizontal lines are labelled \"Floor\" and the vertical dimension line reads \"Floor span maximum 6m\". In part a. the floor lines end against the wall lines, while in part b. they meet the wall line at the triangular symbol."
+}

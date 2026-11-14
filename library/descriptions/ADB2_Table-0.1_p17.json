@@ -1,0 +1,17 @@
+{
+ "key": "ADB2_Table-0.1_p17",
+ "source": "ADB2",
+ "label": "Table 0.1",
+ "page": 17,
+ "caption": "Table 0.1 Classification of purpose groups | Volume 1 purpose groups",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "27a55b24a73e37077fdbac8d757d13e1f41efda3e7e8b7a4affc4d7973024fb8",
+ "image_sig": {
+  "w": 738,
+  "h": 482,
+  "grey": "v6mnoqmkprbIyMjIyMjIyOTg3+Hw8PDw8PDw8PDw8PDw9vHx9fHx8fHy8fLx8PL07e718vL09vX09Pb19PX19urm9fX08PPy8vHz8fPy8vT7//j37Njb39zd4fDu7+/z+//49/Xm7e3u7unv7u3u8fb4+fn16Obo9vn5+fn5+fns5uXj+/n5+fn5+fn5+fn54trz/Ozc29vb3tbh7evu+fv////67Ozr8O3r7u3u+P/7/////Nvd3+7v7O3t7u/6+//////u7Ovu7O3s/f/+//v////54t/e6vb////////u7Pb38+fm6efr7Ovt7e355+72+O7f3+Pg4vX09PT0+Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

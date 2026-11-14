@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-4.2_p59",
+ "source": "ADB1",
+ "label": "Diagram 4.2",
+ "page": 59,
+ "caption": "Diagram 4.2 Layout restrictions on class D-s3, d2 plastic rooflights, TP(b) rooflights and TP(b) lighting diffusers",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "fbce061eb18aabd8154c0327b5cc1e0f5e9bb433f15ce89ff12e81d5e5b6f22c",
+ "image_sig": {
+  "w": 737,
+  "h": 661,
+  "grey": "8O77+/v7+/v7+/v7+/v7+/v/+e/t7fDx8+/u7O3y///7/trc7Onc7fXY3Nzc2f//+/vp+f79+fv49/n5+ff///v63e3z8e3y8Pz////8///7++Xs+/js+PTr8///+///+/zj7vb07vT46ejX1Ob///v/5en08ur2+Oft+/v6///7+/Dy8fH0/v//////////+//j5e/t5PD/7/////////v/8ev39ez2/+H35P7////7//Ln8vHv8v/k7e3x////+//24uPl4N/y//vw8f7///v/+Obu/P/////////////RxsbExMXHyMfGyMnHx8nHhGBfbGxiX1xgXmFeX2FeWQ=="
+ },
+ "reviewed": false,
+ "description": "This drawing is a plan showing the layout restrictions on class D-s3, d2 plastic rooflights, TP(b) rooflights and TP(b) lighting diffusers. In the top left corner, \"See Table 4.2\" is printed. On the left, a dashed square boundary encloses six solid-outlined rectangles arranged in three rows and two columns, and below it a smaller dashed rectangle boundary encloses two solid-outlined rectangles side by side. On the right, a dashed square contains a long solid-outlined rectangle at the top and a solid-outlined square at the bottom left, with text to the right of the square.\n\nDimensions and labels indicate the boundaries are a \"5m maximum dimension of group\". At the top, between the left and right sections, a horizontal distance of \"3m min.\" is marked, and on the left a vertical distance of \"3m min.\" is marked between the upper and lower left boundaries. A \"5m max.\" dimension is shown vertically on the right. Text on the right states, \"5m² is maximum area of diffuser and rooflight in any one 5m×5m group\".\n\nA legend on the bottom right identifies the solid-outlined shapes as \"Rooflight or diffuser\" and the dashed boundary as \"Separated groups of rooflights or diffusers\". Below the plan, notes state: \"1. Upper and lower surfaces of suspended ceiling, between plastic panels, to comply with paragraph 4.1.\", \"2. No restriction on class D-s3, d2 diffusers or rooflights in small rooms.\", and \"3. See note 4 to Table 4.2.\"",
+ "first_draft": "This drawing is a plan showing the layout restrictions on class D-s3, d2 plastic rooflights, TP(b) rooflights and TP(b) lighting diffusers. On the left, a 3m x 2m grid of six solid-outlined rectangles is enclosed within a dashed square boundary, alongside a smaller 2m x 1m grid of two solid-outlined rectangles below it. On the right, a dashed square contains a solid-outlined rectangle at the top and a square below it.\n\nDimensions and labels indicate the boundaries are a \"5m maximum dimension of group\". Between the left and right sections, a horizontal distance of \"3m min.\" is marked, and a vertical distance of \"3m min.\" is marked on the left. A \"5m max.\" dimension is shown vertically on the right. Text on the right states, \"5m2 is maximum area of diffuser and rooflight in any one 5m x 5m group\".\n\nA legend on the bottom right identifies the solid-outlined shapes as \"Rooflight or diffuser\" and the dashed boundary as \"Separated groups of rooflights or diffusers\". Below the plan, notes state: \"1. Upper and lower surfaces of suspended ceiling, between plastic panels, to comply with paragraph 4.1.\", \"2. No restriction on class D-s3, d2 diffusers or rooflights in small rooms.\", and \"3. See note 4 to Table 4.2.\""
+}

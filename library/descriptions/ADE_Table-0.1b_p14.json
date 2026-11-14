@@ -1,0 +1,17 @@
+{
+ "key": "ADE_Table-0.1b_p14",
+ "source": "ADE",
+ "label": "Table 0.1b",
+ "page": 14,
+ "caption": "Table 0.1b \u0007\u0007Rooms for residential purposes – performance standards for separating walls, separating floors, and stairs that have a separating function",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "09c2a92996d309111eee931330c5f348e085c4e5bd5c1aeedfc37ed10f1785f0",
+ "image_sig": {
+  "w": 755,
+  "h": 273,
+  "grey": "wLy4truyurrDtLyyt7q1yNLOwL+/tLmyv769tLy9s8zr6bCom6SrpaaisZ2gn8ns3dnZ2dnZ0czMzdnZzNjZ3v////////DBtNj/8rnm////////////28L8//jL7v///////////8jO7//dz9b//9vX1tXW3PHx8fHx8fHx8fPh29vb2Nzw8PDw8PDw8PDy4//////////z/////v///+Pb9///////8/////H////OysPE6vDw8PDw8PDw8PDy08fDwuj//////////////+7w8PDw8PDw7vDw8PDw8PLV6/r//////+7////2////5+Dt8PDw8PDr8PDw6/Dw8g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}
