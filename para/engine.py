@@ -17,7 +17,7 @@ import urllib.error
 import urllib.request
 import zipfile
 
-from . import paths
+from . import VERSION, newer, paths
 from .llm import Client, EngineError
 
 CATALOG_PATH = os.path.join(paths.CODE_DIR, "models.json")
@@ -318,6 +318,10 @@ def _json(url):
         return json.load(r)
 
 
+class _LoadFailed(EngineError):
+    """The engine process ran but never served the model (it exited, or didn't become healthy)."""
+
+
 IDLE_MINUTES = 10  # the built-in engine gives its memory back after this long without a question
 
 
@@ -392,12 +396,59 @@ class Bundled:
     def models_dir(self):
         return os.path.join(paths.app_dir(), "models")
 
-    def server_path(self):
+    # engine/current.json: {"tag": the build in use, "previous": the one it replaced and is kept until the new one
+    # has started, "proven": whether the build in use has started a model, "failed": tags that wouldn't work on this
+    # computer, "gpu": which kind of build, "fell_back": the tag an update went back from}. Installs made before it
+    # have none: the first llama-server found under engine/ is theirs.
+    @property
+    def state_path(self):
+        return os.path.join(self.engine_dir, "current.json")
+
+    def _state(self):
+        try:
+            with open(self.state_path, encoding="utf-8") as f:
+                data = json.load(f)
+            return data if isinstance(data, dict) else {}
+        except (OSError, ValueError):
+            return {}
+
+    def _save_state(self, state):
+        os.makedirs(self.engine_dir, exist_ok=True)
+        tmp = self.state_path + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(state, f, indent=1)
+        os.replace(tmp, self.state_path)
+
+    def _binary_in(self, folder):
         name = "llama-server.exe" if os.name == "nt" else "llama-server"
-        for root, _dirs, files in os.walk(self.engine_dir):
+        for root, _dirs, files in os.walk(folder):
             if name in files:
                 return os.path.join(root, name)
         return None
+
+    def _tag_dir(self, tag):
+        """The folder of a build, or None for a tag that isn't a plain folder name."""
+        return os.path.join(self.engine_dir, tag) if tag and os.path.basename(tag) == tag and tag not in (".", "..") \
+            else None
+
+    def server_path(self):
+        """llama-server of the build in use: the tag in current.json, else (an install made before that file)
+        the first one found."""
+        folder = self._tag_dir(self._state().get("tag"))
+        found = self._binary_in(folder) if folder and os.path.isdir(folder) else None
+        return found or self._binary_in(self.engine_dir)
+
+    def installed_tag(self):
+        """The tag of the build in use: from current.json, else the folder llama-server is found in, else None."""
+        tag = self._state().get("tag")
+        folder = self._tag_dir(tag)
+        if folder and os.path.isdir(folder) and self._binary_in(folder):
+            return tag
+        found = self._binary_in(self.engine_dir)
+        if not found:
+            return None
+        rel = os.path.relpath(found, self.engine_dir)
+        return rel.split(os.sep)[0] if os.sep in rel else None
 
     def model_path(self, model):
         return os.path.join(self.models_dir, model["file"])
@@ -411,7 +462,8 @@ class Bundled:
                 "running": running, "model": self.model_id if running else None,
                 "jobs": {k: j.view() for k, j in self.jobs.items()},
                 "ram_gb": round(total_ram_gb(), 1), "free_gb": round(free_disk_gb(paths.app_dir()), 1),
-                "platform": platform_key()}
+                "platform": platform_key(), "engine_tag": self.installed_tag(),
+                "engine_fell_back": self._state().get("fell_back")}
 
     # ----- installing -----
     def install(self, model_id, gpu=True):
@@ -419,12 +471,15 @@ class Bundled:
         model = next((m for m in catalog()["models"] if m["id"] == model_id), None)
         if not model:
             raise EngineError("Unknown model")
-        if "install" in self.jobs and self.jobs["install"].state == "running":
+        if self._downloading():
             raise EngineError("A download is already running")
         job = Job("install", model["name"])
         self.jobs["install"] = job
         threading.Thread(target=self._install, args=(job, model, gpu), daemon=True).start()
         return job.view()
+
+    def _downloading(self):
+        return any(j.state == "running" for j in self.jobs.values())
 
     def cancel(self):
         for j in self.jobs.values():
@@ -449,6 +504,14 @@ class Bundled:
             job.state, job.error = "error", str(e) or e.__class__.__name__
 
     def _install_server(self, job, gpu):
+        """The first install of the engine: the pinned build, with nothing to go back to."""
+        tag = self._fetch_build(job, gpu)
+        state = self._state()
+        self._save_state({"tag": tag, "proven": True, "failed": state.get("failed", []), "gpu": gpu})
+
+    def _fetch_build(self, job, gpu, verify=False):
+        """Downloads the pinned build into engine/<tag>/, next to any other build, and returns the tag. With verify
+        the binary must also run (--version). A build that fails is removed again; nothing else is touched."""
         info = catalog().get("llama_cpp") or {}
         repo, tag = info.get("repo", "ggml-org/llama.cpp"), info.get("tag", "latest")
         pattern = (info.get("assets") or {}).get(platform_key(gpu))
@@ -458,27 +521,125 @@ class Bundled:
                               f"{rel.get('tag_name')}. Use an engine you install yourself instead.")
         os.makedirs(self.engine_dir, exist_ok=True)
         archive = os.path.join(self.engine_dir, asset["name"])
-        digest = (asset.get("digest") or "").removeprefix("sha256:") or None
-        _download(asset["browser_download_url"], archive, job, expect_size=asset.get("size"), sha256=digest)
         target = os.path.join(self.engine_dir, rel.get("tag_name", "llama.cpp"))
-        if archive.endswith(".zip"):
-            with zipfile.ZipFile(archive) as z:
-                z.extractall(target)
-        else:
-            with tarfile.open(archive) as t:
-                t.extractall(target, filter="data") if hasattr(tarfile, "data_filter") else t.extractall(target)
-        os.remove(archive)
-        server = self.server_path()
-        if not server:
-            raise EngineError("The llama.cpp download had no llama-server in it.")
-        if os.name != "nt":
-            for root, _d, files in os.walk(target):
-                for f in files:
-                    p = os.path.join(root, f)
-                    if f.startswith("llama-") or f.endswith((".dylib", ".so")) or ".so." in f:
-                        os.chmod(p, 0o755)
-            if sys.platform == "darwin":
-                subprocess.run(["xattr", "-dr", "com.apple.quarantine", target], capture_output=True)
+        if os.path.basename(target) == self.installed_tag():
+            raise EngineError("That build of the AI engine is already installed.")
+        digest = (asset.get("digest") or "").removeprefix("sha256:") or None
+        try:
+            _download(asset["browser_download_url"], archive, job, expect_size=asset.get("size"), sha256=digest)
+            shutil.rmtree(target, ignore_errors=True)  # what an earlier attempt left of this build
+            if archive.endswith(".zip"):
+                with zipfile.ZipFile(archive) as z:
+                    z.extractall(target)
+            else:
+                with tarfile.open(archive) as t:
+                    t.extractall(target, filter="data") if hasattr(tarfile, "data_filter") else t.extractall(target)
+            os.remove(archive)
+            server = self._binary_in(target)
+            if not server:
+                raise EngineError("The llama.cpp download had no llama-server in it.")
+            if os.name != "nt":
+                for root, _d, files in os.walk(target):
+                    for f in files:
+                        p = os.path.join(root, f)
+                        if f.startswith("llama-") or f.endswith((".dylib", ".so")) or ".so." in f:
+                            os.chmod(p, 0o755)
+                if sys.platform == "darwin":
+                    subprocess.run(["xattr", "-dr", "com.apple.quarantine", target], capture_output=True)
+            if verify:
+                self._check_runs(server)
+        except BaseException:  # a half-built folder would be found by the walk: take it away, then say why
+            shutil.rmtree(target, ignore_errors=True)
+            if os.path.exists(archive) and not os.path.exists(archive + ".part"):
+                os.remove(archive)
+            raise
+        return os.path.basename(target)
+
+    def _check_runs(self, server):
+        """The binary starts and says its version, with a time limit: a build that can't run here (a missing
+        library, the wrong kind of processor) shows up now and not at someone's next question."""
+        flags = 0x08000000 if os.name == "nt" else 0
+        try:
+            with open(self.log_path, "ab") as log:
+                done = subprocess.run([server, "--version"], stdout=log, stderr=log, stdin=subprocess.DEVNULL,
+                                      timeout=60, cwd=os.path.dirname(server), creationflags=flags)
+        except (OSError, subprocess.TimeoutExpired) as e:
+            raise EngineError(f"The new AI engine won't run on this computer ({e.__class__.__name__}). "
+                              f"The earlier one is still in use. See {self.log_path}.") from e
+        if done.returncode != 0:
+            raise EngineError("The new AI engine won't run on this computer, so the earlier one is still in use. "
+                              f"See {self.log_path}.")
+
+    # ----- updating -----
+    def update_wanted(self):
+        """The pinned tag if installing it would be an update of this computer's engine, else None."""
+        info = catalog().get("llama_cpp") or {}
+        tag = info.get("tag")
+        if not tag or tag == "latest" or not self.server_path():
+            return None
+        if tag == self.installed_tag() or tag in self._state().get("failed", []):
+            return None
+        if info.get("min_app") and newer(info["min_app"], VERSION):  # the pin is for a later app than this one
+            return None
+        return tag
+
+    def engine_update(self):
+        """What an update check reports: {"tag", "size"} when the catalogue pins another build of llama.cpp than the
+        one installed, else None. The size is None where the release can't be reached."""
+        tag = self.update_wanted()
+        if not tag:
+            return None
+        info = catalog().get("llama_cpp") or {}
+        gpu = self._state().get("gpu", True)
+        size = None
+        try:
+            _rel, asset = _find_release(info.get("repo", "ggml-org/llama.cpp"), tag,
+                                        (info.get("assets") or {}).get(platform_key(gpu)))
+            size = asset.get("size") if asset else None
+        except Exception:  # noqa: BLE001 - a network call at the edge: the offer can be made without a size
+            pass
+        return {"tag": tag, "size": size}
+
+    def update_engine(self, gpu=None):
+        """Installs the pinned build beside the one in use, in the background. It is used from the next start; the
+        earlier build is kept until the new one has started a model (see start)."""
+        if self._downloading():
+            raise EngineError("A download is already running")
+        if not self.update_wanted():
+            raise EngineError("There is no AI engine update to install.")
+        job = Job("engine", "AI engine (llama.cpp)")
+        self.jobs["engine"] = job
+        threading.Thread(target=self._update, args=(job, self._state().get("gpu", True) if gpu is None else gpu),
+                         daemon=True).start()
+        return job.view()
+
+    def _update(self, job, gpu):
+        target = None
+        try:
+            old = self.installed_tag()
+            tag = self._fetch_build(job, gpu, verify=True)
+            target = self._tag_dir(tag)
+            job.label, job.done, job.total = "Switching to the new AI engine", 0, 0
+            deadline = time.time() + 600
+            while True:
+                with self.lock:  # waits for a model that is loading
+                    running = self.proc is not None and self.proc.poll() is None
+                    if not running or time.time() - self.last_used > 15:  # never in the middle of an answer
+                        self.stop()
+                        state = self._state()
+                        self._save_state({"tag": tag, "previous": old, "proven": False, "gpu": gpu,
+                                          "failed": state.get("failed", [])})
+                        break
+                if job.cancel.is_set() or time.time() > deadline:
+                    raise EngineError("Cancelled" if job.cancel.is_set() else
+                                      "The AI engine was busy answering, so the update wasn't installed. Try again.")
+                time.sleep(1)
+            job.note = "Installed. It will be used from the next question."
+            job.state = "done"
+        except Exception as e:  # noqa: BLE001 - a background thread: report it on the page
+            if target and self.installed_tag() != os.path.basename(target):
+                shutil.rmtree(target, ignore_errors=True)
+            job.state, job.error = "error", str(e) or e.__class__.__name__
 
     def remove_model(self, model_id):
         model = next((m for m in catalog()["models"] if m["id"] == model_id), None)
@@ -512,44 +673,92 @@ class Bundled:
                 raise EngineError(f"Not enough free memory to start {model['name']}: it needs about {need:.0f} GB "
                                   f"and {ram + vram:.0f} GB is free. Close other AI apps (another engine may be "
                                   "holding a model in memory), or choose a smaller model in Settings.")
-            with socket.socket() as s:
-                s.bind(("127.0.0.1", 0))
-                self.port = s.getsockname()[1]
             ctx = min(int(context or 32768), int(model.get("context") or 32768))
-            cmd = [server, "-m", self.model_path(model), "--host", "127.0.0.1", "--port", str(self.port),
-                   "--jinja", "-c", str(ctx), "--alias", model["id"]]
-            cmd += model.get("args", [])
-            flags = 0x08000000 if os.name == "nt" else 0  # CREATE_NO_WINDOW
-            _trim_log(self.log_path)
-            with open(self.log_path, "ab") as log:  # the engine keeps its own handle; ours isn't needed after
-                self.proc = subprocess.Popen(cmd, stdout=log, stderr=log, stdin=subprocess.DEVNULL,
-                                             cwd=os.path.dirname(server), creationflags=flags)
-            self.guard = guard(self.proc)
-            self.model_id = model_id
             try:
-                with open(self.pid_path, "w") as f:
-                    f.write(f"{self.proc.pid} {server}\n")
-            except OSError:
+                url = self._launch(server, model, ctx)
+            except EngineError as e:
+                if not isinstance(e, _LoadFailed) or not self._can_fall_back():
+                    raise
+                url = self._fall_back(model, ctx, e)
+            self._prove()
+            return url
+
+    def _launch(self, server, model, ctx):
+        """Starts llama-server on a free port and waits until it has loaded the model."""
+        with socket.socket() as s:
+            s.bind(("127.0.0.1", 0))
+            self.port = s.getsockname()[1]
+        cmd = [server, "-m", self.model_path(model), "--host", "127.0.0.1", "--port", str(self.port),
+               "--jinja", "-c", str(ctx), "--alias", model["id"]]
+        cmd += model.get("args", [])
+        flags = 0x08000000 if os.name == "nt" else 0  # CREATE_NO_WINDOW
+        _trim_log(self.log_path)
+        with open(self.log_path, "ab") as log:  # the engine keeps its own handle; ours isn't needed after
+            self.proc = subprocess.Popen(cmd, stdout=log, stderr=log, stdin=subprocess.DEVNULL,
+                                         cwd=os.path.dirname(server), creationflags=flags)
+        self.guard = guard(self.proc)
+        self.model_id = model["id"]
+        try:
+            with open(self.pid_path, "w") as f:
+                f.write(f"{self.proc.pid} {server}\n")
+        except OSError:
+            pass
+        if self.watcher is None:
+            self.watcher = threading.Thread(target=self._watch_idle, daemon=True)
+            self.watcher.start()
+        deadline = time.time() + 600
+        while time.time() < deadline:
+            if self.proc.poll() is not None:
+                self.stop()  # nothing left to stop, but its guard and pid file go
+                raise _LoadFailed(f"The built-in engine stopped while loading the model. See {self.log_path}.")
+            try:
+                with urllib.request.urlopen(f"http://127.0.0.1:{self.port}/health", timeout=2) as r:
+                    if r.status == 200:
+                        return self.base_url
+            except Exception:  # noqa: BLE001 - 503 while loading
                 pass
-            if self.watcher is None:
-                self.watcher = threading.Thread(target=self._watch_idle, daemon=True)
-                self.watcher.start()
-            deadline = time.time() + 600
-            while time.time() < deadline:
-                if self.proc.poll() is not None:
-                    self.stop()  # nothing left to stop, but its guard and pid file go
-                    raise EngineError(f"The built-in engine stopped while loading the model. See {self.log_path}.")
-                try:
-                    with urllib.request.urlopen(f"http://127.0.0.1:{self.port}/health", timeout=2) as r:
-                        if r.status == 200:
-                            return self.base_url
-                except Exception:  # noqa: BLE001 - 503 while loading
-                    pass
-                time.sleep(0.5)
-            # stop it, or the next question would find it "running" and get "Loading model" from it for ever
-            self.stop()
-            raise EngineError("The built-in engine took too long to load the model. This usually means the "
-                              "computer is short of memory: close other AI apps and try again.")
+            time.sleep(0.5)
+        # stop it, or the next question would find it "running" and get "Loading model" from it for ever
+        self.stop()
+        raise _LoadFailed("The built-in engine took too long to load the model. This usually means the "
+                          "computer is short of memory: close other AI apps and try again.")
+
+    # ----- after an update -----
+    def _can_fall_back(self):
+        """Only the first start on a build that replaced another: a model that doesn't fit fails on any build, so
+        a build that has already started once is not blamed."""
+        state = self._state()
+        prev = self._tag_dir(state.get("previous"))
+        return bool(state.get("previous") and not state.get("proven", True) and prev and self._binary_in(prev))
+
+    def _fall_back(self, model, ctx, failure):
+        """The new build wouldn't load the model: start the earlier one instead, so the question is still answered.
+        Only if that works is the new build blamed: it is then forgotten (so it isn't offered again) and removed. If
+        the earlier build fails too, the model is the problem, and nothing is changed."""
+        state = self._state()
+        failed, back = state["tag"], state["previous"]
+        try:
+            url = self._launch(self._binary_in(self._tag_dir(back)), model, ctx)
+        except EngineError:
+            raise failure from None
+        self._save_state({"tag": back, "proven": True, "gpu": state.get("gpu", True),
+                          "failed": sorted(set(state.get("failed", [])) | {failed}),
+                          "fell_back": {"tag": failed, "at": time.strftime("%Y-%m-%d %H:%M")}})
+        shutil.rmtree(self._tag_dir(failed), ignore_errors=True)
+        with open(self.log_path, "ab") as log:
+            log.write(f"\nThe AI engine update {failed} didn't start {model['id']}; went back to {back}.\n".encode())
+        return url
+
+    def _prove(self):
+        """The build in use has started a model: the one it replaced is no longer needed."""
+        state = self._state()
+        if state.get("proven", True) and not state.get("previous"):
+            return
+        prev = self._tag_dir(state.pop("previous", None))
+        state["proven"] = True
+        self._save_state(state)
+        if prev:
+            shutil.rmtree(prev, ignore_errors=True)
 
     @property
     def base_url(self):

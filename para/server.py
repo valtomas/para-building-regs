@@ -22,7 +22,7 @@ import urllib.request
 import uuid
 import webbrowser
 
-from . import VERSION, changes, paths, updater
+from . import VERSION, changes, newer, paths, updater
 from .anchors import reanchor
 from .core import BASE_PROMPT, chat_events, forget_lookups
 from .engine import Engine, Job, catalog, recommend, _download
@@ -180,12 +180,6 @@ def _gh(path):
         return json.load(r)
 
 
-def _newer(a, b):
-    def parts(v):
-        return [int(x) if x.isdigit() else 0 for x in str(v).lstrip("v").split(".")]
-    return parts(a) > parts(b)
-
-
 def check_updates():
     """Looks at the project's latest GitHub release: a newer app, a newer library, a newer model list."""
     try:
@@ -194,8 +188,8 @@ def check_updates():
         update_info.update(error=str(e), checked=time.time())
         return update_info
     assets = {a["name"]: a for a in rel.get("assets", [])}
-    info = {"checked": time.time(), "error": "", "app": None, "library": None}
-    if _newer(rel.get("tag_name", "0"), VERSION):
+    info = {"checked": time.time(), "error": "", "app": None, "library": None, "engine": None}
+    if newer(rel.get("tag_name", "0"), VERSION):
         info["app"] = {"version": rel["tag_name"].lstrip("v"), "url": rel.get("html_url"),
                        "notes": (rel.get("body") or "")[:2000], "update": updater.offer(assets)}
     if "library.json" in assets:
@@ -223,6 +217,10 @@ def check_updates():
                     json.dump(data, f, indent=1)
         except Exception:  # noqa: BLE001
             pass
+    try:  # after the model list is saved: its pin is the one to compare with. An external engine looks after itself.
+        info["engine"] = engine.bundled.engine_update()
+    except Exception:  # noqa: BLE001 - an update check never fails for want of this
+        pass
     update_info.clear()
     update_info.update(info)
     return info
@@ -332,6 +330,8 @@ def public_settings():
 
 def state():
     info = library.info()
+    if update_info.get("engine") and not engine.bundled.update_wanted():  # installed since the check
+        update_info["engine"] = None
     return {"version": VERSION, "settings": public_settings(), "default_instructions": BASE_PROMPT,
             "library": {k: info[k] for k in ("version", "built", "sources")},
             "library_changes": changes.load(info["version"]),
@@ -600,6 +600,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 return self._send(200, install_library_update())
             if path == "/api/updates/app":
                 return self._send(200, install_app_update())
+            if path == "/api/updates/engine":
+                return self._send(200, engine.bundled.update_engine())
             return self._send(404, {"error": "Not found"})
         except EngineError as e:
             return self._send(502, {"error": str(e)})

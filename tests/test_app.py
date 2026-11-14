@@ -417,6 +417,224 @@ check(len(fake_llm.SEEN) == before + 1, "and the next request is right first tim
 # the built-in engine is a build that was tested, not whichever is newest
 check(eng.catalog()["llama_cpp"]["tag"] != "latest", "the llama.cpp build is pinned")
 
+# updating the built-in engine: offered, never taken unasked; the old build stays until the new one has started
+if os.name != "nt":  # the stand-in llama-server is a script with a shebang
+    import io  # noqa: E402
+    import tarfile  # noqa: E402
+    import time  # noqa: E402
+    import shutil  # noqa: E402
+
+    bundled = server.engine.bundled
+    pin_model = eng.catalog()["models"][0]
+    shipped = eng.catalog()
+    SCRIPT = """#!{py}
+import sys
+MODE = "{mode}"
+if "--version" in sys.argv:
+    print("version: stand-in", MODE)
+    sys.exit(1 if MODE == "novers" else 0)
+if MODE == "dies":
+    sys.exit(1)
+import http.server
+sys.path.insert(0, {root!r})
+from tests import fake_llm
+
+
+class H(fake_llm.Handler):
+    def do_GET(self):
+        if self.path == "/health":
+            self.send_response(200)
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+        else:
+            super().do_GET()
+
+
+http.server.ThreadingHTTPServer(("127.0.0.1", int(sys.argv[sys.argv.index("--port") + 1])), H).serve_forever()
+"""
+
+    def script(mode):
+        return SCRIPT.format(py=sys.executable, mode=mode, root=ROOT)
+
+    def put_build(tag, mode):
+        """A build as the app unpacks one: engine/<tag>/build/bin/llama-server."""
+        path = os.path.join(bundled.engine_dir, tag, "build", "bin", "llama-server")
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w") as f:
+            f.write(script(mode))
+        os.chmod(path, 0o755)
+
+    def archive(mode):
+        raw = script(mode).encode()
+        buf = io.BytesIO()
+        with tarfile.open(fileobj=buf, mode="w:gz") as t:
+            info = tarfile.TarInfo("build/bin/llama-server")
+            info.size, info.mode = len(raw), 0o755
+            t.addfile(info, io.BytesIO(raw))
+        return buf.getvalue()
+
+    RELEASES = {}  # tag -> (how its llama-server behaves, whether its checksum is wrong)
+
+    class Releases(http.server.BaseHTTPRequestHandler):
+        def log_message(self, *a):
+            pass
+
+        def do_GET(self):
+            data = archive(RELEASES[self.path.strip("/")][0])
+            self.send_response(200)
+            self.send_header("Content-Length", str(len(data)))
+            self.end_headers()
+            self.wfile.write(data)
+
+    releases_srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), Releases)
+    threading.Thread(target=releases_srv.serve_forever, daemon=True).start()
+
+    def fake_find_release(repo, tag, pattern):
+        mode, bad = RELEASES[tag]
+        data = archive(mode)
+        return ({"tag_name": tag}, {"name": f"llama-{tag}-bin-ubuntu-x64.tar.gz", "size": len(data),
+                                    "browser_download_url": f"http://127.0.0.1:{releases_srv.server_address[1]}/{tag}",
+                                    "digest": "sha256:" + ("0" * 64 if bad else hashlib.sha256(data).hexdigest())})
+
+    def pin(tag, **extra):
+        """The model list an update check saved, pinning another build."""
+        with open(os.path.join(os.environ["PARA_APP_DIR"], "models.json"), "w") as f:
+            json.dump({**shipped, "llama_cpp": {**shipped["llama_cpp"], "tag": tag, **extra}}, f)
+
+    def check_engine_update():
+        return json.loads(call("/api/updates/check", {}))["engine"]
+
+    def update_job():
+        try:
+            call("/api/updates/engine", {})
+        except urllib.error.HTTPError as e:
+            return {"state": "refused", "error": json.load(e)["error"]}
+        for _ in range(300):
+            j = json.loads(call("/api/jobs"))["bundled"]["jobs"].get("engine")
+            if j and j["state"] != "running":
+                return j
+            time.sleep(0.1)
+        return {"state": "running"}
+
+    def builds():
+        return sorted(d for d in os.listdir(bundled.engine_dir) if os.path.isdir(os.path.join(bundled.engine_dir, d)))
+
+    def stray():  # an archive or partial download left in the engine folder
+        return [f for f in os.listdir(bundled.engine_dir) if f.endswith((".gz", ".zip", ".part", ".tmp"))]
+
+    real = (server._gh, eng._find_release, eng.available_ram_gb, eng.free_vram_gb)
+    server._gh = lambda path: {"tag_name": "v0.0.1", "assets": []}
+    eng._find_release = fake_find_release
+    eng.available_ram_gb = lambda: None
+    previous_engine = saved_engine()
+    os.makedirs(bundled.models_dir, exist_ok=True)
+    with open(bundled.model_path(pin_model), "wb") as f:
+        f.write(b"x")
+    RELEASES.update(b2=("dies", False), b3=("ok", False), b4=("ok", True), b5=("novers", False), b6=("dies", False))
+
+    # an install made before current.json: its engine is found, and it is offered the update
+    put_build("b1", "ok")
+    pin("b1")
+    check(bundled.server_path().endswith(os.path.join("b1", "build", "bin", "llama-server"))
+          and bundled.installed_tag() == "b1" and not os.path.exists(bundled.state_path),
+          "an install with no current.json still finds its engine")
+    check(check_engine_update() is None, "the same build as the pin: no engine update offered")
+    pin("b2")
+    offer = check_engine_update()
+    check(offer and offer["tag"] == "b2" and offer["size"] > 0, "a different pin is offered, with its size")
+    check(json.loads(call("/api/state"))["updates"]["engine"]["tag"] == "b2" and builds() == ["b1"],
+          "the offer reaches the page, and nothing was downloaded for it")
+    pin("b2", min_app="9.0.0")
+    check(check_engine_update() is None, "a pin that needs a later app than this one is not offered")
+    pin("b2", min_app="0.1.0")
+    check(check_engine_update()["tag"] == "b2", "one that needs an earlier app is")
+    pin("latest")
+    check(check_engine_update() is None, "'latest' is never compared with the build installed")
+    pin("b2")
+    bundled._save_state({"tag": "b1", "failed": ["b2"]})
+    check(check_engine_update() is None, "a tag that failed on this computer isn't offered again")
+    os.remove(bundled.state_path)
+
+    # an update that can't be used leaves the build in use alone and no partial folder
+    pin("b4")
+    j = update_job()
+    check(j["state"] == "error" and "checksum" in j["error"] and builds() == ["b1"] and not stray()
+          and not os.path.exists(bundled.state_path) and bundled.installed_tag() == "b1",
+          "a download that fails its checksum leaves the old build in use and nothing behind")
+    pin("b5")
+    j = update_job()
+    check(j["state"] == "error" and "won't run" in j["error"] and builds() == ["b1"] and not stray()
+          and not os.path.exists(bundled.state_path) and bundled.installed_tag() == "b1",
+          "a binary that won't run leaves the old build in use and no folder")
+    bundled.jobs["install"] = eng.Job("install", "a model")
+    check(update_job()["state"] == "refused", "no engine update while another download runs")
+    del bundled.jobs["install"]
+
+    # the update is installed beside the old build and used from the next start
+    call("/api/settings", {"engine": {"mode": "bundled", "bundled_model": pin_model["id"]}})
+    pin("b2")
+    j = update_job()
+    state = bundled._state()
+    check(j["state"] == "done" and "next question" in j["note"] and builds() == ["b1", "b2"]
+          and bundled.server_path().endswith(os.path.join("b2", "build", "bin", "llama-server"))
+          and state["tag"] == "b2" and state["previous"] == "b1" and state["proven"] is False,
+          "after an update the new build is the one in use, with the old one kept beside it")
+    check(json.loads(call("/api/state"))["updates"]["engine"] is None, "and it is no longer offered")
+
+    # the first start on a build that dies: back on the old one, remembered, and the question still answered
+    ev = ask("stair rise?")
+    state = bundled._state()
+    check(ev[-1]["type"] == "done" and "220 mm" in ev[-1]["answer"] and state["tag"] == "b1"
+          and state["failed"] == ["b2"] and builds() == ["b1"] and not state.get("previous"),
+          "the first start on a build that exits goes back to the old build, which answers")
+    check(json.loads(call("/api/state"))["bundled"]["engine_fell_back"]["tag"] == "b2"
+          and check_engine_update() is None, "the page is told, and the failed build isn't offered again")
+
+    # the engine is in use: the switch waits for the answer to end; the first healthy start clears the old build
+    pin("b3")
+    check(bundled.proc and bundled.proc.poll() is None, "the engine is running before the update")
+    waiting = {}
+    threading.Thread(target=lambda: waiting.update(job=update_job()), daemon=True).start()
+    time.sleep(3)
+    check(bundled.proc.poll() is None and bundled._state()["tag"] == "b1" and "job" not in waiting,
+          "a running engine that was just used isn't stopped for an update")
+    bundled.last_used = 0
+    for _ in range(100):
+        if "job" in waiting:
+            break
+        time.sleep(0.1)
+    check(waiting.get("job", {}).get("state") == "done" and bundled._state()["tag"] == "b3"
+          and builds() == ["b1", "b3"], "once it is idle the switch is made")
+    ev = ask("stair rise?")
+    state = bundled._state()
+    check(ev[-1]["type"] == "done" and state["tag"] == "b3" and state["proven"] is True
+          and "previous" not in state and builds() == ["b3"] and state["failed"] == ["b2"],
+          "the first healthy start on the new build removes the old one")
+
+    # a model that won't load blames the engine only on the first start after an update, and only if the old one works
+    bundled.stop()
+    put_build("b3", "dies")
+    ev = ask("stair rise?")
+    check(ev[-1]["type"] == "error" and bundled._state()["tag"] == "b3" and builds() == ["b3"]
+          and bundled._state()["failed"] == ["b2"], "a build that has started before isn't blamed when it exits")
+    pin("b6")
+    bundled.stop()
+    check(update_job()["state"] == "done" and builds() == ["b3", "b6"], "an update over a build that no longer runs")
+    ev = ask("stair rise?")
+    state = bundled._state()
+    check(ev[-1]["type"] == "error" and state["tag"] == "b6" and state["previous"] == "b3"
+          and state["failed"] == ["b2"] and builds() == ["b3", "b6"],
+          "if the old build fails too the model is at fault, and nothing is changed")
+
+    bundled.stop()
+    releases_srv.shutdown()
+    server._gh, eng._find_release, eng.available_ram_gb, eng.free_vram_gb = real
+    os.remove(os.path.join(os.environ["PARA_APP_DIR"], "models.json"))
+    os.remove(bundled.model_path(pin_model))
+    shutil.rmtree(bundled.engine_dir, ignore_errors=True)
+    call("/api/settings", {"engine": {"mode": "external", "base_url": fake_url, "model": ""}})
+    check(eng.catalog()["llama_cpp"]["tag"] != "latest", "the pin is still not 'latest' once the stand-ins are gone")
+
 # ----- what a chat keeps of a passage, and what's said about a citation -----
 events = ask("What is the maximum rise for a private stair?")
 kept = next(e for e in events if e["type"] == "chat")["id"]
