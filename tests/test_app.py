@@ -489,7 +489,10 @@ http.server.ThreadingHTTPServer(("127.0.0.1", int(sys.argv[sys.argv.index("--por
     releases_srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), Releases)
     threading.Thread(target=releases_srv.serve_forever, daemon=True).start()
 
+    asked = []  # the asset patterns releases were searched with
+
     def fake_find_release(repo, tag, pattern):
+        asked.append(pattern)
         mode, bad = RELEASES[tag]
         data = archive(mode)
         return ({"tag_name": tag}, {"name": f"llama-{tag}-bin-ubuntu-x64.tar.gz", "size": len(data),
@@ -544,6 +547,20 @@ http.server.ThreadingHTTPServer(("127.0.0.1", int(sys.argv[sys.argv.index("--por
     check(offer and offer["tag"] == "b2" and offer["size"] > 0, "a different pin is offered, with its size")
     check(json.loads(call("/api/state"))["updates"]["engine"]["tag"] == "b2" and builds() == ["b1"],
           "the offer reaches the page, and nothing was downloaded for it")
+    # the same kind of build as the one installed: CPU stays CPU (its owner unticked the graphics card for a reason)
+    kinds = shipped["llama_cpp"]["assets"]
+    if sys.platform != "darwin":  # the Mac has one kind
+        check(bundled._gpu() is False and asked[-1] == kinds[eng.platform_key(False)],
+              "an install from before current.json with no Vulkan library is updated with the CPU build")
+        lib = os.path.join(bundled.engine_dir, "b1", "build", "bin", "libggml-vulkan.so")
+        open(lib, "w").close()
+        check_engine_update()
+        check(bundled._gpu() is True and asked[-1] == kinds[eng.platform_key(True)],
+              "and one with a Vulkan library with the graphics-card build")
+        os.remove(lib)
+        bundled._save_state({"tag": "b1", "gpu": True})
+        check(bundled._gpu() is True, "what current.json records comes before the files")
+        os.remove(bundled.state_path)
     pin("b2", min_app="9.0.0")
     check(check_engine_update() is None, "a pin that needs a later app than this one is not offered")
     pin("b2", min_app="0.1.0")
@@ -594,17 +611,19 @@ http.server.ThreadingHTTPServer(("127.0.0.1", int(sys.argv[sys.argv.index("--por
     pin("b3")
     check(bundled.proc and bundled.proc.poll() is None, "the engine is running before the update")
     waiting = {}
+    bundled.begin()  # a question is being answered
+    bundled.last_used = 0  # and the model has sent nothing for a long time: reading a long prompt
     threading.Thread(target=lambda: waiting.update(job=update_job()), daemon=True).start()
     time.sleep(3)
     check(bundled.proc.poll() is None and bundled._state()["tag"] == "b1" and "job" not in waiting,
-          "a running engine that was just used isn't stopped for an update")
-    bundled.last_used = 0
+          "an engine in the middle of an answer isn't stopped for an update, however long it has been silent")
+    bundled.end()
     for _ in range(100):
         if "job" in waiting:
             break
         time.sleep(0.1)
     check(waiting.get("job", {}).get("state") == "done" and bundled._state()["tag"] == "b3"
-          and builds() == ["b1", "b3"], "once it is idle the switch is made")
+          and builds() == ["b1", "b3"] and bundled.users == 0, "once the answer has ended the switch is made")
     ev = ask("stair rise?")
     state = bundled._state()
     check(ev[-1]["type"] == "done" and state["tag"] == "b3" and state["proven"] is True

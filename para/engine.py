@@ -1,6 +1,7 @@
 """The AI engine: either a server the person already runs (any OpenAI-compatible API), or one the app installs and
 runs itself (llama.cpp's llama-server with a GGUF model from Hugging Face)."""
 import atexit
+import contextlib
 import hashlib
 import json
 import os
@@ -337,6 +338,7 @@ class Bundled:
         self.log_path = paths.data_path("logs", "engine.log")
         self.pid_path = paths.data_path("engine.pid")
         self.last_used = time.time()
+        self.users, self.users_lock = 0, threading.Lock()  # questions being answered now (begin, end)
         self.watcher = None
         atexit.register(self.stop)
         self.stop_leftover()
@@ -367,6 +369,25 @@ class Bundled:
     def touch(self):
         """A question is using the engine: don't stop it for being idle."""
         self.last_used = time.time()
+
+    def begin(self):
+        """A question is about to use the engine, until end(). Counted, not timed: a model reading a long prompt
+        sends nothing for a minute or more, and an engine update must not take that for idleness."""
+        with self.users_lock:
+            self.users += 1
+
+    def end(self):
+        with self.users_lock:
+            self.users = max(0, self.users - 1)
+        self.touch()
+
+    @contextlib.contextmanager
+    def using(self):
+        self.begin()
+        try:
+            yield
+        finally:
+            self.end()
 
     def stop_if_idle(self, minutes=IDLE_MINUTES):
         """Stop the engine if nothing has used it for a while (not while it is being started)."""
@@ -525,8 +546,10 @@ class Bundled:
         if os.path.basename(target) == self.installed_tag():
             raise EngineError("That build of the AI engine is already installed.")
         digest = (asset.get("digest") or "").removeprefix("sha256:") or None
+        began = False  # a download that fails has touched nothing: a build kept to go back to may be this one
         try:
             _download(asset["browser_download_url"], archive, job, expect_size=asset.get("size"), sha256=digest)
+            began = True
             shutil.rmtree(target, ignore_errors=True)  # what an earlier attempt left of this build
             if archive.endswith(".zip"):
                 with zipfile.ZipFile(archive) as z:
@@ -549,7 +572,8 @@ class Bundled:
             if verify:
                 self._check_runs(server)
         except BaseException:  # a half-built folder would be found by the walk: take it away, then say why
-            shutil.rmtree(target, ignore_errors=True)
+            if began:
+                shutil.rmtree(target, ignore_errors=True)
             if os.path.exists(archive) and not os.path.exists(archive + ".part"):
                 os.remove(archive)
             raise
@@ -571,6 +595,20 @@ class Bundled:
                               f"See {self.log_path}.")
 
     # ----- updating -----
+    def _gpu(self):
+        """Which kind of build is installed, so an update fetches the same: someone on the CPU build chose it
+        because the graphics-card one wouldn't start. From current.json; an install made before that file is told
+        by its files, since only the Vulkan build has a Vulkan library (libggml-vulkan.so, ggml-vulkan.dll)."""
+        gpu = self._state().get("gpu")
+        if isinstance(gpu, bool):
+            return gpu
+        server = self.server_path()
+        if not server or sys.platform == "darwin":  # the Mac has one kind of build
+            return True
+        rel = os.path.relpath(server, self.engine_dir)
+        folder = os.path.join(self.engine_dir, rel.split(os.sep)[0]) if os.sep in rel else self.engine_dir
+        return any("vulkan" in f.lower() for _r, _d, files in os.walk(folder) for f in files)
+
     def update_wanted(self):
         """The pinned tag if installing it would be an update of this computer's engine, else None."""
         info = catalog().get("llama_cpp") or {}
@@ -590,7 +628,7 @@ class Bundled:
         if not tag:
             return None
         info = catalog().get("llama_cpp") or {}
-        gpu = self._state().get("gpu", True)
+        gpu = self._gpu()
         size = None
         try:
             _rel, asset = _find_release(info.get("repo", "ggml-org/llama.cpp"), tag,
@@ -609,7 +647,7 @@ class Bundled:
             raise EngineError("There is no AI engine update to install.")
         job = Job("engine", "AI engine (llama.cpp)")
         self.jobs["engine"] = job
-        threading.Thread(target=self._update, args=(job, self._state().get("gpu", True) if gpu is None else gpu),
+        threading.Thread(target=self._update, args=(job, self._gpu() if gpu is None else gpu),
                          daemon=True).start()
         return job.view()
 
@@ -623,8 +661,7 @@ class Bundled:
             deadline = time.time() + 600
             while True:
                 with self.lock:  # waits for a model that is loading
-                    running = self.proc is not None and self.proc.poll() is None
-                    if not running or time.time() - self.last_used > 15:  # never in the middle of an answer
+                    if not self.users:  # never in the middle of an answer, however long the model is silent
                         self.stop()
                         state = self._state()
                         self._save_state({"tag": tag, "previous": old, "proven": False, "gpu": gpu,
@@ -741,7 +778,7 @@ class Bundled:
             url = self._launch(self._binary_in(self._tag_dir(back)), model, ctx)
         except EngineError:
             raise failure from None
-        self._save_state({"tag": back, "proven": True, "gpu": state.get("gpu", True),
+        self._save_state({"tag": back, "proven": True, "gpu": self._gpu(),
                           "failed": sorted(set(state.get("failed", [])) | {failed}),
                           "fell_back": {"tag": failed, "at": time.strftime("%Y-%m-%d %H:%M")}})
         shutil.rmtree(self._tag_dir(failed), ignore_errors=True)

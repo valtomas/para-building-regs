@@ -608,6 +608,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
 
     def _test_engine(self):
         s = settings.load()
+        engine.bundled.begin()
         try:
             client = engine.client(s)
             out = []
@@ -618,6 +619,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
             return self._send(200, {"ok": True, "model": client.model, "reply": "".join(out).strip()[:200]})
         except EngineError as e:
             return self._send(200, {"ok": False, "error": str(e)})
+        finally:
+            engine.bundled.end()
 
     def _ask(self, body):
         question = str(body.get("question", "")).strip()
@@ -646,6 +649,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
             drop_last_turn(chat)
         turn = {"question": question, "answer": "", "events": [], "time": time.time(),
                 "library": library.version(), "from": len(chat["messages"])}
+        engine.bundled.begin()  # until the answer ends: an engine update waits for it
         try:
             send({"type": "chat", "id": chat["id"]})
             # The library has been replaced or a file read again since this chat's earlier answers (or the chat
@@ -706,6 +710,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
             except OSError:
                 pass
         finally:
+            engine.bundled.end()
             stops.pop(chat["id"], None)
             if turn.get("answer") or turn.get("error") or turn.get("stopped"):
                 chat["turns"].append(turn)
