@@ -38,7 +38,11 @@ HOSTED = [
 
 
 class EngineError(Exception):
-    pass
+    """status: the HTTP status the server answered with, None if nothing answered, "not-json" if it answered with
+    something other than an OpenAI-compatible reply. Used to tell the person what to change (`why_no_models`)."""
+    def __init__(self, message, status=None):
+        super().__init__(message)
+        self.status = status
 
 
 def _context():
@@ -68,6 +72,27 @@ def is_local(base_url):
     return ip.is_loopback or ip.is_private or ip.is_link_local or ip.is_unspecified
 
 
+def why_no_models(base_url, err):
+    """What to tell someone whose server address didn't give a list of models, in words that say what to change.
+    err is the EngineError (or ValueError, for an address urllib can't use) from Client.models."""
+    if not base_url.strip():
+        return "Type the server's address first."
+    if isinstance(err, ValueError) or not re.match(r"https?://[^/]", base_url.strip(), re.I):
+        return "That isn't a server address: it should start with http:// (or https://), like http://127.0.0.1:11434/v1."
+    status = getattr(err, "status", None)
+    if status in (401, 403):
+        return "The server answered but wants an API key, or the key isn't right."
+    if status == 404 or status == "not-json":
+        return ("Something answered at this address, but not an OpenAI-compatible server. Most addresses end in /v1 "
+                "(Lemonade: /api/v1).")
+    if status is None:
+        host = urllib.parse.urlparse(base_url.strip()).hostname or ""
+        tip = ("" if host in ("127.0.0.1", "localhost", "::1") else
+               " An engine on another computer must be set to listen on the network, not only on its own computer.")
+        return f"Nothing answered at {host or base_url}. Check the engine is running and the address is right.{tip}"
+    return str(err)
+
+
 class Client:
     def __init__(self, base_url, api_key="", model=""):
         self.base = base_url.rstrip("/")
@@ -86,13 +111,18 @@ class Client:
                                           else None)
         except urllib.error.HTTPError as e:
             detail = e.read().decode("utf-8", "replace")[:600]
-            raise EngineError(f"The engine answered {e.code}: {detail}") from None
+            raise EngineError(f"The engine answered {e.code}: {detail}", e.code) from None
         except (urllib.error.URLError, socket.timeout, ConnectionError) as e:
             raise EngineError(f"Can't reach the engine at {self.base} ({getattr(e, 'reason', e)})") from None
 
     def models(self, timeout=5):
         with self._request("/models", timeout=timeout) as r:
-            data = json.load(r)
+            try:
+                data = json.load(r)
+            except ValueError:  # a web page or something else that isn't an OpenAI-compatible server
+                raise EngineError(f"{self.base}/models didn't answer with a list of models", "not-json") from None
+        if not isinstance(data, dict):
+            raise EngineError(f"{self.base}/models didn't answer with a list of models", "not-json")
         items = data.get("data") or data.get("models") or []
         ids = {m.get("id") or m.get("name") for m in items if isinstance(m, dict)} - {None}
         # embedding, reranking, speech, image and moderation models can't chat: leave them out of the choice

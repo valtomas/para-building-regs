@@ -739,6 +739,7 @@ function openSettings(tab = "engine") {
   $("#projectNotes").value = s.project_notes || "";
   $("#checkUpdates").checked = s.check_updates !== false;
   $("#testResult").textContent = "";
+  $("#connectResult").textContent = "";
   modeChanged();
   renderAbout();
   showTab(tab);
@@ -760,6 +761,19 @@ $$("input[name=mode]").forEach((r) => r.onchange = modeChanged);
 const dlgHelp = $("#dlg-model-help");
 $("#modelHelp").onclick = () => dlgHelp.showModal();
 dlgHelp.addEventListener("click", (e) => { if (e.target === dlgHelp) dlgHelp.close(); });   // a click outside it
+// Models we recommend, for someone running their own engine: what we tested and why, with nothing to download here.
+// They fetch the model in their engine, which manages its own models.
+const dlgRecs = $("#dlg-model-recs");
+$("#modelRecs").onclick = () => {
+  $("#recsBody").innerHTML = S.catalog.filter((m) => !m.retired).map((m) => `<tr>
+    <td><b>${esc(m.name)}</b><small>${esc(m.about)}</small>${m.repo ? `<a href="#" class="recs-repo"
+      data-url="https://huggingface.co/${esc(m.repo)}">${esc(m.repo)} ↗</a>` : ""}</td>
+    <td class="mono">${m.size_gb} GB <br>needs ${m.min_ram_gb} GB memory</td>
+    <td class="mono">${esc((m.tested || "").replace(/ of 36$/, "")) || "—"}</td></tr>`).join("");
+  $$(".recs-repo", dlgRecs).forEach((a) => a.onclick = (e) => { e.preventDefault(); openUrl(a.dataset.url); });
+  dlgRecs.showModal();
+};
+dlgRecs.addEventListener("click", (e) => { if (e.target === dlgRecs) dlgRecs.close(); });
 // The same rule as llm.is_local: whole addresses only, since "10.example.com" is a name anyone can register.
 function isLocal(u) {
   try { return /^(localhost|((127|10)\.\d+|192\.168|169\.254|172\.(1[6-9]|2\d|3[01]))\.\d+\.\d+|0\.0\.0\.0|\[(::1|f[cd][0-9a-f]{2}:.*|fe[89ab][0-9a-f]:.*)\])$|\.local$/.test(new URL(u).hostname); } catch { return true; }
@@ -776,7 +790,7 @@ function remoteCheck() {
   $$("#hostedList .btn").forEach((b) => b.classList.toggle("on", b.textContent === p?.name));
   $("#hostedAbout").innerHTML = p ? `${esc(p.where)} <a href="#" id="hostedKeys">Get an API key ↗</a>` : "Or type the address of another OpenAI-compatible service below.";
   if (p) $("#hostedKeys").onclick = (ev) => { ev.preventDefault(); openUrl(p.keys); };
-  $("#modelSelect").placeholder = p ? `e.g. ${p.example}` : "press Refresh, or type the model's name";
+  $("#modelSelect").placeholder = p ? `e.g. ${p.example}` : "press Connect, or type the model's name";
 }
 $("#baseUrl").addEventListener("input", remoteCheck);
 function renderHosted() {
@@ -878,19 +892,31 @@ async function findEngines() {
   } catch (e) { $("#findResult").textContent = e.message; }
 }
 $("#findEngines").onclick = findEngines;
+// Connect: checks the address answers and fills the model list, saying in plain words what's wrong if it doesn't.
 // quiet: on opening Settings, where an engine that's stopped shouldn't greet the person with an error
 async function loadModels(quiet) {
-  const url = $("#baseUrl").value.trim();
+  const url = $("#baseUrl").value.trim(), out = $("#connectResult");
+  if (!quiet) { out.className = "connect-result"; out.textContent = "Connecting…"; }
   try {
     const { models } = await api("/api/models", { method: "POST", body: { base_url: url, api_key: $("#apiKey").value } });
-    if (quiet && (!models.length || $("#baseUrl").value.trim() !== url)) return;
+    if ($("#baseUrl").value.trim() !== url) return;  // the address changed while this one was asked
+    if (quiet && !models.length) return;
     const now = $("#modelSelect").value;
     if (quiet && document.activeElement === mfield) { modelNames = models; return; }  // don't disturb typing
     fillModels(models, models.includes(now) ? now : models.includes(S.settings.engine.model) ? S.settings.engine.model : models[0]);
-    $("#testResult").textContent = models.length ? "" : "The server has no models.";
-  } catch (e) { if (!quiet) $("#testResult").textContent = e.message; }
+    if (quiet) return;
+    const n = models.length, lost = now && !models.includes(now) ? ` The model chosen before, ${now}, isn't on this server.` : "";
+    out.className = "connect-result " + (n ? "ok" : "bad");
+    out.textContent = n ? `Connected: ${n} model${n === 1 ? "" : "s"}.${lost}`
+      : "Connected, but the server has no models to chat with. Load or download one in your engine.";
+  } catch (e) {
+    if (quiet || $("#baseUrl").value.trim() !== url) return;
+    out.className = "connect-result bad"; out.textContent = e.message;
+  }
 }
-$("#loadModels").onclick = () => loadModels(false);
+$("#connect").onclick = () => loadModels(false);
+$("#baseUrl").addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); loadModels(false); } });
+$("#baseUrl").addEventListener("input", () => { $("#connectResult").textContent = ""; });
 let chosenBundled = null, othersOpen = false;
 function renderBundled() {
   const b = S.bundled;
@@ -997,7 +1023,7 @@ async function saveEngine() {
   const e = engineForm();
   if (e.mode === "bundled" && !S.bundled.models.includes(e.bundled_model)) { $("#testResult").textContent = "Download the model first."; return false; }
   if (e.mode === "external" && !e.base_url) { $("#testResult").textContent = "Enter the server address."; return false; }
-  if ($("input[name=mode]:checked")?.value === "hosted" && !e.model) { $("#testResult").textContent = "Choose a model: press Refresh, or type its name."; return false; }
+  if ($("input[name=mode]:checked")?.value === "hosted" && !e.model) { $("#testResult").textContent = "Choose a model: press Connect, or type its name."; return false; }
   S = await api("/api/settings", { method: "POST", body: { engine: e } });
   await refresh();
   saved(dlgS, "engine");

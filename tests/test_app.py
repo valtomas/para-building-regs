@@ -10,8 +10,10 @@ import re
 import sqlite3
 import struct
 import sys
+import socket
 import tempfile
 import threading
+import urllib.error
 import urllib.request
 import zlib
 
@@ -94,6 +96,24 @@ check({h["name"] for h in st["hosted"]} >= {"Anthropic", "Mistral", "OpenAI", "O
       all(h["base_url"].startswith("https://") for h in st["hosted"]), "hosted services are offered by address")
 models = json.loads(call("/api/models", {"base_url": fake_url}))["models"]
 check(models and models[0] == "fake-model", "models are listed by POST, so a typed key never sits in a URL")
+
+
+def connect_error(url):
+    """What Connect says for an address that gives no list of models."""
+    try:
+        call("/api/models", {"base_url": url})
+    except urllib.error.HTTPError as e:
+        return json.loads(e.read()).get("error", "")
+    return ""
+
+
+with socket.socket() as s:  # a port nothing listens on
+    s.bind(("127.0.0.1", 0))
+    closed = s.getsockname()[1]
+check("Nothing answered" in connect_error(f"http://127.0.0.1:{closed}/v1"), "Connect: nothing at the address")
+check("not an OpenAI-compatible" in connect_error(BASE + "/v1"), "Connect: something else answered (404)")
+check("should start with http" in connect_error("192.168.1.5:11434/v1"), "Connect: an address without http://")
+check("address first" in connect_error(""), "Connect: no address")
 
 
 def saved_engine():
