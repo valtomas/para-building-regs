@@ -27,7 +27,7 @@ from .anchors import reanchor
 from .core import BASE_PROMPT, chat_events, forget_lookups
 from .engine import Engine, Job, catalog, recommend, _download
 from .library import Library, Scope
-from .llm import HOSTED, Client, EngineError, is_local, probe_known, same_host
+from .llm import HOSTED, Client, EngineError, is_local, probe_known, same_host, why_no_models
 from .myfiles import TYPES, MyFiles
 from .store import Store
 
@@ -512,7 +512,10 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 body = self._json_body()
                 url = body.get("base_url", "")
                 c = Client(url, body.get("api_key") or saved_key_for(url))
-                return self._send(200, {"models": c.models(timeout=8)})
+                try:
+                    return self._send(200, {"models": c.models(timeout=8)})
+                except (EngineError, ValueError) as e:  # ValueError: an address urllib can't use
+                    return self._send(502, {"error": why_no_models(url, e)})
             if path == "/api/settings":
                 body = self._json_body()
                 allowed = {k: v for k, v in body.items() if k in paths.DEFAULTS}

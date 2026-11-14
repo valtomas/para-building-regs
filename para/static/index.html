@@ -131,15 +131,19 @@
         <p id="hostedAbout" class="muted small"></p>
       </div>
       <label>Server address (base URL, ending in /v1 for most servers)
-        <input id="baseUrl" placeholder="http://127.0.0.1:11434/v1"></label>
+        <div class="row"><input id="baseUrl" placeholder="http://127.0.0.1:11434/v1"><button type="button" class="btn"
+          id="connect" title="Check the server answers, and list its models">Connect</button></div>
+        <span id="connectResult" class="connect-result" role="status"></span></label>
       <label>API key <small class="muted" id="apiKeyHint">(only if the server needs one)</small>
         <input id="apiKey" type="password" placeholder="leave empty for local servers" autocomplete="off"></label>
       <label>Model
         <div class="row"><div class="combo"><input id="modelSelect" role="combobox" aria-autocomplete="list"
           aria-expanded="false" aria-controls="modelMenu" autocomplete="off" spellcheck="false"><button type="button"
           class="combo-arrow" id="modelArrow" tabindex="-1" aria-label="Show the models"></button><div id="modelMenu"
-          class="combo-menu" role="listbox" hidden></div></div><button type="button" class="btn" id="loadModels">Refresh</button></div>
+          class="combo-menu" role="listbox" hidden></div></div></div>
       </label>
+      <p class="muted small">Not sure which model to use? <button type="button" class="link-btn" id="modelRecs">Models we
+        recommend</button></p>
       <p id="remoteWarning" class="warn" hidden>This address isn't on this computer or your local network. Your
         questions, and the passages the app finds, including passages from your own files, will be sent to
         <b id="remoteHost"></b> and kept under its terms. The regulations are public; your files may not be.</p>
@@ -254,6 +258,21 @@
     best one this computer can run. Any model can still misread a paragraph, so open the cited paragraph before
     you rely on an answer.</p>
   <p>Once it's downloaded it works without the internet, and your questions don't leave this computer.</p>
+  <form method="dialog" class="modal-actions"><button class="btn primary">Close</button></form>
+</dialog>
+
+<dialog id="dlg-model-recs" class="modal recs">
+  <form method="dialog" class="modal-head"><div><div class="eyebrow">Tested with Para</div><h2>Models we recommend</h2></div><button class="icon" aria-label="Close"><svg class="x" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button></form>
+  <p>We asked each of these the same 36 questions about the regulations and checked every answer against the
+    paragraphs it cited. A bigger model gets more right but needs more memory. Download the one that suits your
+    computer in your own engine: search its model list for the name, or use the Hugging Face page, which has the exact
+    file we tested.</p>
+  <div class="recs-wrap"><table class="recs-table">
+    <thead><tr><th>Model</th><th>Download and memory</th><th>Right of 36</th></tr></thead>
+    <tbody id="recsBody"></tbody>
+  </table></div>
+  <p class="muted small">Memory is what Para's built-in engine needs for this model; your engine's settings can change
+    it. Other models work too, as long as they can call tools (function calling).</p>
   <form method="dialog" class="modal-actions"><button class="btn primary">Close</button></form>
 </dialog>
 

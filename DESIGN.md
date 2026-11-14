@@ -185,6 +185,12 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   as a local engine. The model is typed or picked from the service's list. The warm warning names the host and says
   passages from the person's own files go there too. A hosted engine is saved as an external one; the card follows
   from the address.
+- **Connect** (`#connect`): an outline button beside the server address (Enter in the field does the same). It asks
+  the server for its models, fills the model menu and says on the line under the field what it found: "Connected: 6
+  models." in `--ok`, or in danger text what to change ("Nothing answered at 192.168.1.5. Check the engine is
+  running…", "…wants an API key…", "…not an OpenAI-compatible server. Most addresses end in /v1"). The line keeps its
+  height when empty. There is no separate Refresh: Connect is the one way to fetch the list. Test, at the foot of the
+  tab, is different: it saves and asks the model for a short reply.
 - **Model field**: in Settings → AI engine, a typed field with the server's models in a menu drawn like the project
   picker's, in the dialog's colours: ruled rows in mono on `--panel`, the chosen one marked with an accent ¶. Opening it
   shows every model (a native datalist would show only those matching the name already in the box) and selects the
@@ -200,6 +206,12 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   dialog in the app's look: "In plain words" eyebrow, the question as its title, four short paragraphs (what a model
   is, that the regulations are in the library and not in the model, why bigger is better and still fallible, that it
   runs without the internet) and Close. No jargon in it: no "LLM", "weights", "tokens" or "inference".
+- **Models we recommend** (`#dlg-model-recs`): for someone running their own engine, a mono link under the model
+  field ("Not sure which model to use?") opens a dialog: "Tested with Para" eyebrow, a short paragraph, then a table
+  of the models in `models.json` that aren't retired, one ruled row each: the name in display type, why (its `about`)
+  and a mono link to its Hugging Face page; the download and memory in mono; how many of the 36 test questions it got
+  right. Nothing is downloaded from here: their engine manages its own models. On phones each row stacks, the figures
+  on one mono line under the name.
 - **Library list**: a three-column grid (short name, title with the edition in italic under it, date) so long
   edition text can't squeeze the titles.
 - **Changed in this edition** (`.lib-changes`): at the top of the Library after an update, collapsed like a drawing's
