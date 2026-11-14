@@ -38,7 +38,7 @@ DESC_DIR = os.environ.get("PARA_DESCRIPTIONS") or os.path.join(HERE, "descriptio
 LIBRARY = os.path.join(HERE, "dist", "regs.sqlite")
 LABEL = "Description of the drawing (written by AI from the image, checked by a person):"
 DEFAULT_ENGINE = "http://127.0.0.1:13305/api/v1"
-DEFAULT_MODEL = "Qwen3.8-27B-GGUF-UD-Q4_K_XL"  # with thinking on: see docs/model-tests.md, "Describing drawings"
+DEFAULT_MODEL = "Qwen3.8-27B-GGUF"  # with thinking on: see docs/model-tests.md, "Describing drawings"
 
 PROMPT = """You describe drawings from the Approved Documents (the building regulations guidance for England) for
 people who can't see them, and for an AI that answers questions about them but sees only text.
