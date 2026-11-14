@@ -434,6 +434,7 @@ check(eng.catalog()["llama_cpp"]["tag"] != "latest", "the llama.cpp build is pin
 
 # updating the built-in engine: offered, never taken unasked; the old build stays until the new one has started
 if os.name != "nt":  # the stand-in llama-server is a script with a shebang
+    import gzip  # noqa: E402
     import io  # noqa: E402
     import tarfile  # noqa: E402
     import time  # noqa: E402
@@ -483,14 +484,18 @@ http.server.ThreadingHTTPServer(("127.0.0.1", int(sys.argv[sys.argv.index("--por
             f.write(script(mode))
         os.chmod(path, 0o755)
 
-    def archive(mode):
-        raw = script(mode).encode()
+    def targz(name, raw, mode=0o644):
+        """A .tar.gz of one file, the same bytes every time: gzip's header holds the time, and an archive made again
+        for the download a second later than the one its checksum was taken from would fail the check."""
         buf = io.BytesIO()
-        with tarfile.open(fileobj=buf, mode="w:gz") as t:
-            info = tarfile.TarInfo("build/bin/llama-server")
-            info.size, info.mode = len(raw), 0o755
+        with tarfile.open(fileobj=buf, mode="w") as t:
+            info = tarfile.TarInfo(name)
+            info.size, info.mode = len(raw), mode
             t.addfile(info, io.BytesIO(raw))
-        return buf.getvalue()
+        return gzip.compress(buf.getvalue(), mtime=0)
+
+    def archive(mode):
+        return targz("build/bin/llama-server", script(mode).encode(), 0o755)
 
     RELEASES = {}  # tag -> (how its llama-server behaves, whether its checksum is wrong)
     CUDA = {}  # tag -> how its CUDA build's llama-server behaves
@@ -500,12 +505,7 @@ http.server.ThreadingHTTPServer(("127.0.0.1", int(sys.argv[sys.argv.index("--por
         Linux comes in a folder of its own."""
         if kind != "rt":
             return archive(CUDA[tag] if kind == "cuda" else RELEASES[tag][0])
-        buf = io.BytesIO()
-        with tarfile.open(fileobj=buf, mode="w:gz") as t:
-            info = tarfile.TarInfo(f"cudart-llama-{tag}/libcudart.so.12")
-            info.size = 3
-            t.addfile(info, io.BytesIO(b"lib"))
-        return buf.getvalue()
+        return targz(f"cudart-llama-{tag}/libcudart.so.12", b"lib")
 
     class Releases(http.server.BaseHTTPRequestHandler):
         def log_message(self, *a):
