@@ -352,6 +352,58 @@ The smaller models of the same family (Q2_0 files, from Qwen3.5 9B, 4B and 2B) w
 
 Nothing in the catalogue changed.
 
+### Run H: llama.cpp v1.0.0 (build b12359), the listed models again, and an MTP build
+
+2026-11-14, same Strix Halo computer, library 2026.11.13, nothing else using the graphics card, one model loaded at a
+time. The engine was b12078 installed by the app, then **updated by the app** to b12359 (`POST /api/updates/engine`),
+so the answers below are from an engine reached the way an installed copy will reach it.
+
+- **The `v1.0.0` release has no binaries.** It holds one file, `nightly-tag.txt`, which says `b12359`; the builds are
+  in release `b12359`. Pinning `"tag": "v1.0.0"` fails with "No llama.cpp build for this computer", so the pin to
+  propose is `b12359`. Its `--version` prints `1.0.0-dev (build 12359)`. All seven `llama_cpp.assets` patterns match
+  exactly one file in b12359; the only renames are CUDA 13.4 to 13.5 (not used by Para). `--defrag-thold` is gone
+  from llama.cpp; no model entry passes it.
+- **Vulkan detection holds** (`Bundled._gpu`): b12078 has `libggml-vulkan.so`; the b12359 Linux Vulkan archive has
+  `libggml-vulkan.so`, the Windows Vulkan zip `ggml-vulkan.dll`, and neither CPU archive has a file with "vulkan"
+  in its name. `llama-server` is now a small launcher beside `libllama-server-impl.so` (`llama-server-impl.dll` on
+  Windows); the app's file walk and `cwd` handling already cope.
+- **The update works.** b12078 and b12359 side by side, `current.json` `previous` b12078, `proven` false; the first
+  question was answered with a citation and then `proven` was true and b12078 was deleted. An update sent 6 s into a
+  150 s answer let the answer finish; the switch came 1.6 s after it. `llama-server --version` exits 0 on the
+  Linux Vulkan and CPU builds.
+
+The 36 questions, built-in engine, b12359. The b12078 figures are the ranges from runs E and F:
+
+| Model | Right figures | Searched | Cited | Right passage cited | Made-up ids removed | Figures flagged | Extract-only citations | Median time | On b12078 |
+|---|---|---|---|---|---|---|---|---|---|
+| NVIDIA Nemotron 3.5 Lightning 30B-A3B | 35/36 | 35/36 | 31/36 | 31/36 | 1 | 5 | 12 | 25 s | 32 to 35, 21 to 23 s |
+| Qwen3.5 35B-A3B | 33/36 | 36/36 | 35/36 | 28/36 | 1 | 5 | 40 | 13 s | 32 or 33, 13 to 18 s |
+| IBM Granite 4.2 8B | 34/36 | 36/36 | 34/36 | 30/36 | 0 | 1 | 4 | 68 s | 33 to 35, 56 to 62 s |
+| IBM Granite 4.2 3B | 31/36 | 36/36 | 35/36 | 28/36 | 0 | 0 | 10 | 22 s | 29 to 31, 21 to 23 s |
+| Qwen3.5 35B-A3B, MTP build, run 1 | 33/36 | 36/36 | 35/36 | 29/36 | 0 | 3 | 62 | 11 s | |
+| Qwen3.5 35B-A3B, MTP build, run 2 | 36/36 | 36/36 | 36/36 | 32/36 | 0 | 6 | 68 | 10 s | |
+| Qwen3.5 35B-A3B, MTP build, on b12078 | 33/36 | 36/36 | 34/36 | 31/36 | 0 | 2 | 53 | 10 s | |
+
+- **Nothing is worse on b12359 beyond run-to-run spread**, and no answer was lost to an engine error in 252 answers.
+  The one thing to watch is Granite 4.2 8B's time, 68 s against 56 to 62 s; one run, not repeated.
+- **What the answers show**: the misses are the usual ones (the NHBC question answered with ADA wall ties, Scotland
+  answered with England's stair, the fire door checks, the cladding class). Granite 8B gave no citation for the HRB
+  approval period (12 weeks, right) or the electrical work question. Nemotron gave right figures with no citation
+  for guarding, the landing, the office travel distance and radon, and made up one id (`r3`, removed). Qwen3.5
+  made up one id (`r5549`, removed), and said 45 days for the completion certificate. Granite 3B answered the
+  Scotland question with England's 220 mm as if it were Scotland's.
+- **The MTP build** (`unsloth/Qwen3.5-35B-A3B-MTP-GGUF`, `Qwen3.5-35B-A3B-UD-Q4_K_XL.gguf`, 22.85 GB, Apache 2.0)
+  needs `--spec-type draft-mtp` in the entry's `args`; `engine.log` shows the draft context created and a draft
+  acceptance of 50 to 95 %. It scores the same as the plain model (33, 36; 33 on b12078) and is about 20 % quicker
+  (10 to 11 s against 13 s). **It runs on b12078 as well**, so it doesn't depend on the new engine. Its file has the
+  same name as the plain model's, so a person can't have both in the models folder (`model_path` is the file name).
+- **Muse Glimmer 30B** (`unsloth/Muse-Glimmer-30B-GGUF`, `Muse-Glimmer-30B-UD-Q4_K_XL.gguf`, 15.9 GB): the weights
+  are Apache 2.0 (Meta Superintelligence Lab), with a separate usage policy in the repository. It is a dense 30B model
+  and wrote about 13 tokens a second; the first question hadn't finished after five minutes and the run was stopped
+  on purpose, so there is **no score**. Not listed.
+- **Not tested**: the Windows and Mac builds (only their contents were read), the CPU build under the app, a fresh
+  install of an app up to 0.2.3 on b12359, and `Check for updates` on (it overwrites a hand-written pin).
+
 ## Built-in engine
 
 - `para/models.json`: every repo and file exists on Hugging Face with the listed size (checked with `HEAD` and
