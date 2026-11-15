@@ -590,7 +590,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 engine.bundled.cancel()
                 return self._send(200, {"ok": True})
             if path == "/api/bundled/remove":
-                engine.bundled.remove_model(self._json_body().get("model"))
+                body = self._json_body()
+                if body.get("file"):  # a file from the downloaded list (engine.Bundled.remove_file checks it is one)
+                    engine.bundled.remove_file(str(body["file"]))
+                else:
+                    engine.bundled.remove_model(body.get("model"))
                 return self._send(200, engine.bundled.status())
             if path == "/api/test-engine":
                 return self._test_engine()

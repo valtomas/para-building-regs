@@ -177,7 +177,7 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
 - **Commits**: small, with a message that says why. Run the tests first.
 - **Memory**: the built-in engine holds gigabytes, so it must never outlive the app or load what won't fit.
   `Bundled.start` checks free system memory plus free graphics-card memory (`available_ram_gb`, `free_vram_gb`)
-  and leaves the GPU/CPU split to llama.cpp's `--fit` (don't pass `-ngl`); the engine stops after
+  and leaves the GPU/CPU split to llama.cpp's `--fit` (don't pass `-ngl`). The graphics card comes first: `engine.recommend` suggests the biggest model that fits on the card's own memory (`graphics_cards`: nvidia-smi, the kernel's files for AMD and Intel on Linux, the display driver's registry entry on Windows), and falls back to system memory only when none fits or there's no card (Macs and integrated GPUs share it); after loading, `gpu_layers` reads from llama.cpp's log how many layers went on the card, and Settings says so; the engine stops after
   `IDLE_MINUTES` unused, on SIGTERM/SIGHUP, and when the app is killed outright or crashes (`engine.guard`: a
   shell waiting on a pipe only the app holds, or on Windows a job that closes with the app); a copy that still got
   left is stopped at the next start (`engine.pid`). External engines manage their own memory: don't add engine-specific unload calls.

@@ -595,6 +595,9 @@ input[type=checkbox]:checked { background-color: var(--accent); border-color: va
   background: none; padding: 4px 0; font-size: 15px; font-style: italic; color: var(--muted); }
 .modal .file-row input:not([type]):focus { box-shadow: none; border-bottom-color: var(--accent); }
 .file-row .btn { padding: 7px 14px; font-size: 10.5px; letter-spacing: .14em; }
+#downloaded { margin-top: 22px; }
+#downloaded .eyebrow { margin: 0 0 8px; }
+.downloaded-list { border-top: 1px solid var(--ink); }
 
 /* library */
 .modal label.lib-search { flex-direction: row; align-items: center; gap: 12px; border: 1px solid var(--ink); border-radius: 999px;

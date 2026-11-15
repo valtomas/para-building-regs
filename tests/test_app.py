@@ -1269,11 +1269,54 @@ rel, asset = engine._find_release("ggml-org/llama.cpp", "latest", r"bin-ubuntu-x
 check(rel["tag_name"] == "b2" and asset["name"].startswith("llama-b2"), "finds the newest llama.cpp build")
 
 # the suggested model: the biggest that fits, but never one a smaller model beat in our tests
-picks = {ram: (engine.recommend(ram=ram) or {}).get("id") for ram in (4, 8, 12, 16, 24, 32, 64)}
+picks = {ram: (engine.recommend(ram=ram, card=0) or {}).get("id") for ram in (4, 8, 12, 16, 24, 32, 64)}
 check(picks[4] is None and picks[16] == "granite-4.2-8b" and picks[64] == "nemotron-3.5-lightning-30b",
       "the suggested model is the biggest that fits this computer's memory")
 check(picks[8] == picks[12] == "granite-4.2-3b", "a model that a smaller one beat is never suggested")
-retired = [m for m in engine.catalog()["models"] if m.get("retired")]
+
+# a graphics card comes first: 128 GB of system memory doesn't make a model that spills off a 12 GB card the pick
+cards = {gb: (engine.recommend(ram=128, card=engine.card_memory_gb([{"total_gb": gb}])) or {}).get("id")
+         for gb in (6, 8, 12, 16, 24, 32)}
+check(cards[6] == "granite-4.2-3b" and cards[8] == cards[12] == "granite-4.2-8b" and cards[16] == cards[24] ==
+      "gpt-oss-20b" and cards[32] == "nemotron-3.5-lightning-30b",
+      f"with a graphics card, the suggested model is the biggest that fits on the card {cards}")
+check(engine.recommend(ram=16, card=engine.card_memory_gb([{"total_gb": 2}])) is not None and
+      not engine.fits_card({"size_gb": 2.2}, 2 - engine.CARD_RESERVE_GB),
+      "a card too small for any model falls back to system memory")
+log = os.path.join(TMP, "llama.log")
+with open(log, "wb") as f:
+    f.write(b"old run\nload_tensors: offloaded 10/49 layers to GPU\nnew run\n")
+    start = f.tell()
+    f.write(b"load_tensors: offloaded 49/49 layers to GPU\nserver is listening\n")
+check(engine._offloaded(log, start) == [49, 49] and engine._offloaded(log, os.path.getsize(log)) is None,
+      "reads where this run's layers went from llama.cpp's log")
+
+# downloaded models: every model file is listed with its size, and only those can be deleted
+models_dir = engine.Bundled().models_dir
+os.makedirs(models_dir, exist_ok=True)
+listed_model = engine.catalog()["models"][0]
+for name, size in ((listed_model["file"], 3000), ("dropped-model.gguf", 2000), (listed_model["file"] + ".part", 1000),
+                   ("notes.txt", 10)):
+    with open(os.path.join(models_dir, name), "wb") as f:
+        f.write(b"\0" * size)
+down = {d["file"]: d for d in json.loads(call("/api/state"))["bundled"]["downloaded"]}
+check(set(down) == {listed_model["file"], "dropped-model.gguf", listed_model["file"] + ".part"} and
+      down[listed_model["file"]]["id"] == listed_model["id"] and down["dropped-model.gguf"]["id"] is None and
+      down[listed_model["file"] + ".part"]["partial"], "lists every downloaded model, unlisted and unfinished ones too")
+try:
+    call("/api/bundled/remove", {"file": "../settings.json"})
+    outside = True
+except urllib.error.HTTPError:
+    outside = False
+check(not outside and os.path.exists(os.path.join(os.environ["PARA_APP_DIR"], "settings.json")),
+      "only a file in the downloaded list can be deleted")
+left = {d["file"] for d in json.loads(call("/api/bundled/remove", {"file": "dropped-model.gguf"}))["downloaded"]}
+left = {d["file"] for d in json.loads(call("/api/bundled/remove", {"file": listed_model["file"] + ".part"}))["downloaded"]}
+check(left == {listed_model["file"]} and os.path.exists(os.path.join(models_dir, "notes.txt")),
+      "deletes a model no longer offered and an unfinished download")
+for name in (listed_model["file"], "notes.txt"):
+    os.remove(os.path.join(models_dir, name))
+retired =[m for m in engine.catalog()["models"] if m.get("retired")]
 check(retired and all(m["id"] not in picks.values() for m in retired),
       "a retired model stays in the catalogue, for copies already downloaded, and is never suggested")
 check(all(m.get("tested") for m in engine.catalog()["models"]), "every listed model says how it did in our tests")
