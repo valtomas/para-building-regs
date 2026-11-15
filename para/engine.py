@@ -84,31 +84,118 @@ def available_ram_gb():
         return 0.0
 
 
-def free_vram_gb():
-    """Free memory on graphics cards with their own memory, in GB: 0 when there are none, None when there may be
-    one that can't be read (AMD and Intel cards on Windows). An integrated GPU's small reserved slice (Strix Halo:
-    512 MB) doesn't count: such GPUs load models into system memory, which available_ram_gb covers."""
-    total = 0.0
-    try:
-        if shutil.which("nvidia-smi"):
-            out = subprocess.run(["nvidia-smi", "--query-gpu=memory.free", "--format=csv,noheader,nounits"],
-                                 capture_output=True, text=True, timeout=10,
-                                 creationflags=0x08000000 if os.name == "nt" else 0).stdout
-            total += sum(int(x) for x in re.findall(r"\d+", out)) / 1024
-        if sys.platform.startswith("linux"):
-            for card in os.listdir("/sys/class/drm"):
-                base = f"/sys/class/drm/{card}/device/mem_info_vram_"
-                if re.fullmatch(r"card\d+", card) and os.path.exists(base + "total"):
-                    with open(base + "total") as f, open(base + "used") as g:
-                        vram, used = int(f.read()), int(g.read())
-                    if vram >= 2 * 2**30:  # a card's own memory, not an integrated GPU's reserved slice
-                        total += (vram - used) / 2**30
-            return total
-        if sys.platform == "darwin":
-            return 0.0  # Apple silicon shares system memory
-        return total or None  # Windows: an AMD or Intel card's memory can't be read without extra libraries
+# A graphics card's own memory counts from this size. Smaller is usually an integrated GPU's reserved slice of system
+# memory (Strix Halo: 512 MB), and too little for a model and its context anyway.
+MIN_CARD_GB = 5.5  # a "6 GB" card can report a little under 6
+# what the desktop and other programs keep on the card, so a model sized to the last gigabyte doesn't spill over
+CARD_RESERVE_GB = 0.5
+_VENDORS = {"0x10de": "NVIDIA", "0x1002": "AMD", "0x8086": "Intel"}
+
+
+def _nvidia_cards():
+    if not shutil.which("nvidia-smi"):
+        return []
+    out = subprocess.run(["nvidia-smi", "--query-gpu=name,memory.total,memory.free", "--format=csv,noheader,nounits"],
+                         capture_output=True, text=True, timeout=10,
+                         creationflags=0x08000000 if os.name == "nt" else 0).stdout
+    cards = []
+    for line in out.splitlines():
+        parts = [p.strip() for p in line.rsplit(",", 2)]
+        if len(parts) == 3 and parts[1].isdigit() and parts[2].isdigit():
+            cards.append({"name": parts[0], "total_gb": int(parts[1]) / 1024, "free_gb": int(parts[2]) / 1024})
+    return cards
+
+
+def _linux_cards():
+    """AMD and Intel cards, from the kernel's driver files (NVIDIA's driver doesn't write these: nvidia-smi does)."""
+    cards = []
+    for card in sorted(os.listdir("/sys/class/drm")):
+        dev = f"/sys/class/drm/{card}/device"
+        if not re.fullmatch(r"card\d+", card) or not os.path.exists(dev + "/mem_info_vram_total"):
+            continue
+        with open(dev + "/mem_info_vram_total") as f, open(dev + "/mem_info_vram_used") as g:
+            total, used = int(f.read()) / 2**30, int(g.read()) / 2**30
+        try:
+            with open(dev + "/vendor") as f:
+                vendor = _VENDORS.get(f.read().strip(), "")
+        except OSError:
+            vendor = ""
+        cards.append({"name": f"{vendor} graphics card" if vendor else "Graphics card",
+                      "total_gb": total, "free_gb": total - used})
+    return cards
+
+
+def _windows_cards(skip_nvidia):
+    """AMD and Intel cards on Windows, from the display drivers' registry entries: their size is there, but how much
+    is free can't be read without the vendor's libraries, so free_gb is None."""
+    import winreg
+    cards, cls = [], r"SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}"
+    with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, cls) as root:
+        for i in range(winreg.QueryInfoKey(root)[0]):
+            sub = winreg.EnumKey(root, i)
+            if not sub.isdigit():
+                continue
+            try:
+                with winreg.OpenKey(root, sub) as k:
+                    name = str(winreg.QueryValueEx(k, "DriverDesc")[0])
+                    try:
+                        size = winreg.QueryValueEx(k, "HardwareInformation.qwMemorySize")[0]
+                    except OSError:  # older drivers only give the 32-bit value, which stops at 4 GB
+                        size = winreg.QueryValueEx(k, "HardwareInformation.MemorySize")[0]
+            except OSError:  # an adapter without these values (a remote display, a disabled card)
+                continue
+            if isinstance(size, bytes):
+                size = int.from_bytes(size, "little")
+            if skip_nvidia and "nvidia" in name.lower():
+                continue
+            cards.append({"name": name, "total_gb": int(size) / 2**30, "free_gb": None})
+    return cards
+
+
+def graphics_cards():
+    """Graphics cards with their own memory, which is where a model runs fastest: [{name, total_gb, free_gb}], free_gb
+    None when it can't be read. Apple silicon and integrated GPUs share system memory and aren't listed."""
+    if sys.platform == "darwin":
+        return []
+    cards = []
+    try:  # a boundary: drivers and their tools vary, and an unreadable card shouldn't stop the app
+        cards += _nvidia_cards()
     except Exception:  # noqa: BLE001
+        pass
+    try:
+        if sys.platform.startswith("linux"):
+            cards += _linux_cards()
+        elif os.name == "nt":
+            cards += _windows_cards(skip_nvidia=bool(cards))
+    except Exception:  # noqa: BLE001
+        pass
+    return [c for c in cards if c["total_gb"] >= MIN_CARD_GB]
+
+
+_cards_seen = None
+
+
+def known_cards():
+    """graphics_cards(), read once: what's fitted doesn't change while the app runs, and nvidia-smi is slow to ask."""
+    global _cards_seen
+    if _cards_seen is None:
+        _cards_seen = graphics_cards()
+    return _cards_seen
+
+
+def card_memory_gb(cards=None):
+    """The memory a model can use on this computer's graphics cards: their total, less what the desktop keeps."""
+    cards = known_cards() if cards is None else cards
+    return sum(max(c["total_gb"] - CARD_RESERVE_GB, 0) for c in cards)
+
+
+def free_vram_gb():
+    """Free memory on graphics cards with their own memory, in GB: 0 when there are none, None when there's one whose
+    free memory can't be read (AMD and Intel cards on Windows)."""
+    cards = graphics_cards()
+    if any(c["free_gb"] is None for c in cards):
         return None
+    return sum(c["free_gb"] for c in cards)
 
 
 def memory_needed_gb(model):
@@ -199,15 +286,26 @@ def _process_command(pid):
         return ""
 
 
-def recommend(models=None, ram=None):
-    """The best catalogue model for this computer's memory (Macs share memory with the GPU: ~75% usable): the
-    biggest that fits. A model with "suggest": false is listed but never the suggestion, and a "retired" one is no
-    longer offered at all (it stays in the catalogue so a copy someone downloaded keeps working): a smaller one did
-    better in our tests, so needing more memory doesn't make it the better choice."""
-    models = models if models is not None else catalog()["models"]
+def fits_card(model, card_gb):
+    """Whether the whole model, with its context, fits in this much graphics card memory."""
+    return bool(card_gb) and memory_needed_gb(model) <= card_gb
+
+
+def recommend(models=None, ram=None, card=None):
+    """The best catalogue model for this computer: the biggest that fits on its graphics card, since a model run
+    there is many times faster than one split with the processor; only when none fits, the biggest that fits system
+    memory (Macs and integrated GPUs, such as Strix Halo, run models from system memory on the GPU). A model with
+    "suggest": false is listed but never the suggestion, and a "retired" one is no longer offered at all (it stays in
+    the catalogue so a copy someone downloaded keeps working): a smaller one did better in our tests, so needing more
+    memory doesn't make it the better choice."""
+    models = [m for m in (models if models is not None else catalog()["models"])
+              if m.get("suggest", True) and not m.get("retired")]
+    card = card_memory_gb() if card is None else card
+    on_card = [m for m in models if fits_card(m, card)]
+    if on_card:
+        return max(on_card, key=memory_needed_gb)
     ram = total_ram_gb() if ram is None else ram
-    fits = [m for m in models if m.get("min_ram_gb", 0) <= ram + 0.5 and m.get("suggest", True)
-            and not m.get("retired")]
+    fits = [m for m in models if m.get("min_ram_gb", 0) <= ram + 0.5]
     return max(fits, key=lambda m: m.get("min_ram_gb", 0)) if fits else None
 
 
@@ -397,6 +495,7 @@ class Bundled:
         self.last_used = time.time()
         self.users, self.users_lock = 0, threading.Lock()  # questions being answered now (begin, end)
         self.watcher = None
+        self.gpu_layers = None
         atexit.register(self.stop)
         self.stop_leftover()
 
@@ -548,7 +647,11 @@ class Bundled:
                 "ram_gb": round(total_ram_gb(), 1), "free_gb": round(free_disk_gb(paths.app_dir()), 1),
                 "platform": platform_key(), "engine_tag": self.installed_tag(),
                 "engine_cuda": (self._current() or "").endswith("-cuda"),
-                "engine_fell_back": self._state().get("fell_back")}
+                "engine_fell_back": self._state().get("fell_back"),
+                "cards": [{"name": c["name"], "gb": round(c["total_gb"], 1)} for c in known_cards()],
+                "on_card": [m["id"] for m in catalog()["models"] if fits_card(m, card_memory_gb())],
+                # where the running model's layers went, from llama.cpp's log: [on the card, of all]
+                "gpu_layers": self.gpu_layers if running else None}
 
     # ----- installing -----
     def install(self, model_id, gpu=True):
@@ -871,6 +974,8 @@ class Bundled:
         cmd += model.get("args", [])
         flags = 0x08000000 if os.name == "nt" else 0  # CREATE_NO_WINDOW
         _trim_log(self.log_path)
+        self.gpu_layers = None
+        log_from = os.path.getsize(self.log_path) if os.path.exists(self.log_path) else 0
         with open(self.log_path, "ab") as log:  # the engine keeps its own handle; ours isn't needed after
             self.proc = subprocess.Popen(cmd, stdout=log, stderr=log, stdin=subprocess.DEVNULL,
                                          cwd=os.path.dirname(server), creationflags=flags)
@@ -892,6 +997,7 @@ class Bundled:
             try:
                 with urllib.request.urlopen(f"http://127.0.0.1:{self.port}/health", timeout=2) as r:
                     if r.status == 200:
+                        self.gpu_layers = _offloaded(self.log_path, log_from)
                         return self.base_url
             except Exception:  # noqa: BLE001 - 503 while loading
                 pass
@@ -983,6 +1089,18 @@ def _find_assets(repo, tag, patterns):
             return rel, []
         found.append(asset)
     return rel, found
+
+
+def _offloaded(log_path, start):
+    """How many of the model's layers llama.cpp put on the graphics card, from its log ("offloaded 49/49 layers to
+    GPU"): [on the card, of all], or None when it didn't say (an older or newer build words it differently)."""
+    try:
+        with open(log_path, "rb") as f:
+            f.seek(start)
+            found = re.findall(rb"offloaded (\d+)/(\d+) layers to GPU", f.read())
+        return [int(found[-1][0]), int(found[-1][1])] if found else None
+    except OSError:
+        return None
 
 
 def _find_release(repo, tag, pattern):
