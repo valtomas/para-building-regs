@@ -102,25 +102,32 @@ def _nvidia_cards():
     for line in out.splitlines():
         parts = [p.strip() for p in line.rsplit(",", 2)]
         if len(parts) == 3 and parts[1].isdigit() and parts[2].isdigit():
-            cards.append({"name": parts[0], "total_gb": int(parts[1]) / 1024, "free_gb": int(parts[2]) / 1024})
+            cards.append({"name": parts[0], "vendor": "NVIDIA", "total_gb": int(parts[1]) / 1024,
+                          "free_gb": int(parts[2]) / 1024})
     return cards
 
 
 def _linux_cards():
-    """AMD and Intel cards, from the kernel's driver files (NVIDIA's driver doesn't write these: nvidia-smi does)."""
+    """AMD and Intel graphics, from the kernel's driver files (NVIDIA's driver doesn't write these: nvidia-smi does).
+    An Intel GPU whose driver gives no memory size is listed with none: it shares system memory."""
     cards = []
     for card in sorted(os.listdir("/sys/class/drm")):
         dev = f"/sys/class/drm/{card}/device"
-        if not re.fullmatch(r"card\d+", card) or not os.path.exists(dev + "/mem_info_vram_total"):
+        if not re.fullmatch(r"card\d+", card):
             continue
-        with open(dev + "/mem_info_vram_total") as f, open(dev + "/mem_info_vram_used") as g:
-            total, used = int(f.read()) / 2**30, int(g.read()) / 2**30
         try:
             with open(dev + "/vendor") as f:
                 vendor = _VENDORS.get(f.read().strip(), "")
         except OSError:
             vendor = ""
-        cards.append({"name": f"{vendor} graphics card" if vendor else "Graphics card",
+        if os.path.exists(dev + "/mem_info_vram_total"):
+            with open(dev + "/mem_info_vram_total") as f, open(dev + "/mem_info_vram_used") as g:
+                total, used = int(f.read()) / 2**30, int(g.read()) / 2**30
+        elif vendor == "Intel":
+            total = used = 0.0
+        else:
+            continue
+        cards.append({"name": f"{vendor} graphics" if vendor else "Graphics", "vendor": vendor,
                       "total_gb": total, "free_gb": total - used})
     return cards
 
@@ -148,13 +155,14 @@ def _windows_cards(skip_nvidia):
                 size = int.from_bytes(size, "little")
             if skip_nvidia and "nvidia" in name.lower():
                 continue
-            cards.append({"name": name, "total_gb": int(size) / 2**30, "free_gb": None})
+            vendor = "AMD" if re.search(r"amd|radeon", name, re.I) else "Intel" if "intel" in name.lower() else ""
+            cards.append({"name": name, "vendor": vendor, "total_gb": int(size) / 2**30, "free_gb": None})
     return cards
 
 
-def graphics_cards():
-    """Graphics cards with their own memory, which is where a model runs fastest: [{name, total_gb, free_gb}], free_gb
-    None when it can't be read. Apple silicon and integrated GPUs share system memory and aren't listed."""
+def all_graphics():
+    """Every graphics adapter found, with its own memory if it has any: [{name, vendor, total_gb, free_gb}], free_gb
+    None when it can't be read. Apple silicon isn't listed: it always shares system memory."""
     if sys.platform == "darwin":
         return []
     cards = []
@@ -169,18 +177,48 @@ def graphics_cards():
             cards += _windows_cards(skip_nvidia=bool(cards))
     except Exception:  # noqa: BLE001
         pass
-    return [c for c in cards if c["total_gb"] >= MIN_CARD_GB]
+    return cards
 
 
-_cards_seen = None
+def graphics_cards(adapters=None):
+    """Graphics cards with their own memory, which is where a model runs fastest."""
+    return [c for c in (all_graphics() if adapters is None else adapters) if c["total_gb"] >= MIN_CARD_GB]
+
+
+# Integrated graphics reserve this much or less of system memory for themselves (Strix Halo: 512 MB by default);
+# a graphics card has more of its own.
+SHARED_MAX_GB = 2
+
+
+def shared_graphics(adapters=None, apple=None):
+    """The name of graphics built into the processor that run models from system memory, when there's no graphics
+    card to run them instead: Apple silicon, AMD's (Strix Halo, Ryzen AI) or Intel's. None otherwise."""
+    apple = (sys.platform == "darwin" and platform.machine().lower() in ("arm64", "aarch64")) if apple is None else apple
+    if apple:
+        return "Apple silicon"
+    adapters = all_graphics() if adapters is None else adapters
+    if graphics_cards(adapters):
+        return None
+    built_in = [c for c in adapters if c.get("vendor") in ("AMD", "Intel") and c["total_gb"] < SHARED_MAX_GB]
+    return built_in[0]["name"] if built_in else None
+
+
+_seen = []
+
+
+def _adapters_seen():
+    """all_graphics(), read once: what's fitted doesn't change while the app runs, and nvidia-smi is slow to ask."""
+    if not _seen:
+        _seen.append(all_graphics())
+    return _seen[0]
 
 
 def known_cards():
-    """graphics_cards(), read once: what's fitted doesn't change while the app runs, and nvidia-smi is slow to ask."""
-    global _cards_seen
-    if _cards_seen is None:
-        _cards_seen = graphics_cards()
-    return _cards_seen
+    return graphics_cards(_adapters_seen())
+
+
+def known_shared():
+    return shared_graphics(_adapters_seen())
 
 
 def card_memory_gb(cards=None):
@@ -684,6 +722,10 @@ class Bundled:
                 "engine_fell_back": self._state().get("fell_back"),
                 "downloaded": self.downloaded(),
                 "cards": [{"name": c["name"], "gb": round(c["total_gb"], 1)} for c in known_cards()],
+                "shared_gpu": known_shared(),
+                # which version of llama.cpp: the one installed, and the one a first install with the graphics card
+                # ticked would fetch ("windows-cuda-12", "linux-gpu", …), so the tick box can say which
+                "engine_build": self._state().get("build"), "build_for_card": self._build_key(True),
                 "on_card": [m["id"] for m in catalog()["models"] if fits_card(m, card_memory_gb())],
                 # where the running model's layers went, from llama.cpp's log: [on the card, of all]
                 "gpu_layers": self.gpu_layers if running else None}

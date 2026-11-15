@@ -924,12 +924,14 @@ function renderBundled() {
   const cardText = cards.map((c) => `${c.name} with ${c.gb} GB of its own`).join(" and ");
   let info = cards.length
     ? `This computer has ${b.ram_gb} GB of memory, ${cardText}, and ${b.free_gb} GB of free disk space. A model that fits on the graphics card answers many times faster than one that doesn't.`
+    : b.shared_gpu ? `This computer has ${b.ram_gb} GB of memory, shared with the graphics built into its processor (${b.shared_gpu}), and ${b.free_gb} GB of free disk space. Models run on those graphics, from this memory.`
     : `This computer has ${b.ram_gb} GB of memory and ${b.free_gb} GB of free disk space.`;
   const gl = b.gpu_layers;
   if (b.running && gl) info += gl[0] >= gl[1] ? " The model running now is all on the graphics card."
     : gl[0] === 0 ? " The model running now is on the processor, which is slow."
     : ` The model running now is partly on the processor (${gl[0]} of ${gl[1]} layers on the graphics card), which is slower.`;
   $("#machineInfo").textContent = info;
+  renderBuild(b);
   chosenBundled = chosenBundled || S.settings.engine.bundled_model || S.recommended;
   // One model is put forward: the one suggested for this computer, with any already downloaded or in use. The rest
   // wait under "Other models", so nobody has to choose between seven. A retired model shows only if it's here.
@@ -988,6 +990,21 @@ function renderDownloaded(files) {
     try { S.bundled = await api("/api/bundled/remove", { method: "POST", body: { file: f.file } }); renderBundled(); }
     catch (err) { alert(err.message); }
   });
+}
+// Which version of llama.cpp: before it's downloaded, the tick box says which one it will be (the box only matters
+// then); once it's here, a line says which is in use.
+function buildName(key) {
+  if (/cuda/.test(key)) return "the version for NVIDIA cards (CUDA)";
+  if (/cpu$/.test(key)) return "the version for the processor only";
+  if (/^darwin/.test(key)) return "the version for Macs, which uses their graphics (Metal)";
+  return "the version for any graphics card (Vulkan)";
+}
+function renderBuild(b) {
+  const mac = /^darwin/.test(b.platform || "");
+  const inUse = b.engine_build || (b.engine_cuda ? "cuda" : b.platform);
+  $("#gpuRow").hidden = mac || b.engine_installed;
+  $("#gpuLabel").textContent = `Use the graphics card: ${buildName(b.build_for_card || b.platform)} is downloaded. Untick for the version for the processor only if the AI engine won't start.`;
+  $("#engineBuild").textContent = b.engine_installed ? `The AI engine on this computer is ${buildName(inUse)}.` : "";
 }
 function renderJob(j) {
   const v = $("#jobView");
