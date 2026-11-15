@@ -204,6 +204,10 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   card" or "runs partly on the processor, slowly", and the line above the rows names the card and, while a model runs,
   whether it is all on the card. Models too big for this computer are faded with the size line in red. A model no
   longer offered (`"retired"` in `models.json`) shows only on a computer that has it.
+- **Downloaded to this computer** (`#downloaded`): under the model rows, an eyebrow with the total size over an ink
+  rule, then a ruled row per model file in the models folder: the name in display type, the size in mono (with
+  "running now", "unfinished download" or "no longer offered"), and a danger-outline Delete that asks first. It lists
+  what the model rows can't: models dropped from the catalogue and the `.part` of a download that stopped.
 - **What is a model?** (`#dlg-model-help`): a mono link at the end of the line above the model rows opens a small
   dialog in the app's look: "In plain words" eyebrow, the question as its title, four short paragraphs (what a model
   is, that the regulations are in the library and not in the model, why bigger is better and still fallible, that it

@@ -639,6 +639,40 @@ class Bundled:
     def installed_models(self):
         return [m["id"] for m in catalog()["models"] if os.path.exists(self.model_path(m))]
 
+    def downloaded(self):
+        """Every model file in the models folder, with its size: the catalogue's, and also ones a newer catalogue no
+        longer lists and unfinished downloads (.part), which take gigabytes and have no row of their own."""
+        by_file = {m["file"]: m for m in catalog()["models"]}
+        running = self.proc is not None and self.proc.poll() is None
+        try:
+            names = sorted(os.listdir(self.models_dir))
+        except OSError:
+            return []
+        out = []
+        for name in names:
+            path = os.path.join(self.models_dir, name)
+            base = name[:-len(".part")] if name.endswith(".part") else name
+            if not base.endswith(".gguf") or not os.path.isfile(path):
+                continue
+            m = by_file.get(base)
+            out.append({"file": name, "gb": round(os.path.getsize(path) / 2**30, 1), "id": m and m["id"],
+                        "name": m["name"] if m else base, "partial": name != base,
+                        "in_use": bool(running and m and m["id"] == self.model_id)})
+        return out
+
+    def remove_file(self, name):
+        """Deletes one of downloaded()'s files: only a name it lists, so nothing outside the models folder can be."""
+        entry = next((d for d in self.downloaded() if d["file"] == name), None)
+        if not entry:
+            raise EngineError("That file isn't among the downloaded models.")
+        if entry["partial"] and self._downloading():
+            raise EngineError("A download is running. Cancel it first, then delete what it left.")
+        if entry["in_use"]:
+            if self.users:
+                raise EngineError("The AI engine is answering with this model. Delete it once the answer is done.")
+            self.stop()
+        os.remove(os.path.join(self.models_dir, entry["file"]))
+
     def status(self):
         running = self.proc is not None and self.proc.poll() is None
         return {"engine_installed": bool(self.server_path()), "models": self.installed_models(),
@@ -648,6 +682,7 @@ class Bundled:
                 "platform": platform_key(), "engine_tag": self.installed_tag(),
                 "engine_cuda": (self._current() or "").endswith("-cuda"),
                 "engine_fell_back": self._state().get("fell_back"),
+                "downloaded": self.downloaded(),
                 "cards": [{"name": c["name"], "gb": round(c["total_gb"], 1)} for c in known_cards()],
                 "on_card": [m["id"] for m in catalog()["models"] if fits_card(m, card_memory_gb())],
                 # where the running model's layers went, from llama.cpp's log: [on the card, of all]

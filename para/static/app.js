@@ -969,6 +969,25 @@ function renderBundled() {
     S.bundled = await api("/api/bundled/remove", { method: "POST", body: { model: x.dataset.remove } }); renderBundled();
   });
   renderJob(b.jobs.install);
+  renderDownloaded(b.downloaded || []);
+}
+// Every model file on this computer, including ones no longer offered and unfinished downloads, with what each takes,
+// so the space can be got back in one place.
+function renderDownloaded(files) {
+  const v = $("#downloaded");
+  if (!files.length) { v.innerHTML = ""; return; }
+  const total = files.reduce((n, f) => n + f.gb, 0).toFixed(1);
+  v.innerHTML = `<p class="eyebrow">Downloaded to this computer · ${total} GB</p><div class="downloaded-list">` + files.map((f) =>
+    `<div class="file-row"><div class="info"><span class="name">${esc(f.name)}</span>
+      <span class="fstate">${f.gb.toFixed(1)} GB${f.partial ? " · unfinished download" : f.id ? "" : " · no longer offered"}${f.in_use ? " · running now" : ""}</span></div>
+      <button type="button" class="btn danger" data-remove-file="${esc(f.file)}">Delete</button></div>`).join("") + "</div>";
+  $$("[data-remove-file]").forEach((x) => x.onclick = async () => {
+    const f = files.find((g) => g.file === x.dataset.removeFile);
+    const why = `${f.name} (${f.gb} GB) is deleted from this computer.${f.in_use ? " The AI engine stops first." : ""}${f.id && !f.partial ? " You can download it again." : ""}`;
+    if (!(await confirmBox(f.partial ? "Delete this unfinished download?" : "Delete this model?", why, "Delete"))) return;
+    try { S.bundled = await api("/api/bundled/remove", { method: "POST", body: { file: f.file } }); renderBundled(); }
+    catch (err) { alert(err.message); }
+  });
 }
 function renderJob(j) {
   const v = $("#jobView");
