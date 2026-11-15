@@ -31,7 +31,8 @@ def respond(body):
             return _chunks([{"content": "OK"}], "stop")
         ids = re.findall(r"\[([rf]\d+)\]", last_user)
         return _chunks([{"content": f"From the excerpts: rise 220 mm [{ids[0] if ids else 'r1'}]."}], "stop")
-    if "from memory" in last_user and msgs[-1]["role"] == "user":  # answers without looking up, until the app asks
+    if "from memory" in last_user and msgs[-1]["role"] == "user" and "Note from the app" not in last_user:
+        # answers without looking up, until the app asks
         return _chunks([{"content": "A higher-risk building has 18 storeys or more."}], "stop")
     since_user = []
     for m in reversed(msgs):

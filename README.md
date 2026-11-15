@@ -60,9 +60,13 @@ The library covers **England**. Wales, Scotland and Northern Ireland have their 
    **Open Anyway**. You only do this once.
 
 **Windows** (10 or 11, 64-bit)
-1. Download `Para-windows-setup.exe` and double-click it. It installs for you alone (no administrator needed) and
-   adds Para to the Start menu. If Windows SmartScreen appears, click **More info**, then **Run anyway**.
-2. To remove it: **Settings › Apps**, Para, **Uninstall**. Your chats and settings are kept.
+1. Download `Para-windows-setup.exe` and double-click it.
+2. Windows shows a blue box, "Windows protected your PC", with only a **Don't run** button. Click **More info**
+   under the message, and a **Run anyway** button appears: click it. Windows says this about apps it doesn't yet
+   recognise, usually ones from small publishers; it doesn't mean anything has been found wrong with Para. You see
+   it once, when you install; updates don't ask again.
+3. Para installs for you alone (no administrator needed) and adds itself to the Start menu.
+4. To remove it: **Settings › Apps**, Para, **Uninstall**. Your chats and settings are kept.
 
 `Para-windows.zip` is the same app without an installer: extract it and run `Para.exe`.
 
@@ -95,26 +99,30 @@ instead.
   address), paste your API key from that service, choose a model and press Save. Your questions, and passages from
   your own files, are sent to that company, so it isn't private.
 
-**Which model the built-in engine suggests.** The app looks at your computer's memory and suggests the biggest
-model that fits. Bigger models get more right:
+**Which model the built-in engine suggests.** The app looks at your computer's memory and suggests a model that
+fits. Each was asked the same 36 questions about the regulations, more than once; the app shows the score beside
+each model too:
 
 | Your computer's memory | Suggested model | Download | Right, of our 36 test questions | Licence |
 |---|---|---|---|---|
-| 48 GB or more | NVIDIA Nemotron 3.5 Lightning 30B-A3B | 25.5 GB | 32 | OpenMDW 1.1 |
-| 32 GB | Qwen3.5 35B-A3B | 22.2 GB | 33 | Apache 2.0 |
+| 48 GB or more | NVIDIA Nemotron 3.5 Lightning 30B-A3B | 25.5 GB | 32 to 35 | OpenMDW 1.1 |
+| 32 GB | Qwen3.5 35B-A3B | 22.2 GB | 32 or 33 | Apache 2.0 |
 | 24 GB | gpt-oss 20B | 12.1 GB | 32 | Apache 2.0 |
-| 16 GB | IBM Granite 4.2 8B | 5.3 GB | 35 | Apache 2.0 |
-| 12 GB | Gemma 4 E4B | 5.0 GB | 22 | Apache 2.0 |
-| 8 GB | Qwen3 4B Instruct 2507 | 2.5 GB | 20 to 25 | Apache 2.0 |
+| 16 GB | IBM Granite 4.2 8B | 5.3 GB | 33 to 35 | Apache 2.0 |
+| 8 or 12 GB | IBM Granite 4.2 3B | 2.2 GB | 29 to 31 | Apache 2.0 |
 
-Granite is small and got the most right, but it is slow: it reasons before it answers, about a minute an answer on
-a fast computer and longer on a laptop. You can pick it on a bigger computer too, or Gemma on a 16 GB one if you'd
-rather have quicker answers and check them more.
+The app puts that one model forward, marked "Recommended for this computer"; the others are a click away under
+"Other models".
 
-The two smallest get about one question in three wrong. Gemma mostly fails by saying it can't find something that
-is in the library; the 4B sometimes gives a figure from memory. With either, open each cited paragraph before you
-rely on the answer: the app marks citations the AI didn't read in full and figures the cited paragraph doesn't
-hold. The questions and every model's results are in [docs/model-tests.md](docs/model-tests.md).
+Granite 4.2 8B is small and got as many right as the biggest, but it is slow: about a minute an answer on a fast
+computer and longer on a laptop. You can pick it on a bigger computer too, or the 3B on a 16 GB one if you'd rather
+have quicker answers and check them more.
+
+The small model gets more wrong: Granite 3B about one question in six. Open each cited paragraph before you rely
+on an answer: the app marks citations the AI didn't read in full and figures the cited paragraph doesn't hold.
+Gemma 4 E4B and Qwen3 4B Instruct 2507 were offered until November 2026 and no longer are, because the small
+Granite did better; a copy you already downloaded keeps working. The questions and every model's results are in
+[docs/model-tests.md](docs/model-tests.md).
 
 The model list ([para/models.json](para/models.json)) is also published with each release, so installed
 copies pick up better models without reinstalling.
@@ -154,11 +162,12 @@ python3 tests/test_app.py
 
 ## How it works
 
-```
-question ─► AI model (any OpenAI-compatible server) ─► search_library ─► SQLite FTS5 index ─► passages
-                ▲                                       read_passage   ─► paragraphs in full
-                └──── answer citing [r1234] ◄───────────┘ show_passage  ─► opens the reader
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/flow-dark.svg">
+  <img src="docs/flow.svg" width="960" alt="How Para answers: your question goes to the AI model, which searches the
+  library on your computer and reads passages from it; Para checks every citation; the answer cites paragraphs that
+  open in the reader with one click.">
+</picture>
 
 - `library/build.py` downloads the documents (gov.uk content API, legislation.gov.uk XML), splits them at their
   own paragraph numbers ("2.13", "Table 3.1", "reg 7"), keeps table rows together, repairs ligatures lost in PDF

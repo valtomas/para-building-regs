@@ -56,12 +56,9 @@
         <h1>Ask about the Building Regulations</h1>
         <p>Answers come from the Approved Documents, the Building Regulations 2010, the Building Safety Act and
           its guidance, and any files you add, with a link to each paragraph used.</p>
-        <div class="examples">
-          <button>What is the maximum travel distance in a single-direction escape route from a flat?</button>
-          <button>Minimum headroom and maximum pitch for a private stair</button>
-          <button>When is a building a higher-risk building?</button>
-          <button>Guarding height for a balcony in a dwelling</button>
-        </div>
+        <div id="welcomeNews"></div>
+        <div id="welcomeStart"></div>
+        <div id="welcomeParts"></div>
       </div>
     </div>
     <form id="composer">
@@ -78,8 +75,8 @@
         <label class="mini">Length
           <select id="length"><option value="normal">Normal</option><option value="long">Long</option><option value="none">No limit</option></select>
         </label>
-        <span id="status" class="status"></span>
-        <span class="disclaimer">AI can make mistakes. Check the cited paragraphs before relying on an answer.</span>
+        <span class="composer-note"><span id="status" class="status" role="status"></span>
+          <span class="disclaimer">AI can make mistakes. Check the cited paragraphs before relying on an answer.</span></span>
       </div>
     </form>
   </main>
@@ -112,12 +109,12 @@
 
   <section class="tabpane" data-pane="engine">
     <div class="choice">
+      <label class="radio-card first"><input type="radio" name="mode" value="bundled">
+        <div><b>Built-in engine</b><span class="tag">Easiest</span><br><small>Para downloads an AI model suited to this
+          computer and runs it here. Nothing else to install, and your questions stay on this computer.</small></div></label>
       <label class="radio-card"><input type="radio" name="mode" value="external">
         <div><b>Use an engine I already run</b><br><small>Ollama, LM Studio, Lemonade, llama.cpp, Jan, vLLM, or any
           other OpenAI-compatible server, on this computer or your network.</small></div></label>
-      <label class="radio-card"><input type="radio" name="mode" value="bundled">
-        <div><b>Built-in engine</b><br><small>The app downloads llama.cpp and a model suited to this computer and
-          runs them itself. Nothing else to install.</small></div></label>
       <label class="radio-card"><input type="radio" name="mode" value="hosted">
         <div><b>Use an online AI service</b><br><small>With your own API key from Anthropic, Mistral, OpenAI, OpenRouter
           or another. Not private: your questions go over the internet to that company.</small></div></label>
@@ -134,15 +131,19 @@
         <p id="hostedAbout" class="muted small"></p>
       </div>
       <label>Server address (base URL, ending in /v1 for most servers)
-        <input id="baseUrl" placeholder="http://127.0.0.1:11434/v1"></label>
+        <div class="row"><input id="baseUrl" placeholder="http://127.0.0.1:11434/v1"><button type="button" class="btn"
+          id="connect" title="Check the server answers, and list its models">Connect</button></div>
+        <span id="connectResult" class="connect-result" role="status"></span></label>
       <label>API key <small class="muted" id="apiKeyHint">(only if the server needs one)</small>
         <input id="apiKey" type="password" placeholder="leave empty for local servers" autocomplete="off"></label>
       <label>Model
         <div class="row"><div class="combo"><input id="modelSelect" role="combobox" aria-autocomplete="list"
           aria-expanded="false" aria-controls="modelMenu" autocomplete="off" spellcheck="false"><button type="button"
           class="combo-arrow" id="modelArrow" tabindex="-1" aria-label="Show the models"></button><div id="modelMenu"
-          class="combo-menu" role="listbox" hidden></div></div><button type="button" class="btn" id="loadModels">Refresh</button></div>
+          class="combo-menu" role="listbox" hidden></div></div></div>
       </label>
+      <p class="muted small">Not sure which model to use? <button type="button" class="link-btn" id="modelRecs">Models we
+        recommend</button></p>
       <p id="remoteWarning" class="warn" hidden>This address isn't on this computer or your local network. Your
         questions, and the passages the app finds, including passages from your own files, will be sent to
         <b id="remoteHost"></b> and kept under its terms. The regulations are public; your files may not be.</p>
@@ -152,6 +153,9 @@
 
     <div id="bundledPane" class="pane" hidden>
       <p class="muted small" id="machineInfo"></p>
+      <p class="muted small">Each model was asked the same 36 questions about the regulations; its line says how
+        many it got right. A smaller model gets more wrong, so check its answers against the paragraphs it cites.
+        <button type="button" class="link-btn" id="modelHelp">What is a model?</button></p>
       <div id="modelCards"></div>
       <label class="check"><input type="checkbox" id="gpu" checked> Use the graphics card (Windows/Linux: Vulkan
         build; untick for the CPU-only build if the engine fails to start)</label>
@@ -233,6 +237,51 @@
   <label class="check"><input type="checkbox" id="permAgree"> I'll only add documents I'm allowed to use this way</label>
   <div class="modal-actions"><button class="btn" id="permCancel">Cancel</button>
     <button class="btn primary" id="permOk" disabled>Continue</button></div>
+</dialog>
+
+<dialog id="dlg-confirm" class="modal narrow">
+  <div class="eyebrow">Please confirm</div>
+  <h2></h2>
+  <p></p>
+  <form method="dialog" class="modal-actions"><button class="btn" value="no">Cancel</button>
+    <button class="btn danger" value="yes">Delete</button></form>
+</dialog>
+
+<dialog id="dlg-model-help" class="modal narrow explain">
+  <div class="eyebrow">In plain words</div>
+  <h2>What is a model?</h2>
+  <p>A model is the AI itself: one large file that has learned to read and write from a great deal of text. Para
+    runs it on this computer to read your question, search the regulations and write the answer.</p>
+  <p>It doesn't know the regulations by heart. They are in Para's library: the model looks them up and cites the
+    paragraphs it used, and Para checks that each citation is to a passage it really looked at.</p>
+  <p>A bigger model makes fewer mistakes, but needs more memory and is a bigger download. Para recommends the
+    best one this computer can run. Any model can still misread a paragraph, so open the cited paragraph before
+    you rely on an answer.</p>
+  <p>Once it's downloaded it works without the internet, and your questions don't leave this computer.</p>
+  <form method="dialog" class="modal-actions"><button class="btn primary">Close</button></form>
+</dialog>
+
+<dialog id="dlg-model-recs" class="modal recs">
+  <form method="dialog" class="modal-head"><div><div class="eyebrow">Tested with Para</div><h2>Models we recommend</h2></div><button class="icon" aria-label="Close"><svg class="x" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button></form>
+  <p>We asked each of these the same 36 questions about the regulations and checked every answer against the
+    paragraphs it cited. A bigger model gets more right but needs more memory. Download the one that suits your
+    computer in your own engine: search its model list for the name, or use the Hugging Face page, which has the exact
+    file we tested.</p>
+  <div class="recs-wrap"><table class="recs-table">
+    <thead><tr><th>Model</th><th>Download and memory</th><th>Right of 36</th></tr></thead>
+    <tbody id="recsBody"></tbody>
+  </table></div>
+  <p class="muted small">Memory is what Para's built-in engine needs for this model; your engine's settings can change
+    it. Other models work too, as long as they can call tools (function calling).</p>
+  <form method="dialog" class="modal-actions"><button class="btn primary">Close</button></form>
+</dialog>
+
+<dialog id="dlg-unsaved" class="modal narrow">
+  <div class="eyebrow">Not saved yet</div>
+  <h2>Save your changes?</h2>
+  <form method="dialog" class="modal-actions"><button class="btn" value="keep">Keep editing</button>
+    <button class="btn" value="discard">Don't save</button>
+    <button class="btn primary" value="save">Save</button></form>
 </dialog>
 
 <dialog id="dlg-library" class="modal wide">

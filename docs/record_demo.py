@@ -1,7 +1,7 @@
 """Records the website's demo video: a real question answered by a real model, with the wait shortened.
 
-A browser drives the app as a person would (picks a project, types the question, sends it, opens the cited diagram
-and scrolls the reader) while Chrome's
+A browser drives the app as a person would (picks a project, types the question, sends it, opens the cited diagram,
+enlarges it and closes it again, and scrolls the reader) while Chrome's
 screencast saves every frame with the time it arrived. The frames are then laid out again: the time the model spends
 searching and writing is shortened, everything a person does plays at its real speed, and a badge in the corner says
 how long the shortened part really took. Nothing is staged: the answer is whatever the model says on the day, and
@@ -52,8 +52,12 @@ addEventListener('DOMContentLoaded', () => {
     + 'L10.1 13 L16 13 Z" fill="#2b1d16" stroke="#fffdf8" stroke-width="1.5" stroke-linejoin="round"/></svg>';
   c.style.cssText = 'position:fixed;left:-40px;top:-40px;z-index:99999;pointer-events:none;width:22px;height:22px';
   document.body.appendChild(c);
-  addEventListener('mousemove', (e) => { c.style.left = e.clientX - 3 + 'px'; c.style.top = e.clientY - 2 + 'px'; },
-                   true);
+  // an open dialog is drawn over everything else on the page, so the pointer goes inside it while it's open
+  addEventListener('mousemove', (e) => {
+    const home = document.querySelector('dialog[open]') || document.body;
+    if (c.parentNode !== home) home.appendChild(c);
+    c.style.left = e.clientX - 3 + 'px'; c.style.top = e.clientY - 2 + 'px';
+  }, true);
 });
 """
 
@@ -157,8 +161,18 @@ async def record(url, frames_dir):
         figure = page.locator("#reader .passage.focus img.figure").first
         if await figure.count():  # point at the drawing, not at whatever the pointer happens to be over
             box = await figure.bounding_box()
-            await page.mouse.move(box["x"] + box["width"] * .45, box["y"] + box["height"] * .45, steps=25)
-        await page.wait_for_timeout(2500)
+            x, y = box["x"] + box["width"] * .45, box["y"] + box["height"] * .45
+            await page.mouse.move(x, y, steps=25)
+            await page.wait_for_timeout(1500)
+            # enlarge it to the window, look, and close it with the cross
+            await page.mouse.click(x, y)
+            await page.wait_for_selector("#dlg-figure[open]")
+            await page.mouse.move(x + 1, y + 1)  # brings the pointer into the dialog
+            await page.wait_for_timeout(2800)
+            await point(page.locator("#dlg-figure form button"), steps=25)
+            await page.wait_for_selector("#dlg-figure:not([open])", state="attached")  # closed, so not visible
+            await page.mouse.move(x, y, steps=20)  # back over the reader, so the wheel scrolls it
+        await page.wait_for_timeout(1500)
         # read on down the document to the next passage, in wheel steps as a person would
         distance = await page.evaluate("""() => {
           const next = document.querySelector('#reader .passage.focus + .passage');

@@ -70,7 +70,7 @@
   <figure class="shot wrap">
     <!-- recorded by docs/record_demo.py; plays only when demo.js starts it, so reduced motion keeps the poster -->
     <video id="demo" width="1920" height="1200" muted loop playsinline preload="auto" poster="screenshots/demo.jpg"
-           aria-label="Para in use on a loft conversion project. The project is chosen in the sidebar, showing its earlier chats; a question about the height of guarding at a new landing open to the stairwell is typed and sent; the answer arrives citing ADK Diagram 3.1; clicking a citation opens the diagram in the reader beside the answer, and the reader is scrolled on through the document.">
+           aria-label="Para in use on a loft conversion project. The project is chosen in the sidebar, showing its earlier chats; a question about the height of guarding at a new landing open to the stairwell is typed and sent; the answer arrives citing ADK Diagram 3.1; clicking a citation opens the diagram in the reader beside the answer; the diagram is enlarged to the window and closed again, and the reader is scrolled on through the document.">
       <source src="screenshots/demo.webm" type="video/webm">
       <source src="screenshots/demo.mp4" type="video/mp4">
     </video>
@@ -155,7 +155,8 @@
       <div>
         <h3>The built-in engine</h3>
         <p>Para suggests a model that fits your computer's memory, downloads it with llama.cpp, and runs it. Nothing
-          else to install. 16 GB of memory or more recommended.</p>
+          else to install. It works from 8 GB of memory; with 16 GB or more the models get more right. Each model
+          shows how it did on our 36 test questions.</p>
       </div>
       <div>
         <h3>An online AI service</h3>
@@ -175,15 +176,17 @@
       <summary>Installing, and the first-run warnings</summary>
       <p><b>Mac:</b> unzip, move Para to Applications and open it. The first time, macOS says it can't verify the
         app: open System Settings › Privacy &amp; Security and click <i>Open Anyway</i>.</p>
-      <p><b>Windows:</b> double-click <i>Para-windows-setup.exe</i>. It installs for you alone, with no administrator
-        needed, and adds Para to the Start menu. If SmartScreen appears, click <i>More info</i>, then
-        <i>Run anyway</i>.</p>
+      <p><b>Windows:</b> double-click <i>Para-windows-setup.exe</i>. Windows shows a blue box, <i>Windows protected
+        your PC</i>, with only a <i>Don't run</i> button: click <i>More info</i> under the message, and a <i>Run
+        anyway</i> button appears. Click it. You see this once, when you install; updates don't ask again. Para
+        installs for you alone, with no administrator needed, and adds itself to the Start menu.</p>
       <p><b>Linux:</b> on Ubuntu, Debian or Mint, double-click <i>Para-linux.deb</i> and choose <i>Install</i>. On
         other distributions, download the AppImage, allow it to run as a program (right-click, Properties) and
         double-click it. Needs Ubuntu 22.04, Debian 12, Fedora 36 or newer (x86-64). If it can't open its own window,
         Para opens in your web browser instead.</p>
-      <p>The warnings appear because the app isn't signed with a paid certificate. The source is public, and the
-        builds are made by GitHub Actions from it.</p>
+      <p>Windows and macOS show these warnings for apps they don't yet recognise, usually ones from small
+        publishers; they don't mean anything has been found wrong with Para. Para's source is public, and the builds
+        are made from it by GitHub Actions.</p>
     </details>
   </section>
 

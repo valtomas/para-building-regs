@@ -138,7 +138,14 @@ async def shots(url, first_url, home, only):
                 await save(page, "setup-engine")
             await page.locator('input[type=radio][value="bundled"]').check()
             await page.wait_for_selector("#modelCards >> text=Download")
+            # the list starts below the fold: show it from the line about this computer, with the models' scores
+            await page.evaluate("document.getElementById('machineInfo').scrollIntoView()")
             await save(page, "setup-builtin")
+            if wanted("model-help"):
+                await page.click("#modelHelp")
+                await page.wait_for_selector("#dlg-model-help[open]")
+                await save(page, "model-help")
+                await page.click("#dlg-model-help button")
 
         # ----- the app in use -----
         await page.goto(url)

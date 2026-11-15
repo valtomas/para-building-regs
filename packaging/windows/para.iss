@@ -30,6 +30,12 @@ SetupIconFile=..\icon.ico
 UninstallDisplayIcon={app}\Para.exe
 UninstallDisplayName=Para
 WizardStyle=modern
+; In the app's look: the tall picture on the first and last pages, the icon in the corner of the others (drawn by
+; packaging/make_icon.py; Inno Setup picks the size that suits the screen's scaling). The welcome page is shown, since
+; the modern style hides it and the install was otherwise one bare progress bar.
+WizardImageFile=wizard-164.bmp,wizard-246.bmp,wizard-328.bmp
+WizardSmallImageFile=wizard-small-55.bmp,wizard-small-83.bmp,wizard-small-110.bmp
+DisableWelcomePage=no
 Compression=lzma2/max
 SolidCompression=yes
 OutputDir=..\..\dist
@@ -40,6 +46,10 @@ RestartApplications=no
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
+
+[Messages]
+WelcomeLabel2=This will install [name/ver] on this computer.%n%nPara answers questions about the building regulations in England, citing the paragraph each answer comes from. It needs no administrator rights. Your questions stay on your computer or your own network unless you choose an online AI service.
+FinishedLabel=Para is installed. You'll find it in the Start menu.
 
 [Tasks]
 Name: "desktopicon"; Description: "Put a shortcut on the desktop"; Flags: unchecked

@@ -1,8 +1,13 @@
-# To do before releasing 0.2.0
+# To do
 
-Everything is on the branch `ccr-990cc406-2vnrqi` (not yet a pull request). The first three sections of the old list
-were worked through at the workstation on 11 November 2026 with real models and the real window; what was found is in
-`docs/model-tests.md` (run D) and in the commit messages. Delete this file when it's empty.
+0.2.0, 0.2.1 and 0.2.2 were released on 12 November 2026. 0.2.1 made models with a strict chat template work
+(Mistral's), added IBM Granite 4.2 3B for 8 and 12 GB computers and put each built-in model's test score on its row
+(`docs/model-tests.md`, run F). 0.2.2 fixed the packaged Linux app closing on Copy with references and opening
+nothing from its links, and reworked closing dialogs and the empty chat. 0.2.3 (13 November) put the built-in engine
+first with one recommended model, added "What is a model?", stopped offering Gemma 4 E4B and Qwen3 4B, and made the
+engine stop when the app is killed or crashes: that last one is not yet tried on Windows (End task in the Task
+Manager with a model loaded, then check llama-server is gone). The checks below were left open at 0.2.0.
+Delete this file when it's empty.
 
 ## Done at the workstation
 
@@ -15,7 +20,8 @@ were worked through at the workstation on 11 November 2026 with real models and 
   than the 4B, at five times the wait, and made up passage ids.
 - **The built-in list was rewritten from the tests** (run E): Nemotron 3.5 Lightning and Qwen3.5 35B-A3B, the two
   best on Lemonade, were run through the built-in engine and replace Qwen3 30B-A3B. IBM Granite 4.2 8B got 35 of 36 from a
-  5.3 GB file and is the suggestion for 16 GB, though slow; Gemma 4 E4B is for 12 GB.
+  5.3 GB file and is the suggestion for 16 GB, though slow. Granite 4.2 3B (29 to 31) is now the one for 8 and 12 GB;
+  Gemma 4 E4B and Qwen3 4B are listed but not suggested (run F).
 - **The 36 questions on Lemonade** (Nemotron 3.5, Qwen3.5-35B, Gemma 4 E4B), every answer read, every flagged figure
   judged: 20 true, 4 false alarms from two causes, both fixed with tests.
 - **The library**: two-column pages are now read from where their lines are (`library/columns.py`). By
@@ -102,9 +108,9 @@ means the app can't be installed at all.
 
 **Linux** needs nothing: the AppImage and .deb aren't signed, and the app checks GitHub's checksum when it updates.
 
-## 5. Releasing
+## 5. After 0.2.2
 
-- [ ] Open a pull request from the branch and merge it. The version is already `0.2.0` in `para/__init__.py`, and
-      the website has its new sentence (it publishes when main changes).
-- [ ] Tag `v0.2.0` on main: that builds the library and the apps and publishes the release, with `models.json` (the
-      pin) for installed apps.
+- [ ] In the packaged Linux window: press Copy with references and paste into a document; follow Original from the
+      reader. Both fixes were checked piece by piece, not in a built app.
+- [ ] Ask a project's own questions from the empty chat with a real model and read the answers.
+- [ ] Retake `welcome.png`.

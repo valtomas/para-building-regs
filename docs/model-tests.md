@@ -228,6 +228,182 @@ was downloaded by the app (llama.cpp b12078) and asked the 36 questions, with Ge
 The list in `para/models.json` after this run: Nemotron 3.5 Lightning from 48 GB, Qwen3.5 35B-A3B from 32 GB,
 gpt-oss 20B from 24 GB, Granite 4.2 8B from 16 GB, Gemma 4 E4B from 12 GB, Qwen3 4B from 8 GB.
 
+### Run F: models made for tool calling, a fault with Mistral's models, and every listed model again
+
+Granite did well in run E, so five more small models whose makers stress tool calling were downloaded by the app and
+asked the 36 questions (2026-11-12, llama.cpp b12078, all Q4_K_M):
+
+| Model | Right figures | Answers with no passage opened | Notes |
+|---|---|---|---|
+| IBM Granite 4.2 3B (2.2 GB) | 31/36 | 6 | 23 s at the median |
+| Qwen3.5 9B | 30/36 | 17 | 11 figures flagged; 8 weeks for the higher-risk approval period |
+| Ministral 3 8B Reasoning | 30/36 | 34 | 2 made-up ids removed; 2 answers lost to an engine error |
+| Ministral 3 14B Reasoning | 24/36 | not counted | 4 answers lost to an engine error |
+| Ministral 3 8B Instruct | 23/36 | 35 | 2 answers lost to an engine error |
+
+- **The engine errors were the app's fault.** When a model answers without looking anything up, the app sends it a
+  note ("Note from the app: …") and asks again. The note went as a user message of its own, after the person's
+  message or a tool's result, and Mistral's chat template refuses that: "conversation roles must alternate", HTTP 500.
+  The note is now added to the last message for that round and taken out again (`core._add_note`), so any model
+  with a strict template works, on the built-in engine or the person's own server.
+- **Granite 4.2 3B is the find**: 31 right from a 2.2 GB file, a passage opened for all but six answers, no made-up
+  ids. Wrong: 1100 mm for the loft landing (the 8B's mistake too), the front door's security standard, the cladding
+  class without A1, and permitted development. The Ministral answers and these five models' figure flags weren't read
+  one by one.
+- Neither Ministral nor Qwen3.5 9B is listed: they cite from search results almost every time and do no better than
+  Granite 3B at two to four times the size.
+
+Because the fix changes what every model is sent, each listed model was asked the 36 questions again, with nothing
+else using the graphics card (a first try was thrown away: a game was running, the card reset and the answers were
+slow):
+
+| Model | Right figures | Searched | Cited | Right passage cited | Made-up ids removed | Figures flagged | Extract-only citations | Median time |
+|---|---|---|---|---|---|---|---|---|
+| NVIDIA Nemotron 3.5 Lightning 30B-A3B | 35/36 | 36/36 | 30/36 | 28/36 | 0 | 4 | 11 | 21 s |
+| Qwen3.5 35B-A3B | 32/36 | 36/36 | 36/36 | 29/36 | 1 | 3 | 55 | 13 s |
+| gpt-oss 20B | 32/36 | 36/36 | 31/36 | 30/36 | 0 | 0 | 9 | 11 s |
+| IBM Granite 4.2 8B | 35/36 | 36/36 | 35/36 | 30/36 | 0 | 2 | 5 | 56 s |
+| IBM Granite 4.2 3B | 29/36 | 36/36 | 33/36 | 26/36 | 0 | 0 | 11 | 21 s |
+| Gemma 4 E4B | 27/36 | 36/36 | 36/36 | 25/36 | 3 | 2 | 39 | 15 s |
+| Qwen3 4B Instruct 2507 | 25/36 | 32/36 | 32/36 | 23/36 | 0 | 6 | 70 | 6 s |
+| Ministral 3 8B Reasoning (not listed) | 26/36 | 36/36 | 28/36 | 24/36 | 0 | 1 | 65 | 9 s |
+
+- **No engine errors**: 288 answers, none lost. Ministral's 500s are gone. Its score fell from 30 to 26 all the same,
+  so the earlier 30 was at the top of its range.
+- **Nothing got worse with the note folded in.** Nemotron 35 (32 in run E), Granite 8B 35 (35 and 33), Qwen3.5 32
+  (33), gpt-oss 32 (32), Gemma 27 (22), Qwen3 4B 25 (20 to 25). One run each, so read these as ranges: the README
+  and the app give them that way.
+- **Granite 8B and Nemotron miss only the NHBC question by the check**, and both answers are sensible: they say the
+  NHBC Standards aren't in the library, then quote ADA on wall ties with a citation. The check wants no citation
+  there. Granite 8B opened a passage for every answer again.
+- **Wrong with a citation**: Qwen3.5 gave monthly checks for flat entrance doors (annual) and 10 m³/(h·m²) for air
+  permeability (8); Gemma gave 0.70 for a new wall's U-value, from the wrong table; Qwen3 4B gave 1.4 for windows, 40
+  dB for separating walls and 3.0 "air changes" for permeability, never opening a passage in 36 answers.
+- **gpt-oss gave no answer at all to the fire doors question**: eight searches, nothing opened, and an empty answer
+  after both of the app's retries. No error was raised.
+- **The 17 figure flags on the listed models were each checked against the passage: all true**, in that the figure
+  isn't in the passage cited for it. Several are a right figure beside the wrong citation (11 m for sprinklers
+  cited to an ADB FAQ).
+- **Granite 3B over two runs: 31 and 29.** That is above Gemma (22 and 27) and Qwen3 4B (20 to 25), from a smaller
+  file, so it is now the suggestion for 8 and 12 GB. Gemma and Qwen3 4B stay in the list, marked `"suggest": false`
+  in `para/models.json`: `engine.recommend` passes over them.
+
+The list after this run: Nemotron 3.5 Lightning from 48 GB, Qwen3.5 35B-A3B from 32 GB, gpt-oss 20B from 24 GB,
+Granite 4.2 8B from 16 GB, Granite 4.2 3B from 8 GB; Gemma 4 E4B and Qwen3 4B listed but not suggested. Each entry
+carries its score (`tested`), shown on its row in Settings.
+
+### Run G: 1-bit and 2-bit models (Bonsai), and Phi-4
+
+PrismML's Bonsai models keep one or two bits per weight, so a 27B model is a 4 to 8 GB file. If one answered like the
+listed models it would suit small computers, and a version of Para in the browser (`docs/plans/web-version.md`). Five
+models were downloaded by the app and asked the 36 questions (2026-11-13, llama.cpp b12078, nothing else using the
+graphics card, one run each):
+
+| Model | File | Right figures | Searched | Cited | Right passage cited | Made-up ids removed | Figures flagged | Extract-only citations | Median time |
+|---|---|---|---|---|---|---|---|---|---|
+| Ternary Bonsai 2 27B (Q2_0, from Qwen3.8 27B) | 7.6 GB | 33/36 | 36/36 | 36/36 | 32/36 | 0 | 8 | 33 | 76 s |
+| Bonsai 27B (Q1_0, from Qwen3.6 27B) | 3.8 GB | 29/36 | 35/36 | 34/36 | 27/36 | 0 | 9 | 17 | 93 s |
+| Bonsai 8B (Q1_0) | 1.2 GB | 20/36 | 35/36 | 20/36 | 13/36 | 1 | 5 | 48 | 4 s |
+| Phi-4 14B (Q4_K_M) | 8.9 GB | 10/36 | 0/36 | 0/36 | 2/36 | 5 | 0 | 0 | 19 s |
+| Phi-4 mini (Q4_K_M) | 2.5 GB | 1/36 | 0/36 | 0/36 | 2/36 | 23 | 0 | 0 | 4 s |
+
+- **The files load on the llama.cpp build the app ships.** PrismML's cards say to use their own build; b12078 already
+  has the Q1_0 and Q2_0 weight types, and all 180 answers came back with no engine error.
+- **Ternary Bonsai 2 27B answers like the best listed models, slowly.** 33 right, a passage opened for all but two
+  answers. Wrong: a fire door for a flat's bathroom (and that answer credited the person's files, which the question
+  doesn't have), the cladding class, and Scotland's stair rise given from memory. It writes at about 24 tokens a
+  second on a Strix Halo and thinks at length: 76 s at the median, five answers over three minutes. Granite 4.2 8B
+  gets 33 to 35 from a 5.3 GB file in 56 s, so this isn't listed.
+- **Bonsai 27B matches Granite 4.2 3B's score from a file not much bigger, at four times the wait.** 29 right; 16
+  answers with no passage opened. Wrong with a citation: 6.0 for air permeability (8), 1100 mm for the loft landing,
+  and wall-tie spacing from ADA presented as "the NHBC Standards". Not listed.
+- **Bonsai 8B is quick and weak**: 20 right, never opened a passage, cited nothing on 16 questions.
+- **Neither Phi-4 model called a tool, on any question.** They answered from memory and wrote passage ids of their
+  own ("[r1234]"), which the app removed. Whether that's the models or their chat templates under llama.cpp wasn't
+  looked into; as they stand they can't be used.
+- **The 22 figure flags on the Bonsai models were each checked against the library: all true**, in that the figure
+  isn't in the passage cited for it. Most are a right figure beside the paragraph next door: 12 weeks cited to reg 6
+  of the higher-risk procedures (it's in reg 5), 48°C cited to ADG 3.63–3.64 (3.65), the letter plate's 260 mm by 40
+  mm cited to ADQ 1.1 (1.3). One is the model's own sum (half of a 1,000 mm stair).
+
+The smaller models of the same family (Q2_0 files, from Qwen3.5 9B, 4B and 2B) were asked the same day:
+
+| Model | File | Right figures | Searched | Cited | Right passage cited | Made-up ids removed | Figures flagged | Extract-only citations | Median time |
+|---|---|---|---|---|---|---|---|---|---|
+| Ternary Bonsai 2 9B | 2.6 GB | 31/36 | 36/36 | 34/36 | 29/36 | 0 | 3 | 8 | 52 s |
+| Ternary Bonsai 2 4B, first run | 1.2 GB | 32/36 | 36/36 | 34/36 | 27/36 | 1 | 6 | 23 | 10 s |
+| Ternary Bonsai 2 4B, second run | | 30/36 | 36/36 | 34/36 | 26/36 | 0 | 5 | 9 | 10 s |
+| Ternary Bonsai 2 4B, third run | | 29/36 | 36/36 | 34/36 | 27/36 | 1 | 0 | 12 | 10 s |
+| Ternary Bonsai 2 2B | 0.55 GB | 23/36 | 36/36 | 19/36 | 13/36 | 0 | 0 | 11 | 4 s |
+
+- **Ternary Bonsai 2 4B does what Granite 4.2 3B does from half the file in half the time**: 29 to 32 right over
+  three runs (Granite 3B: 29 and 31), 1.2 GB against 2.2 GB, 10 s at the median against 21 s, about 190 tokens a
+  second on a Strix Halo. It opened a passage for all but three to seven answers. Wrong in all three runs: a fire
+  door for a flat's bathroom, the front door's security standard, and the cladding class. Wrong in one or two: what
+  electrical work is notifiable, the fire doors' checks, the loft landing, sprinklers, air permeability, and citing
+  ADA for the NHBC question.
+- **The 9B is no better than the 4B and five times slower**: it thinks at length. The 2B cites nothing on 17
+  questions.
+- **No engine errors** in 180 answers. The nine figure flags on the 9B and the 4B's first run were each checked
+  against the passage named: all true, two of them the model's own sum (13 risers of 200 mm). The five on the 4B's
+  second run weren't all checked.
+- **Tried only on Linux with Vulkan.** Whether llama.cpp's Windows, Mac and no-graphics-card builds read two-bit
+  files as fast, or at all, isn't known, and that matters most on the small computers this model would be for.
+
+Nothing in the catalogue changed.
+
+### Run H: llama.cpp v1.0.0 (build b12359), the listed models again, and an MTP build
+
+2026-11-14, same Strix Halo computer, library 2026.11.13, nothing else using the graphics card, one model loaded at a
+time. The engine was b12078 installed by the app, then **updated by the app** to b12359 (`POST /api/updates/engine`),
+so the answers below are from an engine reached the way an installed copy will reach it.
+
+- **The `v1.0.0` release has no binaries.** It holds one file, `nightly-tag.txt`, which says `b12359`; the builds are
+  in release `b12359`. Pinning `"tag": "v1.0.0"` fails with "No llama.cpp build for this computer", so the pin to
+  propose is `b12359`. Its `--version` prints `1.0.0-dev (build 12359)`. All seven `llama_cpp.assets` patterns match
+  exactly one file in b12359; the only renames are CUDA 13.4 to 13.5 (not used by Para). `--defrag-thold` is gone
+  from llama.cpp; no model entry passes it.
+- **Vulkan detection holds** (`Bundled._gpu`): b12078 has `libggml-vulkan.so`; the b12359 Linux Vulkan archive has
+  `libggml-vulkan.so`, the Windows Vulkan zip `ggml-vulkan.dll`, and neither CPU archive has a file with "vulkan"
+  in its name. `llama-server` is now a small launcher beside `libllama-server-impl.so` (`llama-server-impl.dll` on
+  Windows); the app's file walk and `cwd` handling already cope.
+- **The update works.** b12078 and b12359 side by side, `current.json` `previous` b12078, `proven` false; the first
+  question was answered with a citation and then `proven` was true and b12078 was deleted. An update sent 6 s into a
+  150 s answer let the answer finish; the switch came 1.6 s after it. `llama-server --version` exits 0 on the
+  Linux Vulkan and CPU builds.
+
+The 36 questions, built-in engine, b12359. The b12078 figures are the ranges from runs E and F:
+
+| Model | Right figures | Searched | Cited | Right passage cited | Made-up ids removed | Figures flagged | Extract-only citations | Median time | On b12078 |
+|---|---|---|---|---|---|---|---|---|---|
+| NVIDIA Nemotron 3.5 Lightning 30B-A3B | 35/36 | 35/36 | 31/36 | 31/36 | 1 | 5 | 12 | 25 s | 32 to 35, 21 to 23 s |
+| Qwen3.5 35B-A3B | 33/36 | 36/36 | 35/36 | 28/36 | 1 | 5 | 40 | 13 s | 32 or 33, 13 to 18 s |
+| IBM Granite 4.2 8B | 34/36 | 36/36 | 34/36 | 30/36 | 0 | 1 | 4 | 68 s | 33 to 35, 56 to 62 s |
+| IBM Granite 4.2 3B | 31/36 | 36/36 | 35/36 | 28/36 | 0 | 0 | 10 | 22 s | 29 to 31, 21 to 23 s |
+| Qwen3.5 35B-A3B, MTP build, run 1 | 33/36 | 36/36 | 35/36 | 29/36 | 0 | 3 | 62 | 11 s | |
+| Qwen3.5 35B-A3B, MTP build, run 2 | 36/36 | 36/36 | 36/36 | 32/36 | 0 | 6 | 68 | 10 s | |
+| Qwen3.5 35B-A3B, MTP build, on b12078 | 33/36 | 36/36 | 34/36 | 31/36 | 0 | 2 | 53 | 10 s | |
+
+- **Nothing is worse on b12359 beyond run-to-run spread**, and no answer was lost to an engine error in 252 answers.
+  The one thing to watch is Granite 4.2 8B's time, 68 s against 56 to 62 s; one run, not repeated.
+- **What the answers show**: the misses are the usual ones (the NHBC question answered with ADA wall ties, Scotland
+  answered with England's stair, the fire door checks, the cladding class). Granite 8B gave no citation for the HRB
+  approval period (12 weeks, right) or the electrical work question. Nemotron gave right figures with no citation
+  for guarding, the landing, the office travel distance and radon, and made up one id (`r3`, removed). Qwen3.5
+  made up one id (`r5549`, removed), and said 45 days for the completion certificate. Granite 3B answered the
+  Scotland question with England's 220 mm as if it were Scotland's.
+- **The MTP build** (`unsloth/Qwen3.5-35B-A3B-MTP-GGUF`, `Qwen3.5-35B-A3B-UD-Q4_K_XL.gguf`, 22.85 GB, Apache 2.0)
+  needs `--spec-type draft-mtp` in the entry's `args`; `engine.log` shows the draft context created and a draft
+  acceptance of 50 to 95 %. It scores the same as the plain model (33, 36; 33 on b12078) and is about 20 % quicker
+  (10 to 11 s against 13 s). **It runs on b12078 as well**, so it doesn't depend on the new engine. Its file has the
+  same name as the plain model's, so a person can't have both in the models folder (`model_path` is the file name).
+- **Muse Glimmer 30B** (`unsloth/Muse-Glimmer-30B-GGUF`, `Muse-Glimmer-30B-UD-Q4_K_XL.gguf`, 15.9 GB): the weights
+  are Apache 2.0 (Meta Superintelligence Lab), with a separate usage policy in the repository. It is a dense 30B model
+  and wrote about 13 tokens a second; the first question hadn't finished after five minutes and the run was stopped
+  on purpose, so there is **no score**. Not listed.
+- **Not tested**: the Windows and Mac builds (only their contents were read), the CPU build under the app, a fresh
+  install of an app up to 0.2.3 on b12359, and `Check for updates` on (it overwrites a hand-written pin).
+
 ## Built-in engine
 
 - `para/models.json`: every repo and file exists on Hugging Face with the listed size (checked with `HEAD` and

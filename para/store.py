@@ -126,6 +126,34 @@ class Store:
             except sqlite3.OperationalError:
                 return {}
 
+    def content_hashes(self):
+        """(words, images): fingerprints of everything a person can read here, and nothing else. Two libraries built
+        on different days from the same documents have the same pair, so a rebuild that changed nothing isn't taken
+        for a new edition. The words' formula is the one published since 0.1 (`content_hash`); don't change it."""
+        with self.lock:
+            words = hashlib.sha256()
+            for row in self.db.execute("SELECT s.key, s.title, p.ref, p.text FROM passages p JOIN sources s ON s.id = "
+                                       "p.source_id ORDER BY s.key, p.seq"):
+                words.update("\x1f".join(str(x) for x in row).encode())
+            images = hashlib.sha256()
+            for key, seq, png in self.db.execute(
+                    "SELECT s.key, p.seq, f.png FROM figures f JOIN passages p ON p.id = f.passage_id JOIN sources s "
+                    "ON s.id = p.source_id ORDER BY s.key, p.seq, f.id"):
+                images.update(f"{key}\x1f{seq}\x1f".encode() + hashlib.sha256(png or b"").digest())
+            return words.hexdigest()[:16], images.hexdigest()[:16]
+
+    def same_content(self, published):
+        """Whether a published library (its library.json) holds exactly what this one does: the same words and,
+        where it says, the same images. Then it isn't an update, whatever its date."""
+        if not published.get("content_hash"):
+            return False
+        meta = self.meta()
+        if published["content_hash"] != meta.get("content_hash"):
+            return False
+        if not published.get("images_hash"):
+            return True  # published before images were fingerprinted: the words are all there is to go by
+        return published["images_hash"] == (meta.get("images_hash") or self.content_hashes()[1])
+
     def sources(self):
         with self.lock:
             rows = self.db.execute(

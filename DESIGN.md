@@ -47,13 +47,22 @@ Dialogs (native `<dialog>`): **Settings** (tabs: AI engine, Instructions, Notes,
 **Project** (name, notes, the project's files, Delete project and Save), **Your files** (the files shared by every chat), **Library** (browse documents and search without AI), and the **permission** prompt shown the first
 time someone adds a file.
 
+A dialog's head (eyebrow, title and the close button) stays at the top while the rest scrolls, and in Settings the
+tabs stay under it. The cross, Escape and
+a click outside the dialog all close it. Settings and Project keep changes only on Save, so closing either with
+something changed asks first, in a small dialog in the app's look: "Save your changes?" with Keep editing, Don't save
+and Save (if something is missing, it stays open at the tab that says what). Deleting a chat, a project or a model, and
+removing a file, ask in the same kind of dialog ("Delete this chat?", Cancel and a danger-outline Delete, with Cancel
+focused so Enter doesn't delete); the browser's own confirm box is never used.
+
 ## Screens
 
 | Screen | Screenshot |
 |---|---|
 | First run: choose an engine | `setup-engine.png` |
 | Built-in engine: model cards, recommended one marked | `setup-builtin.png` |
-| Empty chat with example questions | `welcome.png` |
+| "What is a model?", opened from the built-in engine's list | `model-help.png` |
+| Empty chat: questions to try, the documents by Part | `welcome.png` |
 | Answer with inline citations, activity expanded | `answer.png` |
 | Under an answer: the cited list, Copy with references and Ask again | `answer-actions.png` |
 | An answer whose citations rest on a search extract (dashed citations, the note, "Extract only" in the cited list) | `extract-only.png` |
@@ -114,8 +123,21 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
 
 ## Components
 
+- **Empty chat** (`#welcome`): under the heading, what's offered depends on who is looking. With no chats yet, "Try
+  one": four questions drawn at random from those the models are tested on (`EXAMPLES` in `app.js`, a new four for
+  each new chat), as ruled rows numbered in mono with "Ask →". In a project, a line saying how many files it has with a
+  mono link to its notes and files, and questions about those files by name instead. Once someone has asked before,
+  the examples go. Always there: "The Approved Documents, by Part", two columns of ruled rows read downwards (the
+  letter in mono accent, the Part's name, and "Open" or "Vol 1" and "Vol 2", which open the document in the reader),
+  then "Acts and regulations" as a row of mono links and "The whole library". After a library update a warm note says
+  the edition and how much differs, with "See what changed" (the Library opens at Changed in this edition); it goes
+  once followed.
 - **Question** (`.msg.user`): a heading, not a bubble: "Your question" eyebrow, the question in display type, an
   ink rule under it. Each turn repeats it.
+- **Question box** (`#composer`): the box, then a mono row of Reasoning and Length with the disclaimer in italic at
+  the right. While the AI works, what it's doing ("Searching “…”…", "Writing…") takes the disclaimer's place, on one
+  line, cut short with an ellipsis if it's long; the disclaimer comes back when the answer ends. The row keeps its
+  height throughout, so the box never moves while an answer arrives.
 - **Citation** (`.cite`): inline mono tag, `--cite` background, label `<source> <ref>`, tooltip with the heading.
   Your files use the warm, bordered variant (`.cite.file`) so people can tell their documents from the regulations.
 - **Citation states**: a citation the AI made from a search result's extract alone, without reading the passage, has a
@@ -138,6 +160,10 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   red outline pill; disabled at 40 % opacity.
 - **Notes** (`.note`): warm background for honest-state messages; **errors** (`.error`) in danger colour, with a
   button to the setting that fixes them.
+- **A model that isn't downloaded**: when the question fails because the built-in model chosen in Settings isn't on
+  the computer, the error names it with its size ("IBM Granite 4.2 3B, the model chosen in Settings, isn't
+  downloaded yet (2.2 GB).") and offers "Download IBM Granite 4.2 3B (2.2 GB)" (primary) and "Choose another
+  model". The download's progress shows under the error, and when it's done the question is asked again.
 - **Project picker**: at the top of the sidebar, a "Project" label over a native select set in display type on a
   sidebar rule ("No project", each project, "New project…"), with a mono "Notes and files" link under it when a
   project is chosen. Recent shows the chosen project's chats only; the question box says "Ask a question about
@@ -150,19 +176,50 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
 - **Privacy badge**: bottom of the sidebar, a bordered box with a coloured dot. Green "Private" for the built-in
   engine or a local or LAN address, gold with the host name for anything else, coral "No AI engine set up" (opens
   Settings). On phones the dot alone sits at the right of the top bar.
-- **Engine choice**: three radio cards in Settings → AI engine: an engine already running, the built-in engine, or an
+- **Engine choice**: three radio cards in Settings → AI engine. The built-in engine comes first, across the full
+  width with a gold "Easiest" pill, and is the one ticked when nothing has been chosen yet (unless exactly one
+  engine is found running, which is then filled in): most people don't know what an engine is and shouldn't need
+  to. Under it, side by side: an engine already running, or an
   online AI service ("hosted" in the code). It shows a pill per service (Anthropic, Mistral, OpenAI, OpenRouter; the
   chosen one in `--accent-2`), a line saying where it's based with "Get an API key ↗", then the same address, key and model fields
   as a local engine. The model is typed or picked from the service's list. The warm warning names the host and says
   passages from the person's own files go there too. A hosted engine is saved as an external one; the card follows
   from the address.
+- **Connect** (`#connect`): an outline button beside the server address (Enter in the field does the same). It asks
+  the server for its models, fills the model menu and says on the line under the field what it found: "Connected: 6
+  models." in `--ok`, or in danger text what to change ("Nothing answered at 192.168.1.5. Check the engine is
+  running…", "…wants an API key…", "…not an OpenAI-compatible server. Most addresses end in /v1"). The line keeps its
+  height when empty. There is no separate Refresh: Connect is the one way to fetch the list. Test, at the foot of the
+  tab, is different: it saves and asks the model for a short reply.
 - **Model field**: in Settings → AI engine, a typed field with the server's models in a menu drawn like the project
   picker's, in the dialog's colours: ruled rows in mono on `--panel`, the chosen one marked with an accent ¶. Opening it
   shows every model (a native datalist would show only those matching the name already in the box) and selects the
   name, so typing filters the list; any name can still be typed. It opens upwards when the dialog has no room below.
-- **Model rows**: ruled rows with a radio, name, Recommended tag (gold pill), description, mono size and memory line,
-  and an action (Download, or Installed and Delete). Models too big for this computer are faded with the size line
-  in red.
+- **Model rows**: ruled rows with a radio, name, the gold pill "Recommended for this computer" on the one chosen from
+  the computer's memory, description, mono size and memory line ending in how many of the 36 test questions the model
+  got right ("33 to 35 of 36 test questions right"), and an action (Download, or Installed and Delete). Only the
+  recommended model and any already downloaded or in use are shown; the rest sit under a collapsed mono line, "+ Other
+  models (4)", like the activity list, so nobody has to choose between a list of names. It opens by itself when one of
+  them is chosen or downloading. Models too big for this computer are faded with the size line in red. A model no
+  longer offered (`"retired"` in `models.json`) shows only on a computer that has it.
+- **What is a model?** (`#dlg-model-help`): a mono link at the end of the line above the model rows opens a small
+  dialog in the app's look: "In plain words" eyebrow, the question as its title, four short paragraphs (what a model
+  is, that the regulations are in the library and not in the model, why bigger is better and still fallible, that it
+  runs without the internet) and Close. No jargon in it: no "LLM", "weights", "tokens" or "inference".
+- **Models we recommend** (`#dlg-model-recs`): for someone running their own engine, a mono link under the model
+  field ("Not sure which model to use?") opens a dialog: "Tested with Para" eyebrow, a short paragraph, then a table
+  of the models in `models.json` that aren't retired, one ruled row each: the name in display type, why (its `about`)
+  and a mono link to its Hugging Face page; the download and memory in mono; how many of the 36 test questions it got
+  right. Nothing is downloaded from here: their engine manages its own models. On phones each row stacks, the figures
+  on one mono line under the name.
+- **Engine update** (Settings → Updates & about, beside the app's and the library's rows): "A newer AI engine (llama.cpp
+  b12078, 38 MB) is available." with a primary Install button; progress shows under it, then "Installed. It will be
+  used from the next question." Nothing is downloaded until the button is pressed. The sidebar's update note says
+  "Engine update available" after the app and the library. If the new engine wouldn't start a model and the earlier
+  one was put back, a `.note` in the tab says "The AI engine update didn't work on this computer, so the earlier one is
+  still in use."; that build isn't offered again. For an NVIDIA card the row says "(llama.cpp b12359 for NVIDIA cards,
+  620 MB)", and if the NVIDIA version wouldn't start a model the note says "The NVIDIA version of the AI engine didn't
+  work on this computer, so the version for any graphics card is in use."
 - **Library list**: a three-column grid (short name, title with the edition in italic under it, date) so long
   edition text can't squeeze the titles.
 - **Changed in this edition** (`.lib-changes`): at the top of the Library after an update, collapsed like a drawing's

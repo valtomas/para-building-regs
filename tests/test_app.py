@@ -10,8 +10,10 @@ import re
 import sqlite3
 import struct
 import sys
+import socket
 import tempfile
 import threading
+import urllib.error
 import urllib.request
 import zlib
 
@@ -42,6 +44,7 @@ lib.add_figure(lib.passage_rowid("ADK", 1), TINY_PNG, 5, "ADK_Diagram-3.1_p5", "
 lib.set_meta(version="2026.11.03", built="test")
 lib.close()
 
+from tests import fake_llm  # noqa: E402
 from tests.fake_llm import start  # noqa: E402
 from para import server  # noqa: E402
 
@@ -93,6 +96,24 @@ check({h["name"] for h in st["hosted"]} >= {"Anthropic", "Mistral", "OpenAI", "O
       all(h["base_url"].startswith("https://") for h in st["hosted"]), "hosted services are offered by address")
 models = json.loads(call("/api/models", {"base_url": fake_url}))["models"]
 check(models and models[0] == "fake-model", "models are listed by POST, so a typed key never sits in a URL")
+
+
+def connect_error(url):
+    """What Connect says for an address that gives no list of models."""
+    try:
+        call("/api/models", {"base_url": url})
+    except urllib.error.HTTPError as e:
+        return json.loads(e.read()).get("error", "")
+    return ""
+
+
+with socket.socket() as s:  # a port nothing listens on
+    s.bind(("127.0.0.1", 0))
+    closed = s.getsockname()[1]
+check("Nothing answered" in connect_error(f"http://127.0.0.1:{closed}/v1"), "Connect: nothing at the address")
+check("not an OpenAI-compatible" in connect_error(BASE + "/v1"), "Connect: something else answered (404)")
+check("should start with http" in connect_error("192.168.1.5:11434/v1"), "Connect: an address without http://")
+check("address first" in connect_error(""), "Connect: no address")
 
 
 def saved_engine():
@@ -148,6 +169,19 @@ check(ev2[-1]["type"] == "done", "follow-up question in the same chat")
 ev3 = ask("Answer from memory: what is a higher-risk building?")
 check(any(e["type"] == "retry" for e in ev3) and any(e["type"] == "search" for e in ev3) and ev3[-1]["cites"],
       "an answer from memory is sent back to search first")
+
+def _alternates(msgs):
+    """Mistral's chat template: after the system message, user and assistant turns alternate; tool calls and their
+    results don't count."""
+    roles = [m["role"] for m in msgs if m["role"] == "user" or (m["role"] == "assistant" and not m.get("tool_calls"))]
+    return all(a != b for a, b in zip(roles, roles[1:]))
+
+
+sent = [b["messages"] for b in fake_llm.SEEN if any("Note from the app" in str(m.get("content")) for m in b["messages"])]
+check(sent and all(_alternates(m) for m in sent),
+      "the app's note to the AI goes in the last message, so user and assistant turns still alternate (Ministral)")
+check(not any("Note from the app" in str(m.get("content")) for m in json.loads(call("/api/chat?id=" + ev3[0]["id"]))
+              .get("messages", [])), "and the note isn't kept in the chat")
 
 # the person's files
 data = b"# Fire strategy\n\n2.1 The building has a sprinkler system to BS 9251.\n\n2.2 Travel distance is 7.5 m."
@@ -369,7 +403,6 @@ files_srv.shutdown()
 
 # a service that refuses max_tokens by name gets the limit as max_completion_tokens, and is remembered
 from para.llm import Client  # noqa: E402
-from tests import fake_llm  # noqa: E402
 
 strict = Client(fake_url, model="strict-model")
 said = "".join(e["text"] for e in strict.stream([{"role": "user", "content": "Reply with just: OK"}], max_tokens=50,
@@ -381,8 +414,355 @@ before = len(fake_llm.SEEN)
 list(strict.stream([{"role": "user", "content": "Reply with just: OK"}], max_tokens=50, reasoning="off"))
 check(len(fake_llm.SEEN) == before + 1, "and the next request is right first time")
 
+# which CUDA build an NVIDIA card can run, from nvidia-smi's driver version and compute capability
+check(eng.cuda_kind("580.95.05, 8.9\n") == "cuda-13", "a recent driver and card: CUDA 13")
+check(eng.cuda_kind("580.95.05, 6.1") == "cuda-12", "a card from before 2018 stays on CUDA 12, whatever the driver")
+check(eng.cuda_kind("550.54.14, 8.6") == "cuda-12", "a driver before 580: CUDA 12")
+check(eng.cuda_kind("470.256.02, 7.5") is None and eng.cuda_kind("") is None, "an old driver, or none: no CUDA")
+check(eng.cuda_kind("590.10, 8.9\n590.10, 6.1\n") == "cuda-12", "with two cards the older one decides")
+check(eng.cuda_kind("581.15, [N/A]") == "cuda-12", "a card that doesn't say its capability: CUDA 12")
+machine = eng.platform.machine
+eng.platform.machine = lambda: "aarch64"
+if sys.platform.startswith("linux"):
+    check(eng.platform_key(True) == "linux-arm64-gpu" and eng.platform_key(False) == "linux-arm64-cpu"
+          and all(k in eng.catalog()["llama_cpp"]["assets"] for k in ("linux-arm64-gpu", "linux-arm64-cpu")),
+          "an ARM Linux computer gets the ARM builds")
+eng.platform.machine = machine
+
 # the built-in engine is a build that was tested, not whichever is newest
 check(eng.catalog()["llama_cpp"]["tag"] != "latest", "the llama.cpp build is pinned")
+
+# updating the built-in engine: offered, never taken unasked; the old build stays until the new one has started
+if os.name != "nt":  # the stand-in llama-server is a script with a shebang
+    import gzip  # noqa: E402
+    import io  # noqa: E402
+    import tarfile  # noqa: E402
+    import time  # noqa: E402
+    import shutil  # noqa: E402
+
+    bundled = server.engine.bundled
+    pin_model = eng.catalog()["models"][0]
+    shipped = eng.catalog()
+    SCRIPT = """#!{py}
+import sys
+MODE = "{mode}"
+if "--version" in sys.argv:
+    print("version: stand-in", MODE)
+    sys.exit(1 if MODE == "novers" else 0)
+if "--list-devices" in sys.argv:  # a CUDA build lists the NVIDIA card only where it can use it
+    print("Available devices:")
+    print("  " + ("CUDA0: stand-in (8192 MiB)" if MODE in ("cuda", "diescuda") else "(none)"))
+    sys.exit(0)
+if MODE.startswith("dies"):
+    sys.exit(1)
+import http.server
+sys.path.insert(0, {root!r})
+from tests import fake_llm
+
+
+class H(fake_llm.Handler):
+    def do_GET(self):
+        if self.path == "/health":
+            self.send_response(200)
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+        else:
+            super().do_GET()
+
+
+http.server.ThreadingHTTPServer(("127.0.0.1", int(sys.argv[sys.argv.index("--port") + 1])), H).serve_forever()
+"""
+
+    def script(mode):
+        return SCRIPT.format(py=sys.executable, mode=mode, root=ROOT)
+
+    def put_build(tag, mode):
+        """A build as the app unpacks one: engine/<tag>/build/bin/llama-server."""
+        path = os.path.join(bundled.engine_dir, tag, "build", "bin", "llama-server")
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w") as f:
+            f.write(script(mode))
+        os.chmod(path, 0o755)
+
+    def targz(name, raw, mode=0o644):
+        """A .tar.gz of one file, the same bytes every time: gzip's header holds the time, and an archive made again
+        for the download a second later than the one its checksum was taken from would fail the check."""
+        buf = io.BytesIO()
+        with tarfile.open(fileobj=buf, mode="w") as t:
+            info = tarfile.TarInfo(name)
+            info.size, info.mode = len(raw), mode
+            t.addfile(info, io.BytesIO(raw))
+        return gzip.compress(buf.getvalue(), mtime=0)
+
+    def archive(mode):
+        return targz("build/bin/llama-server", script(mode).encode(), 0o755)
+
+    RELEASES = {}  # tag -> (how its llama-server behaves, whether its checksum is wrong)
+    CUDA = {}  # tag -> how its CUDA build's llama-server behaves
+
+    def blob(tag, kind):
+        """The archive of a release file: the general build, the CUDA build, or the CUDA runtime ("rt"), which on
+        Linux comes in a folder of its own."""
+        if kind != "rt":
+            return archive(CUDA[tag] if kind == "cuda" else RELEASES[tag][0])
+        return targz(f"cudart-llama-{tag}/libcudart.so.12", b"lib")
+
+    class Releases(http.server.BaseHTTPRequestHandler):
+        def log_message(self, *a):
+            pass
+
+        def do_GET(self):
+            data = blob(*self.path.strip("/").split("/"))
+            self.send_response(200)
+            self.send_header("Content-Length", str(len(data)))
+            self.end_headers()
+            self.wfile.write(data)
+
+    releases_srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), Releases)
+    threading.Thread(target=releases_srv.serve_forever, daemon=True).start()
+
+    asked = []  # the asset patterns releases were searched with
+
+    def fake_find_release(repo, tag, pattern):
+        asked.append(pattern)
+        kind = "rt" if pattern.startswith("^cudart") else "cuda" if "cuda" in pattern else "gen"
+        data, bad = blob(tag, kind), kind == "gen" and RELEASES[tag][1]
+        url = f"http://127.0.0.1:{releases_srv.server_address[1]}/{tag}/{kind}"
+        return ({"tag_name": tag}, {"name": f"llama-{tag}-{kind}.tar.gz", "size": len(data),
+                                    "browser_download_url": url,
+                                    "digest": "sha256:" + ("0" * 64 if bad else hashlib.sha256(data).hexdigest())})
+
+    def pin(tag, **extra):
+        """The model list an update check saved, pinning another build."""
+        with open(os.path.join(os.environ["PARA_APP_DIR"], "models.json"), "w") as f:
+            json.dump({**shipped, "llama_cpp": {**shipped["llama_cpp"], "tag": tag, **extra}}, f)
+
+    def check_engine_update():
+        return json.loads(call("/api/updates/check", {}))["engine"]
+
+    def update_job():
+        try:
+            call("/api/updates/engine", {})
+        except urllib.error.HTTPError as e:
+            return {"state": "refused", "error": json.load(e)["error"]}
+        for _ in range(300):
+            j = json.loads(call("/api/jobs"))["bundled"]["jobs"].get("engine")
+            if j and j["state"] != "running":
+                return j
+            time.sleep(0.1)
+        return {"state": "running"}
+
+    def builds():
+        return sorted(d for d in os.listdir(bundled.engine_dir) if os.path.isdir(os.path.join(bundled.engine_dir, d)))
+
+    def stray():  # an archive or partial download left in the engine folder
+        return [f for f in os.listdir(bundled.engine_dir) if f.endswith((".gz", ".zip", ".part", ".tmp"))]
+
+    real = (server._gh, eng._find_release, eng.available_ram_gb, eng.free_vram_gb, eng.nvidia_cuda)
+    eng.nvidia_cuda = lambda: None  # the tests above are of the general build, whatever card runs them
+    server._gh = lambda path: {"tag_name": "v0.0.1", "assets": []}
+    eng._find_release = fake_find_release
+    eng.available_ram_gb = lambda: None
+    previous_engine = saved_engine()
+    os.makedirs(bundled.models_dir, exist_ok=True)
+    with open(bundled.model_path(pin_model), "wb") as f:
+        f.write(b"x")
+    RELEASES.update(b2=("dies", False), b3=("ok", False), b4=("ok", True), b5=("novers", False), b6=("dies", False))
+
+    # an install made before current.json: its engine is found, and it is offered the update
+    put_build("b1", "ok")
+    pin("b1")
+    check(bundled.server_path().endswith(os.path.join("b1", "build", "bin", "llama-server"))
+          and bundled.installed_tag() == "b1" and not os.path.exists(bundled.state_path),
+          "an install with no current.json still finds its engine")
+    check(check_engine_update() is None, "the same build as the pin: no engine update offered")
+    pin("b2")
+    offer = check_engine_update()
+    check(offer and offer["tag"] == "b2" and offer["size"] > 0, "a different pin is offered, with its size")
+    check(json.loads(call("/api/state"))["updates"]["engine"]["tag"] == "b2" and builds() == ["b1"],
+          "the offer reaches the page, and nothing was downloaded for it")
+    # the same kind of build as the one installed: CPU stays CPU (its owner unticked the graphics card for a reason)
+    kinds = shipped["llama_cpp"]["assets"]
+    if sys.platform != "darwin":  # the Mac has one kind
+        check(bundled._gpu() is False and asked[-1] == kinds[eng.platform_key(False)],
+              "an install from before current.json with no Vulkan library is updated with the CPU build")
+        lib = os.path.join(bundled.engine_dir, "b1", "build", "bin", "libggml-vulkan.so")
+        open(lib, "w").close()
+        check_engine_update()
+        check(bundled._gpu() is True and asked[-1] == kinds[eng.platform_key(True)],
+              "and one with a Vulkan library with the graphics-card build")
+        os.remove(lib)
+        bundled._save_state({"tag": "b1", "gpu": True})
+        check(bundled._gpu() is True, "what current.json records comes before the files")
+        os.remove(bundled.state_path)
+    pin("b2", min_app="9.0.0")
+    check(check_engine_update() is None, "a pin that needs a later app than this one is not offered")
+    pin("b2", min_app="0.1.0")
+    check(check_engine_update()["tag"] == "b2", "one that needs an earlier app is")
+    pin("latest")
+    check(check_engine_update() is None, "'latest' is never compared with the build installed")
+    pin("b2")
+    bundled._save_state({"tag": "b1", "failed": ["b2"]})
+    check(check_engine_update() is None, "a tag that failed on this computer isn't offered again")
+    os.remove(bundled.state_path)
+
+    # an update that can't be used leaves the build in use alone and no partial folder
+    pin("b4")
+    j = update_job()
+    check(j["state"] == "error" and "checksum" in j["error"] and builds() == ["b1"] and not stray()
+          and not os.path.exists(bundled.state_path) and bundled.installed_tag() == "b1",
+          "a download that fails its checksum leaves the old build in use and nothing behind")
+    pin("b5")
+    j = update_job()
+    check(j["state"] == "error" and "won't run" in j["error"] and builds() == ["b1"] and not stray()
+          and not os.path.exists(bundled.state_path) and bundled.installed_tag() == "b1",
+          "a binary that won't run leaves the old build in use and no folder")
+    bundled.jobs["install"] = eng.Job("install", "a model")
+    check(update_job()["state"] == "refused", "no engine update while another download runs")
+    del bundled.jobs["install"]
+
+    # the update is installed beside the old build and used from the next start
+    call("/api/settings", {"engine": {"mode": "bundled", "bundled_model": pin_model["id"]}})
+    pin("b2")
+    j = update_job()
+    state = bundled._state()
+    check(j["state"] == "done" and "next question" in j["note"] and builds() == ["b1", "b2"]
+          and bundled.server_path().endswith(os.path.join("b2", "build", "bin", "llama-server"))
+          and state["tag"] == "b2" and state["previous"] == "b1" and state["proven"] is False,
+          "after an update the new build is the one in use, with the old one kept beside it")
+    check(json.loads(call("/api/state"))["updates"]["engine"] is None, "and it is no longer offered")
+
+    # the first start on a build that dies: back on the old one, remembered, and the question still answered
+    ev = ask("stair rise?")
+    state = bundled._state()
+    check(ev[-1]["type"] == "done" and "220 mm" in ev[-1]["answer"] and state["tag"] == "b1"
+          and state["failed"] == ["b2"] and builds() == ["b1"] and not state.get("previous"),
+          "the first start on a build that exits goes back to the old build, which answers")
+    check(json.loads(call("/api/state"))["bundled"]["engine_fell_back"]["tag"] == "b2"
+          and check_engine_update() is None, "the page is told, and the failed build isn't offered again")
+
+    # the engine is in use: the switch waits for the answer to end; the first healthy start clears the old build
+    pin("b3")
+    check(bundled.proc and bundled.proc.poll() is None, "the engine is running before the update")
+    waiting = {}
+    bundled.begin()  # a question is being answered
+    bundled.last_used = 0  # and the model has sent nothing for a long time: reading a long prompt
+    threading.Thread(target=lambda: waiting.update(job=update_job()), daemon=True).start()
+    time.sleep(3)
+    check(bundled.proc.poll() is None and bundled._state()["tag"] == "b1" and "job" not in waiting,
+          "an engine in the middle of an answer isn't stopped for an update, however long it has been silent")
+    bundled.end()
+    for _ in range(100):
+        if "job" in waiting:
+            break
+        time.sleep(0.1)
+    check(waiting.get("job", {}).get("state") == "done" and bundled._state()["tag"] == "b3"
+          and builds() == ["b1", "b3"] and bundled.users == 0, "once the answer has ended the switch is made")
+    ev = ask("stair rise?")
+    state = bundled._state()
+    check(ev[-1]["type"] == "done" and state["tag"] == "b3" and state["proven"] is True
+          and "previous" not in state and builds() == ["b3"] and state["failed"] == ["b2"],
+          "the first healthy start on the new build removes the old one")
+
+    # a model that won't load blames the engine only on the first start after an update, and only if the old one works
+    bundled.stop()
+    put_build("b3", "dies")
+    ev = ask("stair rise?")
+    check(ev[-1]["type"] == "error" and bundled._state()["tag"] == "b3" and builds() == ["b3"]
+          and bundled._state()["failed"] == ["b2"], "a build that has started before isn't blamed when it exits")
+    pin("b6")
+    bundled.stop()
+    check(update_job()["state"] == "done" and builds() == ["b3", "b6"], "an update over a build that no longer runs")
+    ev = ask("stair rise?")
+    state = bundled._state()
+    check(ev[-1]["type"] == "error" and state["tag"] == "b6" and state["previous"] == "b3"
+          and state["failed"] == ["b2"] and builds() == ["b3", "b6"],
+          "if the old build fails too the model is at fault, and nothing is changed")
+
+    # an NVIDIA card gets the CUDA build, with the general one kept until the CUDA one has loaded a model
+    if eng.platform_key(True) == "linux-gpu":  # the stand-ins are Linux archives
+        def fresh(tag, cuda, general="ok"):
+            """An app that has no engine yet, with the catalogue pinning `tag`; install it as a first model would."""
+            bundled.stop()
+            shutil.rmtree(bundled.engine_dir, ignore_errors=True)
+            RELEASES[tag], CUDA[tag] = (general, False), cuda
+            pin(tag)
+            job = eng.Job("install", "a model")
+            bundled._install_server(job, True)
+            return job
+
+        eng.nvidia_cuda = lambda: "cuda-12"
+        fresh("b7", "cuda")
+        state, server_bin = bundled._state(), bundled.server_path()
+        check(builds() == ["b7", "b7-cuda"] and state["tag"] == "b7-cuda" and state["previous"] == "b7"
+              and state["proven"] is False and state["build"] == "linux-cuda-12" and not stray()
+              and bundled.installed_tag() == "b7" and json.loads(call("/api/state"))["bundled"]["engine_cuda"],
+              "an NVIDIA card gets the CUDA build, with the general one beside it")
+        check(os.path.exists(os.path.join(os.path.dirname(server_bin), "libcudart.so.12")),
+              "the CUDA runtime's libraries are put beside llama-server")
+        check(asked[-3:] == [kinds["linux-cuda-12"][0], kinds["linux-cuda-12"][1], kinds["linux-gpu"]],
+              "the CUDA build and its runtime come from the release, then the general build")
+        ev = ask("stair rise?")
+        check(ev[-1]["type"] == "done" and builds() == ["b7-cuda"] and bundled._state()["proven"] is True,
+              "once the CUDA build has loaded a model the general one is removed")
+        check(bundled._build_key(False) == "linux-cpu", "someone who chose the processor never gets CUDA")
+
+        # an update of a CUDA install is a CUDA build, and one that won't load goes back to the earlier CUDA build
+        RELEASES["b8"], CUDA["b8"] = ("ok", False), "diescuda"
+        pin("b8")
+        offer = check_engine_update()
+        check(offer["tag"] == "b8" and offer["cuda"] is True and offer["size"] > len(blob("b8", "cuda")),
+              "an update for NVIDIA is offered as such, with the runtime counted in its size")
+        check(update_job()["state"] == "done" and builds() == ["b7-cuda", "b8-cuda"], "the CUDA update is installed")
+        ev = ask("stair rise?")
+        state = bundled._state()
+        check(ev[-1]["type"] == "done" and state["tag"] == "b7-cuda" and "b8-cuda" in state["failed"]
+              and not state.get("no_cuda") and state["fell_back"]["cuda"] is False,
+              "a CUDA update that won't load goes back to the CUDA build before it, and CUDA stays in use")
+
+        # a CUDA build that runs but won't load a model on the first start: the general build, from then on
+        fresh("b9", "diescuda")
+        ev = ask("stair rise?")
+        state = bundled._state()
+        check(ev[-1]["type"] == "done" and "220 mm" in ev[-1]["answer"] and state["tag"] == "b9"
+              and state["no_cuda"] is True and "b9-cuda" in state["failed"] and builds() == ["b9"],
+              "a CUDA build that won't load a model on its first start: the general build answers, and is kept")
+        check(json.loads(call("/api/state"))["bundled"]["engine_fell_back"]["cuda"] is True,
+              "the page is told it was the NVIDIA build that didn't work")
+        RELEASES["b10"], CUDA["b10"] = ("ok", False), "cuda"
+        pin("b10")
+        check(check_engine_update()["cuda"] is False and update_job()["state"] == "done"
+              and builds() == ["b10", "b9"] and asked[-1] == kinds["linux-gpu"],
+              "after that, updates are of the general build")
+
+        # a CUDA build that doesn't find the card (no driver it can use): the general build alone
+        fresh("b11", "nocuda")
+        state = bundled._state()
+        check(builds() == ["b11"] and state["tag"] == "b11" and state["no_cuda"] is True and state["proven"] is True
+              and not stray(), "a CUDA build that doesn't find the card is replaced by the general build")
+        with open(bundled.log_path, encoding="utf-8", errors="replace") as f:
+            check("NVIDIA (CUDA) build" in f.read(), "and the engine log says why")
+
+        # someone on the general build with an NVIDIA card is updated to CUDA where it works, else stays general
+        bundled.stop()
+        shutil.rmtree(bundled.engine_dir, ignore_errors=True)
+        put_build("b12", "ok")
+        bundled._save_state({"tag": "b12", "gpu": True})
+        RELEASES["b13"], CUDA["b13"] = ("ok", False), "nocuda"
+        pin("b13")
+        state = (update_job(), bundled._state())[1]
+        check(state["tag"] == "b13" and state["previous"] == "b12" and state["no_cuda"] is True
+              and builds() == ["b12", "b13"] and not stray(),
+              "an update whose CUDA build doesn't find the card installs the general build in the same go")
+
+    bundled.stop()
+    releases_srv.shutdown()
+    server._gh, eng._find_release, eng.available_ram_gb, eng.free_vram_gb, eng.nvidia_cuda = real
+    os.remove(os.path.join(os.environ["PARA_APP_DIR"], "models.json"))
+    os.remove(bundled.model_path(pin_model))
+    shutil.rmtree(bundled.engine_dir, ignore_errors=True)
+    call("/api/settings", {"engine": {"mode": "external", "base_url": fake_url, "model": ""}})
+    check(eng.catalog()["llama_cpp"]["tag"] != "latest", "the pin is still not 'latest' once the stand-ins are gone")
 
 # ----- what a chat keeps of a passage, and what's said about a citation -----
 events = ask("What is the maximum rise for a private stair?")
@@ -550,6 +930,26 @@ newer.close()
 from para import updater  # noqa: E402
 
 check(updater.kind() is None, "running from source, the app doesn't update itself")
+
+# links and files opened from the packaged Linux app: the browser mustn't be handed the app's own libraries
+if sys.platform.startswith("linux"):
+    import shutil  # noqa: E402
+    started = []
+    real_popen, real_which, kept = server.subprocess.Popen, shutil.which, dict(os.environ)
+    server.subprocess.Popen = lambda cmd, **kw: started.append((cmd, kw.get("env")))
+    shutil.which = lambda name: "/usr/bin/" + name
+    os.environ.pop("BROWSER", None)
+    os.environ.update(LD_LIBRARY_PATH="/opt/para/_internal", LD_LIBRARY_PATH_ORIG="/usr/local/lib")
+    try:
+        server.open_url("https://www.gov.uk/x.pdf#page=3")
+        server.open_path("/tmp/a folder")
+    finally:
+        server.subprocess.Popen, shutil.which = real_popen, real_which
+        os.environ.clear()
+        os.environ.update(kept)
+    check([c for c, _ in started] == [["xdg-open", "https://www.gov.uk/x.pdf#page=3"], ["xdg-open", "/tmp/a folder"]]
+          and all(env and env.get("LD_LIBRARY_PATH") == "/usr/local/lib" for _, env in started),
+          "a link or folder is opened with the system's libraries, not the packaged app's")
 release = {"Para-linux.AppImage": {"browser_download_url": "https://example.org/Para-linux.AppImage", "size": 9,
                                    "digest": "sha256:" + "ab" * 32}}
 check(updater.offer(release) is None, "no update offered to a copy that can't replace itself")
@@ -868,6 +1268,16 @@ engine._json = lambda url: releases
 rel, asset = engine._find_release("ggml-org/llama.cpp", "latest", r"bin-ubuntu-x64\.(zip|tar\.gz)$")
 check(rel["tag_name"] == "b2" and asset["name"].startswith("llama-b2"), "finds the newest llama.cpp build")
 
+# the suggested model: the biggest that fits, but never one a smaller model beat in our tests
+picks = {ram: (engine.recommend(ram=ram) or {}).get("id") for ram in (4, 8, 12, 16, 24, 32, 64)}
+check(picks[4] is None and picks[16] == "granite-4.2-8b" and picks[64] == "nemotron-3.5-lightning-30b",
+      "the suggested model is the biggest that fits this computer's memory")
+check(picks[8] == picks[12] == "granite-4.2-3b", "a model that a smaller one beat is never suggested")
+retired = [m for m in engine.catalog()["models"] if m.get("retired")]
+check(retired and all(m["id"] not in picks.values() for m in retired),
+      "a retired model stays in the catalogue, for copies already downloaded, and is never suggested")
+check(all(m.get("tested") for m in engine.catalog()["models"]), "every listed model says how it did in our tests")
+
 # built-in engine memory: no load that won't fit, no engine left behind, none kept running idle
 if os.name != "nt":
     import subprocess  # noqa: E402
@@ -882,6 +1292,15 @@ if os.name != "nt":
     os.chmod(fake_server, 0o755)
     small = engine.catalog()["models"][-1]
     os.makedirs(bundled.models_dir, exist_ok=True)
+    open(bundled.model_path(small), "wb").close()
+    os.remove(bundled.model_path(small))
+    try:
+        bundled.start(small["id"])
+        said = ""
+    except engine.EngineError as e:
+        said = str(e)
+    check(small["name"] in said and "isn't downloaded yet" in said and str(small["size_gb"]) in said,
+          "a chosen model that isn't downloaded is named, with its size")
     open(bundled.model_path(small), "wb").close()
     real_ram, real_vram = engine.available_ram_gb, engine.free_vram_gb
     engine.available_ram_gb, engine.free_vram_gb = (lambda: 1.0), (lambda: 0.0)
@@ -914,6 +1333,25 @@ if os.name != "nt":
         left.kill()
     check(left.returncode is not None and left.returncode != 0 and not os.path.exists(bundled.pid_path),
           "an engine left behind by an earlier run is stopped")
+
+    # the app killed outright runs none of its own code, so the engine has to be stopped from outside it
+    app = subprocess.Popen([sys.executable, "-c", (
+        "import subprocess, sys, time; from para import engine\n"
+        "p = subprocess.Popen(['sleep', '60']); g = engine.guard(p)\n"
+        "print(p.pid, flush=True); time.sleep(60)")], stdout=subprocess.PIPE, text=True, cwd=ROOT)
+    orphan = int(app.stdout.readline())
+    app.kill()
+    app.wait()
+    for _ in range(50):
+        if "sleep" not in engine._process_command(orphan):
+            break
+        time.sleep(0.1)
+    check("sleep" not in engine._process_command(orphan), "an engine doesn't outlive an app that was killed outright")
+    kept = subprocess.Popen(["sleep", "60"])
+    engine.unguard(engine.guard(kept))
+    time.sleep(0.3)
+    check(kept.poll() is None, "a guard taken off after a normal stop leaves the process alone")
+    kept.kill()
 
     bundled.proc = subprocess.Popen([fake_server])
     bundled.last_used = time.time()

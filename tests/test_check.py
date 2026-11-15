@@ -66,5 +66,61 @@ with open(report, encoding="utf-8") as f:
     text = f.read()
 expect("ADK is missing" in text and "Not published" in text, "the report names the problem")
 
+# a rebuild that changed nothing keeps the published edition, so installed apps aren't offered the same library
+import json  # noqa: E402
+import shutil  # noqa: E402
+
+import edition  # noqa: E402
+
+
+def stamped(path, version):
+    store = Store(path, "r")
+    words, images = store.content_hashes()
+    store.set_meta(version=version, built=version, content_hash=words, images_hash=images)
+    store.close()
+    return {"version": version, "content_hash": words, "images_hash": images}
+
+
+def copy(src, name):
+    folder = os.path.join(TMP, name)
+    os.makedirs(folder)
+    return shutil.copy(src, os.path.join(folder, "regs.sqlite"))
+
+
+published = stamped(base, "2026.11.12")
+rebuilt = copy(base, "rebuilt")
+stamped(rebuilt, "2026.11.13")
+kept = edition.keep(rebuilt, base)
+with open(os.path.join(os.path.dirname(rebuilt), "library.json")) as f:
+    described = json.load(f)
+expect(kept and described["version"] == "2026.11.12" and os.path.exists(rebuilt + ".gz"),
+       "a rebuild that changed nothing keeps the published edition")
+
+installed = Store(base, "r", readonly=True)
+expect(installed.same_content({**published, "version": "2026.11.13"}),
+       "the app doesn't take a later date on the same words and images for an update")
+expect(installed.same_content({"version": "2026.11.13", "content_hash": published["content_hash"]}),
+       "a library published before images were fingerprinted is compared by its words")
+expect(not installed.same_content({"version": "2026.11.13"}), "a library that doesn't say what it holds is an update")
+
+reworded = copy(base, "reworded")
+store = Store(reworded, "r")
+store.db.execute("UPDATE passages SET text = text || ' amended' WHERE id = 1")
+store.db.commit()
+store.close()
+new = stamped(reworded, "2026.11.13")
+expect(not edition.keep(reworded, base) and not installed.same_content(new),
+       "a reworded paragraph makes a new edition, and the app offers it")
+
+redrawn = copy(base, "redrawn")
+store = Store(redrawn, "r")
+store.db.execute("UPDATE figures SET png = CAST(png || x'00' AS BLOB) WHERE id = 1")
+store.db.commit()
+store.close()
+new = stamped(redrawn, "2026.11.13")
+expect(not edition.keep(redrawn, base) and not installed.same_content(new),
+       "a drawing cut again makes a new edition, though no word changed")
+installed.close()
+
 print(f"\n{len(failures)} failed" if failures else "\nall passed")
 sys.exit(1 if failures else 0)

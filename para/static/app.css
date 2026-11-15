@@ -203,6 +203,26 @@ code { font-family: var(--mono); font-size: .8em; background: var(--cite); color
 .examples button::before { content: counter(ex, decimal-leading-zero); font: 12px var(--mono); color: var(--accent); }
 .examples button::after { content: "Ask →"; font: 12px var(--mono); color: var(--accent); white-space: nowrap; }
 .examples button:hover { background: var(--panel-2); }
+/* the empty chat: questions to try, the project's line, the documents by Part, a line after a library update */
+#welcomeStart, #welcomeParts { display: flex; flex-direction: column; gap: 12px; }
+#welcomeStart:empty, #welcomeParts:empty, #welcomeNews:empty { display: none; }
+#welcomeStart .examples, .parts { margin-top: 0; }
+.welcome-project { margin: 0; font-size: 16px; color: var(--muted); }
+.link-btn { background: none; border: 0; padding: 0; cursor: pointer; font: 11.5px var(--mono); letter-spacing: .08em;
+  text-transform: uppercase; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.link-btn:hover { color: var(--accent-hover); }
+.note.edition { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; justify-content: space-between; }
+.parts { columns: 2; column-gap: 36px; border-top: 1px solid var(--ink); }   /* read down, then across */
+.part { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 12px; align-items: baseline;
+  padding: 11px 2px; border-bottom: 1px solid var(--border); break-inside: avoid; }
+.part-letter { font: 500 12px var(--mono); color: var(--accent); }
+.part-name { font-size: 15.5px; line-height: 1.3; }
+.part-links { display: flex; gap: 12px; }
+.part-open { background: none; border: 0; padding: 0; cursor: pointer; font: 11.5px var(--mono); letter-spacing: .06em;
+  text-transform: uppercase; color: var(--accent); white-space: nowrap; }
+.part-open:hover, .part-open:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+.law { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: baseline; border-top: 1px solid var(--ink); padding-top: 14px; }
+#welcomeParts .eyebrow + .parts + .eyebrow { margin-top: 16px; }
 .msg { margin: 0 0 22px; }
 .msg.user { margin-top: 40px; }
 .msg.user:first-child { margin-top: 0; }
@@ -314,10 +334,14 @@ code { font-family: var(--mono); font-size: .8em; background: var(--cite); color
   font: 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink); cursor: pointer;
   min-width: 9ch; }
 .mini select option { background: var(--panel); text-transform: none; }
-.status { font: italic 15px/1.3 var(--body); letter-spacing: 0; text-transform: none; color: var(--muted-2); }
+/* What the AI is doing takes the disclaimer's place while it works, in the room the disclaimer already has: a line
+   of its own, or squeezing the disclaimer onto two, moved the question box up and down as the words changed. */
+.composer-note { flex: 1; min-width: 240px; position: relative; text-align: right; }
+.status { position: absolute; left: 0; right: 0; top: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  font: italic 15px/1.3 var(--body); letter-spacing: 0; text-transform: none; color: var(--muted-2); }
 .status:empty { display: none; }
-.disclaimer { flex: 1; text-align: right; font: italic 14px/1.4 var(--body); letter-spacing: 0; text-transform: none;
-  min-width: 240px; }
+.status:not(:empty) + .disclaimer { visibility: hidden; }
+.disclaimer { display: block; font: italic 14px/1.4 var(--body); letter-spacing: 0; text-transform: none; }
 
 /* reader: an overlay on the right; wide windows make room for it */
 #reader { position: absolute; top: 0; right: 0; bottom: 0; z-index: 5; width: var(--reader-w); background: var(--panel);
@@ -378,7 +402,10 @@ code { font-family: var(--mono); font-size: .8em; background: var(--cite); color
 .modal.narrow { width: min(580px, 94vw); padding: 34px 38px; gap: 18px; }
 .modal::backdrop { background: var(--backdrop); }
 .modal > * { margin: 0; flex: none; }
-.modal-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+/* the head stays at the top while the dialog scrolls, so the close button is always there; it covers the dialog's
+   own top padding and its bottom edge fades into what scrolls under it */
+.modal-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+  position: sticky; top: -30px; z-index: 3; margin: -30px 0 -8px; padding: 30px 0 8px; background: var(--panel); }
 .modal-head > div { display: flex; flex-direction: column; gap: 6px; }
 .modal h2 { margin: 0; font: 500 34px/1.1 var(--display); }
 .modal.narrow h2 { font-size: 32px; line-height: 1.12; }
@@ -420,7 +447,9 @@ code { font-family: var(--mono); font-size: .8em; background: var(--cite); color
 .modal-actions { display: flex; justify-content: flex-end; gap: 10px; align-items: center; margin-top: 4px; }
 .tabpane > .modal-actions, .tabpane[data-pane=about] .modal-actions { border-top: 1px solid var(--border); padding-top: 18px; }
 .modal-actions .muted { flex: 1; font-size: 15px; }
-.tabs { display: flex; gap: 26px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+/* the tabs stay under the head while a long tab scrolls; app.js sets `top` to where the head ends */
+.tabs { display: flex; gap: 26px; border-bottom: 1px solid var(--border); flex-wrap: wrap;
+  position: sticky; top: 66px; z-index: 2; background: var(--panel); padding-top: 8px; margin-top: -8px; }
 .tab { background: none; border: 0; padding: 0 0 10px; margin-bottom: -1px; cursor: pointer; border-bottom: 2px solid transparent;
   color: var(--muted-2); font: 11.5px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
 .tab:hover { color: var(--ink); }
@@ -428,6 +457,11 @@ code { font-family: var(--mono); font-size: .8em; background: var(--cite); color
 .tabpane { display: flex; flex-direction: column; gap: 16px; min-height: 0; }
 .tabpane > p { margin: 0; }
 .choice { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.choice .radio-card.first { grid-column: 1 / -1; }
+.radio-card .tag { display: inline-block; vertical-align: 2px; margin-left: 10px; background: var(--gold); color: #2b1d16;
+  border-radius: 999px; padding: 2px 9px; font: 10px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.modal.explain > p + p { color: var(--ink); }
+#modelHelp { margin-left: 6px; }
 .modal label.radio-card { flex-direction: row; gap: 14px; border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px;
   cursor: pointer; }
 .radio-card:hover { background: var(--panel-2); }
@@ -455,6 +489,34 @@ input[type=checkbox]:checked { background-color: var(--accent); border-color: va
 .pane > p.muted.small, .tabpane > p.muted.small, #dlg-files > p.muted.small, #projectFiles > p.muted.small { font-size: 15px; line-height: 1.5; }
 #externalPane > p.muted.small:last-child { font-style: italic; font-size: 14.5px; }
 #findResult { font-style: italic; font-size: 15px; }
+#baseUrl { flex: 1; min-width: 0; }
+.modal label .row > .btn { flex: none; }
+/* what Connect found: kept to its line's height when empty, so the fields under it don't jump */
+.connect-result { min-height: 1.45em; font-size: 14.5px; line-height: 1.45; font-style: italic; color: var(--muted); }
+.connect-result.ok { color: var(--ok); font-style: normal; }
+.connect-result.bad { color: var(--danger-text); font-style: normal; }
+#modelRecs { margin-left: 6px; }
+/* Models we recommend: ruled rows like the Cited list, the figures in mono */
+.recs-wrap { overflow-x: auto; }
+.recs-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.recs-table th { text-align: left; font: 500 10.5px var(--mono); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--muted-2); padding: 0 14px 8px 0; border-bottom: 1px solid var(--ink); }
+.recs-table td { vertical-align: top; padding: 14px 14px 14px 0; border-bottom: 1px solid var(--border); }
+.recs-table td:last-child, .recs-table th:last-child { padding-right: 0; }
+.recs-table b { display: block; font: 500 18px/1.3 var(--display); }
+.recs-table small { display: block; margin: 4px 0 6px; color: var(--muted); line-height: 1.45; }
+.recs-table td.mono { font: 12px/1.6 var(--mono); color: var(--muted); white-space: nowrap; }
+.recs-repo { font: 11.5px var(--mono); color: var(--accent); word-break: break-all; }
+.modal.recs > p { font-size: 16px; line-height: 1.55; }
+@media (max-width: 600px) {  /* phones: each model's figures go under its name rather than in narrow columns */
+  .recs-table thead { display: none; }
+  .recs-table tr { display: block; padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .recs-table td { display: block; padding: 0; border: 0; }
+  .recs-table td.mono { display: inline; white-space: normal; }
+  .recs-table td.mono br { display: none; }
+  .recs-table td.mono + td.mono::before { content: " · "; }
+  .recs-table td.mono:last-child::after { content: " of 36 right"; }
+}
 #machineInfo { font: 12px/1.5 var(--mono) !important; letter-spacing: .06em; color: var(--muted-2); font-style: normal !important; }
 .warn { margin: 0; color: var(--warn); background: var(--warn-bg); padding: 12px 16px; border-radius: 12px; font-size: 16px; line-height: 1.45; }
 .found { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -472,13 +534,20 @@ input[type=checkbox]:checked { background-color: var(--accent); border-color: va
 .model-card input[type=radio] { margin: 0; }
 .model-card .info { display: block; min-width: 0; }
 .model-card .info small { display: block; margin-top: 3px; }
-.model-card .info b { font: 500 19px/1.3 var(--display); }
+.model-card .info b { font: 500 19px/1.3 var(--display); margin-right: 10px; }   /* not on the tag: it can wrap under the name */
 .model-card .info br { display: none; }
 .model-card .info small.muted { font-size: 15px; line-height: 1.4; }
 .model-card .meta { font: 11.5px/1.4 var(--mono); letter-spacing: .04em; color: var(--muted-2); }
-.model-card .tag { display: inline-block; vertical-align: 3px; margin-left: 10px; background: var(--gold); color: #2b1d16;
+.model-card .tag { display: inline-block; vertical-align: 3px; background: var(--gold); color: #2b1d16;
   border-radius: 999px; padding: 2px 9px; font: 10px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
 .model-card .btn { padding: 8px 16px; font-size: 11px; letter-spacing: .14em; }
+.other-models summary { cursor: pointer; user-select: none; list-style: none; display: flex; gap: 8px; padding: 14px 12px;
+  border-bottom: 1px solid var(--border); font: 11.5px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted-2); }
+.other-models summary::-webkit-details-marker { display: none; }
+.other-models summary::before { content: "+"; color: var(--accent); width: 10px; }
+.other-models[open] summary::before { content: "\2212"; }
+.other-models summary:hover, .other-models[open] summary { color: var(--accent); }
 .installed { font: 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--ok); }
 #jobView:not(:empty) { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; padding: 14px 16px;
   border: 1px solid var(--border); border-radius: 12px; font-size: 15px; }
@@ -602,6 +671,7 @@ input[type=checkbox]:checked { background-color: var(--accent); border-color: va
   #app:has(#engineBadge.none) .topbar-dot::after { background: var(--none); }
   #messages { padding: 24px 20px; }
   .welcome { padding-top: 0; gap: 20px; }
+  .parts { columns: 1; }
   .examples button { grid-template-columns: 32px minmax(0, 1fr); gap: 10px; font-size: 17px; padding: 14px 2px; }
   .examples button::after { display: none; }
   .msg.user .bubble { font-size: 28px; line-height: 1.12; gap: 10px; padding-bottom: 18px; }
@@ -612,7 +682,7 @@ input[type=checkbox]:checked { background-color: var(--accent); border-color: va
   #question { font-size: 17px; padding: 10px 0; }
   .composer-box .btn { height: 44px; padding: 0 18px; font-size: 11px; letter-spacing: .16em; }
   .composer-row { gap: 14px; }
-  .disclaimer { text-align: left; min-width: 0; flex-basis: 100%; }
+  .composer-note { text-align: left; min-width: 0; flex-basis: 100%; }
   #reader { position: fixed; inset: 0; width: 100%; z-index: 8; border-left: 0; box-shadow: none; }
   #reader header { padding: 18px 20px 10px; }
   .reader-title { font-size: 22px; }
@@ -622,9 +692,10 @@ input[type=checkbox]:checked { background-color: var(--accent); border-color: va
   #readerLicense { padding: 12px 20px; }
   .modal, .modal.wide, .modal.narrow { width: 100vw; max-width: 100vw; max-height: 100vh; height: 100vh; border-radius: 0;
     border: 0; padding: 22px 20px; margin: 0; }
+  .modal-head { top: -22px; margin-top: -22px; padding-top: 22px; }
   .modal h2, .modal.wide h2 { font-size: 30px; }
   .choice { grid-template-columns: 1fr; }
-  .modal label.model-card { grid-template-columns: 24px minmax(0, 1fr); }
+  .modal label.model-card { grid-template-columns: 24px minmax(0, 1fr); grid-auto-flow: row; }   /* the button goes under the text, not over it */
   .model-card > .btn, .model-card > .installed { grid-column: 2; justify-self: start; }
   .file-row { grid-template-columns: 1fr auto auto; }
   .lib-source { grid-template-columns: 84px minmax(0, 1fr); gap: 4px 12px; }

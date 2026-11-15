@@ -96,6 +96,7 @@ async function refresh() {
   $("#version").textContent = `Version ${S.version} · library ${S.library.version || "none"}`;
   $("#filesCount").textContent = S.files.filter((f) => !f.project).length || "";
   $("#libCount").textContent = S.library.sources.length || "";
+  renderWelcome();
   const b = $("#engineBadge");
   const e = s.engine;
   if (!e.mode) { b.className = "badge none"; b.textContent = "No AI engine set up"; b.onclick = () => openSettings(); }
@@ -103,9 +104,9 @@ async function refresh() {
   else { b.className = "badge remote"; b.textContent = "Questions go to " + hostOf(e.base_url); b.onclick = () => openSettings(); }
   const u = S.updates || {};
   const note = $("#updateNote");
-  if (u.app || u.library) {
+  if (u.app || u.library || u.engine) {
     note.hidden = false;
-    note.textContent = u.app ? `Version ${u.app.version} is available` : `Library update ${u.library.version} available`;
+    note.textContent = u.app ? `Version ${u.app.version} is available` : u.library ? `Library update ${u.library.version} available` : "Engine update available";
     note.onclick = () => { openSettings("about"); };
   } else note.hidden = true;
   renderProjects();
@@ -126,7 +127,7 @@ function renderChats() {
     $(".open", row).onclick = () => openChat(c.id);
     $(".ren", row).onclick = () => renameChat(row, c);
     $(".del", row).onclick = async () => {
-      if (!confirm("Delete this chat?")) return;
+      if (!(await confirmBox("Delete this chat?", "", "Delete"))) return;
       await api("/api/chat?id=" + encodeURIComponent(c.id), { method: "DELETE" });
       if (c.id === chatId) newChat();
       await refresh();
@@ -230,6 +231,10 @@ pmenu.addEventListener("keydown", (e) => {
 document.addEventListener("click", (e) => { if (!pmenu.hidden && !e.target.closest(".project-pick")) projectMenu(false); });
 $("#projectEdit").onclick = () => openProject(project);
 
+// What has been typed or chosen in a dialog since it was last saved (see "closing a dialog" at the end).
+const unsaved = new Map();   // dialog -> the parts changed and not yet saved
+function changed(dlg, part) { if (!unsaved.has(dlg)) unsaved.set(dlg, new Set()); unsaved.get(dlg).add(part); }
+function saved(dlg, part) { if (part) unsaved.get(dlg)?.delete(part); else unsaved.delete(dlg); }
 const dlgP = $("#dlg-project");
 let editing = null;      // the project open in the dialog, null while creating one
 function openProject(name) {
@@ -242,14 +247,15 @@ function openProject(name) {
   $("#projectSave").textContent = p ? "Save" : "Create";
   $("#projectMsg").textContent = "";
   if (p) renderProjectFiles();
-  if (!dlgP.open) dlgP.showModal();
+  if (!dlgP.open) { saved(dlgP); dlgP.showModal(); }
   if (!p) $("#projectName").focus();
   if (p) api("/api/files/sync", { method: "POST" }).then((r) => { S.files = r.files; renderProjectFiles(); });
 }
 function renderProjectFiles() {
   renderFileList($("#projectFileList"), S.files.filter((f) => f.project === editing));
 }
-$("#projectSave").onclick = async () => {
+// Saves the project; true if it was saved. After creating one the dialog stays open for its files, unless it's closing.
+async function saveProject(closing = false) {
   const name = $("#projectName").value.trim(), notes = $("#projectNotesOne").value;
   try {
     const r = editing === null
@@ -258,12 +264,15 @@ $("#projectSave").onclick = async () => {
     S = r;
     const created = editing === null;
     await setProject(r.project);
-    if (created) openProject(r.project);   // carry on: add the project's files
+    saved(dlgP);
+    if (created && !closing) openProject(r.project);   // carry on: add the project's files
     else dlgP.close();
-  } catch (e) { $("#projectMsg").textContent = e.message; }
-};
+    return true;
+  } catch (e) { $("#projectMsg").textContent = e.message; return false; }
+}
+$("#projectSave").onclick = () => saveProject();
 $("#projectDelete").onclick = async () => {
-  if (!confirm(`Delete the project ${editing}? Its chats are kept, outside any project.`)) return;
+  if (!(await confirmBox(`Delete the project ${editing}?`, "Its chats are kept, outside any project.", "Delete"))) return;
   try {
     S = await api("/api/projects?name=" + encodeURIComponent(editing), { method: "DELETE" });
     dlgP.close();
@@ -278,6 +287,8 @@ function newChat() {
   chatId = null;
   $("#messages").innerHTML = "";
   $("#messages").appendChild(welcomeEl);
+  pickExamples();
+  if (S) renderWelcome();
   renderChats();
   $("#question").focus();
 }
@@ -372,7 +383,12 @@ function addAssistant(question) {
     error(msg) {
       ans.classList.remove("cursor");
       $(".extras", el).insertAdjacentHTML("beforeend", `<div class="error">${esc(msg)}</div>`);
-      if (/engine|Settings|reach/i.test(msg)) $(".extras", el).insertAdjacentHTML("beforeend", `<p><button class="btn small" data-settings>Open AI engine settings</button></p>`);
+      // the chosen built-in model (or the engine that runs it) isn't on this computer: offer it here, by name and size
+      const eng = S.settings.engine, m = eng.mode === "bundled" && S.catalog.find((x) => x.id === eng.bundled_model);
+      if (m && /isn't (downloaded|installed) yet/.test(msg) && !(S.bundled.models.includes(m.id) && S.bundled.engine_installed))
+        $(".extras", el).insertAdjacentHTML("beforeend", `<p class="row"><button class="btn small primary" data-download="${esc(m.id)}">Download ${esc(m.name)} (${m.size_gb} GB)</button>
+          <button class="btn small" data-settings>Choose another model</button></p><div class="dl"></div>`);
+      else if (/engine|Settings|reach/i.test(msg)) $(".extras", el).insertAdjacentHTML("beforeend", `<p><button class="btn small" data-settings>Open AI engine settings</button></p>`);
       actions(null);
     },
     finish(done) {
@@ -588,6 +604,8 @@ document.addEventListener("click", (e) => {
   const ext = e.target.closest("a[data-ext]");
   if (ext) { e.preventDefault(); openUrl(ext.href); return; }
   if (e.target.closest("[data-settings]")) { openSettings(); return; }
+  const dl = e.target.closest("[data-download]");
+  if (dl) { downloadHere(dl); return; }
   const op = e.target.closest("[data-open]");
   if (op) { ({ settings: openSettings, files: openFiles, library: openLibrary })[op.dataset.open](); }
 });
@@ -602,7 +620,96 @@ $("#newChat").onclick = () => { if (!busy) newChat(); };
 $("#reasoning").onchange = (e) => api("/api/settings", { method: "POST", body: { reasoning: e.target.value } });
 $("#length").onchange = (e) => api("/api/settings", { method: "POST", body: { length: e.target.value } });
 const welcomeEl = $("#welcome");
-$$(".examples button").forEach((b) => b.onclick = () => ask(b.textContent));
+
+// ---------- the empty chat ----------
+// What it offers depends on who is looking. Someone with no chats yet gets four questions to try, drawn from the ones
+// the models are tested on (tests/ask_models.py), so a first answer is one we know comes out well. In a project the
+// questions are about its files. Anyone who has asked before gets the documents by Part instead: a contents page
+// doesn't wear out. After a library update, one line says so.
+const EXAMPLES = [
+  "What is the maximum travel distance in a single-direction escape route from a flat entrance door?",
+  "Maximum rise, minimum going and maximum pitch for a private stair",
+  "Guarding height for a balcony in a dwelling",
+  "Limiting U-value for a new external wall in a new dwelling",
+  "When is a building a higher-risk building during design and construction?",
+  "What must a principal designer be competent to do?",
+  "Does a bathroom in a flat need a fire door?",
+  "At what height does a block of flats need sprinklers?",
+  "Maximum travel distance in an office where escape is possible in one direction only",
+  "Minimum size of an emergency escape window in a house",
+  "What standard of fire alarm system does a new house need?",
+  "Minimum extract rates for a kitchen and a bathroom with intermittent fans",
+  "How much water may a new dwelling be designed to use per person?",
+  "Maximum hot water temperature at a bath in a new dwelling",
+  "What height should a handrail on a stair be?",
+  "What headroom does a stair in a loft conversion need?",
+  "What is the worst air permeability allowed for a new dwelling?",
+  "Limiting U-value for windows in a new dwelling",
+  "Maximum gradient for a ramp with a 5 m going to a building other than a dwelling",
+  "Minimum rated output of an electric vehicle charge point",
+  "How thick must a constructional hearth be?",
+  "What airborne sound insulation must a separating wall between new houses achieve?",
+  "What is the radon action level?",
+  "What standard should the front door of a new dwelling meet for security?",
+];
+const PARTS = {
+  A: "Structure", B: "Fire safety", C: "Site preparation and resistance to contaminants and moisture",
+  D: "Toxic substances", E: "Resistance to sound", F: "Ventilation", G: "Sanitation, hot water safety and water efficiency",
+  H: "Drainage and waste disposal", J: "Combustion appliances and fuel storage", K: "Protection from falling, collision and impact",
+  L: "Conservation of fuel and power", M: "Access to and use of buildings", O: "Overheating", P: "Electrical safety",
+  Q: "Security in dwellings", R: "Infrastructure for electronic communications", S: "Charging electric vehicles",
+  T: "Toilet accommodation", 7: "Materials and workmanship",
+};
+let shownExamples = [];
+function pickExamples() {
+  const pool = [...EXAMPLES];
+  shownExamples = Array.from({ length: 4 }, () => pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+}
+function renderWelcome() {
+  const w = welcomeEl;
+  if (!shownExamples.length) pickExamples();
+  // after an update: once, until the list of changes has been opened
+  const ch = S.library_changes, seen = (() => { try { return localStorage.getItem("para-changes-seen"); } catch { return null; } })();
+  const news = $("#welcomeNews", w);
+  if (ch && (ch.documents.length || ch.removed.length) && seen !== ch.to) {
+    const paras = ch.documents.reduce((n, d) => n + (d.changed_count || 0) + (d.added_count || 0) + (d.removed_count || 0), 0);
+    const docs = ch.documents.length + ch.removed.length;
+    news.innerHTML = `<div class="note edition"><span>The library is now edition ${esc(ch.to)}: ${paras ? `${paras} paragraph${paras === 1 ? "" : "s"} differ in ` : ""}${docs} document${docs === 1 ? "" : "s"}.</span><button class="link-btn" id="seeChanges">See what changed</button></div>`;
+    $("#seeChanges").onclick = () => { try { localStorage.setItem("para-changes-seen", ch.to); } catch { /* shown again next time */ } news.innerHTML = ""; openLibrary(true); };
+  } else news.innerHTML = "";
+
+  const start = $("#welcomeStart", w);
+  const files = project ? S.files.filter((f) => f.project === project && f.status !== "reading") : [];
+  const named = (f) => f.title.replace(/\.[a-z0-9]{2,5}$/i, "");
+  let questions = [], label = "";
+  if (project && files.length) {
+    label = `In ${project}`;
+    questions = files.slice(0, 3).map((f) => `What does “${named(f)}” ask for or say, and which requirements does it touch?`);
+    if (files.length > 1) questions.push("Which parts of the regulations do this project's files raise?");
+  } else if (!S.chats.length) { label = "Try one"; questions = shownExamples; }
+  start.innerHTML = (project ? `<p class="welcome-project">${files.length ? `${files.length} file${files.length === 1 ? "" : "s"} searched only in this project's chats.` : "No files in this project yet."} <button class="link-btn" id="welcomeProject">${files.length ? "Notes and files" : "Add drawings, specifications or comments"}</button></p>` : "") +
+    (questions.length ? `<div class="eyebrow">${esc(label)}</div><div class="examples">${questions.map((q) => `<button>${esc(q)}</button>`).join("")}</div>` : "");
+  $$(".examples button", start).forEach((b) => b.onclick = () => ask(b.textContent));
+  if (project) $("#welcomeProject").onclick = () => openProject(project);
+
+  // the documents by Part: the Approved Documents themselves (not their FAQs or amendment slips), then the law
+  const parts = $("#welcomeParts", w), by = {};
+  for (const s of S.library.sources) {
+    const m = /^AD([A-T7])([12])?$/.exec(s.key);
+    if (m) (by[m[1]] = by[m[1]] || []).push({ key: s.key, vol: m[2] });
+  }
+  const law = S.library.sources.filter((s) => s.kind === "legislation");
+  const rows = Object.keys(PARTS).filter((p) => by[p]).sort((a, b) => (a === "7") - (b === "7") || a.localeCompare(b)).map((p) => {
+    const docs = by[p].sort((a, b) => (a.vol || "").localeCompare(b.vol || ""));
+    const open = docs.length === 1 ? `<button class="part-open" data-key="${esc(docs[0].key)}">Open</button>`
+      : docs.map((d) => `<button class="part-open" data-key="${esc(d.key)}" title="${d.vol === "1" ? "Dwellings" : "Buildings other than dwellings"}">Vol ${d.vol}</button>`).join("");
+    return `<div class="part"><span class="part-letter">${p === "7" ? "Reg 7" : p}</span><span class="part-name">${esc(PARTS[p])}</span><span class="part-links">${open}</span></div>`;
+  }).join("");
+  parts.innerHTML = rows ? `<div class="eyebrow">The Approved Documents, by Part</div><div class="parts">${rows}</div>` +
+    (law.length ? `<div class="eyebrow">Acts and regulations</div><div class="law">${law.map((s) => `<button class="part-open" data-key="${esc(s.key)}" title="${esc(s.title)}">${esc(s.short)}</button>`).join("")}<button class="link-btn" id="wholeLibrary">The whole library</button></div>` : "") : "";
+  $$("[data-key]", parts).forEach((b) => b.onclick = () => openSource(b.dataset.key));
+  if ($("#wholeLibrary")) $("#wholeLibrary").onclick = () => openLibrary();
+}
 
 // ---------- settings ----------
 const dlgS = $("#dlg-settings");
@@ -612,11 +719,18 @@ function showTab(name) {
 }
 $$(".tab", dlgS).forEach((t) => t.onclick = () => showTab(t.dataset.tab));
 
+// The tabs stick just under the dialog's head, wherever that ends at this width.
+function placeTabs() {
+  const head = $(".modal-head", dlgS);
+  $(".tabs", dlgS).style.top = head.offsetHeight + parseFloat(getComputedStyle(head).top) + "px";
+}
+addEventListener("resize", () => { if (dlgS.open) placeTabs(); });
 function openSettings(tab = "engine") {
   const s = S.settings, e = s.engine;
   // a hosted service is saved as an external engine; which card is ticked follows from its address
   const mode = e.mode === "external" && e.base_url && !isLocal(e.base_url) ? "hosted" : e.mode || "";
-  $$("input[name=mode]").forEach((r) => r.checked = r.value === mode);
+  // nothing chosen yet: the built-in engine is offered, since it needs nothing the person has to know about
+  $$("input[name=mode]").forEach((r) => r.checked = r.value === (mode || "bundled"));
   $("#baseUrl").value = e.base_url || "";
   $("#apiKey").value = "";
   fillModels(e.model ? [e.model] : [], e.model);
@@ -625,10 +739,12 @@ function openSettings(tab = "engine") {
   $("#projectNotes").value = s.project_notes || "";
   $("#checkUpdates").checked = s.check_updates !== false;
   $("#testResult").textContent = "";
+  $("#connectResult").textContent = "";
   modeChanged();
   renderAbout();
   showTab(tab);
-  if (!dlgS.open) dlgS.showModal();
+  if (!dlgS.open) { saved(dlgS); dlgS.showModal(); }
+  placeTabs();
   if (!mode) { findEngines(); }
 }
 function modeChanged() {
@@ -642,6 +758,22 @@ function modeChanged() {
   remoteCheck();
 }
 $$("input[name=mode]").forEach((r) => r.onchange = modeChanged);
+const dlgHelp = $("#dlg-model-help");
+$("#modelHelp").onclick = () => dlgHelp.showModal();
+dlgHelp.addEventListener("click", (e) => { if (e.target === dlgHelp) dlgHelp.close(); });   // a click outside it
+// Models we recommend, for someone running their own engine: what we tested and why, with nothing to download here.
+// They fetch the model in their engine, which manages its own models.
+const dlgRecs = $("#dlg-model-recs");
+$("#modelRecs").onclick = () => {
+  $("#recsBody").innerHTML = S.catalog.filter((m) => !m.retired).map((m) => `<tr>
+    <td><b>${esc(m.name)}</b><small>${esc(m.about)}</small>${m.repo ? `<a href="#" class="recs-repo"
+      data-url="https://huggingface.co/${esc(m.repo)}">${esc(m.repo)} ↗</a>` : ""}</td>
+    <td class="mono">${m.size_gb} GB <br>needs ${m.min_ram_gb} GB memory</td>
+    <td class="mono">${esc((m.tested || "").replace(/ of 36$/, "")) || "—"}</td></tr>`).join("");
+  $$(".recs-repo", dlgRecs).forEach((a) => a.onclick = (e) => { e.preventDefault(); openUrl(a.dataset.url); });
+  dlgRecs.showModal();
+};
+dlgRecs.addEventListener("click", (e) => { if (e.target === dlgRecs) dlgRecs.close(); });
 // The same rule as llm.is_local: whole addresses only, since "10.example.com" is a name anyone can register.
 function isLocal(u) {
   try { return /^(localhost|((127|10)\.\d+|192\.168|169\.254|172\.(1[6-9]|2\d|3[01]))\.\d+\.\d+|0\.0\.0\.0|\[(::1|f[cd][0-9a-f]{2}:.*|fe[89ab][0-9a-f]:.*)\])$|\.local$/.test(new URL(u).hostname); } catch { return true; }
@@ -658,7 +790,7 @@ function remoteCheck() {
   $$("#hostedList .btn").forEach((b) => b.classList.toggle("on", b.textContent === p?.name));
   $("#hostedAbout").innerHTML = p ? `${esc(p.where)} <a href="#" id="hostedKeys">Get an API key ↗</a>` : "Or type the address of another OpenAI-compatible service below.";
   if (p) $("#hostedKeys").onclick = (ev) => { ev.preventDefault(); openUrl(p.keys); };
-  $("#modelSelect").placeholder = p ? `e.g. ${p.example}` : "press Refresh, or type the model's name";
+  $("#modelSelect").placeholder = p ? `e.g. ${p.example}` : "press Connect, or type the model's name";
 }
 $("#baseUrl").addEventListener("input", remoteCheck);
 function renderHosted() {
@@ -760,44 +892,69 @@ async function findEngines() {
   } catch (e) { $("#findResult").textContent = e.message; }
 }
 $("#findEngines").onclick = findEngines;
+// Connect: checks the address answers and fills the model list, saying in plain words what's wrong if it doesn't.
 // quiet: on opening Settings, where an engine that's stopped shouldn't greet the person with an error
 async function loadModels(quiet) {
-  const url = $("#baseUrl").value.trim();
+  const url = $("#baseUrl").value.trim(), out = $("#connectResult");
+  if (!quiet) { out.className = "connect-result"; out.textContent = "Connecting…"; }
   try {
     const { models } = await api("/api/models", { method: "POST", body: { base_url: url, api_key: $("#apiKey").value } });
-    if (quiet && (!models.length || $("#baseUrl").value.trim() !== url)) return;
+    if ($("#baseUrl").value.trim() !== url) return;  // the address changed while this one was asked
+    if (quiet && !models.length) return;
     const now = $("#modelSelect").value;
     if (quiet && document.activeElement === mfield) { modelNames = models; return; }  // don't disturb typing
     fillModels(models, models.includes(now) ? now : models.includes(S.settings.engine.model) ? S.settings.engine.model : models[0]);
-    $("#testResult").textContent = models.length ? "" : "The server has no models.";
-  } catch (e) { if (!quiet) $("#testResult").textContent = e.message; }
+    if (quiet) return;
+    const n = models.length, lost = now && !models.includes(now) ? ` The model chosen before, ${now}, isn't on this server.` : "";
+    out.className = "connect-result " + (n ? "ok" : "bad");
+    out.textContent = n ? `Connected: ${n} model${n === 1 ? "" : "s"}.${lost}`
+      : "Connected, but the server has no models to chat with. Load or download one in your engine.";
+  } catch (e) {
+    if (quiet || $("#baseUrl").value.trim() !== url) return;
+    out.className = "connect-result bad"; out.textContent = e.message;
+  }
 }
-$("#loadModels").onclick = () => loadModels(false);
-let chosenBundled = null;
+$("#connect").onclick = () => loadModels(false);
+$("#baseUrl").addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); loadModels(false); } });
+$("#baseUrl").addEventListener("input", () => { $("#connectResult").textContent = ""; });
+let chosenBundled = null, othersOpen = false;
 function renderBundled() {
   const b = S.bundled;
   $("#machineInfo").textContent = `This computer has ${b.ram_gb} GB of memory and ${b.free_gb} GB of free disk space.`;
   chosenBundled = chosenBundled || S.settings.engine.bundled_model || S.recommended;
-  $("#modelCards").innerHTML = S.catalog.map((m) => {
+  // One model is put forward: the one suggested for this computer, with any already downloaded or in use. The rest
+  // wait under "Other models", so nobody has to choose between seven. A retired model shows only if it's here.
+  const mine = (m) => b.models.includes(m.id) || m.id === S.settings.engine.bundled_model;
+  const offered = S.catalog.filter((m) => !m.retired || mine(m));
+  const first = (m) => m.id === S.recommended || mine(m);
+  const card = (m) => {
     const installed = b.models.includes(m.id);
     const tooBig = m.min_ram_gb > b.ram_gb + 0.5;
     return `<label class="model-card ${m.id === chosenBundled ? "selected" : ""}${tooBig ? " too-big" : ""}">
       <input type="radio" name="bmodel" value="${esc(m.id)}" ${m.id === chosenBundled ? "checked" : ""}>
-      <div class="info"><b>${esc(m.name)}</b>${m.id === S.recommended ? '<span class="tag">Recommended</span>' : ""}<br>
-      <small class="muted">${esc(m.about)}</small><small class="meta">${m.size_gb} GB download · needs ${m.min_ram_gb} GB memory${tooBig ? " — too big for this computer" : ""}</small></div>
+      <div class="info"><b>${esc(m.name)}</b>${m.id === S.recommended ? '<span class="tag">Recommended for this computer</span>' : ""}<br>
+      <small class="muted">${esc(m.about)}</small><small class="meta">${m.size_gb} GB download · needs ${m.min_ram_gb} GB memory${m.tested ? ` · ${esc(m.tested)} test questions right` : ""}${tooBig ? " — too big for this computer" : ""}</small></div>
       ${installed ? `<span class="installed">Installed</span> <button type="button" class="btn danger" data-remove="${esc(m.id)}">Delete</button>`
         : `<button type="button" class="btn" data-install="${esc(m.id)}">Download</button>`}
     </label>`;
-  }).join("");
+  };
+  const shown = offered.filter(first), others = offered.filter((m) => !first(m));
+  const job = b.jobs.install;
+  if (others.some((m) => m.id === chosenBundled) || (job && job.state === "running")) othersOpen = true;
+  $("#modelCards").innerHTML = !shown.length ? offered.map(card).join("")
+    : shown.map(card).join("") + (others.length ? `<details class="other-models"${othersOpen ? " open" : ""}>
+      <summary>Other models (${others.length})</summary>${others.map(card).join("")}</details>` : "");
+  const more = $("#modelCards details");
+  if (more) more.ontoggle = () => { othersOpen = more.open; };
   $$("input[name=bmodel]").forEach((r) => r.onchange = () => { chosenBundled = r.value; renderBundled(); });
   $$("[data-install]").forEach((x) => x.onclick = async (e) => {
     e.preventDefault();
-    try { await api("/api/bundled/install", { method: "POST", body: { model: x.dataset.install, gpu: $("#gpu").checked } }); chosenBundled = x.dataset.install; pollJobs(); }
+    try { await api("/api/bundled/install", { method: "POST", body: { model: x.dataset.install, gpu: $("#gpu").checked } }); chosenBundled = x.dataset.install; changed(dlgS, "engine"); pollJobs(); }
     catch (err) { alert(err.message); }
   });
   $$("[data-remove]").forEach((x) => x.onclick = async (e) => {
     e.preventDefault();
-    if (!confirm("Delete this model from this computer?")) return;
+    if (!(await confirmBox("Delete this model?", "It is deleted from this computer. You can download it again.", "Delete"))) return;
     S.bundled = await api("/api/bundled/remove", { method: "POST", body: { model: x.dataset.remove } }); renderBundled();
   });
   renderJob(b.jobs.install);
@@ -811,6 +968,31 @@ function renderJob(j) {
     : j.state === "error" ? `<div class="error">${esc(j.error)}</div>` : `<div class="ok-line">Downloaded. Press Save to use it.</div>`;
   const c = $("#cancelJob"); if (c) c.onclick = () => api("/api/bundled/cancel", { method: "POST" });
 }
+// The download offered under an answer that failed for want of the model: progress is shown there, and when it's
+// done the question is asked again, if the person is still looking at it.
+async function downloadHere(btn) {
+  const row = btn.closest("p"), view = row.nextElementSibling, gb = (n) => (n / 2 ** 30).toFixed(1);
+  try { await api("/api/bundled/install", { method: "POST", body: { model: btn.dataset.download, gpu: true } }); }
+  catch (err) { if (!/already running/.test(err.message)) { view.innerHTML = `<div class="error">${esc(err.message)}</div>`; return; } }
+  row.hidden = true;
+  pollJobs();  // keeps Settings and the sidebar in step
+  for (;;) {
+    const j = (await api("/api/jobs")).bundled.jobs.install;
+    if (!j) return;
+    if (j.state === "running") {
+      const pct = j.total ? Math.round(j.done / j.total * 100) : 0;
+      view.innerHTML = `<div class="job-line"><span>Downloading ${esc(j.label)}…</span><span class="meta">${gb(j.done)} of ${j.total ? gb(j.total) : "?"} GB</span></div><div class="progress"><div style="width:${pct}%"></div></div>`;
+    } else if (j.state === "error") { view.innerHTML = `<div class="error">${esc(j.error)}</div>`; row.hidden = false; return; }
+    else {
+      view.innerHTML = `<p class="ok-line">Downloaded.</p>`;
+      S.bundled = (await api("/api/jobs")).bundled;
+      const again = document.contains(view) && view.closest(".msg")?.querySelector(".again");
+      if (again) again.click();
+      return;
+    }
+    await new Promise((r) => setTimeout(r, 1000));
+  }
+}
 let polling = false;
 async function pollJobs() {
   if (polling) return; polling = true;
@@ -821,7 +1003,8 @@ async function pollJobs() {
       if (!$("#bundledPane").hidden) renderBundled();
       if (library_job) renderLibraryJob(library_job);
       if (app_job) renderAppJob(app_job);
-      const running = [bundled.jobs.install, library_job, app_job].some((j) => j && j.state === "running");
+      renderEngineJob(bundled.jobs.engine);
+      const running = [bundled.jobs.install, bundled.jobs.engine, library_job, app_job].some((j) => j && j.state === "running");
       if (!running) break;
       await new Promise((r) => setTimeout(r, 1000));
     }
@@ -836,29 +1019,40 @@ function engineForm() {
   } else if (m === "bundled") { e.bundled_model = chosenBundled; }
   return e;
 }
-$("#saveEngine").onclick = async () => {
+// Each of these saves one part of Settings and says whether it did (the engine isn't saved while something is missing).
+async function saveEngine() {
   const e = engineForm();
-  if (e.mode === "bundled" && !S.bundled.models.includes(e.bundled_model)) { $("#testResult").textContent = "Download the model first."; return; }
-  if (e.mode === "external" && !e.base_url) { $("#testResult").textContent = "Enter the server address."; return; }
-  if ($("input[name=mode]:checked")?.value === "hosted" && !e.model) { $("#testResult").textContent = "Choose a model: press Refresh, or type its name."; return; }
+  if (e.mode === "bundled" && !S.bundled.models.includes(e.bundled_model)) { $("#testResult").textContent = "Download the model first."; return false; }
+  if (e.mode === "external" && !e.base_url) { $("#testResult").textContent = "Enter the server address."; return false; }
+  if ($("input[name=mode]:checked")?.value === "hosted" && !e.model) { $("#testResult").textContent = "Choose a model: press Connect, or type its name."; return false; }
   S = await api("/api/settings", { method: "POST", body: { engine: e } });
   await refresh();
+  saved(dlgS, "engine");
   $("#testResult").textContent = "Saved. Testing…";
   testEngine();
-};
+  return true;
+}
+$("#saveEngine").onclick = saveEngine;
 async function testEngine() {
   $("#testResult").textContent = "Testing… (the built-in engine can take a minute to load the model)";
   const r = await api("/api/test-engine", { method: "POST" });
   $("#testResult").textContent = r.ok ? `✓ Working: ${r.model} replied “${r.reply}”` : `✗ ${r.error}`;
 }
-$("#testEngine").onclick = async () => { await api("/api/settings", { method: "POST", body: { engine: engineForm() } }); await refresh(); testEngine(); };
-$("#saveInstructions").onclick = async () => {
+$("#testEngine").onclick = async () => { await api("/api/settings", { method: "POST", body: { engine: engineForm() } }); await refresh(); saved(dlgS, "engine"); testEngine(); };
+async function saveInstructions() {
   const v = $("#instructions").value.trim();
   await api("/api/settings", { method: "POST", body: { instructions: v === S.default_instructions.trim() ? "" : v } });
-  await refresh(); dlgS.close();
-};
-$("#resetInstructions").onclick = () => { $("#instructions").value = S.default_instructions; };
-$("#saveNotes").onclick = async () => { await api("/api/settings", { method: "POST", body: { project_notes: $("#projectNotes").value } }); await refresh(); dlgS.close(); };
+  await refresh(); saved(dlgS, "instructions");
+  return true;
+}
+async function saveNotes() {
+  await api("/api/settings", { method: "POST", body: { project_notes: $("#projectNotes").value } });
+  await refresh(); saved(dlgS, "project");
+  return true;
+}
+$("#saveInstructions").onclick = async () => { await saveInstructions(); tryClose(dlgS); };
+$("#resetInstructions").onclick = () => { $("#instructions").value = S.default_instructions; changed(dlgS, "instructions"); };
+$("#saveNotes").onclick = async () => { await saveNotes(); tryClose(dlgS); };
 $("#checkUpdates").onchange = (e) => api("/api/settings", { method: "POST", body: { check_updates: e.target.checked } });
 $("#checkNow").onclick = async () => { $("#updateView").textContent = "Checking…"; S.updates = await api("/api/updates/check", { method: "POST" }); renderAbout(); refresh(); };
 function renderAbout() {
@@ -875,7 +1069,11 @@ function renderAbout() {
   if (u.app && u.app.update) h += `<p class="update-row">Version ${esc(u.app.version)} is available. <button type="button" class="btn primary" id="updateApp">Update now</button></p><div id="appJob"></div>`;
   else if (u.app) h += `<p class="update-row">Version ${esc(u.app.version)} is available. <button type="button" class="btn" id="getApp">Download</button></p>`;
   if (u.library) h += `<p class="update-row">A newer regulations library (${esc(u.library.version)}, ${(u.library.size / 2 ** 20).toFixed(0)} MB) is available. <button type="button" class="btn primary" id="getLib">Install</button></p><div id="libJob"></div>`;
-  if (u.checked && !u.app && !u.library && !u.error) h += `<p class="muted small">You're up to date.</p>`;
+  if (u.engine) h += `<p class="update-row">A newer AI engine (llama.cpp ${esc(u.engine.tag)}${u.engine.cuda ? " for NVIDIA cards" : ""}${u.engine.size ? `, ${(u.engine.size / 2 ** 20).toFixed(0)} MB` : ""}) is available. <button type="button" class="btn primary" id="getEngine">Install</button></p><div id="engineJob"></div>`;
+  const fb = S.bundled.engine_fell_back;
+  if (fb) h += `<p class="note">${fb.cuda ? "The NVIDIA version of the AI engine didn't work on this computer, so the version for any graphics card is in use."
+    : "The AI engine update didn't work on this computer, so the earlier one is still in use."}</p>`;
+  if (u.checked && !u.app && !u.library && !u.engine && !u.error) h += `<p class="muted small">You're up to date.</p>`;
   const ch = S.library_changes, differ = ch ? ch.documents.length + ch.removed.length : 0;
   if (differ) h += `<p class="update-row">This library edition differs from the one before in ${differ} document${differ === 1 ? "" : "s"}. <button type="button" class="btn" data-open="library">See what changed</button></p>`;
   $("#updateView").innerHTML = h;
@@ -887,6 +1085,13 @@ function renderAbout() {
     catch (e) { ua.disabled = false; $("#appJob").innerHTML = `<div class="error">${esc(e.message)}</div>`; }
   };
   if (S.app_job) renderAppJob(S.app_job);
+  const ge = $("#getEngine");
+  if (ge) ge.onclick = async () => {
+    ge.disabled = true;
+    try { await api("/api/updates/engine", { method: "POST" }); pollJobs(); }
+    catch (e) { ge.disabled = false; $("#engineJob").innerHTML = `<div class="error">${esc(e.message)}</div>`; }
+  };
+  renderEngineJob(S.bundled.jobs.engine);
   const gl = $("#getLib"); if (gl) gl.onclick = async () => { await api("/api/updates/library", { method: "POST" }); pollJobs(); };
 }
 function renderAppJob(j) {
@@ -894,6 +1099,13 @@ function renderAppJob(j) {
   const pct = j.total ? Math.round(j.done / j.total * 100) : 0;
   if ($("#updateApp")) $("#updateApp").disabled = j.state !== "error";
   v.innerHTML = j.state === "running" ? `<div class="progress"><div style="width:${pct}%"></div></div>${j.note ? `<p class="muted small">${esc(j.note)}</p>` : ""}`
+    : j.state === "error" ? `<div class="error">${esc(j.error)}</div>` : `<p class="ok-line">${esc(j.note)}</p>`;
+}
+function renderEngineJob(j) {
+  const v = $("#engineJob"); if (!v || !j) return;
+  const pct = j.total ? Math.round(j.done / j.total * 100) : 0;
+  if ($("#getEngine")) $("#getEngine").disabled = j.state !== "error";
+  v.innerHTML = j.state === "running" ? `<div class="progress"><div style="width:${pct}%"></div></div><p class="muted small">${esc(j.label)}…</p>`
     : j.state === "error" ? `<div class="error">${esc(j.error)}</div>` : `<p class="ok-line">${esc(j.note)}</p>`;
 }
 function renderLibraryJob(j) {
@@ -917,7 +1129,7 @@ function renderFileList(list, files) {
   $$("[data-note]", list).forEach((i) => i.onchange = () => api("/api/files/note", { method: "POST", body: { key: i.dataset.note, note: i.value } }));
   $$("[data-openfile]", list).forEach((b) => b.onclick = () => api("/api/open", { method: "POST", body: { file: b.dataset.openfile } }));
   $$("[data-delfile]", list).forEach((b) => b.onclick = async () => {
-    if (!confirm("Remove this file? It is deleted from your files folder too.")) return;
+    if (!(await confirmBox("Remove this file?", "It is deleted from your files folder too.", "Remove"))) return;
     S.files = (await api("/api/files?key=" + encodeURIComponent(b.dataset.delfile), { method: "DELETE" })).files;
     renderFiles(); if (dlgP.open) renderProjectFiles(); refresh();
   });
@@ -990,7 +1202,7 @@ function libraryChanges() {
   return `<details class="lib-changes"><summary>Changed in this edition: ${count} document${count === 1 ? "" : "s"}</summary>${docs}` +
     `<p class="who">Edition ${esc(ch.to)} compared, paragraph by paragraph, with ${esc(ch.from || "the one before")}, which this computer had until the update. A difference can also be a correction to how the app reads a document, not a change to the document.</p></details>`;
 }
-function openLibrary() {
+function openLibrary(changesOpen = false) {
   const groups = {};
   for (const s of S.library.sources) (groups[s.kind] = groups[s.kind] || []).push(s);
   $("#libSources").innerHTML = S.library.sources.length ? libraryChanges() + Object.entries(groups).map(([k, items]) => `<div class="group-title">${esc(KIND[k] || k)}<span class="count">${items.length}</span></div>` +
@@ -1002,6 +1214,7 @@ function openLibrary() {
   $$(".lib-source").forEach((el) => el.onclick = () => { dlgL.close(); openSource(el.dataset.key); });
   $("#libResults").innerHTML = "";
   $("#libSearch").value = "";
+  if (changesOpen && $(".lib-changes", dlgL)) $(".lib-changes", dlgL).open = true;
   dlgL.showModal();
 }
 let libTimer;
@@ -1043,3 +1256,64 @@ refresh().then(() => {
   const running = S.bundled.jobs.install && S.bundled.jobs.install.state === "running";
   if (running) pollJobs();
 });
+
+// ---------- closing a dialog ----------
+// The cross, Escape and a click outside the dialog all close it the same way. Settings and Project hold things that
+// are only kept on Save, so what has been typed or chosen since the last save is remembered, and closing asks first.
+const SAVE = { engine: saveEngine, instructions: saveInstructions, project: saveNotes, "this project": () => saveProject(true) };
+
+// The app's own "are you sure": a question, a line of what follows, Cancel and the action. Escape is Cancel.
+function confirmBox(question, detail, action) {
+  const d = $("#dlg-confirm");
+  $("h2", d).textContent = question;
+  $("p", d).textContent = detail; $("p", d).hidden = !detail;
+  $("[value=yes]", d).textContent = action;
+  return new Promise((res) => {
+    $$("button", d).forEach((b) => b.onclick = (e) => { e.preventDefault(); res(b.value === "yes"); d.close(); });
+    d.onclose = () => res(false);
+    d.showModal();
+    $("[value=no]", d).focus();   // so Enter doesn't delete
+  });
+}
+function askUnsaved() {
+  const d = $("#dlg-unsaved");
+  return new Promise((res) => {
+    $$("button", d).forEach((b) => b.onclick = (e) => { e.preventDefault(); res(b.value); d.close(); });
+    d.onclose = () => res("keep");   // Escape: carry on editing (after a button this changes nothing)
+    d.showModal();
+  });
+}
+async function tryClose(dlg) {
+  const parts = [...(unsaved.get(dlg) || [])];
+  if (parts.length) {
+    const answer = await askUnsaved();
+    if (answer === "keep") return;
+    if (answer === "save") {
+      for (const part of parts) {
+        if (await SAVE[part]()) continue;
+        if (dlg === dlgS) showTab(part);   // something is missing: show where, and stay
+        return;
+      }
+    }
+    saved(dlg);
+  }
+  if (dlg.open) dlg.close();
+}
+for (const dlg of [dlgS, dlgP, dlgF, dlgL]) {
+  dlg.addEventListener("cancel", (e) => { e.preventDefault(); tryClose(dlg); });
+  $(".modal-head", dlg).addEventListener("submit", (e) => { e.preventDefault(); tryClose(dlg); });
+  // a click outside: pressed and let go on the backdrop, so selecting text and letting go outside doesn't close it
+  let pressedOutside = false;
+  const outside = (e) => {
+    const r = dlg.getBoundingClientRect();
+    return e.target === dlg && (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom);
+  };
+  dlg.addEventListener("mousedown", (e) => { pressedOutside = outside(e); });
+  dlg.addEventListener("click", (e) => { if (pressedOutside && outside(e)) tryClose(dlg); pressedOutside = false; });
+}
+dlgS.addEventListener("input", (e) => {
+  const pane = e.target.closest(".tabpane")?.dataset.pane;
+  if (pane in SAVE) changed(dlgS, pane);   // not Updates & about: its tick box saves itself
+});
+dlgS.addEventListener("change", (e) => { if (e.target.closest("[data-pane=engine]")) changed(dlgS, "engine"); });
+for (const id of ["#projectName", "#projectNotesOne"]) $(id).addEventListener("input", () => changed(dlgP, "this project"));

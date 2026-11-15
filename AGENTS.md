@@ -28,7 +28,7 @@ passage ids; the app checks every citation. It must stay:
 | `para/anchors.py` | Finds a saved chat's passages again when their ids have changed (library rebuilt, a file read again): by document key and text fingerprint, then by reference; says when one has changed or is gone |
 | `para/changes.py` | What differs between two library editions, paragraph by paragraph; worked out when an update is installed, shown in Library |
 | `para/llm.py` | OpenAI-compatible streaming client; splits `<think>` and `reasoning_content`; probes known local servers; `HOSTED`, the hosted services offered in Settings (an address each, no code of their own) |
-| `para/engine.py` | Built-in engine: downloads llama.cpp's `llama-server` and GGUF models, starts and stops it (memory check, idle stop, leftover clean-up); `Engine.client()` picks the configured engine |
+| `para/engine.py` | Built-in engine: downloads llama.cpp's `llama-server` and GGUF models, starts and stops it (memory check, idle stop, leftover clean-up); updates the engine (`engine/current.json` says which build is in use; the earlier one is kept until the new one has started a model, and a first start that fails goes back to it); which build: Vulkan for any graphics card, CUDA for an NVIDIA card that can run it (`nvidia_cuda`, `_build_key`), the CPU build if the person unticks the graphics card; `Engine.client()` picks the configured engine |
 | `para/updater.py` | Updates the app itself: works out how this copy was installed (Windows installer, AppImage, .deb, Mac app, or none), downloads that release file with GitHub's checksum, and puts it in place: the installer runs silently, an AppImage or Mac app swaps itself and restarts, a .deb is installed by apt after the system's password dialog (pkexec) |
 | `para/models.json` | Built-in model catalogue (also published with each release and fetched by installed apps) |
 | `para/store.py` | SQLite FTS5 store (sources, passages, BM25 search, read, document), used for both libraries |
@@ -43,13 +43,15 @@ passage ids; the app checks every citation. It must stay:
 | `library/legislation.py` | Turns legislation XML into passages cited as `reg 7`, `s 120D`, `Sch 1 Pt B` |
 | `library/sources.json` | What goes into the library |
 | `library/check.py` | Compares a new library with the published one and fails the build if a document is missing or much smaller, so a broken rebuild never reaches installed apps |
+| `library/edition.py` | After a rebuild, gives the library the published one's edition if its words and images are the same (`Store.content_hashes`), so installed apps aren't offered an update that holds nothing new |
 | `library/columns.py` | Reads a PDF's two-column pages a column at a time, from where their lines are: finds the gutter, reads what is set across it whole (a heading, a wide table or drawing, the header and footer) and the left column before the right between those |
 | `library/order.py` | Checks reading order against the PDFs: reads each page a column at a time by another route and scores how much of each passage is in that order; `--list` names the passages still woven together |
-| `packaging/` | PyInstaller spec and launcher; the icon (`icon.png`, `icon.ico`, drawn by `make_icon.py`); `windows/para.iss` (Inno Setup: `Para-windows-setup.exe`); `linux/build.sh` (`Para-linux.deb` and `.AppImage`); `linux/install.sh` adds the tarball's app to the applications menu |
+| `packaging/` | PyInstaller spec and launcher; the icon (`icon.png`, `icon.ico`, drawn by `make_icon.py`, which also draws the installer's pictures `windows/wizard-*.bmp`); `windows/para.iss` (Inno Setup: `Para-windows-setup.exe`); `linux/build.sh` (`Para-linux.deb` and `.AppImage`); `linux/install.sh` adds the tarball's app to the applications menu |
 | `para/qtprobe.py` | Linux: checks in a separate process that Qt can open a window (Qt aborts instead of raising), so the app falls back to the browser |
 | `site/` | The website, pararegs.co.uk: one static page in the app's look; download buttons read the latest GitHub release |
 | `.github/workflows/descriptions.yml` | After each library build: the "descriptions" issue of drawings to draft or review; optional drafting with a hosted model |
 | `.github/workflows/pages.yml` | Publishes `site/` to GitHub Pages, adding the app's fonts, `docs/screenshots/answer-reader.png` (the link preview) and the demo video |
+| `docs/make_flow.py` | Draws the README's diagram of how a question is answered (`docs/flow.svg`, `flow-dark.svg`) in the app's colours and fonts; needs fonttools (`uv run --with fonttools --with brotli`) |
 | `docs/record_demo.py` | Records the website's demo video (`docs/screenshots/demo.mp4`, `.webm`, `.jpg`): a real question to a real model, the wait shortened and labelled; needs Playwright and ffmpeg (`uv run --with playwright --with imageio-ffmpeg`) |
 | `.github/workflows/release.yml` | Tests on every push; on a `v*` tag: library, Mac and Windows apps, GitHub release; weekly library refresh |
 | `tests/` | `test_app.py` (end to end through the HTTP API) and `fake_llm.py` (a stand-in OpenAI-compatible server) |
@@ -176,8 +178,9 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
 - **Memory**: the built-in engine holds gigabytes, so it must never outlive the app or load what won't fit.
   `Bundled.start` checks free system memory plus free graphics-card memory (`available_ram_gb`, `free_vram_gb`)
   and leaves the GPU/CPU split to llama.cpp's `--fit` (don't pass `-ngl`); the engine stops after
-  `IDLE_MINUTES` unused, on SIGTERM/SIGHUP, and a copy left by a killed app is stopped at the next start
-  (`engine.pid`). External engines manage their own memory: don't add engine-specific unload calls.
+  `IDLE_MINUTES` unused, on SIGTERM/SIGHUP, and when the app is killed outright or crashes (`engine.guard`: a
+  shell waiting on a pipe only the app holds, or on Windows a job that closes with the app); a copy that still got
+  left is stopped at the next start (`engine.pid`). External engines manage their own memory: don't add engine-specific unload calls.
 
 ## Adding things
 
@@ -185,9 +188,28 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   collection or page path), run `library/build.py`, check its passages, and add a short name in `build.SHORT` if
   the automatic one is clumsy.
 - **A new built-in model**: add it to `para/models.json` with the exact Hugging Face repo and file, size and memory
-  needed. Test it answers with citations through the built-in engine before listing it.
+  needed. Test it answers with citations through the built-in engine before listing it. To stop offering one, mark it
+  `"retired": true` and `"suggest": false` (apps before 0.2.3 fetch this file and know only the second); don't
+  delete it, or a copy someone downloaded stops working.
 - **A new API endpoint**: in `server.Handler`, return JSON through `_send`, and add a check to `tests/test_app.py`.
 - **A hosted service**: add it to `llm.HOSTED` (name, base URL, where it's based, the page for keys, an example
   model). It must take the standard `/chat/completions` API with a Bearer key; never add code for one service. A key
   is saved for one server only (`server.saved_key_for`): changing the address never sends it somewhere else.
+- **A new llama.cpp build**: change `llama_cpp.tag` in `para/models.json` only after the 36 questions have been run on
+  it through the built-in engine for the recommended models (`tests/ask_models.py`, compared in `docs/model-tests.md`),
+  and check the asset names still match `llama_cpp.assets`. Installed apps then *offer* the build in Settings → Updates
+  & about; none installs it unasked. Set `llama_cpp.min_app` to the first app version that can update the engine if
+  older apps can't work with the build (they still use `tag` for a fresh install, so check that the flags
+  `Bundled.start` passes mean the same). A build that fails its first start on someone's computer is remembered in
+  `current.json` and not offered there again. Plan: `docs/plans/engine-updates.md`.
+- **Graphics-card builds**: `llama_cpp.assets` maps each kind of computer to a release file. Vulkan (`windows-gpu`,
+  `linux-gpu`) runs on NVIDIA, AMD and Intel cards and is what everyone else gets. An NVIDIA card gets a CUDA build
+  (`windows-cuda-12`, `-13`, `linux-cuda-12`, `-13`: the build and its runtime, a list of two patterns; CUDA 13 needs
+  driver 580 and a Turing card or newer, `engine.cuda_kind`). It goes in `engine/<tag>-cuda/` with the runtime's
+  libraries beside `llama-server`, and must list a CUDA device (`--list-devices`), since a CUDA build that can't load
+  its CUDA library runs on the CPU without a word. A first install keeps the Vulkan build beside it until it has
+  loaded a model; a CUDA build that doesn't find the card, or won't load a model the first time, is replaced by the
+  Vulkan one, and `no_cuda` in `current.json` keeps that computer on Vulkan from then on. Apps before this one read
+  only the string keys, so keep those as strings. The CUDA builds have not yet been run on an NVIDIA card: test the
+  36 questions on one before saying they're supported.
 - **A new setting**: add the default to `paths.DEFAULTS` (only keys there can be saved), then the UI.
