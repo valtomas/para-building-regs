@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.24_p34",
+ "source": "ADE",
+ "label": "Diagram 2.24",
+ "page": 34,
+ "caption": "Diagram 2.24 \u0007\u0007Wall type 2 – internal concrete floor and concrete ground floor",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "1279cfdc6f52f286441ff04bd82685b56f92067f63a78b8bb291280d140af1b0",
+ "image_sig": {
+  "w": 362,
+  "h": 597,
+  "grey": "zr7DycnErbauucezuMPc5urp6enp2LWzqLmzsrjK6O/j9vb29u3x7vb29vb29vbv6f/////f6OT/////////9On/////5uzq/+ra6/b///Tp/+/r6ujm5+zn5O7n7ub06f/59PPg6+T09PDz9PTy9On////+2ejk//7///////Tp5dza9Obw6fvi1Nbr5/r06f/x6fLR6Onr7OPr7Ovu9On/////5ejh+Pj4+Pj4+/Tp//Xv+tfk3v/z7v3////06f////vj6Of9////////9On////w+fj69/////////Tn+Pj49fLx8ff4+Pjj4+Ho/////////////////////w=="
+ },
+ "reviewed": false,
+ "description": "This is a section drawing, labelled \"SECTION\" at the bottom right, below the heading \"Diagram 2.24 Wall type 2 – internal concrete floor and concrete ground floor\", which sits in a box at the top of the image. A single vertical wall runs up the centre of the image, drawn as two parallel columns of masonry: cross‑hatched block courses at the top, a break, then horizontal brick courses below, terminating in a solid concrete foundation block at the base. The wall passes through two horizontal floor levels. The upper floor is a thick concrete slab spanning both sides of the wall, labelled \"Internal concrete floor\". At a lower level, the left‑hand slab is labelled \"Concrete slab ground floor\", shown as a solid concrete piece, while the right‑hand slab is labelled \"Suspended concrete ground floor\" and contains a row of evenly spaced circles within it. The right‑hand suspended floor is drawn slightly higher than the left‑hand slab. A \"Ground\" label appears at the bottom left and a second one at the bottom right, but a horizontal line indicating the ground level is drawn only on the right side, beneath the suspended floor; there is no such line on the left.",
+ "first_draft": "This is a section drawing, labelled \"SECTION\" at the bottom right, under the heading \"Diagram 2.24 Wall type 2 – internal concrete floor and concrete ground floor\". A single vertical wall runs up the centre of the image, drawn as two parallel columns of masonry: cross‑hatched block courses at the top, a break, then horizontal brick courses below, terminating in a solid concrete foundation block at the base. The wall passes through two horizontal floor levels. The upper floor is a thick concrete slab spanning both sides of the wall, labelled \"Internal concrete floor\". At a lower level, the left‑hand slab is labelled \"Concrete slab ground floor\", shown as a solid concrete piece, while the right‑hand slab is labelled \"Suspended concrete ground floor\" and contains a row of evenly spaced circles within it. The right‑hand suspended floor is drawn slightly higher than the left‑hand slab. Two \"Ground\" labels appear at the bottom left and bottom right, each with a horizontal line indicating ground level beneath the respective floor."
+}

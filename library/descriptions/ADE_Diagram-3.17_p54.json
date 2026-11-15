@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-3.17_p54",
+ "source": "ADE",
+ "label": "Diagram 3.17",
+ "page": 54,
+ "caption": "Diagram 3.17 \u0007\u0007Floor type 2 – floor penetrations",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "691c470a832015c68b0968ba6942270341a94633d3b85128f9ac6fbe423555e9",
+ "image_sig": {
+  "w": 371,
+  "h": 383,
+  "grey": "2q6svbfDm7GjrrSmqdbW4/Lp4+np4rC1qbfI6enp6fDh4uLi4uLi4uLi4uLi4uLl6f////T09P3++/7k3uT39On///7q9fXLyeTy4+Xo//Tp///+3eXly9Ly+dHMyv/06f///tvi48vS6PHd+vr/9Ono5LDp9fXL0srT19bX0fTp3tvj6urqx8Xs3dvd19j06e3///r69M/K9/r////49Onw8+Tm7e3KzObr7vPb7PTp+vr62uXlzNLo7uPl6Pb06f///+Xy88vS8v/c1vD99On////w8/Pw4/D///////Tp////////4uL2///28vPy4urq6urq6urq6urq0tXM3g=="
+ },
+ "reviewed": false,
+ "description": "The image displays a cross-section drawing titled \"Diagram 3.17 Floor type 2 – floor penetrations\", with the text \"SECTION\" located in the bottom right corner. The illustration shows two stacked structural levels, depicted as cross-hatched blocks, separated by a ceiling void. A narrow vertical element runs centrally through the structure; an arrow from the label \"Enclosure\" at the bottom points to it, and an arrow from the label \"Lag pipes with mineral wool\" at the top also points to this same central vertical element. On the right side, near the top of the void, the gap between the ceiling and the underside of the structure above is labelled \"Fill small gap with flexible seal\". On the right side, near the bottom of the void, an arrow points to the junction of the central vertical element and the horizontal ceiling, labelled \"Seal with tape or sealant\". On the left side, two horizontal pipes are shown running through the void, one near the top and one near the bottom, each drawn as a thin line with a small square at its end.",
+ "first_draft": "The image displays a cross-section drawing titled \"Diagram 3.17 Floor type 2 – floor penetrations\", with the text \"SECTION\" located in the bottom right corner. The illustration shows two stacked structural levels, depicted as cross-hatched blocks, separated by ceiling voids. A vertical element runs centrally through the structure. In the upper void, a pipe is identified by a label stating \"Lag pipes with mineral wool\". Adjacent to this, the gap between the ceiling and the underside of the structure above is labelled \"Fill small gap with flexible seal\". In the lower void, an arrow points to the junction of the vertical wall and the horizontal ceiling, labelled \"Seal with tape or sealant\". The central vertical strip is labelled \"Enclosure\". Further left, horizontal pipes are shown running through both ceiling voids."
+}

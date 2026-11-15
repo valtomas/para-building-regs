@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.28_p36",
+ "source": "ADE",
+ "label": "Diagram 2.28",
+ "page": 36,
+ "caption": "Diagram 2.28 \u0007\u0007Wall type 3.1 with independent plasterboard panels",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "7e6cba9a62cb52a04d8a72c87f25b62fb3ba58cdc58095a6904e3497b97b8caf",
+ "image_sig": {
+  "w": 362,
+  "h": 448,
+  "grey": "zbnByMPDq7awwMivz+Hh6erp6enp2Lm3vLnP6efp6e/a3Nzc3Mqtq7Cuta+wydzj6f/////w+fT0+u//////9On/////3vP7+/Pe//////Tp/////97z+/rz3v/////06f/////e8enp8t7/////9On/////3vP6+/Pe//////Tp/////97z+vrz3v/////06f/////e8enp8t7/////9On/////3vP6+/Pe//////Tp/////97z+/rz3v/////06f/////e8enp8t7/////9On/////3vP6+/Pe//////Tp/////93y8vLz3P/////03O3t7e3t7e3t7e3t0c/O3A=="
+ },
+ "reviewed": false,
+ "description": "This is a section drawing, labelled \"SECTION\" in the lower right corner. The title banner above the drawing reads \"Diagram 2.28 Wall type 3.1 with independent plasterboard panels\".\n\nInside a rectangular border, three vertical elements are arranged side by side with clear gaps between them. The central element is a tall rectangle filled with a diagonal cross-hatch pattern; it is divided by three horizontal lines into four stacked segments. To the left of this hatched rectangle stands a thin vertical element drawn as a narrow double line, and an identical thin vertical double line stands to the right. The two thin lines are approximately the same height as the central hatched rectangle but do not touch it. No dimensions, arrows, call‑outs or further labels are present.",
+ "first_draft": "This is a section drawing, labelled \"SECTION\" in the lower right corner. The title banner above the drawing reads \"Diagram 2.28 Wall type 3.1 with independent plasterboard panels\".\n\nInside a rectangular border, three vertical elements are arranged side by side with clear gaps between them. The central element is a tall rectangle filled with a diagonal cross-hatch pattern; it is divided by three horizontal lines into four stacked segments. To the left of this hatched rectangle stands a thin vertical element drawn as a narrow double line, and an identical thin vertical double line stands to the right. The two thin lines are approximately the same height as the central hatched rectangle but do not touch it. No dimensions, arrows, call‑outs or further labels are present."
+}
