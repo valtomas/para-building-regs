@@ -7,7 +7,11 @@ A free, open-source AI assistant for the building regulations in England that ru
 Approved Documents, the Building Regulations 2010, the Building Safety Act and its guidance, reads the relevant
 paragraphs, and answers with a link to each one, so you can check exactly where it came from.
 
-![Para answering a question about stair rise, with the cited table open in the reader](docs/screenshots/answer-reader.png)
+
+
+https://github.com/user-attachments/assets/44a59980-d309-48ee-abf6-3546d24b490d
+
+
 
 - **Cites the paragraph.** Answers cite passages such as *ADB Vol 1 Table 3.1* or *BR 2010 reg 7*. Click one to
   open the document at that paragraph. The app checks every citation against what the AI actually looked up and
