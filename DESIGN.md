@@ -277,7 +277,8 @@ no emoji anywhere.
 - **Reader find** hides non-matching passages rather than highlighting matches.
 - **App icon**: the gold ¶ on an oxblood rounded square (`packaging/make_icon.py`), used on Windows and Linux. The
   Mac app has none yet (`packaging/icon.icns`).
-- **Screenshots** don't yet show the citation states, the figure note, the answer actions, Find in chats or Changed
-  in this edition.
+- **Screenshots** don't yet show Connect, the recommended-models dialog, the graphics-card line on model rows, Downloaded
+  to this computer, or the engine update row. `welcome.png` predates the empty-chat rework in 0.2.2, and
+  `reader-description.png` is still the old picture (no description is approved yet).
 - **Keyboard**: dialogs and citations are reachable by Tab, but there's no shortcut for New chat or focusing the
   question box.

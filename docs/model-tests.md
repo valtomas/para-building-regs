@@ -415,8 +415,9 @@ The 36 questions, built-in engine, b12359. The b12078 figures are the ranges fro
 - A model load that timed out left the stuck server running, so every later question got "503 Loading model". It
   is stopped now, and the message says the computer is probably short of memory.
 - gpt-oss-20b, Qwen3 8B and Qwen3 30B-A3B were each downloaded by the app and asked the 36 questions through the
-  built-in engine (run D). All three answer with citations; Qwen3 8B was dropped from the list afterwards (see run D). The pin: `para/models.json` names llama.cpp build b12078,
-  and all seven platform files its patterns ask for are in that release. A copy of the app that already has a
+  built-in engine (run D). All three answer with citations; Qwen3 8B was dropped from the list afterwards (see run D).
+  The pin: `para/models.json` names llama.cpp build b12359 (since run H; b12078 before it), and all seven platform
+  files its patterns ask for are in that release. A copy of the app that already has a
   llama.cpp build keeps it: the pin is for new installs.
 
 ## Choosing defaults
