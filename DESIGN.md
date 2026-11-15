@@ -202,7 +202,11 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   models (4)", like the activity list, so nobody has to choose between a list of names. It opens by itself when one of
   them is chosen or downloading. With a graphics card, the size line says whether the model "fits on the graphics
   card" or "runs partly on the processor, slowly", and the line above the rows names the card and, while a model runs,
-  whether it is all on the card. Models too big for this computer are faded with the size line in red. A model no
+  whether it is all on the card. With no graphics card but graphics built into the processor (Apple silicon, Strix
+  Halo), that line says the memory is shared with them and models run on them from it. Under the rows, before the AI
+  engine is downloaded, a tick box "Use the graphics card" says which version will be: for NVIDIA cards (CUDA), for any
+  graphics card (Vulkan), or for the processor only if unticked; it isn't shown on a Mac, which has one version. Once
+  the engine is here, a mono line says which version is in use instead. Models too big for this computer are faded with the size line in red. A model no
   longer offered (`"retired"` in `models.json`) shows only on a computer that has it.
 - **Downloaded to this computer** (`#downloaded`): under the model rows, an eyebrow with the total size over an ink
   rule, then a ruled row per model file in the models folder: the name in display type, the size in mono (with

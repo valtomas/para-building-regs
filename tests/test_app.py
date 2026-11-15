@@ -1283,6 +1283,16 @@ check(cards[6] == "granite-4.2-3b" and cards[8] == cards[12] == "granite-4.2-8b"
 check(engine.recommend(ram=16, card=engine.card_memory_gb([{"total_gb": 2}])) is not None and
       not engine.fits_card({"size_gb": 2.2}, 2 - engine.CARD_RESERVE_GB),
       "a card too small for any model falls back to system memory")
+strix = [{"name": "AMD graphics", "vendor": "AMD", "total_gb": 0.5, "free_gb": 0.3}]
+with_card = strix + [{"name": "NVIDIA GeForce RTX 4070", "vendor": "NVIDIA", "total_gb": 12, "free_gb": 11}]
+check(engine.shared_graphics(strix, apple=False) == "AMD graphics" and
+      engine.shared_graphics(with_card, apple=False) is None and
+      engine.shared_graphics([], apple=True) == "Apple silicon" and engine.shared_graphics([], apple=False) is None and
+      engine.graphics_cards(with_card) == with_card[1:],
+      "graphics built into the processor are named only when there's no graphics card to run models instead")
+b = json.loads(call("/api/state"))["bundled"]
+check("shared_gpu" in b and b["build_for_card"] and "engine_build" in b,
+      "the state says which engine version this computer gets, and any built-in graphics")
 log = os.path.join(TMP, "llama.log")
 with open(log, "wb") as f:
     f.write(b"old run\nload_tensors: offloaded 10/49 layers to GPU\nnew run\n")
