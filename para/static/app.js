@@ -920,7 +920,18 @@ $("#baseUrl").addEventListener("input", () => { $("#connectResult").textContent 
 let chosenBundled = null, othersOpen = false;
 function renderBundled() {
   const b = S.bundled;
-  $("#machineInfo").textContent = `This computer has ${b.ram_gb} GB of memory and ${b.free_gb} GB of free disk space.`;
+  const cards = b.cards || [], onCard = b.on_card || [];
+  const cardText = cards.map((c) => `${c.name} with ${c.gb} GB of its own`).join(" and ");
+  let info = cards.length
+    ? `This computer has ${b.ram_gb} GB of memory, ${cardText}, and ${b.free_gb} GB of free disk space. A model that fits on the graphics card answers many times faster than one that doesn't.`
+    : b.shared_gpu ? `This computer has ${b.ram_gb} GB of memory, shared with the graphics built into its processor (${b.shared_gpu}), and ${b.free_gb} GB of free disk space. Models run on those graphics, from this memory.`
+    : `This computer has ${b.ram_gb} GB of memory and ${b.free_gb} GB of free disk space.`;
+  const gl = b.gpu_layers;
+  if (b.running && gl) info += gl[0] >= gl[1] ? " The model running now is all on the graphics card."
+    : gl[0] === 0 ? " The model running now is on the processor, which is slow."
+    : ` The model running now is partly on the processor (${gl[0]} of ${gl[1]} layers on the graphics card), which is slower.`;
+  $("#machineInfo").textContent = info;
+  renderBuild(b);
   chosenBundled = chosenBundled || S.settings.engine.bundled_model || S.recommended;
   // One model is put forward: the one suggested for this computer, with any already downloaded or in use. The rest
   // wait under "Other models", so nobody has to choose between seven. A retired model shows only if it's here.
@@ -929,11 +940,13 @@ function renderBundled() {
   const first = (m) => m.id === S.recommended || mine(m);
   const card = (m) => {
     const installed = b.models.includes(m.id);
-    const tooBig = m.min_ram_gb > b.ram_gb + 0.5;
+    const fits = onCard.includes(m.id);
+    const tooBig = !fits && m.min_ram_gb > b.ram_gb + 0.5;
+    const where = !cards.length || tooBig ? "" : fits ? " · fits on the graphics card" : " · too big for the graphics card: runs partly on the processor, slowly";
     return `<label class="model-card ${m.id === chosenBundled ? "selected" : ""}${tooBig ? " too-big" : ""}">
       <input type="radio" name="bmodel" value="${esc(m.id)}" ${m.id === chosenBundled ? "checked" : ""}>
       <div class="info"><b>${esc(m.name)}</b>${m.id === S.recommended ? '<span class="tag">Recommended for this computer</span>' : ""}<br>
-      <small class="muted">${esc(m.about)}</small><small class="meta">${m.size_gb} GB download · needs ${m.min_ram_gb} GB memory${m.tested ? ` · ${esc(m.tested)} test questions right` : ""}${tooBig ? " — too big for this computer" : ""}</small></div>
+      <small class="muted">${esc(m.about)}</small><small class="meta">${m.size_gb} GB download · needs ${m.min_ram_gb} GB memory${m.tested ? ` · ${esc(m.tested)} test questions right` : ""}${where}${tooBig ? " · too big for this computer" : ""}</small></div>
       ${installed ? `<span class="installed">Installed</span> <button type="button" class="btn danger" data-remove="${esc(m.id)}">Delete</button>`
         : `<button type="button" class="btn" data-install="${esc(m.id)}">Download</button>`}
     </label>`;
@@ -958,6 +971,40 @@ function renderBundled() {
     S.bundled = await api("/api/bundled/remove", { method: "POST", body: { model: x.dataset.remove } }); renderBundled();
   });
   renderJob(b.jobs.install);
+  renderDownloaded(b.downloaded || []);
+}
+// Every model file on this computer, including ones no longer offered and unfinished downloads, with what each takes,
+// so the space can be got back in one place.
+function renderDownloaded(files) {
+  const v = $("#downloaded");
+  if (!files.length) { v.innerHTML = ""; return; }
+  const total = files.reduce((n, f) => n + f.gb, 0).toFixed(1);
+  v.innerHTML = `<p class="eyebrow">Downloaded to this computer · ${total} GB</p><div class="downloaded-list">` + files.map((f) =>
+    `<div class="file-row"><div class="info"><span class="name">${esc(f.name)}</span>
+      <span class="fstate">${f.gb.toFixed(1)} GB${f.partial ? " · unfinished download" : f.id ? "" : " · no longer offered"}${f.in_use ? " · running now" : ""}</span></div>
+      <button type="button" class="btn danger" data-remove-file="${esc(f.file)}">Delete</button></div>`).join("") + "</div>";
+  $$("[data-remove-file]").forEach((x) => x.onclick = async () => {
+    const f = files.find((g) => g.file === x.dataset.removeFile);
+    const why = `${f.name} (${f.gb} GB) is deleted from this computer.${f.in_use ? " The AI engine stops first." : ""}${f.id && !f.partial ? " You can download it again." : ""}`;
+    if (!(await confirmBox(f.partial ? "Delete this unfinished download?" : "Delete this model?", why, "Delete"))) return;
+    try { S.bundled = await api("/api/bundled/remove", { method: "POST", body: { file: f.file } }); renderBundled(); }
+    catch (err) { alert(err.message); }
+  });
+}
+// Which version of llama.cpp: before it's downloaded, the tick box says which one it will be (the box only matters
+// then); once it's here, a line says which is in use.
+function buildName(key) {
+  if (/cuda/.test(key)) return "the version for NVIDIA cards (CUDA)";
+  if (/cpu$/.test(key)) return "the version for the processor only";
+  if (/^darwin/.test(key)) return "the version for Macs, which uses their graphics (Metal)";
+  return "the version for any graphics card (Vulkan)";
+}
+function renderBuild(b) {
+  const mac = /^darwin/.test(b.platform || "");
+  const inUse = b.engine_build || (b.engine_cuda ? "cuda" : b.platform);
+  $("#gpuRow").hidden = mac || b.engine_installed;
+  $("#gpuLabel").textContent = `Use the graphics card: ${buildName(b.build_for_card || b.platform)} is downloaded. Untick for the version for the processor only if the AI engine won't start.`;
+  $("#engineBuild").textContent = b.engine_installed ? `The AI engine on this computer is ${buildName(inUse)}.` : "";
 }
 function renderJob(j) {
   const v = $("#jobView");

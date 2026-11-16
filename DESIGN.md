@@ -196,12 +196,22 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   shows every model (a native datalist would show only those matching the name already in the box) and selects the
   name, so typing filters the list; any name can still be typed. It opens upwards when the dialog has no room below.
 - **Model rows**: ruled rows with a radio, name, the gold pill "Recommended for this computer" on the one chosen from
-  the computer's memory, description, mono size and memory line ending in how many of the 36 test questions the model
+  the graphics card's own memory (system memory only when no model fits on a card, or there's none), description, mono size and memory line ending in how many of the 36 test questions the model
   got right ("33 to 35 of 36 test questions right"), and an action (Download, or Installed and Delete). Only the
   recommended model and any already downloaded or in use are shown; the rest sit under a collapsed mono line, "+ Other
   models (4)", like the activity list, so nobody has to choose between a list of names. It opens by itself when one of
-  them is chosen or downloading. Models too big for this computer are faded with the size line in red. A model no
+  them is chosen or downloading. With a graphics card, the size line says whether the model "fits on the graphics
+  card" or "runs partly on the processor, slowly", and the line above the rows names the card and, while a model runs,
+  whether it is all on the card. With no graphics card but graphics built into the processor (Apple silicon, Strix
+  Halo), that line says the memory is shared with them and models run on them from it. Under the rows, before the AI
+  engine is downloaded, a tick box "Use the graphics card" says which version will be: for NVIDIA cards (CUDA), for any
+  graphics card (Vulkan), or for the processor only if unticked; it isn't shown on a Mac, which has one version. Once
+  the engine is here, a mono line says which version is in use instead. Models too big for this computer are faded with the size line in red. A model no
   longer offered (`"retired"` in `models.json`) shows only on a computer that has it.
+- **Downloaded to this computer** (`#downloaded`): under the model rows, an eyebrow with the total size over an ink
+  rule, then a ruled row per model file in the models folder: the name in display type, the size in mono (with
+  "running now", "unfinished download" or "no longer offered"), and a danger-outline Delete that asks first. It lists
+  what the model rows can't: models dropped from the catalogue and the `.part` of a download that stopped.
 - **What is a model?** (`#dlg-model-help`): a mono link at the end of the line above the model rows opens a small
   dialog in the app's look: "In plain words" eyebrow, the question as its title, four short paragraphs (what a model
   is, that the regulations are in the library and not in the model, why bigger is better and still fallible, that it
@@ -267,7 +277,8 @@ no emoji anywhere.
 - **Reader find** hides non-matching passages rather than highlighting matches.
 - **App icon**: the gold ¶ on an oxblood rounded square (`packaging/make_icon.py`), used on Windows and Linux. The
   Mac app has none yet (`packaging/icon.icns`).
-- **Screenshots** don't yet show the citation states, the figure note, the answer actions, Find in chats or Changed
-  in this edition.
+- **Screenshots** don't yet show Connect, the recommended-models dialog, the graphics-card line on model rows, Downloaded
+  to this computer, or the engine update row. `welcome.png` predates the empty-chat rework in 0.2.2, and
+  `reader-description.png` is still the old picture (no description is approved yet).
 - **Keyboard**: dialogs and citations are reachable by Tab, but there's no shortcut for New chat or focusing the
   question box.
