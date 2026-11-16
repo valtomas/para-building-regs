@@ -1,0 +1,17 @@
+{
+ "key": "ADF1_Table-B2_p49",
+ "source": "ADF1",
+ "label": "Table B2",
+ "page": 49,
+ "caption": "Table B2 Surface water activity",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "5bf0bf564981e943a0a4366c52487f8483a9a7671012bebe40eb8c23bc5b44ec",
+ "image_sig": {
+  "w": 737,
+  "h": 147,
+  "grey": "z7u7u7u7u7u7u7u7u7u7u6qUjZucoMjIyMjIyMjIyMixnZGUl6DIyMjIyMjIyMjI0sjIyMjIyMjIyMjIyMjIyO/v7+7v7+/v7+/v7u/v7+/k3N3u////////9t7f6P//7OHe6Ovr6+vz6+nk5Ofr6/r+//////////////r////d4f////////////ro////8Ovr6+vr6+vz6+vr6+vr6/r+//////////////r////e6v////////////rh////7+vr6+vr6+vz6+vr6+vr6/j//////////////vj////a/P////////////vm////7Ovr6+vr6+vr6+vr6+vr6w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

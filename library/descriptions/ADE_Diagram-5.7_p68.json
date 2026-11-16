@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-5.7_p68",
+ "source": "ADE",
+ "label": "Diagram 5.7",
+ "page": 68,
+ "caption": "Diagram 5.7 \u0007\u0007Internal floor type C",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "31981c2e74d3ff337a6fca205cc0c894c0d0dd358025de0509b5fbffbcbe3c10",
+ "image_sig": {
+  "w": 362,
+  "h": 232,
+  "grey": "vsTGwb2/wMWyxsHFtcrK2M6erMDTr5SarJimjMLp6e/b5eXl5eXl5eXl5eXl5eXm6f//////////////////9On///////////////////Tp///////////////////05vf39/f39/f39/f39/f38Nrk8/Pz8/Pz8/Pw3/Pz8/Lh4e/u8O/u8O/u7eXv7vDz4d7h4efj4Ofj4OPi4OPn8trY2eLX2eLY2eLV1eDb1vDm7e3t7e3t7e3t7e3t7e3y6f//////////////////9On///////////////////Tp///////////////JyLrc0Nvb29vb29vb29vb29vb3g=="
+ },
+ "reviewed": false,
+ "description": "The image is a line drawing in a bordered box, headed by a light-green title bar reading \"Diagram 5.7 Internal floor type C\". The word \"SECTION\" appears in the lower right corner of the box. The drawing shows a horizontal cross-section enclosed by a long continuous horizontal line running across the top and a parallel horizontal line running across the bottom. At the left end, the top line terminates at a short vertical line that connects it down to the bottom line, and a second short vertical line stands a little to the right, with two diagonal lines crossing between them to form an X-braced panel of full height. Along the lower line, to the right of this panel, sits a row of closely spaced, repeating loop or coil shapes. About two-thirds of the way across, a second X-braced panel of the same full height stands between the top and bottom lines, and the row of loops resumes to its right, terminating at the right edge of the drawing, where the top line ends with a short vertical line. No other labels, dimensions or symbols are present.",
+ "first_draft": "The image is a line drawing in a bordered box, headed by a light-green title bar reading \"Diagram 5.7 Internal floor type C\". The word \"SECTION\" appears in the lower right corner of the box. The drawing shows a horizontal cross-section. A long continuous horizontal line runs across the top, slightly indented at the right end. At the left, a short vertical line connects this top line down to a lower horizontal line, with diagonal bracing lines crossing between them. Along the lower line sits a row of closely spaced, repeating loop or coil shapes, open at the top. About two-thirds of the way across, a second vertical member with diagonal bracing rises between the lower line and a mid-height point, and the row of loops resumes to its right, terminating at the right edge of the drawing. No other labels, dimensions or symbols are present."
+}

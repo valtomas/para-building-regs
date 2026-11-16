@@ -1,0 +1,17 @@
+{
+ "key": "ADF1_Table-D1_p56",
+ "source": "ADF1",
+ "label": "Table D1",
+ "page": 56,
+ "caption": "Table D1 Checklist for ventilation provision in existing dwellings Natural ventilation(1)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "7f51c10ef2aeae8a612d05b3f90cdf078b0e71f2b5d33acb7bcb5c9324ea1201",
+ "image_sig": {
+  "w": 756,
+  "h": 1030,
+  "grey": "08nEzM7MzM7My8rc3Nzc4Ovo4+fm5efl5+bl8vrz8vbq4+Hj4uXl5Ovx+vr78PH47Ofn5ebl5+Tq8fHx+fHz+Ovm5ufn5eXv7fb39/nw8vbr4eTl4eXj5OPg5O349fX57eno6unp7u/v7/D3+vP29unk4+nr7Ovr6+vq7/n19fnv6Ojp6Onn6ej2+vr78vT47Obm5+bm5ebl7O/y+vDy9uvj5efk5uvt6+rs8fj5+fnp5OHp6efp6ezy8fT78/T46+bl6ejp6eft8vDx9/L0+Ozm5ufm5uXm5ezv8vnw8vbl4+zt6u3s7evq7fH4+fn58+Hj5uvq7Ovs7erq7/T0+A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

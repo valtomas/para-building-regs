@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-4.8_p64",
+ "source": "ADE",
+ "label": "Diagram 4.8",
+ "page": 64,
+ "caption": "Diagram 4.8 \u0007\u0007Stair treatment",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "65d2ed39ec3d25fe7701a9af774bcf4ecdd115731e74a7f90505f541e4bdaf17",
+ "image_sig": {
+  "w": 760,
+  "h": 345,
+  "grey": "6urk8vb29vfcv8WzsMPf5Onn5Nnp6enw4MvTzczS2d3r6uvX1tbW7fT////////66ebo8Pb27+/0+Or8+9bX+uvs7fr///fx9Pzv/Pv68Ovq7Ozo7vDp8/T/++rw89zf5N/t6+/u7vH0//fX1tjW9u/z7+rs7O3x9P/5/+HY7Prj2+Hv8fHx9O7T0erO59zw7vLk+/////ru9+vc2v/++uTb5Pv////67vrc2+rj//ru8uT7////+u7Z0vn+/v/65t7k+/////ry2ez9////+u7y5Pv////69PDp5P////rs7e78///19vT//////+bi7fPz8/Pz1uLy8/Pz8/Pq6w=="
+ },
+ "reviewed": false,
+ "description": "The image presents two architectural sections. The left panel, labeled \"SECTION\" at the bottom, illustrates a vertical cut through a masonry wall and a suspended structure. The suspended structure is shown with insulation depicted by a series of loops between its top and bottom layers, and the wall cavity contains a vertical zig-zag pattern.\n\nThe right panel is a framed diagram titled \"Diagram 4.8 Stair treatment,\" also marked \"SECTION\" in the lower right corner. It shows a profile view of a staircase. Labels with leader lines identify specific parts of the staircase and the assembly beneath it. \"Soft covering\" indicates the material on the treads. \"Mineral wool\" points to the insulation within the sloped void, represented by a criss-cross hatch pattern. A \"Fixing batten\" is identified as a support strip within the insulation, and \"Plasterboard\" labels the bottom-most layer of the sloped assembly. The stairs ascend from the left side of the diagram to the right.",
+ "first_draft": "The image presents two architectural sections. The left panel, labeled \"SECTION\" at the bottom, illustrates a vertical cut through a masonry wall and a suspended structure. This structure features timber joists filled with insulation, depicted by a series of loops, and a zig-zag pattern within the wall cavity.\n\nThe right panel is a framed diagram titled \"Diagram 4.8 Stair treatment,\" also marked \"SECTION\" in the lower right corner. It shows a profile view of a staircase. Labels with leader lines identify specific parts of the construction beneath the stairs. \"Soft covering\" indicates the material on the treads. \"Mineral wool\" points to the insulation within the sloped void, represented by a criss-cross hatch pattern. A \"Fixing batten\" is identified as a support strip within the insulation, and \"Plasterboard\" labels the bottom-most layer of the sloped assembly. The stairs ascend from the left side of the diagram to the right."
+}

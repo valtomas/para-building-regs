@@ -1,0 +1,17 @@
+{
+ "key": "ADF1_Table-1.2_p18",
+ "source": "ADF1",
+ "label": "Table 1.2",
+ "page": 18,
+ "caption": "Table 1.2 Minimum extract ventilation rates for continuous extract systems(1)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "5a9e0c1e1867df901248abf48d98fe0fdf17168cda2ae048664e654e790448aa",
+ "image_sig": {
+  "w": 756,
+  "h": 276,
+  "grey": "wLGns66rr6ywsbGwq8PDz76woKWqoqimqaCmp6rIyNDn7e/v7+/v4+Tv7eTm7+/u7vP19fX49enq9ffp6vX19Oby///////8+v/349/i3Pn7////////////+eLf5eD68fT19fX49fTz9fPf3t/f+evh///////9+//33Nvi3vv19fX19fj19fX19OL////75Ov///////z6////////+/X19fX1+PX19fX7//////vl4d7o/////Pv////////74e319fX49fX19fj19fX19Of3/v79//3///39/v79//ny2drb19jd5ODn3eHg4N3n8ODf3dzd6/X19fX19fX18w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

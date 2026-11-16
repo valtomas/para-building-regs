@@ -1,0 +1,17 @@
+{
+ "key": "ADF1_Table-1.6_p22",
+ "source": "ADF1",
+ "label": "Table 1.6",
+ "page": 22,
+ "caption": "Table 1.6 Types of ventilation system",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "27839a11c8c2b7f3e70a3f0d71c1d4bbb1bcc968bd40c999626d07d97e5f9843",
+ "image_sig": {
+  "w": 756,
+  "h": 149,
+  "grey": "z7u7u7u7u7u7u7u7u7u7zKmZkJCGlqrIyMjIyMjIyNC2p5KglZevyMjIyMjIyMjQ0sjIyMjIyMjIyMjIyMjI0O/w8PDw8PDw8PDt8O/v8O/i1///////////09nZ0+j77ujr6+vr6+vr8uzn6ujr7/j9+v/39//////9+/v///vWxce30tL/////ycLG///78Ovq5evq6+vr8uzo6Ovr7/f+/fz/+/33+P/5+/////vez8bLz8u9zdH8zNf////78Ovr6+vr5+vr8uzp6+vr7/b6+fv8/f/08v/2+v////vdzcfQzs2619z/z9f////77+vr6+vr6uvr6+vr6+vr7Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

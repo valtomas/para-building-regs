@@ -1,0 +1,17 @@
+{
+ "key": "ADF1_Table-3.1_p31",
+ "source": "ADF1",
+ "label": "Table 3.1",
+ "page": 31,
+ "caption": "Table 3.1 Energy efficiency measures Category of measure Roof insulation",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "6d21097b86e115c8fd488af2476d7aa36abfaee66462ab30a985a33fdaacc235",
+ "image_sig": {
+  "w": 743,
+  "h": 629,
+  "grey": "wLOorK6tusbGxsbGxsbGxvb3+fr6+vr6+vr6+vzv8vPx5Ons7urt6uvt7Oz37vr79eLg4+Hj7O3s6+7r8+76++/r8PT09Pb29vb29vn29vf15unr6Ozo7fj39ff66/r79uHs8fDw8PHx8fLw9vL6++/h5OXj6u3v7e3u7fXu+/vz5ejp5+np6Ojp6fD56vb38uTn6Onp6u3u7fr6/O76+/Lj5eno5+vy+vr6+vzu+vv05ejo6ujn6Ofp6un26vb39Nzg4N7c3uTs7u3t++L6++fg9vr6+vr6+vr6+vz6+vv24+Lk5OXj4uPv7/Pu8vP09eHg3uLl5Ofk4Ob08fPv/Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

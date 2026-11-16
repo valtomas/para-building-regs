@@ -1,0 +1,18 @@
+{
+ "key": "ADH_Diagram-5_p13",
+ "source": "ADH",
+ "label": "Diagram 5",
+ "page": 13,
+ "caption": "Diagram 5 \u0007\u0007Stub stack",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "7dcf6e80f9893a0d7ccb30c11a550618819b3111ecf88a8289908ce06933567e",
+ "image_sig": {
+  "w": 355,
+  "h": 307,
+  "grey": "27a6usGgtLGszNDQ0NDQ0OTFwMzVvsK/vtjf39/f39/o/////////+n+////////6P/////////k1tLc1fr//+j////h7dvX1+Hh4c70///o////8P/R2eH/////////6P////D////k//bw7OH8/+j////w////5/Dl/+v2/v/o///m1P/y69/f2fDX4dX06P//5Nv//PHk/////////+j////w9t305P/////////o/9bR1Ovh9OT/////////6P/U8/D///Ti/////////+j/6dy/0M7K7v/////////o/+/0/v/l4P//////////5vLy8vLy8vLy8vLy8vLy8g=="
+ },
+ "reviewed": false,
+ "description": "This line drawing, titled “Diagram 5 Stub stack,” shows a plumbing arrangement. A vertical pipe is labeled “100mm stack.” At the top, a horizontal pipe extending to the right and ending in a U-bend is labeled “Highest branch.” Below this, a toilet fixture labeled “WC” connects to the stack; a horizontal line extending right from the base of the WC is labeled “Floor level.” On the left, a vertical dimension line indicates “2.0m max.” from the highest branch down to the bottom of the pipe run. Lower down, another dimension line indicates “1.3m max.” from the floor level to the pipe's lowest point. The pipe bends at the bottom and runs horizontally to the left, with its lowest point labeled “Invert.” At the far left end of the horizontal pipe, a circular symbol is labeled “Ventilated drain.”",
+ "first_draft": "This line drawing, titled “Diagram 5 Stub stack,” shows a plumbing arrangement. A vertical pipe is labeled “100mm stack.” At the top, a horizontal pipe extending to the right is labeled “Highest branch.” Below this, a toilet fixture labeled “WC” connects to the stack; a horizontal line extending right from the base of the WC is labeled “Floor level.” On the left, a vertical dimension line indicates “2.0m max.” from the highest branch down to the bottom of the pipe run. Lower down, another dimension line indicates “1.3m max.” from the floor level to the pipe's lowest point. The pipe curves at the bottom and runs horizontally to the left, with its lowest point labeled “Invert.” At the far left end of the horizontal pipe, a circular symbol is labeled “Ventilated drain.”"
+}

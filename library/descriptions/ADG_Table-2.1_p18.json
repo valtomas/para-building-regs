@@ -1,0 +1,17 @@
+{
+ "key": "ADG_Table-2.1_p18",
+ "source": "ADG",
+ "label": "Table 2.1",
+ "page": 18,
+ "caption": "Table 2.1 Maximum fittings consumption",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "ba40a0507aad74322e136a5aafdac352a2d9df5799650bd0c11c581ca1c166b3",
+ "image_sig": {
+  "w": 362,
+  "h": 322,
+  "grey": "zb7G1qq6vb2vtsTg4ODg6OHU2+S2s7Oys8vM6enp6e/v7u7u0tPQy9Hp7u7u7u7z1MjE1/Pz8/PJydHKyMTl9uj2////////5OHi3uTx/////////////+ng4t7a+///4Njr8vLy8vLi1u7y8vLy9uvr8fLy8vLy6+ry8vLy8vbe4PLy8vLy8t7X4vLy8vL25uPa///////p4////////9zV2vLy8vLy29by8vLy8vbp5uTw8/Pz8+rl5ufm8/P26N/d7/Ly8vLq493h3vLy9ujb497n////6uTZ5v/////z8vLy8vLy8vLy8vLy8vL2y//U09ra0dXN1djg097a/w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

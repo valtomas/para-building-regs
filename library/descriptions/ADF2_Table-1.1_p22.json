@@ -1,0 +1,17 @@
+{
+ "key": "ADF2_Table-1.1_p22",
+ "source": "ADF2",
+ "label": "Table 1.1",
+ "page": 22,
+ "caption": "Table 1.1 Continued",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "df43966a9fe35bd473e84e0a2911d3bae2c5c373818b409dc2c111157592eb6c",
+ "image_sig": {
+  "w": 754,
+  "h": 937,
+  "grey": "0MfExtTT1NPT1NTU1dra3ert+uvr7ers8vLz8fLz8/j6/fvl6Onl6Ono6u/29fn76+3y1d7i5OHi4uPw9PP1+eXt++fp5+zp5/Lz8/Lz+fns7vjq6Onp6uno6enx8fP39PT26+jm5Ov2/Pz8/f39+/n8+uXs7u7t7/Ly8/Py9fnu7/nh5ezq7O719vb29fb2+//64eTk5OPi5uLj4+Pj9Pv/+uHi5ePj4uPj5eTj6vLr7Pro6efu8vH7/Pz8/Pz55+T16unq6+vq8vTz9PT6+ebo9u/v8PHx7/n6+/r6+/nm4vjx8vLz8vH7/Pz8/Pz56ezx8e/v8vn5+fn5+fn59w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

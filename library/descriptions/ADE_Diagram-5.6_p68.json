@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-5.6_p68",
+ "source": "ADE",
+ "label": "Diagram 5.6",
+ "page": 68,
+ "caption": "Diagram 5.6 \u0007\u0007Internal floor type B",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "c1a533f8a5fb285c480f3f3a4954a9d697cf5d4d71a9854c595a64e7d2a431e4",
+ "image_sig": {
+  "w": 606,
+  "h": 256,
+  "grey": "7vH////4487Py8vDzcrW4e7x////+Oe4x8GttLWs3+zu8f////jr6urq6urq6uro7vH////48v//////////+Nzo////+PL///////////ju8f////jy///////////47vH////48ujk4uPj5OPj8e7x////+PLt7/D36/j44vDu8f////jy7/H/9e/89ury3ej////48uDq4N/n4d7o9O7x////+PL49fX19fX19ffu8f////jy///////////47fH////48v//////////+O7y////+PL////////uztLc5/////j07+/v7+/v7+/w7vL////4/////////////w=="
+ },
+ "reviewed": false,
+ "description": "The image is a technical drawing headed by a pale green title block at the top reading \"Diagram 5.6 Internal floor type B\". Below the title block is a single bordered panel containing a cross‑section drawing, with the word \"SECTION\" printed in the lower right corner. The section runs horizontally across the panel and shows a layered floor structure. A continuous horizontal line runs along the top, from which a row of short vertical elements descends. Several small hollow triangular symbols are spaced along the line near the left end, the centre and the right end. Further down, a series of vertical lines connect the upper members to a lower horizontal line. Along this lower line are five rectangular blocks, each marked with a diagonal cross (an X), positioned at regular intervals. The vertical and horizontal lines together suggest a beam‑and‑support arrangement between the top and bottom lines, though the line types and the small triangular symbols are drawn too finely to be read with certainty, and no dimensions, material names or further labels are present. The left edge of the sheet shows a vertical column of rectangular cells, each containing a circle, separated by horizontal lines.",
+ "first_draft": "The image is a technical drawing headed by a pale green title block at the top reading \"Diagram 5.6 Internal floor type B\". Below the title block is a single bordered panel containing a cross‑section drawing, with the word \"SECTION\" printed in the lower right corner. The section runs horizontally across the panel and shows a layered floor structure. A continuous horizontal line runs along the top, from which a row of short vertical elements descends. Several small triangular, hatched symbols are spaced along the line near the left end, the centre and the right end. Further down, a series of vertical lines connect the upper members to a lower horizontal line. Along this lower line are five rectangular blocks, each marked with a diagonal cross (an X), positioned at regular intervals. The vertical and horizontal lines together suggest a beam‑and‑support arrangement between the top and bottom lines, though the line types and the small triangular symbols are drawn too finely to be read with certainty, and no dimensions, material names or further labels are present. The left edge of the sheet shows part of a page margin with dotted lines but no drawing content."
+}

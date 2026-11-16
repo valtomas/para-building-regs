@@ -1,0 +1,17 @@
+{
+ "key": "ADH_Table-3_p12",
+ "source": "ADH",
+ "label": "Table 3",
+ "page": 12,
+ "caption": "Table 3 \u0007\u0007Minimum diameters for discharge stacks",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "54ed75085a1af5b51ab0195e5d4c5482718404b2aa8944e2f95a94b3e7a6992c",
+ "image_sig": {
+  "w": 362,
+  "h": 240,
+  "grey": "ztDPxcvW1s7V0tbP2dvb5dOuvreaoJ2vl5ubsNPp6e/q6emumZOXrJCS6enp6env3tzc2tvbz9zZ3Nzb3Nzc5v///9nDxvj/2Mq/vP7/////////zOH///nBx9v//////////9/7/////+f////////////e+/////vr////////////5fX////85f///////////+j4////++r////////////p9f////7q///////v7u7u5eju7u7u5O7u7u7y2tL///////////////////zk2/n////////////////46OTi6+Di3ubh6f//////3dnX19nX2NXV19nd3d3d5g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

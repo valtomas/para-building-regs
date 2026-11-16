@@ -1,0 +1,17 @@
+{
+ "key": "ADF2_Table-1.1_p21",
+ "source": "ADF2",
+ "label": "Table 1.1",
+ "page": 21,
+ "caption": "Table 1.1 Ventilation for buildings other than offices and car parks",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "3add5329f99448fb8f93cd3ddd0437e07c22cd3e33feaa27b9cfd92f6e9b477b",
+ "image_sig": {
+  "w": 749,
+  "h": 1014,
+  "grey": "0MjFw8XAxcXCx8XO1dvb2/Dy+err6+vs6/Hz8/T08/Ls7PXk5ent7+7s7u/39vn5+//62t7i4eLn6err6ert9fPz+uHj4eHk6ezs6+v1/Pnt8Prn6unr6+jy8/j8/Pz56ez55+zq6+vr8vTy9fPz8/n8/Orj6+vr7Ovy9PT08/Xq6Pbl5ubo6OTz+fj5+fn38PD75uXt7+/49/X4/v//+/v/+t3k5OXl5ezu7fP39vb0+/nb4eLh5Onz/Pz8/Pz56eX45+bm6Onn7vHw9vn59/H2+uPj5O7t7O3t9/////vz9/rj5ePt7ez09vb8/Pz58ff44+Tl5ubj7O33+fn59g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

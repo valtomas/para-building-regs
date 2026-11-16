@@ -1,0 +1,18 @@
+{
+ "key": "ADH_Diagram-3_p11",
+ "source": "ADH",
+ "label": "Diagram 3",
+ "page": 11,
+ "caption": "Diagram 3 \u0007Branch connections | H1 | ONLINE\nSANITARY PIPEWORK | VERSION",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "27b944f3f8552654cc4515c78b0d26a153d79b7f9f132db2933b7bd3ddfee082",
+ "image_sig": {
+  "w": 749,
+  "h": 630,
+  "grey": "z8O8vru51dnZ2dnZ2dnZ2fT////9/Pv/8/z6/f/////0////6t7X8uTe3OX1////9P//9uPg4+Hm4uPy7Or7//T////t39v77u/u+P7////0///+5uXp5+Xg8P//////9P//9vPz8vLs2u729/b///T/////////8svJysXY///0//7+//////np6O75/v//9P/u6Onl3/D49/n///////T/////6+jy8+71///////0/////+vq3+3o7///////9P/////u8vHl4vX///////T/////8e3u7efm///////0///////36+rr+P3/////6/Lg2tzb2tns8vLy8vLy8g=="
+ },
+ "reviewed": false,
+ "description": "The upper drawing is a line diagram of horizontal branch pipes joining fixtures to a central vertical stack, with a vent symbol at the top of the stack. On the right a pipe from a \"Washbasin\" is marked \"1.7m max. for 32mm pipe\", \"*3m max. for 40mm pipe\" and \"Slope (see graph)\", with a double-headed arrow spanning its length. On the left a pipe from a \"Sink\" and a pipe from a \"Bath\" each carry \"3m max. for 40mm pipe\", \"*4m max. for 50mm pipe\" and \"Slope between 18 and 90mm/m\", each with a length arrow. To the right, a \"WC\" branch is marked \"6m. max. for single WC\" and \"Slope 18mm/m min.\" A \"Notes\" block states that where the larger branch pipe sizes are used the diameter of the trap is not increased but the tail of the trap should be lengthened by 50mm before increasing the diameter, and \"For ranges see Table 2.\" The heading \"(a) Unvented branch connections to stacks\" sits above a graph labelled \"(b) Design curve for 32mm washbasin waste pipes\", plotting \"Gradient [mm per m length]\" (20 to 120) against \"Length of branch [m]\" (0.5 to 1.75), showing a curve falling from upper left to lower right.",
+ "first_draft": "The upper drawing is a line diagram of horizontal branch pipes joining fixtures to a central vertical stack, with a vent symbol at the top of the stack. On the right a pipe from a \"Washbasin\" is marked \"1.7m max. for 32mm pipe\", \"*3m max. for 40mm pipe\" and \"Slope (see graph)\", with a double-headed arrow spanning its length. On the left a pipe from a \"Sink\" and a pipe from a \"Bath\" each carry \"3m max. for 40mm pipe\", \"*4m max. for 50mm pipe\" and \"Slope between 18 and 90mm/m\", each with a length arrow. To the right, a \"WC\" branch is marked \"6m. max. for single WC\" and \"Slope 18mm/m min.\" A \"Notes\" block states that where larger branch pipe sizes are used the trap diameter is not increased but the trap tail is lengthened by 50mm, and \"For ranges see Table 2.\" The heading \"(a) Unvented branch connections to stacks\" sits above a graph labelled \"(b) Design curve for 32mm washbasin waste pipes\", plotting \"Gradient [mm per m length]\" (20 to 120) against \"Length of branch [m]\" (0.5 to 1.75), showing a curve falling from upper left to lower right."
+}

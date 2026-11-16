@@ -1,0 +1,17 @@
+{
+ "key": "ADF1_Table-1.7_p23",
+ "source": "ADF1",
+ "label": "Table 1.7",
+ "page": 23,
+ "caption": "Table 1.7 Minimum equivalent area of background ventilators for natural ventilation(1)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "c0cf7679d5a42e66a47049a87b7bf1a8724171b9ca9c2579f3333a725f47b74c",
+ "image_sig": {
+  "w": 748,
+  "h": 477,
+  "grey": "u62dpaGmpp6mn6ampqCzxuXr7e3t6OLf4ens4OHg5ur7//////Xi5O7y9ePk8vD46+bp+fnz5/n5+fnk8vn59uvs+fn58+f5+fn55PP5+fbo4vPz8/Hi7fPz9eLo8/Py6ur5+fn05/n5+frk9/n59uvo5uz59Ojz+fn55+75+fbj8P7+/////f7////+/v/79ePf4N3d3+3r7e/s7e3s+fnw6ubr6ejt7Ov///////v26+Xp5+jk5uXp5unk9Pj69dzj5N7j4uHe4+Lh4ePg9PTj7O/r6+7q6e3s7Ozt7fbz5ubl5ePl4+Lm5ez29fb28d3d39vg3N3d3uDj7/Hw7g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADF1_Table-1.5_p20",
+ "source": "ADF1",
+ "label": "Table 1.5",
+ "page": 20,
+ "caption": "Table 1.5 Performance testing standards",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "902f9b5d765802688afe17d6187c9747a10a9e747c2e8b31b42645200a5fe727",
+ "image_sig": {
+  "w": 756,
+  "h": 357,
+  "grey": "tqWZm52fmMXFxcXFxcXFz9rS0tDRzNDV1dXV1dXV1drq5u339/f3+Ovl9/f39/f26+bn8P/////X2f//////++jg8ff39/f509T39/f39/bp5uPm5+Xp+NrZ6OX09/f29vb4+fj4+v/v8+/y9vf5+vv/////////1tfV1dvt7Pn7//////////fy9PPw8f77+//////////08vHy8vD8+/b39/f39/f46eHf4d3f9Pbo4t7g4uDe+dPS9/f39/f26+bj6Ofq///X2///////+/v/////////0c/j3t7c3fb7/////////+3m6efo5+jv9vf39/f39/fh7ff39/f39Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

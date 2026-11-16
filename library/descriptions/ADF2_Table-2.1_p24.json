@@ -1,0 +1,17 @@
+{
+ "key": "ADF2_Table-2.1_p24",
+ "source": "ADF2",
+ "label": "Table 2.1",
+ "page": 24,
+ "caption": "Table 2.1 \u0007Limit values from Schedule 2 to the Air Quality Standards Regulations 2010",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "b40c8fb16747ac6e7532f9524cedcc6f6b9546037bf3a91aa95ab94576041256",
+ "image_sig": {
+  "w": 754,
+  "h": 341,
+  "grey": "vammpqSkpqKno6Choaesz9fNzMvNy8zMzcrKy8XL0drv8/////bu9v//++v0///76uXo9/fx6Pf39/Xm5/f39e7v8Pf39O739/f37+/39/br5/P///Th9/f39+Dg9/f19vf39/fu4ff39/bc5ff39evk7v//9Of////86Or///v7//////Tr9/f39+jr9/f19ff39/f17ff39/js7vf39eTp9/f37un39/f33eL39/Xl9/f39/Dg9/f399/k9/f27P/////07v////zm7P//++329/f39O339/f47vD39/Xy//////br9/f3+Obr9/f29ff39/fq4/f39/Pd4vf39Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

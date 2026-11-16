@@ -1,0 +1,17 @@
+{
+ "key": "ADF2_Table-B1_p36",
+ "source": "ADF2",
+ "label": "Table B1",
+ "page": 36,
+ "caption": "Table B1 Indoor air pollutants guidance values(1)(2)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "c10ea4f53a0bca46a7b5da0071538aa4606d027b7d6e2a1baf0a32d00a89fc83",
+ "image_sig": {
+  "w": 756,
+  "h": 528,
+  "grey": "vamnq6Smqaa6xsbGxsbG0Ojo7+/r5Orv6+Tq7+vl7+/w8O339er6+vXp6fry6fr4+/////Xs+vr16vD68un6+Pv////w4O7y9+/1//Xy//vt5+fy8eT09PHl6/Tv5PT0+Pr6+vPt+vr16fL68un6+PHs7fr16vr69ern+vLp+vjz9/r68er6+vLn8Prt6PT07fT6+vHl+vr27fH67+Xv8uDs+vr58/r6/Pr6+vj2+vj13ePh4t7i5N/i4uHi4eL29ubo6PX19vb19vX09/X5+vXl4Obm4ePj5eXr9fXx+/v02tvZ2tza3tra19nb4Orw9N/a3d/e29ve2uzx7e/v8g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

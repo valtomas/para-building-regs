@@ -1,0 +1,18 @@
+{
+ "key": "ADG_Diagram-2_p32",
+ "source": "ADG",
+ "label": "Diagram 2",
+ "page": 32,
+ "caption": "Diagram 2 Separation between hand washbasin/WC and food preparation area – single room",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "6a7fd7c34139d43d0e979e400f2205212a7412f96a7d2aabe7d067dcd2e644cd",
+ "image_sig": {
+  "w": 755,
+  "h": 282,
+  "grey": "0MrEwMLGwMTAu8DFw8PJ49HMwrrEvMDBvMfBwbvCwOnr6bCvzenp6enp6enp6ens3eXq6urq6urq6urq6urq6ej6////////7eTc4unp6en0//////////rx5eX////y9P//////+fv/7urg///p5vT///////vu//7k8f/q1PL0////////6//////0/PXy9P///////+v/////9v/38vT/////39fo//////T/9/L0//////nx8fj////65+Xy9P////////7r///////28fT/////////6f//////+OT0//////////b////////y6vHx8fHx8fHj2dnZ2dnZ4Q=="
+ },
+ "reviewed": false,
+ "description": "A floor plan drawn as a horizontal rectangle, titled \"Diagram 2 Separation between hand washbasin/WC and food preparation area – single room\", with the note \"See para 4.11\" in the top left corner. The open part of the room on the left is labelled \"Food preparation area\". In the top right corner of the room two fittings are shown: an oval washbasin with a small circular waste set into the top wall, and a water closet (an oval toilet pan with a rectangular cistern) against the right wall. A diagonal line, drawn as a partition or screen, runs from the bottom wall up and to the left into the open room, separating the food preparation area from the washbasin and water closet.",
+ "first_draft": "A floor plan drawn as a horizontal rectangle, titled \"Diagram 2 Separation between hand washbasin/WC and food preparation area – single room\", with the note \"See para 4.11\" in the top left corner. The open part of the room on the left is labelled \"Food preparation area\". On the right, an internal partition wall forms an enclosed niche holding two fittings: an oval washbasin with a tap symbol and a small circular waste, set into the upper wall, and a water closet (toilet pan with an adjacent cistern) against the right wall. A diagonal line, drawn as a partition or screen, runs from the lower part of that internal wall up and to the left into the open room, separating the food preparation area from the washbasin and water closet."
+}
