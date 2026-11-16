@@ -145,6 +145,9 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   (`.cite.changed`). One whose passage is no longer in the library is struck through and opens nothing
   (`.cite.gone`). The tooltip and the Cited list say which ("Extract only", "Text changed since this answer", "No
   longer in the library"), and a note under the answer counts them.
+- **Extract note**: under an answer with citations the AI made from an extract alone, a note names them with the
+  citations themselves, dashed like the ones in the text: "Cited from a search result's extract, not read in full:
+  ADB1 Diagram 3.2. Open it to check." The chips open the passage, so the person can tell which one to look at.
 - **Figure note**: when a figure beside a citation isn't in the passage cited, a note lists it with the citation:
   "Not found in the passage cited for it: 225 mm (ADK Table 1.1). Only the numbers are compared, so check this
   figure against the passage."
@@ -160,6 +163,12 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   red outline pill; disabled at 40 % opacity.
 - **Notes** (`.note`): warm background for honest-state messages; **errors** (`.error`) in danger colour, with a
   button to the setting that fixes them.
+- **An AI engine that isn't downloaded**: when the model is on the computer but the engine that runs it isn't (a fresh
+  install that stopped early, or the engine folder was removed), nothing is asked. In the chat, a `.note` says "The AI
+  engine isn't on this computer yet, so it is being downloaded. Your question is asked again when it's here." with the
+  progress under it; in Settings, Test says "Downloading the AI engine…" and tests again when it's here. The engine is
+  small and the person has chosen the built-in one; models are large, so those still wait for a button. Progress sizes
+  are in MB below a gigabyte ("38 MB of 38 MB").
 - **A model that isn't downloaded**: when the question fails because the built-in model chosen in Settings isn't on
   the computer, the error names it with its size ("IBM Granite 4.2 3B, the model chosen in Settings, isn't
   downloaded yet (2.2 GB).") and offers "Download IBM Granite 4.2 3B (2.2 GB)" (primary) and "Choose another

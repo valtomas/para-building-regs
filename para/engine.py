@@ -512,6 +512,12 @@ def _json(url):
         return json.load(r)
 
 
+class _WontRun(EngineError):
+    """llama-server didn't start at all (a library missing, a blocked file), as opposed to starting and finding no
+    CUDA card. The first says something about this moment, the second about this computer, so only the second may
+    keep the computer off the CUDA build for good."""
+
+
 class _LoadFailed(EngineError):
     """The engine process ran but never served the model (it exited, or didn't become healthy)."""
 
@@ -780,8 +786,12 @@ class Bundled:
             except EngineError as e:
                 if job.cancel.is_set():
                     raise
-                self._no_cuda(e)
-                keep["no_cuda"], cuda = True, None
+                if isinstance(e, _WontRun):  # not the card's fault: use the general build now, try CUDA another time
+                    self._note(f"The NVIDIA (CUDA) build of the AI engine won't be used this time: {e}")
+                else:
+                    self._no_cuda(e)
+                    keep["no_cuda"] = True
+                cuda = None
             if cuda:
                 self._save_state({"tag": cuda, "proven": True, "gpu": gpu, "build": key, **keep})
                 try:
@@ -807,11 +817,14 @@ class Bundled:
                 return cuda
         return key
 
+    def _note(self, text):
+        with open(self.log_path, "ab") as log:
+            log.write(f"\n{text}\n".encode())
+
     def _no_cuda(self, why):
         """A CUDA build wouldn't work here: say so in the engine log, and use the general build from now on."""
         self._save_state({**self._state(), "no_cuda": True})
-        with open(self.log_path, "ab") as log:
-            log.write(f"\nThe NVIDIA (CUDA) build of the AI engine won't be used on this computer: {why}\n".encode())
+        self._note(f"The NVIDIA (CUDA) build of the AI engine won't be used on this computer: {why}")
 
     def _fetch_build(self, job, key, verify=False):
         """Downloads the pinned build of this kind into engine/<tag>/ (engine/<tag>-cuda/ for CUDA), next to any
@@ -852,6 +865,7 @@ class Bundled:
                 for f in files:
                     os.replace(os.path.join(root, f), os.path.join(os.path.dirname(server), f))
             shutil.rmtree(runtime, ignore_errors=True)
+            add_vc_runtime(server)
             if os.name != "nt":
                 for root, _d, files in os.walk(target):
                     for f in files:
@@ -887,8 +901,11 @@ class Bundled:
         out = done.stdout + done.stderr
         with open(self.log_path, "ab") as log:
             log.write(out)
-        if done.returncode != 0 or not re.search(rb"^\s*CUDA\d+:", out, re.M):
-            raise EngineError("the NVIDIA build doesn't find the graphics card")
+        if re.search(rb"^\s*CUDA\d+:", out, re.M) and done.returncode == 0:
+            return
+        if b"vailable devices" not in out:  # it never got as far as listing them
+            raise _WontRun(f"the NVIDIA build won't start (exit code {done.returncode & 0xFFFFFFFF:#x})")
+        raise EngineError("the NVIDIA build doesn't find the graphics card")
 
     def _check_runs(self, server):
         """The binary starts and says its version, with a time limit: a build that can't run here (a missing
@@ -974,7 +991,10 @@ class Bundled:
             except EngineError as e:  # a CUDA build that won't run here: the general one instead, in the same job
                 if "cuda" not in key or job.cancel.is_set():
                     raise
-                self._no_cuda(e)
+                if isinstance(e, _WontRun):
+                    self._note(f"The NVIDIA (CUDA) build of the AI engine won't be used this time: {e}")
+                else:
+                    self._no_cuda(e)
                 key = platform_key(gpu)
                 tag = self._fetch_build(job, key, verify=True)
             target = self._tag_dir(tag)
@@ -1043,6 +1063,7 @@ class Bundled:
 
     def _launch(self, server, model, ctx):
         """Starts llama-server on a free port and waits until it has loaded the model."""
+        add_vc_runtime(server)  # builds installed before the app carried these libraries
         with socket.socket() as s:
             s.bind(("127.0.0.1", 0))
             self.port = s.getsockname()[1]
@@ -1141,6 +1162,22 @@ class Bundled:
             try:
                 os.remove(self.pid_path)
             except OSError:
+                pass
+
+
+def add_vc_runtime(server):
+    """Windows: puts the Visual C++ runtime beside llama-server. A freshly installed PC doesn't have it, and
+    llama-server then dies with a system dialog ("MSVCP140.dll was not found"). The app carries copies (packaging/
+    app.spec; Microsoft allows shipping them with a program); where it doesn't (running from source) nothing is done."""
+    src = os.path.join(paths.BUNDLE_DIR, "vcruntime")
+    if os.name != "nt" or not server or not os.path.isdir(src):
+        return
+    for name in os.listdir(src):
+        dest = os.path.join(os.path.dirname(server), name)
+        if not os.path.exists(dest):
+            try:
+                shutil.copyfile(os.path.join(src, name), dest)
+            except OSError:  # a copy we couldn't make leaves the engine to the system's own libraries
                 pass
 
 
