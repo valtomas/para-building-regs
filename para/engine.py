@@ -852,6 +852,7 @@ class Bundled:
                 for f in files:
                     os.replace(os.path.join(root, f), os.path.join(os.path.dirname(server), f))
             shutil.rmtree(runtime, ignore_errors=True)
+            add_vc_runtime(server)
             if os.name != "nt":
                 for root, _d, files in os.walk(target):
                     for f in files:
@@ -1043,6 +1044,7 @@ class Bundled:
 
     def _launch(self, server, model, ctx):
         """Starts llama-server on a free port and waits until it has loaded the model."""
+        add_vc_runtime(server)  # builds installed before the app carried these libraries
         with socket.socket() as s:
             s.bind(("127.0.0.1", 0))
             self.port = s.getsockname()[1]
@@ -1141,6 +1143,22 @@ class Bundled:
             try:
                 os.remove(self.pid_path)
             except OSError:
+                pass
+
+
+def add_vc_runtime(server):
+    """Windows: puts the Visual C++ runtime beside llama-server. A freshly installed PC doesn't have it, and
+    llama-server then dies with a system dialog ("MSVCP140.dll was not found"). The app carries copies (packaging/
+    app.spec; Microsoft allows shipping them with a program); where it doesn't (running from source) nothing is done."""
+    src = os.path.join(paths.BUNDLE_DIR, "vcruntime")
+    if os.name != "nt" or not server or not os.path.isdir(src):
+        return
+    for name in os.listdir(src):
+        dest = os.path.join(os.path.dirname(server), name)
+        if not os.path.exists(dest):
+            try:
+                shutil.copyfile(os.path.join(src, name), dest)
+            except OSError:  # a copy we couldn't make leaves the engine to the system's own libraries
                 pass
 
 

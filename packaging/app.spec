@@ -25,6 +25,16 @@ for candidate in ("icon.icns" if sys.platform == "darwin" else "icon.ico",):
         icon = path
 
 binaries = []
+if sys.platform == "win32":
+    # The Visual C++ runtime llama-server needs, which a freshly installed Windows PC lacks. The app copies these
+    # beside llama-server (engine.add_vc_runtime). Taken from the build machine, as the redistributable puts them.
+    root = os.path.join(os.environ.get("SystemRoot", r"C:\Windows"), "System32")
+    for dll in ("msvcp140.dll", "msvcp140_1.dll", "msvcp140_2.dll", "vcruntime140.dll", "vcruntime140_1.dll",
+                "vcomp140.dll", "concrt140.dll"):
+        if os.path.exists(os.path.join(root, dll)):
+            datas.append((os.path.join(root, dll), "vcruntime"))
+        else:
+            print(f"WARNING: {dll} not found in {root}; it won't be bundled")
 hiddenimports = ["para.server", "para.qtprobe", "pypdf", "truststore"]
 if sys.platform.startswith("linux"):
     # Qt's X11 plugin needs these small X helper libraries, which some distributions don't install by default.
