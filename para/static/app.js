@@ -947,6 +947,7 @@ function renderBundled() {
   const mine = (m) => b.models.includes(m.id) || m.id === S.settings.engine.bundled_model;
   const offered = S.catalog.filter((m) => !m.retired || mine(m));
   const first = (m) => m.id === S.recommended || mine(m);
+  const queuedIds = (b.queued || []).map((q) => q.id);
   const card = (m) => {
     const installed = b.models.includes(m.id);
     const fits = onCard.includes(m.id);
@@ -957,6 +958,7 @@ function renderBundled() {
       <div class="info"><b>${esc(m.name)}</b>${m.id === S.recommended ? '<span class="tag">Recommended for this computer</span>' : ""}<br>
       <small class="muted">${esc(m.about)}</small><small class="meta">${m.size_gb} GB download · needs ${m.min_ram_gb} GB memory${m.tested ? ` · ${esc(m.tested)} test questions right` : ""}${where}${tooBig ? " · too big for this computer" : ""}</small></div>
       ${installed ? `<span class="installed">Installed</span> <button type="button" class="btn danger" data-remove="${esc(m.id)}">Delete</button>`
+        : queuedIds.includes(m.id) ? `<span class="muted">Queued</span>`
         : `<button type="button" class="btn" data-install="${esc(m.id)}">Download</button>`}
     </label>`;
   };
@@ -1018,11 +1020,13 @@ function renderBuild(b) {
 // A download's size as people read it: megabytes for the small ones (the AI engine), gigabytes for models.
 const sizeOf = (n) => n >= 2 ** 30 ? `${(n / 2 ** 30).toFixed(1)} GB` : `${Math.round(n / 2 ** 20)} MB`;
 function renderJob(j) {
-  const v = $("#jobView");
-  if (!j) { v.innerHTML = ""; return; }
+  const v = $("#jobView"), waiting = (S.bundled.queued || []).map((q) => esc(q.name)).join(", ");
+  const next = waiting ? `<p class="meta">Next: ${waiting}</p>` : "";
+  if (!j) { v.innerHTML = next; return; }
   const pct = j.total ? Math.round(j.done / j.total * 100) : 0;
   v.innerHTML = j.state === "running" ? `<div class="job-line"><span>Downloading ${esc(j.label)}…</span><span class="meta">${sizeOf(j.done)} of ${j.total ? sizeOf(j.total) : "?"}</span></div><div class="progress"><div style="width:${pct}%"></div></div><button type="button" class="btn small" id="cancelJob">Cancel</button>`
     : j.state === "error" ? `<div class="error">${esc(j.error)}</div>` : `<div class="ok-line">Downloaded. Press Save to use it.</div>`;
+  v.insertAdjacentHTML("beforeend", next);
   const c = $("#cancelJob"); if (c) c.onclick = () => api("/api/bundled/cancel", { method: "POST" });
 }
 // The download offered under an answer that failed for want of the model: progress is shown there, and when it's
@@ -1034,9 +1038,10 @@ async function downloadHere(btn) {
   row.hidden = true;
   pollJobs();  // keeps Settings and the sidebar in step
   for (;;) {
-    const j = (await api("/api/jobs")).bundled.jobs.install;
+    const bundled = (await api("/api/jobs")).bundled, j = bundled.jobs.install;
     if (!j) return;
-    if (j.state === "running") {
+    if (j.state === "running" || (bundled.queued || []).length) {
+      if (j.state !== "running") { await new Promise((r) => setTimeout(r, 1000)); continue; }
       const pct = j.total ? Math.round(j.done / j.total * 100) : 0;
       view.innerHTML = `<div class="job-line"><span>Downloading ${esc(j.label)}…</span><span class="meta">${sizeOf(j.done)} of ${j.total ? sizeOf(j.total) : "?"}</span></div><div class="progress"><div style="width:${pct}%"></div></div>`;
     } else if (j.state === "error") { view.innerHTML = `<div class="error">${esc(j.error)}</div>`; row.hidden = false; return; }
@@ -1062,7 +1067,7 @@ async function pollJobs() {
       if (app_job) renderAppJob(app_job);
       renderEngineJob(bundled.jobs.engine);
       const running = [bundled.jobs.install, bundled.jobs.engine, library_job, app_job].some((j) => j && j.state === "running");
-      if (!running) break;
+      if (!running && !(bundled.queued || []).length) break;
       await new Promise((r) => setTimeout(r, 1000));
     }
   } finally { polling = false; refresh(); }
@@ -1101,7 +1106,12 @@ async function testEngine(fetched) {
     catch (err) { if (!/already running/.test(err.message)) { $("#testResult").textContent = `✗ ${err.message}`; return; } }
     pollJobs();
     let j;
-    do { await new Promise((res) => setTimeout(res, 1000)); j = (await api("/api/jobs")).bundled.jobs.install; } while (j && j.state === "running");
+    let waiting;
+    do {
+      await new Promise((res) => setTimeout(res, 1000));
+      const b = (await api("/api/jobs")).bundled;
+      j = b.jobs.install; waiting = (b.queued || []).length;
+    } while ((j && j.state === "running") || waiting);
     if (j && j.state === "error") { $("#testResult").textContent = `✗ ${j.error}`; return; }
     return testEngine(true);
   }
@@ -1323,7 +1333,7 @@ refresh().then(() => {
   offerLibrary();
   if (!S.settings.engine.mode) openSettings();
   const running = S.bundled.jobs.install && S.bundled.jobs.install.state === "running";
-  if (running) pollJobs();
+  if (running || (S.bundled.queued || []).length) pollJobs();
 });
 
 // ---------- closing a dialog ----------

@@ -767,6 +767,48 @@ http.server.ThreadingHTTPServer(("127.0.0.1", int(sys.argv[sys.argv.index("--por
               and builds() == ["b12", "b13"] and not stray(),
               "an update whose CUDA build doesn't find the card installs the general build in the same go")
 
+    # a download asked for while another runs waits its turn, in order, once each; Cancel clears what waits
+    first, second, third = [m["id"] for m in eng.catalog()["models"][:3]]
+    gate, order = threading.Event(), []
+
+    def slow_install(job, model, gpu):  # stands in for Bundled._install: holds until the gate opens, then drains
+        order.append(model["id"])
+        gate.wait(10)
+        job.state = "done"
+        bundled._drain()
+
+    def settle():
+        for _ in range(100):
+            if not bundled._downloading() and not bundled.queue:
+                return
+            time.sleep(0.05)
+
+    bundled.jobs.clear()
+    bundled._install = slow_install
+    check(bundled.install(first)["state"] == "running", "a download starts at once when nothing else is running")
+    check(bundled.install(second)["state"] == "queued" and [q["id"] for q in bundled.status()["queued"]] == [second],
+          "a second one asked for while it runs is queued, not refused")
+    bundled.install(second)
+    bundled.install(first)
+    bundled.install(third)
+    check([q["id"] for q in bundled.status()["queued"]] == [second, third],
+          "asking again for one that is running or waiting adds nothing, and the rest keep their order")
+    gate.set()
+    settle()
+    check(order == [first, second, third] and bundled.status()["queued"] == [],
+          "the queue runs one after another, in order")
+    gate.clear()
+    order.clear()
+    bundled.install(first)
+    bundled.install(second)
+    bundled.cancel()
+    check(bundled.status()["queued"] == [], "Cancel also clears what was waiting")
+    gate.set()
+    settle()
+    check(order == [first], "and what was cleared never starts")
+    del bundled._install
+    bundled.jobs.clear()
+
     bundled.stop()
     releases_srv.shutdown()
     server._gh, eng._find_release, eng.available_ram_gb, eng.free_vram_gb, eng.nvidia_cuda = real
