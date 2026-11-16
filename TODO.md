@@ -14,6 +14,9 @@ file under Settings → Downloaded to this computer, with a Delete button.
 0.2.6 (16 November) is for fresh Windows computers: downloads use the system's certificates, the Visual C++ runtime
 comes with the app, the AI engine downloads itself when the model is there and it isn't, a CUDA build that can't start
 no longer rules CUDA out, and the note under an answer names the citations made from an extract.
+0.2.7 (16 November) suggests Granite 4.2 8B only from a graphics card of about 11 GB (it split between the card and the
+processor on an 8 GB Quadro RTX 4000, where the 3B ran fully on the card at about 80 tokens a second), and queues a
+download pressed while another is running.
 The checks below were left open at 0.2.0. Delete this file when it's empty.
 
 ## Done at the workstation

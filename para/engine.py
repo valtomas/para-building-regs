@@ -325,8 +325,10 @@ def _process_command(pid):
 
 
 def fits_card(model, card_gb):
-    """Whether the whole model, with its context, fits in this much graphics card memory."""
-    return bool(card_gb) and memory_needed_gb(model) <= card_gb
+    """Whether the whole model, with its context, fits in this much graphics card memory. A model's "card_gb" says
+    what it needs where the sum in memory_needed_gb is too hopeful: IBM Granite 4.2 8B took 7.2 of an 8 GB card at the
+    full context, which leaves nothing for the desktop, so it needs a card of about 11 GB (10 GB after the reserve)."""
+    return bool(card_gb) and (model.get("card_gb") or memory_needed_gb(model)) <= card_gb
 
 
 def recommend(models=None, ram=None, card=None):
@@ -534,6 +536,7 @@ class Bundled:
         self.proc, self.port, self.model_id = None, None, None
         self.guard = None
         self.jobs, self.lock = {}, threading.Lock()
+        self.queue, self.queue_lock = [], threading.Lock()  # installs asked for while a download runs: (model id, gpu)
         self.log_path = paths.data_path("logs", "engine.log")
         self.pid_path = paths.data_path("engine.pid")
         self.last_used = time.time()
@@ -721,7 +724,7 @@ class Bundled:
         running = self.proc is not None and self.proc.poll() is None
         return {"engine_installed": bool(self.server_path()), "models": self.installed_models(),
                 "running": running, "model": self.model_id if running else None,
-                "jobs": {k: j.view() for k, j in self.jobs.items()},
+                "jobs": {k: j.view() for k, j in self.jobs.items()}, "queued": self.queued(),
                 "ram_gb": round(total_ram_gb(), 1), "free_gb": round(free_disk_gb(paths.app_dir()), 1),
                 "platform": platform_key(), "engine_tag": self.installed_tag(),
                 "engine_cuda": (self._current() or "").endswith("-cuda"),
@@ -738,21 +741,50 @@ class Bundled:
 
     # ----- installing -----
     def install(self, model_id, gpu=True):
-        """Download llama-server (if needed) and the model, in the background."""
+        """Download llama-server (if needed) and the model, in the background. Asked for while a download is running,
+        it waits its turn and starts when the running one ends (a second press of Download shouldn't be refused)."""
         model = next((m for m in catalog()["models"] if m["id"] == model_id), None)
         if not model:
             raise EngineError("Unknown model")
-        if self._downloading():
-            raise EngineError("A download is already running")
+        with self.queue_lock:
+            if self._downloading():
+                running = self.jobs.get("install")
+                if (running and running.state == "running" and getattr(running, "model_id", None) == model_id) \
+                        or any(q[0] == model_id for q in self.queue):
+                    return (running if running and running.state == "running" else Job("install", model["name"])).view()
+                self.queue.append((model_id, gpu))
+                waiting = Job("install", model["name"])
+                waiting.state = "queued"
+                return waiting.view()
+            return self._begin_install(model, gpu)
+
+    def _begin_install(self, model, gpu):
         job = Job("install", model["name"])
+        job.model_id = model["id"]
         self.jobs["install"] = job
         threading.Thread(target=self._install, args=(job, model, gpu), daemon=True).start()
         return job.view()
+
+    def _drain(self):
+        """When a download ends: starts the next one asked for, if nothing else is downloading."""
+        with self.queue_lock:
+            while self.queue and not self._downloading():
+                model_id, gpu = self.queue.pop(0)
+                model = next((m for m in catalog()["models"] if m["id"] == model_id), None)
+                if model:
+                    self._begin_install(model, gpu)
+
+    def queued(self):
+        """The installs waiting for the running download: [{id, name}]."""
+        names = {m["id"]: m["name"] for m in catalog()["models"]}
+        return [{"id": i, "name": names.get(i, i)} for i, _gpu in list(self.queue)]
 
     def _downloading(self):
         return any(j.state == "running" for j in self.jobs.values())
 
     def cancel(self):
+        with self.queue_lock:
+            self.queue.clear()  # Cancel stops what is downloading and what was waiting behind it
         for j in self.jobs.values():
             j.cancel.set()
 
@@ -773,6 +805,8 @@ class Bundled:
             job.state = "done"
         except Exception as e:  # noqa: BLE001
             job.state, job.error = "error", str(e) or e.__class__.__name__
+        finally:
+            self._drain()
 
     def _install_server(self, job, gpu):
         """The first install of the engine: the pinned build. An NVIDIA card gets the CUDA build, with the general one
@@ -1018,6 +1052,8 @@ class Bundled:
             if target and self._current() != os.path.basename(target):
                 shutil.rmtree(target, ignore_errors=True)
             job.state, job.error = "error", str(e) or e.__class__.__name__
+        finally:
+            self._drain()
 
     def remove_model(self, model_id):
         model = next((m for m in catalog()["models"] if m["id"] == model_id), None)
