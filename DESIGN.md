@@ -160,6 +160,12 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   red outline pill; disabled at 40 % opacity.
 - **Notes** (`.note`): warm background for honest-state messages; **errors** (`.error`) in danger colour, with a
   button to the setting that fixes them.
+- **An AI engine that isn't downloaded**: when the model is on the computer but the engine that runs it isn't (a fresh
+  install that stopped early, or the engine folder was removed), nothing is asked. In the chat, a `.note` says "The AI
+  engine isn't on this computer yet, so it is being downloaded. Your question is asked again when it's here." with the
+  progress under it; in Settings, Test says "Downloading the AI engine…" and tests again when it's here. The engine is
+  small and the person has chosen the built-in one; models are large, so those still wait for a button. Progress sizes
+  are in MB below a gigabyte ("38 MB of 38 MB").
 - **A model that isn't downloaded**: when the question fails because the built-in model chosen in Settings isn't on
   the computer, the error names it with its size ("IBM Granite 4.2 3B, the model chosen in Settings, isn't
   downloaded yet (2.2 GB).") and offers "Download IBM Granite 4.2 3B (2.2 GB)" (primary) and "Choose another

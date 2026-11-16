@@ -449,6 +449,8 @@ MODE = "{mode}"
 if "--version" in sys.argv:
     print("version: stand-in", MODE)
     sys.exit(1 if MODE == "novers" else 0)
+if MODE == "wontrun":  # a program that can't start at all (a library missing): no output, a failure code
+    sys.exit(127)
 if "--list-devices" in sys.argv:  # a CUDA build lists the NVIDIA card only where it can use it
     print("Available devices:")
     print("  " + ("CUDA0: stand-in (8192 MiB)" if MODE in ("cuda", "diescuda") else "(none)"))
@@ -742,6 +744,16 @@ http.server.ThreadingHTTPServer(("127.0.0.1", int(sys.argv[sys.argv.index("--por
               and not stray(), "a CUDA build that doesn't find the card is replaced by the general build")
         with open(bundled.log_path, encoding="utf-8", errors="replace") as f:
             check("NVIDIA (CUDA) build" in f.read(), "and the engine log says why")
+
+        # a CUDA build that won't even start (the Visual C++ runtime missing on a new Windows PC) says nothing about
+        # the card: the general build is used now, and CUDA isn't ruled out for the next install
+        fresh("b11w", "wontrun")
+        state = bundled._state()
+        check(builds() == ["b11w"] and state["tag"] == "b11w" and not state.get("no_cuda") and not stray(),
+              "a CUDA build that won't start is replaced for now, without ruling out CUDA on this computer")
+        with open(bundled.log_path, encoding="utf-8", errors="replace") as f:
+            check("won't start" in f.read(), "and the engine log says it didn't start")
+        check(eng.Bundled._build_key(bundled, True) == "linux-cuda-12", "so the next install tries the CUDA build again")
 
         # someone on the general build with an NVIDIA card is updated to CUDA where it works, else stays general
         bundled.stop()
