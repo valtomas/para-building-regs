@@ -325,8 +325,10 @@ def _process_command(pid):
 
 
 def fits_card(model, card_gb):
-    """Whether the whole model, with its context, fits in this much graphics card memory."""
-    return bool(card_gb) and memory_needed_gb(model) <= card_gb
+    """Whether the whole model, with its context, fits in this much graphics card memory. A model's "card_gb" says
+    what it needs where the sum in memory_needed_gb is too hopeful: IBM Granite 4.2 8B took 7.2 of an 8 GB card at the
+    full context, which leaves nothing for the desktop, so it needs a card of about 11 GB (10 GB after the reserve)."""
+    return bool(card_gb) and (model.get("card_gb") or memory_needed_gb(model)) <= card_gb
 
 
 def recommend(models=None, ram=None, card=None):

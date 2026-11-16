@@ -188,7 +188,8 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   collection or page path), run `library/build.py`, check its passages, and add a short name in `build.SHORT` if
   the automatic one is clumsy.
 - **A new built-in model**: add it to `para/models.json` with the exact Hugging Face repo and file, size and memory
-  needed. Test it answers with citations through the built-in engine before listing it. To stop offering one, mark it
+  needed. Test it answers with citations through the built-in engine before listing it. Add `"card_gb"` (card memory in GB, after the 0.5 GB reserve) where the size-based guess in `engine.memory_needed_gb`
+  is too hopeful for the card: Granite 4.2 8B has 10, so it is suggested from an 11 GB card, not an 8 GB one. To stop offering one, mark it
   `"retired": true` and `"suggest": false` (apps before 0.2.3 fetch this file and know only the second); don't
   delete it, or a copy someone downloaded stops working.
 - **A new API endpoint**: in `server.Handler`, return JSON through `_send`, and add a check to `tests/test_app.py`.

@@ -65,6 +65,7 @@
       "file": "granite-4.2-8b-Q4_K_M.gguf",
       "size_gb": 5.3,
       "min_ram_gb": 16,
+      "card_gb": 10,
       "context": 32768,
       "licence": "Apache 2.0",
       "about": "Small and careful: it opens every passage it cites and got nearly all our test questions right. Slow: about a minute an answer on a fast computer. For 16 GB or more.",
