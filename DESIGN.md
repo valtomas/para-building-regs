@@ -145,6 +145,9 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   (`.cite.changed`). One whose passage is no longer in the library is struck through and opens nothing
   (`.cite.gone`). The tooltip and the Cited list say which ("Extract only", "Text changed since this answer", "No
   longer in the library"), and a note under the answer counts them.
+- **Extract note**: under an answer with citations the AI made from an extract alone, a note names them with the
+  citations themselves, dashed like the ones in the text: "Cited from a search result's extract, not read in full:
+  ADB1 Diagram 3.2. Open it to check." The chips open the passage, so the person can tell which one to look at.
 - **Figure note**: when a figure beside a citation isn't in the passage cited, a note lists it with the citation:
   "Not found in the passage cited for it: 225 mm (ADK Table 1.1). Only the numbers are compared, so check this
   figure against the passage."

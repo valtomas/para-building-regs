@@ -412,7 +412,7 @@ function addAssistant(question) {
       const cited = Object.keys(done.cites || {});
       const all = Object.values(done.cites || {}), n = (list, one, many) => `${list.length} ${list.length === 1 ? one : many}`;
       const extract = all.filter((c) => c.read === false && !c.gone), changed = all.filter((c) => c.changed && !c.gone), gone = all.filter((c) => c.gone);
-      if (extract.length) x.insertAdjacentHTML("beforeend", `<div class="note">${n(extract, "citation rests", "citations rest")} on a search result's extract: the AI didn't read the whole passage. Open ${extract.length === 1 ? "it" : "them"} to check.</div>`);
+      if (extract.length) x.insertAdjacentHTML("beforeend", `<div class="note"><span>Cited from a search result's extract, not read in full: ${extract.map((c) => citeChip(c.id)).join(" ")}. Open ${extract.length === 1 ? "it" : "them"} to check.</span></div>`);
       if ((done.figures || []).length) {
         const list = done.figures.map((f) => `${esc(f.figure)} (${f.ids.map(citeChip).join(" ")})`).join(", ");
         x.insertAdjacentHTML("beforeend", `<div class="note"><span>Not found in the passage cited for ${done.figures.length === 1 ? "it" : "them"}: ${list}. Only the numbers are compared, so check ${done.figures.length === 1 ? "this figure" : "these figures"} against the passage.</span></div>`);
