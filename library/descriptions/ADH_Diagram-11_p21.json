@@ -1,0 +1,18 @@
+{
+ "key": "ADH_Diagram-11_p21",
+ "source": "ADH",
+ "label": "Diagram 11",
+ "page": 21,
+ "caption": "Diagram 11 \u0007\u0007Protection for pipes laid at shallow depths | Clearance of blockages",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "6872a82871e1615f1966f82355cdb162804d840511b133b2447ccd26d4bc0591",
+ "image_sig": {
+  "w": 760,
+  "h": 298,
+  "grey": "x7yyrLKzyuDWuL+xsq/J19vT07i5udXw58zWvr/F4ezt6c68srTM8PLp2rGzz+ns7enLqbLE6fDy6dmpsbbp7Ojt7e3t7e3v7O3t7e3t7ez07Onr7OT3+vT5+f/k2en69Ovb7Orm/vn09PT/5tTg+vTy3u7q3db09Onq+d3s8vf0/6qcmr7/+vTn5tXn0en19P/Y1sv2//r04ufu7Njm9vDd2PTt3tzs9OPh7/Pa5/X0zdrx2ev/+vTf6dbf2OD19PLt7+n///r04eT39e/x9+Tg3vbv///69N7e//////r0//Xh4v//+vTc3f/////67PLy8vLy8vLv8vLy8vLy8A=="
+ },
+ "reviewed": false,
+ "description": "The image contains two diagrams side by side. On the left, Diagram 11, titled \"Protection for pipes laid at shallow depths (minimum sizes)\", is a cross-section. At the top, hatched \"Backfill\" rests on a \"Concrete slab\". Beneath the slab is a layer of \"Compressible material\". Below this sits a square concrete chamber on hatched ground, its interior filled with stippled \"Granular surround\" containing a circular \"Pipe\". On the left, a label reads \"Minimum 300mm bearing on original ground\", pointing to the chamber. On the right, Diagram 12, titled \"Joints for concrete encased pipes (minimum sizes)\", has two views. The left is a square cross-section of concrete with a central pipe circle, shown with vertical 100mm and 100mm dimensions on the right and horizontal 100mm and 100mm dimensions along the bottom. The right is a plan of two pipe lengths set in concrete, separated by a vertical line marked \"Movement joint of thick compressible board.\"",
+ "first_draft": "The image contains two diagrams side by side. On the left, Diagram 11, titled \"Protection for pipes laid at shallow depths (minimum sizes)\", is a cross-section. At the top, hatched \"Backfill\" rests on a \"Concrete slab\". Beneath the slab is a layer of \"Compressible material\". Below this sits a rectangular concrete chamber on hatched ground, its interior filled with stippled \"Granular surround\" containing a circular \"Pipe\". On the left, a label reads \"Minimum 300mm bearing on original ground\", pointing to the chamber's side wall. On the right, Diagram 12, titled \"Joints for concrete encased pipes (minimum sizes)\", has two views. The left is a square cross-section of concrete with a central pipe circle, shown with vertical 100mm and 100mm dimensions on the right and horizontal 100mm and 100mm dimensions along the bottom. The right is a plan of two pipe lengths set in concrete, separated by a vertical line marked \"Movement joint of thick compressible board\"."
+}

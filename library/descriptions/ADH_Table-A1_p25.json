@@ -1,0 +1,17 @@
+{
+ "key": "ADH_Table-A1_p25",
+ "source": "ADH",
+ "label": "Table A1",
+ "page": 25,
+ "caption": "Table A1 \u0007Flow rates from dwellings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "b4c7112e4d824ce35c2c15010f719d871b2b83bc1a1762e194daa679828095c5",
+ "image_sig": {
+  "w": 760,
+  "h": 302,
+  "grey": "0sm7vr+3xOnv3trw/P/8/8vCubK5sbTh6dHl8ujy6/P/79H/9NT///Hj////////9ObA8uHC8Pbz39738//z/////P//8///9vHx8fHx8fP///b///D////////////////y///u///Dsa2psdX/////8v//9P//7urp7fz//////+7//+3///Dm7fb//v//9PLs8vLr8vbd4tLJ08/P6P//////////3cXMzsfNz93i4djb397l/9/QzNTSydDn0tHQzc3P0O/ey8jWy8/H5dTp////////3MfLys/MyeD///////////Ds7e7y7fD5///////////c28zJ0s7L8g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

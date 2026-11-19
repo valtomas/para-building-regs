@@ -1,0 +1,18 @@
+{
+ "key": "ADH_Diagram-4_p36",
+ "source": "ADH",
+ "label": "Diagram 4",
+ "page": 36,
+ "caption": "Diagram 4 \u0007Typical vertical flow reed bed treatment system",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "c0484d5fdd043f3bc616cef74b3267a0e584b7408061b198700f1c14e64e9d82",
+ "image_sig": {
+  "w": 755,
+  "h": 489,
+  "grey": "xb+4trG5trKytLLb29vb4Ovz8/Pz8/Pz8/Pz8+Xd3e70////////////////5OT17ev9///r6Onq7f///+Db9tXa+P/4/Pb19vb4/f/e1Oj0//X88/Pu6O/v8fT/8ufz9P/h8/nz8ezz8vbn8///+vTx4+739fTv9PT16PL///r0/+Hw6+bj4uro5tny///69PPe7+nRzdPSz9jG8///+vTy4Pny3vHw4O3f5PL///r08tzs7snt6s3ry+Lz///69P7b8O7m7/Lm7ejl8v//+vTz1+fp6OPt7O7syuTy6t/0/fD7/e/88/j//O7+///67vXu9/HW9Pf39/Tu9vf38w=="
+ },
+ "reviewed": false,
+ "description": "This is a cross-section titled \"Diagram 4 Typical vertical flow reed bed treatment system\". A key at the top right defines four hatch patterns: \"'Sharp' sand\", \"6mm washed pea gravel\", \"12mm round, washed gravel\" and \"30-60mm round, washed gravel\". The section shows a bed enclosed by hatched vertical strips on the left and right, the left strip being labelled \"LDPE liner\", with depth figures down the left edge reading 25cm, 8cm, 15cm, 10cm and 15cm. A \"Solid pipe\" and a \"Perforated pipe (~110mm OD)\" enter from the top left, the perforated pipe drawn as a dashed line curving downward into the bed. Reed stems with roots rise from the top surface, where the note \"Feed dosed intermittently over whole surface\" sits above four thin downward arrows. Three thick arrows point down through the lower gravel layers. The base is marked \"1% slope\", with a \"Network of porous pipes\" along the bottom and a small pile of \"Large stones\" at the right feeding a horizontal \"Free-draining outlet\" pipe.",
+ "first_draft": "This is a cross-section titled \"Diagram 4 Typical vertical flow reed bed treatment system\". A key at the top right defines four hatch patterns: \"'Sharp' sand\", \"6mm washed pea gravel\", \"12mm round, washed gravel\" and \"30-60mm round, washed gravel\". The section shows a bed whose left wall is a hatched vertical strip labelled \"LDPE liner\", with depth figures down the left edge reading 25cm, 8cm, 15cm, 10cm and 15cm. A \"Solid pipe\" and a \"Perforated pipe (~110mm OD)\" enter from the top left, the perforated pipe curving downward as a dashed line into the bed. Reed stems with roots rise from the top surface, where the note \"Feed dosed intermittently over whole surface\" sits above five thin downward arrows. Three thick arrows point down through the lower gravel layers. The base is marked \"1% slope\", with a \"Network of porous pipes\" along the bottom and a \"Large stones\" layer at the right feeding a horizontal \"Free-draining outlet\" pipe."
+}

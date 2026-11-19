@@ -1,0 +1,18 @@
+{
+ "key": "ADH_Diagram-3_p36",
+ "source": "ADH",
+ "label": "Diagram 3",
+ "page": 36,
+ "caption": "Diagram 3 \u0007Typical horizontal flow reed bed treatment system",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "dcdf91625a8296420ff10cc5fa2b309b5fde38c1bd4580cf4ea4aa7d10ff45c0",
+ "image_sig": {
+  "w": 755,
+  "h": 430,
+  "grey": "v7mvraqqr6uspq3C2NjY3env7+/v7+/v7+/v7+/v7+70///2/tvv///29v34///69P//8v3x9Pz88fL98fnn+vT///H+8vT89PLx/fPz2vr09/Tz/PD2+fXw9Pvw//X39Prm9P72+Pv09fX+9vjd1fT84+bt4fHk6uHq7d/T2dj0/9je59Pr4PLT4eTS0uPb9P/k7u/v8/LDzfD07sjz+uz85/XQ4f733eT19vH6//ro7+Xy7+r97/v7//75+v/65fXh6PP19vf//P/6//z/+tT1/f/7////7+v10eXh8vr0///95u/////////////67ezs7Ozs7Ozs7Ozs7Ozs7g=="
+ },
+ "reviewed": false,
+ "description": "This diagram, titled \"Diagram 3 Typical horizontal flow reed bed treatment system\", shows a cross-section of an underground treatment bed. On the right side, labelled \"Sewage or sewage effluent\" enters through a \"Perforated pipe with swirl arm to control hydraulic head\" into a \"Stone inlet area\". A double-headed arrow indicates a \"Minimum depth of bed 0.6m\". The bed is filled with \"Soil or gravel\" and lined on the bottom and sides with an \"Impervious liner\". Plants labelled \"Phragmites\" grow throughout the bed, with their \"Roots and rhizomes\" visible in the substrate. Arrows indicate the flow of water from right to left. A zig-zag break line in the centre signifies a continuous section. The bottom of the bed has a \"Slope 0.5% to 1%\". On the left side, the water exits through a \"Discharge\" pipe at a point labelled \"Outlet height variable\", below a \"Level surface\".",
+ "first_draft": "This diagram, titled \"Diagram 3 Typical horizontal flow reed bed treatment system\", shows a cross-section of an underground treatment bed. On the right side, labelled \"Sewage or sewage effluent\" enters through a \"Perforated pipe with swirl arm to control hydraulic head\" into a \"Stone inlet area\". A double-headed arrow indicates a \"Minimum depth of bed 0.6m\". The bed is filled with \"Soil or gravel\" and lined on the bottom and sides with an \"Impervious liner\". Plants labelled \"Phragmites\" grow throughout the bed, with their \"Roots and rhizomes\" visible in the substrate. Arrows indicate the flow of water from right to left. A zig-zag break line in the centre signifies a continuous section. The bottom of the bed has a \"Slope 0.5% to 1%\". On the left side, the water exits through a \"Discharge\" pipe at a point labelled \"Outlet height variable\", below a \"Level surface\"."
+}

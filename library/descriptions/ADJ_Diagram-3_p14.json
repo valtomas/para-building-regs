@@ -1,0 +1,18 @@
+{
+ "key": "ADJ_Diagram-3_p14",
+ "source": "ADJ",
+ "label": "Diagram 3",
+ "page": 14,
+ "caption": "Diagram 3 \u0007\u0007Draught diverter and",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "b2583189b14f27b9bd71b57c3d2c5a2b30603b94a09ef34e07c0bcf709b397a4",
+ "image_sig": {
+  "w": 407,
+  "h": 710,
+  "grey": "48fIzrivo7Kqqr/Q39/1/+bt7e3p4N/h5ufs7e3t8//r//Hu9fHw9fXu8f////X/6//t8P//////7u/////1++v/7O/f0er//+7r38Ln9f/r+O/r9//////u6+7///X/6+/05vD////u7uzx///1/+vt6Ovq/f/15+js9v//9f/r//P6/+bm8f/x+v////X/8/Ly8vLx8vPz8/Tz9PT7+/fgvr3Ewr3LysjKw937////5M/O0dPRy9DQ09bQ2Pf/9t7Vz9bS2tbT2tDZ5/D9//zoy9XV19jR19jR09nk/v//2svJy8zKyMnGx8jM3P///+fY3tfZ2tza2NXa2vD/+g=="
+ },
+ "reviewed": false,
+ "description": "The drawing, headed \"Diagram 3 Draught diverter and draught stabiliser\", is a pair of line diagrams, (a) and (b), drawn side by side. Each shows an \"Appliance\", depicted as a square box containing a flame symbol, with a vertical flue pipe rising from its top. A single horizontal double-headed arrow across the tops of both pipes is labelled \"Flue outlet\".\n\nIn (a), the pipe has a side opening on the left and a horizontal flap inside it just above the appliance; an arrow points to this flap with the label \"Draught diverter\".\n\nIn (b), the pipe has a side inlet branch on the right, and a small angled flap is drawn within that branch; an arrow points to it with the label \"Draught stabiliser\".\n\nThe parts relate as follows: the appliance sits beneath the flue pipe in each case, with the labelled device fitted into the pipe or its branch between the appliance and the flue outlet. Below the diagrams is running text (paragraphs 12 and 13), which is not part of the drawing itself.",
+ "first_draft": "The drawing, headed \"Diagram 3 Draught diverter and draught stabiliser\", is a pair of line diagrams, (a) and (b), drawn side by side. Each shows an \"Appliance\", depicted as a square box containing a flame symbol, with a vertical flue pipe rising from its top. In both, a horizontal double-headed arrow across the top of the pipe is labelled \"Flue outlet\".\n\nIn (a), the pipe has a side opening on the left and a horizontal flap inside it just above the appliance; an arrow points to this flap with the label \"Draught diverter\".\n\nIn (b), the pipe has a side inlet branch on the right, and a small angled flap is drawn within that branch; an arrow points to it with the label \"Draught stabiliser\".\n\nThe parts relate as follows: the appliance sits beneath the flue pipe in each case, with the labelled device fitted into the pipe or its branch between the appliance and the flue outlet. Below the diagrams is running text (paragraphs 12 and 13), which is not part of the drawing itself."
+}

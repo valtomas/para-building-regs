@@ -1,0 +1,17 @@
+{
+ "key": "ADH_Table-13_p23",
+ "source": "ADH",
+ "label": "Table 13",
+ "page": 23,
+ "caption": "Table 13 \u0007Maximum spacing of access points in metres To Access Fitting From",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "1f634ce442d2083f4933ab235329da506e320386f1ac2722ad3dfb5c0af5035b",
+ "image_sig": {
+  "w": 749,
+  "h": 351,
+  "grey": "z8equrS5ubm2tcvf39/f39vVz9HJzM3M0dDV29vb29vl///85M7V+v//////////////++P/7/D82evX2eDg4OPY2PLs8+/x8/Lz8+rz7+7g3PPz6vPt8fPq8/Pq8+/u6+Ho8/Pz8/Pz8/Pz8/Pz8+fX4PT9//7///f///X/+vrg2O3z8fPx8/Pp8/Pp8+7u5OPp//X/+fz/9f//9v/7+uju8/Pz8/Pz8/Pz8/Pz8/Pby9/6/f/+///9///2//f76ezz8/Pz8/Pz8/Pz8/Pz8+jm5ub9///////////////25+bn5+fz////////////9vPz8/Pz8/Pz8/Pz8/Pz8w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

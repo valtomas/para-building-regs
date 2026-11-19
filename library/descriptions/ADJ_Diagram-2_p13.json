@@ -1,0 +1,18 @@
+{
+ "key": "ADJ_Diagram-2_p13",
+ "source": "ADJ",
+ "label": "Diagram 2",
+ "page": 13,
+ "caption": "Diagram 2 \u0007Chimneys and flues | J | ONLINE\nGENERAL GUIDANCE | VERSION",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "36cb4f5694a51fc93a44807d7e702fa2a5053e346d334e74a707b2c06b331261",
+ "image_sig": {
+  "w": 749,
+  "h": 721,
+  "grey": "1MvHwsTD3d7e3t7e3t7e3vT+/v/+2end8f/////////0+ePo7sPTvN3h5v//////9P/////D0MXi4fT///////T/6O3xytu63e7Z+//////0////+bvTzdT2////////9Pvh5PbDzqvV3Oe20/////Lv8/HuwtHRzs3z7Ov////y7e/u68TR0dfO+P//////9P/////K0dHXy//r2+Pi7/T/////ytHRpcLK19L////0/////8rR0bn////Z////9P/////K0dG5////2f////T/////ytHRuezc9Nn////0/////8rR0a/u7u7R////9P/////i5eXU09PT0+r//w=="
+ },
+ "reviewed": false,
+ "description": "This is a section drawing titled \"Diagram 2 Chimneys and flues\". On the left it shows a vertical chimney in cross-section, with a grey band labelled \"Flue liner\" running vertically and the inner passage beside it labelled \"Flue\". Near the base of this flue is a small \"Soot door\", and the recess to the right of it is labelled \"Debris collection space\". On the right, a separate vertical chimney section is shown at the top, labelled \"Chimney\", with a \"Sleeve\" at its lower end where a diagonal \"Fluepipe\" connects; the \"Flue liner\" and \"Flue\" labels also have leader lines to this vertical section. The fluepipe runs down at an angle and then vertically, and two circular openings in it are indicated by leader lines as \"Possible positions for access\". The lower end of the fluepipe terminates at the top of a square box labelled \"Appliance\", joined by a collar labelled \"Appliance flue outlet\". Leader lines link each label to its corresponding part, and the grey shading distinguishes the masonry and liner from the open flue and pipe spaces.",
+ "first_draft": "This is a section drawing titled \"Diagram 2 Chimneys and flues\". On the left it shows a vertical chimney in cross-section, with a grey band labelled \"Flue liner\" running down the centre of the wall; the inner passage is labelled \"Flue\". Near the base of this flue is a small hinged \"Soot door\", and the recess beneath it is labelled \"Debris collection space\". On the right, a separate vertical chimney section is shown at the top, with a \"Sleeve\" at its lower end where a diagonal \"Fluepipe\" connects. The fluepipe runs down at an angle and then vertically, and two circular openings in it are indicated by leader lines as \"Possible positions for access\". The lower end of the fluepipe terminates at the top of a square box labelled \"Appliance\", joined by a collar labelled \"Appliance flue outlet\". Leader lines link each label to its corresponding part, and the grey shading distinguishes the masonry and liner from the open flue and pipe spaces."
+}

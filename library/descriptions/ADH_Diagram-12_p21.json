@@ -1,0 +1,18 @@
+{
+ "key": "ADH_Diagram-12_p21",
+ "source": "ADH",
+ "label": "Diagram 12",
+ "page": 21,
+ "caption": "Diagram 12 \u0007\u0007Joints for concrete encased pipes (minimum sizes)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "a396428f76175135a0afe17eeaaf45af2faeb9d6a1d6244084f53d88e68f34f7",
+ "image_sig": {
+  "w": 371,
+  "h": 298,
+  "grey": "3Le3v7q8rK+3trOrwtDQ3e3Pxtnaxr3Cwb7Bytnp6e/z6enp6b+xsrmpwuXp6env8+np6em4qqmstqXP6enp7+Tt7e3t7e3t7e3t7e3t7enp+fn///L//+vU19rf+P/06fT0///p///t2tTP0fH/9On05/Ly5PT/58nr8vLy+vTp9N764+jQ1enp4L/q5/f06fTm3fLl3//r5e3F6eL59On06N3j5eD/8fLsxuzh9/Tp9N3s6enS1eXd6MHa5/f06fze397u8f/28fHt8fH59On52OnW5f////////////Tp+Njf2eb////////////05/Ly8vLy8vLy8vLy8vLy7Q=="
+ },
+ "reviewed": false,
+ "description": "The drawing is titled \"Diagram 12 Joints for concrete encased pipes (minimum sizes)\", shown in a shaded band at the top. It contains two line diagrams side by side. The left one is a cross-section showing a circle, representing a pipe, set in the centre of a square outline filled with a speckled aggregate pattern representing concrete, with a small open square drawn below the circle. Dimension lines to the right mark 100mm from the top of the pipe to the top of the concrete and 100mm from the bottom of the pipe to the bottom edge. Dimension lines below mark 100mm from the left edge of the concrete to the pipe and 100mm from the pipe to the right edge. The right diagram is a side section showing a pipe, drawn as a long rounded rectangle with a small circle at its right end, running left to right through concrete of the same speckled pattern. The concrete is split by a narrow vertical gap in the centre, and the words \"Movement joint of thick compressible board.\" appear above the diagram. The pipe passes continuously across this gap.",
+ "first_draft": "The drawing is titled \"Diagram 12 Joints for concrete encased pipes (minimum sizes)\". It contains two line diagrams side by side. The left one is a cross-section showing a circle, representing a pipe, set in the centre of a square outline filled with a speckled aggregate pattern representing concrete. Dimension lines to the right mark 100mm from the top of the pipe to the top of the concrete and 100mm from the bottom of the pipe to the bottom edge. Dimension lines below mark 100mm from the left edge of the concrete to the pipe and 100mm from the pipe to the right edge. The right diagram is a horizontal section showing a pipe, drawn as a long rounded shape, running left to right through concrete of the same speckled pattern. The concrete is split by a narrow vertical gap in the centre, labelled \"Movement joint of thick compressible board.\" The pipe passes continuously across this gap."
+}

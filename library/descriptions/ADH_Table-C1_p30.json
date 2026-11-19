@@ -1,0 +1,17 @@
+{
+ "key": "ADH_Table-C1_p30",
+ "source": "ADH",
+ "label": "Table C1",
+ "page": 30,
+ "caption": "Table C1 \u0007\u0007Characteristics that should be considered when designing or laying a shared drain/sewer so that it meets the basic requirements for adoption",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "7fae465b95db54d43b1ef13052e20498f8a5851006edf28d4b3cecd32f808189",
+ "image_sig": {
+  "w": 796,
+  "h": 1115,
+  "grey": "2ta9vb/Dv8G+wMC8xbva/u7d4Obk5eXr8O7q19jd5v///f7/////////9Nvi7Pn/8d3d29vb4Nvc5Pjv7fT2//Da3Nzb4eTl4+r3+//////z2Nza3dnc5OPk+P//////8d3e3uPm5eXr9fr4/P////DU1tve3N3c3N32+Pb5///y4uTo7e/s7u3x/Pr/////7NjY2NjY2djW3+rb4+Hp//ny8vPy8vPz8/j59fv7+////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}
