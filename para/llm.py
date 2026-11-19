@@ -53,6 +53,19 @@ def _context():
         return ssl.create_default_context()
 
 
+def _use_system_certificates():
+    """Makes every urlopen in the app check HTTPS against the system's certificates, not Python's own bundle.
+    Downloads (the engine, models, updates) go through plain urlopen; on a freshly installed Windows PC the
+    bundle can't build the chain ("unable to get local issuer certificate") while the system store can."""
+    try:
+        urllib.request.install_opener(urllib.request.build_opener(urllib.request.HTTPSHandler(context=_context())))
+    except Exception:  # noqa: BLE001  # an opener we can't build leaves urllib's default in place
+        pass
+
+
+_use_system_certificates()
+
+
 def same_host(a, b):
     """True when two addresses point at the same server, so a key saved for one may be sent to the other."""
     pa, pb = urllib.parse.urlparse(a or ""), urllib.parse.urlparse(b or "")

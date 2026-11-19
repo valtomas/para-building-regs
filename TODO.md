@@ -11,6 +11,12 @@ Manager with a model loaded, then check llama-server is gone).
 unasked) and the first to run llama.cpp's CUDA builds for NVIDIA cards, with Vulkan as the fallback. 0.2.5
 (15 November) suggests the biggest model that fits on the graphics card's own memory, and lists every downloaded model
 file under Settings → Downloaded to this computer, with a Delete button.
+0.2.6 (16 November) is for fresh Windows computers: downloads use the system's certificates, the Visual C++ runtime
+comes with the app, the AI engine downloads itself when the model is there and it isn't, a CUDA build that can't start
+no longer rules CUDA out, and the note under an answer names the citations made from an extract.
+0.2.7 (16 November) suggests Granite 4.2 8B only from a graphics card of about 11 GB (it split between the card and the
+processor on an 8 GB Quadro RTX 4000, where the 3B ran fully on the card at about 80 tokens a second), and queues a
+download pressed while another is running.
 The checks below were left open at 0.2.0. Delete this file when it's empty.
 
 ## Done at the workstation
@@ -69,8 +75,9 @@ The checks below were left open at 0.2.0. Delete this file when it's empty.
 - [ ] **The pin on Windows and the Mac** (b12359): install the smallest built-in model from an empty app folder on each.
       Run H didn't test the Windows or Mac builds (only their contents were read), the CPU build under the app, a fresh
       install of an app up to 0.2.3 on b12359, or Check for updates, which overwrites a hand-written pin.
-- [ ] **The CUDA builds have never run on an NVIDIA card.** Test the 36 questions on one (AGENTS.md: "Graphics-card
-      builds") before saying NVIDIA is supported. Check that a CUDA build lists its device (`--list-devices`).
+- [ ] **The CUDA builds have run on one NVIDIA card** (Quadro RTX 4000, Windows, CUDA 13, 16 November): it listed the
+      card and IBM Granite 4.2 3B answered at about 80 tokens a second. The 36 questions are still to run on one
+      (AGENTS.md: "Graphics-card builds") before saying NVIDIA is supported, and Linux has not been tried.
 - [ ] **Graphics-card memory (0.2.5)**: the suggestion reads the card's memory from nvidia-smi, the kernel's files for
       AMD and Intel on Linux, and the display driver's registry entry on Windows. Checked on the workstation only. Try it
       on a Windows NVIDIA machine, an AMD card and a Mac (where it falls back to system memory).

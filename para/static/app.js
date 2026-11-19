@@ -382,9 +382,18 @@ function addAssistant(question) {
     },
     error(msg) {
       ans.classList.remove("cursor");
+      const eng = S.settings.engine, m = eng.mode === "bundled" && S.catalog.find((x) => x.id === eng.bundled_model);
+      // The AI engine is missing but the model is here (a fresh install, or the engine folder was removed): the
+      // engine is small and the person has chosen it, so fetch it now and ask the question again when it's here.
+      if (m && ENGINE_MISSING.test(msg) && S.bundled.models.includes(m.id)) {
+        $(".extras", el).insertAdjacentHTML("beforeend", `<div class="note">The AI engine isn't on this computer yet, so it is being downloaded. Your question is asked again when it's here.</div>
+          <p class="row"><button class="btn small primary" data-download="${esc(m.id)}">Download the AI engine</button></p><div class="dl"></div>`);
+        downloadHere($(".extras", el).querySelector("[data-download]"));
+        actions(null);
+        return;
+      }
       $(".extras", el).insertAdjacentHTML("beforeend", `<div class="error">${esc(msg)}</div>`);
       // the chosen built-in model (or the engine that runs it) isn't on this computer: offer it here, by name and size
-      const eng = S.settings.engine, m = eng.mode === "bundled" && S.catalog.find((x) => x.id === eng.bundled_model);
       if (m && /isn't (downloaded|installed) yet/.test(msg) && !(S.bundled.models.includes(m.id) && S.bundled.engine_installed))
         $(".extras", el).insertAdjacentHTML("beforeend", `<p class="row"><button class="btn small primary" data-download="${esc(m.id)}">Download ${esc(m.name)} (${m.size_gb} GB)</button>
           <button class="btn small" data-settings>Choose another model</button></p><div class="dl"></div>`);
@@ -403,7 +412,7 @@ function addAssistant(question) {
       const cited = Object.keys(done.cites || {});
       const all = Object.values(done.cites || {}), n = (list, one, many) => `${list.length} ${list.length === 1 ? one : many}`;
       const extract = all.filter((c) => c.read === false && !c.gone), changed = all.filter((c) => c.changed && !c.gone), gone = all.filter((c) => c.gone);
-      if (extract.length) x.insertAdjacentHTML("beforeend", `<div class="note">${n(extract, "citation rests", "citations rest")} on a search result's extract: the AI didn't read the whole passage. Open ${extract.length === 1 ? "it" : "them"} to check.</div>`);
+      if (extract.length) x.insertAdjacentHTML("beforeend", `<div class="note"><span>Cited from a search result's extract, not read in full: ${extract.map((c) => citeChip(c.id)).join(" ")}. Open ${extract.length === 1 ? "it" : "them"} to check.</span></div>`);
       if ((done.figures || []).length) {
         const list = done.figures.map((f) => `${esc(f.figure)} (${f.ids.map(citeChip).join(" ")})`).join(", ");
         x.insertAdjacentHTML("beforeend", `<div class="note"><span>Not found in the passage cited for ${done.figures.length === 1 ? "it" : "them"}: ${list}. Only the numbers are compared, so check ${done.figures.length === 1 ? "this figure" : "these figures"} against the passage.</span></div>`);
@@ -938,6 +947,7 @@ function renderBundled() {
   const mine = (m) => b.models.includes(m.id) || m.id === S.settings.engine.bundled_model;
   const offered = S.catalog.filter((m) => !m.retired || mine(m));
   const first = (m) => m.id === S.recommended || mine(m);
+  const queuedIds = (b.queued || []).map((q) => q.id);
   const card = (m) => {
     const installed = b.models.includes(m.id);
     const fits = onCard.includes(m.id);
@@ -948,6 +958,7 @@ function renderBundled() {
       <div class="info"><b>${esc(m.name)}</b>${m.id === S.recommended ? '<span class="tag">Recommended for this computer</span>' : ""}<br>
       <small class="muted">${esc(m.about)}</small><small class="meta">${m.size_gb} GB download · needs ${m.min_ram_gb} GB memory${m.tested ? ` · ${esc(m.tested)} test questions right` : ""}${where}${tooBig ? " · too big for this computer" : ""}</small></div>
       ${installed ? `<span class="installed">Installed</span> <button type="button" class="btn danger" data-remove="${esc(m.id)}">Delete</button>`
+        : queuedIds.includes(m.id) ? `<span class="muted">Queued</span>`
         : `<button type="button" class="btn" data-install="${esc(m.id)}">Download</button>`}
     </label>`;
   };
@@ -1006,29 +1017,33 @@ function renderBuild(b) {
   $("#gpuLabel").textContent = `Use the graphics card: ${buildName(b.build_for_card || b.platform)} is downloaded. Untick for the version for the processor only if the AI engine won't start.`;
   $("#engineBuild").textContent = b.engine_installed ? `The AI engine on this computer is ${buildName(inUse)}.` : "";
 }
+// A download's size as people read it: megabytes for the small ones (the AI engine), gigabytes for models.
+const sizeOf = (n) => n >= 2 ** 30 ? `${(n / 2 ** 30).toFixed(1)} GB` : `${Math.round(n / 2 ** 20)} MB`;
 function renderJob(j) {
-  const v = $("#jobView");
-  if (!j) { v.innerHTML = ""; return; }
+  const v = $("#jobView"), waiting = (S.bundled.queued || []).map((q) => esc(q.name)).join(", ");
+  const next = waiting ? `<p class="meta">Next: ${waiting}</p>` : "";
+  if (!j) { v.innerHTML = next; return; }
   const pct = j.total ? Math.round(j.done / j.total * 100) : 0;
-  const gb = (n) => (n / 2 ** 30).toFixed(1);
-  v.innerHTML = j.state === "running" ? `<div class="job-line"><span>Downloading ${esc(j.label)}…</span><span class="meta">${gb(j.done)} of ${j.total ? gb(j.total) : "?"} GB</span></div><div class="progress"><div style="width:${pct}%"></div></div><button type="button" class="btn small" id="cancelJob">Cancel</button>`
+  v.innerHTML = j.state === "running" ? `<div class="job-line"><span>Downloading ${esc(j.label)}…</span><span class="meta">${sizeOf(j.done)} of ${j.total ? sizeOf(j.total) : "?"}</span></div><div class="progress"><div style="width:${pct}%"></div></div><button type="button" class="btn small" id="cancelJob">Cancel</button>`
     : j.state === "error" ? `<div class="error">${esc(j.error)}</div>` : `<div class="ok-line">Downloaded. Press Save to use it.</div>`;
+  v.insertAdjacentHTML("beforeend", next);
   const c = $("#cancelJob"); if (c) c.onclick = () => api("/api/bundled/cancel", { method: "POST" });
 }
 // The download offered under an answer that failed for want of the model: progress is shown there, and when it's
 // done the question is asked again, if the person is still looking at it.
 async function downloadHere(btn) {
-  const row = btn.closest("p"), view = row.nextElementSibling, gb = (n) => (n / 2 ** 30).toFixed(1);
+  const row = btn.closest("p"), view = row.nextElementSibling;
   try { await api("/api/bundled/install", { method: "POST", body: { model: btn.dataset.download, gpu: true } }); }
   catch (err) { if (!/already running/.test(err.message)) { view.innerHTML = `<div class="error">${esc(err.message)}</div>`; return; } }
   row.hidden = true;
   pollJobs();  // keeps Settings and the sidebar in step
   for (;;) {
-    const j = (await api("/api/jobs")).bundled.jobs.install;
+    const bundled = (await api("/api/jobs")).bundled, j = bundled.jobs.install;
     if (!j) return;
-    if (j.state === "running") {
+    if (j.state === "running" || (bundled.queued || []).length) {
+      if (j.state !== "running") { await new Promise((r) => setTimeout(r, 1000)); continue; }
       const pct = j.total ? Math.round(j.done / j.total * 100) : 0;
-      view.innerHTML = `<div class="job-line"><span>Downloading ${esc(j.label)}…</span><span class="meta">${gb(j.done)} of ${j.total ? gb(j.total) : "?"} GB</span></div><div class="progress"><div style="width:${pct}%"></div></div>`;
+      view.innerHTML = `<div class="job-line"><span>Downloading ${esc(j.label)}…</span><span class="meta">${sizeOf(j.done)} of ${j.total ? sizeOf(j.total) : "?"}</span></div><div class="progress"><div style="width:${pct}%"></div></div>`;
     } else if (j.state === "error") { view.innerHTML = `<div class="error">${esc(j.error)}</div>`; row.hidden = false; return; }
     else {
       view.innerHTML = `<p class="ok-line">Downloaded.</p>`;
@@ -1052,7 +1067,7 @@ async function pollJobs() {
       if (app_job) renderAppJob(app_job);
       renderEngineJob(bundled.jobs.engine);
       const running = [bundled.jobs.install, bundled.jobs.engine, library_job, app_job].some((j) => j && j.state === "running");
-      if (!running) break;
+      if (!running && !(bundled.queued || []).length) break;
       await new Promise((r) => setTimeout(r, 1000));
     }
   } finally { polling = false; refresh(); }
@@ -1080,9 +1095,26 @@ async function saveEngine() {
   return true;
 }
 $("#saveEngine").onclick = saveEngine;
-async function testEngine() {
+const ENGINE_MISSING = /^The built-in engine that runs .* isn't downloaded yet/;
+async function testEngine(fetched) {
   $("#testResult").textContent = "Testing… (the built-in engine can take a minute to load the model)";
   const r = await api("/api/test-engine", { method: "POST" });
+  if (!r.ok && !fetched && ENGINE_MISSING.test(r.error) && S.bundled.models.includes(chosenBundled)) {
+    // the model is here and the engine isn't: fetch the engine (the model is skipped), then test again
+    $("#testResult").textContent = "Downloading the AI engine…";
+    try { await api("/api/bundled/install", { method: "POST", body: { model: chosenBundled, gpu: $("#gpu").checked } }); }
+    catch (err) { if (!/already running/.test(err.message)) { $("#testResult").textContent = `✗ ${err.message}`; return; } }
+    pollJobs();
+    let j;
+    let waiting;
+    do {
+      await new Promise((res) => setTimeout(res, 1000));
+      const b = (await api("/api/jobs")).bundled;
+      j = b.jobs.install; waiting = (b.queued || []).length;
+    } while ((j && j.state === "running") || waiting);
+    if (j && j.state === "error") { $("#testResult").textContent = `✗ ${j.error}`; return; }
+    return testEngine(true);
+  }
   $("#testResult").textContent = r.ok ? `✓ Working: ${r.model} replied “${r.reply}”` : `✗ ${r.error}`;
 }
 $("#testEngine").onclick = async () => { await api("/api/settings", { method: "POST", body: { engine: engineForm() } }); await refresh(); saved(dlgS, "engine"); testEngine(); };
@@ -1301,7 +1333,7 @@ refresh().then(() => {
   offerLibrary();
   if (!S.settings.engine.mode) openSettings();
   const running = S.bundled.jobs.install && S.bundled.jobs.install.state === "running";
-  if (running) pollJobs();
+  if (running || (S.bundled.queued || []).length) pollJobs();
 });
 
 // ---------- closing a dialog ----------

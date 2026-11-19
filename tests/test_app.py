@@ -449,6 +449,8 @@ MODE = "{mode}"
 if "--version" in sys.argv:
     print("version: stand-in", MODE)
     sys.exit(1 if MODE == "novers" else 0)
+if MODE == "wontrun":  # a program that can't start at all (a library missing): no output, a failure code
+    sys.exit(127)
 if "--list-devices" in sys.argv:  # a CUDA build lists the NVIDIA card only where it can use it
     print("Available devices:")
     print("  " + ("CUDA0: stand-in (8192 MiB)" if MODE in ("cuda", "diescuda") else "(none)"))
@@ -743,6 +745,16 @@ http.server.ThreadingHTTPServer(("127.0.0.1", int(sys.argv[sys.argv.index("--por
         with open(bundled.log_path, encoding="utf-8", errors="replace") as f:
             check("NVIDIA (CUDA) build" in f.read(), "and the engine log says why")
 
+        # a CUDA build that won't even start (the Visual C++ runtime missing on a new Windows PC) says nothing about
+        # the card: the general build is used now, and CUDA isn't ruled out for the next install
+        fresh("b11w", "wontrun")
+        state = bundled._state()
+        check(builds() == ["b11w"] and state["tag"] == "b11w" and not state.get("no_cuda") and not stray(),
+              "a CUDA build that won't start is replaced for now, without ruling out CUDA on this computer")
+        with open(bundled.log_path, encoding="utf-8", errors="replace") as f:
+            check("won't start" in f.read(), "and the engine log says it didn't start")
+        check(eng.Bundled._build_key(bundled, True) == "linux-cuda-12", "so the next install tries the CUDA build again")
+
         # someone on the general build with an NVIDIA card is updated to CUDA where it works, else stays general
         bundled.stop()
         shutil.rmtree(bundled.engine_dir, ignore_errors=True)
@@ -754,6 +766,48 @@ http.server.ThreadingHTTPServer(("127.0.0.1", int(sys.argv[sys.argv.index("--por
         check(state["tag"] == "b13" and state["previous"] == "b12" and state["no_cuda"] is True
               and builds() == ["b12", "b13"] and not stray(),
               "an update whose CUDA build doesn't find the card installs the general build in the same go")
+
+    # a download asked for while another runs waits its turn, in order, once each; Cancel clears what waits
+    first, second, third = [m["id"] for m in eng.catalog()["models"][:3]]
+    gate, order = threading.Event(), []
+
+    def slow_install(job, model, gpu):  # stands in for Bundled._install: holds until the gate opens, then drains
+        order.append(model["id"])
+        gate.wait(10)
+        job.state = "done"
+        bundled._drain()
+
+    def settle():
+        for _ in range(100):
+            if not bundled._downloading() and not bundled.queue:
+                return
+            time.sleep(0.05)
+
+    bundled.jobs.clear()
+    bundled._install = slow_install
+    check(bundled.install(first)["state"] == "running", "a download starts at once when nothing else is running")
+    check(bundled.install(second)["state"] == "queued" and [q["id"] for q in bundled.status()["queued"]] == [second],
+          "a second one asked for while it runs is queued, not refused")
+    bundled.install(second)
+    bundled.install(first)
+    bundled.install(third)
+    check([q["id"] for q in bundled.status()["queued"]] == [second, third],
+          "asking again for one that is running or waiting adds nothing, and the rest keep their order")
+    gate.set()
+    settle()
+    check(order == [first, second, third] and bundled.status()["queued"] == [],
+          "the queue runs one after another, in order")
+    gate.clear()
+    order.clear()
+    bundled.install(first)
+    bundled.install(second)
+    bundled.cancel()
+    check(bundled.status()["queued"] == [], "Cancel also clears what was waiting")
+    gate.set()
+    settle()
+    check(order == [first], "and what was cleared never starts")
+    del bundled._install
+    bundled.jobs.clear()
 
     bundled.stop()
     releases_srv.shutdown()
@@ -1277,9 +1331,12 @@ check(picks[8] == picks[12] == "granite-4.2-3b", "a model that a smaller one bea
 # a graphics card comes first: 128 GB of system memory doesn't make a model that spills off a 12 GB card the pick
 cards = {gb: (engine.recommend(ram=128, card=engine.card_memory_gb([{"total_gb": gb}])) or {}).get("id")
          for gb in (6, 8, 12, 16, 24, 32)}
-check(cards[6] == "granite-4.2-3b" and cards[8] == cards[12] == "granite-4.2-8b" and cards[16] == cards[24] ==
+check(cards[6] == cards[8] == "granite-4.2-3b" and cards[12] == "granite-4.2-8b" and cards[16] == cards[24] ==
       "gpt-oss-20b" and cards[32] == "nemotron-3.5-lightning-30b",
       f"with a graphics card, the suggested model is the biggest that fits on the card {cards}")
+check(all(engine.recommend(ram=128, card=engine.card_memory_gb([{"total_gb": gb}]))["id"] == want
+          for gb, want in ((10, "granite-4.2-3b"), (11, "granite-4.2-8b"))),
+      "the 8B is suggested from an 11 GB card (a 2080 Ti), not from a 10 GB one, and never from the 8 GB of a Quadro RTX 4000")
 check(engine.recommend(ram=16, card=engine.card_memory_gb([{"total_gb": 2}])) is not None and
       not engine.fits_card({"size_gb": 2.2}, 2 - engine.CARD_RESERVE_GB),
       "a card too small for any model falls back to system memory")
