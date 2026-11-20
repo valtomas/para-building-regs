@@ -1,0 +1,18 @@
+{
+ "key": "ADJ_Diagram-19_p35",
+ "source": "ADJ",
+ "label": "Diagram 19",
+ "page": 35,
+ "caption": "Diagram 19 \u0007Protecting combustible material from uninsulated fluepipes for solid fuel appliances",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-20",
+ "image_sha256": "498ec8c9502a82633a914ac8f14c3ef1b749c5ccbc970de307444582152ca027",
+ "image_sig": {
+  "w": 749,
+  "h": 701,
+  "grey": "1sy+qqq3wMPExsHDv8PG1ent7Ojq7O3t7e3t7e3t7e308drx//////jq6uzc6f//8/P7+//+9//z///9/ff6//Hh9/b/+uT+3//+4PTR7//x4fb05ufk/t/+/eTrz+//8eH/7+nf5P7f7vPU8c/v//Hh6/vqz+P+3///+fbd7//x4fL79M7i//f////66vX/8eH/7d/V5P//////ysW85PHh///57+T//////+36///x0u39/9fo++Dn////0vL/8+zs/P/t8fzp+vv9//T9//T//////////9/l09fj7P/0xrKswcfL0dHd4ebr6v//8fj59/n59/n5+fn5+ff5+Q=="
+ },
+ "reviewed": false,
+ "description": "The drawing is headed \"Diagram 19 Protecting combustible material from uninsulated fluepipes for solid fuel appliances\". It shows an elevation on the left and a plan on the right, each in two forms, with and without a shield.\n\nIn the elevation, a fluepipe runs vertically, then diagonally, then vertically again, with stepped joints in the lower vertical section, with grey blocks either side. The top is dimensioned \"At least 3 × D\" and \"D\"; the diagonal section is marked \"At least 3 × D\"; the shield, a vertical black line on the right, projects below the fluepipe by \"At least 1.5 × D\", and the distance between the fluepipe and the shield is also dimensioned \"At least 1.5 × D\". Captions read \"Elevation without shield\" and \"Elevation with shield\".\n\nIn the plan, the fluepipe is a circle labelled \"Fluepipe\". The top is dimensioned \"At least 3 × D\", \"D\" and \"At least 1.5 × D\"; the vertical gaps between the circle and the ends of the shield are each \"At least 1.5 × D\". A note gives an air space of at least 12mm between non-combustible shield and combustible material. Captions read \"Plan without shield\" and \"Plan with shield\".\n\nA grey swatch legend reads \"Indicates combustible material\". Below, text states shields should either a) extend beyond the fluepipe by at least 1.5 × D, or b) make any path between fluepipes and combustible material at least 3 × D long.",
+ "first_draft": "The drawing is headed \"Diagram 19 Protecting combustible material from uninsulated fluepipes for solid fuel appliances\". It shows an elevation on the left and a plan on the right, each in two forms, with and without a shield.\n\nIn the elevation, a fluepipe runs vertically then bends diagonally with stepped joints, with grey blocks either side. The top is dimensioned \"At least 3 × D\" and \"D\"; the diagonal section is marked \"At least 3 × D\"; the shield, a vertical black line on the right, projects below the fluepipe by \"At least 1.5 × D\". Captions read \"Elevation without shield\" and \"Elevation with shield\".\n\nIn the plan, the fluepipe is a circle labelled \"Fluepipe\". The top is dimensioned \"At least 3 × D\", \"D\" and \"At least 1.5 × D\"; the gaps above and below the circle are each \"At least 1.5 × D\". A note gives an air space of at least 12mm between non-combustible shield and combustible material. Captions read \"Plan without shield\" and \"Plan with shield\".\n\nA grey swatch legend reads \"Indicates combustible material\". Below, text states shields should either a) extend beyond the fluepipe by at least 1.5 × D, or b) make any path between fluepipes and combustible material at least 3 × D long."
+}

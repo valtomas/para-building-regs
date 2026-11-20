@@ -1,0 +1,18 @@
+{
+ "key": "ADJ_Diagram-23_p38",
+ "source": "ADJ",
+ "label": "Diagram 23",
+ "page": 38,
+ "caption": "Diagram 23 \u0007Canopy for an open solid fuel fire | ADDITIONAL PROVISIONS FOR APPLIANCES BURNING SOLID ON",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-20",
+ "image_sha256": "a30bce8a9413d71322848b96318985b72d59fbd9cdac7f7f6be476d1a9ccc191",
+ "image_sig": {
+  "w": 755,
+  "h": 347,
+  "grey": "v7eyrqytq6u21NTU1NTU2s7Pz8rPy83P0tnZ2dnZ2d30//////z9//r+///////69P/////wzfvS2///////+vT/////9e//3OD///////r0//////f3/93o///////69P/////39//c6P3/////+vT////Y5fbb197V//////r0////0ODs+9vbzsz6///69P///+7u8/jd8Ojr/f//+vT/////7uz63d/5//////r0/////+Ky/9ya+//////69P/////JrPbTt+//////+vT////60M/h1Mja+/////r0////////+tD2///////64ujo6Ojo6Ojo6Ojo6Ojo5w=="
+ },
+ "reviewed": false,
+ "description": "The drawing is titled \"Diagram 23 Canopy for an open solid fuel fire\". It contains two line drawings placed side by side.\n\nThe left drawing is labelled \"Front view\". It shows a tall, narrow vertical structure whose lower part flares outward; a leader line labels this flared lower part \"Canopy\". To its left, an angle marker reads \"Angle not more than 45°\", referring to the slope of that flare. Beneath it sits a small fire structure on a hatched floor line, with a double‑headed arrow spanning the gap between the fire's top and the canopy's underside.\n\nThe right drawing is labelled \"Side view\". It shows a cross‑hatched vertical wall with the canopy projecting from its face, again labelled \"Canopy\", and an angle marker reading \"Angle not more than 45°\" by its outer edge. Below, the fire is shown in section on the floor, with a double‑headed arrow above it. A label \"Firebed\" at the bottom has leader lines pointing to the fire in both views.",
+ "first_draft": "The drawing is titled \"Diagram 23 Canopy for an open solid fuel fire\", with the heading text \"ADDITIONAL PROVISIONS FOR APPLIANCES BURNING SOLID ON\" at the top right. It contains two line drawings placed side by side.\n\nThe left drawing is labelled \"Front view\". It shows a tall, narrow vertical structure whose lower part flares outward; a leader line labels this flared lower part \"Canopy\". To its left, an angle marker reads \"Angle not more than 45°\", referring to the slope of that flare. Beneath it sits a small stepped fire structure on a hatched floor line, with a double‑headed arrow spanning the gap between the fire's top and the canopy's underside.\n\nThe right drawing is labelled \"Side view\". It shows a cross‑hatched vertical wall with the canopy projecting from its face, again labelled \"Canopy\", and an angle marker reading \"Angle not more than 45°\" by its outer edge. Below, the fire is shown in section on the floor, with a double‑headed arrow above it. A label \"Firebed\" at the bottom has leader lines pointing to the fire in both views."
+}

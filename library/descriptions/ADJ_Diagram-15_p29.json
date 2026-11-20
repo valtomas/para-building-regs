@@ -1,0 +1,18 @@
+{
+ "key": "ADJ_Diagram-15_p29",
+ "source": "ADJ",
+ "label": "Diagram 15",
+ "page": 29,
+ "caption": "Diagram 15 \u0007Bends in flues | Inspection and cleaning openings in flues",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-20",
+ "image_sha256": "ad8333b40c2a9af7eb7ce1fb7e9f98bedfc18f50e2a7a6a915c370d6d414c658",
+ "image_sig": {
+  "w": 749,
+  "h": 472,
+  "grey": "y763s7HR2dnZ2dnZ2dnZ2ezy8vLy8vLy8vLw7/Hy8vL0////////////7rje////9P///////////Oqy7v////T//+Lb9/////Tu///////0///Ky/3+6/Df5+//////9P////rf2/b/6vP4//////T//+Hy4ef2/+PIubn////0////6dz66/Dr0bjd////9P//79ro+v//5vb///////T//+jX9f/t8Ov2///////0///s6/Dl9v/p9v//////9P//7u7///b/5vv///////T////////2//Tt7//////0////////8/D928j/////6O3t7e3t7e3t7erq7e3t7Q=="
+ },
+ "reviewed": false,
+ "description": "Diagram 15, titled \"Bends in flues\", shows two parts. On the left, a flue is drawn in section as two parallel vertical lines curving into an S shape. The top bend is marked with an arc, a dashed centreline and the figure \"45°\", with the label \"Angle should not be more than 45°\" pointing to it. The middle straight section is labelled \"Offset\", and the two curves are labelled \"Bends\"; the lower bend is also marked with an arc, a dashed centreline and \"45°\". On the right, two rectangular appliance outlines are stacked. The upper one has a flue leaving its right side, running horizontally then bending upwards; an arrow labels this \"90° bend not suitable for solid fuel appliances\", with \"= 2 x 45°\" beside it. A horizontal dimension between two extension lines reads \"Maximum 150mm horizontal section from back outlet of appliance\". The lower rectangle has a flue leaving right then bending up, labelled \"90° with cleaning access\".",
+ "first_draft": "Diagram 15, titled \"Bends in flues\", shows two parts. On the left, a flue is drawn in section as two parallel vertical lines curving into an S shape. The top bend is marked with an arc, a dashed centreline and the figure \"45°\", with the label \"Angle should not be more than 45°\" pointing to it. The middle straight section is labelled \"Offset\", and the two curves are labelled \"Bends\"; the lower bend is also marked with an arc, a dashed centreline and \"45°\". On the right, two rectangular appliance outlines are stacked. The upper one has a flue leaving its right side, running horizontally then bending upwards; an arrow labels this \"90° bend not suitable for solid fuel appliances\", with \"= 2 x 45°\" beside it. A horizontal dimension between two extension lines reads \"Maximum 150mm horizontal section from back outlet of appliance\". The lower rectangle has a flue leaving right then bending up, labelled \"90° with cleaning access\"."
+}
