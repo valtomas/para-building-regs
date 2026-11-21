@@ -1,0 +1,18 @@
+{
+ "key": "ADJ_Diagram-35_p53",
+ "source": "ADJ",
+ "label": "Diagram 35",
+ "page": 53,
+ "caption": "Diagram 35 \u0007Location of outlets near roof windows from flues serving gas appliances",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-21",
+ "image_sha256": "3ce0213ee08e9ee76d767bdaf9e60be0c87b4b624eda40164fd9827f665db742",
+ "image_sig": {
+  "w": 750,
+  "h": 380,
+  "grey": "w7Wwoa2cq6qfpaSop6adsOjo6urq6urq6urq6ubm5ur0///////v9///////////9P//////5uXt7cjt6/////T/////9fX2//b1/+r////0/+TQ1NDU5+7q8fD8+P//9P/fy9326dLHy8r1//X///T//////9e8uc/89f/1///0////9P/apKnf9fn/+P//9P////T/1trJ3PX///////T///72+9zo6PL1///////0///1////////9f//////9P//7u3t7e3t6v7///////T//////+nt6Ozq/f/////0//////+6p66wp8v6////7fT09PT08vDy9PT09PT09A=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a perspective view of a roof surface, shown as a flat parallelogram with a single line slanting down to the right from its top-right corner. A grey shaded parallelogram-shaped zone lies on the roof, centred on a roof window drawn as a double-outlined parallelogram. Two vertical cylindrical flue terminals stand on the roof, one above and one to the left of the shaded zone, both positioned outside it. A leader line from the text \"The flue should not penetrate the shaded area\" points to the shaded zone. Dashed lines run from the corners of the window to the boundaries of the shaded zone; two dimensions of \"600mm\" mark the offsets on the upper right, and a dimension of \"2000mm\" marks the extent along the lower edge. The title at the top reads \"Diagram 35 Location of outlets near roof windows from flues serving gas appliances\". Below the drawing, the caption reads \"Terminals adjacent to windows or openings on pitched and flat roofs\".",
+ "first_draft": "The drawing is a perspective view of a roof surface, shown as a flat parallelogram with a single sloping line on its right edge. A grey shaded rectangular zone lies on the roof, centred on a rectangular roof window drawn as a double-outlined rectangle. Two vertical cylindrical flue terminals stand on the roof, one above and one below the shaded zone, both positioned outside it. A leader line from the text \"The flue should not penetrate the shaded area\" points to the shaded zone. Dashed lines run from the corners of the window to the boundaries of the shaded zone; two dimensions of \"600mm\" mark the offsets on the upper right, and a dimension of \"2000mm\" marks the extent along the lower edge. The title at the top reads \"Diagram 35 Location of outlets near roof windows from flues serving gas appliances\". Below the drawing, the caption reads \"Terminals adjacent to windows or openings on pitched and flat roofs\"."
+}

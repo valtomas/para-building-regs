@@ -1,0 +1,18 @@
+{
+ "key": "ADJ_Diagram-31_p46",
+ "source": "ADJ",
+ "label": "Diagram 31",
+ "page": 46,
+ "caption": "Diagram 31 \u0007Types of gas fire | ADDITIONAL PROVISIONS FOR GAS BURNING APPLIANCES O NUPLTO",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-21",
+ "image_sha256": "0d73f799da42571a0245a02cfc043a37556522fb70331c89de77bece67457082",
+ "image_sig": {
+  "w": 755,
+  "h": 817,
+  "grey": "0tHPy8zW4uLi4uLi4uLi5PT//vr0+u/2vsHK4f////r0//3m5+r1/c7T29ny///69P/84vzg/f+4vLu68P//+vT//eLzy/b/vsPC1Oj///r0///8/f3/9+zt6+v+///69P/87Nvp5v/Ly83M6///+vT//eTp9f//vLu8v+P///r0//3kzO/y/83Qzc7f///69P/+9vLz+v//////////+vT//vb19//42NrX2/r///r0//zn5/z//7K4tLfi///69P/93+H6///T3uPd6f//+vT//eS76/r/u73Exeb+//r0//Xc2Nna2svL1Nvd+v/67PXszdLR4eHj4uLh9PX18g=="
+ },
+ "reviewed": false,
+ "description": "Diagram 31, \"Types of gas fire\", contains three vertically stacked cross-sectional line drawings, each paired with text labelled (a), (b) and (c). Each drawing shows a similar wall detail: a hatched masonry leaf on the left, a stippled brick or block section, and a fireplace recess. In (a) an appliance stands in the recess; the label \"Heat exchanger\" points to the appliance body on the right, arrows show air entering at the top and flue gases leaving at the top, and a small box appears at the base. In (b) the labels are \"Spigot\" (a projecting box at the top), \"Heat exchanger\" and \"Air inlet\" (a grille at the floor of the recess); arrows show air entering through the air inlet and flue gases leaving via the spigot. In (c) the recess is left open with no covering appliance, a stippled bed of artificial coals or logs sits at the floor of the recess, and arrows at the top and at the bottom show air moving in and out of the recess. A \"Note\" runs along the bottom.",
+ "first_draft": "Diagram 31, \"Types of gas fire\", contains three vertically stacked cross-sectional line drawings, each paired with text labelled (a), (b) and (c). Each drawing shows a similar wall detail: a hatched masonry leaf on the left, a stippled brick or block section, and a fireplace recess. In (a) an appliance stands in the recess; the label \"Heat exchanger\" points to a boxed component at the upper right, arrows show air entering at the top and flue gases leaving up a flue, and a grille appears at the base. In (b) the labels are \"Spigot\" (a projecting box at the top), \"Heat exchanger\" and \"Air inlet\" (a grille at the floor of the recess); arrows show air entering through the spigot and inlet and exhaust leaving via the spigot. In (c) the recess is left open with no covering appliance, and arrows show air moving in and out of the top. A \"Note\" runs along the bottom."
+}

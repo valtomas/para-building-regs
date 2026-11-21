@@ -1,0 +1,17 @@
+{
+ "key": "ADJ_Table-4_p42",
+ "source": "ADJ",
+ "label": "Table 4",
+ "page": 42,
+ "caption": "Table 4 Prefabricated appliance chambers: minimum thickness",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-21",
+ "image_sha256": "f54dea3a533370ea08c38ea73aa21cd2bb6ff77cfc90ef8898be8f9426a3c73e",
+ "image_sig": {
+  "w": 760,
+  "h": 171,
+  "grey": "yr6+v7++v7+/v76/v7+/yMGliZGbkZuQnpOQnunp6ezc28fFvcbIyMzIy8fp6ens08rLy8vLy8vHycrKy8vL0sa3////////sKmr5P/////s6Ojo6Ojo6Ojo6Ojo6Ojr4//////////x//////////L/////////+f/////////l4+Ti4+Ll5eDl5eXl5eXp3cvJzMnK6//0/////////+zo6Ojo6Ojo6Ojo6Ojo6Ovb0szQ0////+b/////////9/T09vf////7/////////+HU19fY1ejo3Ojo6Ojo6Ovm0tTa1tP//+//////////7Ojo6Ojo6Ojo6Ojo6Ojo6w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

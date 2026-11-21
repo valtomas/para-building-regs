@@ -1,0 +1,18 @@
+{
+ "key": "ADJ_Diagram-37_p56",
+ "source": "ADJ",
+ "label": "Diagram 37",
+ "page": 56,
+ "caption": "Diagram 37 \u0007Hearths for decorative fuel effect (DFE) and inset live fuel effect (ILFE) fires: minimum plan dimensions of non-combustible surfaces",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-21",
+ "image_sha256": "68dc6007cedbaaaf223ef0cd55641257abcc0e0e467f4f403f2059f892e9502a",
+ "image_sig": {
+  "w": 760,
+  "h": 727,
+  "grey": "1sy7qquqqaesqKilq7O94erv7+/v7Ozv7+3s7+/v7+30///b1tTWwtLm0Njh9v/69P/zyL/T2f//7rGhr+3/+vT/8uLg4un3/u7c2Nbs/vr0//vz9PTz///////////69P/0wKvG3d/W8P//////+vT/88/N0+Lp6/fn4+z///r0//r4+Pj49/z////////69P//2dLb5vH6////////+vT/8b/J19Ly+f////////r0//XV0s/h8d/h+P/////69P/29NvM6vT++vj4+P//+vT//////+vg39rFx9j3//r0///////ay8/l3u/////68fn5+fn5+fb07uXp+fn59g=="
+ },
+ "reviewed": false,
+ "description": "The drawing is titled \"Diagram 37 Hearths for decorative fuel effect (DFE) and inset live fuel effect (ILFE) fires: minimum plan dimensions of non-combustible surfaces.\" It contains four plan views, headed \"Plan views\" at the middle right of the drawing.\n\nThe top two views, captioned \"Hearth projecting beyond fireplace recess,\" each show a grey hearth with a dashed box inside and a single 150mm horizontal dimension at the top (on the right in the left view and on the left in the right view), together with a 300mm vertical dimension above the box; the left box is labelled DFE and the right ILFE. The middle left view, labelled \"Hearth contained entirely within fireplace recess,\" shows a DFE box with a 300mm dimension above it. The bottom left view, labelled \"Free-standing hearth,\" shows a DFE box with 300mm dimensions to the top and left, a wall drawn to the right, and a note at the bottom \"Less than 300mm if hearth extends to a wall.\"\n\nA key at the bottom explains: the dashed line is the \"Extent of incandescent part of fire. (In some ILFE designs this may project beyond the fireplace opening)\"; a solid-line corner with an arrow marks the \"Perimeter of surface to be marked\"; and the grey area is the \"Surface to be kept free of combustible material.\"",
+ "first_draft": "The drawing is titled \"Diagram 37 Hearths for decorative fuel effect (DFE) and inset live fuel effect (ILFE) fires: minimum plan dimensions of non-combustible surfaces.\" It contains four plan views, collectively labelled \"Plan views.\"\n\nThe top two views show hearths projecting beyond the fireplace recess; each has a 150mm dimension on either side and a 300mm dimension above the box, the left box labelled DFE and the right ILFE. The middle left view, labelled \"Hearth contained entirely within fireplace recess,\" shows a DFE box with a 300mm dimension above it. The bottom left view, labelled \"Free-standing hearth,\" shows a DFE box with 300mm dimensions to the top and left, and a note \"Less than 300mm if hearth extends to a wall.\"\n\nA key at the bottom explains: the dashed line is the \"Extent of incandescent part of fire. (In some ILFE designs this may project beyond the fireplace opening)\"; a solid line marks the \"Perimeter of surface to be marked\"; and the grey area is the \"Surface to be kept free of combustible material.\""
+}

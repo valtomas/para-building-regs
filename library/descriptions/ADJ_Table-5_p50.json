@@ -1,0 +1,17 @@
+{
+ "key": "ADJ_Table-5_p50",
+ "source": "ADJ",
+ "label": "Table 5",
+ "page": 50,
+ "caption": "Table 5 Size of flues for gas-fired appliances",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-21",
+ "image_sha256": "40f57d451010c5298f9915a9ef0c765d41f3dd395cdd954eb254df135625aaf3",
+ "image_sig": {
+  "w": 760,
+  "h": 319,
+  "grey": "xrStq7Srrqq/0tLS0tLS2NzTy8zLzcfF1eLi4uLi4ubi0dT/////0dfv////////3NjS4PLy8tXt8vLy8vLy9P/////////Y+//f1e/2+P//////////6fL/3M/MzvH/9fLy8vLy8uPr8vLy8vLy9P/////////Q9v/p3/f/////////////3e3/5uHc2un/9fLy8vLy8vLy8t7V2Nzy9OXc4OLd3/fi4+jn493m7P/t5/X/////////////////3MjP0eHf/+Hi4N7g4vD//+3p6u7y8vLy8vLy8vLy8vTl+ff7/Pr6+Pr/////////79/e193d3d/a8vLy8vLy9A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}
