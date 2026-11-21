@@ -1,0 +1,18 @@
+{
+ "key": "ADJ_Diagram-26_p40",
+ "source": "ADJ",
+ "label": "Diagram 26",
+ "page": 40,
+ "caption": "Diagram 26 \u0007Non-combustible hearth surface surrounding a solid fuel appliance",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-21",
+ "image_sha256": "39470ba6354f8ca05a46877a691b5d9e9d47c8a07bddeb9e23bd345cad8b8a7c",
+ "image_sig": {
+  "w": 755,
+  "h": 580,
+  "grey": "ysXAwLi5ury/vbq8vLfB4e74+Pj4+Pj4+Pj4+Pj4+PT0///////8wsjA8P//5vn69P/////////3/f///r/D9/Po6urr6ez++/T89/Pm9fn08e7c2unx+v/RxMXR9v/69O7mwOPc7Pr/z8Pey/z/+vT00djex+v8/8/W3c3///r0/8+4rb3XyM7BrbjI///69P/x7fn0+eD49vv1+///+vT/0Ov//93e7///+v////r0//XR2PbGwdb/5tDQ///69P/vsMz6zr3P9d274f//+vT/+en//97L1vvs8/7///r0/+fZ3+7////83t3h///66fHx8fHx8fHx8fHx8fHx7g=="
+ },
+ "reviewed": false,
+ "description": "This diagram, titled \"Diagram 26 Non-combustible hearth surface surrounding a solid fuel appliance\", illustrates two configurations, (a) and (b), of a hearth with an \"Appliance Opening to firebed\".\n\nIn part (a), \"Fireplace recess\", the appliance is set into a hatched wall. A dashed line marks the extent of the constructional hearth, indicated by a top callout reading \"Constructional hearth dimensions in Diagram 24\" that points to this line and to the dashed rectangle in part (b). A dimension at the bottom left reads \"At least 150mm\", showing the horizontal distance the hearth extends beyond the appliance. A line points to the grey hearth area, from the label \"Hearth surface free of combustible material\". A central text box specifies \"At least: 225mm for a closed appliance; or 300mm for an open appliance and a closed appliance that can properly be used with its front open\", with a line pointing to the vertical dimension in the hearth here and another pointing to the hearth in part (b). A bottom label notes the \"Perimeter should be clearly marked, e.g. edge of superimposed hearth\".\n\nPart (b), \"Free standing\", shows the appliance and hearth surrounded by a dashed rectangle, which is also pointed to by the top callout \"Constructional hearth dimensions in Diagram 24\". A top-right dimension indicates a clearance of \"At least 150mm or to a suitably heat-resistant wall\", with arrows showing the gap on the right and top of the rectangle. The bottom text repeats that the \"Perimeter should be clearly marked, e.g. edge of superimposed hearth\", and a line again identifies the \"Hearth surface free of combustible material\".",
+ "first_draft": "This diagram, titled \"Diagram 26 Non-combustible hearth surface surrounding a solid fuel appliance\", illustrates two configurations, (a) and (b), of a hearth with an \"Appliance Opening to firebed\".\n\nIn part (a), \"Fireplace recess\", the appliance is set into a hatched wall. A dashed line extends from the base, indicated by a top callout reading \"Constructional hearth dimensions in Diagram 24\". A left-side dimension states \"At least 150mm\". Arrows point to the grey hearth area, labelled \"Hearth surface free of combustible material\". A central text box specifies \"At least: 225mm for a closed appliance; or 300mm for an open appliance and a closed appliance that can properly be used with its front open\". A bottom label notes the \"Perimeter should be clearly marked, e.g. edge of superimposed hearth\".\n\nPart (b), \"Free standing\", shows the appliance and hearth surrounded by a dashed rectangle. A top-right dimension indicates a clearance of \"At least 150mm or to a suitably heat-resistant wall\". The bottom text repeats that the \"Perimeter should be clearly marked, e.g. edge of superimposed hearth\", and arrows again identify the \"Hearth surface free of combustible material\"."
+}

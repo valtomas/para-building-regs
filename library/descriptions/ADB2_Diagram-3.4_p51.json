@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-3.4_p51",
+ "source": "ADB2",
+ "label": "Diagram 3.4",
+ "page": 51,
+ "caption": "Diagram 3.4 Fire resistance of areas near to external stairs",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "e5b449a151521f99bd3bb947e60c8d775b678dccb05a2a15819f72c0b534b34c",
+ "image_sig": {
+  "w": 737,
+  "h": 928,
+  "grey": "8/T8/Pz87fr8/Pz8/Pz8/Pv///////nr5uzm7/r////7//////Pp276/3vP2////+///////+de1oang+f////v/////+fPSqKCr4vv////64t/n9vXaxKOdq9Hs3eLz+///////+fn5+fn5+/////vq9ev8//Xy+/n7+/r////79r/K+/PdrMPp9fz7////++qqvfn/76ixsqzd+v////vjrcb7792mtra1reTq7Pb727rJ9P/Ysru7usbq8/X8+///////+fPz8e/z5P////v/////+u+QlpmZnNnz///71OPs/v/c3uzq7OH2////s5eWnqGhoKCioZaampqamg=="
+ },
+ "reviewed": false,
+ "description": "Diagram 3.4, titled \"Fire resistance of areas near to external stairs\", begins top left with \"See para 3.32\". Example a. is a green-shaded cross-section of an external stair with flights and landings. Top labels read \"No fire resistance required for door\" and \"Fire resisting window (minimum RE 30)\"; left dimension \"1100mm above top landing\"; \"9m below stair flights and landings\" on the left; \"1800mm\" appears on the top right, middle right and lower left; \"Fd\" marks door sets; right text reads \"Ground level or a roof or podium served by an independent stairway\". A left legend defines \"Fd Fire doorset (minimum E 30)\" and the green shade as \"Fire resisting construction (minimum RE 30)\". Example b. shows a narrow vertical \"Section A–A\" labelled \"1800mm\" and a diagonal \"Section B–B\" repeating the 1100mm, Fd, 1800mm, 9m and ground-level labels. Below, a \"Plan\" view carries two \"1800mm\" dimensions and section markers A and B. A NOTE cites para 3.31 and 3.32d.",
+ "first_draft": "Diagram 3.4, titled \"Fire resistance of areas near to external stairs\", begins top left with \"See para 3.32\". Example a. is a green-shaded cross-section of an external stair with flights and landings. Top labels read \"No fire resistance required for door\" and \"Fire resisting window (minimum RE 30)\"; left dimension \"1100mm above top landing\"; \"9m below stair flights and landings\" on the left; \"1800mm\" appears on the right, mid-flight and lower left; \"Fd\" marks door sets; right text reads \"Ground level or a roof or podium served by an independent stairway\". A left legend defines \"Fd Fire doorset (minimum E 30)\" and the green shade as \"Fire resisting construction (minimum RE 30)\". Example b. shows a narrow vertical \"Section A–A\" labelled \"1800mm\" and a diagonal \"Section B–B\" repeating the 1100mm, Fd, 1800mm, 9m and ground-level labels. Below, a \"Plan\" view carries two \"1800mm\" dimensions and section markers A and B. A NOTE cites para 3.31 and 3.32d."
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADH_Table-A2_p25",
+ "source": "ADH",
+ "label": "Table A2",
+ "page": 25,
+ "caption": "Table A2 \u0007Flow rates from appliances Appliance Flow rate (litres/sec)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "91ab8943daae539665ebea6d1461351364e9bd090c5909e094d8a765d468fef9",
+ "image_sig": {
+  "w": 355,
+  "h": 184,
+  "grey": "17rBvbfBwsG/wsLCvcLCwvCWqqClhKF4mYagfYCGg+jy3OLf5eDi3OHf4c3c3t7p683R4ejo6Ojo6ODO0uLo6PS8yOj////////wx8/p////////////////4rCy2v//8urq6urq6urq6urq6urq6vG/yMjW////////5tD////y6Obq6urq6urq6urq6urq9czb2dX4///////u4v////zt7O/w/P//////+Pf////r0tfY2NTl6Ojo6N7W6Ojo+NvT2Nvb9//////x6f////Dm5ujo5+jo6Ojo5uXo6Oj1zMjNye3//////+rj////5NHR0dHR0dHR0dHR0dHR0Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

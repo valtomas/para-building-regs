@@ -1,0 +1,20 @@
+{
+ "key": "ADA_Diagram-21_p38",
+ "source": "ADA",
+ "label": "Diagram 21",
+ "page": 38,
+ "caption": "Diagram 21 Elevation of stepped foundation",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "3d9641d7ef849fd792ef24f672f7758f7dd52d048c5c087af43f2ca34e256c39",
+ "image_sig": {
+  "w": 362,
+  "h": 404,
+  "grey": "yLi7ws6ksay9uK+srtvb5cm4srXN4uLi4uLi3uLi4urW3tze5+/v7+/v7+/v7+/s6//53dfe3ubm6Oj/////9ev//fDn5+/z//////////Xr9evr5evl6fb29vX7///16/bt7e3t7ej////86P//9ev59PTp7e3q5+fu8+r///Xr////9OXl5eXl7fP3///16+7n7Obo6c7P1NLP9///9ev///////jn4urj5uTj+PXr9OTn6OTi5vH////////16+TO0M/L0tDm5uX0////9ev//////vHU0d7q/v////Xr///////////////////17e3t7e3t7e3t7e3t7e3t8Q=="
+ },
+ "reviewed": true,
+ "description": "Diagram 21, titled \"Elevation of stepped foundation\", carries the note \"See paras 2E2d and e\". It is a side elevation showing a grey foundation block with a stepped top edge, descending in two steps from a higher level on the right to a lower level on the left. Above the upper step, a horizontal dimension line labelled L spans the step, accompanied by the label \"Foundations should unite at each change in level\". To the right of the block, two vertical dimension lines are drawn: S marks the height of the step and T marks the thickness of the foundation. Below the drawing, the text reads: \"Minimum overlap L = twice height of step, or thickness of foundation or 300mm, whichever is greater\"; \"S should not be greater than T\"; and, in parentheses, \"(For trench fill foundations, minimum overlap L = twice height of step, or 1m, whichever is greater)\". Thus L refers to the horizontal overlap where the two foundation levels meet, S to the vertical rise between them, and T to the thickness of the foundation.",
+ "first_draft": "Diagram 21, titled \"Elevation of stepped foundation\", carries the note \"See paras 2E2d and e\". It is a side elevation showing a grey foundation block with a stepped top edge, descending in two steps from a higher level on the right to a lower level on the left. Above the upper step, a horizontal dimension line labelled L spans the step, accompanied by the label \"Foundations should unite at each change in level\". To the right of the block, two vertical dimension lines are drawn: S marks the height of the step and T marks the thickness of the foundation. Below the drawing, the text reads: \"Minimum overlap L = twice height of step, or thickness of foundation or 300mm, whichever is greater\"; \"S should not be greater than T\"; and, in parentheses, \"(For trench fill foundations, minimum overlap L = twice height of step, or 1m, whichever is greater)\". Thus L refers to the horizontal overlap where the two foundation levels meet, S to the vertical rise between them, and T to the depth of the lower section.",
+ "rejected": false,
+ "reviewed_date": "2026-11-06"
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.35_p40",
+ "source": "ADE",
+ "label": "Diagram 2.35",
+ "page": 40,
+ "caption": "Diagram 2.35 \u0007\u0007Wall types 3.1 and 3.2 – | Diagram 2.36 \u0007\u0007External cavity wall at\nceiling and roof junction | eaves level Junctions with ceiling and roof space",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "6683ca6b0f9f7ec6baba48b568d2b5c78cbc19a114f06161a6f1e182108d116a",
+ "image_sig": {
+  "w": 760,
+  "h": 426,
+  "grey": "xrm6pKy0suLXtL2osKyr1+3o47XAvLri8ujpvr3i6ezl6urq6urq7enq6urq6uro7uvv5+Dv8fT01uve6en9+vTv+uDV7uv69P/w5/Tu/vr0//718Prz+vT/8ufz7f769P//9PH///r0//Pw7+r++vT///ny///69P/18/Lq/vr0//3w7f7/+vT/8u347v769P/65+b7//r0//Dq9+7++u/r6tHU5/P19P/17O3q/vr06fjl2+Xi+vT/9fPx6/769P/44Nz8//r0//Dq9+7++vT/+OXg/P/69P/y7Pjt/vr0//vv7f3/+vT/9fPx6v367vb29vb21OHw9vb29vba3Q=="
+ },
+ "reviewed": false,
+ "description": "The image contains two sections placed side by side. The left, headed \"Diagram 2.35 Wall types 3.1 and 3.2 – ceiling and roof junction\", is a vertical section through a cavity wall. A horizontal line at the top is labelled \"Roof\", and a zigzag element seated in the cavity just below it is labelled \"Flexible closer\". The wall leaves are drawn with a horizontal broken line to indicate continuation. A lower horizontal line is labelled \"Ceiling\", and two arrows point to the zigzag elements in the two cavities at this level, labelled \"Sealed joints\". The word \"SECTION\" appears at the bottom right.\n\nThe right, headed \"Diagram 2.36 External cavity wall at eaves level\", is a section through an external cavity wall, with a brick outer leaf on the left and a cross-hatched inner leaf on the right. A small hatched block at the top of the cavity is labelled \"Flexible closer\". A thin vertical double line runs alongside the inner leaf on its right. The word \"SECTION\" appears at the bottom right.",
+ "first_draft": "The image contains two sections placed side by side. The left, headed \"Diagram 2.35 Wall types 3.1 and 3.2 – ceiling and roof junction\", is a vertical section through a cavity wall. A horizontal line at the top is labelled \"Roof\", and a zigzag element seated in the cavity just below it is labelled \"Flexible closer\". The wall leaves are drawn with a horizontal broken line to indicate continuation. A lower horizontal line is labelled \"Ceiling\", and two arrows point to the base of the cavity where it meets this line, labelled \"Sealed joints\". The word \"SECTION\" appears at the bottom right.\n\nThe right, headed \"Diagram 2.36 External cavity wall at eaves level\", is a section through an external cavity wall, with a brick outer leaf and a cross-hatched inner leaf. A horizontal element closing the top of the cavity is labelled \"Flexible closer\". A thin vertical double line runs alongside the inner leaf. The word \"SECTION\" appears at the bottom right."
+}

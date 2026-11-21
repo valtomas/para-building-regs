@@ -1,0 +1,17 @@
+{
+ "key": "ADC_Table-3_p19",
+ "source": "ADC",
+ "label": "Table 3",
+ "page": 19,
+ "caption": "Table 3 \u0007Examples of possible contaminants",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "21821fd9b5a791380d2405b26d7de510ea407fec74e3d02fff4d4bf3580a83e8",
+ "image_sig": {
+  "w": 371,
+  "h": 667,
+  "grey": "6MDIwa2pq7KvwbrE2NjY4+zIz8fI3+Piz9TY1tXY6u/11Nfk7vn5+dzf7u/x+fn7/O7u7u/////d2d3a3uj3+/jq7ers+fn53dv2+fn5+fv31drW2dz//9vg3uHf9Pn7///////////d4Ofv7/T09///////////3dfc2dv1+fv//////////97a2d7d5u/4/Pn5+fn5+fnf4uXk5/Hx9vbX1t/j8P//3NPT3dXi/////////////9/d39jy+fn7///////////f3N/c39zg+fTY1eLf4fb55uru+fn5+fv129zl6uv5+ebr9/n5+fn789zk4erp6efs9PT09PT09w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

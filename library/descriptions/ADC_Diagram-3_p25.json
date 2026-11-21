@@ -1,0 +1,18 @@
+{
+ "key": "ADC_Diagram-3_p25",
+ "source": "ADC",
+ "label": "Diagram 3",
+ "page": 25,
+ "caption": "Diagram 3 \u0007Subsoil drain cut during excavation",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "fb0d6848b71446358b22c6a8885db601cd4c998c270b9be7e051126436db2e3f",
+ "image_sig": {
+  "w": 749,
+  "h": 819,
+  "grey": "19DMy8vMysvK39/f39/f3/X///vz////////8//////1/f/Y0+39///949Td/f//8erw0tHj6fbw6djPztzk+PDy8/Ly/f/////////m5vn1///c2O7/////6Nrj////8uvz1NPl6vj06tXd1uvz//Dy8vf////////m6uT9///1///8/P39/f///Pz9/f3/9f/35Nzl7+jt697R0uv1//X98NfW3vbh4uPd4+Lw///18PDh3OX///bo6+Lf/f//8+rt7Oz8///w8O/v7/////H09PP4//v8//z////////1///////34/Tu////////8/r6+vr6+PDy8vr6+vr6+g=="
+ },
+ "reviewed": false,
+ "description": "The diagram, titled \"Diagram 3 Subsoil drain cut during excavation\", consists of three parts, each showing \"Before\" and \"After\" states of a square labelled \"Proposed building\" relative to dashed lines with arrows representing drains.\n\nPart (a), \"Single drain re-laid under building\", shows a dashed line crossing the building in the \"Before\" state. In the \"After\" state, a solid line replaces the dashed line under the building, with an access point at each end where it meets the existing drain, and a note stating \"Existing subsoil drain replaced by jointed non-porous pipes\".\n\nPart (b), \"Single drain diverted\", shows a \"Before\" state similar to (a). The \"After\" state shows a solid line routed around the building, labelled \"New jointed porous pipes\", with small circles on the line.\n\nPart (c), \"More than one drain diverted\", shows multiple dashed lines crossing the building area in the \"Before\" state. The \"After\" state shows a solid line with circles above the building connecting the existing drains, from which a further solid line runs down to an access point on an existing drain, with text reading \"Take water from existing drains through new porous jointed pipes and re-connect to existing drain\".\n\nA key defines an \"Access point\" as a line with a circle, an \"Existing drain\" as a dashed line, and a \"New jointed drain\" as a solid line.",
+ "first_draft": "The diagram, titled \"Diagram 3 Subsoil drain cut during excavation\", consists of three parts, each showing \"Before\" and \"After\" states of a square labelled \"Proposed building\" relative to dashed lines with arrows representing drains. \n\nPart (a), \"Single drain re-laid under building\", shows a dashed line crossing the building in the \"Before\" state. In the \"After\" state, a solid line replaces the dashed line under the building, with a note stating \"Existing subsoil drain replaced by jointed non-porous pipes\". \n\nPart (b), \"Single drain diverted\", shows a \"Before\" state similar to (a). The \"After\" state shows a solid line routed around the building, labelled \"New jointed porous pipes\", with small circles on the line. \n\nPart (c), \"More than one drain diverted\", shows multiple dashed lines crossing the building area in the \"Before\" state. The \"After\" state shows a solid line with circles connecting the lines above the building, with text reading \"Take water from existing drains through new porous jointed pipes and re-connect to existing drain\". \n\nA key defines an \"Access point\" as a line with a circle, an \"Existing drain\" as a dashed line, and a \"New jointed drain\" as a solid line."
+}

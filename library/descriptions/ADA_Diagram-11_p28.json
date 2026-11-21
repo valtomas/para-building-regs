@@ -1,0 +1,20 @@
+{
+ "key": "ADA_Diagram-11_p28",
+ "source": "ADA",
+ "label": "Diagram 11",
+ "page": 28,
+ "caption": "Diagram 11 \u0007Differences in ground levels | E R SBUILDINGS ION",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "2fd41a8c3337ad61910f2653c6a8504e259ca41ffa8b3274a89e392440583db0",
+ "image_sig": {
+  "w": 755,
+  "h": 1084,
+  "grey": "1dfa1djY193n5+fn5+fn6PDx8ure4fL6////6Oz///r16/Pj4vf//+307NTp+f769f3/+vf////9+/j0////+vX07O7+4en89+fo+/fu/Pr19O717tfm5+Pj2/H////67/Dw8e3n+//7+Pv/////+vX///r1++Pj+u336Pvm4PT17fTr7/X7/vDs5+D1/Pz59f378eL6///9/PTQ7e3/+vX///79/+/3/Ozt+v////r1////7vLN8Pbu9vHe4/r69f////z73OPt8f/9+///+vD0//////3+/Pn29PT19fft5+Dl6u3s9/Dn6+vr7Or17O3p5+zy+fz8/Pz8/Pz89w=="
+ },
+ "reviewed": true,
+ "description": "Diagram 11, \"Differences in ground levels\" (See para 2C24b), shows two groups of wall sections. Part a, \"Situations where differences in level may occur\", has three figures. i) a wall with a \"Ground supported floor slab\", \"Retained height\" and base load \"W\". ii) a wall with a \"Suspended ground floor\" over a \"Void\", \"Retained height\" and \"W\". iii) a wider view of two walls with a \"Suspended ground floor\", \"Void\", \"Retained height\", \"H\", \"W\", \"To be level for a distance of not less than 1.25H\", \"For value of H see (b) below\" and \"Combined dead and imposed load W should not exceed 70kN/m at base of wall\". Part b, \"Maximum differences in permitted level\", shows i) a wall with thickness \"t\", \"Retained height\", \"H\", \"W\" and \"H should be less than or equal to 1m and less than or equal to 4t\"; ii) a cavity wall with \"t1\", \"t2\", \"Clear wall cavity (unfilled)\", \"Concrete fill to wall cavity\", \"Retained height\", \"H\", \"W\" and \"H should be less than or equal to 1m and less than or equal to 4(t1 + t2)\"; and iii) a cavity wall with differing ground levels, thickness \"t\", \"Retained height\", \"H\", \"W\", \"Concrete fill to wall cavity\", \"Combined dead and imposed load W should not exceed 70kN/m at base of wall\" and \"H should be less than or equal to 1m and less than or equal to 4t\". Notes 1 to 3 appear below.",
+ "first_draft": "Diagram 11, \"Differences in ground levels\" (See para 2C24b), shows two groups of wall sections. Part a, \"Situations where differences in level may occur\", has three figures. i) a wall with a \"Ground supported floor slab\", \"Retained height\" and base load \"W\". ii) a wall with a \"Suspended ground floor\" over a \"Void\", \"Retained height\" and \"W\". iii) a wider view adding \"Combined dead and imposed load W should not exceed 70kN/m at base of wall\", \"Void\", \"Retained height\", \"H\", \"To be level for a distance of not less than 1.25H\" and \"For value of H see (b) below\". Part b, \"Maximum differences in permitted level\", shows i) a wall with thickness \"t\", \"Retained height\", \"H\", \"W\" and \"H should be less than or equal to 1m and less than or equal to 4t\"; ii) a cavity wall with \"t1\", \"t2\", \"Clear wall cavity (unfilled)\", \"Concrete fill to wall cavity\" and \"H should be less than or equal to 1m and less than or equal to 4(t1 + t2)\"; and iii) a cavity wall with differing ground levels, \"Concrete fill to wall cavity\", the 70kN/m note and the 4t note. Notes 1 to 3 appear below.",
+ "rejected": false,
+ "reviewed_date": "2026-11-06"
+}

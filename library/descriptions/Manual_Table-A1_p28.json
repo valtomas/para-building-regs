@@ -1,0 +1,17 @@
+{
+ "key": "Manual_Table-A1_p28",
+ "source": "Manual",
+ "label": "Table A1",
+ "page": 28,
+ "caption": "Table A1. The buildings must continue to meet the definitions in Schedule 2 after the works are complete.",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "94edd2d2b1938c9776a7ea9d14342b3eb2465d027b777881743ed8ea3a9a97f8",
+ "image_sig": {
+  "w": 710,
+  "h": 396,
+  "grey": "xba5sLu2ubWttbLN3d3d4OXn6N/j4uLh4eHl4uLj5uvw+ffS4O7u6vHr7+7u8Pb76u/35ODo4ubn5uTp+Pj49+ru9+Xi5ufi4ubk5+j4+Pfq7/bm5OPi4+Pm5OXl8Pj36/D45+jm6+nq6+3s6+v49+nt9t3g4+Lg6Pj4+Pj4+Pfn6/bg4Nvf39vh397h3fP36/X43+Dm4OLj4uHi4ODh+Pv/99XZ0dTZ0dHQ1tfV9/v3+PPe4ODg4eX0+Pj4+Pj34eHo6uXr5+Xn6+Tk5+bt9+bT3trV2tXX3NXY19fb3/Ho3d7g3N/e39/f293j2OPz5+Hg4eLh39zZ4N/3+Pj49g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

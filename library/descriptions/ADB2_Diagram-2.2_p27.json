@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-2.2_p27",
+ "source": "ADB2",
+ "label": "Diagram 2.2",
+ "page": 27,
+ "caption": "Diagram 2.2 Alternative escape routes | Inner rooms",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "fc653a78a77f9478a6a32c28a2e86d27082015d518a85468796614baf6caa84a",
+ "image_sig": {
+  "w": 737,
+  "h": 223,
+  "grey": "8/Ly8vLy8vLy8vLy8vLy8uLe///////////////////6////////////////////+9u8vLzMttrS09jQ2dTO//vS3ODgutDL0tnV09PY0f774/j9//L/4NfS2NXV19X/++P5/P34++TU0tXg//////vj++3s/vrk//////3////74//s9vvi5M/P1dXN0tD/++P/+ff/9tjT1NPM0d3///u1tq6ytra///7///7////78u3t7e3t9tjV1dTX+f//+////////////////////8GysrKysrKysrKysrKysrJ/XFhgW1taT09PT09PT09PiWNYYmBiXk9PT09PT09PTw=="
+ },
+ "reviewed": false,
+ "description": "This is a plan, labelled in a green band at the bottom as \"Diagram 2.2 Alternative escape routes\", with the note \"See para 2.10\" at the top left. The plan shows a room bounded by thick black walls, with a gap in the top wall. Five points are marked with small green squares: A at the top left corner, B at the top wall beside the gap, E at the top right corner, C on the bottom wall, and D on the right wall. Dashed lines run from C to A and from C to B, and from D to A and from D to B. An angle symbol at C, between the dashed lines to A and B, is marked \"> 45°\". An angle symbol at D, between the dashed lines to A and B, is marked \"< 45°\". To the right of the plan is running text referring to points C, D and E. No dimensions are given for the walls or the gap.",
+ "first_draft": "This is a plan, labelled in a green band at the bottom as \"Diagram 2.2 Alternative escape routes\", with the note \"See para 2.10\" at the top left. The plan shows a room bounded by thick black walls, with a gap in the top wall. Five points are marked with small green squares: A at the top left corner, B at the top wall beside the gap, E at the top right corner, C on the bottom wall, and D on the right wall. Dashed lines run from C to A and from C to B, and from D to A and from D to B. An angle symbol at C, between the dashed lines to A and B, is marked \"> 45°\". An angle symbol at D, between the dashed lines to A and B, is marked \"< 45°\". To the right of the plan is running text referring to points C, D and E. No dimensions are given for the walls or the gap."
+}

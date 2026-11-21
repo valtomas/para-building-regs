@@ -1,0 +1,18 @@
+{
+ "key": "ADJ_Diagram-18_p34",
+ "source": "ADJ",
+ "label": "Diagram 18",
+ "page": 34,
+ "caption": "Diagram 18 \u0007Flue outlet positions for solid fuel appliances – clearances to easily ignited roof coverings (Note: This diagram needs to be read in conjunction with Diagram 17)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-20",
+ "image_sha256": "ed911757cf1833522796a70ef1549fefdc8a971438cbf60bda6634ee51fb21d1",
+ "image_sig": {
+  "w": 755,
+  "h": 762,
+  "grey": "0s66sK+svcXGwsvIx8rH5Ors39vY2dbb29zY29na4+z0////////7v/////////69P/z/v/6vp7M/v//////+vT/6PHgppyPnKzq3v////r0///svZ2466eezvT////69P/oxbrI///4sMrG9ff/+vT/4cfj///+6/PTye/X+vr0/9nt////+Ofv/Nzp5fz69P/y9uLj+P/////x////+vT//+zIzf////////////r0//3w+Pbt7e/6+vn////69P/3sODl4uHk6Orz////+vT/9qfS19vZ5ejq8/////r0//nJ3efq5+no6vT////67PT09PT09PT09PT09PT08Q=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a section through a pitched roof, shown as a triangular gable shape with a darker shaded central portion and lighter shaded side portions. The central darker area is labelled A, sitting above a horizontal dashed line near the apex; the two side areas are each labelled B. Dimensions are marked: on the left, a vertical double arrow reads 1800mm; on the right near the top, a vertical arrow reads 600mm; a horizontal double arrow between the inner edges of the side areas reads At least 2300mm; on the far right, a vertical double arrow beside the lower part of the right-hand roof slope reads At least 1800mm. Beneath the left-hand roof slope, text reads Outlets should be above the shaded areas. Beneath the diagram is a table with columns Area and Location of flue outlet. Row A, shaded, states: At least 1800mm vertically above the weather surface and at least 600mm above the ridge. Row B, shaded, states: At least 1800mm vertically above the weather surface and at least 2300mm horizontally from the weather surface.",
+ "first_draft": "The drawing is a section through a pitched roof, shown as a triangular gable shape with a darker shaded central portion and lighter shaded side portions. The central darker area is labelled A, sitting above a horizontal dashed line near the apex; the two side areas are each labelled B. Dimensions are marked: on the left, a vertical double arrow reads 1800mm; on the right near the top, a vertical arrow reads 600mm; a horizontal double arrow between the inner edges of the side areas reads At least 2300mm; on the far right, a vertical arrow spanning the full roof height reads At least 1800mm. Text below the left eave reads Outlets should be above the shaded areas. Beneath the diagram is a table with columns Area and Location of flue outlet. Row A, shaded, states: At least 1800mm vertically above the weather surface and at least 600mm above the ridge. Row B, shaded, states: At least 1800mm vertically above the weather surface and at least 2300mm horizontally from the weather surface."
+}

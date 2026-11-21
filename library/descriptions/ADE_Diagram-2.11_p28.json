@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.11_p28",
+ "source": "ADE",
+ "label": "Diagram 2.11",
+ "page": 28,
+ "caption": "Diagram 2.11 \u0007\u0007Wall type 1 – internal concrete floor",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "656f7405fafc2dfa0cef3dfab2332d800f954b386631510f9027a4647725f842",
+ "image_sig": {
+  "w": 362,
+  "h": 362,
+  "grey": "wLCzu8S3mailvL6hq7HW4efd4+Tm2LazpLq44OXk6e/W3d3d3dvZ2dfb2N3d3d3i6f//+vb29///////////9On//+zw7+r54d/c4+ff6fTp///m4+Pc9MnAxMTe4/H06f//6ODg3P/u///9////9On//+3x7Onu/f////////Tl7vDm6OfY6u/u8O/w7ez06PX5+PLr7Pj29ff68vrr9OX78vL2+fX29Pj08/f37vTk7e7i6Ond7u3u7u7u7ez06f//7eXj3///////////9On///Hx8eb///////////Tp///59vX1///////x7uvx4/T09PT09PT09PT02uPa5Q=="
+ },
+ "reviewed": false,
+ "description": "The image is a section drawing titled \"Diagram 2.11 Wall type 1 – internal concrete floor\", the title set in a pale green band above a black-bordered box. Inside the box, the word \"SECTION\" appears in the lower right corner. The drawing shows a horizontal concrete slab, rendered with a speckled dotted pattern, running across the middle of the box and projecting to the left and right. A vertical wall section, drawn with a cross-hatched diagonal pattern, sits on top of the slab, and a matching cross-hatched wall section sits directly beneath it, the two stacked one above the other and positioned to the left of the centre of the slab. A thin leader line runs from the slab up and to the right, pointing to a block of text that reads: \"Concrete slab may be carried through if mass per unit area is at least 385kg/m²\". No other dimensions, symbols or labels are present.",
+ "first_draft": "The image is a section drawing titled \"Diagram 2.11 Wall type 1 – internal concrete floor\", the title set in a pale green band above a black-bordered box. Inside the box, the word \"SECTION\" appears in the lower right corner. The drawing shows a horizontal concrete slab, rendered with a speckled dotted pattern, running across the middle of the box and projecting to the left and right. A vertical wall section, drawn with a cross-hatched diagonal pattern, sits on top of the slab, and a matching cross-hatched wall section sits directly beneath it, the two stacked one above the other and centred on the slab. A thin leader line runs from the slab up and to the right, pointing to a block of text that reads: \"Concrete slab may be carried through if mass per unit area is at least 385kg/m²\". No other dimensions, symbols or labels are present."
+}

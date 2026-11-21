@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-13.5_p115",
+ "source": "ADB2",
+ "label": "Diagram 13.5",
+ "page": 115,
+ "caption": "Diagram 13.5 Small unprotected areas that may be disregarded in assessing the separation distance from the boundary",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "f52c2af9c2a372ed7c5b086e17b887eec69038dd89b9d09dfd686fbca3bd4739",
+ "image_sig": {
+  "w": 737,
+  "h": 568,
+  "grey": "7u36+vr6+vr6+vr6+vr6+vv///P4+Pjt9/j49vHt7v77///z+Pb4+Pj4+OXv0uD8+///+dvq2fjn6fi54czo/vv///nt5t7/7/n/veL////7///57eXi/+7g473h3Nz4+///9Ojo7PTn5/O63dHQ+fv///n5+dXf3uz/vOHX4f/7///y6vP37vv//73i////++Xf2tXb2tzf39+qyN/0//vL19fX19fX19fXzL7B6f/72ePY0tfw////9/Lu7vT/+87x5eb0/f////n07+72//vp6N7t/f////////////+zoZ+hoqGhoKGioaGioKCaflZWY2FhYlhUV1RWVVVUTw=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a plan view. A grey shaded rectangle represents the building, with a rectangle labelled \"Roof\" above its top edge. A horizontal dashed line crosses the grey area; labels on the left point to it and to a vertical dashed line, reading \"Compartment floor\" and \"Compartment wall\". Scattered within the grey area are square and rectangular symbols, some in pairs, joined by green arrows marked with a small letter \"a\" or \"b\". On the left a legend shows a square symbol described as \"Represents an unprotected area of not more than 1m² which may consist of two or more smaller areas within an area of 1000mm × 1000mm\", a pair of vertical rectangles, and a smaller square described as \"Represents an area of not more than 0.1m²\". On the right, under \"Dimensional restrictions\", a green double arrow labelled \"a\" equals 4000mm minimum distance and a green arrow labelled \"b\" equals 1500mm minimum distance. Two notes on the right read \"Roofs pitched at an angle of less than 70 degrees may be disregarded for separation distance purposes\" and \"The unprotected area of the external wall of a stairway forming a protected shaft may be disregarded for separation distance purposes\". Top left reads \"See para 13.11\". The bottom banner reads \"Diagram 13.5 Small unprotected areas that may be disregarded in assessing the separation distance from the boundary\".",
+ "first_draft": "The drawing is a plan view. A grey shaded rectangle represents the building, with a rectangle labelled \"Roof\" above its top edge. A horizontal dashed line crosses the grey area; labels on the left point to it and to a vertical dashed line, reading \"Compartment floor\" and \"Compartment wall\". Scattered within the grey area are square and rectangular symbols, some in pairs, each marked with a small letter \"a\" or \"b\" and joined by green arrows. On the left a legend shows a square symbol described as \"Represents an unprotected area of not more than 1m² which may consist of two or more smaller areas within an area of 1000mm × 1000mm\", a pair of vertical rectangles, and a smaller square described as \"Represents an area of not more than 0.1m²\". On the right, under \"Dimensional restrictions\", a green double arrow labelled \"a\" equals 4000mm minimum distance and a green arrow labelled \"b\" equals 1500mm minimum distance. Two notes on the right read \"Roofs pitched at an angle of less than 70 degrees may be disregarded for separation distance purposes\" and \"The unprotected area of the external wall of a stairway forming a protected shaft may be disregarded for separation distance purposes\". Top left reads \"See para 13.11\". The bottom banner reads \"Diagram 13.5 Small unprotected areas that may be disregarded in assessing the separation distance from the boundary\"."
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADH_Table-2_p11",
+ "source": "ADH",
+ "label": "Table 2",
+ "page": 11,
+ "caption": "Table 2 \u0007Common branch discharge pipes (unventilated)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "0f950fed173c3d5792ed4112b386964aec5d319915518059a3d65bc0b5d1c053",
+ "image_sig": {
+  "w": 749,
+  "h": 370,
+  "grey": "zcKxs7OvtK22q7vg4ODg4OTi4+Pe4N/Z3eDd5ebk4uXm6f//2cD6zrfv47391rjW5t3l9PTv9PTt9PTo9PTb8+zk7v///P//9f//8///5f/f1/3///////b//+7//+X/7er////////5/////////+vl6///+v//9v//8v//4f////////////P//+///9X////////////1///2///n//b09PT08PT06vT06vT03PT34OHf4t/z9/f39vj8////9tjX2djZ2NrY3N3Z4Pb///nm6Onn5+jp9//////+///29PT09PT09PT09PT09PT0/////////////////////w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-15.3_p127",
+ "source": "ADB2",
+ "label": "Diagram 15.3",
+ "page": 127,
+ "caption": "Diagram 15.3 Turning facilities",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "747e59b5e2e47431d3e28ea05e655df625a701f10e2ff5c695a0aa6fa455d728",
+ "image_sig": {
+  "w": 737,
+  "h": 351,
+  "grey": "9vX39/f39/f39/f39/f39+vp///////////////////7/+/k6OPk5uXl5eTl7P//+/////////////D5//////v////////////7+//////7////////0c3P+Pv/////+//7+////+jp+vn6///+//v///vq0MnHx8Ls+Pb2+//7/+T37d++tra26v///d77+///+/Dc3d3d3O/29/f7//v//P3+///////6+//////7////9e/t1u/v9Pv/////+/////7///////r7//////v////////////1/P////+yn5+fn5+fn5+fn5+fn5+fiGVdZGZVT09PT09PT09PTw=="
+ },
+ "reviewed": false,
+ "description": "This is a plan view, titled in a green band at the bottom as \"Diagram 15.3 Turning facilities\". At the top left the text \"See para 15.10\" appears, and below it the sentence \"Fire and rescue service vehicles should not have to reverse more than 20m from the end of an access road.\" On the left side a three-sided outline, open on its right side, is labelled \"Building\". To the right of the building a green shaded access road runs rightwards, and within its left part a top-down symbol of a fire engine is drawn. The access road meets a vertical road, and a horizontal road branches off to the right of this vertical road, so the junction is a cross. A leader line from the label \"Turning circle, hammerhead or other point at which vehicle can turn\" points to the corner where the access road meets the vertical road. At the end of the horizontal branch on the right, a rightward green arrow is marked \"Exit\". Beneath the green access road a green dimension line with arrowheads at both ends is annotated \"20m max.\", its left end aligned with a dashed vertical line at the left end of the access road and its right end aligned with the vertical road at the junction.",
+ "first_draft": "This is a plan view, titled in a green band at the bottom as \"Diagram 15.3 Turning facilities\". At the top left the text \"See para 15.10\" appears, and below it the sentence \"Fire and rescue service vehicles should not have to reverse more than 20m from the end of an access road.\" On the left side a simple rectangular outline is labelled \"Building\". Extending rightwards from near this building is a green shaded access road, within which a top-down symbol of a fire engine is drawn. The access road terminates at a T-junction formed by a vertical road. A leader line points to the far end of the green road at the junction, with the label \"Turning circle, hammerhead or other point at which vehicle can turn\". On the right-hand side of the vertical road a rightward arrow is marked \"Exit\". Beneath the green access road a green dimension line with arrowheads at both ends is annotated \"20m max.\", spanning from the building edge to the junction."
+}

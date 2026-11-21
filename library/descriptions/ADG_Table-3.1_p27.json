@@ -1,0 +1,17 @@
+{
+ "key": "ADG_Table-3.1_p27",
+ "source": "ADG",
+ "label": "Table 3.1",
+ "page": 27,
+ "caption": "Table 3.1 Sizing of copper discharge pipe ‘D2’ for common temperature relief valve outlet sizes Maximum resistance allowed, expressed",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "71c224ed2951dba95c5da467fbfb5b52cf36773c90806a39ae334eab0e558650",
+ "image_sig": {
+  "w": 758,
+  "h": 534,
+  "grey": "1c+9w7zAucDCxr7Bu8O/zuvnxcTf5+fn5+fl5ufn5+n/////////7uv0uLjP////7ef1/szM8t/J4+TY29HN2PH39/f37/L36+n35eT39+T29/f39/X39+3u9+fr9/fr+f/////5+v/u6f/i5P//5/L39/f37fL37u336un39+v59/f39/f39+7q9+To9/fo39TR1uPj4uLi4+j4/////+7t7PT08/Pz8O3t7vDx8vfw7Oz28fP0/PTr7fTz8/T68ezs7u/x9fz07ezt7ujq/O7r8/Py8/P/8/H4+fj5+fvo6u/z8O3u/vj08/Xz8/X9+f/////////17PT39vb2/w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-3.2_p42",
+ "source": "ADB2",
+ "label": "Diagram 3.2",
+ "page": 42,
+ "caption": "Diagram 3.2 Refuge formed in a protected stairway",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "83c1257777d09d5a5bcfced1865be5edc0bad2dca7ea809de5e55d2956fff47f",
+ "image_sig": {
+  "w": 756,
+  "h": 407,
+  "grey": "59XV1dXV1dXV1dXV1dXV5vr4+Pj4+Pj4+Pj4+Pj4+Pns8P/////////////////7+9Sen56fnqDc////////+/vApObd8Oz/zP////////v7wG7YyuLh/8zo5+jm6//7+8XK1Nzl4//M6+vo6f//+/vN/+nS4t7/zOPk7f////v7zf/24vDr/8zu/v7+///7+83/8oybm5/U9efn8v//+/vI9+Hc//////////////v7x/bo3P/////////////7+8b/59z/////////////+/vg8+7q//////////////vIu7u7u7u7u7u7u7u7u7vFh2JbZGJeYmJbT09PT09Pcw=="
+ },
+ "reviewed": false,
+ "description": "This is a plan (top view) of a protected stairway. In the upper left corner the note \"See para 3.5\" appears. The stairwell is bounded by heavy black walls and contains two flights of stairs, shown as sets of parallel tread lines, arranged in a switchback. On the upper landing at the top left is a green shaded square with a dashed border containing a wheelchair symbol; this is the refuge. To the right of the green square, a grey semicircular area overlaps the end of the upper flight and the landing; it is marked by a curved arrow, with straight arrowheads at the ends of the two flights, indicating the escape flow. At the lower left, two doors with swing arcs open into the well, and a break line below indicates the plan is cropped. To the right, a note reads \"Provision where access to the refuge is counter to the access flow within the stairway.\" Below it, a key shows a green square containing the wheelchair symbol labelled \"Wheelchair space\" and a grey square labelled \"Occupied by escape flow\". A green banner at the bottom reads \"Diagram 3.2 Refuge formed in a protected stairway\".",
+ "first_draft": "This is a plan (top view) of a protected stairway. In the upper left corner the note \"See para 3.5\" appears. The stairwell is bounded by heavy black walls and contains two flights of stairs, shown as sets of parallel tread lines, arranged in a switchback. In the top left landing is a green shaded square containing a wheelchair symbol; this is the refuge. A grey semicircular area overlaps the stair flight beside it, marked by a curved arrow that leads from the landing into the green space and a straight arrow pointing along the stair flight. At the lower left, two doors with swing arcs open into the well, and a break line below indicates the plan is cropped. To the right, a heading reads \"Provision where access to the refuge is counter to the access flow within the stairway.\" Below it, a key shows the green wheelchair symbol labelled \"Wheelchair space\" and a grey square labelled \"Occupied by escape flow\". A green banner at the bottom reads \"Diagram 3.2 Refuge formed in a protected stairway\"."
+}

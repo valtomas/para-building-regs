@@ -1,0 +1,18 @@
+{
+ "key": "ADC_Diagram-14_p40",
+ "source": "ADC",
+ "label": "Diagram 14",
+ "page": 40,
+ "caption": "Diagram 14 \u0007Accessible threshold for use in exposed areas128 (see paragraph 5.33)",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "35e68efe484686e623fed3d9d1f731ab2a139f0d68205af194ab30a6adf1d4f5",
+ "image_sig": {
+  "w": 755,
+  "h": 403,
+  "grey": "vba0pKinqa2tqqaurKSqyuXq6urq6urq6erq6enn6un1/////////+r6///////69f/////////1+v//////+vX/////////9fr///////r1//////////X6///////69f//+fn+///1+v//////+vX///Du9P//8Prs7/////r1///35/X0/+r2+fr9///69f/06fP49P/f793U8P//+vX////n+uPerc/d7e3z//r1/+m8vsrDv8Pb29vb5f/69f/s283F6MDD29vb2+X/+vX/7NvYztPEw9vb29vl//r1/+3d3drTzMrd3d3d5//65+3t7e3t7e3t7e3t7e3t6w=="
+ },
+ "reviewed": false,
+ "description": "This is a section drawing titled \"Diagram 14 Accessible threshold for use in exposed areas (see paragraph 5.33)\". It shows a cut through an external wall at floor level. A grey mass labelled \"Sill\" forms the centre, with a tall vertical rectangular outline rising above it. To the left, a grey area labelled \"External landing\" has a top surface drawn at about the same height as the top of the sill; this surface is sloping and indicated by an arrow labelled \"Minimum fall 1:60\". A vertical dimension with double arrows on the left reads \"At least 125mm\", spanning between the top of the external landing and a lower horizontal line. A dashed vertical line is labelled \"Line of external wall\". A small gap in the threshold at the left of the sill is labelled \"Drainage slot\". On the right side, a sloping surface is labelled \"Internal transition unit (where necessary)\", and a small component at the top of this slope is labelled \"Weather seal\".",
+ "first_draft": "This is a section drawing titled \"Diagram 14 Accessible threshold for use in exposed areas (see paragraph 5.33)\". It shows a cut through an external wall at floor level. A grey mass labelled \"Sill\" forms the centre, with a tall vertical rectangular outline rising above it. To the left, a grey area labelled \"External landing\" sits lower than the internal side; its top surface is sloping and indicated by an arrow labelled \"Minimum fall 1:60\". A vertical dimension with double arrows on the left reads \"At least 125mm\", spanning between the top of the external landing and a lower horizontal line. A dashed vertical line is labelled \"Line of external wall\". A small gap in the threshold at the left of the sill is labelled \"Drainage slot\". On the right side, a sloping surface is labelled \"Internal transition unit (where necessary)\", and a small component at the top of this slope is labelled \"Weather seal\"."
+}

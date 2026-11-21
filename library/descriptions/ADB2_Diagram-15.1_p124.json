@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-15.1_p124",
+ "source": "ADB2",
+ "label": "Diagram 15.1",
+ "page": 124,
+ "caption": "Diagram 15.1 Example of building footprint and perimeter | Buildings fitted with fire mains",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "e13d592ca2c65252c0a8f25d94bf0337f882a821bf46b444481c2aa830945caf",
+ "image_sig": {
+  "w": 754,
+  "h": 1034,
+  "grey": "9Pb8/Pz0/Pz8/Pz8/Pz8+fv//+rDsL3///////////v7///TrbrU+f/////////7+///06/s/P339v3/////+/v//9Ov9Pj6+Pr49f////v7///21fXy+PrewLHP///7+///////+/Tyw62xwv//+/v/////////9N290vL///v7///////////////////7+///2tPj8ezx7fC7wPn/+/v//7uy4v//////qLL3//v7///Uzeby6vHZ39nf/P/7+/7+/v/+///////+//7++/vh2uDk5uLu98/Y2tnZ6Pv75N3d3tvg6PXi6+7t7PD7uqelqKeoqKepp6Ojo6OjsA=="
+ },
+ "reviewed": false,
+ "description": "Two views of a building are shown. The upper view is an isometric drawing of a white pitched‑roof building set between two grey blocks representing adjoining buildings; a green shaded strip lies along the lower part of the front wall near the right‑hand grey block, with a door shown. The lower view is a plan captioned \"Plan of building AFGL where AL and FG are walls in common with other buildings.\" Its outline carries the letters A, B, C, D, E, F along the upper edge and L, K, J, I, H, G along the lower edge. Grey blocks flank the plan at the left (joining A to L) and right (joining F to G) sides. A green shaded area runs along the lower edge between H and G, with a door arc beside G. Dashed lines extend outward from the lower notch to the points N and M. Surrounding running text defines the footprint as ABCDEFGHMNKL and the perimeter as (A to B to C to D to E to F) plus (G to H to M to N to K to L), notes the green shaded area as one possible example of 15% of the perimeter, with a door in this length, and adds that if the building does not have walls in common with other buildings, the lengths AL and FG would be included in the perimeter.",
+ "first_draft": "Two views of a building are shown. The upper view is an isometric drawing of a white pitched‑roof building set between two grey blocks representing adjoining buildings; a green shaded strip lies along the lower part of the front wall near the right‑hand grey block, with a door shown. The lower view is a plan captioned \"Plan of building AFGL where AL and FG are walls in common with other buildings.\" Its outline carries the letters A, B, C, D, E, F along the upper edge and L, K, J, I, H, G along the lower edge. Grey blocks flank the plan at the left (joining A to L) and right (joining F to G) sides. A green shaded area runs along the lower edge between H and G, with a door arc beside G. Dashed lines extend outward from K to L and from I to M. Surrounding running text defines the footprint as ABCDEFGHMNKL and the perimeter as (A to B to C to D to E to F) plus (G to H to M to N to K to L), and notes the green shaded area as one possible example of 15% of the perimeter, with a door in this length."
+}

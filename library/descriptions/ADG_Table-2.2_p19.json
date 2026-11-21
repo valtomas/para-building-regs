@@ -1,0 +1,17 @@
+{
+ "key": "ADG_Table-2.2_p19",
+ "source": "ADG",
+ "label": "Table 2.2",
+ "page": 19,
+ "caption": "Table 2.2 Maximum fittings consumption optional requirement level",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "d710b00e8f7b8a84f6e49b1cd3fe0bdb17a716e56d82f40f90128393642b7706",
+ "image_sig": {
+  "w": 355,
+  "h": 288,
+  "grey": "8M3b1NLGzNHNwdDh6+vr6/LHzs/QusK6wb+1zOTl6eny6enpzquroqu5pKmm4Onp8unp6cqbp6SnrKbP6enp6fHG0cz6+vr668rR2tPSzvr15uvk8fHx8e/l6Ovm5unx9+b////////3397e3OD//+7M2fHx8fHx5tHi8fHx8fHz6fHx8fHx8e7m7PHx8fHx8NDx8fHx8fHt383w8fHx8fXV3vD/////9uHw///////x4eHw8fHx8evh6vHx8fHx9N7Z7/Hx8fHt4enx8fHx8fbZ2Oj/////+OXY39br///x0tvZ1+3x8eng1Nnl8fHx9OXk5ufv8fHu7Ofh7fHx8Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

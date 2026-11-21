@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.38_p42",
+ "source": "ADE",
+ "label": "Diagram 2.38",
+ "page": 42,
+ "caption": "Diagram 2.38 \u0007\u0007Wall type 4 – external cavity wall with timber frame inner leaf",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "e9e1b6a435c05d5c3e138b05dd91b1f9e0c409150023fcc2a1e0edd95d849906",
+ "image_sig": {
+  "w": 747,
+  "h": 572,
+  "grey": "/vHt+N3///ray8+6v8m/5///9P/d///67+npo62uxef///T/3v//+ubj2e3t7e3r///z79f///ru8dr/////+v//9P/d///67Orb//////r6/vv/9///+u3g0ePi4+Lw///y8OP///rs5cnz9PP09v//8+rd///67OTL8v////r+9vHq4v//+u7iy+bp9PT1/evs4+L///rs6tv47O37+v//8vDi///67fHb//////r///Lx4///+uno3/Hx8evd///z6t3///r/////////////8vDi///6///////////6/vr69v//+v//////////8fHx8fHx4+z//////////w=="
+ },
+ "reviewed": false,
+ "description": "The image contains two columns of plan views. The right-hand column is headed \"Diagram 2.38 Wall type 4 – external cavity wall with timber frame inner leaf\" in a green box and is marked PLAN in its lower right corner. It shows a wall running vertically, made of two parallel leaves with a cross-hatched cavity between them, the inner leaf being shown with diagonal hatching, met by a perpendicular wall extending to the right that has a cross-hatched upper layer and a plain lower layer. At the junction, small squares each marked with a diagonal cross are shown, and two leader lines from the label \"Cavity stops\" point to these squares. The left-hand column is cut off at the top, where a plan detail (its letter label not visible) shows a wall with squares marked with a diagonal cross and, at the very top, an arrow labelled \"detail\" pointing to a small triangular symbol. Below this, two further plan details labelled (b) and (c) are shown, with a single PLAN label at the bottom of the column. Each depicts two parallel cross-hatched walls with a plain gap between them and squares marked with a diagonal cross on the inner faces. In (c) an additional square marked with a diagonal cross is set within a hatched block on the left-hand wall, pointed to by an arrow labelled \"Socket detail\".",
+ "first_draft": "The image contains two plan views. The right-hand part is headed \"Diagram 2.38 Wall type 4 – external cavity wall with timber frame inner leaf\" and is marked PLAN in its lower right corner. It shows a wall running vertically, made of two parallel leaves with a cross-hatched cavity between them, met by a perpendicular wall extending to the right that has a cross-hatched upper layer and a plain lower layer. At the junction, small squares each marked with a diagonal cross are shown, and two leader lines from the label \"Cavity stops\" point to these squares. The left-hand part is cut off at the top. It shows two further plan details labelled (b) and (c), each marked PLAN, each depicting two parallel leaves with a cross-hatched cavity and squares marked with diagonal crosses at the ends. In (c) an arrow labelled \"Socket detail\" points to a central square with a diagonal cross set within a hatched block. At the top left an arrow labelled \"detail\" points to a small triangular symbol."
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.23_p34",
+ "source": "ADE",
+ "label": "Diagram 2.23",
+ "page": 34,
+ "caption": "Diagram 2.23 \u0007\u0007Wall type 2 – internal timber floor | Junctions with internal concrete floors",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "b0ee618ce83155b44f57f324d592166d7870c9f42ebc8f931c3e6bdda5f1f46f",
+ "image_sig": {
+  "w": 760,
+  "h": 366,
+  "grey": "zcHDqri3v+r09/Du7e/x7+ni26iz5eXw9PPf7uHh5+no6enp6enp7vT/9PP3///69P/6+PP///r0//Hp+P//+vT/9/jy///69Ono8PHo6/f0//f58v//+vTY5/Xu2PL57O3m7eHs7fT09e3r7Ovv8/T/9/jz+v/69PHr4Orn6fH0//H28fn/+vT/+Oj8///67vHi7ubw8fb0//bc8fT09vT78vfw///69PPs6Pbs//r0+Pf17///+vT/9dn7///69OL3+PH/9vf0//Xr+f//+uTp6OTj6cna9P/4+Pv///r///////////T/9vD4//3549rV3NvZ8P/v9PT09PTV2Q=="
+ },
+ "reviewed": false,
+ "description": "The image contains two line drawings, each captioned \"SECTION\". The left drawing sits beneath a green header reading \"Diagram 2.23 Wall type 2 – internal timber floor\". It shows two vertical wall members, each filled with a diagonal cross‑hatch pattern and drawn as two separate faces with a gap between them. Horizontal lines representing the floor structure project outwards from each wall; a triangular bracket is drawn where the lines meet each wall, and on the left wall a leader line from the word \"Hanger\" points to a small element at the foot of that bracket. The right drawing shows two adjoining buildings in section, joined by a central wall drawn with a diagonal cross‑hatch pattern as two faces with a gap and a break line in the middle. At the top of each building is an unlabelled concrete slab. On the left, a slab labelled \"Concrete slab ground floor\" lies at the level of a horizontal line marked \"Ground\", and the wall descends through that line to a dotted foundation block at the bottom. On the right, a slab labelled \"Suspended concrete ground floor\" is elevated above a second horizontal line marked \"Ground\" to its right and rests on the wall at its left end, with a row of small circles drawn in the void beneath the slab; the wall continues down to the same dotted foundation.",
+ "first_draft": "The image contains two line drawings, each captioned \"SECTION\". The left drawing sits beneath a green header reading \"Diagram 2.23 Wall type 2 – internal timber floor\". It shows two vertical wall members, each filled with a diagonal cross‑hatch pattern, drawn as two separate faces with a gap between them. Horizontal lines representing the floor structure project outwards from each wall; a triangular bracket is drawn where the lines meet each wall, and on the left wall a leader line from the word \"Hanger\" points to a small element at the foot of that bracket. The right drawing shows two adjoining buildings in section. The left has a top slab labelled \"Concrete slab ground floor\", with a wall descending through a horizontal line marked \"Ground\" to a dotted foundation block. The right has an elevated slab labelled \"Suspended concrete ground floor\" resting on a wall, with a row of small circles drawn beneath the slab and a second \"Ground\" line to its right; its wall also descends to a dotted foundation."
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADE_Table-2.1_p23",
+ "source": "ADE",
+ "label": "Table 2.1",
+ "page": 23,
+ "caption": "Table 2.1 \u0007Separating wall junctions reference table Separating wall type",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "5958adc12878059300ac8a96d1f4da20b5b3cba1455084105a0ca7861dc38ec8",
+ "image_sig": {
+  "w": 752,
+  "h": 501,
+  "grey": "zMSzr7C2trC4t9ra2tra2unk5OTk5OTk5N3Fydfk5OTi2tnc2Nz39/fu5eTx3+bw5trc297n////+vb2//b2/+/o6PL8/P////r5+f/5+f/t6ef////////6+Pj/+fj/6eDg////////+vf3//j3//Lu7fz///////r6+v/6+v/n39/8///////69vb/9vb/7+nn/v//////+vn5//n5/+3i4uPn9/f39/L39/f39/fj1dvi19na2OT219nX4/b/8Ojq7uzr6ejt+Ovt6/H//+bc29rd29jZ2d/c5e/v7+/j9fL09PXz9Pf09PXz9fP359jX3NjZ2Nnr7+7t7e/u8Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

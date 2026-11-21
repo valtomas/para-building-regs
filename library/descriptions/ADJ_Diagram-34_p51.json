@@ -1,0 +1,18 @@
+{
+ "key": "ADJ_Diagram-34_p51",
+ "source": "ADJ",
+ "label": "Diagram 34",
+ "page": 51,
+ "caption": "Diagram 34 \u0007Location of outlets from flues serving gas appliances",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-21",
+ "image_sha256": "9f44fb83ed11950252c6e73b630c4ba4a4c9c5044a3cbe579f9853e45a122684",
+ "image_sig": {
+  "w": 749,
+  "h": 727,
+  "grey": "1MvLwsi/xsPFwcLA197e3vT/////////+vX////////0//////////j06///////9P///+/27/jt9/D+//////T///j/9+j/////9//////l3erz8/b09PDz//fv////7PPx8vbs7evu6e733v3//+zy9Ovk5+vr6/j/8/Du/P/u8/Ty7ers8Pz2+fnr8/j69P7x9f/z6fD48/Px7fr//PTk3/v////////48u71/f/0///////////////3/P3/9P///////////////vb+//Tt5urn5ur6///////////08evn7///////////////7PT09PT09PT09PT09PT09A=="
+ },
+ "reviewed": false,
+ "description": "An axonometric perspective drawing of a dwelling, showing a flat-roofed part on the left, a pitched-roof part in the middle and a flat-roofed part on the right. Two lines on the left, each indicated by an arrow and the word \"Boundary\", mark the property limits. Three flues rise from the roofs, each with a vertical dimension labelled Q, and a chimney stack at the top of the pitched roof has a horizontal dimension labelled P. The walls are cut away to show interiors, with small rectangular symbols on the walls. Lettered dimension markers are placed around the building: I, F, H and L on the left cut wall, with a horizontal dimension arrow labelled J between the two boundary lines; A, B, C, G, I, D, E and T around the central pitched-roof section; and H, H, N, M and K on the right-hand section. Each letter sits beside a line or arrow pointing to a flue outlet, roof edge, opening or boundary. In the lower left, the text reads: \"See adjacent Table to Diagram 34 for key to distances\".",
+ "first_draft": "An axonometric perspective drawing of a dwelling, showing a pitched-roof part on the left and flat-roofed parts to the right. Two lines on the left, each indicated by an arrow and the word \"Boundary\", mark the property limits. Three flues rise from the roofs, each with a vertical dimension labelled Q, and a chimney stack at the top right has a horizontal dimension labelled P. The walls are cut away to show interiors, with small rectangular symbols on the walls. Lettered dimension markers are placed around the building: I, F, H and L on the left cut wall, with a horizontal dashed arrow labelled J between the two boundary lines; A, B, C, G, I, D, E and T around the central flat-roofed section; and H, H, N, M and K on the right-hand section. Each letter sits beside a line or arrow pointing to a flue outlet, roof edge, opening or boundary. In the lower left, the text reads: \"See adjacent Table to Diagram 34 for key to distances\"."
+}

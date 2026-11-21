@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-8.2_p80",
+ "source": "ADB1",
+ "label": "Diagram 8.2",
+ "page": 80,
+ "caption": "Diagram 8.2 Cavity walls excluded from provisions for cavity barriers",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "cf6a202967d3e86785821748ab8d97154d1ad00df5422c33d6ecc7c07b5c691f",
+ "image_sig": {
+  "w": 756,
+  "h": 388,
+  "grey": "9fT4+Pj4+Pj4+Pj4+Pj49u/z+/////////////////v785/3///////////////7+/vUq+bS0vb/3f//////+/v717jx5un//+nm5+jn5/v7+9fh///////d1NHm5vb7+/bZ+///////7uvs6+rq+/v42fXw8f///+Xd2t/w9Pv7+9f5///////l0NTR0Mz0+/vfxPTu7PT/5c/Vy+fo9fv7/7vy4uX7//Xl6efk+fv7+v6x6OLn8f/h297p6fL7+//1x///////8vLy////+/v///z///////////////vDtbW1tbW1tbW1tbW1tbXAimlhZWhpZmdmZWdaVVVVeA=="
+ },
+ "reviewed": false,
+ "description": "The image shows Diagram 8.2, titled in a green band along the bottom 'Cavity walls excluded from provisions for cavity barriers'. On the left is a three-dimensional section of a cavity wall containing a rectangular void labelled 'Opening', with a zigzag break line on the inner leaf. The cavity is filled with green material at the top and around the opening. Leader lines carry the labels 'Close cavity at top of wall (unless cavity is totally filled with insulation)', 'Opening', 'Close cavity around opening', and 'Two leaves of brick or concrete each at least 75mm thick'. The words 'See para 8.3' appear at the top left. To the right, a 'NOTES:' block lists: 1. Materials used to close the cavity in this arrangement do not need to achieve a specific performance in relation to fire resistance. 2. Domestic meter cupboards may be installed provided that the following conditions are met: a. There are no more than two cupboards per dwelling b. The openings in the outer wall leaf are not bigger than 800×500mm for each cupboard c. The inner leaf is not penetrated except by a sleeve not more than 80×80mm, which is fire-stopped. 3. Materials achieving class B-s3, d2 or worse may be placed within the cavity.",
+ "first_draft": "The image shows Diagram 8.2, titled in a green band along the bottom 'Cavity walls excluded from provisions for cavity barriers'. On the left is a three-dimensional section of a cavity wall containing a rectangular void labelled 'Opening', with a zigzag break line crossing the wall. The cavity is filled with green material at the top and around the opening. Leader lines carry the labels 'Close cavity at top of wall (unless cavity is totally filled with insulation)', 'Opening', 'Close cavity around opening', and 'Two leaves of brick or concrete each at least 75mm thick'. The words 'See para 8.3' appear at the top left. To the right, a 'NOTES:' block lists: 1. Materials used to close the cavity in this arrangement do not need to achieve a specific performance in relation to fire resistance. 2. Domestic meter cupboards may be installed provided that the following conditions are met: a. There are no more than two cupboards per dwelling b. The openings in the outer wall leaf are not bigger than 800×500mm for each cupboard c. The inner leaf is not penetrated except by a sleeve not more than 80×80mm, which is fire-stopped. 3. Materials achieving class B-s3, d2 or worse may be placed within the cavity."
+}

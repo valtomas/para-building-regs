@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.5_p26",
+ "source": "ADE",
+ "label": "Diagram 2.5",
+ "page": 26,
+ "caption": "Diagram 2.5 \u0007\u0007Wall type 1 – external cavity wall with masonry inner leaf",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "3a15b95b7cd5fc70975ea18d6e5d3ae59c070f4370f119072aa9626a3ce94a8a",
+ "image_sig": {
+  "w": 362,
+  "h": 535,
+  "grey": "yri/xci2sbG/x7y0uMjb5erp6enps5yuoc3BzMbHzu/j8PDw8PDw8PDw8PDw8PDt6f/59vTy9Ov/////////9On/9Pvy8vno//////////Tp//Tu6/P66f/////////06f/0/PLy++j/////////9On/9O3l6/np//////////Tp//T96eHo6Ont6ezz///06f/0/enZ9/f69/n38v//9On/9O3g3+Ha6+7s7vX///Tp//T88vL56PL0///////06f/07ury+un//O7t7P//9On/9Pvy8vrp//////////Tp//f18u/y5v/////////05vf39/f39/f39/f39+Xe6Q=="
+ },
+ "reviewed": false,
+ "description": "The image shows a line drawing labelled at the top as \"Diagram 2.5 Wall type 1 – external cavity wall with masonry inner leaf\". In the bottom right corner, the word \"PLAN\" is written. The drawing depicts two parallel vertical walls, each divided into individual rectangular blocks. The left wall is drawn with diagonal hatching, while the right wall features a cross-hatched pattern. These two walls are separated by a gap. Attached to the right wall, extending horizontally to the right, is another section of wall, also composed of hatched blocks. In the gap between the two vertical walls, there is a small, cross-hatched rectangular block. An arrow points directly to this hatched block, with a leader line connecting it to the label \"Cavity stop\" on the right side. The drawing is enclosed within a simple black border.",
+ "first_draft": "The image shows a line drawing labelled at the top as \"Diagram 2.5 Wall type 1 – external cavity wall with masonry inner leaf\". In the bottom right corner, the word \"PLAN\" is written. The drawing depicts two parallel vertical walls, each divided into individual rectangular blocks. The left wall is drawn with diagonal hatching, while the right wall features a cross-hatched pattern. These two walls are separated by a gap. Attached to the right wall, extending horizontally to the right, is another section of wall, also composed of hatched blocks. In the gap between the two vertical walls, there is a small, solidly shaded rectangular block. An arrow points directly to this shaded block, with a leader line connecting it to the label \"Cavity stop\" on the right side. The drawing is enclosed within a simple black border."
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.8_p27",
+ "source": "ADE",
+ "label": "Diagram 2.8",
+ "page": 27,
+ "caption": "Diagram 2.8 \u0007\u0007Wall type 1 – position of leaf of external cavity wall",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "08e501a785f9539f236e9a54dfed9ece02f570f66c564b9119731dfb4fca63a8",
+ "image_sig": {
+  "w": 371,
+  "h": 405,
+  "grey": "3bCvvrGxma+mwrWjo7HA4fPp5enp1LK2tMi2uLrAveLz6enp6cu5w7y3tMS1vrHg5fPz8/Pz8/Pz8/Pz8/Pz7en////////k4urj5uv///Tp////////9OXk5vT////06fz39///////////////9On////4+Pj+//////////Tp////////9fj4+Pj4+PPw6f////////r/9vf36Pb/7+n33+Ll9//6+Pn//+34/+/p////////9fXx+Pjw+v/v6f////////rxw9DHzPD/7+n///////v1+vr6+fr68/Dp+vj4+Pj8///////////06fX19fX19fX19fX19fX17w=="
+ },
+ "reviewed": false,
+ "description": "The image is a plan-view diagram titled \"Diagram 2.8 Wall type 1 – position of openings in masonry inner leaf of external cavity wall\". On the left, the label \"Separating wall\" is positioned in an area bounded by a vertical line on the right and two angled lines on the left. A horizontal double-headed arrow labelled \"x\" measures the distance from this vertical line to a rectangle. The rectangle is labelled below as \"Masonry inner leaf of external cavity wall\". A vertical double-headed arrow labelled \"y\" spans the rectangle from its top edge to its bottom edge. Above the rectangle, text reads \"x not more than 700mm and y not less than 1m\". On the far right, a vertical line with zigzag break marks indicates the wall continues beyond the drawing.",
+ "first_draft": "The image is a plan-view diagram titled \"Diagram 2.8 Wall type 1 – position of openings in masonry inner leaf of external cavity wall\". On the left, the label \"Separating wall\" sits beside two diagonal lines that mark an opening leading into the area on the right. That right-hand area is bounded by a wall line which ends in zigzag break marks, showing the wall continues beyond the drawing. Within it is a rectangle, captioned below as \"Masonry inner leaf of external cavity wall\". A horizontal double-headed arrow labelled \"x\" measures the gap between the separating wall line and the left side of the rectangle. A vertical double-headed arrow labelled \"y\" spans the rectangle from its top edge to its bottom edge. Above the rectangle, text reads \"x not more than 700mm and y not less than 1m\"."
+}

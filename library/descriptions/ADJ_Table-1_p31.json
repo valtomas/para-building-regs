@@ -1,0 +1,17 @@
+{
+ "key": "ADJ_Table-1_p31",
+ "source": "ADJ",
+ "label": "Table 1",
+ "page": 31,
+ "caption": "Table 1 \u0007Air supply to solid fuel appliances",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-20",
+ "image_sha256": "3a9fa9e67bdda11fb83688a91206cd20601a7108b8e42b2198e8a44c6db2d155",
+ "image_sig": {
+  "w": 755,
+  "h": 540,
+  "grey": "1c7BvcHBur7j4+Pj4+Pj5NvN2ujo4M3Q0c7m6Ojo6Onh0+Db3O7Y2eDt7Ovt6+/z5N3o5ubo5OXn5+Xk5uTo6uLY2Nfo6tTZ6uv4+Pj4+Pjw6+jn8/bc3d7h5Pf////////////24+bj3uPq//////n4+Pj47tLS1dXb+Pj4+Pjl3N7Z4+/Z2tzf7v/////////////22trb2tzy//////L39/f38uTl4uXj9ff39/ju4OHe3uXu8PDw7u7v8PDz8+fn5ebn5ujn6Obn7vb2+PDg2dbY3unm89rx6+Xz3fTy5ubo5ePo5+fm5ubp5+fr69DSz9HP3uHe4uLj4eDg5A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADH_Table-7_p18",
+ "source": "ADH",
+ "label": "Table 7",
+ "page": 18,
+ "caption": "Table 7 \u0007\u0007Materials for below ground gravity drainage Material British Standard",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "2b1d4acfc118a2084fac8b1aac7ef009d6196c73a814ce2f47cdf50e85efa0f3",
+ "image_sig": {
+  "w": 362,
+  "h": 390,
+  "grey": "wKm5qZyim62qoKuno6nW4erp6cO4sb63scXp4enp6e/HvMzj4+Pj4+PHub27zePr29HP6vX19fX19fX19fX19/Hk7Pr//////+zx6ezu///07O/7///////47Onx+f//8ezv//////////Lp9/////Hr9P/////////w6PX////o2N/x9PT09PT04d/d9PT35tnZ3P///////////////+7n//////////nh6uX+///t/P/////////64uji/v//4NPZ2PT/////++ru6Pz//+rd3ubr5+nq6efh4unz9Pfl19zi39vg4OLe2eLl5/v/9e7e2ef09PT09PT09PT09w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

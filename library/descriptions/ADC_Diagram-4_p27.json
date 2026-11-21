@@ -1,0 +1,18 @@
+{
+ "key": "ADC_Diagram-4_p27",
+ "source": "ADC",
+ "label": "Diagram 4",
+ "page": 27,
+ "caption": "Diagram 4 \u0007Ground supported floor – construction (see paragraph 4.7)",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "284cfd3e33d36684a626e5ff2d36008c0a7c2e10e949bd497cfd125d5b8e6177",
+ "image_sig": {
+  "w": 749,
+  "h": 538,
+  "grey": "zcG9ubS3vb23uLi1uc7W1u/39/f39/f39/f39/f39/f1/+vU2OPv8v/839bU8O747u/Lu7m//v//+NfX1+Hu8fX/yLi4t9vb8OGXkZO92PHu8c/Cw8jv8f/1w8XC2ef/9f/j2dnY8Pb/+tnW2eTw/Ovs7uzq/v//7e7s7PL////1////////////////////9f/x7u7u7/L/++3u7fDu+O/vuKSjp+3x//XGxcbV2PH1/9zR0dHi3PDns6+wz+/y9f/g1NPW7fX/9sPEwtnn//X/8/Dw8P////ra2Nrk7/zr6+3r7P7//+zt7Ozw////7PHx8fHx8fHx8fHx8fHx8Q=="
+ },
+ "reviewed": false,
+ "description": "Diagram 4, titled \"Ground supported floor – construction (see paragraph 4.7)\", shows four vertical sections of a floor in a two‑by‑two layout, labelled (a) to (d). Each section stacks horizontal layers, with a dashed line at the top labelled \"Floor finish\" and a layer of small shapes at the bottom labelled \"Hardcore\".\n\n(a), captioned \"Damp-proof membrane below slab\", is headed \"Insulation above slab\". From the top: wavy \"Insulation\", grey \"Concrete slab\", dotted \"Damp-proof membrane\", \"Blinding\", then \"Hardcore\".\n\n(b), captioned \"Damp-proof membrane above slab\", shows from the top: wavy \"Insulation\", \"Damp-proof membrane\", \"Concrete slab\", \"Hardcore\".\n\n(c), captioned \"Damp-proof membrane below slab\", is headed \"Insulation below slab\". From the top: \"Concrete slab\", wavy \"Insulation\", \"Damp-proof membrane\", \"Blinding\", \"Hardcore\".\n\n(d), captioned \"Damp-proof membrane above slab\", shows from the top: \"Damp-proof membrane\", \"Concrete slab\", wavy \"Insulation\", \"Blinding\", \"Hardcore\".",
+ "first_draft": "Diagram 4, titled \"Ground supported floor – construction (see paragraph 4.7)\", shows four vertical sections of a floor in a two‑by‑two layout, labelled (a) to (d). Each section stacks horizontal layers, with a dashed line at the top labelled \"Floor finish\" and a layer of small shapes at the bottom labelled \"Hardcore\".\n\n(a), captioned \"Damp-proof membrane below slab\", is headed \"Insulation above slab\". From the top: wavy \"Insulation\", grey \"Concrete slab\", dotted \"Damp-proof membrane\", \"Blinding\", then \"Hardcore\".\n\n(b), captioned \"Damp-proof membrane above slab\", shows from the top: wavy \"Insulation\", \"Damp-proof membrane\", \"Concrete slab\", \"Hardcore\".\n\n(c), captioned \"Damp-proof membrane below slab\", is headed \"Insulation below slab\". From the top: \"Concrete slab\", wavy \"Insulation\", \"Damp-proof membrane\", \"Blinding\", \"Hardcore\".\n\n(d), captioned \"Damp-proof membrane above slab\", shows from the top: \"Damp-proof membrane\", \"Concrete slab\", wavy \"Insulation\", \"Blinding\", \"Hardcore\"."
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADE_Table-7.2_p73",
+ "source": "ADE",
+ "label": "Table 7.2",
+ "page": 73,
+ "caption": "Table 7.2 \u0007Example calculation for an entrance hall (Method B) Step 1 Calculate the surface area related to each absorptive material (i.e. for the floor, walls, doors and ceiling).",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "6b982a742b6af5f70a553b2bfde5563aff4deb323ed96f3f8501c7ef93318e2e",
+ "image_sig": {
+  "w": 756,
+  "h": 1005,
+  "grey": "0s3Cw8DDw8TEwMDH1dvf4ePz+Pn7++He6/b7+/v75+vm4t/j5+3n3+Dl5/Hy8un16+7z8+vn7Obe297d3Nzj7Ov+///67Prv+O/09fT08vXr6ebm5+Hl5uno5+jn7/H16+7z8/Pz7Ojt5tzc5Oro7Ov+//////De+PT29vX29Pjv7u3t7e3k3ujy8vPx8/D09fDy+Pv779/z7/Hw7/Du8ufl4+Ln7evu7e7q6Ozv7vDy5d7b3N7e3d3d497d3d/28ezt7vf369/u6Ozp4uLh5PLx7e7u7+/w7u/t8eri3PPx6Obl7/Xx5u/o7eno6Obq7OPg3uDg4+Ln6efp5+no8w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

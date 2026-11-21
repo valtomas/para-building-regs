@@ -1,0 +1,18 @@
+{
+ "key": "ADJ_Diagram-25_p39",
+ "source": "ADJ",
+ "label": "Diagram 25",
+ "page": 39,
+ "caption": "Diagram 25 \u0007Constructional hearth suitable for a solid fuel appliance (including open fires)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-20",
+ "image_sha256": "a5fd2b4cfe7576222915803e572974cdf81148f12e21ee9a9ed5918fa9c80e24",
+ "image_sig": {
+  "w": 756,
+  "h": 383,
+  "grey": "yry2rKatrKe2qK2mrqyut+fo6enp6enp6enm6ejl5+b0////+fX//crW1tHS///69P////Xi//7n7+jq7v//+vT////z6/////////////r0////9eP/zcfOzv/////69P///OO0xsbGxsbP////+vT////U2trazNDOxf////r0////29ra2tHb2sX////69P//07e0rb+trbXF////+vT//+bL9OLB2rjH//////r0////7+3lqtXV1dXo///69P///N7uufr/////////+vT////076Xzz77LyP////r0////9/Lp///////////69P////7/////////////+g=="
+ },
+ "reviewed": false,
+ "description": "This section drawing is titled \"Section through hearth\". It depicts a horizontal grey rectangle representing the hearth, positioned adjacent to a vertical, hatched wall structure on the left. The top edge is labeled \"Top surface of hearth\". An internal dimension line indicates the vertical thickness of the hearth is \"At least 125mm\". A larger dimension line on the left measures the vertical distance from the top surface of the hearth down to the level of the underlying material, marked as \"At least 250mm\". Beneath the projecting right-hand edge of the hearth, there is a gap labeled \"Air space of at least 50mm\". Below this space, two square symbols containing diagonal cross-hatches represent combustible material, the label \"Combustible material\" pointing to the lower symbol. The drawing illustrates the spatial relationship between the hearth thickness, the distance from the hearth to the underlying material, the air gap, and the position of the combustible materials.",
+ "first_draft": "This section drawing is titled \"Section through hearth\". It depicts a horizontal grey rectangle representing the hearth, positioned adjacent to a vertical, hatched wall structure on the left. The top edge is labeled \"Top surface of hearth\". An internal dimension line indicates the vertical thickness of the hearth is \"At least 125mm\". A larger dimension line on the left measures the total height of the hearth above the level of the underlying material, marked as \"At least 250mm\". Beneath the projecting right-hand edge of the hearth, there is a gap labeled \"Air space of at least 50mm\". Below this space, two square symbols containing diagonal cross-hatches are identified by the label \"Combustible material\". The drawing illustrates the spatial relationship between the hearth thickness, its height, the air gap, and the position of combustible materials."
+}

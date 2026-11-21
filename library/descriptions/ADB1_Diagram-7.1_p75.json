@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-7.1_p75",
+ "source": "ADB1",
+ "label": "Diagram 7.1",
+ "page": 75,
+ "caption": "Diagram 7.1 | Construction of protected shafts | Uninsulated glazed screens to protected shafts",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "bf4ebe3535127361940806916c21bffd2f8e19b27212de1f0915a68dae618b91",
+ "image_sig": {
+  "w": 737,
+  "h": 522,
+  "grey": "7Oz6+vr6+vr6+vr6+vr6+vv//+za3d7d3d3a3d/r///7///z6Orp+/v7+/r8/P//+///+vf39/b39/f38eX3//v///D39/fm8O3z9/f39P/7///w9/f65/D2+/f8//T/+/7+68/d4ujh9Ozj7P/0//v17/DU6Ozq8+3s9u3/9P/7///nz87q4drr9tLl//T/+///9NHM5eXo7PfN1PP0//v///Ts6vHf2Ov++/z+9P/7///0////4NXc/f////T/+///8O/v79/q7+/v7+/3//v///Xt7e3s7e3s7u3s8f/1+Pjs5uTf6OTl5OXn4uz4gmNcYmFjY2NVVVVVVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "This drawing is a plan labelled at the bottom \"Diagram 7.1 Construction of protected shafts\", with \"See para 7.23\" at top left and a legend at top right reading \"Fd Fire doorset\". An introductory note above the plan states the diagram shows three common examples illustrating the principles of the construction of protected shafts, and that the elements enclosing the shaft (unless formed by adjacent external walls) are compartment walls and floors. The plan shows three rectangular shafts, A, B and C, the compartment walls drawn as thick green lines and the external wall as a thin line. Leader lines identify one wall as \"Compartment wall\" and another as \"External wall\". Shaft A on the left contains a vertical-line screen and one \"Fd\" door, and is described below as bounded on three sides by compartment walls and on the fourth by an external wall. Shaft B in the middle contains a horizontal-rung ladder symbol and two \"Fd\" doors, described as bounded on four sides by compartment walls. Shaft C on the right contains small circles and one \"Fd\" door, described as a services duct bounded on four sides by compartment walls. A note at the bottom states that the shaft structure (including any openings) should meet the relevant provisions for both compartment walls (paragraphs 7.5 to 7.20) and external walls (Sections 10 and 11 and Diagram 3.10).",
+ "first_draft": "This drawing is a plan labelled at the bottom \"Diagram 7.1 Construction of protected shafts\", with \"See para 7.23\" at top left and a legend at top right reading \"Fd Fire doorset\". An introductory note above the plan states the diagram shows three common examples illustrating the principles of the construction of protected shafts, and that the elements enclosing the shaft (unless formed by adjacent external walls) are compartment walls and floors. The plan shows three rectangular shafts, A, B and C, enclosed by thick dark lines representing walls. Leader lines identify one wall as \"Compartment wall\" and another as \"External wall\". Shaft A on the left contains a vertical-line screen and one \"Fd\" door, and is described below as bounded on three sides by compartment walls and on the fourth by an external wall. Shaft B in the middle contains a horizontal-rung ladder symbol and two \"Fd\" doors, described as bounded on four sides by compartment walls. Shaft C on the right contains small circles and one \"Fd\" door, described as a services duct bounded on four sides by compartment walls. A note at the bottom references paragraphs 7.5 to 7.20 and Sections 10 and 11 and Diagram 3.10."
+}

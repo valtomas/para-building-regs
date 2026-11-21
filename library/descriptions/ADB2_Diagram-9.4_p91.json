@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-9.4_p91",
+ "source": "ADB2",
+ "label": "Diagram 9.4",
+ "page": 91,
+ "caption": "Diagram 9.4 | Provisions for cavity barriers in double-skinned insulated roof sheeting Extensive cavities Maximum dimensions of cavities",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "232b62eba3ac40ed728bbc44842a96bbd340131f0609bf42e8e663800aa80a6d",
+ "image_sig": {
+  "w": 737,
+  "h": 286,
+  "grey": "9fX19fX19fX19fX19fX19efm///////////////////7////9O7/////8u//////+////+re/v///+Lm//////v//+ba3tz+//Pb3vP////7////////////////////+///3/jm5fnvydrayu////v/3cOwwsK919GUws7L5Or7/8WGhYWFmK+AaIWFpuD4+//t2dnZ2d/m2dnY2OX///v////////////////////7/+jb3N7f39jf3Nrb3tzy+//n3uDd4tju//////////v///////////////////+HYmViY2JjY2NjZGNkYmFhiWldZ2JmamNnaWZoZmhPTw=="
+ },
+ "reviewed": false,
+ "description": "A cross-section drawing on a white background, titled in a green banner at the bottom: \"Diagram 9.4 Provisions for cavity barriers in double-skinned insulated roof sheeting\". The top-left corner reads \"See para 9.8\". Two arrangements are drawn side by side, each showing profiled (trapezoidal) roof sheeting over a band of insulation.\n\nOn the left, headed \"Arrangement A\" with the sub-line \"Acceptable without cavity barriers\", the profiled upper skin and the flat lower skin enclose a continuous band of cross-hatched insulation that fills the space between them, the insulation touching both skins.\n\nOn the right, headed \"Arrangement B\" with the sub-line \"Cavity barriers necessary\", the same profiled upper skin is shown over a band of cross-hatched insulation, but the insulation does not reach the upper skin, leaving an open cavity between them in the profile. A solid green block stands at the centre between the two halves of the insulation and rises up into this cavity above it. To the right, two leader lines label this green block \"Cavity barrier\" and the cross-hatched band \"Insulation\". The lower skin runs as a continuous flat line and does not sag.\n\nBeneath both drawings, a line of text states: \"The insulation should make contact with both skins of sheeting. See also Diagram 8.2a regarding the need for fire-stopping where such roofs pass over the top of a compartment wall.\"",
+ "first_draft": "A cross-section drawing on a white background, titled in a green banner at the bottom: \"Diagram 9.4 Provisions for cavity barriers in double-skinned insulated roof sheeting\". The top-left corner reads \"See para 9.8\". Two arrangements are drawn side by side, each showing a double profile of trapezoidal roof sheeting.\n\nOn the left, headed \"Arrangement A\" with the sub-line \"Acceptable without cavity barriers\", the upper and lower trapezoidal skins enclose a continuous band of cross-hatched insulation that fills the space between them.\n\nOn the right, headed \"Arrangement B\" with the sub-line \"Cavity barriers necessary\", the same double profile is shown, but the lower skin sags downward, leaving an open cavity beneath the insulation. A solid green block sits centrally between the two halves of the insulation. To the right, two leader lines label this green block \"Cavity barrier\" and the cross-hatched band \"Insulation\".\n\nBeneath both drawings, a line of text states: \"The insulation should make contact with both skins of sheeting. See also Diagram 8.2a regarding the need for fire-stopping where such roofs pass over the top of a compartment wall.\""
+}

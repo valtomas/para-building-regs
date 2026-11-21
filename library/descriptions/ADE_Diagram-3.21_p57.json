@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-3.21_p57",
+ "source": "ADE",
+ "label": "Diagram 3.21",
+ "page": 57,
+ "caption": "Diagram 3.21 \u0007\u0007Floor type 3 – floor penetrations",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "be7ecdc2c48c1898cc2a5b14236b2a768cbb6383cb39e79079adf29ed38909d2",
+ "image_sig": {
+  "w": 355,
+  "h": 470,
+  "grey": "37a2vcHGsK+1qr3CrcXZ2eja2tra2rOwsqyy1dra2tro////////////////////6P////v6+vDM0Nv7/////+j////l9vbx9eiz9P/k1uHo////3ujo6v/osvT53tj76Pb09NXq6ur/8rHw3fT09ejg087N6Ofh7eWs5c/T09vo///32erq2/fyqun/////6P//8+Hy8uP18qnt/////+jx7eXd8fHg5uGq3+3o7e7o6t/f2ejo3t3Vq9rX5d7p6P///9/q6er/8bL08fPy+ej////r8vHz//fS6P/T1Pzo///////////m3/b/+Pj/4u3t7e3t7e3t7e3t7cjQyw=="
+ },
+ "reviewed": false,
+ "description": "This is a section drawing titled Diagram 3.21, Floor type 3 – floor penetrations, with the word SECTION printed at the bottom right. A vertical wall of stacked, cross‑hatched blocks runs down the centre of the image. To the right of this wall, two vertical lines representing pipes run vertically, surrounded by a hatched sleeve; an arrow labels this Lag pipes with mineral wool, and a second arrow points to the bottom of the sleeve with the label Enclosure. On either side of the wall, two horizontal floor levels are shown. The upper level is depicted with a wavy line of insulation, while the lower level shows insulation drawn as loops resting on angled battens. At the upper level on the right, an arrow labelled Fill small gap with flexible seal points to the narrow space between the floor line and the top of the pipe sleeve. At the lower level on the right, an arrow labelled Seal with tape or sealant points to the junction where the floor construction meets the enclosure. The left side shows the same floor structures but without any seal indicated.",
+ "first_draft": "This is a section drawing titled Diagram 3.21, Floor type 3 – floor penetrations, with the word SECTION printed at the bottom right. A vertical wall of stacked, cross‑hatched blocks runs down the centre of the image. Two vertical lines representing pipes pass through this wall, surrounded by a hatched sleeve; an arrow labels this Lag pipes with mineral wool, and a second arrow points to the bottom of the sleeve with the label Enclosure. On either side of the wall, two horizontal floor levels are shown, each depicted with insulation drawn as loops resting on angled battens. At the upper level on the right, an arrow labelled Fill small gap with flexible seal points to the narrow space between the floor line and the top of the pipe sleeve. At the lower level on the right, an arrow labelled Seal with tape or sealant points to the junction where the floor construction meets the enclosure. The left side shows the same floor structures but without any seal indicated."
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADB1_Table-0.1_p18",
+ "source": "ADB1",
+ "label": "Table 0.1",
+ "page": 18,
+ "caption": "Table 0.1 Continued",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "e754552455b0a3a0b86acc4286c480937bbc92f1f75c96444f753e67816934ef",
+ "image_sig": {
+  "w": 754,
+  "h": 1029,
+  "grey": "0szIytXU1NPU09TT1NPU2u/t+vzy4+rr7Ovt6u3r7/n7////9+rt6+z09PT8/fz7+/////bj5+Xp5ujo7/Du+fv////15e7t8O3v8/f39vj7////9+ny9/f49/f7///79Pf7/PLj4ebq7evp8vP3+fv////14+X1//////////vo5fn88ufp6/Hv8vP08vT0+fz3+e/h4+Pj4+fn7fHx8+ru9ff7//////////////vw5+nr6Oro6Ofu7/Hw8/H59uzq6vT8/Pz8+/z8/Pv7+vXt7uzu7O7t7e/u8Pf29/bz5+Tm5ejm8Pf8///////79uvq6u3t6u709fT19Pf8+Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

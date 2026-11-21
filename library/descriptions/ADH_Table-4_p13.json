@@ -1,0 +1,17 @@
+{
+ "key": "ADH_Table-4_p13",
+ "source": "ADH",
+ "label": "Table 4",
+ "page": 13,
+ "caption": "Table 4 \u0007Materials for sanitary pipework",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "5ba2effd3a88a8952c14f1ccb3916f46cc5a71af2e893301496f24ee62e606e5",
+ "image_sig": {
+  "w": 371,
+  "h": 403,
+  "grey": "5ai5ypmgm6mxopqynKOnzeW+x+Li4uLi17/BvsLi4urw0Ov19fX19fPw8e/w9fX4+uju///////57O7r6vn///rp8P//////9+fp7OXu8f/65e709/////fm5/b0+Pj/+ubs8fL////56er4//////nt9v33/P//9uTq7v/////64ebm7fr///fl7PH/////+ef+//v////35urw//////rl4+jm////+Obq8P/////yyM/Qzen///bi6Ov/////+Oj1///////24ujp//////fd9///////9uTn6ebs///x1OTf3+Hc3+Li3N/i39z1+fXi4eLd3uDe6fX19fX19w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

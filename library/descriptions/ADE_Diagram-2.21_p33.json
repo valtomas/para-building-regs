@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.21_p33",
+ "source": "ADE",
+ "label": "Diagram 2.21",
+ "page": 33,
+ "caption": "Diagram 2.21 \u0007\u0007Wall type 2 – tied junction | – external cavity wall with internal masonry wall",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "c5c7ab7778358be9e90ba12d153557f9d2b221c12bda206312a233dae4ba98c5",
+ "image_sig": {
+  "w": 355,
+  "h": 426,
+  "grey": "3rOzur7DpqmdsMClqqmmtvLp6enp6da3u7m9ssGwvb3t4eHh4eG6tbC8sLa+tb/h6P///////////////P7+/+j/////////////7+3n5vjo//bj6fX/+efq6f7/////6P///O747d7R4vD4ytXk/+j///DvzdLW7v3q//fz6fLo9ebq0NTq7OHm8ffq6ub56Nrd8vn07+j07+nb6/ro7+jW6Pnq5dnm+frs4e7l/Pfo293r6evs7e3o6vvr7vr/6Pzt8Pn///nv8Pfu4OH//+j/////////+e7r8u/t///o//Th4ebk6vj///z1////4uzs7Ozs7Ozs7Ozs7Ozs7A=="
+ },
+ "reviewed": false,
+ "description": "The drawing is an isometric line diagram headed \"Diagram 2.21 Wall type 2 – tied junction – external cavity wall with internal masonry wall\". It depicts an external cavity wall (two leaves) meeting a single-leaf internal masonry wall at a right-angle junction. The left-hand wall is drawn as an external cavity wall, with a vertical gap between its leaves; this gap is closed at the top by a small hatched block pointed to by the label \"Cavity stop\". A leader line marked \"Tied junction\" indicates the top of the junction where the inner leaf of the cavity wall is tied to the internal masonry wall. The right-hand wall, a single leaf of rectangular masonry blocks laid in horizontal courses, is labelled \"Internal masonry wall\". A further leader line, \"Separating wall type 2\", points to the front face of this internal masonry wall. The two walls are shown intersecting at right angles, with the external cavity wall running off to the left and the internal masonry wall running off to the right.",
+ "first_draft": "The drawing is an isometric line diagram headed \"Diagram 2.21 Wall type 2 – tied junction – external cavity wall with internal masonry wall\". It depicts two leaf walls of masonry blocks meeting at a junction. The left-hand wall is drawn as an external cavity wall, with a vertical gap between its leaves; this gap is closed at the top by a small hatched block pointed to by the label \"Cavity stop\". A leader line marked \"Tied junction\" indicates the top of the junction where the two walls overlap and are connected. The right-hand leaf, shown as rectangular masonry blocks laid in horizontal courses, is labelled \"Internal masonry wall\". A further leader line, \"Separating wall type 2\", points to the lower body of the junction. The two walls are shown intersecting at right angles, with the internal masonry wall forming the corner of the junction and the external cavity wall running off to the left."
+}

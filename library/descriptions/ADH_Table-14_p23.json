@@ -1,0 +1,17 @@
+{
+ "key": "ADH_Table-14_p23",
+ "source": "ADH",
+ "label": "Table 14",
+ "page": 23,
+ "caption": "Table 14 \u0007Materials for access points",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "ece802a1e4e83b909455629198f10f814f2b9d1fa65dde34c654bdfd721aae3a",
+ "image_sig": {
+  "w": 355,
+  "h": 255,
+  "grey": "5sPSy7vJysjI0NDPz8zH3PK6w8+1q62svLizp6+urenfvsPb29vb29vKvr7Dwdvb8MnQ7+/v7+/v48/VzM/v7/Xtw8XTxMPt////////////9srIwuP///////////////bQ2drX2ef/5svW9/b9///2zM7a8/j//+jN0+Dd+f//9c7D3Mnt///ky9r///////PI1/nv/P//6NbU//////bu5+nv7+/v7+vr6e/v7+/y5sK7zM7f//////////////TEybrT/////vz9///////3yMzP1/j//+3Hy/j/////+uro7v/////qzcTb7v//7N/f39/f39/f2tfT0dff3w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

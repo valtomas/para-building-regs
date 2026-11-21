@@ -1,0 +1,18 @@
+{
+ "key": "ADJ_Diagram-30_p44",
+ "source": "ADJ",
+ "label": "Diagram 30",
+ "page": 44,
+ "caption": "Diagram 30 \u0007Wall adjacent to hearths",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-21",
+ "image_sha256": "a40836a2fd46f2f2bd7b3b5f0c6ebe1709dbe9fcbe75847b8e29c70339d69666",
+ "image_sig": {
+  "w": 755,
+  "h": 727,
+  "grey": "zsvEwcPGwt7e3t7e3t7e4fT///f39v/s1Ov///////r0///V19PR3Ojd0fD////69P//8NPR9//z/vXYy///+vT/68H17+/56PPt/67+//r0/+m77fDw6uLq//is///69P/pvPXv59Lc6OjssP//+vT/8sjty8Ds1K/d8ur///r0//v56PDEqs728er2///69P/////z1Oz/////////+vT/+ujl4+Lm09DZz9r3//r0//nK1dLS3+rq08TR6v/69P/5xNTU1OPw9MrK1er/+vT/+cjFyM3f8PTO3eX3//r0//jK1Nva2OLi2OLh8f/66/T09PT09PT09PT09PT08Q=="
+ },
+ "reviewed": false,
+ "description": "The drawing, titled \"Diagram 30 Wall adjacent to hearths\", is an isometric line drawing of the corner of a room formed by two walls, with a rectangular hearth block on the floor and a dashed outline labelled \"Appliance\" rising from it. The walls are labelled \"Solid, non-combustible material, e.g. masonry or concrete\". Dimension \"H\" marks the height of the wall portion, with the note \"See table\" pointing to it. Dimension \"T\" marks the wall thickness on the right. Two clearances labelled \"X (Note 1)\" run from the hearth to each wall, and the dimensions \"At least 150mm\" appear at the left wall base and at the right of the hearth. A pointer labelled \"Clearances from Diagram 26\" indicates the hearth edge.\n\nBelow is a table headed \"Location of hearth or appliance\" and \"Solid, non-combustible material\", with sub-columns \"Thickness (T)\" and \"Height (H)\". The first row, \"Where the hearth abuts a wall and the appliance is not more than 50mm from the wall\", has a thickness of 200mm and a height of \"At least 300mm above the appliance and 1.2m above the hearth\". The second row, \"Where the hearth abuts a wall and the appliance is not abut a wall but not more than 300mm from the wall\", has a thickness of 75mm and the same height. The third row, \"Where the hearth does not abut a wall and is no more than 150mm from the wall (see Note 1)\", has a thickness of 75mm and a height of \"At least 1.2m above the hearth\". A note reads: \"Note: 1. There is no requirement for protection of the wall where X is more than 150mm.\"",
+ "first_draft": "The drawing, titled \"Diagram 30 Wall adjacent to hearths\", is an isometric line drawing of the corner of a room formed by two walls, with a rectangular hearth block on the floor and a dashed outline labelled \"Appliance\" rising from it. The walls are labelled \"Solid, non-combustible material, e.g. masonry or concrete\". Dimension \"H\" marks the height of the wall portion, with the note \"See table\" pointing to it. Dimension \"T\" marks the wall thickness on the right. Two clearances labelled \"X (Note 1)\" run from the hearth to each wall, and the dimensions \"At least 150mm\" appear at the left wall base and at the right of the hearth. A pointer labelled \"Clearances from Diagram 26\" indicates the hearth edge.\n\nBelow is a table headed \"Location of hearth or appliance\" and \"Solid, non-combustible material\", with sub-columns \"Thickness (T)\" and \"Height (H)\". It lists three rows: 200mm with \"At least 300mm above the appliance and 1.2m above the hearth\"; 75mm with the same height; and 75mm with \"At least 1.2m above the hearth\". A note reads: \"Note: 1. There is no requirement for protection of the wall where X is more than 150mm.\""
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-3.7_p39",
+ "source": "ADB1",
+ "label": "Diagram 3.7",
+ "page": 39,
+ "caption": "Diagram 3.7 Horizontal escape for flats served by a single common stair",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "f05c8371f46d33a5054ed18ffc47252ee8cae828d8e3fd5daeac87cb8c810ceb",
+ "image_sig": {
+  "w": 737,
+  "h": 716,
+  "grey": "8/L0+/v7+/v7+/v7+/v7+/vy7PH////////////////78vbq3tjv8vD/////////+/f97+Ha9Pj3//////////vr6OPZ1ODr6//////////77PLk8N7p7er/////////+/f98f3s9Pj3//////////v19vH259zf7/Ln6+zq6vT78O70//36+/7z2drc6PD8+/D13tj16v//7fP2+/////v3/eTe/fP//+/T2dbe5/j79+PQ19rl///x1djY2dbv++zXztPW8///8dfY3Nri+/v3/P/x/PP///LU0tTW4ff78/Pz7vPv////////////n4eDh4eIhoeGiIaGfn19fQ=="
+ },
+ "reviewed": false,
+ "description": "The image is a sheet titled at the bottom \"Diagram 3.7 Horizontal escape for flats served by a single common stair\", headed top-left \"See para 3.27 and 3.40\". It contains two floor plans and a legend, plus a numbered notes list.\n\nPart \"a. Corridor access flats\" is a rectangular plan with a horizontal central corridor running between two rows of four rooms each, every room labelled \"F\". A stair symbol (parallel lines with an arrow) sits at the top middle, and an opening at the bottom middle is labelled \"Stair lobby with no flat opening directly into it\". Two dimensions read \"7.5m max.\", each spanning the corridor from the lobby toward an end wall. Doors are drawn as gaps with quarter-circle swings.\n\nPart \"b. Lobby access flats\" is a smaller rectangular plan with four \"F\" rooms around a central shaded lobby, a stair symbol at the top, and one diagonal dimension \"7.5m max.\" across the lobby.\n\nThe legend defines \"F Flat\", a shaded square for ventilation zones per \"paragraphs 3.54 to 3.57 (An external wall vent or smoke shaft located anywhere in the shaded area)\", and a green line as \"Fire resisting construction\". Notes 1 to 6 appear at right.",
+ "first_draft": "The image is a sheet titled at the bottom \"Diagram 3.7 Horizontal escape for flats served by a single common stair\", headed top-left \"See para 3.27 and 3.40\". It contains two floor plans and a legend, plus a numbered notes list.\n\nPart \"a. Corridor access flats\" is a rectangular plan with a horizontal central corridor running between two rows of four rooms each, every room labelled \"F\". A stair symbol (parallel lines with an arrow) sits at the top middle, and an opening at the bottom middle is labelled \"Stair lobby with no flat opening directly into it\". Two dimensions read \"7.5m max.\", each spanning the corridor from the lobby toward an end wall. Doors are drawn as gaps with quarter-circle swings.\n\nPart \"b. Lobby access flats\" is a smaller rectangular plan with four \"F\" rooms around a central shaded lobby, a stair symbol at the top, and one diagonal dimension \"7.5m max.\" across the lobby.\n\nThe legend defines \"F Flat\", a shaded square for ventilation zones per \"paragraphs 3.54 to 3.57 (An external wall vent or smoke shaft located anywhere in the shaded area)\", and a green line as \"Fire resisting construction\". Notes 1 to 6 appear at right."
+}

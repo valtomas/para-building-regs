@@ -1,0 +1,17 @@
+{
+ "key": "ADA_Table-7_p27",
+ "source": "ADA",
+ "label": "Table 7",
+ "page": 27,
+ "caption": "Table 7 \u0007Normalised compressive strength of masonry units of clay and calcium silicate blocks complying with BS EN 771-1 and 2 (N/mm2)",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "6cac23581eb77fcc38300963bc375db28e265b3ad4a8592c88983f4209453268",
+ "image_sig": {
+  "w": 752,
+  "h": 300,
+  "grey": "0MO7ub+8vrm/vsDAwL+72dvSsbK3srmls7O1tLjIxuLo2rm+v7W4vMTQvr7O4uLi1tnx8fHDyMbkysnR5MzJ2fPz8uvw8/Lz8/Pw8/Pz8PPfy87U8v/6////9v///vb/4+P5+v7/9/////X///z2//////////3////7///++//r5+fn5+fj5+fn3efn5ODn5f3///////////////////fk4uPj4uDm4uHk5eLk4fD25OXm5eTo5efn5efn6Ov/8t3Z2+fn5Obk5Ofm5+Tj9vPo6Onz8/Pz8/Pz8/Pz8/P/////////////////////19bd4eL7///58/Pz8/Pz8w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

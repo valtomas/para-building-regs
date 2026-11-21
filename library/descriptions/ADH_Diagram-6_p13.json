@@ -1,0 +1,18 @@
+{
+ "key": "ADH_Diagram-6_p13",
+ "source": "ADH",
+ "label": "Diagram 6",
+ "page": 13,
+ "caption": "Diagram 6 \u0007\u0007Termination of ventilation stacks or ventilation part of discharge",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "9a85b1ef5f349c422c4076fbaef64ba38ff7da123c3f08abf32af1d2551028e2",
+ "image_sig": {
+  "w": 355,
+  "h": 350,
+  "grey": "27K2t8CjqaWlsbCmn6Wq1PDd2eLkq6q3u66mpa61s77y6enp6amys7bj4+Lk3+Xl6Ofn5+fh4uHa5+fn5+fn5+j///////////P/4Nzd+f/o///////////r/+PNz93/6P///////9/c7f/o8/n//+j///////Tz+OH/6P/////o/9nKxtrz/+j//+jb4uH/6P/o0srQ8//Z8/PZ/////+j/3MbZ9fP/19He3v/////o//nw9fjx8+34/+j/////6P/////////////o/////+j/////////////6P/////o/////////////+j/////5vPz8/Pz8/Pz8/Px8/Pz8w=="
+ },
+ "reviewed": false,
+ "description": "The drawing is headed \"Diagram 6 Termination of ventilation stacks or ventilation part of discharge\" and is a simple schematic section or elevation. On the left it shows a rectangle labelled \"Opening into the building, e.g. windows, doors, air intakes, etc.\" On the right it shows a thin vertical line labelled \"Stack vent\", topped at its upper end by a small symbol labelled \"Cage or perforated cover\". A vertical double-headed arrow marked \"900mm\" spans the distance between the top edge of the rectangle and the level of the cover at the top of the stack vent. A horizontal double-headed arrow marked \"Less than 3m\" spans the gap between the right edge of the rectangle and the stack vent line. The two elements are drawn side by side, the stack vent standing to the right of the opening, with its caged top positioned at the upper right of the drawing. No further parts, scales or annotations are present.",
+ "first_draft": "The drawing is headed \"Diagram 6 Termination of ventilation stacks or ventilation part of discharge\" and is a simple schematic section or elevation. On the left it shows a rectangle labelled \"Opening into the building, e.g. windows, doors, air intakes, etc.\" On the right it shows a thin vertical line labelled \"Stack vent\", topped at its upper end by a small symbol labelled \"Cage or perforated cover\". A vertical double-headed arrow marked \"900mm\" spans the distance between the top edge of the rectangle and the level of the cover at the top of the stack vent. A horizontal double-headed arrow marked \"Less than 3m\" spans the gap between the right edge of the rectangle and the stack vent line. The two elements are drawn side by side, the stack vent standing to the right of the opening, with its caged top positioned at the upper right of the drawing. No further parts, scales or annotations are present."
+}

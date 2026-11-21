@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.13_p29",
+ "source": "ADE",
+ "label": "Diagram 2.13",
+ "page": 29,
+ "caption": "Diagram 2.13 \u0007\u0007Wall type 1 – ceiling and",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "0df5320df57c9e8986603e925ac97eacf19a99a448d19d3ff2031434f982bdc2",
+ "image_sig": {
+  "w": 362,
+  "h": 461,
+  "grey": "xrK5wMa8pK+qw8eprLSt49vZ2dnZzbGxrqzB2dnZ2ePp///u8vPy8O7z8vPy///06f/x6P///+rX8+7k+///9On////////u6P/z6/////Tp////////7uf8///////06fno8e7//+/o////////9OnyytLh9fbn6f////////Tp//7+///56ef2///////06f//////9unm8v//////9On//////+Dk5tn///////Tp///o9PTY2trP8PT0///06f/r6P//7OLi4urY2f//9On///////Dv7O////Px7/Hp9vb29vb29vb29vbl6ubr9/b29vb29vb29vb29vb2+Q=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a vertical section, marked \"SECTION\" in the lower right corner, titled \"Diagram 2.13 Wall type 1 – ceiling and roof junction\". A horizontal hatched band at the top is labelled \"Roof\", with an arrow pointing to it from the left. Descending from the centre of the roof band is a vertical element, the wall, drawn with diagonal cross-hatching. An arrow from the upper right, \"Flexible closer\", points to the top of this vertical element where it meets the roof. A zigzag break line runs through the middle of the wall, indicating it continues beyond the view. An arrow from the left, \"Mass per unit area of at least 150kg/m²\", points to the wall below the break line. Near the bottom, the wall widens into a thicker block. A horizontal line crossing this lower block, and extending beyond it on both sides, is labelled \"Ceiling\", with an arrow from the left. An arrow from the right, \"Sealed joints\", points with two lines to the left and right junctions where the ceiling line meets the wall. The hatched wall continues below the ceiling line.",
+ "first_draft": "The drawing is a vertical section, marked \"SECTION\" in the lower right corner, titled \"Diagram 2.13 Wall type 1 – ceiling and roof junction\". A horizontal line at the top is labelled \"Roof\", with an arrow pointing to it from the upper left. Descending from the centre of the roof line is a vertical element, the wall, drawn with diagonal cross-hatching. An arrow from the upper right, \"Flexible closer\", points to the top of this vertical element where it meets the roof. A zigzag break line runs through the middle of the wall, indicating it continues beyond the view. An arrow from the left, \"Mass per unit area of at least 150kg/m²\", points to the upper portion of the wall. Near the bottom, the wall widens slightly into a thicker block. A horizontal line crossing this lower block is labelled \"Ceiling\", with an arrow from the left. An arrow from the right, \"Sealed joints\", points with two lines to the left and right junctions where the ceiling line meets the wall. The hatched wall continues below the ceiling line."
+}

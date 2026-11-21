@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-2.11_p38",
+ "source": "ADB2",
+ "label": "Diagram 2.11",
+ "page": 38,
+ "caption": "Diagram 2.11 Progressive horizontal evacuation in care homes",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "311532f4255b3c1636cb292632509fb20411e3d42b2f8dd080bd914c98334bfc",
+ "image_sig": {
+  "w": 754,
+  "h": 553,
+  "grey": "7ez6+vr6+vr6+vr6+vr6+Pny9fX15vX19fD///////v5+v///+r////4///////7+fP29Pfj9/P28f//////+/n69/js5Oz6+Pj+8Ojo+fv5+vn0/+n/+Pj4/uPd7Pr7+fr58f/p//j4+P7v6u3u+vnh4OLk2vX17/H81tzc6fv5+vnv/+n/9/f4/u7t8P/7+ff09Prl+vf09P//////+/n28/vt5u369fTi//////v5+vn0+uf67/z1///////7+fr59//q//j/+P//////+/rz8+z16vXy9fL///////v7///t///////////////7gF5ZX1xeW11bXVFQUFBQbg=="
+ },
+ "reviewed": false,
+ "description": "This drawing is a plan, labelled at the bottom in a green band as \"Diagram 2.11 Progressive horizontal evacuation in care homes\", with the text \"See para 2.38\" in the top left corner. It shows a rectangular layout of rooms arranged around a central crossing of corridors. A thick green line, the compartment wall, runs vertically down the middle from the top edge to the bottom edge, and a second thick green line runs horizontally from the left edge to meet it at the centre, dividing the plan into three compartments: two on the left, one above and one below the horizontal line, and one on the right that spans the full height. Three fire doorsets, drawn as a thin green arc with a door leaf, are set in the compartment walls: one at the top of the vertical line, one at the bottom of the vertical line, and one on the horizontal line at the left. Double-headed arrows mark the escape routes within the corridors: a pair sit either side of the top fire doorset, a pair either side of the left fire doorset, and a pair either side of the bottom fire doorset. Two single green arrows, each labelled \"Exit\", point outwards, one from the bottom edge and one from the right edge. To the right of the plan a legend repeats these symbols with the words \"Escape route to adjacent compartment, storey exit or final exit\", \"Compartment wall\" and \"Fire doorset in compartment wall\", followed by a NOTE reading: \"Bedrooms and all ancillary accommodation should be enclosed in fire resisting construction.\"",
+ "first_draft": "This drawing is a plan, labelled at the bottom in a green band as \"Diagram 2.11 Progressive horizontal evacuation in care homes\", with the text \"See para 2.38\" in the top left corner. It shows a rectangular layout of rooms arranged around a central crossing of corridors. A thick green line, the compartment wall, runs vertically down the middle and horizontally across the middle, intersecting to divide the plan into four compartments. Each compartment wall carries a fire doorset, drawn as a thin arc with a door leaf. Double-headed arrows mark the escape routes within the corridors: a pair sit either side of the top fire doorset, a pair either side of the left fire doorset, and a pair either side of the bottom fire doorset. Two single green arrows, each labelled \"Exit\", point outwards, one from the bottom edge and one from the right edge. To the right of the plan a legend repeats these symbols with the words \"Escape route to adjacent compartment, storey exit or final exit\", \"Compartment wall\" and \"Fire doorset in compartment wall\", followed by a NOTE reading: \"Bedrooms and all ancillary accommodation should be enclosed in fire resisting construction.\""
+}

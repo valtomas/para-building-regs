@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-3.11_p48",
+ "source": "ADB1",
+ "label": "Diagram 3.11",
+ "page": 48,
+ "caption": "Diagram 3.11 Fire resistance of areas near to external stairs",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "10f2add6469096f59245ffe1b5aec9ada13e287fdb1e8d6efdc0e02d97d295ea",
+ "image_sig": {
+  "w": 754,
+  "h": 884,
+  "grey": "8/T8/Pz57fz8/Pz8/Pz8+fv/////+/rl5ujk9vr///v7/////+zwyra64/T6///7+//////5/sSqmqT6+f//+/v/////+f29np2p+vv///v75ubo9unhuJ6bq+3t5un6++bw9/7+6Onp6Onp9fj4+/v74Nn78NPe8v////v///v78aS8+fXTqKLF2v/7///7++mkv/vz06+vqp+79P//+/vwpbj47sKanJycz+je4vr75+js+fzd5ujm4+jy///7+//////76sLAwsDH3/v/+/vp9ff/9Nq0s7OzxPP///v74N/o//vb+vr59fP8///7sZ6cnZ2enZ2dm5aWlpaWpg=="
+ },
+ "reviewed": false,
+ "description": "Diagram 3.11, titled \"Fire resistance of areas near to external stairs\", shows two examples. Top left reads \"See para 3.71\". A legend defines \"Fd\" as \"Fire doorset (minimum E 30)\" and a green swatch as \"Fire resisting construction (minimum RE 30)\".\n\nExample a. is a section through an external stair, drawn in green. It labels \"No fire resistance required for door\" at the top, a \"Fire resisting window (minimum RE 30)\", and three \"Fd\" doorsets. Dimensions read \"1100mm above top landing\", \"9m below stair flights and landings\", and three \"1800mm\" measurements. To the right it states \"Ground level or a roof or podium served by an independent stairway\".\n\nExample b. comprises Section A–A, a vertical slice of a stair shaft marked 1800mm; Section B–B, an angled stair showing \"Fd\", \"1100mm above top landing\", \"9m below stair flights and landings\", \"1800mm\" and the same ground-level label; and a Plan marked 1800mm. A NOTE reads: \"See paras 3.69 and 3.70 for the maximum height of stair. See para 3.71e for weather protection provisions.\"",
+ "first_draft": "Diagram 3.11, titled \"Fire resistance of areas near to external stairs\", shows two examples. Top left reads \"See para 3.71\". A legend defines \"Fd\" as \"Fire doorset (minimum E 30)\" and a green swatch as \"Fire resisting construction (minimum RE 30)\".\n\nExample a. is a section through an external stair, drawn in green. It labels \"No fire resistance required for door\" at the top, a \"Fire resisting window (minimum RE 30)\", and two \"Fd\" doorsets. Dimensions read \"1100mm above top landing\", \"9m below stair flights and landings\", and three \"1800mm\" measurements. To the right it states \"Ground level or a roof or podium served by an independent stairway\".\n\nExample b. comprises Section A–A, a vertical slice of a stair shaft marked 1800mm; Section B–B, an angled stair showing \"Fd\", \"1100mm above top landing\", \"9m below stair flights and landings\", \"1800mm\" and the same ground-level label; and a Plan marked 1800mm. A NOTE reads: \"See paras 3.69 and 3.70 for the maximum height of stair. See para 3.71e for weather protection provisions.\""
+}

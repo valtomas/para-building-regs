@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-D2_p173",
+ "source": "ADB1",
+ "label": "Diagram D2",
+ "page": 173,
+ "caption": "Diagram D2 Cubic capacity",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "f8538605e0c20e66b6f4fc8210566bc473a854802e232c618e6e479b367fa596",
+ "image_sig": {
+  "w": 737,
+  "h": 358,
+  "grey": "9vf39/f39/f39/f39/f39/v///////////////vn5O/7//3///////3////4ysf7+/7G0////+m49////vPx+fvTq6fc5O+tqrfr6/zz8vr7za6r1OLsra2z6+z6y9z/+8urqtLm5qWmqd7T8/z6//vNrq3e//Gtq7Pm4O7S2f/4t52cxPnjnJ2n6///1tTx+efn5+f68ufn5/D//9/j+vvr6OXz//Pn5+X2///R3fD78/Dz9//vydHJ9v/88vH8+///////////////+dTX8vv///////////////vj5P+9ra2tra2tra2tra2tra2tiWthZ2tWVVVVVVVVVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing, captioned \"Diagram D2 Cubic capacity\", shows two green cross-sectional shapes of buildings, each with a pitched roof resting on a grey horizontal floor slab, placed side by side and labelled a and b. Part a, captioned \"Cubic capacity of a building\", is a single green block containing one vertical line and one horizontal line; two leader lines on its right point to \"Internal wall or partition\" (the horizontal line) and \"Enclosing wall\" (the right-hand side). Part b, captioned \"Cubic capacity of compartments or separated part of a building\", shows the same block divided by horizontal and vertical lines into compartments; leader lines label \"Internal wall or partition\", \"Enclosing wall\", \"Compartment floor\" and \"Compartment wall\". To the right, a text block reads \"In every case measure the volume contained by all of the following.\", then lists a. Under surface of roof; b. Upper surface of lowest floor; c. Inner surface of enclosing walls, noting that where there is no outer enclosing wall, measure to the outermost edge of the floor slab, and that the measured volume should include internal walls and partitions.",
+ "first_draft": "The drawing, captioned \"Diagram D2 Cubic capacity\", shows two green cross-sectional shapes of buildings, each with a pitched roof resting on a grey horizontal floor slab, placed side by side and labelled a and b. Part a, captioned \"Cubic capacity of a building\", is a single green block containing one vertical line and one horizontal line; two leader lines on its right point to \"Internal wall or partition\" (the horizontal line) and \"Enclosing wall\" (the right-hand side). Part b, captioned \"Cubic capacity of compartments or separated part of a building\", shows the same block divided by horizontal and vertical lines into compartments; leader lines label \"Internal wall or partition\", \"Enclosing wall\", \"Compartment floor\" and \"Compartment wall\". To the right, a text block reads \"In every case measure the volume contained by all of the following.\", then lists a. Under surface of roof; b. Upper surface of lowest floor; c. Inner surface of enclosing walls, noting that where there is no outer enclosing wall, measure to the outermost edge of the floor slab, and that the measured volume should include internal walls and partitions."
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADF1_Diagram-3.1_p31",
+ "source": "ADF1",
+ "label": "Diagram 3.1",
+ "page": 31,
+ "caption": "Diagram 3.1 \u0007Chart for categorising impact on ventilation when carrying out works in existing dwellings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "f126111a5ceb48c29c645bebdac2a2425a4720b9ad8b797401024bc9e61212c2",
+ "image_sig": {
+  "w": 737,
+  "h": 262,
+  "grey": "7unp6enp6enp6enp6enp6ff///v////96+/t9f/////3///29PL08u7x7vHy9PL09///+/r7/Pn6+/v7+/v7+vHx8cyklIykpsTExMTExMT3+/LOqKGbqKrIyMjIyMnK9Pb84sjIyMi1u8jIyMjh7fDs8tzIyMjIrrrM2tra6O3x6PLcyMTDw8PDzu3t7e3t7ej74sje7e3t6+rp7e3t7ff79OHT4+3t7ei33u3t7e33+/vz7e3t7e3t7e3t7e3tsZubm5ubm5ubm5ubm5ubm4NiW2ViZWNgZWNkZF9kYlx6WFdgWFhZVVVVVFdXVVVVfE9UZFVPT09PT09PT09PTw=="
+ },
+ "reviewed": false,
+ "description": "This is a grid chart, Diagram 3.1, titled \"Chart for categorising impact on ventilation when carrying out works in existing dwellings\" in a green band along the bottom. The columns are headed \"Number of minor measures\" and numbered 0 to 6 across the top. The rows are headed \"Number of major measures\" and numbered 0 to 4 down the left side. The body of the grid is divided into three shaded regions of differing green tones and an unshaded area. The darkest green region, labelled \"Category A\", lies in the top left, covering row 0 across columns 0 to 2; the cells to its right in row 0 (columns 3 to 6) are unshaded. A medium green region, labelled \"Category B\", occupies the left side of the grid, spanning rows 1 to 4 and narrowing as it descends, covering columns 0 to 5 in row 1, columns 0 to 3 in row 2, columns 0 to 1 in row 3, and column 0 in row 4. A pale green region, labelled \"Category C\", occupies the right side of the grid, spanning rows 1 to 4 and widening as it descends, covering column 6 in row 1, columns 4 to 6 in row 2, columns 2 to 6 in row 3, and columns 1 to 6 in row 4.",
+ "first_draft": "This is a grid chart, Diagram 3.1, titled \"Chart for categorising impact on ventilation when carrying out works in existing dwellings\" in a green band along the bottom. The columns are headed \"Number of minor measures\" and numbered 0 to 6 across the top. The rows are headed \"Number of major measures\" and numbered 0 to 4 down the left side. The body of the grid is divided into three shaded regions of differing green tones. The darkest green region, labelled \"Category A\", lies in the top left, covering row 0 across columns 0 to 2; the cells to its right in row 0 (columns 3 to 6) appear unshaded. A medium green region, labelled \"Category B\", occupies the middle of the grid, spanning rows 1 and 2 and narrowing from left to right. A pale green region, labelled \"Category C\", fills the lower right, covering rows 3 and 4 and extending leftwards as the row number increases. Together the three regions form a stepped pattern descending from the top left toward the bottom right."
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-2.6_p32",
+ "source": "ADB2",
+ "label": "Diagram 2.6",
+ "page": 32,
+ "caption": "Diagram 2.6 Merging flows at final exit",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "c6818a83bb6f2d7686941203c8881e29ee7a20f84d64f45bb1ac8c165330c8ab",
+ "image_sig": {
+  "w": 754,
+  "h": 428,
+  "grey": "6ej4+Pj4+Pj4+Pj4+Pj49/v/////19v///////////v7/////9jW9/7////////7+//////X0O//////////+/v/78vPxbz+//////////v26t7y//vb///////////7+//e9/Hd3P//7ejp5+fr+/v/3v31/tz6/+HR1dzr6vj7/97/9v/c///07O/////7+//e//743P//////////+/v/3v//89n+//////////v7//nQ0N7p///////////7+//////u8v//////////+/v/////6vX///////////vRycnJycfHycnJycnJycnOgmFbY19hWU9PT09PT09Pbg=="
+ },
+ "reviewed": false,
+ "description": "This is a plan drawing, titled in a green banner at the bottom as \"Diagram 2.6 Merging flows at final exit\", with the note \"See para 2.23\" at the top left. The central feature is a thick-walled room labelled \"Ground floor lobby\". At the top edge of the room an \"Escape stair\" is shown, its opening marked with a horizontal double-arrow dimension labelled \"S\". On the left wall there is an opening labelled \"Storey exit (N)\", with a green arrow pointing outwards. At the bottom edge there is an opening labelled \"Final exit\", with a green arrow pointing downwards and a horizontal double-arrow dimension labelled \"W\". A diagonal green double-arrow dimension, labelled \"D\", runs from the Storey exit across the lobby to the Final exit. A vertical green double-arrow dimension, also labelled \"D\", runs along the right side of the room, between the top-right and bottom-right corners. To the right of the plan a legend defines the letters: \"D\" as \"Minimum 2m, where ‘N’ is greater than 60 people\"; \"N\" as \"Number of people served by ground floor storey exit\"; \"W\" as \"Width of final exit in metres\"; and \"S\" as \"Stair width in metres\".",
+ "first_draft": "This is a plan drawing, titled in a green banner at the bottom as \"Diagram 2.6 Merging flows at final exit\", with the note \"See para 2.23\" at the top left. The central feature is a thick-walled room labelled \"Ground floor lobby\". At the top edge of the room an \"Escape stair\" is shown, its opening marked with a horizontal double-arrow dimension labelled \"S\". On the left wall there is an opening labelled \"Storey exit (N)\", with a green arrow pointing outwards. At the bottom edge there is an opening labelled \"Final exit\", with a green arrow pointing downwards and a horizontal double-arrow dimension labelled \"W\". A diagonal green double-arrow dimension, labelled \"D\", runs from the Storey exit across the lobby to the Final exit. To the right of the plan a legend defines the letters: \"D\" as \"Minimum 2m, where ‘N’ is greater than 60 people\"; \"N\" as \"Number of people served by ground floor storey exit\"; \"W\" as \"Width of final exit in metres\"; and \"S\" as \"Stair width in metres\"."
+}

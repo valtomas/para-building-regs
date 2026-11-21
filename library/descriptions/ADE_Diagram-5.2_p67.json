@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-5.2_p67",
+ "source": "ADE",
+ "label": "Diagram 5.2",
+ "page": 67,
+ "caption": "Diagram 5.2 \u0007\u0007Internal wall type B",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "e3e47b47372df8f6882b01cbf73cc64388b548e5c505a0fb8db031ba4ca2ab58",
+ "image_sig": {
+  "w": 355,
+  "h": 382,
+  "grey": "3K2ztrm6nqesnqSnpsPX1+jp5Onp6enp6enp4Onp6eno////////8PHW////////6P///////+vs4P///////+j////////r6uP////////o////////8fHY////////6P////////Hx1////////+j////////x8tf////////o////////8fHX////////6P////////Hx1////////+j////////x8dj////////o////////8fHX////////6P///////+vv2////////+j////////r6Oj////////o////////8fHX////////6P////////r88//////h1A=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a plan, as indicated by the word \"PLAN\" in the lower right corner. A green banner across the top reads \"Diagram 5.2 Internal wall type B\".\n\nThe drawing shows a single vertical strip on a white background, drawn with thin black lines. Reading from left to right: a solid vertical line stands alone on the left. A narrow empty gap follows. Then a panel is outlined by two parallel vertical lines; within this panel are two sets of diagonal cross-braces (each an X shape), one placed near the top and one near the bottom. Immediately to the right of this panel runs a continuous vertical band filled with a fine zigzag or hatch pattern, its right-hand edge being a solid vertical line. The leftmost line is therefore set off from the panel by the narrow gap, which represents an open space, while the rightmost line bounds the hatch band directly. No dimensions, scale, or further labels are visible.",
+ "first_draft": "The drawing is a plan, as indicated by the word \"PLAN\" in the lower right corner, which is partly cut off by the edge of the image. A green banner across the top reads \"Diagram 5.2 Internal wall type B\".\n\nThe drawing shows a single vertical strip centred on a white background, drawn with thin black lines. Reading from left to right: a solid vertical line stands alone on the left. A narrow empty gap follows. Then a panel is outlined by two parallel vertical lines; within this panel are two sets of diagonal cross-braces (each an X shape), one placed near the top and one near the bottom. Immediately to the right of this panel runs a continuous vertical band filled with a fine zigzag or hatch pattern. A final solid vertical line stands alone on the far right. The two solid lines thus bracket the central panel-and-hatch assembly, with the gap between the left line and the panel representing an open space. No dimensions, scale, or further labels are visible."
+}

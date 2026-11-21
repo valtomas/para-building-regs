@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-3.6_p36",
+ "source": "ADB1",
+ "label": "Diagram 3.6",
+ "page": 36,
+ "caption": "Diagram 3.6 Multi-storey flat with protected entrance hall and landing",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "9a8b26671abc151f426e641dc4213b0d4376abf27c2399e6726e91dbd36da670",
+ "image_sig": {
+  "w": 754,
+  "h": 417,
+  "grey": "glVaZ2NVVVVVVVVVVVVVefny8vLy8vLy8vLy8vLy8vj5+Pj4+Pj4+Pj4+Pj4+Pj47e//////////////////+/v/8uL6///Vz/b///////v7//Pv7/j/5uHq/+/q7v/7+//1///2//b19//b3f//+/v/9f//9v/r6Pf/6eH7//v7//Hu9fT/1tLm//f4///7+//P0e/1/83Z6///////+/v/2s7/9v/W3/X///////v7/93J//b/9vD3/+Lp6//7+//bxPL0/+zp7v/X1OH/+/v//+r5////8un///////vTy8vLy8vLy8vLy8vLy8vQh2ZhZmdkZmZmZWdiVVVVcg=="
+ },
+ "reviewed": false,
+ "description": "Diagram 3.6, titled \"Multi-storey flat with protected entrance hall and landing\", is headed by a green band reading \"entrance level\" and carries the reference \"See para 3.21\" at top left. It shows two plan drawings. The left, \"a. Entrance level\", is a rectangular plan with a grey-shaded protected landing/entrance hall on its left side, containing a hatched stair symbol at the top and a \"WC\" symbol at the bottom. A vertical dimension \"9m max.\" runs through this area, and two door arcs marked \"Fd\" appear on its right boundary; the base is labelled \"Flat entrance\". The right plan, \"b. Level(s) above or below entrance level\", shows a similar grey-shaded protected area with a hatched stair symbol and four \"Fd\" door arcs around it, the base labelled \"Alternative exit\". A legend on the right defines the green line as \"Fire resisting construction (minimum REI 30)\", \"Fd\" as \"Fire doorset\", and the grey square as \"Protected landing/ entrance hall\". A note reads: \"NOTE: This only applies where at least one storey is more than 4.5m above ground level.\"",
+ "first_draft": "Diagram 3.6, titled \"Multi-storey flat with protected entrance hall and landing\", is headed by a green band reading \"entrance level\" and carries the reference \"See para 3.21\" at top left. It shows two plan drawings. The left, \"a. Entrance level\", is a rectangular plan with a grey-shaded protected landing/entrance hall on its left side, containing a hatched stair symbol at the top and a \"WC\" symbol at the bottom. A vertical dimension \"9m max.\" runs through this area, and two door arcs marked \"Fd\" appear on its right boundary; the base is labelled \"Flat entrance\". The right plan, \"b. Level(s) above or below entrance level\", shows a similar grey-shaded protected area with a hatched stair symbol and four \"Fd\" door arcs around it, the base labelled \"Alternative exit\". A legend on the right defines the green line as \"Fire resisting construction (minimum REI 30)\", \"Fd\" as \"Fire doorset\", and the grey square as \"Protected landing/ entrance hall\". A note reads: \"NOTE: This only applies where at least one storey is more than 4.5m above ground level.\""
+}

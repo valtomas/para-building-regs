@@ -1,0 +1,17 @@
+{
+ "key": "ADC_Table-2_p16",
+ "source": "ADC",
+ "label": "Table 2",
+ "page": 16,
+ "caption": "Table 2 \u0007Examples of sites likely to contain contaminants Animal and animal products processing works Asbestos works Ceramics, cement and asphalt manufacturing works Chemical works Dockyards and dockland Engineering works (including aircraft manufacturing, railway engineering works, shipyards, electrical and electronic equipment manufacturing works) Gas works, coal carbonisation plants and ancillary by-product works Industries making or using wood preservatives Landfill and other waste disposal sites Metal mines, smelters, foundries, steel works and metal finishing works Munitions production and testing sites Oil storage and distribution sites Paper and printing works Power stations Railway land, especially larger sidings and depots Road vehicle fuelling, service and repair: garages and filling stations Scrap yards Sewage works, sewage farms and sludge disposal sites Tanneries Textile works and dye works",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "61aa86003881f15750f56d4fd1123158fbe477d4042d519a603bf6268bcd5c9e",
+ "image_sig": {
+  "w": 362,
+  "h": 1066,
+  "grey": "2dLVy769xMXAvr/C09ng6u7k6ebu7uzw7uzw8vb////r2tzf5eXp7u3v7u7v8vj/6+Lh5eTr6uvu9PP0+v///+vd4uHp6unn6evx9Pj2///t5uTm5ebq7fP5////////7eTl5+zt7u7t7O7s8/z//+zm5O349Pf49/X19vb3///p4eft7O7r8vn8/Pz8/Pz9+Pj4+Pj4+Pj4+Pj4+Pj4+v/////////////////////////////////////////////////////////////////////////////////////8+enq7Ovs7e/u7u/y9Pj///zm5uzz8vPz8fPy8vL6/w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

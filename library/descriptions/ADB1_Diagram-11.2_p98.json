@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-11.2_p98",
+ "source": "ADB1",
+ "label": "Diagram 11.2",
+ "page": 98,
+ "caption": "Diagram 11.2 Relevant boundary",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "f748e7d048f8707b474809988d883d716396862cf1e01bab6c84223aa7619865",
+ "image_sig": {
+  "w": 756,
+  "h": 554,
+  "grey": "7eDg4ODg4ODg4ODg4ODg7PX1+vr6+vr6+vr6+vr6+vn0+P/////////////////7+///////////+/v/////+/v58/X5////+/397Pr///v769bl6vT49fv//Onb3vb7+////////fz///3l2eb/+/v///////Lv/v/87uju9/v7///////i5fD9/erd8Pj7++/b4Pn35O/P1vvu2ej6+/v27/r///D61fj96dHg8/v79+38///l5/b//ezN2fv7+/Xt+Pj48fT5+fz/////+/vu3N3y+Pn5+fn+//////v79u/v+//////////////7iGdkZ2ViWlpaWlpaWlpaeg=="
+ },
+ "reviewed": false,
+ "description": "A schematic diagram, titled at the bottom \"Diagram 11.2 Relevant boundary\", with \"See para 11.5\" at top left. At the centre is a solid square labelled \"Building\", with labels inside it for its sides: A (left), B1 (right), B2 (bottom) and C (top). Dashed lines around it represent boundaries. A vertical dashed line on the left coincides with side A; a vertical dashed line on the right is parallel to B1; a horizontal dashed line below is parallel to B2. From the top-left corner a diagonal dashed line runs up and right, forming an angle marked \"< 80°\" with a horizontal dashed extension. Leader lines join each boundary to text: \"This boundary coincides with and is therefore relevant to side A\"; \"This boundary is parallel to and therefore relevant to side B1\"; \"The boundary is parallel to side B2\"; \"This boundary is at less than 80 degrees to side C and is therefore relevant to side C\"; and \"But the relevant boundary may be the centre line of a road, railway, canal or river\", pointing to a dashed line at the bottom. A NOTES panel on the right states the diagram sets out the rules for a boundary to be considered relevant, and lists rules a, b and c, restating that a relevant boundary coincides with side A, is parallel to B1 or B2, or is at a maximum of 80 degrees to side C.",
+ "first_draft": "A schematic diagram, titled at the bottom \"Diagram 11.2 Relevant boundary\", with \"See para 11.5\" at top left. At the centre is a solid square labelled \"Building\", its sides marked A (left), B1 (right), B2 (bottom) and C (top). Dashed lines around it represent boundaries. A vertical dashed line on the left coincides with side A; a vertical dashed line on the right is parallel to B1; a horizontal dashed line below is parallel to B2. From the top corner a diagonal dashed line runs up and right, forming an angle marked \"< 80°\" with a horizontal dashed extension. Leader lines join each boundary to text: \"This boundary coincides with and is therefore relevant to side A\"; \"This boundary is parallel to and therefore relevant to side B1\"; \"The boundary is parallel to side B2\"; \"This boundary is at less than 80 degrees to side C and is therefore relevant to side C\"; and \"But the relevant boundary may be the centre line of a road, railway, canal or river\", pointing to a dashed line at the bottom. A NOTES panel on the right lists rules a, b and c, restating that a relevant boundary coincides with side A, is parallel to B1 or B2, or is at a maximum of 80 degrees to side C."
+}

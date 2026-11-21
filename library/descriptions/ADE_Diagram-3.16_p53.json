@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-3.16_p53",
+ "source": "ADE",
+ "label": "Diagram 3.16",
+ "page": 53,
+ "caption": "Diagram 3.16 \u0007\u0007Floor type 2 – external cavity wall with masonry internal leaf",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "be26f6dad4f53d99c6492f84af6e230f1c1cc19c8278d72853f55a0b37d15e33",
+ "image_sig": {
+  "w": 355,
+  "h": 490,
+  "grey": "5cLCyNDJvLvAtsjOur264vLp6enp6bertqm3u8u8wsnl4uLi4uLRzMnOz+Li4uLi6P/19PXp7f///////////+j/6tzt5OH/8ujq8v/////o/+3n6dvc8Pjd2Nnt+P//6P/u6u/m0u329/j2/////+j/69zoz7PU19bU1tbU7f/o/+3qx+f29vf19eT09fn/6P/u6uXj5/T09PTw7PT2/+j/7OPu5OHq3tra1s/Z9P/o/+zj7dna7dHj9+/z////6P/t7O/c4f////vp5+X9/+j/7Ojv5OT////////////o//Tn8N/i////////////5vf08vHx8vf39/f38tbg2A=="
+ },
+ "reviewed": false,
+ "description": "A section drawing, titled in a green band at the top \"Diagram 3.16 Floor type 2 – external cavity wall with masonry internal leaf\", with the word \"SECTION\" at the lower right corner.\n\nOn the left a vertical wall is shown in section, drawn as a diagonally hatched outer leaf and a cross‑hatched inner leaf separated by an air gap; it is labelled \"External cavity wall\" below. A horizontal floor build‑up projects to the right from this wall, made of stacked layers: a top dotted course, a middle course of small circles, a course of small rectangular blocks, and a lower hatched layer.\n\nLeader lines carry the labels \"Cavity stop\", pointing to a block seated in the wall's gap, and \"Fill small gap with flexible seal\", pointing to the junction where the top of the floor meets the upper part of the wall. A vertical member running down through the floor is labelled \"Timber batten\". A horizontal dimension arrow between two vertical lines reads \"Minimum 300mm\", measuring the distance from the inner leaf of the wall to the timber batten.",
+ "first_draft": "A section drawing, titled in a green band at the top \"Diagram 3.16 Floor type 2 – external cavity wall with masonry internal leaf\", with the word \"SECTION\" at the lower right corner.\n\nOn the left a vertical wall is shown in section, drawn as two cross‑hatched leaves separated by an air gap; it is labelled \"External cavity wall\" below. A horizontal floor build‑up projects to the right from this wall, made of stacked layers: a top dotted course, a middle course of small circles, a course of small rectangular blocks, and a lower hatched layer.\n\nLeader lines carry the labels \"Cavity stop\", pointing to a block seated in the wall's gap, and \"Fill small gap with flexible seal\", pointing to the junction where the top of the floor meets the upper part of the wall. A vertical member running down through the floor is labelled \"Timber batten\". A horizontal dimension arrow between two vertical lines reads \"Minimum 300mm\", spanning a section of the floor cavity."
+}

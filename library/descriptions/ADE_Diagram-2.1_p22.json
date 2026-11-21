@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.1_p22",
+ "source": "ADE",
+ "label": "Diagram 2.1",
+ "page": 22,
+ "caption": "Diagram 2.1 \u0007\u0007Types of separating wall | E VERSION | E",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "40a0441ac3d789925b1bebc65c7214d59e135a3a69a88eb784e75dc814c317d7",
+ "image_sig": {
+  "w": 362,
+  "h": 1027,
+  "grey": "1tbZ2+HW0trX0tXS1tXa6enz8ezw7vLx9fb29vL+//Tp+Pz26+nt9ezg+vf0+v/06f///Pzy7u7p5v//////9On06+vz//////////////Tp8vDo5+Xq8O3x9fPv/P/06fn89+/v8u7q1/X49/v/9On////89/fz8u76+PT///Tp7erj4Pf6+vr19fHm9Pr06fTy7unb5Ono9P//////9On7/Pz8//Pr38/z7uj39/Tp9e7x9fz59ebu/P/////06fb14eTk5PT///748vT69On3//z269Td3Lj2+PP+//Tp/fz8/Pz65/zB9/bz9fv04+vn6e739/P39/f39/f37w=="
+ },
+ "reviewed": false,
+ "description": "The drawing is titled \"Diagram 2.1 Types of separating wall\". It shows four 3D perspective (axonometric) views of wall sections, each labelled.\n\n(a) Wall type 1 depicts a solid block wall. The label \"Plaster\" points to the finished lining on both faces, and \"Masonry\" points to the blockwork visible on the cut end.\n\n(b) Wall type 2 depicts a wall with two block leaves separated by a gap. \"Plaster\" points to the linings on the two outer faces, \"Masonry\" to the block leaves, and \"Cavity\" to the void between the leaves at the base.\n\n(c) Wall type 3 depicts a central block wall with face linings. \"Independent panels\" points to the panels on the top and side faces, \"Masonry core\" to the blockwork in the middle, and \"Cavity\" to the gaps between the core and the panels.\n\n(d) Wall type 4 depicts a frame wall. \"Independent frames\" points to the vertical frame members, and \"Mineral wool\" points to the infill shown on the end face.",
+ "first_draft": "The drawing is titled \"Diagram 2.1 Types of separating wall\" with \"E VERSION\" at the top right. It shows four 3D perspective (axonometric) views of wall sections, each labelled.\n\n(a) Wall type 1 depicts a solid block wall. The label \"Plaster\" points to the finished lining on both faces, and \"Masonry\" points to the blockwork visible on the cut end.\n\n(b) Wall type 2 depicts a wall with two block leaves separated by a gap. \"Plaster\" points to the linings on the two outer faces, \"Masonry\" to the block leaves, and \"Cavity\" to the void between the leaves at the base.\n\n(c) Wall type 3 depicts a central block wall with face linings. \"Independent panels\" points to the panels on the top and side faces, \"Masonry core\" to the blockwork in the middle, and \"Cavity\" to the gaps between the core and the panels.\n\n(d) Wall type 4 depicts a frame wall. \"Independent frames\" points to the vertical frame members, and \"Mineral wool\" points to the infill shown on the end face."
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-8.2_p83",
+ "source": "ADB2",
+ "label": "Diagram 8.2",
+ "page": 83,
+ "caption": "Diagram 8.2 Junction of compartment wall with roof",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "7fa0fbb9211165c373eeb9493f3a8aa1aeb405eed2aec87ea0d125b18ffb6313",
+ "image_sig": {
+  "w": 737,
+  "h": 301,
+  "grey": "+/zf2N/KvP////////////v/7d7e1tn////////////7///58v/w////////////+///8PDy9v////////////vy3N3Z5v/////////////7//P6////////////////+//43d3///////////////v748Db7fPf39va4tzh8v/7++nU2PD2397i3t3g+v//++fq1+D/897g3OLg3+Pq//v19Mq/zevd397e3ODa7//7///X6P/r09/f4d/j4eH/+///6OL//fz///////////v///////////////////+QbnFub25ucG9vbm5ubm5uiWhdZWBqY2RlUE9PT09PTw=="
+ },
+ "reviewed": false,
+ "description": "The image is a cross‑section drawing titled, on a green band along the bottom edge, “Diagram 8.2 Junction of compartment wall with roof”. The main part is headed “c. ANY BUILDING OR COMPARTMENT”. It shows a grey vertical rectangle labelled “Wall”. On its left side a sloping line that runs down to meet a short horizontal line at the wall, and on its right side a horizontal line; the sloping line on the left is labelled “Roof covering” and the horizontal line on the right is labelled “Roof covering”. A vertical dimension arrow on the left, reading “At least 375mm”, measures from the top of the wall down to the level of the horizontal part of the left roof covering, and a vertical dimension arrow on the right, also reading “At least 375mm”, measures from the top of the wall down to the top of the horizontal roof covering. To the right of the section, two paragraphs of text read: “The wall should be extended up through the roof for a height of at least 375mm above the top surface of the adjoining roof covering.” and “Where there is a height difference of at least 375 mm between two roofs or where the roof coverings on either side of the wall are B ROOF (t4) rated, the height of the upstand/parapet wall above the highest roof may be reduced to 200mm.” A cut‑off fragment of another section appears at the very top edge.",
+ "first_draft": "The image is a cross‑section drawing titled, on a green band along the bottom edge, “Diagram 8.2 Junction of compartment wall with roof”. The main part is headed “c. ANY BUILDING OR COMPARTMENT”. It shows a grey vertical rectangle labelled “Wall”. On its left side a sloping line, and on its right side a horizontal line, each labelled “Roof covering”. A dimension arrow on the left and one on the right, each reading “At least 375mm”, measure from the top of each roof covering up to the top of the wall. To the right of the section, two paragraphs of text read: “The wall should be extended up through the roof for a height of at least 375mm above the top surface of the adjoining roof covering.” and “Where there is a height difference of at least 375 mm between two roofs or where the roof coverings on either side of the wall are B ROOF (t4) rated, the height of the upstand/parapet wall above the highest roof may be reduced to 200mm.” A cut‑off fragment of another section appears at the very top edge."
+}

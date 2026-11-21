@@ -1,0 +1,18 @@
+{
+ "key": "ADC_Diagram-6_p28",
+ "source": "ADC",
+ "label": "Diagram 6",
+ "page": 28,
+ "caption": "Diagram 6 \u0007Suspended floor – preventing water collection (see paragraph 4.14(a))",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "05a73036381687013160b7da5a5d0545bec6d23f26086179c51aba585038ab2a",
+ "image_sig": {
+  "w": 755,
+  "h": 375,
+  "grey": "xr61r7C/srK0sLS1sbKy2tfZ2Nja2dnW2djY19XY1t71//z///z////89/v8///69f/b7v/b/+3e2fz32///+vLi2/v72//37c3d1c3k3/jz7sTX0tL/+efK4OHQ5OTz9OG+wMnK4/vszfLn0+H4+vTsuMjSz+377bfCw8326vr07dDo3dT/++3N4Mqn5vP69OjC29u/6froutrawOnp+vTl5+fn4e365ufn5+fm8frz7Ozs6u73///////////69Pb19fH2+///////////+urr6+vr6+vr6+vr6+vr6+z///////////n19fX+///////////////97Ovs6ers8w=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a section with two diagrams placed side by side, beneath the heading \"Diagram 6 Suspended floor – preventing water collection (see paragraph 4.14(a))\". Each diagram shows a horizontal slab labelled \"Floor\" spanning between two vertical walls that stand on a rectangular base, with the space beneath the slab labelled \"Void\". In the left diagram the ground surface, marked \"Highest level\" at the left, slopes downward to the right, and a thin layer at the top of the ground is labelled \"Ground cover\". The right diagram shows the same arrangement with the ground cover sloping toward the right, where the surface is marked \"Lowest level\"; an opening at the foot of the left wall is labelled \"Provision for drainage\" and an opening at the foot of the right wall is labelled \"Provide drainage for water that may enter void\". Below the left diagram a note reads \"Note: Slope has been exaggerated for clarity\".",
+ "first_draft": "The drawing is a section with two diagrams placed side by side, beneath the heading \"Diagram 6 Suspended floor – preventing water collection (see paragraph 4.14(a))\". Each diagram shows a horizontal slab labelled \"Floor\" spanning between two vertical walls that stand on a rectangular base, with the space beneath the slab labelled \"Void\". In the left diagram the ground surface, marked \"Highest level\" at the left, slopes downward to the right, and a thin layer at the top of the ground is labelled \"Ground cover\". The right diagram shows the same arrangement with the ground cover sloping toward the right, where the surface is marked \"Lowest level\"; an opening at the foot of the left wall is labelled \"Provision for drainage\" and an opening at the foot of the right wall is labelled \"Provide drainage for water that may enter void\". Below the left diagram a note reads \"Note: Slope has been exaggerated for clarity\"."
+}

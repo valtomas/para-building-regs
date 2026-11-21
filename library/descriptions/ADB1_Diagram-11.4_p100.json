@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-11.4_p100",
+ "source": "ADB1",
+ "label": "Diagram 11.4",
+ "page": 100,
+ "caption": "Diagram 11.4 Status of materials achieving class B-s3, d2 or worse as unprotected area",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "262a64df68585e0a2d974d95396c5cd5909d49bce6e976752a89506d608ff9fb",
+ "image_sig": {
+  "w": 756,
+  "h": 553,
+  "grey": "7u/6+vr6+vr6+vr6+vr6+Pv///nx+P////////////v7//76//b2/v/////////7+//n/v//+fT8////////+/v+1rf3///79fr///////v7/9Vfnu3///3y9fPt7fj7+//okVqH1/jy+PTk19fa+/v/+/OsYXHG+v/7+PT3+/v7//v//MJtfPj49Obc4/37+//1+f//2J////v/////+/v//fT2/v/j+Pj08+zs9/v7////9/T8+//8+ubc3+T2+//////39Pb5+///////+/v///////zw/f////////v7/////////P/////////7iWdjZ2ZmaGVmY2ZmZ2Vaeg=="
+ },
+ "reviewed": false,
+ "description": "This is an isometric line drawing of a rectangular wall block, with \"See para 11.7\" at the top left. A vertical dimension labelled \"b\" marks the height of the green band at the top of the left edge, and a dimension labelled \"a\" runs along the bottom front edge. The front face of the block shows three zones. The top is a light green border surrounding a darker green central rectangle; below this is a plain white area. Three labels on the right, joined by leader lines, refer to these zones. The upper label points to the light green border and reads: \"Area of fire resisting wall with materials more than 1mm thick and with a reaction to fire performance worse than class B-s3, d2 = a×b\". The middle label points to the dark green centre and reads: \"Area of wall counted as unprotected area = 0.5a×b\". The lower label points to the white area and reads: \"Area of fire resisting wall with materials having a reaction to fire performance better than class B-s3, d2\". A green banner along the bottom carries the title \"Diagram 11.4 Status of materials achieving class B-s3, d2 or worse as unprotected area\".",
+ "first_draft": "This is an isometric line drawing of a rectangular wall block, with \"See para 11.7\" at the top left. A vertical dimension labelled \"b\" marks the left edge, and a dimension labelled \"a\" runs along the bottom front edge. The front face of the block shows three zones. The top is a light green border surrounding a darker green central rectangle; below this is a plain white area. Three labels on the right, joined by leader lines, refer to these zones. The upper label points to the light green border and reads: \"Area of fire resisting wall with materials more than 1mm thick and with a reaction to fire performance worse than class B-s3, d2 = a×b\". The middle label points to the dark green centre and reads: \"Area of wall counted as unprotected area = 0.5a×b\". The lower label points to the white area and reads: \"Area of fire resisting wall with materials having a reaction to fire performance better than class B-s3, d2\". A green banner along the bottom carries the title \"Diagram 11.4 Status of materials achieving class B-s3, d2 or worse as unprotected area\"."
+}

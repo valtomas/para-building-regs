@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-3.20_p55",
+ "source": "ADE",
+ "label": "Diagram 3.20",
+ "page": 55,
+ "caption": "Diagram 3.20 \u0007\u0007Floor type 3.1A | N EBUILDINGS VERSION",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "69fb8cd8fcf96b97303e03291612cf701dafb33b74f8e5e9ab5435c5f1e88956",
+ "image_sig": {
+  "w": 371,
+  "h": 252,
+  "grey": "5crO0sfNu9HHz8TN3Nzc5em/sszH1K27orfByenp6e/k6Ojo6Ojo6Ojo6Ojo6Ojn6f//////////////////9On///////////////////Tp1cvKzMrMzMvKzMvMy8rs6dbe397Y1t7f397f3t/Y6un06dP47/P/////////6e3p7+bU/e/z/////////+rt6d3////y9P///+L////u7und6uvq6uvr7OvZ6unr6/Pp3ODh4N/g4eHg0+Hg4eHy6d7W19fX1tfW19bX19fX7un///////////////////Tp///////////////i2Nrk3d/f39/f39/f39/f0c3P2Q=="
+ },
+ "reviewed": false,
+ "description": "This is a section drawing, identified by the title \"Diagram 3.20 Floor type 3.1A\" at the top and the word \"SECTION\" in the lower right corner. It depicts a floor construction shown in cross-section, made up of a top horizontal layer drawn as a long hatched band, a lower horizontal layer filled with a continuous row of small circles or ovals, and an open cavity between them. Within this cavity, four vertical elements are drawn, each as a narrow rectangle marked with a diagonal cross; they are placed at intervals along the cavity and are drawn at different heights, so they do not all span the full gap between the two layers. On the left side, a vertical dimension line with arrowheads spans the gap between the underside of the top layer and the top of the left-hand vertical element, and is labelled \"At least 100mm\". The vertical elements are spaced apart, leaving the cavity open between them. No other labels, dimensions or symbols are shown.",
+ "first_draft": "This is a section drawing, identified by the title \"Diagram 3.20 Floor type 3.1A\" at the top and the word \"SECTION\" in the lower right corner. It depicts a floor construction shown in cross-section, made up of a top horizontal layer drawn as a long hatched band, a lower horizontal layer filled with a continuous row of small circles or ovals, and an open cavity between them. Within this cavity, two vertical support posts are drawn, each as a narrow rectangle marked with a diagonal cross, rising from the lower layer to support the top layer. On the left side, a vertical dimension line with arrowheads spans the gap between the underside of the top layer and the top of the lower layer, and is labelled \"At least 100mm\". The supports are spaced apart, leaving the cavity open along most of its length. No other labels, dimensions or symbols are shown."
+}

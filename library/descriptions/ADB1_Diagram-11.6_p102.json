@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-11.6_p102",
+ "source": "ADB1",
+ "label": "Diagram 11.6",
+ "page": 102,
+ "caption": "Diagram 11.6 The effect of a canopy on separation distance | Roofs",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "98de564165589c0ed595d2b0c9587457b4ec8133d92d6ada5d87a15fd5f821bd",
+ "image_sig": {
+  "w": 756,
+  "h": 495,
+  "grey": "7Ov6+vr6+vr6+vr6+vr69/v///////f////////9+vv79uvv/+/f//3p6vX23fr7+//////L2P//////0tr2+/v///z75/n8///9/ef+9vv7///t5uL7/v//8u3n//r7+////eXJ2P////393dr2+/v17/j/6Pn8+e33+Of09vv79/X9/+j7/vry/fDd4vb7+///6OPM0f///+3Ntbby+/v//+/i8Ov2///14e3u8vv7///p1/b/////8dft///7+///8OX7+/z9/fnm+Pz/+/v//9/Y3dzd297a3dzz//vx8vLy8vLy8vLy8vLy8vLwhmRfZGFiYGZiYVVVVVVVdg=="
+ },
+ "reviewed": false,
+ "description": "This diagram, titled in a green band at the bottom 'Diagram 11.6 The effect of a canopy on separation distance', shows two elevation views side by side, with the text 'See para 11.12' at the top left. The left view is labelled 'Canopy arrangement' and depicts a building wall, shown with a zigzag break line, from which a 'Canopy' projects at mid-height. A green dimension marked '2m min.' runs between the canopy edge and a vertical dashed line labelled 'Relevant boundary'. At the base, another green dimension is labelled 'Distance to relevant boundary measured from building line', with 'Building line' pointing to the wall. The right view is labelled 'Loading bay arrangement' and shows the same wall with a 'Loading platform' projecting at the base. A green '2m min.' dimension spans from the platform to a dashed 'Relevant boundary' line, and a base dimension is again labelled 'Distance to relevant boundary measured from building line' with 'Building line'. Below, a NOTE reads: 'Projections from the building line, such as a canopy or a loading platform, can be ignored when assessing separation distance. This does not apply where the canopy is enclosed by side walls.'",
+ "first_draft": "This diagram, titled in a green band at the bottom 'Diagram 11.6 The effect of a canopy on separation distance', shows two elevation views side by side, with the text 'See para 11.12' at the top left. The left view is labelled 'Canopy arrangement' and depicts a building wall, shown with a zigzag break line, from which a 'Canopy' projects at mid-height. A green dimension marked '2m min.' runs between the canopy edge and a vertical dashed line labelled 'Relevant boundary'. At the base, another green dimension is labelled 'Distance to relevant boundary measured from building line', with 'Building line' pointing to the wall. The right view is labelled 'Loading bay arrangement' and shows the same wall with a 'Loading platform' projecting at the base. A green '2m min.' dimension spans from the platform to a dashed 'Relevant boundary' line, and a base dimension is again labelled 'Distance to relevant boundary measured from building line' with 'Building line'. Below, a NOTE reads: 'Projections from the building line, such as a canopy or a loading platform, can be ignored when assessing separation distance. This does not apply where the canopy is enclosed by side walls.'"
+}

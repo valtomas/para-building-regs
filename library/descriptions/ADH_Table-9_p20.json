@@ -1,0 +1,17 @@
+{
+ "key": "ADH_Table-9_p20",
+ "source": "ADH",
+ "label": "Table 9",
+ "page": 20,
+ "caption": "Table 9 \u0007Limits of cover for class M concrete pipes in any width of trench",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "8b7863d115975aec251490de8dea277e2a04279c6bdd961c92bf34d00cf832c1",
+ "image_sig": {
+  "w": 796,
+  "h": 266,
+  "grey": "zcrEx8fEwsfHycTCx93d/c7GvL3EuLu6rry4wb7p6f7Bxd7ez7fe3ry63N7DvNP95uTw8Ofh8PDg3u/w4+Hr/t78///z5P//7e////Dm///w/v//9/L///b1///49P//7/7///bw///28///+PL//9/9///v5P//7ur///Tp///l8PDw8PDw8PDw8PDw8PD+6f///fz///7//v7///////Pc4OHi4d7h39/g5f/////t3N/g3OH2////////////7dfV29rc3Nzd29/d3tz0//Tl6P7//v/////////////v3d/k3d3e////////////1tLS0tLS0tLS0tLS0tLS/Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

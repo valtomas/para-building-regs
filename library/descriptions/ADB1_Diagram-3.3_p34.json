@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-3.3_p34",
+ "source": "ADB1",
+ "label": "Diagram 3.3",
+ "page": 34,
+ "caption": "Diagram 3.3 Flat with restricted travel distance from furthest point to entrance",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "fdf9a4918a7946e4da942723fefabb579fdb2e1abf03b8e563f9677b958716a9",
+ "image_sig": {
+  "w": 754,
+  "h": 326,
+  "grey": "4szMzMzMzMzMzMzMzMzM3/j39/f39/f39/f39/f39/fv8P/////////////////79fj/+/v7/P///Pv7+///+/v//+vx2N/J9ezk7+T///v7///V2eHr9f/l6PXq///7+///4vXb8f//8/Ts6P//+/v///Lx9ez//+fn6vT///v7///37frt///y+uDk///7+///9/rs9f//9f7p8v//+/v///f89ff///X/7PX///v7///Gx8fR///Tx8HB///7+/////Hi//////vf+f//+/v///////////////////ugh4mHhoeHhoiHhoaGhoaWimthaGlpampoa2pma1VVdQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing, titled \"Diagram 3.3 Flat with restricted travel distance from furthest point to entrance,\" shows two plan views of flat layouts arranged side by side within a bordered box, with the note \"See para 3.18\" at the top left.\n\nThe left plan is a rectangular block of rooms. The top-left interior space is labelled \"Kitchen area\" and contains a counter or sink symbol; the top-right space is labelled \"Bath\" and shows a door and bath. Two green diagonal lines, each marked \"9m max.\", run from the door at the bottom edge, labelled \"Flat entrance,\" up to the top-left and top-right corners of the plan. A leader line from the label \"Distance not restricted\" points to the top edge of the plan.\n\nThe right plan is another rectangular flat divided into several rooms, the top-left room labelled \"Kitchen\". Green lines marked \"9m max.\" run from the doorway at the bottom, labelled \"Flat entrance,\" to the top-left and top-right corners of the plan, and also upwards along the central passage from the same entrance point.",
+ "first_draft": "The drawing, titled \"Diagram 3.3 Flat with restricted travel distance from furthest point to entrance,\" shows two plan views of a flat arranged side by side within a bordered box, with the note \"See para 3.18\" at the top left.\n\nThe left plan is a rectangular block of rooms. The top-left interior space is labelled \"Kitchen area\" and contains a cooker symbol; the top-right space is labelled \"Bath\" and shows a door and bath. Two green diagonal lines, each marked \"9m max.\", run from a point on the bottom edge labelled \"Flat entrance\" up to the top-left and top-right corners. A leader line pointing to the top edge carries the label \"Distance not restricted.\"\n\nThe right plan is another rectangular flat divided into several rooms, the top-left room labelled \"Kitchen\". Green diagonal lines, each marked \"9m max.\", run from a central doorway at the bottom, labelled \"Flat entrance,\" out to the top corners of the plan."
+}

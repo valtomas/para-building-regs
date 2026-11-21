@@ -1,0 +1,17 @@
+{
+ "key": "ADB1_Table-B1_p154",
+ "source": "ADB1",
+ "label": "Table B1",
+ "page": 154,
+ "caption": "Table B1 Continued Part of building",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "9c0cd81860601e3ccd09bb6115c8732420e6476590478d54b6b31e2da271de24",
+ "image_sig": {
+  "w": 779,
+  "h": 942,
+  "grey": "5L7CxtbWycjJyMjHzNDQ3fz//////9nU09TZ2uT9//r67uzx+/zW1d7Y49Xf9Pf5+d7a5Or65uXm5ebl5fP3+fjk5+vt+Nna3t7k1t7k7fn75uTi4vbf3eHc5Nvg7PL5+d3n6uv75uXm5ebl5fP2+fru6/P//+Lm4+Tn3+fu9fr25uzy9/zY4d3b49Pj4+b3+d7Z4uX54OTi4eXc5e73+fnW1ury/ODj4uHl3eXt7fT67Ovt8PXh5uPk5uDn8O74+uTf4e743+Th4eXe5evy+ffg3erq8+Hk4+Ll3eX1+Pn59fT5///f5OHh5dzl5O/69unq6vD44eXj4+fe5uft9g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

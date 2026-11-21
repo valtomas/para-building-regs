@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-2.5_p29",
+ "source": "ADB2",
+ "label": "Diagram 2.5",
+ "page": 29,
+ "caption": "Diagram 2.5 Open connections | Access to storey exits",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "dc3625df426ffee7d7caa3a633e53fd84acdf8546431b660d142ef811d3dc53e",
+ "image_sig": {
+  "w": 737,
+  "h": 384,
+  "grey": "59XV1dXV1dXV1dXV1dXV1//////////////////////m5fj4+Pj4+Pj4+Pj4+Pj4+9XT083J09PT5P////////vp///u6f///+j////////76f//7uX////o////////++n///Db/f//6N3i5unm//vp//7Y2+T4/un66uz////76f/xrafB//jp/v3+/v7+++n/7sHpp/v55ebSzs/S9fvp+e6x0bX8/+jkzM3Tzuf76fXxsq/H///o8eb0////7+75/vn3+///6P////////PQ09PT09PT093///////++rq6urq6urq6urq6urq6uh2NbYWJcT09PT09PT09PTw=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a plan view showing a room outline in black lines. A rectangular \"Opening\" sits at the centre, surrounded by a dashed, light‑green shaded area representing the zone within 4.5m of it; a double‑headed green arrow labelled \"4.5m\" on the right spans from the opening to that dashed boundary. Three points marked A, B and C with small circles are joined by green lines (escape routes) ending in arrowheads at two \"Exit\" symbols, one on the left wall and one on the right wall. A second smaller opening at the top of the plan has a door‑swing arc, and the small circle for point C is at it. The top‑left corner reads \"See para 2.13\". A legend at right defines a dashed, light‑green rounded rectangle as \"Area within 4.5m of the opening\" and a circle with a line and arrowhead as \"Escape route\". Below the legend is text: \"From A and B at least one direction of travel is away from the opening. From C, where the initial direction of travel is towards the opening, one of the escape routes is not less than 4.5m from the opening.\" A green footer banner reads \"Diagram 2.5 Open connections\".",
+ "first_draft": "The drawing is a plan view showing a room outline in black lines. A rectangular \"Opening\" sits at the centre, surrounded by a dashed, light‑green shaded area representing the zone within 4.5m of it; a green arrow labelled \"4.5m\" spans from the opening to that dashed boundary. Three points marked A, B and C with small circles are joined by green lines (escape routes) ending in arrowheads at two \"Exit\" symbols, one on the left wall and one on the right wall. A second smaller opening at the top of the plan, with a door‑swing arc, is also labelled C. The top‑left corner reads \"See para 2.13\". A legend at right defines the shaded square as \"Area within 4.5m of the opening\" and the circle‑and‑line as \"Escape route\". Below the legend is text: \"From A and B at least one direction of travel is away from the opening. From C, where the initial direction of travel is towards the opening, one of the escape routes is not less than 4.5m from the opening.\" A green footer banner reads \"Diagram 2.5 Open connections\"."
+}

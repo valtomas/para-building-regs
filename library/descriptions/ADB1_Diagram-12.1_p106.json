@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-12.1_p106",
+ "source": "ADB1",
+ "label": "Diagram 12.1",
+ "page": 106,
+ "caption": "Diagram 12.1 Limitations on spacing and size of plastic rooflights that have a class D-s3, d2 or TP(b) lower surface",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "bced25dc4cd03e3dece30d3c87f5ae0bf8b48496a7da7a80f0bb00a2dea4a1a4",
+ "image_sig": {
+  "w": 756,
+  "h": 521,
+  "grey": "7ent+vr6+vr6+vr6+vr6+Pv/+/f39/v///////////v7/+js7Ozk///////////7+//v/+f+7P//////////+/v/7/vu/Oz///////////v7/+jn5Ofl///////////7+/////n8////////////+/v////ozP7/8e7q7O/u//v7////9ev7/+X////////7+//v6OPo7f/j3Nzd5Or4+/v/7////+z/7urs7+vv9fv7/+/71/vs/+zn5+n39/37+//v////7P/o3+Td5vP6+/v/7+jo6O3///////////uoko+TkJORkZOTk5ORkZCcgllcaGNkWVhaWVhYWFhYdw=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a plan view. Two rectangles, each outlined by a double line, are placed one above the other; both are labelled 'Rooflight*' with 'max. area 5m²' below the label. A green double-headed arrow points between them, carrying the text '3m minimum between any two rooflights in any direction'. The top left corner reads 'See paras 12.5 and 12.6'. To the right, a line states '* Or group of rooflights amounting to no more than 5m²'. Beneath it, under 'NOTES:', three numbered items read: 1. 'There are restrictions on the use of plastic rooflights in the guidance to requirement B2 in Section 4.' 2. 'Surrounding roof covering to be a material of class A2-s3, d3 or better for at least 3m distance.' 3. 'Where Diagram 5.2a or 5.2b applies, rooflights should be at least 1500mm from the compartment wall.' A green banner along the bottom gives the title 'Diagram 12.1 Limitations on spacing and size of plastic rooflights that have a class D-s3, d2 or TP(b) lower surface'.",
+ "first_draft": "The drawing is a plan view. Two rectangles, each outlined by a double line, are placed one above the other; both are labelled 'Rooflight*' with 'max. area 5m²' below the label. A green double-headed arrow points between them, carrying the text '3m minimum between any two rooflights in any direction'. The top left corner reads 'See paras 12.5 and 12.6'. To the right, a line states '* Or group of rooflights amounting to no more than 5m²'. Beneath it, under 'NOTES:', three numbered items read: 1. 'There are restrictions on the use of plastic rooflights in the guidance to requirement B2 in Section 4.' 2. 'Surrounding roof covering to be a material of class A2-s3, d3 or better for at least 3m distance.' 3. 'Where Diagram 5.2a or 5.2b applies, rooflights should be at least 1500mm from the compartment wall.' A green banner along the bottom gives the title 'Diagram 12.1 Limitations on spacing and size of plastic rooflights that have a class D-s3, d2 or TP(b) lower surface'."
+}

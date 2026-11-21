@@ -1,0 +1,18 @@
+{
+ "key": "ADC_Diagram-5_p28",
+ "source": "ADC",
+ "label": "Diagram 5",
+ "page": 28,
+ "caption": "Diagram 5 \u0007Suspended timber floor – construction (see paragraph 4.14(a) (i))",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "adb81853276cee75fd6f5e979af4fafce77475b2820dce989c652acb52c051bd",
+ "image_sig": {
+  "w": 755,
+  "h": 360,
+  "grey": "vbSrpaaotKioqqylrqPL193g39/g4eLg4N/e2eLa4+b1//3W2+rh7e7n4+/////69f//vsPk7u/y5e7/////+vX//76/5//5//n///jl9vr1/Oa+wKi2z7eytrng/v/69f7yvsWnss+/s6u43tD0+vXU6LnE///3//+22+r0//r19ua0vP///f//xsTm8v/69f/svMPMy9vNxcC/5fT1+vXr3LTCxMTPy8K+xeTO5Pr1//uyvszO19TMzdPw///69f/6s7/b2Nvb29jY5ev++vX//LfD/v////////71/vrs9fXz8/X19fX19fX19fXx/////////////////////w=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a section titled \"Diagram 5 Suspended timber floor – construction (see paragraph 4.14(a) (ii))\". On the left, a vertical wall section is labelled \"Airbricks\" at its opening, shows a \"Damp-proof course\" line, and carries a vertical dimension \"150mm\". A break line separates this from the floor section on the right. At the top, a \"Joist supported by hanger\" rests on a bracket, with \"Particle board\" above it and \"Insulation between floor joists\" drawn as a wavy line over a row of circular shapes. To the right, horizontal \"Floor joists\" sit above another \"Damp-proof course\". Below, a block labelled \"Honeycombed sleeper wall\" carries a vertical dimension \"75mm min.\", with the layer as a whole marked \"150mm min.\". Beneath it lie layers labelled \"Oversite concrete\" and \"Hardcore\", the lower two shown with aggregate specks.",
+ "first_draft": "The drawing is a section titled \"Diagram 5 Suspended timber floor – construction (see paragraph 4.14(a) (ii))\". On the left, a vertical wall section is labelled \"Airbricks\" at its openings, shows a \"Damp-proof course\" line, and carries a vertical dimension \"150mm\". A break line separates this from the floor section on the right. At the top, a \"Joist supported by hanger\" rests on a bracket, with \"Particle board\" above it and \"Insulation between floor joists\" drawn as a wavy line over a row of circular shapes. To the right, horizontal \"Floor joists\" sit above another \"Damp-proof course\". Below, a block carries a vertical dimension \"75mm min.\", with the layer as a whole marked \"150mm min.\". Beneath these lie layers labelled \"Honeycombed sleeper wall\", \"Oversite concrete\", and \"Hardcore\", the lower two shown with aggregate specks."
+}

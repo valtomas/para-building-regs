@@ -1,0 +1,18 @@
+{
+ "key": "ADC_Diagram-2_p17",
+ "source": "ADC",
+ "label": "Diagram 2",
+ "page": 17,
+ "caption": "Diagram 2 \u0007Example of a conceptual model for a site showing source–pathway– receptor",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "24b430c50db39371b43f7addc884333f3609d1ecd9a9a3999ff617c601cff3c9",
+ "image_sig": {
+  "w": 749,
+  "h": 597,
+  "grey": "0MO7ssK8uLy/u727u7q71+Xk183k5OHk5OTk5OTk5OT1//////Lw+///////////9f////X5//D+//r1//////X////q8/Hz7vPv8e7////1////4+/S7ePU7/Tt/v//9f///9/dz+fg0O7f5Pj///X849SwwLe+v8rcxcnQ8f/1/e/j4+Dj1NPe49/f3/L/9f/y4+Pj4+Pj4+Pi19fy//X//Pj49+jn9vj4+Pj4/P/1//////7s6eLp5f//////9f///////e3j6Or++/3///X//////d7j3uHe3uD9///1//////7u7u/s///+////8fn5+fn45+jr+fn5+fn5+Q=="
+ },
+ "reviewed": false,
+ "description": "The image is a labelled section (schematic) titled \"Diagram 2 Example of a conceptual model for a site showing source–pathway–receptor\". On the left is a house outline with a pitched roof; inside it are stick figures of an adult and a child with a crawling baby on the floor, and a small table or ledge on the left wall above which is the circled number 3. To the right of the house, outdoors, are a further adult and child with a crawling baby on the floor, and a patch of grass and rounded bushes marked by the circled number 2 above the word \"Garden\"; a curved black arrow arcs from above the garden down towards the outdoor adult. A horizontal ground line sits above a grey band labelled \"Contaminated soil\". Several upward vertical black arrows rise from the soil, two inside the house, one in the open space and one at the garden; the arrow at the garden is marked with the circled number 4, while the circled numbers 5 and 1 are placed above the stick figures (5 above the adults and 1 above the children), both indoors and outdoors. Two horizontal lines enter the building at ground level from the soil, the line on the left marked 7 and the line on the right marked 6. Below the drawing a legend headed \"Possible pathways\" reads: Ingestion: of contaminants in soil/dust (1); of contaminants in food (2); of contaminants in water (3); Inhalation: of contaminants in soil particles/dust/vapours (4); Direct contact: with contaminants in soil/dust or water (5); Attack on building structures (6); Attack on services (7).",
+ "first_draft": "The image is a labelled section (schematic) titled \"Diagram 2 Example of a conceptual model for a site showing source–pathway–receptor\". On the left is a house outline with a pitched roof, inside which stand stick figures of two adults and two children; a small table or ledge on the left wall carries the circled number 3. To the right of the house, outdoors, are a further adult and child and a patch of plants labelled \"2 Garden\". A horizontal ground line sits above a grey band labelled \"Contaminated soil\". Several upward vertical arrows rise from the soil into the house and the garden, each marked with a circled number (4, 5, 1). Two horizontal lines enter the building at ground level from the soil, marked 6 and 7. Below the drawing a legend headed \"Possible pathways\" reads: Ingestion: of contaminants in soil/dust (1); of contaminants in food (2); of contaminants in water (3); Inhalation: of contaminants in soil particles/dust/vapours (4); Direct contact: with contaminants in soil/dust or water (5); Attack on building structures (6); Attack on services (7)."
+}

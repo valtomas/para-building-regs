@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-D5_p175",
+ "source": "ADB1",
+ "label": "Diagram D5",
+ "page": 175,
+ "caption": "Diagram D5 Number of storeys",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "96d985d4b6b22b5c2ed97968c0ec3b1f021e45ba1de2b87f2c3a59659c189227",
+ "image_sig": {
+  "w": 737,
+  "h": 554,
+  "grey": "+Pr69vf5+vr6+vr6+vr6+vv//93Y7f/////////////7///p5Ofw8P/gz9TQ0PH/+///9O3q8O//7Ono8Pn8//v//+fi1tbV5v/////////turra6Lfi4uj/////////4oKCusu2//////////////Xh39ra4//////////////7//ze2uTs7/X/////////+///6ubX1u7/6P3///////v///Tt4e/w/+3b2t7g2/z7///o2szNy93n2trc3d36666u2O676+vv7+zs6uzy/+KCgrfGt/////Hk7Pf2+v/36enp6e7////79/f39fr/imtmamdnXV1dXV1dXV1dXQ=="
+ },
+ "reviewed": false,
+ "description": "This diagram, titled \"Diagram D5 Number of storeys\", has two parts. The top part, \"Building three storeys\", shows a vertical section of four stacked boxes labelled, top to bottom: \"Second floor\", \"First floor\", \"Ground floor\", and \"Basement\". An open rectangle is to the right of the top two boxes, sitting on a grey block. Beside this, text reads: \"To count the number of storeys in a building, or in a separated part of a building, count only at the position which gives the greatest number and exclude any basement storeys.\" The bottom part, \"Separated part three storeys\", shows a similar section. The left side has the four boxes. To their right is a green vertical line labelled \"Compartment wall\". Right of the wall is a two-box stack aligned with the \"First floor\" and \"Ground floor\", headed \"Separated part two storeys\", sitting on a grey block. Under \"NOTES:\", three numbered points read: 1. In assembly buildings (purpose group 5), a gallery is included as a storey, but not if it is a loading gallery, fly gallery, stage grid, lighting bridge, or any gallery provided for similar purposes, or for maintenance and repair. 2. In other purpose group buildings, galleries are not counted as a storey. 3. For the definition of basement, see Appendix A.",
+ "first_draft": "This diagram, titled \"Diagram D5 Number of storeys\", has two parts. The top part, \"Building three storeys\", shows a vertical section of four stacked boxes labelled, top to bottom: \"Second floor\", \"First floor\", \"Ground floor\", and \"Basement\". An open rectangle is right of the top two boxes, above grey ground-level blocks. Beside this, text reads: \"To count the number of storeys in a building, or in a separated part of a building, count only at the position which gives the greatest number and exclude any basement storeys.\" The bottom part, \"Separated part three storeys\", shows a similar section. The left side has the four boxes, divided by a green vertical line labelled \"Compartment wall\". Right of the wall is a two-box stack aligned with the \"First floor\" and \"Ground floor\", headed \"Separated part two storeys\", above grey ground-level blocks. Under \"NOTES:\", three numbered points detail gallery rules and reference Appendix A."
+}

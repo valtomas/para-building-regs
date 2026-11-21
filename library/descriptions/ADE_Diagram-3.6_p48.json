@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-3.6_p48",
+ "source": "ADE",
+ "label": "Diagram 3.6",
+ "page": 48,
+ "caption": "Diagram 3.6 \u0007\u0007Floor type 1 – floor penetrations",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "f36024527b409c9a7483579abd1d03eb987bf895be53b4c8c4b40dea00310ee0",
+ "image_sig": {
+  "w": 760,
+  "h": 382,
+  "grey": "9OTa5u7o7/rUr7apqbLI2/Tm1vLy7fX68ubgs7Le6ez05eXu7Obu+ufi4uLi4uLj9Ofq69jR4/r0//T08P//+vTl4uXs5//69P/s6czrzuv05+Do9fX9+vT/7erW/fX59Ofr+f/r5fr0/+bl1v//+vTn6/j////68PLo59Ly8vL09/L7////+u/7//PX//309Obm9v//2+bx/P3x0fv+9O3q6urq6urx7+nh5M3l5Ovz7+3x8O/r//T/6+nW8O/zt7KvuODd4P/0//Du1vnX8t/j4+Dj5uP+9P/3+fD///rt5eLh4eTt//T//+zz//r38dTZ6vb4+f/p6urq6urQ0A=="
+ },
+ "reviewed": false,
+ "description": "The image shows two sections. The right-hand part, headed \"Diagram 3.6 Floor type 1 – floor penetrations\", is a section through a floor. A horizontal floor slab is crossed by a vertical, cross-hatched wall. Two parallel vertical lines pass through the floor; a label \"Lag pipes with mineral wool\" points to them. A vertical member at the wall-and-floor junction is labelled \"Enclosure\", and a line there is labelled \"Seal with tape or sealant\". Small open triangles are scattered over the slab, and \"SECTION\" appears at the lower right. The left-hand part is a section, cut off at the top, showing an \"External cavity wall\" of vertical brick pattern, a vertical cross-hatched element, and a horizontal floor with a wavy line and a row of small circles. A dimension arrow reads \"Minimum 300mm\", and \"Timber batten\" points to the wavy line; \"SECTION\" is at the lower right. Below this part is running text giving the heading \"Junctions with an external cavity wall with timber frame inner leaf\" and clause 3.36 a.",
+ "first_draft": "The image shows two sections. The right-hand part, headed \"Diagram 3.6 Floor type 1 – floor penetrations\", is a section through a floor. A horizontal, cross-hatched floor slab is crossed by a vertical, cross-hatched wall. Two parallel vertical lines pass through the floor; a label \"Lag pipes with mineral wool\" points to them. A vertical member at the wall-and-floor junction is labelled \"Enclosure\", and a line there is labelled \"Seal with tape or sealant\". Small open triangles are scattered over the slab, and \"SECTION\" appears at the lower right. The left-hand part is a section, cut off at the top, showing an \"External cavity wall\" of vertical brick pattern, a vertical cross-hatched element, and a horizontal floor with a wavy line and a row of small circles. A dimension arrow reads \"Minimum 300mm\", and \"Timber batten\" points to a horizontal line; \"SECTION\" is at the lower right. Below this part is running text giving the heading \"Junctions with an external cavity wall with timber frame inner leaf\" and clause 3.36 a."
+}

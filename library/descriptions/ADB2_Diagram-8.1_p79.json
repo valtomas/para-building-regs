@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-8.1_p79",
+ "source": "ADB2",
+ "label": "Diagram 8.1",
+ "page": 79,
+ "caption": "Diagram 8.1 | Compartment floors: illustration of guidance in paragraph 8.11",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "993a2b8078b07d65d5b74480b521bf3b57440af613b28e1dd0725ca7b368d953",
+ "image_sig": {
+  "w": 737,
+  "h": 1049,
+  "grey": "9PX8/Pz8/Pz8/Obh7vz8/Pv///v19fX9///r6fH////7////////////5Ovk/v//+////////////+Pq5f////v///3Z2dfh+f/u9ev////7///539zx////4+nl+v//+//+5szI0dj+/+Tr5f////v//uSXkaCl+//u9ev////7///excPGxd3rycjP8///+///+drd5ePt/9TQ4fj///v///319/X9///o4vn////7///97+z8///h4+vV8f//+///3+3s3fj/2uv1yvj7//v//8vX18Dw/9rM07j4///7///429za+v//2drj////uqunqqqqqqqrqqurpqOjow=="
+ },
+ "reviewed": false,
+ "description": "Diagram 8.1, titled \"Compartment floors: illustration of guidance in paragraph 8.11\", comprises four section and elevation views. A legend at top left reads \"See para 8.11\" and shows a green line symbolled \"Compartment floor(s) or wall(s)\".\n\na. A section on a grey ground line shows a left column of four stacked boxes: two upper boxes reading \"Storey not exceeding 2000m²\" and two lower green-shaded boxes reading \"Storey exceeding 2000m² divided by compartment wall\". To the right of the lower two boxes are two green-shaded boxes each reading \"Compartment wall\", with a \"Roof\" label above the top right box. A left dimension reads \"30m max.\" Heading: \"a. Example of compartmentation in an unsprinklered assembly and recreation, shop, or commercial building see paragraph 8.11a\".\n\nb. A tall elevation with horizontal green lines, dimensioned \"> 30m\" on the right. Heading: \"b. Compartmentation in buildings over 30m see paragraph 8.11b\".\n\nc. A basement section with two storeys below grey ground, dimensioned \"10m max.\" Heading: \"c. Shallow basement see paragraph 8.11c\".\n\nd. A basement section with three storeys, dimensioned \"> 10m\". Heading: \"d. Deep basement see paragraph 8.11d\".",
+ "first_draft": "Diagram 8.1, titled \"Compartment floors: illustration of guidance in paragraph 8.11\", comprises four section and elevation views. A legend at top left reads \"See para 8.11\" and shows a green line symbolled \"Compartment floor(s) or wall(s)\".\n\na. A section on a grey ground line shows stacked boxes: two upper \"Storey not exceeding 2000m²\", a \"Roof\" label, and two green-shaded boxes each reading \"Storey exceeding 2000m² divided by compartment wall\" beside \"Compartment wall\". A left dimension reads \"30m max.\" Heading: \"a. Example of compartmentation in an unsprinklered assembly and recreation, shop, or commercial building see paragraph 8.11a\".\n\nb. A tall elevation with horizontal green lines, dimensioned \"> 30m\" on the right. Heading: \"b. Compartmentation in buildings over 30m see paragraph 8.11b\".\n\nc. A basement section with two storeys below grey ground, dimensioned \"10m max.\" Heading: \"c. Shallow basement see paragraph 8.11c\".\n\nd. A basement section with three storeys, dimensioned \"> 10m\". Heading: \"d. Deep basement see paragraph 8.11d\"."
+}

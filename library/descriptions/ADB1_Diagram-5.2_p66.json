@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-5.2_p66",
+ "source": "ADB1",
+ "label": "Diagram 5.2",
+ "page": 66,
+ "caption": "Diagram 5.2 Junction of compartment wall with roof | Cavities",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "5a2ab9f9d40549b6d43d60eed637c72a1d1dd7cf1a4c2ae3395c4e8b63f78f1a",
+ "image_sig": {
+  "w": 756,
+  "h": 287,
+  "grey": "+/zh1tq5zv//////////+/v/7M3Rwdr///////////v7//r/8f/w///////////7+//74+Hj9P//////////+/vu2t3W6/////////////v7//P+///////////////7+//46vH/////////////+/v/6sTp//Lh5OXi5Obj//v79d/H2Orq1tbV0NfZ+P/7++vv0en6/v79/P38/v7/+/vt58XR59/PzcrQ0M/Q8/v7///R2Ofj08vN0MrNzun7+///0d//6/T+/v/9////+/v///L7//////////////uObG1rbGtrbmxra2tra2uEjG5kamhvamxnVVVVVVVVeA=="
+ },
+ "reviewed": false,
+ "description": "A section drawing, part c., headed \"ANY BUILDING OR COMPARTMENT\", above the title \"Diagram 5.2 Junction of compartment wall with roof\" which is in a green band at the bottom. At the top edge a partial, cut-off line drawing of roof framing elements (rectangular members) is visible.\n\nBelow, a vertical grey rectangle labelled \"Wall\" stands in cross-section. To its left a sloping line descends towards the wall and is labelled \"Roof covering\". To the right a horizontal line extends from the wall and is labelled \"Roof covering\". A vertical dimension on the left, spanning the vertical height of the sloping roof section, reads \"At least 375mm\". A matching dimension on the right, between the wall's top and the horizontal roof covering, reads \"At least 375mm\".\n\nTo the right of the diagram are two paragraphs of explanatory text stating the wall should extend up through the roof for at least 375 mm, and that the height of the upstand/parapet wall above the highest roof may be reduced to 200 mm under certain conditions (a 375 mm height difference between roofs, or B ROOF (t4) rated coverings).",
+ "first_draft": "A section drawing, part c., headed \"ANY BUILDING OR COMPARTMENT\", beneath the title \"Diagram 5.2 Junction of compartment wall with roof\". At the top edge a partial, cut-off line drawing of roof framing elements (rectangular members) is visible.\n\nBelow, a vertical grey rectangle labelled \"Wall\" stands in cross-section. To its left a sloping line descends to a horizontal line; both are labelled \"Roof covering\". To the right a horizontal line is likewise labelled \"Roof covering\". A vertical dimension arrow on the left of the wall, between the sloping roof line and the wall's top, reads \"At least 375mm\". A matching arrow on the right, between the wall's top and the horizontal roof covering, also reads \"At least 375mm\".\n\nTo the right of the diagram are two paragraphs of explanatory text stating the wall should extend up through the roof for at least 375 mm, and that this height may be reduced to 200 mm under certain conditions (a 375 mm height difference between roofs, or B ROOF (t4) rated coverings)."
+}

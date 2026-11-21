@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-5.1_p67",
+ "source": "ADE",
+ "label": "Diagram 5.1",
+ "page": 67,
+ "caption": "Diagram 5.1 \u0007\u0007Internal wall type A",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "9f972478e8453ab11722730711fd715aade6b3b30ca7e30a2c4e4f7cdfb9df2c",
+ "image_sig": {
+  "w": 355,
+  "h": 405,
+  "grey": "3K+ztsC9oKmuoKemrcjW1uft6O3t7e3t7e3t5u3t7e3o///////48v/w/P//////6P//////9+jz6vv//////+j///////fp5ur7///////o///////38f/w+///////6P//////9/H/8Pv//////+j///////fx//D7///////o///////38f/w+///////6P//////9/H/8Pv//////+j///////fx//D7///////o///////38f/w+///////6P//////9+rs6/v//////+j///////fq8+v7///////o///////37//t/P//////4evr6+vr6+vr6+vr6+vOxA=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a plan view titled \"Diagram 5.1 Internal wall type A\". In the centre of the page is a vertical arrangement representing a wall, drawn with two pairs of long, parallel vertical lines (a double line on the left and a double line on the right) separated by a central gap. Two smaller horizontal rectangles, each containing an 'X' formed by two diagonal lines, span this gap, one in the upper half and one in the lower half, separated by a longer empty gap. In the bottom right corner, the word \"PLAN\" is printed. There are no other labels, dimensions, or symbols shown.",
+ "first_draft": "The drawing is a plan view titled \"Diagram 5.1 Internal wall type A\". In the centre of the page is a vertical rectangular arrangement representing a wall. It is drawn with two long, parallel outer lines. Two smaller rectangular brackets, each marked with an 'X' across its length, connect the two outer lines. One bracket is positioned in the upper half of the drawing, and the other is in the lower half, separated by a gap. In the bottom right corner, the word \"PLAN\" is printed. There are no other labels, dimensions, or symbols shown."
+}

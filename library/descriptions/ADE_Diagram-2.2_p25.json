@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.2_p25",
+ "source": "ADE",
+ "label": "Diagram 2.2",
+ "page": 25,
+ "caption": "Diagram 2.2 \u0007\u0007Wall type 1.1",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "8c071e179a63f1fb1c27ef0b39c78ac21f7b9fa9edad7d5432593216094c6673",
+ "image_sig": {
+  "w": 355,
+  "h": 401,
+  "grey": "4rm9wcXDpq+sw8zh4eHh4eLi3eLi4uLg3eLi4uLi4uLo/////93x7/Dw7ez/////6P/////b4+jl5ufn/////+j/////4/r3+fn48f/////o/////9vk5+Xn5+f/////6P/////j+/f6+fjx/////+j/////2+bn5ufn6f/////o/////+P79/r5+PH/////6P/////b5ejm5ebq/////+j/////4/z3+vn48f/////o/////9vl6Obm5+j/////6P/////f8e3y7/Dt/////+j/////4O3y7vHw6//////o/////+Py7vLv8e3/+/v94evr6+vr6+vr6+vr48bLyQ=="
+ },
+ "reviewed": false,
+ "description": "The image is headed by a pale green band containing the title \"Diagram 2.2 Wall type 1.1\". Below this, within a thin rectangular border, the drawing shows a single tall vertical rectangle positioned in the centre. This rectangle is divided by horizontal lines into eight stacked rectangular bands of roughly equal height. Each band is filled with a thin line hatch pattern. The top and bottom bands are cross-hatched with diagonals running both ways to form a grid of small diamonds, while the six bands between them carry a single-direction diagonal hatch. The bands are separated by horizontal lines, some of which are drawn as closely spaced pairs. No further labels, dimensions, scale bars, or symbols appear within the drawing area itself. In the lower right-hand corner of the bordered area, the word \"SECTION\" is printed in capital letters, indicating that the view is a cross-section. No other text or markings are visible.",
+ "first_draft": "The image is headed by a pale green band containing the title \"Diagram 2.2 Wall type 1.1\". Below this, within a thin rectangular border, the drawing shows a single tall vertical rectangle positioned in the centre. This rectangle is divided by horizontal lines into eight stacked rectangular bands of roughly equal height. Each band is filled with a thin line hatch pattern, and the orientation of the hatching alternates from one band to the next: some bands are cross-hatched with diagonals running both ways to form a grid of small diamonds, while the intervening bands carry a single-direction diagonal hatch. The bands are separated by pairs of closely spaced horizontal lines. No further labels, dimensions, scale bars, or symbols appear within the drawing area itself. In the lower right-hand corner, beneath the bordered rectangle, the word \"SECTION\" is printed in capital letters, indicating that the view is a cross-section. No other text or markings are visible."
+}

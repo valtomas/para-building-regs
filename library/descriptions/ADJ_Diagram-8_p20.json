@@ -1,0 +1,18 @@
+{
+ "key": "ADJ_Diagram-8_p20",
+ "source": "ADJ",
+ "label": "Diagram 8",
+ "page": 20,
+ "caption": "Diagram 8 \u0007General air supply to a combustion appliance (for sizes see Sections 2, 3 and 4)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-20",
+ "image_sha256": "20a62fc2b8a97e4f3761f461444e01fe3854c957127c32e74fc3431e3d7a6c8c",
+ "image_sig": {
+  "w": 755,
+  "h": 1105,
+  "grey": "1dLHwcLAycDNytXf39/f4vT/9/X59+jq+fXz6ev6/Pr0//r6/uPu7+jv//////v69P/6+uDf8/Pt7f/////7+vT/4uXi4fT77O7/5u7/+/r0/+7r4uD35ejt///+//v69P/6+tzd+efy7v/////7+vT/9/bx7fHv7Pb7+/v7+/r0//r6+f//+OT3+vvs6vv69P/o7P///vfr+P/88Pb7+vT/8vL6///55fL5++/l+/r0//n4/Pz8+vDx/fry8vv69P/z8vb29vXl6O3u9vb7+vT/5uf5//jt6fDn4/z/+/r0/+jg///48d7h5+v8//v67vjx8fX19fTx9fX19fX19A=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a table headed 'Diagram 8 General air supply to a combustion appliance (for sizes see Sections 2, 3 and 4)', with column headings 'Open flued' and 'Room sealed', and left-row labels 'Air for combustion and operation of the flue', 'Where cooling air is needed', and, in a lower band headed 'FLUELESS', 'Air for combustion and to carry away its products'.\n\nThe first row's 'Open flued' cell holds three line drawings. (a) 'Appliance in room' shows a room with labels for 'Infiltration air', 'Permanently open air vents' and 'Combustion air'. (b) 'Appliance in appliance compartment with internal vent' and (c) 'Appliance in appliance compartment with external vent' show compartments with a 'Combustion air' arrow. The 'Room sealed' cell reads 'No provisions necessary'.\n\nThe second row shows four circulation diagrams with curved arrows, (d) and (e) under 'Open flued', (f) and (g) under 'Room sealed'.\n\nThe 'FLUELESS' cell contains (h), a room with an appliance and labels for 'Combustion products', 'Permanently open air vents', 'Combustion air' and 'Infiltration air'.",
+ "first_draft": "The drawing is a table headed 'Diagram 8 General air supply to a combustion appliance (for sizes see Sections 2, 3 and 4)', with column headings 'Open flued' and 'Room sealed', and left-row labels 'Air for combustion and operation of the flue', 'Where cooling air is needed', and, in a lower band headed 'FLUELESS', 'Air for combustion and to carry away its products'.\n\nThe first row's 'Open flued' cell holds three line drawings. (a) 'Appliance in room' shows a room with arrows labelled 'Infiltration air', 'Permanently open air vents' and 'Combustion air'. (b) 'Appliance in appliance compartment with internal vent' and (c) 'Appliance in appliance compartment with external vent' show compartments with a 'Combustion air' arrow. The 'Room sealed' cell reads 'No provisions necessary'.\n\nThe second row shows four circulation diagrams with curved arrows, (d) and (e) under 'Open flued', (f) and (g) under 'Room sealed'.\n\nThe 'FLUELESS' cell contains (h), a room with an appliance and arrows labelled 'Combustion products', 'Permanently open air vents', 'Combustion air' and 'Infiltration air'."
+}

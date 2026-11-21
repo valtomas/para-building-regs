@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.33_p39",
+ "source": "ADE",
+ "label": "Diagram 2.33",
+ "page": 39,
+ "caption": "Diagram 2.33 \u0007\u0007Wall type 3 – internal timber floor",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "bd5285e98641e86e88af45c205b253163a87cd2a20b543d018ee91812f40ed6a",
+ "image_sig": {
+  "w": 355,
+  "h": 439,
+  "grey": "47y9xMnDsLOrv8G+sLXT4fLp6Onp6cG5ybjJ6enp6enk9PT09PT09PT09PT09PT06P//////++Py5Pv//////+j///////fM+c/3///////o///////3yOXL9///////6P//////98z6zvf//////+jy9vb29vXV49f19vb29vPo7/T09PTs3Prm7vT09PTw6P/////46sjkyvf//////+j////09vfN+c/3///////o///l5P/3yebM9///////6P//////98jxyvf//////+j///////////////7s8uzo7e3t7e3t7e3t7e3s2uPa/////////////////////w=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a section, as indicated by the word \"SECTION\" in the lower right corner. The title at the top reads \"Diagram 2.33 Wall type 3 – internal timber floor\". It shows a vertical wall element crossing a horizontal floor element, forming a cross or plus shape at the centre of the image. The wall is drawn running top to bottom, with a hatched central core and a single vertical line on each side of it. The floor is drawn as a horizontal band formed by two horizontal lines that passes behind the wall. Where the two meet, a sloping line and a short vertical line form a bracket on each side of the wall within the floor band, and a small dot symbol is placed at each of these points. A label reading \"Hanger\", with a leader line, points to the dot symbol on the left-hand side of the junction. No dimensions or further text are shown.",
+ "first_draft": "The drawing is a section, as indicated by the word \"SECTION\" in the lower right corner. The title at the top reads \"Diagram 2.33 Wall type 3 – internal timber floor\". It shows a vertical wall element crossing a horizontal floor element, forming a cross or plus shape at the centre of the image. The wall is drawn running top to bottom, with a hatched central core between two outer pairs of vertical lines on each side. The floor is drawn as a horizontal band of fine parallel lines that passes behind the wall. Where the two meet, sloping lines form a V-shaped bracket on each side of the wall within the floor band, and small dot symbols are placed at these points. A label reading \"Hanger\", with a leader line, points to the dot symbol on the left-hand side of the junction. No dimensions or further text are shown."
+}

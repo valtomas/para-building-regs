@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-3.1_p42",
+ "source": "ADB2",
+ "label": "Diagram 3.1",
+ "page": 42,
+ "caption": "Diagram 3.1 | Refuge formed by compartmentation\nDiagram 3.2 | Refuge formed in a protected stairway Width of escape stairs",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "6786d632a49905049b72eccb0d9dfacc8ab74f13e99548b0061c249973a2c2e4",
+ "image_sig": {
+  "w": 754,
+  "h": 421,
+  "grey": "8vP4+Pj4+Pj4+Pj4+Pj49vHw+Pj4+Pj4+f////////vz7+Dg6vLf4uj////////78tD1/+37/+rR////////+/Pm9v/q8P3v4f////////vz8ff67//07+zl5+jo4ur58/P++PH///Hq+tXS0dDi+/Le//jx///7yfnZ1/3///vz//f/8f//9/X46/b////78//3//H/9v/1////////+/P8+v/t9/3/9fn7//7+/vvz9/3z6vb///Xm083Q1N378/Lt8fH////16c/Y1dTc+/fs7u7p7u7u7fPn+P////vRyMjIyMjIyMjIyMjIyMjNg2FbY2FeYWJXT09PT09Pbg=="
+ },
+ "reviewed": false,
+ "description": "The image shows only Diagram 3.1, 'Refuge formed by compartmentation'. It is a plan of two compartments, 'Compartment A' left and 'Compartment B' right, split by a vertical compartment wall carrying two 'Fd' fire doorsets, one high and one low. Each compartment has a green square wheelchair refuge on its outer wall, and a small circular marker sits at the bottom left of Compartment A. A solid green arrowed line goes from that marker to the upper Fd and on to the refuge in Compartment B; a dashed line, marked with a flame, goes from the marker to the lower Fd and on to the same refuge. The right-hand legend equates the green square with 'Refuge in accordance with paragraphs 3.6 to 3.8', the dashed line with 'Alternative escape route blocked by fire', the arrowed line with 'Escape route to adjacent compartment, storey exit or final exit', the plain line with 'Compartment wall', and Fd with 'Fire doorset'. Top left reads 'See para 3.5'; a note adds that people occupying Compartment A would not reach an available refuge until they had entered Compartment B, and that two fire doorsets in the partition are necessary in case access to one of the doorsets is blocked by fire.",
+ "first_draft": "The image shows only Diagram 3.1, 'Refuge formed by compartmentation'. It is a plan of two compartments, 'Compartment A' left and 'Compartment B' right, split by a vertical compartment wall carrying two 'Fd' fire doorsets, one high and one low. Each compartment has a green square wheelchair refuge on its outer wall, and a small circular marker sits at the bottom left of Compartment A. A solid green arrowed line goes from that marker to the upper Fd and on to the refuge in Compartment B; a dashed line, marked with a flame, goes from the marker to the lower Fd and on to the same refuge. The right-hand legend equates the green square with 'Refuge in accordance with paragraphs 3.6 to 3.8', the dashed line with 'Alternative escape route blocked by fire', the arrowed line with 'Escape route to adjacent compartment, storey exit or final exit', the plain line with 'Compartment wall', and Fd with 'Fire doorset'. Top left reads 'See para 3.5'; a note adds that two doorsets are needed in case one is blocked."
+}

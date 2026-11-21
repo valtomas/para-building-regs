@@ -1,0 +1,17 @@
+{
+ "key": "ADH_Table-11_p21",
+ "source": "ADH",
+ "label": "Table 11",
+ "page": 21,
+ "caption": "Table 11 \u0007Minimum dimensions for access fittings and inspection chambers",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "f74390069f345c792ca9da1ba23af862af1c0aaadfb3a952b301d6418d4496e2",
+ "image_sig": {
+  "w": 749,
+  "h": 392,
+  "grey": "zcqotayvurGutLGuta3R4e7q6urq6ure1uTp6uLW6ur///X97vTo3uHm9ebg4un1///x9snS19L61P/Q2PjY//f09PXp8vT19PX19fX09fX/+OT4//3m6/P/////5dL+59v19fX19fX19fX19fX19e370v3d5vfz//b/9PX07//u/OL82uvv7P/v/+vv7dv99vP09Ont9PT09PT09PT09O7p1P/v8vLw//H//v//8v///+3/7e3l3f/k/szX6tj29/X09fX19fX19fX19enf9Ob9//79//7+//7+///////z1tbq6+3q6Ors6/b/////9+fn6unq6eno7Ofo6Ojo8w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

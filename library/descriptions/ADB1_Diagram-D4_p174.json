@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-D4_p174",
+ "source": "ADB1",
+ "label": "Diagram D4",
+ "page": 174,
+ "caption": "Diagram D4 Height of building | D",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "a28c5dc208036ff48a77c0039325fa9e3bca8f2c97b7d364679319d4aebd5bca",
+ "image_sig": {
+  "w": 756,
+  "h": 616,
+  "grey": "+Pv7+/v7+/v6+vn6+vv7+PTe7vv5//399d7X3fr///v46e3Tqdrm+fru5rvY7+v79un2yKnQ4fP/9Lipz+z/+/nU3Kihzery/9+sn8To7ff48PT31cHo///u0tPS7/v7+dfx8uf0/////+3p9P//+/jo+/////////////////v03u/6///+/v/////////7+e3twLjf5Pj/////////+/bn9cip0OH0//////////v50duoo83q8f/////////7+O/09NDA6f//////////+/nb8e3p7f////////////v45Pv////////////////7kXNvc3NtZ2dnZ2dnZ2dnhA=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a set of three side elevations, labelled a, b and c, showing grey building masses with dashed horizontal lines and vertical double-headed arrows indicating measured heights.\n\na. Double pitch roof: a gabled building standing on ground that slopes down to the right. Left-hand labels point to \"Highest point of roof slope,\" \"Equal,\" \"Lowest point of roof slope,\" \"Highest level of ground adjacent to outside walls\" and \"Lowest level of ground adjacent to outside walls.\" Right-hand labels read \"Mean roof level,\" \"Height of building\" (the vertical arrow) and \"Mean ground level.\"\n\nb. Mansard type roof: a building with a parapet on level ground. Labels read \"Highest point of roof slope,\" \"Highest point of parapet (including coping),\" \"Equal,\" \"Top level of gutter,\" \"Mean roof level\" and \"Mean ground level.\" Two vertical arrows are marked \"a\" and \"b,\" with the note \"Use height a or b, whichever is greater\" beneath.\n\nc. Flat or monopitch roof: a building with a single sloping roof on sloping ground, carrying the same left and right labels as part a.\n\nA green banner at the foot reads \"Diagram D4 Height of building.\"",
+ "first_draft": "The drawing is a set of three side elevations, labelled a, b and c, showing grey building masses with dashed horizontal lines and vertical double-headed arrows indicating measured heights.\n\na. Double pitch roof: a gabled building standing on ground that slopes down to the right. Left-hand labels point to \"Highest point of roof slope,\" \"Equal,\" \"Lowest point of roof slope,\" \"Highest level of ground adjacent to outside walls\" and \"Lowest level of ground adjacent to outside walls.\" Right-hand labels read \"Mean roof level,\" \"Height of building\" (the vertical arrow) and \"Mean ground level.\"\n\nb. Mansard type roof: a building with a parapet on level ground. Labels read \"Highest point of roof slope,\" \"Highest point of parapet (including coping),\" \"Equal,\" \"Top level of gutter,\" \"Mean roof level\" and \"Mean ground level.\" Two vertical arrows are marked \"a\" and \"b,\" with the note \"Use height a or b, whichever is greater\" beneath.\n\nc. Flat or monopitch roof: a building with a single sloping roof on sloping ground, carrying the same left and right labels as part a.\n\nA green banner at the foot reads \"Diagram D4 Height of building.\""
+}

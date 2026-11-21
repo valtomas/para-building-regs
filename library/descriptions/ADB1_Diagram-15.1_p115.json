@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-15.1_p115",
+ "source": "ADB1",
+ "label": "Diagram 15.1",
+ "page": 115,
+ "caption": "Diagram 15.1 Components of a firefighting shaft | 900m2",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "068bada70b6ce284264a7ad21e4f53b5311b09cbb3c140d0394a0e6a00f02355",
+ "image_sig": {
+  "w": 737,
+  "h": 646,
+  "grey": "7+7s9vv7+/v7+/v7+/v7+/v88fTs8P////bl6uLt+v/7/9ze2t7c9vn3/9ne2P//+//e5fjq8Oj58+3v59z///v/7/30/fro9vPr5P3h///7/+L14uLm6Pjj6Mvs1f//+//W2t3a3ujyzdHW59D///v/1ePk7+ro8tzn3/PV///7/9jX09za8ffR19Pc1///+9zg4uHi4uv2//////////vp8PDv8PDx8fr////////74/Dw8PDx7vjt8fDv8PL/++7j4e7v8uz14vPw7/Lw/fvp083Q1NPT6M/S0tLQ5f379/r///////Pi4+Hk8fP/lXx3e3p6fXxycHBwcHBwcA=="
+ },
+ "reviewed": false,
+ "description": "\"See paras 15.2, 15.8 and 15.9\" appears top left. The drawing shows two floor plans. a. \"Any building\": a dark‑green‑walled plan containing a \"Fire main outlet\" symbol at top left, a \"Firefighting lobby\" with a doorway on its left wall and a doorway on its right wall opening to the stairs, \"Firefighting stairs\" drawn with treads and a vertical double arrow, and a \"Firefighting lift in lift shaft\" at bottom left. b. \"Firefighting shafts serving flats\": a \"Fire main outlet\" symbol at top right, a \"Common corridor\" with two doorways on its left wall and a doorway on its right wall toward the stairs, a diagonal double arrow marked \"7.5m max.\" between corridor and stair, \"Firefighting stairs\" with treads and a vertical double arrow, and a \"Firefighting lift in lift shaft\" at the bottom left. A legend gives two wall colours: dark green for \"Minimum fire resistance REI 120 from accommodation side and REI 60 from inside the shaft with E 60 S a fire doors\"; light green for \"Minimum fire resistance REI 60 from both sides with E 30 S a fire doors\". Below, under the heading \"NOTES:\", are notes numbered 1 to 5.",
+ "first_draft": "\"See paras 15.2, 15.8 and 15.9\" appears top left. The drawing shows two floor plans. a. \"Any building\": a dark‑green‑walled plan containing a \"Fire main outlet\" symbol at top left, a \"Firefighting lobby\" with doorways on the left, \"Firefighting stairs\" drawn with treads and a vertical double arrow, and a \"Firefighting lift in lift shaft\" at bottom left. b. \"Firefighting shafts serving flats\": a \"Fire main outlet\" symbol at top right, a \"Common corridor\" with doorways on the left, a diagonal double arrow marked \"7.5m max.\" between corridor and stair, \"Firefighting stairs\" with treads and arrow, and a \"Firefighting lift in lift shaft\" at the bottom. A legend gives two wall colours: dark green for \"Minimum fire resistance REI 120 from accommodation side and REI 60 from inside the shaft with E 60 S a fire doors\"; light green for \"Minimum fire resistance REI 60 from both sides with E 30 S a fire doors\". Below are notes numbered 1 to 5."
+}

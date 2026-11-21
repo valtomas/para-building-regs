@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-A1_p149",
+ "source": "ADB2",
+ "label": "Diagram A1",
+ "page": 149,
+ "caption": "Diagram A1 | Recessed car parking areas",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "d4bf78378fa3fa90991443f9a0d12fe88dd119f66627f50606bf10cbbaf8495f",
+ "image_sig": {
+  "w": 754,
+  "h": 351,
+  "grey": "9vf39/f39/f39/f39/f39vv///////////////////v7/9/c3Nzc3Ov////////7+//0///////0////////+/v/5+jo6Ojo7//w7v////v7//T///////T/9uDg8f/7+//n6Ojo6Ojv//fm4///+/v/9P//////9P/12Oj0+/v7//T///////T/+crUzPX7+//i19Xo6Ojv//zMz9Ht+/v/8+Ds////9P/92Nnb6vv4zLy7wcnJycba///////7+MPDw8PDw8PD1P//////+/v///////////////////urmZmZmZmZmZmZmZmZmZmohWVdZGJlYE9PT09PT09PcQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a sectional elevation of a multi-storey building. The structure is drawn in black outline as a rectangular block with four stacked horizontal floor lines. At ground level the left portion is set back, forming a recessed bay open at the front; a simple car outline sits within it on a grey horizontal ground line that runs beneath the building. Green lines trace the recessed bay, marking the compartment wall on its right and the floor above it, separating this bay from the taller main block on the right. To the right of the building, text headed \"NOTE:\" reads: \"The parking area should be both of the following: a. Open fronted. b. Separated from the remainder of the building by a compartment wall(s) and floor(s) having not less than the period of fire resistance specified in Table B2 in Appendix B.\" A green footer band bears the white text \"Diagram A1\" and \"Recessed car parking areas\".",
+ "first_draft": "The drawing is a sectional elevation of a multi-storey building. The structure is drawn in black outline as a rectangular block with four stacked horizontal floor lines. At ground level the left portion is set back, forming a recessed bay open at the front; a simple car outline sits within it on a grey horizontal ground line that runs beneath the building. Green lines trace the recessed bay, marking the compartment wall on its right and the floor above it, separating this bay from the taller main block on the right. To the right of the building, text headed \"NOTE:\" reads: \"The parking area should be both of the following: a. Open fronted. b. Separated from the remainder of the building by a compartment wall(s) and floor(s) having not less than the period of fire resistance specified in Table B2 in Appendix B.\" A green footer band bears the white text \"Diagram A1\" and \"Recessed car parking areas\"."
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-3.5_p48",
+ "source": "ADE",
+ "label": "Diagram 3.5",
+ "page": 48,
+ "caption": "Diagram 3.5 \u0007\u0007Floor type 1.2B – external",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "865b98c10e123d0902786e7e36f61f806b2e4417dae893dc4778a80e6ba02d59",
+ "image_sig": {
+  "w": 371,
+  "h": 477,
+  "grey": "37q1x7zCr7qrwqXOr7Gu5vLp6enpzrG5r8K6y7zFy/Dq6Ojo6NrI08zo6Ojo6Ojs6f/18fHr9f//////////9On/6tTn6+7///////////Tp/+/p5OPr///////////06f/u5eju7v/25urz////9On/7ePl69vf6uzt7evt//Tp/+zeyt/n7Ovr5OTs7P/06f/v6NTs7fX19fTu9fP/9On/7+ro7Ofr2tfW0M7e//Tp/+zf5+Dm2tv16PTx///06f/t4ufe6vn6//zw6/P/9On/7ujo7e7/////8/Lw//Tp//n19en1///////////04u7g1tja2+7u7u7u1dPQ4Q=="
+ },
+ "reviewed": false,
+ "description": "The image is a section drawing headed \"Diagram 3.5 Floor type 1.2B – external cavity wall with masonry inner leaf\", with the word \"SECTION\" printed in the lower right corner. On the left, a vertical external cavity wall is shown in cross-section, made up of an outer leaf of horizontal rectangular blocks and an inner cross-hatched masonry leaf separated by an open cavity; the label \"External cavity wall\" appears beneath it. A horizontal floor build-up projects to the right from the wall. A small block sitting in the cavity at floor level is indicated by a leader line labelled \"Cavity stop\". The floor comprises several stacked horizontal layers, including a top dotted layer, a middle band of small circles, and a lower layer with a zigzag (sawtooth) pattern and a small diagonally hatched triangle at its left end, which a single leader line identifies as \"Timber batten\". A horizontal double-headed dimension arrow set to the right of the inner leaf is labelled \"Minimum 300mm\", running from the face of the inner masonry leaf to a vertical tick line near the right-hand end of the floor layers.",
+ "first_draft": "The image is a section drawing headed \"Diagram 3.5 Floor type 1.2B – external cavity wall with masonry inner leaf\", with the word \"SECTION\" printed in the lower right corner. On the left, a vertical external cavity wall is shown in cross-section, made up of an outer leaf of horizontal rectangular blocks and an inner cross-hatched masonry leaf separated by an open cavity; the label \"External cavity wall\" appears beneath it. A horizontal floor build-up projects to the right from the wall. A small block sitting in the cavity at floor level is indicated by a leader line labelled \"Cavity stop\". The floor comprises several stacked horizontal layers, including a top dotted layer, a middle band of small circles, and a lower zigzag-hatched layer that two leader lines identify as \"Timber batten\". A horizontal double-headed dimension arrow set below the inner leaf is labelled \"Minimum 300mm\", running from the face of the inner masonry leaf to a vertical tick line near the right-hand end of the floor layers."
+}

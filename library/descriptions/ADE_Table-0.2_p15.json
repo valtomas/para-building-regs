@@ -1,0 +1,17 @@
+{
+ "key": "ADE_Table-0.2_p15",
+ "source": "ADE",
+ "label": "Table 0.2",
+ "page": 15,
+ "caption": "Table 0.2 \u0007\u0007Laboratory values for new internal walls and floors within dwelling-houses, flats and rooms for residential purposes, whether purpose built or formed by material change of use Airborne sound insulation Rw dB (Minimum values)",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "d2e75e084f1ee8fffc3da366b0ba81afeba13d864011fa4f2f183a4ce07b75e2",
+ "image_sig": {
+  "w": 760,
+  "h": 1082,
+  "grey": "3tayrK60sL68wru/v7vC0Pb08/T08/T09N7S3PL09Pbv+vv7+/v7+/v79fv7+/v84d/d2tzb2vfq2tjY29ja29PNztPNzcvs4s/Py8zR0uLU0dDQ08zT8eLY1tvY4eH3087M08/Nzuvjz8/TztLQ7tXS3dfd2t3439LQ0M3QzOHe2tfU2NTU6t3KzsvQzMzX1czLz8zNzfLf0NDP0NLO19zW19Xf3uLz4s3Q0NDK0PDU08/O0s/P5uXb3ODf4OPm2tXV0+Hi3vjfz8rPz9DR2dbOzM3O0M/n3s/O0c7Qy+XVztTKzs/b+PDq5Orm5ej118zQzc/Pye/97+rr7vDw9g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

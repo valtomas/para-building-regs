@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-2.3_p28",
+ "source": "ADB2",
+ "label": "Diagram 2.3",
+ "page": 28,
+ "caption": "Diagram 2.3 | Inner room and access room Planning of exits in a central core",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "1fb9b82037c174bd98a71060776316a19f1e89b88e02d42f5f0d95a0a93e406a",
+ "image_sig": {
+  "w": 756,
+  "h": 403,
+  "grey": "7u74+Pj4+Pj4+Pj4+Pj49vb6//T2//jz/f////////v7///p8P/z5/3////////7+///+u///+r/////////+/v//9Le/9zg7/////////v7///p6f/h6en////////7+///q7X/xKzp////////+/v//7G+/8q26f////////v7//+fsf/FqN/o///////7+///pbf/yrbj5eno5/j/+/v//6+7/8q24+Xi3Nvs//v7///U3//q1Pv/+PTv/f/7+///19D/////////////+/v//+n///////////////vHurq6urq6urq6urq6urrEh2JaX2BhX1BPT09PT09Pcw=="
+ },
+ "reviewed": false,
+ "description": "A plan diagram on a white sheet, with \"See para 2.11\" at the top left and a green band at the foot reading \"Diagram 2.3 Inner room and access room\". It shows two tall rectangles side by side, the first headed \"Arrangement A\" and the second \"Arrangement B\", with notes to their right.\n\nArrangement A is a tall rectangle with blank white spaces at the top and bottom and a green section in the middle. Above the top edge a green arrow points up, labelled \"Exit\", and below the bottom edge a green arrow points down, labelled \"Exit\". The middle green section is labelled \"Room with alternative exits\" and shows two door symbols, one at its top edge and one at its bottom edge.\n\nArrangement B is a similar tall rectangle, but with a white space at the top only. Above the top edge a green arrow points up, labelled \"Exit\". The top white space is labelled \"Access room\". The larger lower green section is labelled \"Inner room\" and shows a single door symbol at its top edge.\n\nTo the right, under the heading \"NOTES:\", two lines read: \"Arrangement A   Needs no special provision.\" and \"Arrangement B   Should observe the inner room provisions in paragraph 2.11.\"",
+ "first_draft": "A plan diagram divided into two parts, on a white sheet with \"See para 2.11\" at the top left and a green band at the foot reading \"Diagram 2.3 Inner room and access room\".\n\nArrangement A is a tall rectangle. Its upper white section has a green arrow pointing up, labelled \"Exit\". The middle green section is labelled \"Room with alternative exits\" and shows two door symbols, one at its top edge and one at its bottom edge. The lower white section has a green arrow pointing down, labelled \"Exit\".\n\nArrangement B is a similar tall rectangle. Its upper white section has a green arrow pointing up, labelled \"Exit\", and is labelled \"Access room\". The larger lower green section is labelled \"Inner room\" and shows a single door symbol at its top edge.\n\nTo the right, under the heading \"NOTES:\", two lines read: \"Arrangement A Needs no special provision.\" and \"Arrangement B Should observe the inner room provisions in paragraph 2.11.\""
+}

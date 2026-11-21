@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-8.1_p79",
+ "source": "ADB1",
+ "label": "Diagram 8.1",
+ "page": 79,
+ "caption": "Diagram 8.1 Provisions for cavity barriers",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "d335a1bbe62f00e01ecc3f73aad50006823a1b45c20aabda0429faebc6a26daa",
+ "image_sig": {
+  "w": 737,
+  "h": 812,
+  "grey": "8vP8/Pz8/Pz8/Pz6/Pz8/Pv///////////v14v/////7///////++Ort9d/49///+/////329uXi9PDY/v////v/7+vg9vfe3/f35v/////7/+/p6t3t4uTt7vX48/3/+//u6eHj487M1tHT7uz4//v/+P/m8fHZ0u/x4vb1///7////7t3t4tvt7Pn48/3/+//u1tPU08XD3N/V7uz4//v//+S53+Ps9+bu8Pb1///7////wfHw+fro9vf38/3/+////7TIyMjIwsXL//////v////n8/z/7Ovz9fD3/P/7///////////////89/3/q5iUl5WXmJCPj4+Pj4+Pjw=="
+ },
+ "reviewed": false,
+ "description": "This is a vertical section through a multi-storey building, titled at the bottom \"Diagram 8.1 Provisions for cavity barriers\", with \"See para 8.2\" at the top left. It shows three storeys labelled \"Accommodation\" on the right, topped by a sloping roof labelled \"Roof cavity\", separated at each floor level by horizontal elements labelled \"Floor cavity\", \"Compartment floor\" and \"Ceiling cavity\". Green blocks, defined in the legend as \"Cavity barriers\", appear at points labelled \"Cavity barrier at top of cavity\", \"Cavity barrier around openings\", \"Cavity barrier at compartment floor\", \"Cavity barrier at bottom of cavity\" and \"Cavity barrier around edges\". Grey vertical lines are labelled \"Compartment wall\" and \"Wall forming protected escape route¹\". Green double-headed arrows mark spans labelled \"Sub-divide extensive cavities\" in the roof, at the floor/ceiling level and at the base. The legend also reads \"Fire-stopping (same resistance as compartment)\", and a note on the right states \"1. See paragraph 8.5\".",
+ "first_draft": "This is a vertical section through a multi-storey building, titled at the bottom \"Diagram 8.1 Provisions for cavity barriers\", with \"See para 8.2\" at the top left. It shows three storeys labelled \"Accommodation\" on the right, topped by a sloping roof labelled \"Roof cavity\", separated at each floor level by horizontal elements labelled \"Floor cavity\", \"Compartment floor\" and \"Ceiling cavity\". Green blocks, defined in the legend as \"Cavity barriers\", appear at points labelled \"Cavity barrier at top of cavity\", \"Cavity barrier around openings\", \"Cavity barrier at compartment floor\", \"Cavity barrier at bottom of cavity\" and \"Cavity barrier around edges\". Grey vertical lines are labelled \"Compartment wall\" and \"Wall forming protected escape route¹\". Green double-headed arrows mark spans labelled \"Sub-divide extensive cavities\" in the roof, at the floor/ceiling level and at the base. The legend also reads \"Fire-stopping (same resistance as compartment)\", and a note on the right states \"1. See paragraph 8.5\"."
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-3.8_p49",
+ "source": "ADE",
+ "label": "Diagram 3.8",
+ "page": 49,
+ "caption": "Diagram 3.8 \u0007\u0007Floor type 1.2B – wall type 1",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "dd0a1b4bfa0166b822f475aa78a18234ea3a20c4e453b63dbad848589dae543d",
+ "image_sig": {
+  "w": 355,
+  "h": 382,
+  "grey": "3K2ytbezprOgs6Wm0NfX1/Lp4+np2rC5qc3p6enp6enh4uLi4uLi3+Di4uLi4uLi6P/////16+zx/////////+j/////3dzX2f/////////o/////9vDydP/////////6P/////XzMfT//HT4uj//+jj3t3c0tfVyNPP0Nbc3uXo9PLz8/Hh4u3z8+Po8fLz6PP69Org4dTl+vbs9Pr69ujSxMTUycbDv8zCwsfH4+Xo8eni6dfa3Nn/+szG4vX/6P/////axsfU///Pydjp++j/////6+bk6f//+fn6+v7o////897g5OPt////////3+rq6urq6urq6urq5b/OwA=="
+ },
+ "reviewed": false,
+ "description": "The image is a section diagram with a title band across the top reading \"Diagram 3.8 Floor type 1.2B – wall type 1\". At the bottom right, the word \"SECTION\" is visible. The main feature is a vertical wall made of cross-hatched blocks that passes through the floor, with stacks of blocks shown both above and below it; the lower stack is labeled \"Separating wall type 1\" beneath the drawing. Passing horizontally through the wall is the floor, depicted as a rectangular band running across the width of the drawing and containing a row of small circles; it is labeled \"Floor type 1.2B\" at the bottom left. Below the floor, on either side of the top of the lower wall, two small elements are shown, each pointed to by a line from the label \"Timber batten\" at the top right. Between the underside of the floor and the top of the wall there is a small space, indicated by lines from the text \"Fill gap between head of wall and underside of floor\".",
+ "first_draft": "The image is a section diagram titled \"Diagram 3.8 Floor type 1.2B – wall type 1\". At the bottom right, the word \"SECTION\" is visible. The main feature is a vertical structure made of cross-hatched blocks, labeled \"Separating wall type 1\". This wall extends downwards from the center of the drawing. Passing horizontally through the wall is a structural element labeled \"Floor type 1.2B\", which is depicted as a rectangular block containing a row of circles. Above the floor, a vertical wooden element is indicated by a line pointing to the label \"Timber batten\". Between the bottom of the floor and the top of the wall, there is a small space, indicated by a line pointing to the text \"Fill gap between head of wall and underside of floor\"."
+}

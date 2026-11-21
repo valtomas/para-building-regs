@@ -1,0 +1,18 @@
+{
+ "key": "ADH_Diagram-2_p45",
+ "source": "ADH",
+ "label": "Diagram 2",
+ "page": 45,
+ "caption": "Diagram 2 \u0007Rainfall intensities for design of drainage from paved areas and underground rainwater drainage (litres per second per square metre)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "3de1319e74e02296580237b235781955bb40997db9d85609b9b38467ca23f5db",
+ "image_sig": {
+  "w": 749,
+  "h": 818,
+  "grey": "2c+8rbCws6+vrrazs7XB2uzz8PPz7/Pv8+/z7/Pu8/P0//n///r/+v/1/+/z9P//8fr0+vr1+vLi4vfi4/L6+/T/+f//+v/f2uHg9v/5///x+vT6+vX65uPg8un69Pr79P/5///6/+nj4ung+/j///H69Pr67vHk6uTt7eLo+fv0//n//+nf4/Lz6e3x9fv/8fXv9fXu3+Ps+Ozz9Pjh9/T/+f/w7u7g8/D29Pr06f/x+vT67efw6ODo7vXf0/X79P/5///25Oft7Pf18/Hv//L69Pr35Oji9Ozc8vbu+vz0//ny3uvb8//6//r/+f//8fr4+vj3+vf69/r3+vb6+g=="
+ },
+ "reviewed": false,
+ "description": "This is a line-drawn map of the outline of Great Britain, headed \"Diagram 2 Rainfall intensities for design of drainage from paved areas and underground rainwater drainage (litres per second per square metre)\". The map sits on a grid; vertical lines are numbered 1 to 6 along the top and bottom, and horizontal lines 1 to 6 down the left and right sides. In the top right corner a scale bar reads 0, 20, 40, 80, 100 with \"kilometres\" beneath it.\n\nAcross the landmass run closed and open contour lines carrying the figures 0.010, 0.012, 0.014 and 0.016; the 0.010 and 0.012 values cluster in the north and west, while 0.014 and 0.016 appear in the central and southern regions. Solid dots mark named towns: Carlisle, Newcastle, Leeds, Kingston-upon-Hull, Manchester, Birmingham, Nottingham, Norwich, Oxford, Cardiff, London and Plymouth, each lying within or beside a contour line.",
+ "first_draft": "This is a line-drawn map of the outline of Great Britain, headed \"Diagram 2 Rainfall intensities for design of drainage from paved areas and underground rainwater drainage (litres per second per square metre)\". The map sits on a grid; vertical lines are numbered 1 to 6 along the top and bottom, and horizontal lines 1 to 6 down the left and right sides. In the top right corner a scale bar reads 0, 20, 40, 80, 100 with \"kilometres\" beneath it.\n\nAcross the landmass run closed and open contour lines carrying the figures 0.010, 0.012, 0.014 and 0.016; the 0.010 and 0.012 values cluster in the north and west, while 0.014 and 0.016 appear in the central and southern regions. Dotted points mark named towns: Carlisle, Newcastle, Leeds, Kingston-upon-Hull, Manchester, Birmingham, Nottingham, Norwich, Oxford, Cardiff, London and Plymouth, each lying within or beside a contour line."
+}

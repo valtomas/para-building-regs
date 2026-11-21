@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.4_p26",
+ "source": "ADE",
+ "label": "Diagram 2.4",
+ "page": 26,
+ "caption": "Diagram 2.4 \u0007\u0007Wall type 1.3",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "faac5a20f018bca3bf78ee9dc6d667625f5067f7f5b074dd92c284187076657d",
+ "image_sig": {
+  "w": 371,
+  "h": 427,
+  "grey": "3LSvwri2nbGsusvY2NjY5OLl4+Xl5eXk5OXl5eXl5ebp////7vTz8e7z9vH////06f///+j5/fLw/vvv////9On////i6ujo6Ojq6/////Tp////6Pr7/vv9/e/////06f///+Dq6ufn6unq////9On////p/fvz8fv+7/////Tp////4ujq6Ofq6Or////06f///+j++/3++/3w////9On////h6evp5uvr6v////Tp////6P398fP8++/////06f///+Lq6enm6uvr////9On////n+/77/P377/////Tp////7/X09PX09PP////04uzs7Ozs7Ozs7OzszdPJ4g=="
+ },
+ "reviewed": false,
+ "description": "The drawing is titled \"Diagram 2.4 Wall type 1.3\" in a pale green band at the top. Within a bordered rectangle below it is a single vertical drawing, identified by the word \"SECTION\" in the lower right corner. The section shows a wall built up in horizontal courses of hatched masonry units, the hatching running diagonally across each unit. The wall is enclosed by two vertical lines forming its outer faces, and the courses are separated by thin horizontal joint lines. The courses alternate in pattern from top to bottom: the topmost course contains two units side by side divided by a vertical joint, the left unit being the narrower of the two; the second course is a single unit spanning the full width; the third course holds two units separated by a central vertical joint; the fourth course is again a single full-width unit; the fifth course contains two units divided by a vertical joint, the left unit being the narrower of the two; and the sixth and lowest course is a single full-width unit. No dimensions, scale, or further labels are present.",
+ "first_draft": "The drawing is titled \"Diagram 2.4 Wall type 1.3\" in a pale green band at the top. Within a bordered square below it is a single vertical drawing, identified by the word \"SECTION\" in the lower right corner. The section shows a wall built up in horizontal courses of hatched masonry units, the hatching running diagonally across each unit. The wall is enclosed by two vertical lines forming its outer faces, and the courses are separated by thin horizontal joint lines. The courses alternate in pattern from top to bottom: the topmost course contains two units side by side divided by a vertical joint, the left unit being the narrower of the two; the second course is a single unit spanning the full width; the third course holds two units separated by a central vertical joint; the fourth course is again a single full-width unit; the fifth course contains two units divided by a vertical joint; and the sixth and lowest course is a single full-width unit. No dimensions, scale, or further labels are present."
+}

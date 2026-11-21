@@ -1,0 +1,17 @@
+{
+ "key": "ADF1_Table-B3_p49",
+ "source": "ADF1",
+ "label": "Table B3",
+ "page": 49,
+ "caption": "Table B3 Indoor air relative humidity",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "0a7e47cb91965419a0ae13de838ffdbe5e4fffe22bf8498b1ff550005f88b2de",
+ "image_sig": {
+  "w": 737,
+  "h": 148,
+  "grey": "z7u7u7u7u7u7u7u7u7u7u6eQi5mIj5vIyMjIyMjIyMi1pJSilpujyMjIyMjIyMjI0sjIyMjIyMjIyMjIyMjIyO/w8fDx8fHx8fHw8PDu7/Hk2dft////////3d7b2/T/8Ono6+vr6+vz6+vr6+nq6/n9//////////////v////e4v/////////////s////8e3t7e3t7e307e3t7e3t7fj9//////////////j////f6//////////////z////8Ovr6+vr6+vz6+vr6+vr6/L+//////////////b////f/f/////////////u////7uvr6+vr6+vr6+vr6+vr6w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

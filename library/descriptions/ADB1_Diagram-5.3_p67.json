@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-5.3_p67",
+ "source": "ADB1",
+ "label": "Diagram 5.3",
+ "page": 67,
+ "caption": "Diagram 5.3 Cavity walls excluded from provisions for cavity barriers",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "b05d9558f14f59ba7baafde2bab059c172a60a3d5d87f032004da93403f27bce",
+ "image_sig": {
+  "w": 737,
+  "h": 403,
+  "grey": "7+74+Pj4+Pj4+Pj4+Pj4+PT2///////////////////7+9L/////////////////+/euyffp6fT/6f3///////v55qnq0M/9//P6+vr7/P77+di////+///q0dXW1tX7+/nc+P//////8+no+v////vy3PPz7v///+TS0NDb5vf7+dz4///////v0NLSzM7k+/nc1P7/////9djb2enw9/v5/rLu19Xq//ne293c4/j7+P+47uDj7//v5uXo6uz/+//1xPv7////8+bp/P////v///f////////////////Jvb29vb29vb29vb29vb29iWhfZWdoZmVmZGdfVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing is an isometric section through a length of cavity wall, with a header 'See para 5.18' at top left. The wall is shown as two vertical leaves separated by a cavity. Green material closes the cavity at the top and around a rectangular opening cut through both leaves in the middle. Leader lines attach four labels: 'Close cavity at top of wall (unless cavity is totally filled with insulation)' points to the top closure; 'Opening' points to the central void; 'Close cavity around opening' points to the closure framing it; 'Two leaves of brick or concrete each at least 75mm thick' points to the two leaves at the base. To the right, a block headed 'NOTES' lists three numbered notes: 1, closing materials need no specific fire resistance performance; 2, meter cupboards allowed with conditions a (no more than two per dwelling), b (outer wall openings not bigger than 800×500mm each), c (inner leaf penetrated only by a fire-stopped sleeve not more than 80×80mm); 3, materials achieving class B-s3, d2 or worse may be placed within the cavity. A green footer reads 'Diagram 5.3 Cavity walls excluded from provisions for cavity barriers'.",
+ "first_draft": "The drawing is an isometric section through a length of cavity wall, with a header 'See para 5.18' at top left. The wall is shown as two vertical leaves separated by a cavity. Green material closes the cavity at the top and around a rectangular opening cut through both leaves in the middle. Leader lines attach four labels: 'Close cavity at top of wall (unless cavity is totally filled with insulation)' points to the top closure; 'Opening' points to the central void; 'Close cavity around opening' points to the closure framing it; 'Two leaves of brick or concrete each at least 75mm thick' points to the two leaves at the base. To the right, a block headed 'NOTES' lists three numbered notes: 1, closing materials need no specific fire resistance performance; 2, meter cupboards allowed with conditions a (no more than two per dwelling), b (outer wall openings not bigger than 800×500mm each), c (inner leaf penetrated only by a fire-stopped sleeve not more than 80×80mm); 3, materials achieving class B-s3, d2 or worse may be placed within the cavity. A green footer reads 'Diagram 5.3 Cavity walls excluded from provisions for cavity barriers'."
+}

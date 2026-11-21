@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-3.9_p42",
+ "source": "ADB1",
+ "label": "Diagram 3.9",
+ "page": 42,
+ "caption": "Diagram 3.9 Common escape route in small single stair building",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "aea0e00e73a2a89ba2d1aaf257e9d1c01104287082f6ae76b5b0d01c744ef76b",
+ "image_sig": {
+  "w": 754,
+  "h": 662,
+  "grey": "8PD7+/v7+/v7+/v7+/v7+Pv86+nr//////////////v7+/nW5/Xz///////////7+/nx897N5ffU1dji7/f/+/v57uPky+X46vr+/v////v7+/TY4/bx///////////7+/ri4+Li6P7/////////+/v87vLz//////////////v7+NfV1Ov////////////7+/z58vb39vbm8PHw8vX/+/v57efduuD61tHV1eHs//v7+ffh49Tn/9XW1dbU5Pb7+/rj4eLv+P3V1NXT1dr9+/v54eHi4vv/8PH7//////v7/PDz8//////////////7mH15fHx8e3x+fXlycnJyiQ=="
+ },
+ "reviewed": false,
+ "description": "This drawing, titled Diagram 3.9 Common escape route in small single stair building and headed See para 3.32, shows two floor plans. Part a, \"a. Small single stair building\", depicts a stair on the right side of the plan opening onto a central lobby, with flats labelled F and fire doorsets labelled Fd arranged around the lobby. A dimension reads 4.5m max.*, and the symbol OV appears by the stair. A legend defines the green line as Fire resisting construction, OV as Openable vent at high level for fire service use (1.0m2 minimum free area); see paragraph 3.32e, F as Flat and Fd as Fire doorset. Below, a note explains the asterisk: if smoke control is provided in the lobby, the travel distance can be increased to 7.5m maximum (see Diagram 3.7, example b). Part b, \"b. Small single stair building with no more than two flats per storey\", shows a stair with OV, two flats F and a lobby with Fd doorsets, with text stating the door between stair and lobby should be free from security fastenings and that the lobby is not essential if flats have protected entrance halls. Four numbered NOTES cover the top storey, the 4.5m lobby limit, an automatic opening vent of at least 1m2, and Appendix C, Table C1.",
+ "first_draft": "This drawing, titled Diagram 3.9 Common escape route in small single stair building and headed See para 3.32, shows two floor plans. Part a, \"a. Small single stair building\", depicts a central stair surrounded by flats labelled F and fire doorsets labelled Fd forming a lobby. A dimension reads 4.5m max.*, and the symbol OV appears by the stair. A legend defines the green line as Fire resisting construction, OV as Openable vent at high level for fire service use (1.0m2 minimum free area); see paragraph 3.32e, F as Flat and Fd as Fire doorset. Below, a note explains the asterisk: if smoke control is provided in the lobby, the travel distance can be increased to 7.5m maximum (see Diagram 3.7, example b). Part b, \"b. Small single stair building with no more than two flats per storey\", shows a stair with OV, two flats F and a lobby with Fd doorsets, with text stating the door between stair and lobby should be free from security fastenings and that the lobby is not essential if flats have protected entrance halls. Four numbered NOTES cover the top storey, the 4.5m lobby limit, an automatic opening vent of at least 1m2, and Appendix C, Table C1."
+}

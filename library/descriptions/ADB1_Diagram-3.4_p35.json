@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-3.4_p35",
+ "source": "ADB1",
+ "label": "Diagram 3.4",
+ "page": 35,
+ "caption": "Diagram 3.4 | Flat with an alternative exit, but where all habitable rooms have no direct access to an entrance hall Internal planning of multi‐storey flats",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "01afe06e209f40f702641520fbe9d7484652d6e42f0110db1382dd4f513735cb",
+ "image_sig": {
+  "w": 746,
+  "h": 455,
+  "grey": "6+n5+fn5+fn5+fn5+fn5+fr//+7v7e/q7P/////////7///y7ffn7f3/////////+///6/Hn7/H/4NLW1tjU8fv//+rw++r2/+3j7vf1/v/7///k4fDg7f/p2t3f3Pj/+///9//r//f/7e7///////v///f/9+z3///////////7///3//L/9//k///+////+///9//68fH/2NXW1tv9//v///f68//3///////////7///3/Pb/9///////////+///z8vS0OT///////////v////79f////////////+GbGVra2xqaGtubGtpa2pmfVZaZGVZVVVVVVVVVVVVWQ=="
+ },
+ "reviewed": false,
+ "description": "This is a floor plan of a flat, labelled at the top left \"See para 3.19\". The flat is laid out with rooms arranged around a central vertical corridor. The top row holds two rooms labelled \"Bedroom\"; the right-hand one has an opening at the top-right corner marked with an arrow and the text \"Alternative exit\". The middle row contains a \"Bedroom\" on the left and a \"Bath\" on the right. The lower part comprises a \"Kitchen\" to the right of the corridor and, beneath it, a \"Living room\" with a door at the bottom edge labelled \"Flat entrance\". The label \"Fd\" appears in the corridor just below the green line, to the left of the kitchen. A green horizontal line crosses the plan between the bedroom and bathroom row and the kitchen and living room, and a thick black line forms the bottom wall, the top, left and right walls being thin. A legend on the right explains the black line as compartment walls (see Appendix B), the green line as fire resisting construction (minimum REI 30) between living and bedroom accommodation, and \"Fd\" as a fire doorset. A note states the bedrooms are not classified as inner rooms because escape is possible in two directions.",
+ "first_draft": "This is a floor plan of a flat, labelled at the top left \"See para 3.19\". The flat is laid out in three horizontal bands around a central cross-shaped corridor. The top band holds two rooms labelled \"Bedroom\"; the right-hand one has an opening at the top-right corner marked with an arrow and the text \"Alternative exit\". The middle band contains a \"Bedroom\" on the left and a \"Bath\" on the right. The lower band comprises a \"Kitchen\" and, beneath it, a \"Living room\" with a door at the bottom edge labelled \"Flat entrance\". A door marked \"Fd\" is on the corridor above the kitchen. A green horizontal line crosses the plan between the upper and lower rooms, and thick black lines form the top and bottom walls. A legend on the right explains the black line as compartment walls (see Appendix B), the green line as fire resisting construction (minimum REI 30) between living and bedroom accommodation, and \"Fd\" as a fire doorset. A note states the bedrooms are not classified as inner rooms because escape is possible in two directions."
+}

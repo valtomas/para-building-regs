@@ -1,0 +1,17 @@
+{
+ "key": "ADH_Table-A3_p25",
+ "source": "ADH",
+ "label": "Table A3",
+ "page": 25,
+ "caption": "Table A3 \u0007\u0007Minimum trap sizes and seal depths additional to Table 2",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "bec4626a365572912a92a4a9e9adb2906186a835dbabdcc5a6a8cb4a536c9a58",
+ "image_sig": {
+  "w": 371,
+  "h": 207,
+  "grey": "5M7WzcrR2dfY2dTZ1tfV4/KasLKQhpCbgpyDoIOYm+/z6enpy8LNxrHNxc+1z9Lv8+np6bGftqCjra/CobHO7+7h4uPj4+Pf4+Hj4OLi4urwr7zq////2MTMwtqwzsH////////////axf//3Mb///Tr6+vr6+vr6+vr6+vr6/Hyw87Kz8ja//nh///+4///9Ovr6+vr6+vr6+vr6+vr8fLN087J0tv////////////zzsfR5/////fk///+5f//9Ovr6+vr6+vr6+vr6+vr8fXOzfD////////////////23cvQ0s3x//Xk///64v//9Ovr6+vr6+vr6+vr6+vr8Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

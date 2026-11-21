@@ -1,0 +1,17 @@
+{
+ "key": "ADH_Table-10_p20",
+ "source": "ADH",
+ "label": "Table 10",
+ "page": 20,
+ "caption": "Table 10 \u0007\u0007Limits of cover for thermoplastics (nominal ring stiffness SN4) pipes in any width of trench",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "83569644ef4a262c466519568f555c1b299998688c339afd2ad23fd66049cfef",
+ "image_sig": {
+  "w": 796,
+  "h": 442,
+  "grey": "wL+vsrGvqq6trqivp6y2/evgu73U6enp6enp6enp6f7b3fT05tT09NbT8vTc1ur/3dnq7ebf7e3g5e3t5OHt/uf4+Pj4+Pn59/j3+fj5/P/43u/18vP08vDz8fLy8ff/79XY2t7s6uvv6+zs6uv0/+rW2dnY19rZ2+vt7O3r+f/y4+P19PX19fX09fn+////8uvt7uvr7Ozq7Ovv9vb2/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

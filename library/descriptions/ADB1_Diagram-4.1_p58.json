@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-4.1_p58",
+ "source": "ADB1",
+ "label": "Diagram 4.1",
+ "page": 58,
+ "caption": "Diagram 4.1 Lighting diffuser in relation to ceiling",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "e829e315ba59c5f87ad608edb054402f8922bea13dd21276c72c44f0c2a7f8a6",
+ "image_sig": {
+  "w": 754,
+  "h": 264,
+  "grey": "9fX19fX19fX19fX19fX19OTj//////////////////v7///////////////////798jNz9/////RzcbKz8rO+Pv//f79////1sjM7v///fv7///u7fP////////////7+//88vTz////////////+/v/+///+/////////////v7/vnv7+zV3N7U1tbW1tb2+/r97e3v5Ojq4Nvc2eTk9/v6//////////r09fT8//v76vj///////br+///+//7+//9/////////evq6/n/++3s7Ozs7Ozs7Ozr6+vs7OuAYF1iZWBgYFlVVVVVVVVuiWZfZmVhY2NcVVVVVVVVdg=="
+ },
+ "reviewed": false,
+ "description": "The drawing, bordered in green, is captioned in a green band at the bottom as \"Diagram 4.1 Lighting diffuser in relation to ceiling\". In the top left corner the text \"See para 4.15\" appears. The diagram has two labelled parts side by side.\n\nPart a, headed \"a. Diffuser forming part of ceiling\", shows an outline shaped like a flat-topped house (a pentagon with slanted upper corners) containing three small circles in a horizontal row near its top. Directly beneath this shape is a long horizontal rectangle subdivided into a row of small segments, and a thin vertical line from below, labelled \"Ceiling\", points to this rectangle. A plain grey horizontal bar extends to the right of the rectangle.\n\nPart b, headed \"b. Diffusers of light fittings attached to the soffit of a ceiling or suspended beneath a ceiling\", shows a grey horizontal bar at the top, to which a line from below, labelled \"Ceiling\", points. Hanging beneath the bar is the same pentagon shape with three circles near its top, and below the pentagon a horizontal line bears a series of short vertical tick marks.",
+ "first_draft": "The drawing, bordered in green, is captioned in a green band at the bottom as \"Diagram 4.1 Lighting diffuser in relation to ceiling\". In the top left corner the text \"See para 4.15\" appears. The diagram has two labelled parts side by side.\n\nPart a, headed \"a. Diffuser forming part of ceiling\", shows an outline shaped like a flat-topped house (a pentagon with slanted upper corners) containing three small circles in a horizontal row near its top. Directly beneath this shape is a long horizontal rectangle subdivided into a row of small segments, and a thin line from the left, labelled \"Ceiling\", points to this rectangle. A plain grey horizontal bar extends to the right of the rectangle.\n\nPart b, headed \"b. Diffusers of light fittings attached to the soffit of a ceiling or suspended beneath a ceiling\", shows a grey horizontal bar at the top, to which a line from below, labelled \"Ceiling\", points. Hanging beneath the bar is the same pentagon shape with three circles near its top, and below the pentagon a horizontal line bears a series of short vertical tick marks."
+}

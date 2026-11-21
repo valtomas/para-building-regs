@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-6.3_p72",
+ "source": "ADB2",
+ "label": "Diagram 6.3",
+ "page": 72,
+ "caption": "Diagram 6.3 Layout restrictions on small class D-s3, d2 plastic rooflights, TP(b) rooflights and TP(b) lighting diffusers",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "dc72e5d621c1110461b6c3f97ba977322a3d356c8069a23cce0262f52b62d8f6",
+ "image_sig": {
+  "w": 756,
+  "h": 780,
+  "grey": "8vH7+vr6+/v7+/v7+/v7+fv//f/////+//////////v7//7//////v/////////7+//+//Px9/T29///////+/v//PPqw7a1trbY/v7///v7//7/7rawtba1ve3+///7+//+///Ds7a0ta+27P7++/v//f//wq23tayvubvq/vv7///+/sO2tre1tb3t/v77+//////Dtra2tsby/v//+/v/////07a2trbZ//////v7///////15+n2///////7+////vP68/P18/Ty8/b/+/v///Xk+vT///////////vp5+fn5+fn5+fn5+fn5+fogFlYZGJhWVhXWVhYWlpYcQ=="
+ },
+ "reviewed": false,
+ "description": "This is a ceiling plan titled \"Diagram 6.3 Layout restrictions on small class D-s3, d2 plastic rooflights, TP(b) rooflights and TP(b) lighting diffusers\". In the top left corner, the text reads \"See Table 6.2\". The main part of the drawing shows a large, irregular green shaded area with a dashed outline, the restricted zone, with the words \"Ceiling plan\" printed below it. A dashed rounded-rectangle outline also appears in the upper left, enclosing the upper rectangular rooflight. Inside and outside this green zone are symbols representing rooflights: two vertical rectangles and three circles. Dashed circles surround the three circular rooflights. Green dimension lines with arrows indicate distances and sizes. The length of the rectangular rooflights is marked as \"dimension x\". The distance between the two rectangular rooflights, and between a rectangular and a circular rooflight, is marked \"x min.\". The vertical distance between two circular rooflights is marked \"y min.\", as is the horizontal distance between a central circular rooflight and an adjacent one. The diameter of a circular rooflight is marked as \"dimension y\". A legend at the bottom shows a green square with a dashed border, described as \"Materials within this zone – at plane of ceiling – should comply with Table 6.1\", and a rectangle above a circle, described as \"Rooflights\".",
+ "first_draft": "This is a ceiling plan titled \"Diagram 6.3 Layout restrictions on small class D-s3, d2 plastic rooflights, TP(b) rooflights and TP(b) lighting diffusers\". In the top left corner, the text reads \"See Table 6.2\". The main part of the drawing shows a large, irregular green shaded area with a dashed outline, labelled \"Ceiling plan\" at the bottom. Inside and around this green zone are symbols representing rooflights: two vertical rectangles and three circles. Dashed circles surround the three circular rooflights. Green dimension lines with arrows indicate distances and sizes. The width of the rectangular rooflights is marked as \"dimension x\". The distance from a rectangular rooflight to the edge of the green zone, and between a rectangular and a circular rooflight, is marked \"x min.\". The vertical distance between two circular rooflights is marked \"y min.\", as is the horizontal distance between a central circular rooflight and an adjacent one. The diameter of a circular rooflight is marked as \"dimension y\". A legend at the bottom shows a green square with a dashed border, described as \"Materials within this zone – at plane of ceiling – should comply with Table 6.1\", and a rectangle alongside a circle, described as \"Rooflights\"."
+}

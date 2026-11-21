@@ -1,0 +1,18 @@
+{
+ "key": "ADC_Diagram-12_p36",
+ "source": "ADC",
+ "label": "Diagram 12",
+ "page": 36,
+ "caption": "Diagram 12 \u0007UK zones for exposure to driving rain",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "03b9f3b3bccc516624d01d8c0418ee2ef70154b42cd2dfaf7aceafedf909005f",
+ "image_sig": {
+  "w": 755,
+  "h": 1109,
+  "grey": "293W1dvP0dHT4ufn5+fn6PXw7vH+6fD6/v//3ef///r13eTu/uvr9////vL+///69fX39/3l6e793/L/////+vX////z2ubK1/////////r1////2cmwvc/m+//////69f///e6/r8LC0v//////+vX////7zK6sudn7//////r1///q3dvLtLzD7//////69f/2vby/49+1xcnn+///+vX////w+vH4zrzV0vf+//r1///////ksMS/wc/Y6f/69f/////85LHFw8vZ0M78+vX/////+N+5tbnIydvj//r1////+fPFpsTAwtXO5Pv69f/////g8/L/////////+g=="
+ },
+ "reviewed": false,
+ "description": "Diagram 12 is titled \"UK zones for exposure to driving rain\" and shows a map of Great Britain and Northern Ireland, with two small inset maps in the upper right corner; the upper one is labelled Lerwick and the lower shows a group of smaller islands without a clear label. The upper left contains a legend headed \"Exposure zones\" beside a column headed \"Approximate wind-driven rain* (litres/m² per spell)\". Four squares, from white to dark grey, are listed: 1 Sheltered, Less than 33; 2 Moderate, 33 to less than 56.5; 3 Severe, 56.5 to less than 100; 4 Very severe, 100 or more. A footnote reads \"*Maximum wall spell index derived from BS 8104\". The land areas are shaded in these four tones; generally the darker grey tones sit along the western and northern coasts and the white, sheltered tone lies over the east and south-east of England. Numerous towns are marked by black dots with printed names, for example London, Manchester, Edinburgh, Cardiff and Plymouth.",
+ "first_draft": "Diagram 12 is titled \"UK zones for exposure to driving rain\" and shows a map of Great Britain and Northern Ireland, with two small inset maps in the upper right corner; the upper one is labelled Lerwick (Shetland) and the lower shows a group of smaller islands without a clear label. The upper left contains a legend headed \"Exposure zones\" beside a column headed \"Approximate wind-driven rain* (litres/m² per spell)\". Four shaded squares are listed: 1 Sheltered, Less than 33; 2 Moderate, 33 to less than 56.5; 3 Severe, 56.5 to less than 100; 4 Very severe, 100 or more. A footnote reads \"*Maximum wall spell index derived from BS 8104\". The land areas are coloured with these four grey tones; generally the darker tones sit along the western and northern coasts and the lighter, sheltered tone lies over the east and south-east of England. Numerous towns are marked by black dots with printed names, for example London, Manchester, Edinburgh, Cardiff and Plymouth."
+}

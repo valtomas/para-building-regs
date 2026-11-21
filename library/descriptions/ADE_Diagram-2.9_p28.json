@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.9_p28",
+ "source": "ADE",
+ "label": "Diagram 2.9",
+ "page": 28,
+ "caption": "Diagram 2.9 \u0007\u0007Wall type 1 – external cavity wall with timber frame inner leaf",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "7876c56ff69dd08fdd7d677615c6771780eb250e2cc51ca421a99d53d37a4d09",
+ "image_sig": {
+  "w": 755,
+  "h": 353,
+  "grey": "v7eup72nvOXRtL+iq7St2uHfzauyq73y69ziq6zY3+zr6c2wscbl8uTc3NbX29zf5efn5+fn5+/0///y7///+vT17//////69P//8PP8//r05tn/////+vT//+Df/P/69OfY//////rz+/vv8/j7+PTi2f/////67/j42tn2+PX05tb/////+vH/+uzq+v/49NnM6ejq8vrx//Xo5/j/+PTd8Pbr9fT68PTq3t7w9PT01ej16vb1+vT/9vDz/P/69NnE4ebn8Pr09uzt6/7/+vTo2fX6///69P//////2+D04Nn/6e//+u7o6Ojo6Ojq9OfZ//////r38/Pz8/Pz9Q=="
+ },
+ "reviewed": false,
+ "description": "Two diagrams sit side by side. On the left, the header reads \"Diagram 2.9 Wall type 1 – external cavity wall with timber frame inner leaf\". Beneath it is a cross-section: a vertical outer leaf on the left with diagonal hatching, a cavity between the two leaves, and a vertical inner leaf with a zig-zag (chevron) hatching pattern. A horizontal cross-hatched member projects rightwards from the inner leaf, forming a T-junction with the wall. An arrow points to the point where this horizontal member meets the cavity, labelled \"Cavity stop\". On the right, the header reads \"Diagram 2.10 Wall type 1 – internal timber floor\". Its drawing, marked \"SECTION\" at the lower right, shows a stack of cross-hatched wall blocks running vertically, met by a horizontal floor element shown as an outline, with short diagonal lines at the joint. At the corner where floor and wall meet, small dots are indicated and an arrow points to one of them, labelled \"Hanger\". The horizontal floor is shown continuing out to the left and right of the vertical wall.",
+ "first_draft": "Two diagrams sit side by side. On the left, the header reads \"Diagram 2.9 Wall type 1 – external cavity wall with timber frame inner leaf\". Beneath it is a cross-section: a vertical outer leaf on the left with a hatched pattern, a central cavity band of diagonal hatching, and a vertical inner leaf of cross-hatching. A horizontal cross-hatched member projects rightwards from the inner leaf, forming a T-junction with the wall. An arrow points to the point where this horizontal member meets the cavity, labelled \"Cavity stop\". On the right, the header reads \"Diagram 2.10 Wall type 1 – internal timber floor\". Its drawing, marked \"SECTION\" at the lower right, shows a stack of cross-hatched wall blocks running vertically, met by a horizontal cross-hatched floor element. At the corner where floor and wall meet, small dots are indicated and an arrow points to one of them, labelled \"Hanger\". The horizontal floor is shown continuing out to the left and right of the vertical wall."
+}

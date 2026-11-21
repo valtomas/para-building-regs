@@ -1,0 +1,17 @@
+{
+ "key": "ADF1_Table-1.3_p18",
+ "source": "ADF1",
+ "label": "Table 1.3",
+ "page": 18,
+ "caption": "Table 1.3 | Bathroom | 8\nSanitary accommodation | 6 NOTE:",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "29c9ccbfef4cfeef00da3b478663e4cef6f38277efaf3da78f4eff734d1e10f1",
+ "image_sig": {
+  "w": 756,
+  "h": 270,
+  "grey": "xbWzuLa0uLW6tbe0uLW4y7mqlpuclJqaoZebmZmil7bn4uPl7Ozs7OXk4uTj4uTn7ejm8fX19fbu6Obm5+jn7vf/////////////9v3///v09fX19fX19vf19fP09fX08fX19fX19fb39fXu8/X19Pj/////////////+f////v09fX19fX19vf19fP19fX09f/////////////3/v//+/L19fX19fX29/X18fP19fTz9fX19fX19vf19fDz9fX00uX/////////////////+/Tq6+zq6u/r6+zr7Oz6//v09O3v8uzy8e3y9fLy/P/77djU1djb2tnb8vX19fX18w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

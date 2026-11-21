@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-2.1_p25",
+ "source": "ADB2",
+ "label": "Diagram 2.1",
+ "page": 25,
+ "caption": "Diagram 2.1 | Travel distance in dead-end condition",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "0ecfe4d729d0330c65a9baee406255e804b81f04f240d72d1f54f46b7e0bb563",
+ "image_sig": {
+  "w": 737,
+  "h": 311,
+  "grey": "9fb29vb29vb29vb29vb29uns///////////////////7////////////////////+///n7Kyssb/9/P18/n///v//97///7c99nNytP1///7///a+fr75P/++vz6/v//+//g7uvs/uT/6eTh5eD///v//931/P/k/+rf4t7p///7//+4rNy63v/o0s7R0vL/+////9rj////9+7x7+77//v////a4////+rd2uDf/v/7////2uP////ix8Xe5ff/+////9Oi///////+//////v///////////////////+VdXh2dXV1dnV0dHR0dHR0iWdYZmhjZ2VgT09PT09PTw=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a plan (floor layout) shown as a thick black outline forming an irregular shape with a downward projection. Points A and D are marked at the two exits, B is marked at the junction, and C is marked at the corner at the end of the downward projection. A green arrow labelled \"Exit\" points left from the wall near A; a second green arrow labelled \"Exit\" points right from the upper wall near D. A solid green line runs from B to A, a solid green line runs down from B to C, and a dashed green line runs from B to D. At B, a green arc between line BA and dashed line BD is labelled \"45° min.\" To the right, running text reads: \"Travel distance in a dead-end condition should meet all of the following.\" followed by \"a. Angle ABD should be at least 45 degrees.\", \"b. Distance CBA or CBD (whichever is less) should be no more than the maximum travel distance given for alternative escape routes.\" and \"c. Distance CB should be no more than the maximum travel distance where there are no alternative escape routes.\" Top left text reads \"See para 2.7\". A green banner at the bottom reads \"Diagram 2.1 Travel distance in dead-end condition\".",
+ "first_draft": "The drawing is a plan (floor layout) shown as a thick black outline forming an irregular shape with a downward projection. Points A, B, C and D are marked at corners and a junction. A green arrow labelled \"Exit\" points left from the wall near A; a second green arrow labelled \"Exit\" points right from the upper wall near D. A solid green line runs from B to A, a solid green line runs down from B to C, and a dashed green line runs from B to D. At B, a green arc between line BA and dashed line BD is labelled \"45° min.\" To the right, running text reads: \"Travel distance in a dead-end condition should meet all of the following.\" followed by \"a. Angle ABD should be at least 45 degrees.\", \"b. Distance CBA or CBD (whichever is less) should be no more than the maximum travel distance given for alternative escape routes.\" and \"c. Distance CB should be no more than the maximum travel distance where there are no alternative escape routes.\" Top left text reads \"See para 2.7\". A green banner at the bottom reads \"Diagram 2.1 Travel distance in dead-end condition\"."
+}

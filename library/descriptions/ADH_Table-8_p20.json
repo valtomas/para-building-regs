@@ -1,0 +1,17 @@
+{
+ "key": "ADH_Table-8_p20",
+ "source": "ADH",
+ "label": "Table 8",
+ "page": 20,
+ "caption": "Table 8 \u0007Limits of cover for class 120 clayware pipes in any width of trench",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "1cd0f7403a2a4329afe92bb59b4ccfed02475b89772947ce5ccaaab6679bf7f0",
+ "image_sig": {
+  "w": 796,
+  "h": 292,
+  "grey": "zMjBxMTFusPEx8S8v9jd/b+3r7G2r7Clp7Crsq7L0P3X2///6Mz/+tDL///W0PL/5/Dx8ezp8fHq6/Hx7Orx/u/+///27v//9fP///jy///k/f//9en///Dx///w7P//6f3///Ts///y8f//9/D///j+///7+f//+vr///z8///h/f//8Ob//+7s///z7f//1vLy8vLy8vLy8vLy8vLy/vPe4eLh4ODi4OHi3/r////u3uHh3uLi4+Dg3+Di7P//7+Dh39/g4OHh4OLh4+D1//Xl5P7+/v7+//7///7////w4OLm4eDh////////////8vHx8fHx8fHx8fHx8fHx/g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-3.15_p52",
+ "source": "ADE",
+ "label": "Diagram 3.15",
+ "page": 52,
+ "caption": "Diagram 3.15 \u0007\u0007Floor type 2.2B(b) – floor type 2.2 with ceiling treatment B and floating floor (b)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "9f0a7532fa392ac7b3f84168ad2de47b63e20e71909e331af0b69994acb9f2d5",
+ "image_sig": {
+  "w": 362,
+  "h": 318,
+  "grey": "wLW2vLy0qbOtsqWdudLS3t/N1t3dz7G7pre0pcvp6e/q6enp6duquaW2tay+09fv6unp6enUsa27sLiz0MXV7+rp6enp3bGzt7fAv+np6e/T5eXl5eXl5eXl5eXl5eXi4uvq5e7r6u3t6+vq5e7r8dvc3tzY2NXU3dvX4dnc2+7d4eLj4OHj1dzi4uLh4d3y5PHx8uzt8d7k8+7t7PPw8+L////////4/////////+/h+fn5+fn59u35+fn5+fnv4+DLvb29vcrQvL29wODi8en/////8+7j9v////////Tp//////jq7fP////m5+br4/Ly8vLy8vLy8vLy4uLg5w=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a section, marked \"SECTION\" at the bottom right, beneath the title \"Diagram 3.15 Floor type 2.2B(b) – floor type 2.2 with ceiling treatment B and floating floor (b)\". It shows a vertical cross‑section of a floor/ceiling assembly in layers. At the top is a horizontal band filled with a speckled or stippled texture, underlain by a thin band of vertical hatching. Below this is a horizontal structural member drawn as a long block containing a row of evenly spaced circles, broken at both ends to indicate continuation. From the underside of this member, a small hanger symbol hangs by a short line at the centre, with a thin vertical line descending from it. Beneath the member is a separate lower layer consisting of a horizontal line at the bottom spanning the full width, a horizontal line at the top that is present only at the left and right ends and broken in the middle, and a band of closely spaced zigzag or spring‑shaped symbols in the middle, occupying the space between the two lines. A single arrow from the label \"Timber batten\" points upward to the bottom horizontal line. No other dimensions or figures are given.",
+ "first_draft": "The drawing is a section, marked \"SECTION\" at the bottom right, beneath the title \"Diagram 3.15 Floor type 2.2B(b) – floor type 2.2 with ceiling treatment B and floating floor (b)\". It shows a vertical cross‑section of a floor/ceiling assembly in layers. At the top is a horizontal band filled with a speckled or stippled texture, underlain by a thin horizontally hatched line. Below this is a horizontal structural member drawn as a long block containing a row of evenly spaced circles, broken at both ends to indicate continuation. From the underside of this member, a small hanger symbol hangs by a short line at the centre, with a thin vertical line descending from it. Beneath the member is a separate lower layer consisting of a horizontal line, a band of closely spaced zigzag or spring‑shaped symbols, and a further horizontal line below. A single arrow from the label \"Timber batten\" points upward to this lower horizontal line. No other dimensions or figures are given."
+}

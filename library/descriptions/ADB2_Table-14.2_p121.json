@@ -1,0 +1,17 @@
+{
+ "key": "ADB2_Table-14.2_p121",
+ "source": "ADB2",
+ "label": "Table 14.2",
+ "page": 121,
+ "caption": "Table 14.2 Class D-s3, d2 plastic rooflights: limitations on use and boundary distance",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "066087b529a148a341129e77b08709fe3299cb235a73e1c883a71c7a8a61d187",
+ "image_sig": {
+  "w": 741,
+  "h": 539,
+  "grey": "v6uurausoaunsK2oqam6yO3v9+zr6+/4+Pjr6+3r7vjt6vf/////////4+Pm6vH68/P68fPy8/Lz9+vw8+z3+vX4/d/b3ert9Pn7///6///7//3n5uXr9f7/////////+//+5uLh4u3y//////////v//u7s7O/u7/X1///y///r8vjq9/r6+vr6+vr6+vr66erw6+/u7+/v+P///////+Xe397m8PDx8O7v7O7v7fHq5ejq5ujq6Orp5ern6fD96e319fT18vb19fX29fP1/PLf3ODf3+Li7vH////////y5ebl6+nr5+bv+v//////8+ro6Orp6ejr8/Pz8/Pz9A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

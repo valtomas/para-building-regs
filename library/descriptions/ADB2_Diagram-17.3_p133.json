@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-17.3_p133",
+ "source": "ADB2",
+ "label": "Diagram 17.3",
+ "page": 133,
+ "caption": "Diagram 17.3 Location of firefighting shafts: hose laying distances",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "4618553dfde8f56b0c7f0c164a49cc8b8a1394239d6267d4790fce59cd972697",
+ "image_sig": {
+  "w": 737,
+  "h": 1061,
+  "grey": "9Onv/Pz8/Pv7/Pz8/Pz8/Pv+9vf2+v/79/f29vb3+v/7/+z///H/8vj//v7/+PT/+//u+vXw//L6//7+//r0//v+9vb1+P/89vb19fX2+v/78vD6/v////7//////v//+//w8f3+////+/r6+vr6/Pv/6Of4/v//+eXn8vDy8/X7/+zr8/r///Pt6+3s////+/7+/v7///////////////v89vb1+//89fb39/b1+v/7/+761tn/8vzyuqvm/PT/+//m9NTZ//L0+r6x8PT0//v/8/Pl8//79O7m4ur0+f/7//705+3t7evt7uzt8PT9vKuoqKCjoaGgoaGjo6Ojow=="
+ },
+ "reviewed": false,
+ "description": "Diagram 17.3, \"Location of firefighting shafts: hose laying distances\", headed \"See para 17.8\", shows five floor plans (a–e) plus a legend and notes. \"With sprinklers\": a. a square, green \"F\" box, \"60m\" arrow, dotted circle; b. a rectangle, two \"F\" boxes, two dotted circles. \"Without sprinklers\": c. a vertical rectangle, central \"F\", dashed \"45m\" line and circle, \"60m\" arrow and dotted circle; d. a square, grey right half, \"F\" and \"H\" boxes, \"45m\" arrow, dashed and dotted circles; e. a rectangle, central grey band with \"H\" boxes top, middle, bottom, \"F\" boxes each side, dashed and dotted circles. Legend: dotted line = \"Floor plan within 60m hose laying distance of fire main outlet\"; dashed line = \"Floor plan within 45m hose laying distance of fire main outlet\"; arrow = \"Hose reach\"; F = \"Firefighting shaft\"; H = \"Fire main outlet in a protected shaft\"; grey = \"Additional hose coverage required\". Note 1: \"Hose laying distance should be measured from the fire main outlet along the route suitable for laying hose. If this route is not known, the distance should be taken at two-thirds of the direct distance.\" Note 2: \"The fire main outlet should be located according to paragraph 16.4.\"",
+ "first_draft": "Diagram 17.3, \"Location of firefighting shafts: hose laying distances\", headed \"See para 17.8\", shows five floor plans (a–e) plus a legend and notes. \"With sprinklers\": a. a square, green \"F\" box, \"60m\" arrow, dotted circle; b. a rectangle, two \"F\" boxes, two dotted circles. \"Without sprinklers\": c. a vertical rectangle, central \"F\", dashed \"45m\" arc, \"60m\" arrow; d. a square, grey right half, \"F\" and \"H\" boxes, \"45m\" arrow; e. a rectangle, central grey band with \"H\" boxes top, middle, bottom, \"F\" boxes each side, dashed circles. Legend: dotted line = \"Floor plan within 60m hose laying distance of fire main outlet\"; dashed line = \"Floor plan within 45m hose laying distance of fire main outlet\"; arrow = \"Hose reach\"; F = \"Firefighting shaft\"; H = \"Fire main outlet in a protected shaft\"; grey = \"Additional hose coverage required\". Note 1: \"Hose laying distance should be measured from the fire main outlet along the route suitable for laying hose. If this route is not known, the distance should be taken at two-thirds of the direct distance.\" Note 2: \"The fire main outlet should be located according to paragraph 16.4.\""
+}

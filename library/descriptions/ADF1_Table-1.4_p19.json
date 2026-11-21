@@ -1,0 +1,17 @@
+{
+ "key": "ADF1_Table-1.4_p19",
+ "source": "ADF1",
+ "label": "Table 1.4",
+ "page": 19,
+ "caption": "Table 1.4 Purge ventilation openings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "e236614b1452b575a780a48087359f479432082a79a7b7281351d98a4bac3e7a",
+ "image_sig": {
+  "w": 737,
+  "h": 192,
+  "grey": "zb7Av8DBwsLCwsLCwsLCwp2LdHd7cprIyMjIyMjIyMjSyMHIyMXByMjIyMjIyMjI6+zt7e3t7e3t7evs7Ovs7efc9v/////////o4eLf6v/y8PDw8PDw8PDy9PDw8PDw3NbW09bO09bN7+PQ1dLf//Dv8PDw7O3w7fL08PDw8PDj4+Df4d3h2uL56tzf3ub/8enz8/Ts7u70/fj18fP1/93fyP/////////////////y8PDw8PDw8PDy////////3dDT6v////////////////Lu8PDw8PDw8PL////////j2PP/////////////////6+jt8PDw8PDw8PDw8PDw8A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADE_Table-3.1_p45",
+ "source": "ADE",
+ "label": "Table 3.1",
+ "page": 45,
+ "caption": "Table 3.1 \u0007Separating floor junctions reference table Separating floor type",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "bca4079116b0160e1c87b153675058264ee853afe08b4f33bd1f5c0c453e8b61",
+ "image_sig": {
+  "w": 755,
+  "h": 437,
+  "grey": "x76qp6uvrKqvrtjY2NjY2Ovn5ubm5ufn593EyNbn5+fd1NTX0tf29vbs4fba9uLu6N7g3+Hs9vb28fD28Pbw9vDo6unp7P////r6//r/+v/v5+fz///////6+P/4//j/5t7c////////+vf/9//2/+bZ5Pb29vb29vHv9u/27/bp3t/g5Pb29vbx9vb29vb27ufp6+r/////+vn/+f/5/+7n6ezp//////r5//n/+f/t5+jr5+fn7v/6+f/5//j/5dvg3d/d2+vy8fH28fbx9uTj4OPj4N/f4O329vb29vbh6ufp6uno6uzq6eno7Ofx4tLS1tTU09Lq7Ozs6+zs7A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

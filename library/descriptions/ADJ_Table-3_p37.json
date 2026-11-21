@@ -1,0 +1,18 @@
+{
+ "key": "ADJ_Table-3_p37",
+ "source": "ADJ",
+ "label": "Table 3",
+ "page": 37,
+ "caption": "Table 3 \u0007Minimum performance designations for chimney and fluepipe components for use with new solid fuel fired appliances",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-20",
+ "image_sha256": "f91ecf822652cf3a93ba80306091ae146ff22cca9fe0ff533aecb5f8eae10cd2",
+ "image_sig": {
+  "w": 355,
+  "h": 390,
+  "grey": "6rHAwJysr7muqrOrueDg4PLp6eCyr7asxLTDt7bAttfy6endsK2xx7iztbK/0unp8unp37nBscK3xbG8u7W86ezf39eeqqys3N/f39/f39/sv8/m673G3vT09MzL6fT089Lv8+rW1dny8fDw7/Ly9fbJz9/qzc3U1cfuzdfRyvX/////7eTj8f//8+Tm5+Pu/////+nL1ufs//P////////////u4+Xk6PDz////////////7OD0/Pv78////////////+3h4OHi7/P////////////r0dTY0NPx///////59fX15+Dj9fX17PX19fX18trX1OLh2t7h6/T09PT09A=="
+ },
+ "reviewed": false,
+ "description": "Table 3 is titled “Minimum performance designations for chimney and fluepipe components for use with new solid fuel fired appliances”. In the image, the words “Table 3” and the title occupy a full-width row with a pale greenish shaded background; the rest of the table appears on a white background. The table has three column headings: “Appliance type”, “Minimum designation”, and “Fuel type”. Horizontal rules divide the table: one under the title, one under the column headings, and one above the final note row. The columns are separated mainly by spacing rather than vertical grid lines.\n\nThe single main row of the table contains the following. Under “Appliance type”, the text is “All solid fuel appliances”. Under “Minimum designation”, the cell contains, in sequence: “Masonry or flueblock flue with liner to T400 N2 D3 Gxx”, “Clay flue blocks FB1N2”, “Clay/ceramic liners B1N2”, “Concrete liners B2”, and “Factory made metal chimneys to T400 N2 D3 Gxx”. Under “Fuel type”, the text is “Coal, Smokeless Fuel, Peat, wood and other biomass”.\n\nA final full-width row beneath the main row contains the text “See paragraph 1.27–1.29 and 1.42”. No ticks, crosses, filled or empty circles, checkmarks, arrows, or other non-text symbols are visible inside the table. There is no key or legend shown that explains any symbol, colour, or shading.",
+ "first_draft": "Table 3 is titled “Minimum performance designations for chimney and fluepipe components for use with new solid fuel fired appliances”. In the image, the words “Table 3” and the title occupy a full-width row with a pale greenish shaded background; the rest of the table appears on a white background. The table has three column headings: “Appliance type”, “Minimum designation”, and “Fuel type”. Horizontal rules divide the table: one under the title, one under the column headings, and one above the final note row. The columns are separated mainly by spacing rather than vertical grid lines.\n\nThe single main row of the table contains the following. Under “Appliance type”, the text is “All solid fuel appliances”. Under “Minimum designation”, the cell contains, in sequence: “Masonry or flueblock flue with liner to T400 N2 D3 Gxx”, “Clay flue blocks FB1N2”, “Clay/ceramic liners B1N2”, “Concrete liners B2”, and “Factory made metal chimneys to T400 N2 D3 Gxx”. Under “Fuel type”, the text is “Coal, Smokeless Fuel, Peat, wood and other biomass”.\n\nA final full-width row beneath the main row contains the text “See paragraph 1.27–1.29 and 1.42”. No ticks, crosses, filled or empty circles, checkmarks, arrows, or other non-text symbols are visible inside the table. There is no key or legend shown that explains any symbol, colour, or shading. The extracted text supplied also includes the words “Formation of gathers” after the final table row, but those words are not part of the table visible in the image."
+}

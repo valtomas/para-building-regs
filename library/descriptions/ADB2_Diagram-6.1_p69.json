@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-6.1_p69",
+ "source": "ADB2",
+ "label": "Diagram 6.1",
+ "page": 69,
+ "caption": "Diagram 6.1 Lighting diffuser in relation to ceiling",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "88accac4905d86e5b4f06bb20ddc9404880b9e6fd5bc5c1fb20e8b1869107aee",
+ "image_sig": {
+  "w": 737,
+  "h": 283,
+  "grey": "9fX19fX19fX19fX19fX19eXi///////////////////7////////////////////9c7R1d7////h0c3P0NHR6fv//f79////3snN3P////37///w8PD/////////////+//89fjz/f////////////v/+/////v////////////7/ffe3d7Fwde+wcDAwcHb+/n/////////+fnv8Pr///v7//////////v5+vr5///76vb////////h+///+///+/////////////Ts7vX///v///////////////////99WVxbXlpbW1pZWVlZWVlZhWpabmdkaGReT09PT09PTw=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a line diagram in two parts, with a green banner at the bottom reading \"Diagram 6.1 Lighting diffuser in relation to ceiling\" and the text \"See para 6.16\" at the top left. Part a, labelled \"a. Diffuser forming part of ceiling\", shows the ceiling on the right as a shaded horizontal band. The word \"Ceiling\" is at the bottom left, with a vertical leader line rising from it to the height of the soffit line, which forms the base of the housing and the shaded band to its right. Above the left portion of this soffit line sits a raised pentagon‑shaped housing containing three small circles in a row near its top and a strip of small vertical divisions along its base. Part b, labelled \"b. Diffusers of light fittings attached to the soffit of a ceiling or suspended beneath a ceiling\", shows the ceiling as a shaded horizontal band at the top, marked \"Ceiling\" by a leader line, with a similar pentagon‑shaped housing containing three circles and a row of vertical divisions positioned below the band.",
+ "first_draft": "The drawing is a line diagram in two parts, with a green banner at the bottom reading \"Diagram 6.1 Lighting diffuser in relation to ceiling\" and the text \"See para 6.16\" at the top left. Part a, labelled \"a. Diffuser forming part of ceiling\", shows the ceiling on the right as a shaded horizontal band, indicated by a vertical leader line from the word \"Ceiling\". Above the left portion of the ceiling line sits a raised pentagon‑shaped housing containing three small circles in a row near its top and a strip of small vertical divisions along its base. Part b, labelled \"b. Diffusers of light fittings attached to the soffit of a ceiling or suspended beneath a ceiling\", shows the ceiling as a shaded horizontal band at the top, again marked \"Ceiling\" by a leader line, with a similar pentagon‑shaped housing containing three circles and a row of vertical divisions positioned below the band."
+}

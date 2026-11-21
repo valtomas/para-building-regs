@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-9.2_p90",
+ "source": "ADB2",
+ "label": "Diagram 9.2",
+ "page": 90,
+ "caption": "Diagram 9.2 | Cavity walls excluded from provisions for cavity barriers",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "b4d1a9da57c1fcae47b60ae7333ed0ede89442324e9aea52ea5af5aaf68a3520",
+ "image_sig": {
+  "w": 756,
+  "h": 414,
+  "grey": "8vL4+Pj4+Pj4+Pj4+Pj49/L2//////////////////v7///////////////////7+/Sx+///////////////+/v7y7Ts3973/97///////v7+9u47d3h///q6Onp6er7+/vZ4v//////39Hp5ujo9vv22/v//////+rp5+nm6fv7+dv28fL////f08/V4uj7+/vW9v//////5tPX1eni9vv777fy6ufx/+vW2tTd5/X7+/+66tLX8v/y7O7u6/n7+/z5ufX7////3tfd8/D4+/v/+uT///////////////vRxsbGxsbGxsbGxsbGxsbOhmJZXmFjX2BfXmBUT09Pcg=="
+ },
+ "reviewed": false,
+ "description": "The drawing, headed top-left “See para 9.3” and captioned in a green band at the bottom “Diagram 9.2 Cavity walls excluded from provisions for cavity barriers”, has two parts. On the left is a three-dimensional cut section of a cavity wall, shown with a break line across its middle. The wall has two vertical leaves with a gap between them; green blocks represent material filling the cavity at the top and around a central void. Leader-line labels read, from top to bottom: “Close cavity at top of wall (unless cavity is totally filled with insulation)”, “Opening”, “Close cavity around opening”, and “Two leaves of brick or concrete each at least 75mm thick”. On the right, under “NOTES:”, three numbered notes appear, the second listing sub-points a, b and c, which include the figures “800 × 500mm” and “80 × 80mm”.",
+ "first_draft": "The drawing, captioned in a green band “Diagram 9.2 Cavity walls excluded from provisions for cavity barriers” and headed top-left “See para 9.3”, has two parts. On the left is a three-dimensional cut section of a cavity wall, shown with a break line across its middle. The wall has two vertical leaves with a gap between them; green blocks represent material filling the cavity at the top and around a central void. Leader-line labels read, from top to bottom: “Close cavity at top of wall (unless cavity is totally filled with insulation)”, “Opening”, “Close cavity around opening”, and “Two leaves of brick or concrete each at least 75mm thick”. On the right, under “NOTES:”, three numbered notes appear, the second listing sub-points a, b and c, which include the figures “800 × 500mm” and “80 × 80mm”."
+}

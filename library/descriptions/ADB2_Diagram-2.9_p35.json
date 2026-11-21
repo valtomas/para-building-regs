@@ -1,0 +1,18 @@
+{
+ "key": "ADB2_Diagram-2.9_p35",
+ "source": "ADB2",
+ "label": "Diagram 2.9",
+ "page": 35,
+ "caption": "Diagram 2.9 Division of corridors",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "6879d1f9f429a0f5fcceba1733111a6791d1b1d9e0911d8dfee150c6bab84335",
+ "image_sig": {
+  "w": 737,
+  "h": 1040,
+  "grey": "9PX89vP28vz8/Pz38vXz/Pvk66yd2ube7MzAu7m6vu377f/Oz+/76uzs/+fi7e7w++rt5+fn5Pj/6+3q6efm9fvy9+Xp7fXx4+v35ujt9/f79P/f3/D78eHw/+Dg7v/1+/T/5fXw+/Tj7//m9fD/9fvw9O3/5vTz9+/18P/r+PX58vzr9ev15OXu++/08fvz+PH76vft9/Lh5/Pt9+738fvw9e7/5vXz7e328P/r+PX79P7l9fD7+f/z/+b18P/1+/T/39/w+/n/8//g4O7/9fvy9+nv7fT6//L36fDt9/f71trh5OXv///k3dvb6fr/u6imqKipoqKioqKioqKiog=="
+ },
+ "reviewed": false,
+ "description": "Diagram 2.9, \"Division of corridors\", shows four views in a grid, with \"See para 2.27\" top left. The top row are two plans. Method 1 is a plan of a \"Corridor\" shaded green, containing two \"Fd\" doorsets with swing arcs; a green block above the corridor, pointed to by the label \"Cavity above ceiling\", and a strip below labelled \"Floor cavity\". A legend shows a green block for \"Cavity barrier\", a green line for \"Fire resisting construction\", and \"Fd\" for \"Fire doorset\". Method 2 is a similar plan where the corridor is flanked by green blocks labelled \"Fire resisting sub-division\", with a continuous green strip across the top pointed to by \"Cavity above ceiling\" and a strip below labelled \"Floor cavity\". The bottom row are vertical sections, Section A and Section B, each showing the corridor with \"Fd\" doors, staircase grids, and green lines plus dashed and dash-dot lines. A central legend keys these to \"Fire resisting construction\", \"Cavity barrier to ceiling cavity\", and \"Cavity barrier to ceiling cavity above fire resisting sub-division\". Pointers read \"Cavity barriers on line of corridor enclosure to any cavity above\" and \"Fire resisting sub-division. Any cavity above to have cavity barriers\". A paragraph headed \"NOTES:\" appears at the bottom left, with an unheaded paragraph at the bottom right.",
+ "first_draft": "Diagram 2.9, \"Division of corridors\", shows four views in a grid, with \"See para 2.27\" top left. The top row are two plans. Method 1 is a plan of a \"Corridor\" shaded green, containing two \"Fd\" doorsets with swing arcs; a green block above is labelled \"Cavity above ceiling\", and a strip below is \"Floor cavity\". A legend defines the green block as \"Cavity barrier\", \"Fd Fire doorset\", and the green line as \"Fire resisting construction\". Method 2 is a similar plan where the corridor is flanked by green blocks labelled \"Fire resisting sub-division\", with \"Cavity above ceiling\" and \"Floor cavity\". The bottom row are vertical sections, Section A and Section B, each showing the corridor with \"Fd\" doors, staircase grids, and green lines plus dashed and dash-dot lines. A central legend keys these to \"Fire resisting construction\", \"Cavity barrier to ceiling cavity\", and \"Cavity barrier to ceiling cavity above fire resisting sub-division\". Pointers read \"Cavity barriers on line of corridor enclosure to any cavity above\" and \"Fire resisting sub-division. Any cavity above to have cavity barriers\". Two NOTES paragraphs appear at the foot."
+}

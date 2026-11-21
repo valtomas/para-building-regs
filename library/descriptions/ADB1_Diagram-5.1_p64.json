@@ -1,0 +1,18 @@
+{
+ "key": "ADB1_Diagram-5.1_p64",
+ "source": "ADB1",
+ "label": "Diagram 5.1",
+ "page": 64,
+ "caption": "Diagram 5.1 | Separation between garage and dwellinghouse",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "4abdc950c7ffab8eaafec744c956873a6543e9cea7d63f9d215ddfaa88883cac",
+ "image_sig": {
+  "w": 756,
+  "h": 369,
+  "grey": "9PTz+Pj4+Pj4+Pj4+Pj49u7q9v////////////////v7+erY6P///f/////////79t7R0uX49+7s+v//////+/v62czh9fj88vf///////v7///9//fk+fz2+//////7+//////0mbD/+Pb/////+/v15+Tr1JBUx/f28OXm9vv7+sjM4vjOdlbL7d7Kydb0+///+/n3+cRuZ/vu5uL3+/v/6d/r9Orgt4X6//////v7//Pt8f//8+/n+v/////7+/////////3u+///////+/v//////////v////////u+rq6urq6urq6urq6urq66i2pha2hpa2ltZVVVVVVVeA=="
+ },
+ "reviewed": false,
+ "description": "This is a three-dimensional perspective diagram titled 'Diagram 5.1 Separation between garage and dwellinghouse'. It shows a vertical wall rendered in solid green, with a green floor plane extending from its base on one side. Dashed lines outline the surrounding building structure, including a roofed volume behind the wall. A label 'See paras 5.6 and 5.7' sits at the top left. A note at the upper left reading 'Fire doors between the garage and dwellinghouse to have a minimum fire resistance of E 30 S a and be fitted with a self-closing device' points to the green wall. A note on the left reading 'The door opening threshold should be a minimum of 100mm above garage floor or Floor to fall away from door to the outside' has two leader lines, one pointing to the threshold at the wall's base and one pointing to the falling floor surface. On the green floor, the word 'Fall' appears with an arrow indicating the slope direction. A note on the right reading 'Wall and any floor between the garage and dwellinghouse to have a minimum fire resistance of REI 30 from the garage side' points to the green wall. The title appears in a green band along the bottom.",
+ "first_draft": "This is a three-dimensional perspective diagram titled 'Diagram 5.1 Separation between garage and dwellinghouse'. It shows a vertical wall rendered in solid green, with a green floor plane extending from its base on one side. Dashed lines outline the surrounding building structure, including a roofed volume behind the wall. A label 'See paras 5.6 and 5.7' sits at the top left. A note at the upper left reading 'Fire doors between the garage and dwellinghouse to have a minimum fire resistance of E 30 S a and be fitted with a self-closing device' points to the green wall. A note on the left reading 'The door opening threshold should be a minimum of 100mm above garage floor or Floor to fall away from door to the outside' points to the floor line at the wall's base. On the green floor, the word 'Fall' appears with an arrow indicating the slope direction. A note on the right reading 'Wall and any floor between the garage and dwellinghouse to have a minimum fire resistance of REI 30 from the garage side' points to the green wall. The title is repeated in a green band along the bottom."
+}

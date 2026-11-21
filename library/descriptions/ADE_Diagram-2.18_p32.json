@@ -1,0 +1,18 @@
+{
+ "key": "ADE_Diagram-2.18_p32",
+ "source": "ADE",
+ "label": "Diagram 2.18",
+ "page": 32,
+ "caption": "Diagram 2.18 \u0007\u0007Wall type 2.4",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "7aac152abc05b6e05a89afafa6968e2f04c3d199cb602187657fe018434c7436",
+ "image_sig": {
+  "w": 401,
+  "h": 404,
+  "grey": "37m6w8S6p7O3ueHh4eHw/ejq6uzs7Ozn7Ozs7Ozs8P3r/////+Tw+PPp//////Xv6//////g8Pf25v/////16+v/////4PD49eb/////9evr/////9rn9+vj//////Xr6//////f7/f15v/////16+v/////4PD39ub/////9evr/////9fa7uHh//////Xr6//////g8Pf25v/////16+v/////4PH39ub/////9evr/////9rn9uvj//////Xr6//////g8Pf15v/////16+v/////4PD39eb/////9evr/////+Hr+O/o//////Xr6PX19fX19fX19fXV1cvx7Q=="
+ },
+ "reviewed": false,
+ "description": "The top of the image carries a light green header bar reading \"Diagram 2.18\" and, in bold, \"Wall type 2.4\". Beneath this is a bordered panel containing a section drawing, identified by the word \"SECTION\" printed in the lower right corner. The section depicts two vertical columns of blocks separated by a central vertical gap. Each column is made up of four stacked blocks, divided by horizontal lines. Both columns are filled with a pattern of small circles. A thin vertical line runs along the outer edge of each column, on the side facing away from the central gap. No dimensions, scale, or further labels appear within the drawing itself.",
+ "first_draft": "The top of the image carries a light green header bar reading \"Diagram 2.18\" and, in bold, \"Wall type 2.4\". Beneath this is a bordered panel containing a section drawing, identified by the word \"SECTION\" printed in the lower right corner. The section depicts two vertical columns of blocks separated by a central vertical gap. Each column is made up of four stacked blocks, divided by horizontal lines. The blocks in the left column are filled with a pattern of small cross marks, while the blocks in the right column are filled with a pattern of small circles. A thin vertical line runs along the outer edge of each column, on the side facing away from the central gap. No dimensions, scale, or further labels appear within the drawing itself."
+}
