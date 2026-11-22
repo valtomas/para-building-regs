@@ -799,8 +799,11 @@ class Bundled:
                 if free_disk_gb(self.models_dir) < need:
                     raise EngineError(f"Not enough free disk space: {model['name']} needs about {need:.0f} GB.")
                 job.label = model["name"]
-                url = f"https://huggingface.co/{model['repo']}/resolve/main/{model['file']}?download=true"
-                size, sha = _hf_file_info(model["repo"], model["file"])
+                # "remote" is the file's name in the repo where that isn't the name it is kept under (a repo that
+                # ships a layout for llama.cpp in a folder with an extension of its own, saved here as .gguf)
+                remote = model.get("remote") or model["file"]
+                url = f"https://huggingface.co/{model['repo']}/resolve/main/{remote}?download=true"
+                size, sha = _hf_file_info(model["repo"], remote)
                 _download(url, path, job, expect_size=size, sha256=sha)
             job.state = "done"
         except Exception as e:  # noqa: BLE001
