@@ -1,0 +1,17 @@
+{
+ "key": "ADJ_Table-G1_p79",
+ "source": "ADJ",
+ "label": "Table G1",
+ "page": 79,
+ "caption": "Table G1 Temperature classes",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-22",
+ "image_sha256": "5689468cdb51a0759d5d3fb0f099533636197d5f8af7b4f4537a06f1bbb9f074",
+ "image_sig": {
+  "w": 371,
+  "h": 366,
+  "grey": "6rS/w7mvrq6xvq2w2eDg6O7e5OHi39/h3eLe3uXn5+352NrZ3e7//9GwtcDQ////89/w9PT09PTp4/T09PT09/Tj8PPz8/Pz5uTz8/Pz8/b15vD09PT09OTj9PT09PT38t/v9PT09PTj2/T09PT09/Lg7/T09PT049z09PT09Pf56Pr//////+7k////////8trv9PT09PTj1vT09PT09/Lb7/T09PT049f09PT09Pfy2u/09PT09OPV9PT09PT39Obw8/Pz8/Pm5PPz8/Pz9vTj8PT09PT05uD09PT09Pf14fD09PT09OPd9PT09PT38tjv9PT09PTl1PT09PT09w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

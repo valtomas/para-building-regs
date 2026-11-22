@@ -1,0 +1,18 @@
+{
+ "key": "ADK_Diagram-1.8_p21",
+ "source": "ADK",
+ "label": "Diagram 1.8",
+ "page": 21,
+ "caption": "Diagram 1.8 | Landings next to doors in dwellings Special stairs Tapered treads",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-22",
+ "image_sha256": "e126186f8b3d1c4622d8c39e3608ed319cee1b558c082143c35326256907bd40",
+ "image_sig": {
+  "w": 737,
+  "h": 351,
+  "grey": "9/f39/f39/f39/f39/f39/bk6vz0///////+8Pv////8///x3v///////db8/////P//5O30/////+7y6v////z//+Pj9P/////pz+T////8///e3PP/////8fDt/////P//6er0////9+bf6f////z//9bU3PP/7fHs6er////8///j6ezi/+nx6+nn/////P//3+Hg4P//7+rh6v////z//+Pv3vz/////8e3////8///p+vr///////f//////P//4O3W1vP////r5P////z///////////////////+ih4iHhoeGiYaGhoaGhoaGjHBgcHBtbXBnVVVVVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing, captioned \"Diagram 1.8 Landings next to doors in dwellings\", shows two sectional views placed side by side, with the text \"See para 1.24\" at the top left. In the left section, a vertical flight of horizontal treads is drawn with an arrow marked \"Up\". Above the flight, a horizontal double-headed arrow is labelled \"Width of flight\". At the foot of the flight a grey-shaded block is labelled \"Landing\", and below it a \"Door\" is shown with a quarter-circle swing line. A vertical double-headed arrow to the right of the landing is dimensioned \"At least 400mm\", spanning between the top of the landing and the floor line of the door. The right section is similar: a flight with an \"Up\" arrow and a \"Width of flight\" arrow, a grey landing block on the left, and a \"Door\" with a swing line at the bottom right. A vertical arrow to the left of the landing is likewise dimensioned \"At least 400mm\" between the top of the landing and the door floor level.",
+ "first_draft": "The drawing, captioned \"Diagram 1.8 Landings next to doors in dwellings\", shows two sectional views placed side by side, with the text \"See para 1.24\" at the top left. In the left section, a vertical flight of horizontal treads is drawn with an arrow marked \"Up\". Above the flight, a horizontal double-headed arrow is labelled \"Width of flight\". At the foot of the flight a grey-shaded block is labelled \"Landing\", and below it a \"Door\" is shown with a quarter-circle swing line. A vertical double-headed arrow to the right of the landing is dimensioned \"At least 400mm\", spanning between the top of the landing and the floor line of the door. The right section is similar: a flight with an \"Up\" arrow and a \"Width of flight\" arrow, a grey landing block on the left, and a \"Door\" with a swing line at the bottom right. A vertical arrow to the left of the landing is likewise dimensioned \"At least 400mm\" between the top of the landing and the door floor level."
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADJ_Table-10_p65",
+ "source": "ADJ",
+ "label": "Table 10",
+ "page": 65,
+ "caption": "Table 10 \u0007Fire protection for oil storage tanks",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-22",
+ "image_sha256": "2fca4fdccdd27dc60901f4fbbf02cb7bca31a6a33250aae242e598cbe62b1a44",
+ "image_sig": {
+  "w": 371,
+  "h": 690,
+  "grey": "68POza2xq6+owcPE3N7e5+rR1dLS38fL0M7Sz9HZ5+347/Pu9vTU0tLZ09XS2OP7///////01dTR2NLQ29bT+PDe3trg7d7I08zR29zb3fT47vf///T10tLR19DZ2Pj////////09c3O1c3Q0NHX9f//////9O7a2dvW2Nbc7P////////T20tbT1dnP1e3/9uvs6O7u5MnPydLO0t3f8/nz8e/49NbS0tzU1dTY4vP8+fn5+e7LztHRzt3d3eH77NXUztrk8fDx8fDy7vf///LW5fT49fn5+fj5+fn5+fv68dbU2tTW3Njc2OHl7/z//PPd2t3c2+Ll4+bm5+/1/A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

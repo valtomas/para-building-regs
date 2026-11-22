@@ -1,0 +1,18 @@
+{
+ "key": "ADJ_Diagram-42_p64",
+ "source": "ADJ",
+ "label": "Diagram 42",
+ "page": 64,
+ "caption": "Diagram 42 \u0007Location of an oil-fired appliance in relation to its hearth. Minimum dimensions of the heat-resistant material in the hearth and the clear zone of non-combustible surface",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-22",
+ "image_sha256": "cc18f84e68214e33eda86c627929e76e637271f467e7448eeda89d52dc12ae25",
+ "image_sig": {
+  "w": 755,
+  "h": 472,
+  "grey": "w729sbe3saq1srW2s9nZ3uvpwLS2s7yxsK3AvsDEv+Tn6dnO0dPRzM/N4Onp6enq9P///////////+nNw/X/+vT//////////fDWtavb//r0///////e3d3e8//////69P//////vL+/vPr/////+vT/8NPQ87/H48H5//////r0/+DEut/B6OzB///////69P//8fD3tsLOvf/L/v//+vT//////76+x7//8f7///r0//////7Hys/P///////69P/s1s/D6efp9P//////+vT////UwsC3w8f///////r0////y6nO3c72///////67vb29vb29vb29vb29vb28w=="
+ },
+ "reviewed": false,
+ "description": "The image is a plan view, with the word \"Plan\" printed to the right of the drawing. A grey square represents the hearth. Within it sits a white rectangle labelled \"Appliance\", with the word \"Front\" and a small downward arrow indicating the front of the appliance toward the bottom of the drawing. A pointer line from the left connects the label \"Hearth surface free of combustible material\" to a point on the grey surface beside the appliance. At the top right, the text \"At least 150mm or to a suitably heat-resistant wall\" is associated with two pairs of dimension arrows: a horizontal pair measuring the gap along the back and a vertical pair measuring the gap along the side, between the appliance and the edges of the grey square. At the bottom, the text \"At least: 150mm; or 225mm for an appliance which provides space heating by means of visible flames or radiating elements\" is linked by a pointer to a vertical double-headed arrow spanning the distance from the front edge of the appliance to the near edge of the hearth.",
+ "first_draft": "The image is a plan view, with the word \"Plan\" printed to the right of the drawing. A grey square represents the hearth. Within it sits a white rectangle labelled \"Appliance\", with the word \"Front\" and a small downward arrow indicating the front of the appliance toward the bottom of the drawing. A pointer line from the left connects the label \"Hearth surface free of combustible material\" to a point on the grey surface beside the appliance. At the top right, the text \"At least 150mm or to a suitably heat-resistant wall\" is associated with two pairs of dimension arrows: a horizontal pair measuring the gap along the side and a vertical pair measuring the gap along the back, between the appliance and the edges of the grey square. At the bottom, the text \"At least: 150mm; or 225mm for an appliance which provides space heating by means of visible flames or radiating elements\" is linked by a pointer to a vertical double-headed arrow spanning the distance from the front edge of the appliance to the near edge of the hearth."
+}

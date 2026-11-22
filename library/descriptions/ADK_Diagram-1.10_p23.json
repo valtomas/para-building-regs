@@ -1,0 +1,18 @@
+{
+ "key": "ADK_Diagram-1.10_p23",
+ "source": "ADK",
+ "label": "Diagram 1.10",
+ "page": 23,
+ "caption": "Diagram 1.10 | Alternating tread stair Fixed ladders In dwellings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-22",
+ "image_sha256": "9057374b1719bf10163b0d30b2624472e6496ce7d988523e7306ee4969bd0a21",
+ "image_sig": {
+  "w": 737,
+  "h": 452,
+  "grey": "+fr6+vr6+vr6+vr6+vr6+vjq7O72/+/x8f/////////8///////i7P7/9v///////P//////7O3/8Obx8f7///z///////nz//jq5O7k///8///////w++7p+evj/v///P//////7f/x5d/q2vL///z///////L/9+T259ro///89d/g////9fHu3uLv7////PXX2fj5+ezg5ufe//////z36OX/+v/h7vHz+P/////8//////n/+enr5PL//////P//////4vby6ujn7/////z///////bn5uPe6ff////RxsbGxsbGxsbGxsbGxsbGimthbG1rX1VVVVVVVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing is an isometric view of an alternating tread stair, showing six treads stacked in a diagonal line. Each tread is roughly rectangular with a curved notch cut into one edge, and the notch is on the same side of every tread; the treads are staggered so that each one sits to the left of the one above. In the upper middle, to the left of the top of the stair, a single diagonal bar is drawn, labelled \"Handrail (both sides)\". In the top left corner the text reads \"See paras 1.29 and 1.30\". On the left side, the text \"With this type of stair the going is measured between alternate nosings\" has two arrows, one pointing to the fourth tread and one to the bottom tread. On the right, a horizontal double-headed arrow with a vertical dashed line at its left end is labelled \"Minimum going 220mm\", and below it a vertical double-headed arrow between two treads is labelled \"Maximum rise 220mm\". A green band along the bottom edge reads \"Diagram 1.10 Alternating tread stair\".",
+ "first_draft": "The drawing is an isometric view of an alternating tread stair, showing six treads stacked vertically. Each tread is rectangular with its nosing edge offset to one side, and the offsets alternate from tread to tread so the treads are staggered left and right. To the upper left, a single diagonal bar is drawn, labelled \"Handrail (both sides)\". In the top left corner the text reads \"See paras 1.29 and 1.30\". On the left side, the text \"With this type of stair the going is measured between alternate nosings\" has two arrows, one pointing to a middle tread and one to the bottom tread. On the right, a horizontal double-headed arrow spanning two alternate treads is labelled \"Minimum going 220mm\", and below it a vertical double-headed arrow between two treads is labelled \"Maximum rise 220mm\". A green band along the bottom edge reads \"Diagram 1.10 Alternating tread stair\"."
+}

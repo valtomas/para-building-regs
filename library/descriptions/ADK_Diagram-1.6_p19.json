@@ -1,0 +1,18 @@
+{
+ "key": "ADK_Diagram-1.6_p19",
+ "source": "ADK",
+ "label": "Diagram 1.6",
+ "page": 19,
+ "caption": "Diagram 1.6 | Change of direction in flights",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-22",
+ "image_sha256": "884754da4766f37be6e7cfe71bcc4908e87bb5ba8f410da0dc7e5b514d7289b5",
+ "image_sig": {
+  "w": 737,
+  "h": 310,
+  "grey": "9vb29vb29vb29vb29vb29vbj6OL3///9///////////8/f//////3PP//////////P///////+Hp/unk+v////z////8/e7z8+/76vT////8////9+T6///64fT0/////P/96e/r7vT06fPr9P////z///D17PX///T09O38///8/+3w9ez1///+6/T07f///P/X8PXs9e7g//Tt6fr///z/+/D17PX////06+XT+f/8///w9ez1////8/H22/v//P/96O/q7/Pz8+rz6/n///z///////////////////+IZWFnZ2VnZF1dXV1dXV1di25ecWlsaWRVVVVVVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "This is a plan view of a staircase illustrating a change of direction between two flights connected by a landing. On the left, a horizontal flight is labelled \"Flight\" and drawn with vertical tread lines; a vertical dimension line to its left, marked with up and down arrows, is labelled \"Stair width\". To the right of this flight is an open rectangular area labelled \"Landing\". Above the landing, a horizontal dimension line with outward arrows is labelled \"At least stair width\". On the right side, a second flight, also labelled \"Flight\", runs diagonally down to the right, its treads drawn as lines across it. At the lower right, a curved arrow between the lower edge of the diagonal flight and the horizontal baseline is labelled \"Angle at least 30°\". In the top left corner the text reads \"See paras 1.17 and 1.20\". A green band along the bottom reads \"Diagram 1.6 Change of direction in flights\".",
+ "first_draft": "This is a plan view of a staircase illustrating a change of direction between two flights connected by a landing. On the left, a horizontal flight is labelled \"Flight\" and drawn with vertical tread lines; a vertical dimension line to its left, marked with up and down arrows, is labelled \"Stair width\". To the right of this flight is an open rectangular area labelled \"Landing\". Above the landing, a horizontal dimension line with outward arrows is labelled \"At least stair width\". On the right side, a second flight, also labelled \"Flight\", runs diagonally down to the right, its treads drawn as lines across it. At the lower right, a curved arrow between the lower edge of the diagonal flight and the horizontal baseline is labelled \"Angle at least 30°\". In the top left corner the text reads \"See paras 1.17 and 1.20\". A green band along the bottom reads \"Diagram 1.6 Change of direction in flights\"."
+}

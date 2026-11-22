@@ -1,0 +1,18 @@
+{
+ "key": "ADK_Diagram-1.12_p25",
+ "source": "ADK",
+ "label": "Diagram 1.12",
+ "page": 25,
+ "caption": "Diagram 1.12 | Key dimensions for handrails for stairs in buildings other than dwellings In dwellings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-22",
+ "image_sha256": "0e640e58b63b662c1d959f2df36811352820d56de4833666657d2522dfedfe83",
+ "image_sig": {
+  "w": 737,
+  "h": 351,
+  "grey": "+Pn5+fn5+fn5+fn5+fn5+fbk5un0///////////////8////////9N/b3+De+////P/////9///y5ff38v////z/////4eP03P7///z////8//////vz1fr7/f/5+/f//P//9/jk4vD25+Dw9eLk7Pz///j/9v77/v7///z////8///7//H5+/38/v/2////797d6//+/vrk7u729/////z///v//vzg+f/////////8///2//7j+v///////////P//6+3t+/////////////z///////////////////+ih4mIhoeIiYeIiIeHiYaGjXFhb3FtcG5ua3NubXJiVQ=="
+ },
+ "reviewed": false,
+ "description": "This is a section drawing of a single flight of stairs with a handrail, identified in a green band at the foot as \"Diagram 1.12 Key dimensions for handrails for stairs in buildings other than dwellings\". Text at the top left reads \"See paras 1.34 and 1.36\". The stair is shown as a stepped line rising from left to right, with a dashed line through the nosings forming the pitch line. A handrail, drawn as two parallel lines, runs above the stair and continues horizontally beyond each end, with dashed vertical lines marking those overruns. On the left, a vertical dimension reads \"900mm to 1100mm\" from the foot step level up to the lower handrail, and a horizontal dimension across the lower overrun reads \"300mm min.\", its label placed above with a leader. In the centre, a vertical dimension running from the pitch line up to the sloping handrail is labelled, via a leader, \"900mm to 1000mm above pitch line\". On the right, a horizontal dimension across the upper overrun reads \"300mm min.\" and a vertical dimension reads \"900mm to 1100mm\" from the head step level up to the handrail.",
+ "first_draft": "This is a section drawing of a single flight of stairs with a handrail, identified in a green band at the foot as \"Diagram 1.12 Key dimensions for handrails for stairs in buildings other than dwellings\". Text at the top left reads \"See paras 1.34 and 1.36\". The stair is shown as a stepped line rising from left to right, with a dashed line through the nosings forming the pitch line. A handrail, drawn as two parallel lines, runs above the stair and continues horizontally beyond each end, with dashed vertical lines marking those overruns. On the left, a vertical dimension reads \"900mm to 1100mm\" from the foot step level up to the lower handrail, and a horizontal dimension above the lower overrun reads \"300mm min.\". A leader from the sloping handrail reads \"900mm to 1000mm above pitch line\". On the right, a horizontal dimension over the upper overrun reads \"300mm min.\" and a vertical dimension reads \"900mm to 1100mm\" from the head step level up to the handrail."
+}
