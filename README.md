@@ -103,23 +103,26 @@ instead.
   address), paste your API key from that service, choose a model and press Save. Your questions, and passages from
   your own files, are sent to that company, so it isn't private.
 
-**Which model the built-in engine suggests.** The app looks at your computer's memory and suggests a model that
-fits. Each was asked the same 36 questions about the regulations, more than once; the app shows the score beside
-each model too:
+**Which model the built-in engine suggests.** The app suggests the biggest model that fits on your graphics card's
+own memory, since a model run there is many times faster; with no graphics card, or graphics built into the
+processor (Macs, Strix Halo), it goes by the computer's memory. Each model was asked the same 36 questions about the
+regulations, more than once; the app shows the score beside each model too:
 
-| Your computer's memory | Suggested model | Download | Right, of our 36 test questions | Licence |
-|---|---|---|---|---|
-| 48 GB or more | NVIDIA Nemotron 3.5 Lightning 30B-A3B | 25.5 GB | 32 to 35 | OpenMDW 1.1 |
-| 32 GB | Qwen3.5 35B-A3B | 22.2 GB | 32 or 33 | Apache 2.0 |
-| 24 GB | gpt-oss 20B | 12.1 GB | 32 | Apache 2.0 |
-| 16 GB | IBM Granite 4.2 8B | 5.3 GB | 33 to 35 | Apache 2.0 |
-| 8 or 12 GB | IBM Granite 4.2 3B | 2.2 GB | 29 to 31 | Apache 2.0 |
+| Model | Suggested from (computer's memory) | Suggested from (graphics card) | Download | Right, of our 36 test questions | Licence |
+|---|---|---|---|---|---|
+| NVIDIA Nemotron 3.5 Lightning 30B-A3B | 48 GB | 32 GB | 25.5 GB | 32 to 35 | OpenMDW 1.1 |
+| Inkling 2 Mini | 32 GB | 24 GB | 17.6 GB | 36 | Apache 2.0 |
+| gpt-oss 20B | 24 GB | 16 GB | 12.1 GB | 32 | Apache 2.0 |
+| IBM Granite 4.2 8B | 16 GB | 11 GB | 5.3 GB | 33 to 35 | Apache 2.0 |
+| IBM Granite 4.2 3B | 8 GB | 6 GB | 2.2 GB | 29 to 31 | Apache 2.0 |
 
 The app puts that one model forward, marked "Recommended for this computer"; the others are a click away under
-"Other models".
+"Other models", including Qwen3.5 35B-A3B (22.2 GB, 32 or 33 right), which is no longer suggested because it often
+cites a search result without opening the passage.
 
-Granite 4.2 8B is small and got as many right as the biggest, but it is slow: about a minute an answer on a fast
-computer and longer on a laptop. You can pick it on a bigger computer too, or the 3B on a 16 GB one if you'd rather
+Inkling 2 Mini got every question right in both of its runs, but it is the slowest: about a minute and a half an
+answer on a fast computer, sometimes five. Granite 4.2 8B is small and nearly as accurate, also slow, about a minute
+an answer and longer on a laptop. You can pick either on a bigger computer, or the 3B on a 16 GB one if you'd rather
 have quicker answers and check them more.
 
 The small model gets more wrong: Granite 3B about one question in six. Open each cited paragraph before you rely
