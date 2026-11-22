@@ -460,6 +460,9 @@ same build to check that moving the engine from b12359 changed nothing.
 - The figure notes were not all read for this run: they were mostly figures the model worked out or added itself
   (660 mm as 2R+G for a stair, 125 mm for a hearth).
 - Nemotron, Qwen3.5 and gpt-oss were not run again on b12611.
+- **Memory**: loaded by the built-in engine at the app's 32K context (4 slots, Vulkan), Inkling took 22.4 GB (21.9 GiB) of
+  graphics memory, about 1 GB more than the size-based guess. `"card_gb": 23` in `models.json`: it is suggested from a
+  24 GB card, and a 20 GB card gets gpt-oss 20B.
 
 ## Repeating the tests
 

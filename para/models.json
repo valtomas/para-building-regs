@@ -30,7 +30,7 @@
       "file": "Inkling-2-Mini-UD-Q4_K_XL.gguf",
       "size_gb": 17.6,
       "min_ram_gb": 32,
-      "card_gb": 28,
+      "card_gb": 23,
       "context": 32768,
       "licence": "Apache 2.0",
       "about": "The most accurate in our tests, twice over, and it cites from a search result without opening the passage less often than the other big ones. Slow: a minute and a half an answer, sometimes five. For 32 GB or more.",
