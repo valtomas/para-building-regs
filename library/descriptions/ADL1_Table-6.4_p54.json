@@ -1,0 +1,17 @@
+{
+ "key": "ADL1_Table-6.4_p54",
+ "source": "ADL1",
+ "label": "Table 6.4",
+ "page": 54,
+ "caption": "Table 6.4 \u0007Solid fuel appliance categories and minimum efficiencies",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "75a8e4f752b8040821f9108e7bdadd46143764782ba93a8cfb2a8780181f7dcf",
+ "image_sig": {
+  "w": 754,
+  "h": 522,
+  "grey": "wKqvqqKtpaqqqae3yMjIz+/v+Ovu7/n57uzv+fny7/bw8/rt7u7t+Onu8Pr69Pf37fr85uXn5/Pu+vr6+u7p9/j6+vH5+fr6+/n6+vr8+ff1//3w7vDw/+fh+f//9v379fr56Onn+Prq4+Xq7PDp9/v/////////8e7w7vr///v3+vz5+fn6+uzo6+ns+/n39v/94u7w7+/y7/b///T7+/H6+uTp5+nq7Onw+vrx9vf3//3g6O3p7/H6+vr68fb38/r65ujt5u7u6PD6+vL39/j6+u/6+vr67ej6+vr8+vfk9Pv8/Pj5+/v8+vv6/Pr6897i7+/v7+/u7u7v7u/u9g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

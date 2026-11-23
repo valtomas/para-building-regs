@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-4.6_p41",
+ "source": "ADL2",
+ "label": "Table 4.6",
+ "page": 41,
+ "caption": "Table 4.6 \u0007Maximum heat losses and gains for ducts delivering air for heating and/or cooling",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "c6ad36ea39df3061dc44e57ac6c7b94afbe3bd0d93d076e8cc93549b54307ef6",
+ "image_sig": {
+  "w": 740,
+  "h": 291,
+  "grey": "w6yxsKy1r6+urbCvrbK0yMWsq6qsqaOtraqorayltcjSyKOoyMjIyMjIyMjIyMjI8vLy8vLy8vHy7vLx8fHy7vX19fX19fnx3ur18uDi4Orm4OP6/////+38////7P//9fX09PX0+fX19fX59fX19uPa2NnZ7vn27vb2+fbr9vbZ6///////////////////8+3v8fDy8PDl4ejv7/Dw//TV5O7w7+3t7Onr7+/s8P/57+/08+/09PXz9f//////9/Dr7ezp7enr6/H///////fq5Ojp5Obj5ubz///////w3N7b3eHh4uTf4OPg4eD68dnY0eD19fX19fX19fX19Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-6.6_p57",
+ "source": "ADL2",
+ "label": "Table 6.6",
+ "page": 57,
+ "caption": "Table 6.6 \u0007Minimum seasonal energy efficiency ratio (SEER)(1) for comfort cooling",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "421fa0058150e925501666907fbcb9951310b1fc16259f60b6019eeb5aeac04d",
+ "image_sig": {
+  "w": 737,
+  "h": 550,
+  "grey": "w6qsraqrq6aupqaurKrAyOzz8/Pz8/Pz9fPz9fHn5/Hw7PDy/////+/r7/z69/b69vn4+vn3+vrx6/r8+vb2+uXg3ePb4Pf6+vr6/Pr19Prs5eXo5+Xp8vr6+vz69vb66+jm5ej19fX19fX59fLy9e3t6ujp8/r6+vr6/Pr29vrs7erp6fr39/r6+vz69fb65uHd497j3+f6+vr8+vX1+uvo5uj39/f5+vr6/Prv8/rs5Obk4+X09fX19fn18/L15vL//v/9/v39/v79/v36/vbf4tzd4ODc8O3x8O3z8/307Ozr6e3q7ert9vr7+/z/8t7Y0OTr7u7u7u3x7e7x+g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

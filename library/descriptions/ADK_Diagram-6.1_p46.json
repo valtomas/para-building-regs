@@ -1,0 +1,18 @@
+{
+ "key": "ADK_Diagram-6.1_p46",
+ "source": "ADK",
+ "label": "Diagram 6.1",
+ "page": 46,
+ "caption": "Diagram 6.1 | Marking by a barrier | Protection from collision with open windows etc.",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "659b9ff2af887bce37a2fa2f06a322b8aff637ccdf3496c7d04fd1702440febb",
+ "image_sig": {
+  "w": 754,
+  "h": 419,
+  "grey": "9/j4+Pj49/f4+Pj4+Pj49/fo8v///9X8//////////z8///////c/P/////////8/P//////3/z//f///////Pz///fg6t/7/ff///////z8///66f/W/ej7///////8/P/////36OvI+////////Pz////42dnezvHl7/////z8////+93g4s/7///////8/P//+Prd4ODP+////////Pz//+/y3Njd3fT/7Obl6fz8////+9rd7/z19+zh9P/8/P////b0/f3+/////////Pz////9/f3///////////y/rq6urq6urq6urq6urq66jG1gcGpsVVVVVVVVVVVVcw=="
+ },
+ "reviewed": false,
+ "description": "This is a perspective line drawing, titled \"Diagram 6.1 Marking by a barrier\" in a green band at the bottom, with the text \"See para 6.1\" in the top left corner. It shows a balustrade, or barrier, made up of vertical balusters beneath a top rail, set on a floor plate drawn in perspective. Above the barrier, an open window frame hangs at an angle, its lower edge positioned over the top rail. A vertical dimension line on the left reads \"1100mm\", marking the height of the barrier from the floor to the top of the rail. A vertical dimension line on the right reads \"If less than 2m\", measuring from the floor up to the bottom edge of the open window. The gap between the bottom of the window and the top of the barrier is indicated by an arrow with the label \"If greater than 100mm\". An arrow pointing to the top rail carries the label \"On access routes provide cane detection\". The parts relate so that the window's lower edge sits above the barrier, with the two conditional dimensions governing the gap and the window height.",
+ "first_draft": "This is a perspective line drawing, titled \"Diagram 6.1 Marking by a barrier\" in a green band at the base, with the text \"See para 6.1\" in the top left corner. It shows a balustrade, or barrier, made up of vertical balusters between a top rail and a lower rail, set on a floor plate drawn in perspective. Above the barrier, an open window frame hangs at an angle, its lower edge positioned over the top rail. A vertical dimension line on the left reads \"1100mm\", marking the height of the barrier from the floor to the top of the rail. A vertical dimension line on the right reads \"If less than 2m\", measuring from the floor up to the bottom edge of the open window. The gap between the bottom of the window and the top of the barrier is indicated by two small arrows with the label \"If greater than 100mm\". An arrow pointing to the top rail carries the label \"On access routes provide cane detection\". The parts relate so that the window's lower edge sits above the barrier, with the two conditional dimensions governing the gap and the window height."
+}

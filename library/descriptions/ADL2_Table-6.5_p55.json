@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-6.5_p55",
+ "source": "ADL2",
+ "label": "Table 6.5",
+ "page": 55,
+ "caption": "Table 6.5 \u0007Minimum thermal efficiencies for domestic hot water (DHW) systems",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "af0ffa799d115afa4b3f18608fef8e7e6b8723c301d9182a5ba1747a4a385510",
+ "image_sig": {
+  "w": 737,
+  "h": 590,
+  "grey": "wq2yraurrK+trq+rqqzGyOz1+Pb+6err8/Xz/f7+/v72+Pv6++35+vry9fr6+vr65uft6vvp+vry0Or//////+nq/Pr7+/r69d7r6vr6+vrm7+/q++Lg4vbh4d/i4OHu6ePz+vvn5uT23/Px8fDw9vv/////////+ODk5ePk4vT7//////////jh5u3y8u73+//////////54+Tj4+Tv9Ofj/Pr77Ov5/Pr6+vr6+vrl3///////////////////5fL8+vv7+vr8+vr6+vr6+vTg5OLj4+Lg4uDh4uPf3vX35eTm8fz/////////////9O7p9vr6+vr6+vr6+vr6+g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

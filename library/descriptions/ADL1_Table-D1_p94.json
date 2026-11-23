@@ -1,0 +1,17 @@
+{
+ "key": "ADL1_Table-D1_p94",
+ "source": "ADL1",
+ "label": "Table D1",
+ "page": 94,
+ "caption": "Table D1  \u0007Summary of notional dwelling specification for new dwellings Element or system Opening areas (windows, roof windows, rooflights and doors) External walls including semi-exposed walls Party walls Floors Roofs Opaque door (less than 30% glazed area) Semi-glazed door (30–60% glazed area) Windows and glazed doors with greater than 60% glazed area Roof windows",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "13c3eaef064feecd76640b94eeab186a8edc36236359b378655228702c1f3082",
+ "image_sig": {
+  "w": 756,
+  "h": 720,
+  "grey": "zr6/vry8uLy6wL64zdPT2Orm5/Dv9Obo4+fq7+/u7/Pp4OPs7/fl4vX7+/v7+/v55u739/f58vf39/f39/f39uj3+/v7+uji+fv7+/v7+/nt6unp6PLt6Pf39/f39/f26uHf5Ob06eL6+/v7+/v7+efk6+/6+uXk6+/t8O/w7/Pw8Pv7+/ni3+Lc5u7w7+/27+vt9/f34uLn4uXr9ff39urg5+/v+Nrb8/v7+/v7+/nw7vb7+/na3drl9fv7+/v56+j7+/v64eDg5fv7+/v7+fDu8PX7+Nvn5vv7+/v7+/n7///////r6OLp5+Xp9PT7+fv7+/v76OPs7+7v8O/u9w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-4.5_p40",
+ "source": "ADL2",
+ "label": "Table 4.5",
+ "page": 40,
+ "caption": "Table 4.5 \u0007Minimum thickness of pipework insulation for domestic hot water services in non-domestic buildings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "62b1a26d90e0731e660fc03075ccc17b96871893bf3f21362f3691ea35020cd9",
+ "image_sig": {
+  "w": 756,
+  "h": 386,
+  "grey": "vKGfoZmjnqCbppufoaSl0dLIqZqfk8fIyMjIyMjIyNDo5ebn5+bn5ebm5eXl5ufo6eHq+/////fx5OPi8fT/+/v///////b09Pj/+PX09vv7///////97e38//3x6/v76uPh7vj6+PX0+Pr4+PD49u/p6PD4+vj19Pj6+Pjy+Pby8e/y+Pr49fX4+vj48/j26+Ti7/j6+PX1+Pr4+PH49urj4Ov4+vj09Pj6+Pjw+Pbr5OLq+Pr49PP4+/j48Pj34O7/////////////////+/Tn6efm6Onm6enY5+rp6fr05+rq6efo///////////77+Hk4eLR8vj4+Pj4+Pj49g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

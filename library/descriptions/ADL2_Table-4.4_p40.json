@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-4.4_p40",
+ "source": "ADL2",
+ "label": "Table 4.4",
+ "page": 40,
+ "caption": "Table 4.4 \u0007Minimum thickness of pipework insulation for low temperature hot water space heating applications in non-domestic buildings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "97195fe03da599eabdde564216453a54c108f34990d43b9ce4bf42ce103ebc40",
+ "image_sig": {
+  "w": 756,
+  "h": 462,
+  "grey": "wKinp6GppKeiqqqip6qnwNLIqKGkqaekpaTIyMjIyNDy8PD6/v7+7/Hx8O/y8Pr68/L7/////f7+9PLz/v79+/v///////fn6Pj/+evl9vvt6Obx+fv59/b5+/n58vn37ejm8vn7+ff2+fv5+fP59+3o5vH5+/n29fn7+fnx+fft6Obx+fv59vX5+/n58vn37ejm7/n7+fb2+fv5+fL59+3o5u75+/n29vn7+fny+fft6Obt+fv59vX5+/n58/n34Or5+fn7+fn5+fv5+fn59/Tm5Ovo5+rp+vr0+Pv6+/vw3ePd3dHr8PHx6vLv8vn79PDw8PDw8PDw8PDw8PDw8w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

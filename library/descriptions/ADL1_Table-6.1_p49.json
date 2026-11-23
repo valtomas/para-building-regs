@@ -1,0 +1,17 @@
+{
+ "key": "ADL1_Table-6.1_p49",
+ "source": "ADL1",
+ "label": "Table 6.1",
+ "page": 49,
+ "caption": "Table 6.1 Minimum efficiencies for gas-fired heating systems in new dwellings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "6fd5cc86ee595727a5ef2ae9bc9fc3709828e93d060ecf7226c5c52f72c04433",
+ "image_sig": {
+  "w": 739,
+  "h": 140,
+  "grey": "1MjIyMjIyMjIyMjIyMjIx6KSdoh+h4t+hoqQiXy/yMixoY2XkJWQk4SNl5WBvsjI0sjIyMjIyMjIyMjIyMjIyOvq6urq6urq6unp6urq6url3P3//////+Pb3f//////9PT+///////7+PX///////Dr6+vr6+vr8+vr6+vr6+zcz9rU1NHW/+LM0uX/////8+rn7O3x6P/26+76/////+7p6enp6enp8enp6enp6erG7P//////////////////5vb///////////////////Tw6u3s8+vv7PDw6ujw7fbuyMjO0NXHydHHysvOyMjZ7ufr6+vr6+vr6+vo6+vr6w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

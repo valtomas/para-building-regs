@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-6.8_p60",
+ "source": "ADL2",
+ "label": "Table 6.8",
+ "page": 60,
+ "caption": "Table 6.8 \u0007Minimum COP for heat pumps in new and existing buildings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "2312d2c36ff5740c8a98b3b6203fb4ebd48221204cfca1fc7f19aace66d731bc",
+ "image_sig": {
+  "w": 754,
+  "h": 262,
+  "grey": "xLW3u6y5vb+/uLm0yMjIz72doJyknZWgnJ6VkcbIyM7v8PDw8PDw8PDw7fDv7u3u5d/o9fX19fbs4N/e3eHg7u3q6+7r6unu////+/z///vo2dzg3fDx8/////z9///77OPq5uj19fb39fX19fX19Ofa29zb2ur/////9vv///vl3t/Z///////////////78/T18/X19fb39fXz8/X19N/W9PT09PT29vT07fD09PTu6f////////////n8///77un09PT09Pb29PTy8/T09NLw//////////////////v18O/y8PDr7+/2///////78ePi4eTg5N/c6/T09PT08w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

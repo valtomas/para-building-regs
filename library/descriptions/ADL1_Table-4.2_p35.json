@@ -1,0 +1,17 @@
+{
+ "key": "ADL1_Table-4.2_p35",
+ "source": "ADL1",
+ "label": "Table 4.2",
+ "page": 35,
+ "caption": "Table 4.2 Limiting U-values for new fabric elements in existing dwellings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "2942ca22d562fdfa6e4d854ff4ccb3fa27457a85bd553af731990f506b7994c1",
+ "image_sig": {
+  "w": 749,
+  "h": 839,
+  "grey": "zcfCxsTHxMbGxsG/0tXZ2Orw+Pj4+Pj5+vj08e/1+Pbr8/j4+Pj4+fr4+PTx+Pj26uLu9vj4+Pn67+3q6u7u9enl7e7s7/j5+u/u6+rv7fXk5/P4+ff4+fnv7urw8fH48uPj4uTi5ePk5uTi6erq8/Th3+Xp7PP19PT28/X19fPz4eHp7uzr7Ovs6uPk8fby9Ofo6ufn6Onn5+fp6Ojq8fLc3+Dd3ubm6efo6O3q6/rz3tzj4OLf4uDg5unq6u709N7e3+Tn5uXi5enm5uTk7/Pd4eDf3ODh4N3e4uLi6Pvz3eHf4OXl5Obi4+fs6ev08t/j3+ny7/Pw8fHx8/Hy9Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

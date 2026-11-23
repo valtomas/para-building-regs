@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-D2_p106",
+ "source": "ADL2",
+ "label": "Table D2",
+ "page": 106,
+ "caption": "Table D2 \u0007Additional energy efficiency measures which should usually be installed whenever consequential improvements apply as a result of:",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "d8ff96cf9af3bbd8dfcc392589d331637789d898549a19f2cb6fc3701ca49ebb",
+ "image_sig": {
+  "w": 754,
+  "h": 876,
+  "grey": "x7akp6Cgo6Oloqagt7HHztHIrKChoZ+en5+grbOzsszRyLSysLW7urq6u7u7u7zN0ci2uLS2tba1s73AwL7IzvLz6uru8vLw8vLx8fDx9/f7/eTl6urp5+nq6Ovs6er4+/3h5Ono6ebr6ens6+rv+Pv/7+To5OTp6u/z/P////v39ujm6Obo6ubp5+jo6eb0+/3i4uTq7Onq6+rs7vD2+vv/7+rr6+/09vP19fX19vv7//np6+rr7PX29f7////7+//r4+fk5+Tn5OTn7+3w8fv/8efl5+fv8vP7+/v7+/r5/O7o6efn6uby7vL1+/z5+O7e3Nzf3+bp6Ojl6ejp7Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

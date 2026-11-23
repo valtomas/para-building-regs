@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-6.4_p53",
+ "source": "ADL2",
+ "label": "Table 6.4",
+ "page": 53,
+ "caption": "Table 6.4 \u0007Minimum performance standards for radiant heaters",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "ce0316125c614ff7ef33b99a94c864b2c829b2178ddc30c3a4cf0901107dd5d5",
+ "image_sig": {
+  "w": 754,
+  "h": 214,
+  "grey": "z8XFyMXIxsPGxcjIyMjIz66FiIGBgIKGh4GDyMjIyM7Y0NDP0NDQ0NDQ0NDQ0NDU9Pb7////////9PXy9vP3++3s9v///////+nt7e7t7vv7///////////4+v//+Pv7+///////////9PT///D3+/Lx7vHt8fH09O7v9fPs8fLk2NXg2P/////v9v//8fr78/Ly8vHy8vX18vL29PLy8+HX1NLg6P///+z0///s+fvz8vLy8vLy9fXy8vb08vLz4dfU0t/2////7PT//+z5+/Px8fHx8fH09PHx9fPx8fLg2tba///////z9f//9fn78vHx8fHx8fHx8fHx8fHx8Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADK_Diagram-6.2_p47",
+ "source": "ADK",
+ "label": "Diagram 6.2",
+ "page": 47,
+ "caption": "Diagram 6.2 Marking by a surface",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "48b0630b225eb9e76f3aa96f386ecb7c6cd2205f8fc3dbe385e7c21ec9f95359",
+ "image_sig": {
+  "w": 737,
+  "h": 419,
+  "grey": "+Pj4+Pj4+Pj4+Pj4+Pj4+Pfp8f//////+vr////////8//////////b4/////////P/////////n+v////////z////////+5fr////////8////////9O/6/////////P////////Pw+v////////z////////v5vr////////8////////3+7q/P///////P///////9X68Nb9//////z////////5+vP7///////8//75+fn08/b2+////////P//////2NHj//////////z/+uL5/+T2/P/////////Ftra2tra2tra2tra2tra2i21hb2xsWlVVVVVVVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "This is a section drawing, identified by the word \"SECTION\" at the lower left and the green title bar at the bottom reading \"Diagram 6.2 Marking by a surface\". The note \"See para 6.1\" appears at the top left. On the right side stands a narrow vertical element drawn with double lines, like a post or wall section. From near its top a short horizontal line joins the element to a narrow diagonal line drawn with double lines, which slants down and to the left, ending in a small dot. At the base, a horizontal ground line runs in from the left, rises at a small step, and continues as a scalloped wavy form labelled \"Cobbles and very slight change of level\". A horizontal double-headed arrow spans the gap between the lower end of the diagonal line and the vertical element, marked \"If greater than 100mm\". To the right of the vertical element a vertical double-headed arrow indicates a height, marked \"If less than 2m\".",
+ "first_draft": "This is a section drawing, identified by the word \"SECTION\" at the lower left and the green title bar at the bottom reading \"Diagram 6.2 Marking by a surface\". The note \"See para 6.1\" appears at the top left. On the right side stands a narrow vertical element drawn with double lines, like a post or wall section. From near its top a single diagonal line slants down and to the left, ending in a small dot. At the base, a horizontal ground line runs in from the left, rises at a small step, and continues as a scalloped wavy form labelled \"Cobbles and very slight change of level\". A horizontal double-headed arrow spans the gap between the lower end of the diagonal line and the vertical element, marked \"If greater than 100mm\". To the right of the vertical element a vertical double-headed arrow indicates a height, marked \"If less than 2m\"."
+}

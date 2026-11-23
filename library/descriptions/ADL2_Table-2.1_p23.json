@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-2.1_p23",
+ "source": "ADL2",
+ "label": "Table 2.1",
+ "page": 23,
+ "caption": "Table 2.1 Enhanced management and control features",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "3a62702ac7fa30434687afdaf3c060c32dbf422499cc22ffc21f0be605274f40",
+ "image_sig": {
+  "w": 738,
+  "h": 265,
+  "grey": "xaqtr7CvsK6quMTExMTExMSkpKKVnaSipKvIyMjIyMjl6Orq6urq6urq6urq5OHj6+309PT09PT09PT09+jn6ejh39/b4t7k3eD8////4//18/Ty8fHz9PHz9PT39fT05+Dj5N3j3tzg4v7////l/+fh4+Tf4+Di4eDz9fj25PXu5+np5+jm4ufs9PT39er01OX///////////////////Tn6+Xi5+fq6ejm6+nn6//21NXY0djW1djW1NbZ2tT39tjd2t3d2d3W3uHa2drz/Pb49vf29vfy9PX69vj2+Pr13tzY3t7c4t3Z3eDg49nx8d7e39/j3d7f3t7d3dze6g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADK_Diagram-9.1_p54",
+ "source": "ADK",
+ "label": "Diagram 9.1",
+ "page": 54,
+ "caption": "Diagram 9.1 | Safe reaches for cleaning b. Provide access ladders as follows:\n(i) | for ladders up to 6m long: as shown in Diagram 9.2\n(ii) | for ladders between 6m and 9m long: with safety features, as shown in Diagram 9.3. | Safe access for cleaning windows etc. | K5 | .4\nDiagram 9.2 | Ladders a maximum of 6m long",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "b1c2f6e97f2b30eb401dc6d0d1f61fdf7eb4de1ade2b27023e514d6163c628a6",
+ "image_sig": {
+  "w": 754,
+  "h": 433,
+  "grey": "9vT0+fn5+fn5+fn5+fn5+Pnu9/////////////////z88/////L+9/r/9P7y+v/8/P79///+7evm/f7s6Pv9/Pz/9PL5/+Pg6vv/4N3/+/z8+e////bn4t379unl//v8/PLu//Ls+v/88Oz59Pv9/Pr27fr/+v33+v/6/vL6//z06+7h8ff5+fn89fn0+fz8/P/26+///////+7f5+jw/Pz/8fD9///////r3ebm8/z8//3/////////48vh6O38/P///////////+js8fL7/Pz////////////u393Z/fzMv7+/v7+/v7+/v7+/v7/Ij3NjcXJwb1VVVVVVVVVVcw=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a technical diagram titled \"Diagram 9.1 Safe reaches for cleaning\", with \"See para 9.1\" at the top left. It has three parts, (A), (B) and (C). The caption at lower right reads: \"Typical safe reaches for cleaning windows: (A) downwards reach through an opening light; (B) side reach through an opening light; (C) reach for cleaning an open casement with reflex hinges.\"\n\nIn part (A), an elevation of a window shows a vertical dimension \"610mm\" at the window and a vertical dimension \"Not more than 1300mm\" from a line at the window down to the floor line. In part (B), a circular plan detail of an open window contains a dimension labelled \"850mm radius\", with a vertical \"1300mm\" dimension from the floor line to the centre of the circle. Part (C) is similar: a circular plan of an open casement with reflex hinges, also containing a dimension labelled \"850mm radius\" and a vertical \"1300mm\" dimension from the floor line to the centre of the circle.",
+ "first_draft": "The drawing is a technical diagram titled \"Diagram 9.1 Safe reaches for cleaning\", with \"See para 9.1\" at the top left. It has three parts, (A), (B) and (C). The caption at lower right reads: \"Typical safe reaches for cleaning windows: (A) downwards reach through an opening light; (B) side reach through an opening light; (C) reach for cleaning an open casement with reflex hinges.\"\n\nIn part (A), an elevation of a window shows a vertical dimension \"1300mm\" from a floor line to a top horizontal line, a dimension \"610mm\" at the window, and a dimension \"Not more than 1300mm\" between the sill and a lower line. In part (B), a circular plan detail of an open window contains a rectangle labelled \"850mm radius\", with a vertical \"1300mm\" dimension from the floor line to the top of the circle. Part (C) is similar: a circular plan of an open casement with reflex hinges, also containing \"850mm radius\" and a vertical \"1300mm\" dimension. Each circle represents the safe reach zone around the window."
+}

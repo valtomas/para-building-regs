@@ -1,0 +1,18 @@
+{
+ "key": "ADK_Diagram-3.2_p35",
+ "source": "ADK",
+ "label": "Diagram 3.2",
+ "page": 35,
+ "caption": "Diagram 3.2 | Typical locations for guarding Guarding of areas used for maintenance For all buildings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "393e5dced62debcd736f8694e70a99a6dd5c76e43d05ecac9bc502e0b79350bd",
+ "image_sig": {
+  "w": 737,
+  "h": 382,
+  "grey": "/P////////////b6//////z///X////1///28v/////8///4////9///9vj6/////P//+P////f///b/8/////z///j////3//rt//L5///8///4////9//78Pr38////Pv18fz5+PP//+zs9/j5//z///f8///u////9fL/8f/8/////P//8/////Lu//b//P////z///z//+3/5/n2//z////8///8//////Hy9v/8/////f///P/////56/b//P///v3//v3///////vy//z//+nn+/Tk9f/////58v+0oKChoaGgoaCgoKCgoKCgjW5hcW1sbmpVVVVVVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing, headed \"Diagram 3.2 Typical locations for guarding\" on a green bar along the bottom, presents three line drawings arranged from left to right on a white background. The left drawing shows a thin vertical post topped by a small circle, rising from a vertical line, with a horizontal line extending to the left from the top of the vertical line; the words \"Edge of floor\" sit directly beneath the vertical line. The middle drawing depicts a similar vertical post with a circle at the top, rising from a vertical line that is connected to a horizontal line on the left by a short vertical drop and a horizontal step to the right, and it is likewise labelled \"Edge of floor\" below. The right drawing shows a flight of steps in section, descending from left to right, with a continuous diagonal handrail line and a series of vertical balusters between the rail and the treads; the word \"Stair\" is printed to the left of the steps. No dimensions, scales or additional symbols are shown.",
+ "first_draft": "The drawing, headed \"Diagram 3.2 Typical locations for guarding\" on a green bar along the bottom, presents three line drawings arranged from left to right on a white background. The left drawing shows a thin vertical post topped by a small circle, rising from a horizontal line that bends sharply downward at the right to form an L-shaped profile; the words \"Edge of floor\" sit directly beneath it. The middle drawing depicts a similar vertical post with a circle at the top, but its base has a short horizontal projection before the line drops vertically, and it is likewise labelled \"Edge of floor\" below. The right drawing shows a flight of steps in section, descending from left to right, with a continuous diagonal handrail line and a series of vertical balusters between the rail and the treads; the word \"Stair\" is printed to the left of the steps. No dimensions, scales or additional symbols are shown."
+}

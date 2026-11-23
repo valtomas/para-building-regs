@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-4.7_p42",
+ "source": "ADL2",
+ "label": "Table 4.7",
+ "page": 42,
+ "caption": "Table 4.7 \u0007Maximum heat losses from domestic hot water storage vessels(1)(2)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "17ef20da4ad7d41ec5c80ff2cac3ca3b79d8356aaae9813ee718c3b7a0e0c444",
+ "image_sig": {
+  "w": 754,
+  "h": 393,
+  "grey": "u6SjoKGiop+koqOjoMjIz+Xi4uLi4uHi4uLh4eLi4ePt6unx9evp8fDr6PHw6ury6fj4+Pr28/n58PH6+PH29ur4+Pj69fP5+e/w+vny9/bt//////36///3+P//9/376vj4+Pr18/n58PD6+fH29u74+Pj69vT5+fLz+vn09/bt+Pj4+vb0+fny8/r48/f27/j4+Pr39Pn58vP6+fT49uf4+Pj69PP5+e7v+vjx9vbg7v/////////////////79Onp6Ovp6ufo6ejm1uj/+/To6+rp6Ofq6+jr6evn7fv37uvr7O7////////////78ufn4/P4+Pj4+Pj4+Pj49g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

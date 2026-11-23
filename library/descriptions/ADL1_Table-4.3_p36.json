@@ -1,0 +1,17 @@
+{
+ "key": "ADL1_Table-4.3_p36",
+ "source": "ADL1",
+ "label": "Table 4.3",
+ "page": 36,
+ "caption": "Table 4.3 Limiting U-values for existing elements in existing dwellings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "5756873f524cf62437df64f025d6535b33e2aaa5b211fbd26956b67602b4144d",
+ "image_sig": {
+  "w": 756,
+  "h": 581,
+  "grey": "xayvraqwqaqvq6qoyMjI0PH3+/v7+/v7+vvx8fb7+/jt8/r6+vr8+unx+vz26Pb46unl7fX1+fXu8/X59e319ezs7Ovq9/z68fj6/Prv+vjd7Pr6+vr8+vb5+vz69Pr49/Dt7/P/////////////+/Hj4+Pj4eLl4uDj4OTj4/v46eXo5/b4+Pf49/b3+P/79+/o6Ofp5+bo6e32+fj/+/Ph3+Hi3ODi5PLu8PDx8vb26unt6uzx7/Hv8vLy8O/59Ojm5uXq8e/x8fDv8e/w+vXl5OHk4fLz8/Pz8fLz8/v26ujn+fj49/n39/j5+fn58uDe5+7v7u/v7u/t7+/v8w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

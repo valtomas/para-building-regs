@@ -1,0 +1,18 @@
+{
+ "key": "ADL1_Diagram-11.2_p78",
+ "source": "ADL1",
+ "label": "Diagram 11.2",
+ "page": 78,
+ "caption": "Diagram 11.2 \u0007Renovation of a thermal element from the inside",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "1f43be6244b834c0d5a969ffdf5e4718802e2fcf610a7d117bc096d9833d6585",
+ "image_sig": {
+  "w": 756,
+  "h": 478,
+  "grey": "7uLi4uLi4uLi4uLi4uLi7Pv///////////////////v78+Lj5uvs7Ozt6urt6+77+/fy9PX///////3/////+/vY3v///////+/G//////v717LL6urq6ty0vv/////7+9ewqra1tbavrb7/////+/vXrr220OC2rr++4t7Y5vv7166+o8fftq7Avvf//v/7+9euwaLG4bavwr7Z39j/+/vXr6mhnpy2rq2+/P////v717KuoqKgta+yvv/////7+9e04f/////yvL7/////+/vh7/////////rW//////vf2dnZ2dnZ2dnZ2dnZ2dndhV9bX1teX15dXVVPT09PdA=="
+ },
+ "reviewed": false,
+ "description": "This drawing is a perspective view of the interior of a room, looking towards a green back wall that has a central four-pane window. Two grey walls angle away to the left and right, each containing a tall, narrow window. The left part of the green back wall, below and beside the window, is filled with a diagonal hatch pattern.\n\nRunning text at the top reads: \"For example, if plaster is being removed from the inner side of a wall, the area of the thermal element is the area of external wall as viewed from inside the room.\"\n\nTo the right of the view is a legend. The first entry shows a small square with diagonal hatching, labelled \"Area of the thermal element being renovated\". The second entry shows a plain green square, labelled \"Total area of the thermal element\". A green band along the bottom carries the caption \"Diagram 11.2 Renovation of a thermal element from the inside\". The hatched region in the room corresponds to the first legend entry, while the whole green wall corresponds to the second.",
+ "first_draft": "This drawing is a perspective view of the interior of a room, looking towards a green-painted back wall that has a central four-pane window. Two grey walls angle away to the left and right, each containing a tall, narrow window. The left part of the green back wall, below and beside the window, is filled with a diagonal hatch pattern.\n\nA line of running text at the top reads: \"For example, if plaster is being removed from the inner side of a wall, the area of the thermal element is the area of external wall as viewed from inside the room.\"\n\nTo the right of the view is a legend. The first entry shows a small square with diagonal hatching, labelled \"Area of the thermal element being renovated\". The second entry shows a plain green square, labelled \"Total area of the thermal element\". A green band along the bottom carries the caption \"Diagram 11.2 Renovation of a thermal element from the inside\". The hatched region in the room corresponds to the first legend entry, while the whole green wall corresponds to the second."
+}

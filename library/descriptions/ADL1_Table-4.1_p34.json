@@ -1,0 +1,17 @@
+{
+ "key": "ADL1_Table-4.1_p34",
+ "source": "ADL1",
+ "label": "Table 4.1",
+ "page": 34,
+ "caption": "Table 4.1 Limiting U-values for new fabric elements and air permeability in new dwellings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "b120a9a5dee85d2a25051ebf93f18cf2e3bd884b1c32da4d352891f2102b8b73",
+ "image_sig": {
+  "w": 756,
+  "h": 581,
+  "grey": "v7GrrqyvrK2urayosK2v0PDv+Pr6+vr7+/rv8O/y+vjl6fb6+vr6+/v6+vD0+vr47PT19fX19ff39fXw8fX19e3x+fn6+vr7+/r68/b6+vjm3ev3+vr6+/v6+vL3+vr46uX19fX19ff39fXy8/X19e3n5ev1+vr7+/r27e74+vjy7fT6+vr6+/v68+bl9vr45eTu7/P/////////////+/Ll4+bl4uPk4uXm1dfs8fvz3uDh3d7c7u3u7ezs7+708uPn5eTj7fL08/T09fT0+/Tb3Njc2drd3Nzb3Nfe3vv14eDi5e7w7/Ht8e/u8PX789jf3N3a3t3d29vr6uzt9w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

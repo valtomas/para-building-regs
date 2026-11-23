@@ -1,0 +1,17 @@
+{
+ "key": "ADL1_Table-6.3_p52",
+ "source": "ADL1",
+ "label": "Table 6.3",
+ "page": 52,
+ "caption": "Table 6.3 Minimum efficiencies for oil-fired heating systems in existing dwellings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "4bee640f983e8fd3edd035669139e9b8762d32123efa9f6928870a52a222c475",
+ "image_sig": {
+  "w": 756,
+  "h": 327,
+  "grey": "t6eXoZugn56hn6Wil7fH0NDFxMTDxMbDvsHEv8PEztTu7P////bt6vz/+vT////76ODl4Pfu4eDp9/Xl4OPh7vn4+Pr//vn7/f/43dne2ent6e3p9/Hq6ePo9uvo6+rw9O708v/57/Pv9Pfb1OPw+PT29fX19fb39/f37u/w9/bf1ubi6fX8////+uTe9v/77eX09vb59vb29vn29vb29erh5ePq8OPm3eX1//////v29vb29u7c2t/f+fb29vb13Ov/////////////////+/Lf4OPj6N/j5OTe3uLk4/Dx4+Xj5uPl5Oro4+bl6On78tzh2vb29vb29vb29vb29Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

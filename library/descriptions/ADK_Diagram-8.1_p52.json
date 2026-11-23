@@ -1,0 +1,18 @@
+{
+ "key": "ADK_Diagram-8.1_p52",
+ "source": "ADK",
+ "label": "Diagram 8.1",
+ "page": 52,
+ "caption": "Diagram 8.1 | Height of controls Prevention of falls",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "00eebd439443a8f79663b839b28d82d18eaa64b4bd6ab23baeb6f49ff31b68a6",
+ "image_sig": {
+  "w": 754,
+  "h": 433,
+  "grey": "+Pn3+vr6+vr6+vr6+vr6+fnq9f/x9uzv//////////z8////9vP6///////////8/P///+/a8P///////////Pz////x+fX///////////z8////4Pb6+/v2///////8/P////jx8f//+////////Pz////4//////r++/////z8////+P/////WzOLx///8/P////b29vb/6OXk5vv//Pz////4//r7//v///////z8////+P/64un7///////8/P////j9+fv/+////////Pz///7q7PDp8Onw8Pv///zHubm5ubm5ubm5ubm5ubnDjG1fbmlmVVVVVVVVVVVVcw=="
+ },
+ "reviewed": false,
+ "description": "This is a section drawing titled \"Diagram 8.1 Height of controls\", with the note \"See para 8.1\" at the top left. It shows a vertical section through a window. On the left, a tall vertical member represents the window frame; a small symbol at its top is pointed to by a leader line labelled \"Control\". Above it, a horizontal line with an arrow at its left end, labelled \"Window\", points to the vertical line at the control. Beneath it, a horizontal dimension arrow marked \"600mm max. to control\" measures the gap between that vertical line and a vertical dashed line to the right. A horizontal ledge projects to the right from the vertical member at about mid-height. A vertical arrow from the floor line to the top of this ledge is marked \"900mm max.\". A further vertical arrow on the right runs from the floor line up to the level of the control, indicated by a horizontal dashed line, and is labelled \"Not more than 1700mm if obstructed; or 1900mm if unobstructed\". A green banner at the bottom carries the title.",
+ "first_draft": "This is a section drawing titled \"Diagram 8.1 Height of controls\", with the note \"See para 8.1\" at the top left. It shows a vertical section through a window. On the left, a tall vertical member represents the window frame; a small symbol at its top is pointed to by a leader line labelled \"Control\". Above, a horizontal dimension arrow labelled \"Window\" spans from the control to a dashed line, and a second horizontal arrow beneath it, marked \"600mm max. to control\", measures the horizontal gap between two dashed lines. A projecting horizontal ledge steps out from the lower part of the frame. A vertical arrow from the floor line to the top of this ledge is marked \"900mm max.\". A further vertical arrow on the right runs from the floor line up to the level of the control and is labelled \"Not more than 1700mm if obstructed; or 1900mm if unobstructed\". A green banner at the bottom repeats the title."
+}

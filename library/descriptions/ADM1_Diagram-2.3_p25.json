@@ -1,0 +1,18 @@
+{
+ "key": "ADM1_Diagram-2.3_p25",
+ "source": "ADM1",
+ "label": "Diagram 2.3",
+ "page": 25,
+ "caption": "Diagram 2.3 | Minimum door and hall widths and restrictions on localised obstructions",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "fa3e58e583c3317de3a653ca96f8a41bb538361f48908509fdad95cfaed3b68c",
+ "image_sig": {
+  "w": 737,
+  "h": 385,
+  "grey": "9vj4+Pj4+Pj4+Pj4+Pj4+Pv///jy////6vr////////7///47f///er4///6////+///+fP//+/y+///8v////n09PPw9PTo8fL09PL////07Ojz+fHw4/jx5dTl6Pz/8fft7Oj3/eXr7Ofx9+75//Pe3eHk7unc397c5ev2/v/27/T09Ono9P//99zx////+e7/+v3n9/P8////8v////v//+/49ffz7fDp7Pfu6vb7///u6fD48/nt6uj37uny+//////o8/P68Ors/9vW9vv/////6OXx7PDu8O7w/v/BtbW1tbW1tbGxsrCxsbW1gmVaY2FiZGNiYmNkY1tPTw=="
+ },
+ "reviewed": false,
+ "description": "This is a floor plan of a hallway with several doorways, drawn as black outline walls with door‑swing arcs. A main horizontal passage runs across the top, with a narrower branch descending in the middle. From the left, vertical dimensions read 900mm and 1050mm, and a horizontal double arrow reads 2m max. A door arc above the passage is dimensioned 775mm, and a 1500mm horizontal dimension marks the passage before a 300mm by 300mm notch. The descending branch is dimensioned 1500mm vertically, 300mm horizontally at its entry, and 1200mm at its foot, with a door arc marked 750mm. On the right, a door arc is dimensioned 800mm above, with 1500mm, 900mm, 800mm and 300mm dimensions around a further opening and a 750mm vertical dimension at the far right. Grey shading fills certain wall zones; dotted lines outline others. A Key states the grey swatch means \"Localised obstruction not permitted in shaded zone\" and the dotted swatch means \"Permitted obstruction\". Note 1 reads \"300mm nib only required where door opens inward (shown dotted).\" Footnote text reads \"*all dimensions are minimum except where noted\".",
+ "first_draft": "This is a floor plan of a hallway with several doorways, drawn as black outline walls with door‑swing arcs. A main horizontal passage runs across the top, with a narrower branch descending in the middle. From the left, vertical dimensions read 900mm and 1050mm, and a horizontal double arrow reads 2m max. A door arc above the passage is dimensioned 775mm, and a 1500mm horizontal dimension marks the passage before a 300mm by 300mm notch. The descending branch is dimensioned 1500mm vertically, 300mm horizontally at its entry, and 1200mm at its foot, with a door arc marked 750mm. On the right, a door arc is dimensioned 800mm above, with 1500mm, 300mm, 900mm, 800mm and 300mm dimensions around a further opening and a 750mm vertical dimension at the far right. Grey shading fills certain wall zones; dotted lines outline others. A Key states the grey swatch means \"Localised obstruction not permitted in shaded zone\" and the dotted swatch means \"Permitted obstruction\". Note 1 reads \"300mm nib only required where door opens inward (shown dotted).\" Footnote text reads \"*all dimensions are minimum except where noted\"."
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-6.9_p61",
+ "source": "ADL2",
+ "label": "Table 6.9",
+ "page": 61,
+ "caption": "Table 6.9 \u0007Maximum specific fan power (SFP) in air distribution systems in new and existing buildings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "8ac6645436fa4bd540bb570aae229031a80ea8897be0b3decbc50fbcb46c7e60",
+ "image_sig": {
+  "w": 743,
+  "h": 954,
+  "grey": "yrisqre6uLa8t7e6u7q5uvX1+/z8/Pz8/P338u/v8vTs5efl5ufn5Ofz+vL6+vL66uLj4urq6+rz+f33/P32/Ovk5eXp5ujv8Pj68vr68vrp5Ozz8/Lz8/T6/fj8/fj87ebo6+/x8fDw9/r1+vr1+uzn5ubp5+z4+fr68vr68vrq5ufl6Orv8/n6+vL6+vL67uft7e3t6uzr7Ozt7u3t9fTk4+Pk4+vs7ezt7O3u7Pr38Ors7Ovy9fj/////////+Ozl5ufk8vj5+Pj5+fb4//vx5uz08/n9/P39/Pz9/P/49vH09uno6+nq8/z/////+PP28/Py8O7z+Pz8/Pz8/A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

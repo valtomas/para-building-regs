@@ -1,0 +1,18 @@
+{
+ "key": "ADL2_Diagram-11.1_p88",
+ "source": "ADL2",
+ "label": "Diagram 11.1",
+ "page": 88,
+ "caption": "Diagram 11.1 \u0007Renovation of a thermal element from the outside",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "7163e59eda10054df23984eaeb0e657446cf6cb867cc4d53c7862e8cc3f52b8c",
+ "image_sig": {
+  "w": 756,
+  "h": 530,
+  "grey": "+Pr6+vr6+vr6+vr6+vr6+Pv94+Tj5+3u7e7u7ezu8Pv7//b39/X////////////7+/////f7+P//////////+/v//vf///73//////////v7/ujr6+vr6+n////////7+//Ivr+2wL7R////////+/v/yNfZtt3T0f/4//////v7/8jQ0rbWztH/497Y7//7+/++p6ettrbR//Ht8f//+/v/uKurpr680f/p7e////v7/7jQ0abd09H////////7+/+4ysun18/R////////+/v/uJ+ep7a20f////////v09uHZ2dve3uf29vb29vbzgl5ZXVpdXVtcXFlPT09Pcg=="
+ },
+ "reviewed": false,
+ "description": "The drawing is an elevation, viewed from the front, of a two-storey house with a triangular pitched roof. The wall surface is filled in solid green, and four windows, each a rectangle divided into four panes, are arranged two above two. The lower-left part of the wall, enclosing the lower-left window, is overlaid with diagonal hatching. To the right of the house is a two-line legend: the first shows a diagonally hatched square next to the words \"Area of the thermal element being renovated\"; the second shows a solid green square next to the words \"Total area of the thermal element\". Above the house are two lines of running text reading \"For example, if external render is being removed from the outer side of a wall, the area of the thermal element is the area of the elevation in which that wall sits.\" A green band along the bottom carries the caption \"Diagram 11.1 Renovation of a thermal element from the outside\". The hatched area corresponds to the renovated portion, while the green fill corresponds to the total area of the thermal element.",
+ "first_draft": "The drawing is an elevation, viewed from the front, of a two-storey house with a triangular pitched roof. The wall surface is filled in solid green, and four windows, each a rectangle divided into four panes, are arranged two above two. The lower-left part of the wall, enclosing the lower-left window, is overlaid with diagonal hatching. To the right of the house is a two-line legend: the first shows a diagonally hatched square next to the words \"Area of the thermal element being renovated\"; the second shows a solid green square next to the words \"Total area of the thermal element\". Above the house is a line of running text reading \"For example, if external render is being removed from the outer side of a wall, the area of the thermal element is the area of the elevation in which that wall sits.\" A green band along the bottom carries the caption \"Diagram 11.1 Renovation of a thermal element from the outside\". The hatched area corresponds to the renovated portion, while the green fill corresponds to the total area of the thermal element."
+}

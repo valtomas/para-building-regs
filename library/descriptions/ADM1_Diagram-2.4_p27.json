@@ -1,0 +1,18 @@
+{
+ "key": "ADM1_Diagram-2.4_p27",
+ "source": "ADM1",
+ "label": "Diagram 2.4",
+ "page": 27,
+ "caption": "Diagram 2.4 | Clear access zones to principal bedroom Sanitary facilities General provisions",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "3d50b07cee862c5424a4e7c8b02bf37ecbf23d06b3ee95e87d1aea1a0a54549f",
+ "image_sig": {
+  "w": 737,
+  "h": 426,
+  "grey": "9/j4+Pj4+Pj4+Pj4+Pj4+PLr4drf4uHd2uDp9P/////w/+na7fn56drh+fn/////9vLX0uXu7eLS4Pn57v////v/5Nrz///v2u7y6N/c2Pn7/t/O8v//7svt7uno6uv98ffl1/H//+3X7O7p4eXs8fL25drz///v2u7v6OLu8P/s/+Ta8///79ru9+7q6Oj47P/k2urz9Oja7vn57fL//+z/5Nra1dna2u75+f/////s/+Ta2s7a2tru+fn/////7evZ1NTP1NTU5vH5//////f29vb29vb29vDt8ff49/vVz8/Pz8/Pz8/Kw8XFw8XKgGJZYF9fYmNbT09PT09PTw=="
+ },
+ "reviewed": false,
+ "description": "This drawing is a plan (floor layout) of a principal bedroom. A bed is drawn at the centre, with two pillow shapes at its top edge. A door on the left wall is shown open with a quarter-circle swing arc, and a window is indicated on the left wall above the door. A rectangular piece of furniture is set against the left wall below the door. Two narrow vertical rectangles are set against the right wall. Light grey shaded areas form the access zone around the bed: a band along the left side, a band along the right side, and a band across the foot. The left and right bands near the head of the bed are each marked with the letter \"a\" and a horizontal dashed line. Dimensions of 750mm are shown horizontally on the left and right of the bed and vertically at the foot; a vertical dimension of 600mm appears at the top right, measuring from the top wall to the dashed line. To the right of the plan, a \"Notes:\" block gives three numbered notes on clear access to the window, bedside furniture in zone 'a', and bed size per the furniture schedule in Appendix D. A footnote reads \"*all dimensions are minimum except where noted\". The green footer bar reads \"Diagram 2.4 Clear access zones to principal bedroom\".",
+ "first_draft": "This drawing is a plan (floor layout) of a principal bedroom. A bed is drawn at the centre, with two pillow shapes at its top edge. A door on the left wall is shown open with a quarter-circle swing arc, and a window is indicated at the top left. Two narrow vertical rectangles are set against the right wall. Light grey shaded areas form the access zone around the bed: a band along the left side, a band along the right side, and a band across the foot. The left and right bands near the head of the bed are each marked with the letter \"a\" and a horizontal dashed line. Dimensions of 750mm are shown horizontally on the left and right of the bed and vertically at the foot; a vertical dimension of 600mm appears at the top right. To the right of the plan, a \"Notes:\" block gives three numbered notes on clear access to the window, bedside furniture in zone 'a', and bed size per the furniture schedule in Appendix D. A footnote reads \"*all dimensions are minimum except where noted\". The green footer bar reads \"Diagram 2.4 Clear access zones to principal bedroom\"."
+}

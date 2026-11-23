@@ -1,0 +1,18 @@
+{
+ "key": "ADK_Diagram-5.1_p41",
+ "source": "ADK",
+ "label": "Diagram 5.1",
+ "page": 41,
+ "caption": "Diagram 5.1 | Critical glazing locations in internal and external walls",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "764045592347c788da8b5ec997dd5bf94e0271effbafdd92892e2215da91487c",
+ "image_sig": {
+  "w": 737,
+  "h": 425,
+  "grey": "+Pn5+fn5+fn5+fn5+fn5+ffo7u71///////////////8//////7//////////////P///+jm4vX////z5f////z/7fLq8uny8f/t7fXp+v/8//b/+P/y6uz/6vLu8/f//P/2//j/9O7z/fDy8fr3//z/8ffx9+bi7/nl5uva9v/8+fHy7/Lm6Obj//zq6ff//OPf6ePp5t7v8N/p4ub6//zy7uzs3ufv4ezx9PL19v/8//////Dz+u/4/////////P/////////n2tve3OLk//z/////////4dDa1+Xs9f/Hubm5ubm5ubm5ubm5ubm5i2tebG1tampqbGljVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a line diagram split into two groups, labelled “Doors and side panels” (left) and “Windows” (right), with “See paras 5.1–5.2, 7.1–7.2” at top left and the caption “Diagram 5.1 Critical glazing locations in internal and external walls” on a green bar at the bottom. A horizontal floor line runs along the base, marked by a triangle symbol labelled “Floor level”. The left group is an outline rectangle enclosing numbered panels 1 to 8; grey‑shaded areas fill panels 4, 5, 6 and 8, and panel 7 except for a small unshaded triangle at its top right, and a small grey square appears in the bottom right corner of 2, while 1 and 3 are unshaded. Dimensions read 800mm (vertical, far left), 300mm and 300mm (horizontal, along the bottom) and 1500mm (vertical, right of the door group). The right group shows windows 9 and 10, the latter having a lower shaded panel 11; a vertical 800mm dimension stands at the right. Text at bottom right reads: “Shaded areas show critical locations to which requirement K4 applies (i.e. glazing in areas numbered 2, 4, 5, 6, 7, 8, 11)”.",
+ "first_draft": "The drawing is a line diagram split into two groups, labelled “Doors and side panels” (left) and “Windows” (right), with “See paras 5.1–5.2, 7.1–7.2” at top left and the caption “Diagram 5.1 Critical glazing locations in internal and external walls” on a green bar at the bottom. A horizontal floor line runs along the base, marked by a triangle symbol labelled “Floor level”. The left group is an outline rectangle enclosing numbered panels 1 to 8; grey‑shaded areas fill panels 4, 5, 6, 7 and 8 and appear as small squares in the corners of 2 and 7, while 1 and 3 are unshaded. Dimensions read 800mm (vertical, far left), 300mm and 300mm (horizontal, along the bottom) and 1500mm (vertical, right of the door group). The right group shows windows 9 and 10, the latter having a lower shaded panel 11; a vertical 800mm dimension stands at the right. Text at bottom right reads: “Shaded areas show critical locations to which requirement K4 applies (i.e. glazing in areas numbered 2, 4, 5, 6, 7, 8, 11)”."
+}

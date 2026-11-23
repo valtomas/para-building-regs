@@ -1,0 +1,17 @@
+{
+ "key": "ADL1_Table-4.4_p41",
+ "source": "ADL1",
+ "label": "Table 4.4",
+ "page": 41,
+ "caption": "Table 4.4 \u0007Minimum thicknesses of pipework insulation for hot water services and space heating applications using high performance insulation",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "41008fe5e0c0c51333a25ee9cfba512eda56e821d5ce89148653db7f8eb15853",
+ "image_sig": {
+  "w": 737,
+  "h": 283,
+  "grey": "v6aoqaOsp6mopqmqrK6qwcaysK2oraStp7CtsLOvqcPSyJyKjpaOi5GVkLLIyMjI7u7v7+/v7+/v7u/u7u3u7+7p5+no+P////Tr5+rp7v/19fX19fX19fny4d/k4On16uPi8P//////////+v////T08/L19fX1+fX19fL19fXk2Nfn9fX19fj19fXu9fX16uPi7v//////////9v////X08/H19fX1+fX19fL19fXj2Nbh9fX19fj19fXr9fX11vH///////////////////f2+ff3+PX5+PLz9vj3+Pz349Lq5url6Orr6Orr6eXx8djP9fX19fX19fX19fX19Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADM1_Diagram-2.5_p28",
+ "source": "ADM1",
+ "label": "Diagram 2.5",
+ "page": 28,
+ "caption": "Diagram 2.5 | Sanitary fittings, associated clear access zones and permitted encroachment of basins",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "6e354210eac7b76b7fc9c196a3742950fbeb8bc33cb53b7f894f7df73b3cfd48",
+ "image_sig": {
+  "w": 754,
+  "h": 925,
+  "grey": "+fz67Pbv9vz8/Pz8/Pz8+fv/9ujy+vv///////////v79vLW39Xi+u7u//j59Pf7+u3w0drX2Pri5PPx4t/w+/vz9t/Z2tX64On569rX7Pv7//Xv3tHT7ebs9/Hc2O/7+//y7PPv9P7////88ev3+/v/+/b+//34+/b39/f///v7///29e/y8P3y6uft6v77+//47e3s9u/+9ujh4OD9+/v/89/a6Pbv/f71+/vm//v7//ff2unv8P/8+vnz6//7+//59fT29Pz/+O7r7/P++/vw9fb19/b29vDt7u7v8Pv74d/h3uPp8O/u8O/u7vf7spmUmZiXmZidoKCgoJ+gpw=="
+ },
+ "reviewed": false,
+ "description": "This drawing comprises four plan views, a key in the top-middle and notes, illustrating basin and WC positions with shaded clear access zones. The top-left plan shows a WC at the lower left (400-500mm wide), a grey zone marked 'a' with vertical dimensions 750mm and 1100mm on the left, and basins at positions 'b', 'c' and 'd', with horizontal dimensions 350mm, 750mm and 1000mm and dashed '200mm Max' encroachment lines; small markers 'e' and 'f' sit beside basin d. The top-right plan shows a single basin at the bottom edge of a 700mm by 1100mm grey zone. The bottom-left plan shows a basin in a recessed bay, 700mm wide, beside an 1100mm grey zone. The bottom-right drawing is a dashed circle labelled '1500mm diameter clear turning circle - may overlap with shower', with a grey shaded quadrant in the top-right, an R750mm radius line, a 1000mm base and 500mm/1000mm verticals. The Key defines a as the WC access zone; b, c, d as alternative permitted locations for a wash hand basin or hand rinse basin; e as 200mm maximum hand rinse encroachment; f as 300mm maximum wash hand basin encroachment. Below, the line '*all dimensions are minimum except where noted' and five numbered notes appear.",
+ "first_draft": "This drawing comprises four floor plans, a central key and notes, all illustrating basin and WC positions with shaded clear access zones. The top-left plan shows a WC at lower left (400-500mm wide; 750mm and 1100mm deep), a grey zone marked 'a', and basins at positions 'b', 'c' and 'd', with horizontal dimensions 350mm, 750mm and 1000mm and dashed '200mm Max' encroachment lines; small markers 'e' and 'f' sit beside basin d. The top-right plan shows a single basin within a 700mm by 1100mm grey zone. The bottom-left plan shows a basin in a recessed bay, 700mm wide, beside an 1100mm grey zone. The bottom-right drawing is a dashed circle labelled '1500mm diameter clear turning circle - may overlap with shower', with an R750mm radius line, a 1000mm base and 500mm/1000mm verticals. The Key defines a as the WC access zone; b, c, d as alternative permitted locations for a wash hand basin or hand rinse basin; e as 200mm maximum hand rinse encroachment; f as 300mm maximum wash hand basin encroachment. Below, the line '*all dimensions are minimum except where noted' and five numbered notes appear."
+}

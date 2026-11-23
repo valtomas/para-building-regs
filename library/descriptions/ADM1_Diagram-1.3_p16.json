@@ -1,0 +1,18 @@
+{
+ "key": "ADM1_Diagram-1.3_p16",
+ "source": "ADM1",
+ "label": "Diagram 1.3",
+ "page": 16,
+ "caption": "Diagram 1.3 | WC access zones",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "be4593deaeaf6f5b288fb589b3a640b32774b5128fa7a94e77d63e1134fdd7fa",
+ "image_sig": {
+  "w": 754,
+  "h": 378,
+  "grey": "9/j4+Pj4+Pj4+Pj4+Pj49vv98OLn////9d7b7vD///v79OnW2f////TX1+zi5OP7+/Xpztr////z0Nfr4eDs+/v26dPa////89bX6ujm9Pv77ubS2f////fg3O/a2dj5++X78u3/////+fX96+nu+/vy8e/s/////fjz+v////v7//rw6/////r59PT////7+//17eb////48+7x////+/v/+vX2//////Pz/f////v7//Pt7v////fv7PT////7+//9/P3////9/v39////+/PX5Ovj1+Xa3+zs19v///u8ra2tra2tra2tra2tra23gmNZYGJTT09PT09PT09PbA=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a plan view showing two examples of WC access zones, with a green banner at the bottom reading \"Diagram 1.3\" and \"WC access zones\". The left plan is captioned \"Example 1.3A – Clear access for oblique transfer\" and the right \"Example 1.3A – Clear access for frontal transfer\". Each plan shows a WC symbol, an oval containing a seated person symbol with a rectangle below it, and a grey shaded access zone above it. In both, a vertical double-headed arrow labelled \"750mm\" spans the depth of the shaded zone. In the left plan a vertical label \"Opening to front of WC\" sits at the left, with a dimension \"250mm\" marking the gap at the opening; below the WC, horizontal dimensions read \"450*mm\" to the left of the centre line and \"400mm\" to the right. In the right plan the horizontal dimensions read \"450*mm\" on each side of the centre line. To the right a \"Notes:\" block states: 1. All dimensions minimum unless otherwise stated. 2. * denotes minimum but 500mm preferred. 3. Basins should not project into access zones in such a way as to impede access.",
+ "first_draft": "The drawing is a plan view showing two examples of WC access zones, with a green banner at the bottom reading \"Diagram 1.3\" and \"WC access zones\". The left plan is captioned \"Example 1.3A – Clear access for oblique transfer\" and the right \"Example 1.3A – Clear access for frontal transfer\". Each plan shows a WC symbol, a rectangle enclosing an oval that contains a seated person symbol, with a grey shaded access zone above it. In both, a vertical double-headed arrow labelled \"750mm\" spans the depth of the shaded zone. In the left plan a vertical label \"Opening to front of WC\" sits at the left, with a dimension \"250mm\" marking the gap at the opening; below the WC, horizontal dimensions read \"450*mm\" to the left of the centre line and \"400mm\" to the right. In the right plan the horizontal dimensions read \"450*mm\" on each side of the centre line. To the right a \"Notes:\" block states: 1. All dimensions minimum unless otherwise stated. 2. * denotes minimum but 500mm preferred. 3. Basins should not project into access zones in such a way as to impede access."
+}
