@@ -1,0 +1,18 @@
+{
+ "key": "ADM1_Diagram-3.15_p55",
+ "source": "ADM1",
+ "label": "Diagram 3.15",
+ "page": 55,
+ "caption": "Diagram 3.15 \u0007Examples of wheelchair adaptable bathroom layouts with potential to be wheelchair accessible",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "372ed1707f211b91fc6436abf8fda69924e71fbde69df3e9b5737936db706d64",
+ "image_sig": {
+  "w": 737,
+  "h": 626,
+  "grey": "+Pr69fP6+vr6+vnw+vr6+vvt5Obj4+H/9ufm39/d///54uHV2+Xs/+3g3s3l6f//++bh09Lj7P/v5NrE5Oj///Dl6tbY6+n/6OzYzOzm///36e7m4+zo/+nv6uXr5fn+++rv9vLx8P/w8fL48ff/+frr5/L58PD/7/D0+PDt8/T7///0+f////36+vr6+f//+///9Pz///////////////vc2Obq/v//9tXf4vX////78O3y8/r///3y9PP1////+/je4d7e4O7p6/H///////v24N/f4+Hf4eHp8vL6///Ctba1tLa1tra0tbW1tbS0fFlZZ2JmXFtZWFpYWVlUTw=="
+ },
+ "reviewed": false,
+ "description": "The drawing, titled Diagram 3.15, shows two bathroom floor plans side by side. On the left, Example 3.15A, is captioned \"wheelchair adaptable bathroom (based on wheelchair accessible layout 3.16A)\". Its top edge is dimensioned 2600mm overall, divided into 1200mm, 950mm and 450mm; its left edge reads 2200mm. The room contains a bath with a shower symbol on the left, a hand wash basin at top centre, and a WC at top right. Dashed outlines mark the access zones around the basin and WC, and a large dashed circle (the turning circle) lies across the right half. A door in the bottom wall swings outwards. On the right, Example 3.15B, is captioned \"wheelchair adaptable bathroom (based on wheelchair accessible layout 3.16B)\". Its top edge reads 2450mm overall, divided 1200mm, 800mm and 450mm; its left edge reads 2450mm. It has the same fixture arrangement, with the access zones shown as shaded rectangles and a similar dashed turning circle, and a door in the right-hand wall swings outwards. Below the plans is a Notes block of three numbered items, and a green banner at the foot repeats the diagram title.",
+ "first_draft": "The drawing, titled Diagram 3.15, shows two bathroom floor plans side by side. On the left, Example 3.15A, is captioned \"wheelchair adaptable bathroom (based on wheelchair accessible layout 3.16A)\". Its top edge is dimensioned 2600mm overall, divided into 1200mm, 950mm and 450mm; its left edge reads 2200mm. The room contains a bath with a shower symbol on the left, a hand wash basin at top centre, and a WC at top right. A dashed line encloses an access zone in the right half, and a door at the bottom right swings inwards. On the right, Example 3.15B, is captioned \"wheelchair adaptable bathroom (based on wheelchair accessible layout 3.16B)\". Its top edge reads 2450mm overall, divided 1200mm, 800mm and 450mm; its left edge reads 2450mm. It has the same fixture arrangement, but its bottom-right door swings outwards. Below the plans is a Notes block of three numbered items, and a green banner at the foot repeats the diagram title."
+}

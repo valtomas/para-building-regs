@@ -1,0 +1,18 @@
+{
+ "key": "ADM1_Diagram-3.2_p36",
+ "source": "ADM1",
+ "label": "Diagram 3.2",
+ "page": 36,
+ "caption": "Diagram 3.2 | Measurement of clear opening width and other features of external and internal doors Other communal doors",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "64b06c3c5453f1c53f67b8fe7ea4d62b024859f244af79d85212dd583ca2ef6c",
+ "image_sig": {
+  "w": 754,
+  "h": 403,
+  "grey": "9/j4+Pj4+Pj4+Pj4+Pj49vv/7/H4////8f/1//////v7/+Pv/fj//+//+d3d3OL7+//v+v/7/P/v//zl7Pz6+/v/9P////n/7//43tnt8Pv7//T////5/+///Ork4en2+//0/P///vbq//va1eft+vv/9P/////y7P/6/v/+//v7//T/////8+//6unt6vX79uDT+Pj48s/m4Ofk5uPy+/v/5vj4+Pjk///p293c7Pv36+T/////6eTr6OLi4+b7+//58/X19ezm//j18vT6+/v//u7x6+v68vr5+vr5+vnFubm5ubm5ubmyqqysq6u9g2NaZGFhY2RgY2JiYmJicg=="
+ },
+ "reviewed": false,
+ "description": "This is a plan view (Diagram 3.2) of a doorway set in a wall, shown with a door leaf and a curved arc indicating the door's swing. The wall is drawn as two horizontal lines with a gap in the middle; the left part has a stepped cut and the right part a solid block, with dashed lines across the opening. At the top left, label c marks the leading edge, and label d marks the following edge. A vertical line at the left of the opening is labelled a (inside face of door when open). The swing arc runs from the top down to a vertical line on the right of the opening, where a horizontal dimension e measures the nib to leading edge. At the bottom right, label b indicates the inside edge of door frame or stop, with horizontal dimension f below it for the nib to following edge, and a small vertical dimension g at the right of the opening (just above b) for reveal depth. A dimension line across the bottom reads \"distance a-b = clear opening width\". To the right, a Key lists items a to g and two Notes, and a footnote states all dimensions are minimum except where noted. A green banner at the foot titles the diagram \"Measurement of clear opening width and other features of external and internal doors\".",
+ "first_draft": "This is a plan view (Diagram 3.2) of a doorway set in a wall, shown with a door leaf and a curved arc indicating the door's swing. The wall is drawn as two horizontal lines with a gap in the middle; the left part has a stepped cut and the right part a solid block, with dashed lines across the opening. At the top left, label c points to the inside edge of the door frame or stop, and label d marks the leading edge. A vertical line at the left of the opening is labelled a (inside face of door when open). The swing arc runs from the top down to a vertical line on the right of the opening, where a horizontal dimension e measures the nib to leading edge. At the bottom right, label b indicates the inside edge of door frame or stop, with horizontal dimension f below it for the nib to following edge, and a small vertical dimension g at the bottom centre for reveal depth. A dimension line across the bottom reads \"distance a-b = clear opening width\". To the right, a Key lists items a to g and two Notes, and a footnote states all dimensions are minimum except where noted. A green banner at the foot titles the diagram \"Measurement of clear opening width and other features of external and internal doors\"."
+}

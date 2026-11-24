@@ -1,0 +1,18 @@
+{
+ "key": "ADM1_Diagram-3.11_p51",
+ "source": "ADM1",
+ "label": "Diagram 3.11",
+ "page": 51,
+ "caption": "Diagram 3.11. Examples of compliant designs are shown in Diagram 3.12.",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "855df599f6fc71e3f8b7e1332ad2d3d12bad2c2d0ecb8486c686bd0f9cbf01e6",
+ "image_sig": {
+  "w": 737,
+  "h": 953,
+  "grey": "+fzw8vH2+Pz8/Pz8/Pz8/Pv+5vDz9fv////////////279fa1dT1/+7u+//39Pf49e7V19nQ8f/i3+b/7tfa9/Pr2dXRyen64uHl/erX2vf589rm2cvf+vj9/P/xztL3+PXm8vHx/P//////+fP2/fv37+7z8v/+/f7+/+rn6PX7+dra6e3/+urf1t/h/f//+/Da2ubr//zs3/Dz8P7///nw1tbg4v/15Nry7+Xm5vv7//////7/5uHh4eP8////9/b49/f3+u/r8fT1/f///+vq6+ry8vX39vf39/f3+f/u4+Ti4uLl5+7z9/b39vv/hGVjbW5sZWRkZGVlZGVkYQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a set of plan views, with one elevation, of a wheelchair‑accessible bathroom and WC/cloakroom, showing hatched clear access zones around the fittings. The top‑left plan shows a WC with an 800mm access zone labelled 'a', a vertical hatched zone for grab rails, and two basin positions labelled 'b' and 'c'. Dimensions are 350mm, 1200mm and 750mm across the top, 2200mm and 750mm down the left, and further dimensions of 200mm Max, 800mm, 450‑500mm and 200mm Max are distributed across the plan, with a note \"800mm between c/l of WC and edge of shower in bathrooms\". The top‑right view shows a basin 800mm wide within a 1650mm height on a dashed centre line. The bottom‑left plan shows a bath 800mm by 1700mm with a hatched zone. The bottom‑right plan shows a level access shower (1200 x 1200mm) with a dashed 1500mm diameter turning circle (R750) and a 500mm max dimension indicating the overlap with the shower, label 'a'. A key and four notes accompany the drawings, and a title bar reads \"Diagram 3.11 Sanitary fittings, associated clear access zones and permitted encroachment of basins – wheelchair accessible\".",
+ "first_draft": "The drawing is a set of plan views, with one elevation, of a wheelchair‑accessible bathroom and WC/cloakroom, showing hatched clear access zones around the fittings. The top‑left plan shows a WC with an 800mm access zone labelled 'a', a hatched shower area, a vertical hatched grab‑rail bar, and two basin positions labelled 'b' and 'c'. Dimensions are 350mm, 1200mm and 750mm across the top, 2200mm down the left, and 750mm, 200mm Max, 800mm, 450‑500mm and 200mm Max at the bottom, with a note \"800mm between c/l of WC and edge of shower in bathrooms\". The top‑right view shows a basin 800mm wide within a 1650mm height on a dashed centre line. The bottom‑left plan shows a bath 800mm by 1700mm with a hatched zone. The bottom‑right plan shows a level access shower with a dashed 1500mm diameter turning circle (R750) and a 500mm max dimension, label 'a'. A key and four notes accompany the drawings, and a title bar reads \"Diagram 3.11 Sanitary fittings, associated clear access zones and permitted encroachment of basins – wheelchair accessible\"."
+}

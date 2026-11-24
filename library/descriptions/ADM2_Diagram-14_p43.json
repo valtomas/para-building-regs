@@ -1,0 +1,18 @@
+{
+ "key": "ADM2_Diagram-14_p43",
+ "source": "ADM2",
+ "label": "Diagram 14",
+ "page": 43,
+ "caption": "Diagram 14 Possible location of wheelchair spaces in front of a rear aisle",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "61317366b2bc397515c97d18415e99a9966e650f5b4afbc74bd93e9d11d0a189",
+ "image_sig": {
+  "w": 749,
+  "h": 545,
+  "grey": "29LRw8rJyMXIysjNy8jq6u729vbz7fb29vb09vb29vb0////+Pf////9+///////9P////j18PLr/P3///////T////z7f/9/+7u9v/////0////8ubu9f/4////////9P////be6PT88vHx/v////T////26ejz++3s+f/////0////8tzo9P34////////9P////Hn4fn/+P////////T////26ub8/OLU3P3////0////9uvr///2+v7/////9P////Lo4///7fj///////T////y6OP///j////////0/////Pb5///7////////8Pj4+O/n5e74+Pj4+Pj4+A=="
+ },
+ "reviewed": false,
+ "description": "This drawing is a plan view titled \"Diagram 14 Possible location of wheelchair spaces in front of a rear aisle\". On the left side, there are rows of seats. At the top left, an arrow points downwards, labeled \"Steps\". A vertical aisle runs between the seats and a solid line on the right, which is labeled \"Rear wall\". In the aisle, two dashed boxes enclose symbols of people in wheelchairs. Two leader lines point to these boxes, stating \"1400mm x 900mm nominal wheelchair spaces\". A horizontal dimension line above the wheelchair spaces measures from the back of the seats to the rear wall. It is divided by a vertical dashed line that passes through the center of the wheelchair symbols. The section from the seats to the dashed line is labeled \"1100mm*\". The section from the dashed line to the rear wall is labeled \"Aisle dimension\". Another leader line points to a standard seat below the wheelchair spaces, accompanied by the text \"More seats can be removed if necessary to create more wheelchair space\". In the top right corner, a partial curved outline is shown. At the bottom, a note reads \"* Dimension derived from BS 8300\".",
+ "first_draft": "This drawing is a plan view titled \"Diagram 14 Possible location of wheelchair spaces in front of a rear aisle\". On the left side, there are rows of seats. At the top left, an arrow points downwards, labeled \"Steps\". A vertical aisle runs between the seats and a solid line on the right, which is labeled \"Rear wall\". The width of this aisle is indicated by horizontal arrows and the text \"Aisle dimension\". In the aisle, two dashed boxes enclose symbols of people in wheelchairs. A leader line points to these boxes, stating \"1400mm x 900mm nominal wheelchair spaces\". A horizontal dimension of \"1100mm*\" is marked from the back of the seats to a dashed vertical line that passes through the center of the wheelchair symbols. Another leader line points to a standard seat below the wheelchair spaces, accompanied by the text \"More seats can be removed if necessary to create more wheelchair space\". In the top right corner, a partial curved outline is shown. At the bottom, a note reads \"* Dimension derived from BS 8300\"."
+}

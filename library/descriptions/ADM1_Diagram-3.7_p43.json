@@ -1,0 +1,18 @@
+{
+ "key": "ADM1_Diagram-3.7_p43",
+ "source": "ADM1",
+ "label": "Diagram 3.7",
+ "page": 43,
+ "caption": "Diagram 3.7 | Access to through floor lift | Private stairs and changes of level within the dwelling",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "6cd4b76a75787179f202e3ced7a900bb29f181d09ae6e4fe11c8bd87d6ec6894",
+ "image_sig": {
+  "w": 737,
+  "h": 357,
+  "grey": "9vf39/f39/f39/f39/f39/v///Ph3eHx///////////7///5+f/8////////////+///5e//9OLq//////////v///rt+P3x9v/////////7///65fXx+v//////////+///9eHi7vf/7P////////v///Pl5f///+vr6ej6///7///t5eT////i4Nrf+///+///9OXh8Or/4PPz9/////v///jZ1/Px///////////7///539j/////////////+/////j3//////////////v////////v6Ovq6en4//+yoKCgoaGhoKCgoKCgoKCgg2ZZYmNnX09PT09PT09PTw=="
+ },
+ "reviewed": false,
+ "description": "This is a plan view, headed in a green footer as \"Diagram 3.7 Access to through floor lift\". At the top, two parallel horizontal lines form a wall with no opening. To the upper left the open space is labelled \"Circulation area\". A large dashed circle occupies the upper portion of the plan and is pointed to by the label \"1500mm clear turning circle\". At the top of the lift space a door is drawn swung open into the circulation area, its hinge at the upper-left corner of the lift space and its swing arc shown within the turning circle. Below the door, a rectangle marked with diagonal cross lines represents the lift, labelled \"Lift or future lift space\". A vertical dimension line to the left of this rectangle reads \"1650mm\", and a horizontal dimension line beneath it reads \"1100mm\". To the right of the plan is a text block reading \"Notes: 1. All doors to be power operated. 2. Turning circle should be clear of top step of any adjacent flight of steps.*\" In small type at the lower right is \"*all dimensions are minimum except where noted\". The dashed circle overlaps the upper edge of the lift rectangle and the circulation area.",
+ "first_draft": "This is a plan view, headed in a green footer as \"Diagram 3.7 Access to through floor lift\". At the top, two parallel lines form a wall with an opening. From this opening a door is drawn swung open into the room. To the upper left the open space is labelled \"Circulation area\". A large dashed circle occupies the upper portion of the plan and is pointed to by the label \"1500mm clear turning circle\". Below the door, a rectangle marked with diagonal cross lines represents the lift, labelled \"Lift or future lift space\". A vertical dimension line to the left of this rectangle reads \"1650mm\", and a horizontal dimension line beneath it reads \"1100mm\". To the right of the plan is a text block reading \"Notes: 1. All doors to be power operated. 2. Turning circle should be clear of top step of any adjacent flight of steps.*\" In small type at the lower right is \"*all dimensions are minimum except where noted\". The dashed circle overlaps the upper edge of the lift rectangle and the circulation area."
+}

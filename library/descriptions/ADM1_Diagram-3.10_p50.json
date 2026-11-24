@@ -1,0 +1,18 @@
+{
+ "key": "ADM1_Diagram-3.10_p50",
+ "source": "ADM1",
+ "label": "Diagram 3.10",
+ "page": 50,
+ "caption": "Diagram 3.10 \u0007Sanitary fittings associated clear access zones and permitted encroachment of basins – wheelchair adaptable",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "f1a4f35cf9aff52acfcf3dab1df8f4760281b9227d9c9ff724a3afc1dc27c760",
+ "image_sig": {
+  "w": 754,
+  "h": 879,
+  "grey": "+fz19fT4+vz8/Pz8/Pz8+fv/7uv3+fz///////////v3+ObW1tv18erx/v/////78PHc1trU8e3f5P3/+fX7+/f16NrZ0e7x5e3++OTf8vv7//Ls1tLr8Obs/vXe2O/7+//s8ufj7/7////85t31+/v/9Pf8+v/////18vPz+vv7//v09Pb//////PTg4O37+/vr3/L2//////z06+/y+/v569rx9v/////+/Pv0+fv7/vXy9fn////+7ufm5vH7+/v8/////////vXx7vL39fvz4+Ph6uvx8/L09PL09ff6+fDw7+/x7/H49/n4+Pv6fFhYYWJhWFdXV1hYWFdYbA=="
+ },
+ "reviewed": false,
+ "description": "This is a set of plans with a Key and a green title bar at the bottom reading \"Diagram 3.10 Sanitary fittings associated clear access zones and permitted encroachment of basins – wheelchair adaptable\". The main plan (top left) shows a bathroom corner with a shaded square access zone labelled a, a WC symbol and basin symbol d on the bottom wall, and basin symbols b (left) and c (top). Dimensions include 350mm, 750mm and 1000mm across the top, 1100mm and 750mm down the left, 200mm Max in three places, and 450-500mm at the foot; dashed lines in the plan mark the maximum encroachment of the basins, and e and f are dimension callouts at the bottom right (the 200mm and 300mm values given in the Key). The Key defines a to f, including maximum encroachment of 200mm for a hand rinse basin and 300mm for a wash hand basin. A top-right plan shows a 700mm by 1100mm shaded access zone in front of a round basin (drawn above the basin symbol); a bottom-left plan shows a 700mm wide rectangular basin with an adjacent 1100mm shaded access zone to its left. The bottom-right plan shows a level access shower with a 1500mm diameter clear turning circle (R750mm), a 500mm dimension, and text that this may overlap fully with the shower. Four numbered notes follow.",
+ "first_draft": "This is a set of plans and elevations with a Key and a green title bar reading \"Diagram 3.10 Sanitary fittings associated clear access zones and permitted encroachment of basins – wheelchair adaptable\". The main plan (top left) shows a bathroom corner with a shaded square access zone labelled a, a WC symbol and basin symbol d on the bottom wall, and basin symbols b (left) and c (top). Dimensions include 350mm, 750mm and 1000mm across the top, 1100mm and 750mm down the left, 200mm Max in three places, and 450-500mm at the foot; dashed lines mark encroachment areas labelled e and f with 200mm. The Key defines a to f, including maximum encroachment of 200mm for a hand rinse basin and 300mm for a wash hand basin. A top-right elevation shows a 700mm by 1100mm shaded panel above a basin; a bottom-left elevation shows a 700mm basin with a 1100mm panel. The bottom-right detail shows a level access shower with a 1500mm diameter clear turning circle (R750mm), a 500mm dimension, and text that this may overlap fully with the shower. Four numbered notes follow."
+}

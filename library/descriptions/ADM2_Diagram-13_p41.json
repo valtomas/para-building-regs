@@ -1,0 +1,18 @@
+{
+ "key": "ADM2_Diagram-13_p41",
+ "source": "ADM2",
+ "label": "Diagram 13",
+ "page": 41,
+ "caption": "Diagram 13 An example of wheelchair spaces in a lecture theatre",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "0baa81228fdaf19b9b73b293ea395c932ce4b822bc8a356a3ee0a60f769596dd",
+ "image_sig": {
+  "w": 371,
+  "h": 313,
+  "grey": "68/P2NPKz8fGysnCwsLF8e7Vzd3dxsa7u8bCu7m8turs3d3d3bmxtMG9tLW5tLPb4/Ly8uzj5/Ly6+Ds8vLy6+n//fHv5Ony8u/f7fH7//Tp//T68PLy8/Xx8vL18//06f/05NfZ2djc2NjZ3PH/9On/89LMzMzKzszMzM3u//Tp//PZ19fX1NfX19fW7//06f/z29nZ2dbY2dnZ2O//9Oj+7+bk3t7i4+Tk5N7q/vPh5+j64+Pt5Ovs7+b/6ujn6f/369Xw7uLc7PDw8PT/9On/////////9f////////Tp///////My8/6///////05/Ly8vLy8vLy8vLy8vLy7Q=="
+ },
+ "reviewed": false,
+ "description": "This is a plan (top view) headed \"Diagram 13 An example of wheelchair spaces in a lecture theatre\". It shows a lecture hall with seating laid out as two banks of horizontal rows, one on each side of a central vertical aisle. At the four ends of the seating — top left, top right, bottom left and bottom right — the words \"In and out\" are written, each associated with a small bracketed opening that indicates an access point to the rows. In the front (lower) part of the hall, on the left, the label \"Demonstration table\" points to a rectangular table; on the right, the label \"Lectern\" points, with an arrow, to a small lectern shape. Below these, a horizontal line at the very front is labelled \"Wall mounted projection screen\". The central aisle runs from the front screen area back to the rear, linking the two seating banks.",
+ "first_draft": "This is a plan (top view) headed \"Diagram 13 An example of wheelchair spaces in a lecture theatre\". It shows a lecture hall with seating laid out as two banks of horizontal rows, one on each side of a central vertical aisle, with a gap between the rows for passage. At the four ends of the seating — top left, top right, bottom left and bottom right — the words \"In and out\" are written, each associated with a small bracketed opening that indicates an access point to the rows. The same \"In and out\" labels appear at the front corners of the hall. Across the front (lower) edge, on the left, the label \"Demonstration table\" points to a rectangular table; on the right, the label \"Lectern\" points to a small lectern shape marked with an arrow. Below these, a horizontal line at the very front is labelled \"Wall mounted projection screen\". The central aisle runs from the front screen area back to the rear, linking the two seating banks."
+}

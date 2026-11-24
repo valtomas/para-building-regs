@@ -1,0 +1,18 @@
+{
+ "key": "ADM1_Diagram-3.4_p41",
+ "source": "ADM1",
+ "label": "Diagram 3.4",
+ "page": 41,
+ "caption": "Diagram 3.4 | Minimum door and hall widths and restrictions on localised obstructions\nDiagram 3.5 | Outward opening doors in a corner Wheelchair storage and transfer space",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "f50d41126c0c7d467c9df45de9b56bc618b71f7ab662a5d0f72d03edb6f07e41",
+ "image_sig": {
+  "w": 737,
+  "h": 395,
+  "grey": "9/j4+Pj4+Pj4+Pj4+Pj4+Pv///////////j////0///7///////////x////8f//++vh5+Hn6Ojo5ejh3uHx//v4+v/z////8P//7vD69fb7+Pb99P///PD//+vv9fPz++fk4+fr8Ozf6+vn4+z8//v01e////Hv8P//8trv///7//z/+Pnu9+f6//nv8///+/////D5//Lp79na4v////v////x7fP46vfo5OX2///7///////u9evs19jk/v//+///////8+nu6uzs7O3w//v////////////////////EuLi4uLi4uLi4uLi4uLi4gWNaYmFiY2JhYWFjYlpPTw=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a single floor plan, captioned in a green band at the foot as \"Diagram 3.4 Minimum door and hall widths and restrictions on localised obstructions\". It shows a horizontal hall or landing bounded at the top by a wall line with two short stubs, and three doorways with swing arcs set into the lower walls. On the left, a dashed line extends horizontally, with vertical measures of 900mm and 1050mm from the top wall; a double‑headed arrow line beneath is labelled \"Obstruction 2m max.\", and the left door leaf is dimensioned 850mm. In the centre, a vertical wall stub (nib) carries a 300mm dimension, alongside 300mm, 1500mm and 1200mm dimensions at the door. On the right, a 1050mm vertical measure is marked \"a\", to the right of which is a grey shaded zone dimensioned 800mm by 200mm, with a 1200mm door width and an 850mm swing at the far right edge. A key box defines the grey shade as \"Localised obstruction not permitted in shaded zone\", \"a\" as \"Hall or landing width dictated by position of door and nib\", the dashed line as \"Permitted obstruction\", and adds \"*all dimensions are minimum except where noted\".",
+ "first_draft": "The drawing is a single floor plan, captioned in a green band at the foot as \"Diagram 3.4 Minimum door and hall widths and restrictions on localised obstructions\". It shows a horizontal hall or landing bounded at the top by a wall line with two short stubs, and three doorways with swing arcs set into the lower walls. On the left, a dashed line extends horizontally, with vertical measures of 900mm and 1050mm from the top wall; a double‑headed arrow line beneath is labelled \"Obstruction 2m max.\", and the left door leaf is dimensioned 850mm. In the centre, a vertical wall stub (nib) carries a 300mm dimension, alongside 300mm, 1500mm and 1200mm dimensions at the door. On the right, a grey shaded zone marked \"a\" is dimensioned 800mm by 200mm within a 1050mm vertical measure, with a 1200mm door width and an 850mm swing at the far right edge. A key box defines the grey shade as \"Localised obstruction not permitted in shaded zone\", \"a\" as \"Hall or landing width dictated by position of door and nib\", the dashed line as \"Permitted obstruction\", and adds \"*all dimensions are minimum except where noted\"."
+}

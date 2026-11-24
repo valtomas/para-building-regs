@@ -1,0 +1,18 @@
+{
+ "key": "ADM2_Diagram-5_p24",
+ "source": "ADM2",
+ "label": "Diagram 5",
+ "page": 24,
+ "caption": "Diagram 5 External steps and stairs – key dimensions",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "589eabaa282c6472001224379c7b3112c66bfa48196d0f48343b4a5f6d1f0c97",
+ "image_sig": {
+  "w": 407,
+  "h": 281,
+  "grey": "6dXW1c7O0M7S19HM0uv5+ejExdXMvLrGtcDIt8fe+Pjx6enpvLCfqKW56enp6fj43Nvb29vb29vb29vb29vu+Ov/////////////////9e/r/////9/Kz/f///////Xr6////Pf78PL6+fv////16+v///ro4fL9///5////9evr//b54fT26eb31uH///Xr6//7+/L++/////7////16+PO5//7/uvv8/jn2+n09evr//v/+Ob5////5NHm8PXr6/zr8On7+/v7+ubh5uj16+v/////////////////9evb4eHh4eHh4eHh4eHh4e7r////////////////////6w=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a side section of an external flight of stairs rising from left to right, with a sloping rail above the steps. A note at the top reads \"900mm to 1000mm above pitch line\", indicating the height of the rail measured from the sloping pitch line. A vertical dimension arrow on the left is labelled \"300mm m.h.\". On the left, a vertical dimension reads \"900mm to 1100mm\". On the right, a horizontal dimension near the top of the flight reads \"300mm min.\", a vertical dimension reads \"900mm to 1100mm\", and a note at the right-hand end reads \"12 risers max. (going less than 350mm) 16 risers max. (going 350mm or more)\". The steps are drawn as a series of right-angled treads and risers, with the rail following their slope above them, and dashed projection lines link the dimension figures to the relevant points on the stair and rail.",
+ "first_draft": "The drawing is a side section of an external flight of stairs rising from left to right, topped by a sloping rail. A dimension line at the top reads \"900mm to 1000mm above pitch line\", indicating the height of the rail measured vertically from the sloping pitch line. A vertical arrow in the centre is labelled \"300mm m.h.\". On the left, a vertical dimension reads \"900mm to 1100mm\", and a short horizontal dimension near the upper part of the flight reads \"300mm min.\". On the right, a second vertical dimension reads \"900mm to 1100mm\", and a note at the right-hand end reads \"12 risers max. (going less than 350mm) 16 risers max. (going 350mm or more)\". The steps are drawn as a series of right-angled treads and risers, with the rail following their slope above them, and dashed projection lines link the dimension figures to the relevant points on the stair and rail."
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADM1_Diagram-3.3_p39",
+ "source": "ADM1",
+ "label": "Diagram 3.3",
+ "page": 39,
+ "caption": "Diagram 3.3 | Features associated with principal private entrance",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "002f612cff4f246ce913e9a0b3f17b1cb9a1d90a3bc07453bca7b62a826d9c63",
+ "image_sig": {
+  "w": 737,
+  "h": 1068,
+  "grey": "+fz8+Pnz/Pz88/z2/Pz8/Pv3++77+/////P/9P/////7+f/u/f77/f34//T/////+/P/6vv78vX78//0//////v3/+3///n85vj/9P/////7+f/t+/n///Dx//T/////+vj78eT39/fl9P/3/P////n37Off9ur17vHw9/n////7//30+/7+/f726erv8/H3+//19Pv+/f399uzh5ufm+fv//fT4/Pz8+/Xs4OTv8vn7//ny9fv1+vv16+Df3u79+/////n//fr87/L39/v///v////3+vb1+ur0///////7//fv5ufx5+/n7vP3////u62praytra2sqqCfnp+foQ=="
+ },
+ "reviewed": false,
+ "description": "This drawing is a plan showing the approach to a principal private entrance, arranged vertically from bottom to top. At the base a path (c), 1200mm wide, includes a garden gate (a) of 850mm clear opening width and a 300mm nib (b). Above this is a level landing area (d), drawn as a dotted rectangle crossed with an X, dimensioned 1500mm by 1500mm, with a dotted canopy (h) within it; an activated light (g) is shown to the left of the landing, at the level of the threshold. An accessible threshold (e) sits at the top edge of the landing. Beyond it a private main entrance door (f) is shown open, with an 850mm clear opening width, a 200mm nib to following edge (i) and a 150mm recess for letter cage (k). A 300mm nib to leading edge (j) is marked. A side clearance zone (l), 1800mm long, and a dashed 1500mm clear turning circle (m) occupy the upper area, with a localised obstruction (n) at the top right. A key on the right lists items a to n, and a footnote states all dimensions are minimum except where noted.",
+ "first_draft": "This drawing is a plan showing the approach to a principal private entrance, arranged vertically from bottom to top. At the base a path (c), 1200mm wide, includes a garden gate (a) of 850mm clear opening width and a 300mm nib (b). Above this is a level landing area (d), drawn as a dotted rectangle crossed with an X, dimensioned 1500mm by 1500mm, containing a dotted canopy (h) and an activated light (g). An accessible threshold (e) sits at the top edge of the landing. Beyond it a private main entrance door (f) is shown open, with an 850mm clear opening width, a 200mm nib to following edge (i) and a 150mm recess for letter cage (k). A 300mm nib to leading edge (j) is marked. A side clearance zone (l), 1800mm long, and a dashed 1500mm clear turning circle (m) occupy the upper area, with a localised obstruction (n) at the top right. A key on the right lists items a to n, and a footnote states all dimensions are minimum except where noted."
+}

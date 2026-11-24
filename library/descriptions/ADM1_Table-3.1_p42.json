@@ -1,0 +1,17 @@
+{
+ "key": "ADM1_Table-3.1_p42",
+ "source": "ADM1",
+ "label": "Table 3.1",
+ "page": 42,
+ "caption": "Table 3.1 Minimum area of general built-in storage",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "26f561a329d3031e36777543542790e136878aab8eb16e726433763ca59a588d",
+ "image_sig": {
+  "w": 756,
+  "h": 96,
+  "grey": "1cjIyMjIyMjIyMjIyMjI0srAwsjCyLvGyMjIyMjIyNCoinOHiYN9g4rIyMjIyMjQqYRxbntqb35uyMjIyMjI0NLIyMjIu8jIu8jIyMjIyNDSyMjIyMjIyMjIyMjIyMjQ8vPz8/Pz8/Pz8/Pz8/Pz8fv9//////////////////vm3975+v/6//n/+f/4//j76eLc+Pz/+v/7//r/+//5++ri4uLs5Orl6efn6eXr4+j7///////////////////78v7/9vf/9P/2//T/9v/1+8+5t8by/+//8f/t//D/6Pv18eXu+v/3//b/+P/4//r76OLi4uLi4uLi4uLi4uLi5g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADM2_Diagram-9_p27",
+ "source": "ADM2",
+ "label": "Diagram 9",
+ "page": 27,
+ "caption": "Diagram 9 Effective clear width of doors | Manually operated non-powered entrance doors",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "6e3ef905b3466a5cacf54d09bab8acc73ca35f48d0f2e4d613d05d24c341bb44",
+ "image_sig": {
+  "w": 372,
+  "h": 272,
+  "grey": "6sPHzMKotsGzxLCpwbm76ebKxNLOycrOyM3Lyc/Ky+Du////+Pz1///////99/Pw7v//7vHz8P/////w9O/t8O7//PHv6/D/////8vDn7fDu///m7fHw//////Hp7O3w7v//9u7v8P/////97evt8O795vrp8d/N0/Tf+u3t7fDu/uX/+v3exvr+4//6/+3w7v/p//vh7P7//+r///vt8Ov26P//7+r9//bm///45+zt/eD//+7+///94P//7/7v6fHz///q8f3+8e///+7x6e7/6uro8//////s6evq//Du59vRzt3n////3tXS3//w6Orq6urq6urq6urq6urq5g=="
+ },
+ "reviewed": false,
+ "description": "The image is a plan-view diagram headed \"Diagram 9 Effective clear width of doors\". It has two side-by-side drawings. Each shows a person's two hands reaching toward a door handle, drawn above a plan of a door leaf hinged at one side, with an arc marking the swing path and a wall line at the threshold. In the left drawing, a horizontal dimension line across the opening is labelled \"Effective clear width (door stop to projecting innersger)\", the last word being hard to read. A short dimension at the threshold edge is marked \"300mm minimum unless door is power operated\", pointing to the gap between the door leaf and a projecting stop. In the right drawing the same horizontal dimension is labelled \"Effective clear width (door stop to door leaf)\". In both, the hands sit on the approach side of the door, outside the swing arc.",
+ "first_draft": "The image is a plan-view diagram headed \"Diagram 9 Effective clear width of doors\" with the subtitle \"Manually operated non-powered entrance doors\". It has two side-by-side drawings. Each shows a person's two hands reaching toward a door handle, drawn above a plan of a door leaf hinged at one side, with an arc marking the swing path and a wall line at the threshold. In the left drawing, a horizontal dimension line across the opening is labelled \"Effective clear width (door stop to projecting innersger)\", the last word being hard to read. A short dimension at the threshold edge is marked \"300mm minimum unless door is power operated\", pointing to the gap between the door leaf and a projecting stop. In the right drawing the same horizontal dimension is labelled \"Effective clear width (door stop to door leaf)\". In both, the hands sit on the approach side of the door, outside the swing arc."
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADM1_Table-3.3_p45",
+ "source": "ADM1",
+ "label": "Table 3.3",
+ "page": 45,
+ "caption": "Table 3.3 \u0007Minimum length of kitchen worktop, including fittings and appliances, to be fitted at completion for a wheelchair adaptable dwelling",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "c60d2fc58dec2ef0cc5cd92e702455516b9571c66e0c79a094e6f527c04b0c7c",
+ "image_sig": {
+  "w": 737,
+  "h": 114,
+  "grey": "1MjIyMjIyMjIyMjIyMjIyL6wt8G/s8G/xbi0yLrFv8ipeWhhWm5nXHFbZmhnX3jBxqqyrp+xrq6joK2enKauxtLIt7/BusW4vr+7uMjIyMjSyHB0WmV0WmldYnDIyMjI0siwqJ+rsKWmmqqdyMjIyNLIyMjIyMjIyMjIyMjIyMjt7Ozs7Ozs7Ozs7Ozs7Ozs+vv+///////9//z//f/9/+La2PP/////+//s+vr/6v/08+z6//////z/+f79//r/7Obm5ubm5ubv5vDm7+bv5vP/+/X8////8P7t//D+7f/Qu7m20////9v73PzY+9r96Obj3OPm5ubm5ubm5ebm5g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

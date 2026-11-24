@@ -1,0 +1,18 @@
+{
+ "key": "ADM2_Diagram-7_p25",
+ "source": "ADM2",
+ "label": "Diagram 7",
+ "page": 25,
+ "caption": "Diagram 7 Handrail design",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "5a1c4cf2b59a5456ab90f2f4ddaa372e98db59230bda211ffb205bf09c79e938",
+ "image_sig": {
+  "w": 371,
+  "h": 597,
+  "grey": "7NDN2djGxsfLxs/q6urq8Ob39/j38vPy+Pjn6ebj9O/p8ebf8Obq6fD47erq6u3u6fDw//v5+vr56+fv+v//9Onw7//++Pb3/P348fX///Tp8Oz///r4++3z//r6///06fHm+Pj4+/z6+Pj4////9Onw8P////////////////Tp///////47PD8///////06f////n79///+///////9On/+/z39vr///v///////Tp//jw8/H////35+z+///06f/78unn6ezo8ufz////9On////////96/D///////Tp/////////evw///////06Pj4+Pj4+Pj19vj4+Pj48A=="
+ },
+ "reviewed": false,
+ "description": "The drawing, titled Diagram 7 Handrail design, consists of two sections. The upper section shows a wall on the left with two handrail cross-sections. The left profile is a circle labelled \"Circular handrail 32mm to 50mm diameter\", with a horizontal dimension of \"50mm to 75mm\" from the wall to the edge of the circular handrail. The right profile is a rounded shape labelled \"Non-circular handrail 50mm wide and 39mm deep having rounded edges\", with a \"15mm min. radius\" indicated at the corner. A vertical dimension of \"50mm min.\" is shown between the two cross-sections, to the right of the circular handrail. The lower section shows a handrail on a post standing on a horizontal surface with a vertical edge, the edge being labelled \"Ramped or stepped access\". A horizontal dimension of \"50mm max.\" runs from the edge of the access to the centre of the handrail, and a vertical dimension of \"50mm min.\" runs from the base to the bottom of the handrail.",
+ "first_draft": "The drawing, titled Diagram 7 Handrail design, consists of two sections. The upper section shows a wall on the left with two handrail cross-sections. The left profile is a circle labelled \"Circular handrail 32mm to 50mm diameter\", with a horizontal dimension of \"50mm to 75mm\" from the wall to its centre. The right profile is a rounded shape labelled \"Non-circular handrail 50mm wide and 39mm deep having rounded edges\", with a \"15mm min. radius\" indicated at the corner. A vertical dimension of \"50mm min.\" is shown below the handrails. The lower section shows a handrail on a post above a sloped surface labelled \"Ramped or stepped access\". A horizontal dimension of \"50mm max.\" runs from the edge of the access to the centre of the handrail, and a vertical dimension of \"50mm min.\" runs from the base to the bottom of the handrail."
+}

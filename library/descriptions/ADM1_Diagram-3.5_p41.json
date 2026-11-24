@@ -1,0 +1,18 @@
+{
+ "key": "ADM1_Diagram-3.5_p41",
+ "source": "ADM1",
+ "label": "Diagram 3.5",
+ "page": 41,
+ "caption": "Diagram 3.5 Outward opening doors in a corner",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "57bd93ca1675be4d187486995c83411f4c436ca452cfaec1b17cebcea314c9dd",
+ "image_sig": {
+  "w": 742,
+  "h": 398,
+  "grey": "5tbW1tbW1tbW1tbW1tbW2vf4+Pj4+Pj4+Pj4+Pj4+Pj7///////47f//////////+//1////9+v6////9f////v/8Pz////0+P////P5///7+fPy+P356v/w+vvx9PX56u799vj42PX/9frz+fT1+en0//f4/Pn3////8fjz///t7P/19P//+v/////v/v7/+//4////6e7////97Pz///v07f///+/56/T/8fX////78//////v//////T66/P/++vk////7OD////w4P////v5+v////r6//3t6+nw7/LGurq6urq6urq6t7e3tre3gmNZY2JjXmFPT09PT09PTw=="
+ },
+ "reviewed": false,
+ "description": "This drawing presents three plan-view diagrams, labelled Figure 3.5A, 3.5B and 3.5C, illustrating outward opening doors arranged in a corner, the open space in each being marked \"Circulation area\". Figure 3.5A shows a corner wall with one door swinging out at the upper right and another at the bottom; a vertical dimension of 800mm is marked on the left wall between the two door leaves. Figure 3.5B shows a similar corner, with a horizontal dimension of 800mm across the top between two doors and a vertical dimension of 300mm on the left wall, the lower door swinging out into the area. Figure 3.5C depicts three doors around the corner, each with a swing arc, and a dashed circle drawn over the corner space; a diagonal dimension line across this circle is marked 1500mm. A footnote reads \"*all dimensions are minimum except where noted\". The bottom banner reads \"Diagram 3.5 Outward opening doors in a corner\".",
+ "first_draft": "This drawing presents three plan-view diagrams, labelled Figure 3.5A, 3.5B and 3.5C, illustrating outward opening doors arranged in a corner, the open space in each being marked \"Circulation area\". Figure 3.5A shows a corner wall with one door swinging out at the upper right and another at the bottom; a vertical dimension of 800mm is marked on the left wall between the two door leaves. Figure 3.5B shows a similar corner, with a horizontal dimension of 800mm across the top between two doors and a vertical dimension of 300mm on the left wall, the lower door swinging out into the area. Figure 3.5C depicts three doors around the corner, each with a swing arc, and a dashed circle drawn over the corner space; a diagonal dimension line across this circle is marked 1500mm. A footnote reads \"*all dimensions are minimum except where noted\". The bottom banner reads \"Diagram 3.5 Outward opening doors in a corner\"."
+}
