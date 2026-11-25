@@ -463,6 +463,23 @@ same build to check that moving the engine from b12359 changed nothing.
 - **Memory**: loaded by the built-in engine at the app's 32K context (4 slots, Vulkan), Inkling took 22.4 GB (21.9 GiB) of
   graphics memory, about 1 GB more than the size-based guess. `"card_gb": 23` in `models.json`: it is suggested from a
   24 GB card, and a 20 GB card gets gpt-oss 20B.
+- **The file listed is ggml-org's**, not Unsloth's: `ggml-org/Inkling-2-Mini-GGUF`, `Inkling-2-Mini-IQ4_NL.gguf` (17.6 GB,
+  imatrix, 4-bit experts, Q8_0 elsewhere). It is a plain `.gguf` in the repo, so apps before 0.2.8 that take the engine
+  update can download it too; Unsloth's needed `"remote"`, which they don't know, and that support was taken out
+  again. Asked the 36 questions twice on b12611:
+
+| Model | File | Right figures | Searched | Cited | Right passage cited | Made-up ids removed | Figures flagged | Extract-only citations | Median time |
+|---|---|---|---|---|---|---|---|---|---|
+| Inkling 2 Mini IQ4_NL, run 1 | 17.6 GB | 34/36 | 36/36 | 36/36 | 32/36 | 0 | 6 | 32 of 171 | 72 s |
+| Inkling 2 Mini IQ4_NL, run 2 | 17.6 GB | 35/36 | 36/36 | 36/36 | 32/36 | 2 | 6 | 39 of 186 | 81 s |
+
+  The same four passage misses as Unsloth's file. The figure misses are the check's wording, not the answers: both
+  runs said rightly that the NHBC Standards aren't in the library, in words the check doesn't match ("not in this
+  library", "aren't actually in the library"), and run 1 gave the cladding class as "A2-s1, d0 or better" without
+  naming A1. The two made-up ids (`r3788`, `r2`) were removed and both answers were right without them. One NHBC
+  answer is counted as crediting the person's files: it offered to check the Standards "if you add it to your files".
+  Slowest answers 285 and 348 s. Loaded, it took 22.7 GB of graphics memory (23,202 MiB above the idle 2,128), so
+  `card_gb` 23 stands.
 
 ## Repeating the tests
 

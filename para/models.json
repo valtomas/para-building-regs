@@ -25,16 +25,15 @@
     {
       "id": "inkling-2-mini",
       "name": "Inkling 2 Mini",
-      "repo": "unsloth/Inkling-2-Mini-GGUF",
-      "remote": "Mainline_Support/Inkling-2-Mini-UD-Q4_K_XL.gguf_file",
-      "file": "Inkling-2-Mini-UD-Q4_K_XL.gguf",
+      "repo": "ggml-org/Inkling-2-Mini-GGUF",
+      "file": "Inkling-2-Mini-IQ4_NL.gguf",
       "size_gb": 17.6,
       "min_ram_gb": 32,
       "card_gb": 23,
       "context": 32768,
       "licence": "Apache 2.0",
-      "about": "The most accurate in our tests, twice over, and it cites from a search result without opening the passage less often than the other big ones. Slow: a minute and a half an answer, sometimes five. For 32 GB or more.",
-      "tested": "36 of 36"
+      "about": "The most accurate in our tests. It sometimes cites from a search result without opening the passage, which the app points out. Slow: well over a minute an answer, sometimes five. For 32 GB or more.",
+      "tested": "34 to 36 of 36"
     },
     {
       "id": "nemotron-3.5-lightning-30b",

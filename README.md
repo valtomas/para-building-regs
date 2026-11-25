@@ -111,7 +111,7 @@ regulations, more than once; the app shows the score beside each model too:
 | Model | Suggested from (computer's memory) | Suggested from (graphics card) | Download | Right, of our 36 test questions | Licence |
 |---|---|---|---|---|---|
 | NVIDIA Nemotron 3.5 Lightning 30B-A3B | 48 GB | 32 GB | 25.5 GB | 32 to 35 | OpenMDW 1.1 |
-| Inkling 2 Mini | 32 GB | 24 GB | 17.6 GB | 36 | Apache 2.0 |
+| Inkling 2 Mini | 32 GB | 24 GB | 17.6 GB | 34 to 36 | Apache 2.0 |
 | gpt-oss 20B | 24 GB | 16 GB | 12.1 GB | 32 | Apache 2.0 |
 | IBM Granite 4.2 8B | 16 GB | 11 GB | 5.3 GB | 33 to 35 | Apache 2.0 |
 | IBM Granite 4.2 3B | 8 GB | 6 GB | 2.2 GB | 29 to 31 | Apache 2.0 |
@@ -120,8 +120,8 @@ The app puts that one model forward, marked "Recommended for this computer"; the
 "Other models", including Qwen3.5 35B-A3B (22.2 GB, 32 or 33 right), which is no longer suggested because it often
 cites a search result without opening the passage.
 
-Inkling 2 Mini got every question right in both of its runs, but it is the slowest: about a minute and a half an
-answer on a fast computer, sometimes five. Granite 4.2 8B is small and nearly as accurate, also slow, about a minute
+Inkling 2 Mini is the most accurate in our tests (its few misses were in how it worded a right answer), but it is the
+slowest: well over a minute an answer on a fast computer, sometimes five. Granite 4.2 8B is small and nearly as accurate, also slow, about a minute
 an answer and longer on a laptop. You can pick either on a bigger computer, or the 3B on a 16 GB one if you'd rather
 have quicker answers and check them more.
 

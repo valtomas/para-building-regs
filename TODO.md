@@ -17,7 +17,7 @@ no longer rules CUDA out, and the note under an answer names the citations made 
 0.2.7 (16 November) suggests Granite 4.2 8B only from a graphics card of about 11 GB (it split between the card and the
 processor on an 8 GB Quadro RTX 4000, where the 3B ran fully on the card at about 80 tokens a second), and queues a
 download pressed while another is running.
-0.2.8 (22 November) adds Inkling 2 Mini (36 of 36 in two runs; suggested from 32 GB of memory or a 24 GB graphics
+0.2.8 (25 November) adds Inkling 2 Mini (34 to 36 of 36 in four runs; suggested from 32 GB of memory or a 24 GB graphics
 card), moves the AI engine to llama.cpp b12611, the first build that reads it, and stops suggesting Qwen3.5 35B-A3B.
 The checks below were left open at 0.2.0. Delete this file when it's empty.
 
