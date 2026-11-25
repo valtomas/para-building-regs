@@ -1,0 +1,18 @@
+{
+ "key": "ADR1_Diagram-2_p14",
+ "source": "ADR1",
+ "label": "Diagram 2",
+ "page": 14,
+ "caption": "Diagram 2 | \u0007\u0007Requirement RA1 – schematic example of gigabit-ready physical infrastructure",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "84ee53152826f521ce8be9e740a0224be17800d16b4f6ab85c339e0b0b30b334",
+ "image_sig": {
+  "w": 747,
+  "h": 392,
+  "grey": "9/j19fj4+Pj4+Pj4+Pj49vv70ND7//////////////v738HB3/////////L////7+9+ws97///////3n/P//+/vbqavc////8vD25/n///v74L+/2fDs/+zl7u30///7++DBtcLm7f/r5O7h7f//+/veyMjG7vf3nYrLz+P39/r78efm5fHx7OXg9e3r6+v4+/z18/rl5Oj////+5uLl+fv/////7u70/////+Tf3fn5/Pz8/Pz8/Pz8/Pz8/Pz5g2BUY2FdYWBjYGJhYmFgcnhRUmFgYWNgYWJfY2BkU2x4T1JhYl5hYWNhX2BeYV90f09PY2FfX2NgYGRiW09Pcw=="
+ },
+ "reviewed": false,
+ "description": "This schematic diagram sits above a green banner reading 'Diagram 2' and 'Requirement RA1 – schematic example of gigabit-ready physical infrastructure from the network termination point to a point as close as is reasonably practicable to the network distribution point, where there is no right to install infrastructure in land to reach the network distribution point'.\n\nOn the left, a grey house shape stands above the label 'Dwelling/building containing more than one dwelling'. Inside, a hollow green circle is labelled 'Network termination point (for each dwelling in building, see Diagrams 5 and 6)'. A green line runs down and right to a second green circle at the house edge, labelled 'Access point/ common access point'.\n\nFrom it a green line runs down and right to a hollow green circle below the ground line, labelled 'Gigabit-ready physical infrastructure (ducting)'.\n\nFurther right on the ground line, a solid black bar is labelled 'Land in relation to which the developer has no right to install infrastructure'. Beyond it a square outline is labelled 'Network distribution point'; a black line drops from it and runs right, labelled 'Gigabit-capable public electronic communications network (spine network)'.",
+ "first_draft": "This schematic diagram sits above a green banner reading 'Diagram 2' and 'Requirement RA1 – schematic example of gigabit-ready physical infrastructure from the network termination point to a point as close as is reasonably practicable to the network distribution point, where there is no right to install infrastructure in land to reach the network distribution point'.\n\nOn the left, a house outline stands above the label 'Dwelling/building containing more than one dwelling'. Inside, a green filled circle is labelled 'Network termination point (for each dwelling in building, see Diagrams 5 and 6)'. A green line runs down and right to a second green circle at the house edge, labelled 'Access point/ common access point'; a small square sits on the line beside the house.\n\nFrom it a green line runs right along the ground line to a hollow green circle, labelled 'Gigabit-ready physical infrastructure (ducting)'.\n\nFurther right on the line a solid black bar is labelled 'Land in relation to which the developer has no right to install infrastructure'. Beyond it a square outline is labelled 'Network distribution point'; a black line drops from it through a small open square and runs right, labelled 'Gigabit-capable public electronic communications network (spine network)'."
+}

@@ -1,0 +1,18 @@
+{
+ "key": "ADM-corrections_Diagram-3.17_p7",
+ "source": "ADM corrections",
+ "label": "Diagram 3.17",
+ "page": 7,
+ "caption": "Diagram 3.17 Examples of wheelchair accessible bathrooms with both bath and shower",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "4e57833966ba898a1df643d68f6415a85895e188470c9485d7b36abd4eb8fe32",
+ "image_sig": {
+  "w": 754,
+  "h": 831,
+  "grey": "+vz49/Tr8PLx+Pr3+/v8+vz17eTY4Njd3/nh2eHk8/z88N/o29/W2uXz9vf6+v78/OPo69zXzdbg6+/t7PP//Pz18PTj2M7P3Pf///////z8+ff37Oby6PH8///////8/P//////+PT//////////Pz///f68vb1+f/x7Pf5//z8//fg4Nvr7PD38Ort8f/8/P/t6ufc7Orh7/Lt6/b3/Pz75fLez+Pp5fXs6u/y/Pz8+Ovs1sfZ2dvu7ufk7ff8/P/k2djV3t7f7P///////Pz+7+nj8Ofl6Pb///////z8////9Pvy7uvu/P/////8sZ+coJyenqCgnp6fn5qXqA=="
+ },
+ "reviewed": false,
+ "description": "This drawing shows two bathroom floor plans, Example 3.17A above and Example 3.17B below. In 3.17A the top dimension line reads 3100mm, with 1000mm, 800mm, 450mm and 150mm marked; the left edge is 2200mm overall with 1700mm and 1200mm marked, the right edge 750mm. The plan contains a bath top left, a WC top right, a basin on the right, and a door with a swing arc at bottom right. Dashed lines and circles mark access and turning zones, with a leader to \"1000 x 1000 x 100mm zone kept clear to enable fitting of rails.\" Its caption reads \"Example 3.17A – wheelchair accessible bathroom with bath and 1000 x 1200mm shower with capacity for larger shower if bath removed.\" In 3.17B the top line reads 2900mm split into 700mm, 1000mm and 1200mm; the left edge is 2600mm with 1700mm and 800mm; the right edge shows 150mm, 1200mm, 800mm and 450mm. It shows a bath at left, a WC bottom right, a basin bottom left and a door with swing arc at the bottom, with dashed zone markings and the same rails note. Its caption reads \"Example 3.17B – wheelchair accessible bathroom with bath and 1200 x 1200mm shower.\" Notes state dimensions are for illustration only, WC doors must open outwards, and stack and drainage positions must be clear of access zones.",
+ "first_draft": "This drawing shows two bathroom floor plans, Example 3.17A above and Example 3.17B below. In 3.17A the top dimension line reads 3100mm, split into 1000mm, 800mm, 450mm and 150mm; the left edge is 2200mm overall with 1700mm and 1200mm marked, the right edge 750mm. The plan contains a bath top left, a WC top right, a basin on the right, and a door with a swing arc at bottom right. Dashed lines and circles mark access and turning zones, with a leader to \"1000 x 1000 x 100mm zone kept clear to enable fitting of rails.\" Its caption reads \"Example 3.17A – wheelchair accessible bathroom with bath and 1000 x 1200mm shower with capacity for larger shower if bath removed.\" In 3.17B the top line reads 2900mm split into 700mm, 1000mm and 1200mm; the left edge is 2600mm with 1700mm and 800mm; the right edge shows 1200mm, 800mm and 450mm. It shows a bath at left, a WC bottom right, a basin bottom left and a door with swing arc at the bottom, with dashed zone markings and the same rails note. Its caption reads \"Example 3.17B – wheelchair accessible bathroom with bath and 1200 x 1200mm shower.\" Notes state dimensions are for illustration only, WC doors must open outwards, and stack and drainage positions must be clear of access zones."
+}

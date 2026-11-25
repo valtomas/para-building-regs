@@ -1,0 +1,18 @@
+{
+ "key": "ADM2_Diagram-16_p44",
+ "source": "ADM2",
+ "label": "Diagram 16",
+ "page": 44,
+ "caption": "Diagram 16 An example of a shared refreshment facility | Sleeping accommodation",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "877067e2a2e704a4dd86dcfd3ab244f571ba1cff19c414cf4063858f39054fed",
+ "image_sig": {
+  "w": 371,
+  "h": 453,
+  "grey": "6MnC1s/Fy7y8xcbIubzn8fLp6enpybu8vse7ttLp6fDg1tfZ2tfs7Ozs7Ozs7Ozo6fP6/Pzy/Pz8/Pz8+v//9Onw9/////////////zy7+/p//j/8/b28O3i6Ovx6PD06f/4//T79eObtfnw9//09On/+Pnx7PLYvNLm4uzy5vTp//j79PXo4+7w9v/6+eT06f/n7PT/+Onx/fz//un09On+9vfm8Pfr7//9/v/69PTp5+z33PT45NnZ2un/+fT06e///9/n7OXX0+n///r09On////0/P/v+/r69Pv99PTp////8en1/P//8s3e6PH05/b29vbp5fb29vPn6PL27w=="
+ },
+ "reviewed": false,
+ "description": "This is a front elevation illustrating a shared refreshment facility. The drawing shows a worktop with several appliances. At the top, a label \"Clear space under worktop\" points down to the worktop, and a \"Floor unit\" is indicated on the right. On the left, a vertical dimension of \"80mm\" is shown. Below this, a \"Microwave oven\" is depicted as a rectangle within a counter section. The main worktop is shown across the centre, featuring a sink with a tap and a hob drawn as a rectangle with horizontal lines and a control dial. A label indicates the \"Work surface 850mm above floor level\", and another points to the \"Refrigerator under worktop\". On the right side, a swing-out shelf is drawn, projecting from the counter. At the bottom, a \"Floor unit\" is marked, and the bottom right corner is labelled as a \"1500mm x 1500mm Wheelchair turning space\".",
+ "first_draft": "This is a plan view illustrating a shared refreshment facility. The drawing shows a worktop with several appliances. At the top, a label \"Clear space under worktop\" points to the area above a dashed line, and a \"Floor unit\" is indicated on the right. On the left, a vertical dimension of \"80mm\" is shown. Below this, a \"Microwave oven\" is depicted as a rectangle within a counter section. The main worktop is shown in the centre, featuring a sink with a tap, a four-burner hob, and a refrigerator at the top. A label indicates the \"Work surface 850mm above floor level\", and another points to the \"Refrigerator under worktop\". On the right side, a swing-out shelf is drawn, projecting from the counter. At the bottom, a \"Floor unit\" is marked, and the bottom right corner is labelled as a \"1500mm x 1500mm Wheelchair turning space\"."
+}

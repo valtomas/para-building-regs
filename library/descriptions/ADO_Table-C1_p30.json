@@ -1,0 +1,17 @@
+{
+ "key": "ADO_Table-C1_p30",
+ "source": "ADO",
+ "label": "Table C1",
+ "page": 30,
+ "caption": "Table C1 \u0007Overheating risk at postcode area level in the high risk part of London",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "04b8e0a65272f4de2c82cbf6fe2b61b5a70ab4ca055088fcc2a4a1c590aac964",
+ "image_sig": {
+  "w": 756,
+  "h": 567,
+  "grey": "w7Csqa2rraytrKivrbLI0Orz8+jv8+7r8PHq7u7v7PXu+vbs9Pnv7/bz6/L18e/77Pjy5PL46+v27+fx8vHq+fT69O/4/fLy+fTw9vf17/rz+fLs9Pvu8Pjz6/P18+z67vfx5/D85On17OXu9vDn9/T6+PP3/fLy+fXw8/zz8Prz+vTx9f3w8fn17PL8+PD67ffs8fD75+j28+vr+fPn9/D58/P0/fTu+Pfx8Pv47fjz+vT19vz28vn48vP8+PD57Pfx7/D67+n28unr+PPm9u/58vL0+/Ps9/Xw8Pn26/jy+vP19vv18vn38fX79v/77vXv8PH28ez08O3v9fL69w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

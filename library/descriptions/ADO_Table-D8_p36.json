@@ -1,0 +1,17 @@
+{
+ "key": "ADO_Table-D8_p36",
+ "source": "ADO",
+ "label": "Table D8",
+ "page": 36,
+ "caption": "Table D8 \u0007Equivalent area of a window with an opening angle of α = 80°",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "2e298212277e513e06a0e9c529b4f64f9c775ef0846052da79cd7ffb86961b1c",
+ "image_sig": {
+  "w": 756,
+  "h": 437,
+  "grey": "vp+io6SnpaKioZ6qvcbG0Orn5+fn5+fn5+Xl5ufn5+j7//////n4+Pjs6u74+Pj39/j5+/j78/vx+/f78vv09+7w//vz++777vvt++777vf0+P/68vvt++z77Pvs++73+/////3/8//z//L/9v/1+/v///vy++777Pvu++/78Pf7///79Pvs++z78Pvu++73+///+/T77/vz+/L78fvx9/v///v2+/D78vvw+/L78ff7///79fvu+/H77/vw+/D3+///+/T78Pvy+/H78fvw9/v///vz++777fvw++377/f7///78vvw+/D77/vt++339/j4+Pb47vjt+O747vju9g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

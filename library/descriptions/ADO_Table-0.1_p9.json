@@ -1,0 +1,17 @@
+{
+ "key": "ADO_Table-0.1_p9",
+ "source": "ADO",
+ "label": "Table 0.1",
+ "page": 9,
+ "caption": "Table 0.1 \u0007Residential buildings within the scope of this approved document",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "bddce7dde40407a0e6f1306b36e14e91fb0451506fa713f9dbe16e9dab5e5b09",
+ "image_sig": {
+  "w": 737,
+  "h": 250,
+  "grey": "xrS5trG8trm8tb64vsLIyL6cnJKUkJqYkKCLlZC3yMjq6Ojo6Ojo6Ojo6Ojo6Ojo7P///+/q6Obn4+zx//////Py8PP38vLx8vHz8fPz8/Pk29vt6d3g3d/X3eH/////7ufo6/Ls6+nq5+vs6urs8enk5+ns4ujk5eHk4eLo4/P7////7dne4N7b4+Lf3uLq+////+rj//////////////v////03Nnb3ODi3d/d4PD7////+/38/Pv///z/////9PPz8+zP0s3U8vPz8/Pz8+vn6v/v6Onq5+zp6uvp7Pby8PL/7d3b3+Hj3+vx7/P29PT09Oji5OTg4uLv9PT09A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

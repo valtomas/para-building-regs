@@ -1,0 +1,18 @@
+{
+ "key": "ADM2_Diagram-20_p54",
+ "source": "ADM2",
+ "label": "Diagram 20",
+ "page": 54,
+ "caption": "Diagram 20 Height of various fittings in toilet accommodation",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "9cbb09ae2b2f37cf262fa859565821b174e22c90c0a80a7c12e53b677865a210",
+ "image_sig": {
+  "w": 755,
+  "h": 382,
+  "grey": "z8jBub29ssC6vbPM6+vr7uTo6OTo6OTo6Ojo6Ojo6On0/////+r0z/f///H////69P/////39/X/8u/3////+vT///j78vDs5ur29vj///r0///9//bx7f/28vv9///69P/u9P/27vP/9ur7/f//+vT///z76PT9//38+Ob///r0///86PD68PP5+Pn9///69P///NXy//317/b//f//+vT/+PDm6fT0+/Hx9PL///r0////9/f4///5+Pj6///69P///8zNyPX/387L1P//+vT////w8O74/+PN0OL///r0////1tL8///49fn////67PT09PT09PT09PT09PT08g=="
+ },
+ "reviewed": false,
+ "description": "The image is a line drawing titled \"Diagram 20 Height of various fittings in toilet accommodation\", with two elevations. The left elevation shows a mirror with a grab rail on each side of it and a washbasin below. A top horizontal dimension reads \"600-700mm\"; a left vertical dimension reads \"1600mm min.\"; a right vertical dimension reads \"1100mm\". A label, \"600mm grab rail each side of mirror\", points to the right rail, and a dashed line labelled \"Centre of grab rail\" marks its centre. A lower vertical arrow reads \"height to rim of basin A. 780-800mm B. 720-740mm\". The caption reads \"Height of independent washbasin and location of associated fittings, for wheelchair users and standing people; A. For people standing; B. For use from WC\". The right elevation shows a rectangle labelled \"Mirror\" on the right, with a \"Shaver point\" and an \"Automatic hand drier\" to its left. A right vertical dimension reads \"1600mm min.\"; left vertical dimensions read \"800-1000mm\" and \"600mm\". The caption reads \"Mirror located away from washbasin suitable for seated and standing people (mirror and associated fittings used within a WC compartment or serving a range of compartments)\".",
+ "first_draft": "The image is a line drawing titled \"Diagram 20 Height of various fittings in toilet accommodation\", with two elevations. The left elevation shows a washbasin with a grab rail on each side. A top horizontal dimension reads \"600-700mm\"; a left vertical dimension reads \"1600mm min.\"; a right vertical dimension reads \"1100mm\". A label, \"600mm grab rail each side of mirror\", points to the right rail, and a dashed line labelled \"Centre of grab rail\" marks its centre. A lower vertical arrow reads \"height to rim of basin A. 780-800mm B. 720-740mm\". The caption reads \"Height of independent washbasin and location of associated fittings, for wheelchair users and standing people; A. For people standing; B. For use from WC\". The right elevation shows a rectangle labelled \"Mirror\" on the right, with a \"Shaver point\" and an \"Automatic hand drier\" to its left. A right vertical dimension reads \"1600mm min.\"; left vertical dimensions read \"800-1000mm\" and \"600mm\". The caption reads \"Mirror located away from washbasin suitable for seated and standing people (mirror and associated fittings used within a WC compartment or serving a range of compartments)\"."
+}

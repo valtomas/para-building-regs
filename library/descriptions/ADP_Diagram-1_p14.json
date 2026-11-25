@@ -1,0 +1,18 @@
+{
+ "key": "ADP_Diagram-1_p14",
+ "source": "ADP",
+ "label": "Diagram 1",
+ "page": 14,
+ "caption": "Diagram 1 | Scope of Part P Notifiable work",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "6ee6c2d444f7f203ddfadcf64b6e96b0fe481043b24403d25ae7458ba42838a0",
+ "image_sig": {
+  "w": 753,
+  "h": 508,
+  "grey": "+Pr6+vr6+vr6+vr6+vr69/fs6PH1//////////////v79vb7///67/T/+/ju9fX78ubu8v//6ubs+PLx2u7z8fbo5vb///Lp8Pr61eHx9vf33+n6///k2e36+tbx9PX3+Ob4+P//5un4/OrQ4u7i9vv////////////42NTb9vf24OX0////////+u7W6Pf39O7r9vf///////rV3/L29/fr9vbT/P/////21en48/b00unr5////////vz+///7+/7y7+H8//////nW3uj3+/j49/j4+Pn////66u7u//vj3N3d3d3d4uLi4uLi4uLjhGhZZmdaVVVVVVVVVVVVcQ=="
+ },
+ "reviewed": false,
+ "description": "A schematic drawing titled \"Diagram 1 Scope of Part P\", headed top-left \"See paragraphs 2.2 to 2.4\" and footed \"Reproduced with the permission of the Electrical Contractors' Association\". It shows four building outlines and a legend. The first outline is divided into \"Loft\", \"Dwelling\" and \"Business unit\", each marked with a green tick and an incoming arrow, with a crossed-out symbol and a meter symbol at the base. The second outline has \"Roof space\" and \"Dwelling\" ticks, a crossed-out symbol and a meter at its base, plus an external \"Business unit\" box bearing a crossed-out symbol and a meter. The third outline has \"Loft\" and \"Dwelling\" ticks, a crossed-out symbol and a meter at its base, and lines running to external boxes \"Garden electrics\" and \"Out-building\", both ticked. The right outline, headed \"Roof space\" with a green tick, stacks \"Dwellings\" entries and \"Shared facilities such as laundries, kitchens and gymnasiums\", all ticked with meters, plus a crossed-out \"Business unit\"; side labels read \"Common access\" (ticked) and \"Lifts\" (crossed out). The legend defines the crossed-out symbol as \"Intake switchgear\", a flag as \"Source of electricity supply\", and an M-in-circle as \"Electricity supply meter\".",
+ "first_draft": "A schematic drawing titled \"Diagram 1 Scope of Part P\", headed top-left \"See paragraphs 2.2 to 2.4\" and footed \"Reproduced with the permission of the Electrical Contractors' Association\". It shows four building outlines and a legend. The first outline is divided into \"Loft\", \"Dwelling\" and \"Business unit\", each marked with a green tick and an incoming arrow, with a meter symbol at the base. The second outline has \"Roof space\" and \"Dwelling\" ticks, plus an external \"Business unit\" box bearing a crossed-out symbol and a meter. The third outline, \"Loft\" and \"Dwelling\" ticks, has lines running to external boxes \"Garden electrics\" and \"Out-building\", both ticked. The right outline, headed \"Roof space\", stacks \"Dwellings\" entries and \"Shared facilities such as laundries, kitchens and gymnasiums\", all ticked with meters, plus a crossed-out \"Business unit\"; side labels read \"Common access\" (ticked) and \"Lifts\" (crossed out). The legend defines the crossed-out symbol as \"Intake switchgear\", a flag as \"Source of electricity supply\", and an M-in-circle as \"Electricity supply meter\"."
+}

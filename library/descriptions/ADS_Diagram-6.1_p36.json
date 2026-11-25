@@ -1,0 +1,18 @@
+{
+ "key": "ADS_Diagram-6.1_p36",
+ "source": "ADS",
+ "label": "Diagram 6.1",
+ "page": 36,
+ "caption": "Diagram 6.1 \u0007Electric vehicle charge points serving accessible parking spaces",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "65fa75fce44be27e76b9b5c91b5040454f360931fc2c02f94ba64314b05195f7",
+ "image_sig": {
+  "w": 747,
+  "h": 433,
+  "grey": "9/Hy8PDw8PDy+Pj4+Pj49/vw4tra2tra2/b29Ojs9fv79uLVzdrI0tz29vLp5fH7+/fOxMi9ycTL9vbv1Oby+/v75Lay2LK65v///fv8+/v7++S2steyuuX////////7+/DktrLYsrrg9vb06v3/+/v65Lay17C03fb29Of///v7++S2stiyuub////////7+/Hkwr/Zv8Xl////////+/vx5Nzc3dzc5v////////v79vDu8Orx7fL////////7+//n6uni6ero////////+/v/6+vo6efp6ur///////vVzc3Nzc3Nzc3Nzc3Nzc3ThWFbXWFgYF5gYGJhW09Pcg=="
+ },
+ "reviewed": false,
+ "description": "This is a plan view. It shows two rectangular parking bays, drawn in solid grey, set side by side within a light grey hatched area. The hatched area is indicated by two labels on the right, Footway (or access zone) and Access zone. Each bay is 2.4m wide and 4.8m deep. The hatched area is 1.2m wide on each outer side and 1.2m between the two bays, and 1.2m deep above and below the bays. Along the top edge are three hatched symbols, labelled Dropped kerb (or footway flush with road). Two green hexagon symbols, labelled Electric vehicle charge point, sit in the upper hatched area, one above each bay. Leader lines on the right hand side connect the text labels to their corresponding parts. Below the dimensions is the line Derived from concepts in BS 8300-1 and Approved Document M, volume 2. A green band along the bottom carries the diagram number and title, Diagram 6.1, Electric vehicle charge points serving accessible parking spaces.",
+ "first_draft": "This is a plan view titled Diagram 6.1, Electric vehicle charge points serving accessible parking spaces. It shows two rectangular parking bays, drawn in dark grey, set side by side within a lighter grey hatched area labelled Footway (or access zone). Each bay is 2.4m wide; a 1.2m strip labelled Access zone lies between the two bays, and a 1.2m access zone borders each outer side. Vertically, each bay is 4.8m deep, with a 1.2m access zone above and a 1.2m access zone below. Along the top edge are three hatched triangular symbols labelled Dropped kerb (or footway flush with road). Two green hexagon symbols, labelled Electric vehicle charge point, sit in the upper access zone, one positioned above each bay. Leader lines on the right hand side connect the text labels to their corresponding parts. Below the plan is the line Derived from concepts in BS 8300-1 and Approved Document M, volume 2. A green band along the bottom carries the diagram number and title."
+}

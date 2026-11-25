@@ -1,0 +1,18 @@
+{
+ "key": "ADR1_Diagram-4_p17",
+ "source": "ADR1",
+ "label": "Diagram 4",
+ "page": 17,
+ "caption": "Diagram 4 \u0007Requirement RA1 – a. schematic example of gigabit-ready physical infrastructure from the network termination point to the access point in an individual dwelling, and b. schematic example of gigabit-ready physical infrastructure from the network termination points in dwellings in a building containing more than one dwelling, in this case containing multiple dwellings, to the common access point in or on the building",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "6d364a36658629f442a0f847f6c988619fcd336d7d7f9d637b8bf79fafb433f1",
+ "image_sig": {
+  "w": 738,
+  "h": 1062,
+  "grey": "+fz8/Pz8/PPt8/z8/Pz8+fv/////9OPs8u3j8v////v7//////vx////+/H////7+//////76PPz59/q+///+/v7+/v7+fT69fnt7fj7+/r7/////PLx8ffx8fL7///7+//54ujy8u3s7fLy6OL4+/v//+ry8uba5ePe8vLq//v7///s/v713ePj7v7+7f/7+///6vDg5OPq6uLy8ur/+/v//+ry7Ojg5ufl8vLq//v7///q8vLn2ODg3vLy6f/7+///7f/79Nrh7/3//+3/++vn5+Ln5+fe5uLm5+fi5+V4VldjY2FjZGNkZGNiY2FZdk9VZGFlXFxfW15cXVtcWQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing is a two-part schematic, labelled a. and b., set within simple line outlines of buildings.\n\nPart a. shows a single dwelling with a pitched roof and two storeys. Near the base, a green rectangle is labelled \"Network termination point\" and is joined by a short horizontal line to a second green rectangle on the right, labelled \"Access point\".\n\nPart b. shows a taller building with a pitched roof and five storeys. A vertical line runs down the central column, labelled \"Ducting/ trays in riser\". On the upper four storeys, pairs of green rectangles sit on either side of this line and are linked to it by short horizontal lines; the left-hand rectangle on the third storey is labelled \"Network termination point in each dwelling\". At the base, the vertical riser line terminates in a single green rectangle to the left of the line, labelled \"Common access point\". A caption strip at the bottom reads \"Diagram 4\" and restates the requirement RA1 wording.",
+ "first_draft": "The drawing is a two-part schematic, labelled a. and b., set within simple line outlines of buildings.\n\nPart a. shows a single dwelling with a pitched roof and two storeys. Near the base, a green rectangle is labelled \"Network termination point\" and is joined by a short horizontal line to a second green rectangle on the right, labelled \"Access point\".\n\nPart b. shows a taller building with a pitched roof and four storeys. A vertical line runs down the central column, labelled \"Ducting/ trays in riser\". On each storey, pairs of green rectangles sit on either side of this line and are linked to it by short horizontal lines; the left-hand rectangle on the third storey is labelled \"Network termination point in each dwelling\". The vertical riser line terminates at the base in a green rectangle labelled \"Common access point\". A caption strip at the bottom reads \"Diagram 4\" and restates the requirement RA1 wording."
+}

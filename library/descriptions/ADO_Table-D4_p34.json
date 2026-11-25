@@ -1,0 +1,17 @@
+{
+ "key": "ADO_Table-D4_p34",
+ "source": "ADO",
+ "label": "Table D4",
+ "page": 34,
+ "caption": "Table D4 \u0007Equivalent area of a window with an opening angle of α = 40°",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "18aff9f125a073072997fa364104fd0ca7a6a98db3cb7258c183b0f0f593cde3",
+ "image_sig": {
+  "w": 756,
+  "h": 437,
+  "grey": "vqGio6SmpaKjoZ6rvsbG0Orn5+fn5+fn5+Xl5ufn5+j7//////n4+Pjs6u74+Pj39/j5+/j78/vx+/f78vv09+7w//vz++377fvs++377ff0+P/68vvu++777fvt++33+/////3/9P/z//T/9v/3+/v///vz++376/vu+/D78Pf7///79Pvt++z77fvu++73+///+/T78Pvw+/L78fvx9/v///v2++/78fvx+/H78vf7///79fvu+/D78fvw+/H3+///+/T78Pv0+/H78Pvw9/v///v0++r77vvw++777/f7///78vvt+/D77vvt++339/j4+Pb47vju+Ov47fjw9g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

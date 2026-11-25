@@ -1,0 +1,17 @@
+{
+ "key": "ADO_Table-1.1_p14",
+ "source": "ADO",
+ "label": "Table 1.1",
+ "page": 14,
+ "caption": "Table 1.1 \u0007Limiting solar gains for buildings or parts of buildings with cross-ventilation(1)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "c9194275541bcfe62290c89f5fa2a1f466a380a60903bfb01afff6caf3a0c16b",
+ "image_sig": {
+  "w": 754,
+  "h": 327,
+  "grey": "vqylqqqpoa+qoqinrKGqz8/FwLy8w76+vsC8wsO/xtT7/////+zs+f///+3t6/379vf4+Pf1+vf3+vf3+vb39ezp+fPr8vfr7fzq7fzr6/Xv7fH74fn14uj/6+v/4+Xy+////Pj78uPq+vn4+ubn7vb2+Pj19/n19/n29vn39fXk8fj48Pb58Pb59PD69vD16v////X///f///z4///3+/X2+Pj19/r09/r29vr39PXm8vj48fb58Pb59PP69u716vz///b///f///z8///2++jy+Pj29vn29vn29vr29vXn9/3//v/9/f3////////779ze2+Dd29zd9vb29vb29A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

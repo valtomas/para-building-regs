@@ -1,0 +1,18 @@
+{
+ "key": "ADR2_Diagram-1_p13",
+ "source": "ADR2",
+ "label": "Diagram 1",
+ "page": 13,
+ "caption": "Diagram 1 \u0007Schematic example of the in-building physical infrastructure for a singleoccupancy building",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "af8a87ed767d5d16d9541f6617c131bfb3e8d939920621e5bdf606b62ef2fb7e",
+ "image_sig": {
+  "w": 737,
+  "h": 523,
+  "grey": "+Pr6+vr6+vnv+vr6+vr6+vv///////7k6u7////////7//////zk/P/w7P//////+//////d4+Xl5dny//////v/////7/3////t///////7/////+/9////7f//////+//////v/f///+3///////v/////7+Xm5ubc///////7/////+/9////7f//////+/////DV5On//+3///////v////9zez8///t///////7+vn5+d74+fn57vn5+fn8+//////k9+7w8vP08fH///vn3Nbl/Pbl5eXl5O/y/v+fi4SMi4uLi4uLjIqLioWBe1NTYV9iUlJUU1JTUlRQTw=="
+ },
+ "reviewed": false,
+ "description": "This is a schematic line drawing, not a plan, section or elevation, captioned \"Diagram 1 Schematic example of the in-building physical infrastructure for a single-occupancy building\". It depicts a simple light-green outline of a two-storey building with a pitched roof, drawn above a horizontal ground line. On the lower part of the building's left-facing wall are two small green square symbols joined by a short solid line; the left-hand square is labelled \"Access point\" and the right-hand square \"Network termination point\". From the \"Access point\" square a thick black line drops down, curves leftwards below the ground line and continues as a dashed line running off to the left edge, labelled \"Service provider's duct\". To the lower right of the building is a block of text reading: \"NOTE: The diagram shows future connectivity by underground ducts for network cables outside the building. However, it should be noted that alternative forms of connectivity may be used.\"",
+ "first_draft": "This is a schematic line drawing, not a plan, section or elevation, captioned \"Diagram 1 Schematic example of the in-building physical infrastructure for a single-occupancy building\". It depicts a simple light-green outline of a two-storey building with a pitched roof, drawn above a horizontal ground line. On the lower part of the building's left-facing wall are two small green square symbols joined by a short solid line; the left-hand square is labelled \"Access point\" and the right-hand square \"Network termination point\". From the \"Access point\" square a thick black line drops down, curves leftwards below the ground line and continues as a dashed line running off to the left edge, labelled \"Service provider's duct\". To the lower right of the building is a block of text reading: \"NOTE: The diagram shows future connectivity by underground ducts for network cables outside the building. However, it should be noted that alternative forms of connectivity may be used.\""
+}

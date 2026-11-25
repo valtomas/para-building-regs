@@ -1,0 +1,18 @@
+{
+ "key": "ADP_Diagram-2_p15",
+ "source": "ADP",
+ "label": "Diagram 2",
+ "page": 15,
+ "caption": "Diagram 2 | Notifiable work in rooms containing a bath or shower Non-notifiable work",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "070c18469e2780d77c26537a4bb5baa98f97e997953ae02f67484bc3d6820451",
+ "image_sig": {
+  "w": 737,
+  "h": 591,
+  "grey": "9evo7vD6+vr6+vr6+vr6+vv/+vr/////+/r9///////7//3/+vj6+v79//z/////+//86/v5////+/D2/P////v/+uLi4+nl4dva5/j////7//jW0szW1tbT1ub5////+//41tPR1tbW09bm+f////v/+NbRztbW1tPW5vb////7//jW09HW1dbT1ubu////+//41tfa493X0dbm+f////v/+Nby/+Lw8/XW5vn////7//XT4PHs9vv71eb5////+////fDh1uHm2dXt+P////bP09fv//vt3+n869LS1/f49PL7/f39/f39/fn19Pj9hmVaaGVjZGRmZGReVVVVVQ=="
+ },
+ "reviewed": false,
+ "description": "Diagram 2, titled \"Notifiable work in rooms containing a bath or shower\", is a perspective view of a bathroom corner, showing two walls meeting at a vertical line and a floor. The lower part of both walls and the floor are shaded green. At the top, \"See paragraphs 2.5 to 2.6\" has a line pointing to the shaded area. A rectangular \"Bath tub or shower tray\" sits in the foreground. The left wall carries a tap-and-hose symbol above a circular symbol; the wall behind the bath carries a tap-and-hose symbol. Two horizontal dimensions of \"600mm\", bounded by dashed lines, mark a 600mm distance along each wall from the edge of the bath/shower tray, and a vertical dimension of \"2.25m\" runs from the floor to the top edge of the shading. At bottom left, \"Additions and alterations to existing circuits are notifiable in the shaded area\"; at bottom right, \"NOTE: Socket-outlets should not be located within 3m of a bath tub or shower tray\".",
+ "first_draft": "Diagram 2, titled \"Notifiable work in rooms containing a bath or shower\", is a perspective view of a bathroom corner, showing two walls meeting at a vertical line and a floor. The upper part of both walls and the floor are shaded green. At the top, \"See paragraphs 2.5 to 2.6\" has a line pointing to the shaded left wall. A rectangular \"Bath tub or shower tray\" sits in the foreground. The left wall carries a shower-head symbol above a circular drain symbol; the wall behind the bath carries a tap-and-hose symbol. Two horizontal dimensions of \"600mm\", bounded by dashed lines, mark distances along each wall from the corner, and a vertical dimension of \"2.25m\" runs from the floor to the top edge of the shading. At bottom left, \"Additions and alterations to existing circuits are notifiable in the shaded area\"; at bottom right, \"NOTE: Socket-outlets should not be located within 3m of a bath tub or shower tray\"."
+}

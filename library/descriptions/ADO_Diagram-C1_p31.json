@@ -1,0 +1,18 @@
+{
+ "key": "ADO_Diagram-C1_p31",
+ "source": "ADO",
+ "label": "Diagram C1",
+ "page": 31,
+ "caption": "Diagram C1 \u0007Overheating risk at postcode area level in the high risk part of London",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "c411fdbc0ecc9e5930ad01989a77a6aca8d9d3c8d50ddab906ee33edac5c7af0",
+ "image_sig": {
+  "w": 772,
+  "h": 680,
+  "grey": "6OXl5eXl5eTl5eXl5eXl5efk5OTk2risstvk5OTk5OTn5OTZyK+jpIqh5OTe3OTkzsXDrqarmFlFcb6jp7Di5NGrpp2Ug1hERUdoeKKtyeTTWoVcS0RCPj9AQkiArrjdw0tISEY+NiU4PkZJmrXi5MBLRUZAPTY3PT1Fb6HY5+XFX0VCRUNBQURDUqqu4Orq571sSEZGQ0JRh4Wl0eTk5Ofk3aNHZWxrhqqqrdHk5OTn5OTaqq2qn6+psq/b5OTk5+Tk1NrTtqq2uK/G4+br7ufk5OTk5Nq14dbA3dfV7fnn5OTk5OTk5OTk5OTk5OTknIF8goGAgYCAf4GAgHp2dg=="
+ },
+ "reviewed": false,
+ "description": "This is a map of London, drawn as a single outline subdivided into many small polygonal postcode areas. The areas are shaded in one of two colours. A block of dark green covers the central core and extends westwards, while a surrounding ring of pale green fills the outer northern, eastern and southern fringes. A small legend box sits in the lower right corner, headed \"Postcode area risk level\", showing a dark green square labelled \"High risk\" above a pale green square labelled \"Moderate risk\". Thus the dark central and western areas denote high risk and the paler outer areas denote moderate risk. A white channel-shaped feature appears at the right-hand edge of the map, and a thin winding line, the river, runs through the central dark green area and meets this channel at the right edge. Along the bottom, a solid green banner carries the white text \"Diagram C1 Overheating risk at postcode area level in the high risk part of London\". No scale, north arrow or grid is shown.",
+ "first_draft": "This is a map of London, drawn as a single outline subdivided into many small polygonal postcode areas. The areas are shaded in one of two colours. A block of dark green covers the central core and extends westwards, while a surrounding ring of pale green fills the outer northern, eastern and southern fringes. A small legend box sits in the lower right corner, headed \"Postcode area risk level\", showing a dark green square labelled \"High risk\" above a pale green square labelled \"Moderate risk\". Thus the dark central and western areas denote high risk and the paler outer areas denote moderate risk. A white channel-shaped feature appears at the right-hand edge of the map. Along the bottom, a solid green banner carries the white text \"Diagram C1 Overheating risk at postcode area level in the high risk part of London\". No scale, north arrow or grid is shown."
+}

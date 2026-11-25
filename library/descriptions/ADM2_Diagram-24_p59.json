@@ -1,0 +1,18 @@
+{
+ "key": "ADM2_Diagram-24_p59",
+ "source": "ADM2",
+ "label": "Diagram 24",
+ "page": 59,
+ "caption": "Diagram 24 An example of a shower room incorporating a corner WC for individual use",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "efcff2f426fef9d4994eddbace6e885cd79a8fa4a532ba0c657d21c631b7fb80",
+ "image_sig": {
+  "w": 749,
+  "h": 623,
+  "grey": "2c/NxsXHx8jFwsjJwcXB0PT////n4uLz///////////0//////78/fP7/f3/////9P/////+8e3////9//////T////y8+jg6/j4+Pz////0////8vLo7Oz99PL9////9P////Hs7O7x6vH1/f////T////09PTv8Pfx5fj////0/////vr28P3x4/X9////9P/////66OLw7+z6/f////T/////+/D87+Pg+Pz////0///////x//ny8fL/////9P//////8v7+2tng+v////T///////D9/9/k9v/////0////7/X29fb6////////8Pj4+PT09PT09/j4+Pj4+A=="
+ },
+ "reviewed": false,
+ "description": "This is a plan (top-down) view of a rectangular shower room, overall 2400mm wide by 2500mm deep. The diagram is titled \"Diagram 24 An example of a shower room incorporating a corner WC for individual use\". At the top of the plan a 500mm horizontal dimension and a 300mm vertical dimension relate to the box labelled \"Tip-up seat\". On the left wall, from top down, labels read \"Floor drain\", \"Alarm pull cord\", \"Vertical grab rail\" and \"Towel rail\". The upper-right wall shows a \"Mirror\" and a wavy line for the \"Shower curtain\". In the centre of the room a label \"Drop-down rails\" has an arrow pointing to the dashed rail. On the right-hand side a \"Washbasin\" is set above a corner WC, with a 140–160mm dimension between the two. Inside the room a diagonal arrow indicates the \"Fall of floor\" and a square area in the lower-left is marked \"1500mm x 1500mm wheelchair turning space\". A door is shown on the bottom wall towards the left, drawn in the open position. A top note refers to Diagram 23 for the arrangement of shower controls; a bottom-right note refers to Diagram 18 for the corner WC and states the larger basin is set back 200mm. A bottom note reads \"Layout shown for right-hand transfer to shower seat and WC\".",
+ "first_draft": "This is a plan (top-down) view of a rectangular shower room, overall 2400mm wide by 2500mm deep, titled \"Diagram 24 An example of a shower room incorporating a corner WC for individual use\". Along the top wall two dimensions, 500mm and 300mm, mark positions near a box labelled \"Tip-up seat\". On the left wall, from top down, labels read \"Floor drain\", \"Alarm pull cord\", \"Vertical grab rail\" and \"Towel rail\". The upper-right wall shows a \"Mirror\" and a wavy line for the \"Shower curtain\"; an arrow points to \"Drop-down rails\". The right-hand side contains a \"Washbasin\" above a corner WC, with a 140–160mm dimension beside the WC. Inside the room a diagonal arrow indicates the \"Fall of floor\" and a square area is marked \"1500mm x 1500mm wheelchair turning space\". A top note refers to Diagram 23 for shower controls; a bottom-right note refers to Diagram 18 for the corner WC and states the larger basin is set back 200mm. A bottom note reads \"Layout shown for right-hand transfer to shower seat and WC\"."
+}

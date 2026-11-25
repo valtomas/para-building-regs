@@ -1,0 +1,18 @@
+{
+ "key": "ADS_Diagram-6.4_p41",
+ "source": "ADS",
+ "label": "Diagram 6.4",
+ "page": 41,
+ "caption": "Diagram 6.4 \u0007Minimum space requirements for floor-mounted charge point location",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "d01f5f6b0b8bd6ff749e641511b12a748ff61e4bea370e002fe29fa827df3021",
+ "image_sig": {
+  "w": 737,
+  "h": 475,
+  "grey": "9/n5+fn5+fn5+fn5+fn5+fv/9vj2+fbl8vL2+f/////7/Orj5OTm5Pzo2+T7////++nz8dvb9uLq8N3f+v////vp8vHb2/bj6vDd4Pv////76fPx29v24+rw3eD7////++nl5snQ6tjq4MvU+v////vp8/HM0Pbj6unO1e3////76PLx29v24unw3eD0////++ny8dvb9uPq8N3g+/////vp8vHb2/bj6vDd4Pv////76fPx09P34+rw2dz7////++ji5s3L7Nbn4NTW5v78//vuyNPj4+Lk68fX4uH19v/n5eTl5eXl5eXk5eXl5eXlgl9bX15dX15cXV9gXV5QUQ=="
+ },
+ "reviewed": false,
+ "description": "Diagram 6.4, titled \"Minimum space requirements for floor-mounted charge point location\", shows two elevations. The left part, labelled \"Front elevation\", depicts a pale green rectangle labelled \"Floor-mounted charge point\" resting on a hatched floor line, flanked by two hatched vertical elements, with a single label \"Wall/object\" at the top above the right-hand one. The gaps either side are each labelled \"Free space\". Green dimension arrows above read \"≥1500mm\" from the left wall to the unit, \"≥450mm\" across the unit, and \"≥1500mm\" from the unit to the right wall. The right part, labelled \"Side elevation\", shows the same pale green rectangle labelled \"Floor-mounted charge point\" on the hatched floor, with one hatched vertical element to its left and the gap between them labelled \"Free space\". Green arrows above read \"≥500mm\" from the wall to the unit and \"≥220mm\" across the unit. A vertical green arrow to the right of the unit reads \"≥1200mm\", and on the right an arrow points to the hatched floor line with the label \"floor\".",
+ "first_draft": "Diagram 6.4, titled \"Minimum space requirements for floor-mounted charge point location\", shows two elevations. The left part, labelled \"Front elevation\", depicts a pale green rectangle labelled \"Floor-mounted charge point\" resting on a hatched floor line, flanked by two hatched vertical elements labelled \"Wall/object\". The gaps either side are each labelled \"Free space\". Green dimension arrows above read \"≥1500mm\" from the left wall to the unit, \"≥450mm\" across the unit, and \"≥1500mm\" from the unit to the right wall. The right part, labelled \"Side elevation\", shows the same pale green rectangle labelled \"Floor-mounted charge point\" on the hatched floor, with one hatched \"Wall/object\" to its left and the gap between them labelled \"Free space\". Green arrows above read \"≥500mm\" and \"≥220mm\". A vertical green arrow to the right of the unit reads \"≥1200mm\", and the floor line at the base is labelled \"Floor\"."
+}

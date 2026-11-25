@@ -1,0 +1,18 @@
+{
+ "key": "ADM2_Diagram-25_p60",
+ "source": "ADM2",
+ "label": "Diagram 25",
+ "page": 60,
+ "caption": "Diagram 25 An example of a bathroom incorporating a corner WC",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "ceea75f6093c2c8780e4107d4317fafea42ccb4e18cca95f60eb4d5e3da7e918",
+ "image_sig": {
+  "w": 760,
+  "h": 643,
+  "grey": "2dDNysjLxcvHxM7J2OXl6fT//////////PH///////r0//////z7/P/y///////69P/////99/f/5vD8////+vT///z39uX3//Tp8P////r0///979rv+vz87vr////69P///fXz8v3/+/L/////+vT///H3/+vk6/Ts//////r0///99//y9/Tl7v/////69P///ff49P/06+zs7///+vT///35+Pfx7/D06Ob///r0/////f/61+X9/f/////69P////z9/fL9/fz/////+vT////z2+j///////////r0///8/fj6///////////66/Ly4OTl5ejy8vLy8vLy8A=="
+ },
+ "reviewed": false,
+ "description": "This is a plan view (top-down drawing) titled \"Diagram 25 An example of a bathroom incorporating a corner WC\". Along the left wall is a bath, with a hatched area at its head labelled \"Bath transfer seat\"; a \"Towel rail\" is fixed to the wall above it. A vertical dimension line on the left reads \"2500mm\", and a horizontal dimension line at the bottom reads \"2700mm\". In the centre, a dashed square containing a wheelchair symbol is labelled \"1500mm x 1500mm Wheelchair turning space\". On the bottom wall, a label reads \"Two clothes hooks, at 1400mm and 1050mm above the floor\". In the bottom-right corner sits a corner WC, with a small dimension \"140–160mm\" beside it; a wash basin with a tap is on the right wall above it. The top wall to the right carries a vertical grab rail and a curved dashed arc, with labels \"Sanitary dispenser\", \"Disposal bin\" and \"Shelf\". Two notes state: \"The arrangement of the corner WC and ancillary fittings is as at Diagram 18\" and \"For the arrangement of the bath and ancillary fittings see ancillary Diagram 26\". A footnote reads \"Note Layout shown for right-hand transfer to bath and WC\".",
+ "first_draft": "This is a plan view (top-down drawing) titled \"Diagram 25 An example of a bathroom incorporating a corner WC\". Along the left wall is a bath, with a hatched area at its head labelled \"Bath transfer seat\"; a \"Towel rail\" is fixed to the wall above it. A vertical dimension line on the left reads \"2500mm\", and a horizontal dimension line at the bottom reads \"2700mm\". In the centre, a dashed square is labelled \"1500mm x 1500mm Wheelchair turning space\". On the bottom wall, a label reads \"Two clothes hooks, at 1400mm and 1050mm above the floor\". In the right-hand corner sits a corner WC, shown with a dashed outline, with a small dimension \"140–160mm\" beside it; a wash basin with a tap is on the right wall. The top-right wall carries a vertical grab rail, a curved dashed arc, and labels \"Sanitary dispenser\", \"Disposal bin\" and \"Shelf\". Two notes state: \"The arrangement of the corner WC and ancillary fittings is as at Diagram 18\" and \"For the arrangement of fittings see ancillary Diagram 26\". A footnote reads \"Note Layout shown for right-hand transfer to bath and WC\"."
+}

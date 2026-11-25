@@ -1,0 +1,17 @@
+{
+ "key": "ADO_Table-D1_p33",
+ "source": "ADO",
+ "label": "Table D1",
+ "page": 33,
+ "caption": "Table D1 \u0007Equivalent area of a window with an opening angle of α = 10°",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "b2404aa81f392edc2ccca25e635442fb2a39c162112391ecc3ee22260201391a",
+ "image_sig": {
+  "w": 737,
+  "h": 455,
+  "grey": "vKOho6WnoqSjoaGst8XFxerp6enp6enp6ebm5ejp6en7//////r4+ffx7vD1+Pn49/n5+/n79Pvz+/j79vj69ujr/vvz++v77vvt+/Pz9vH6/v/78vvw+/D78Prz9ffy+///+/f77vvu++758/T28fv///vz++377Pvu+fT19vD7///79Pvv++777vrz9fbv+///+/P77fvu++/68vT28fv///v3++z77vvu+vP19/H7////+P/0//T/9f34+f33+///+/T77vvu++/58vP48/v///vy++377Pvv+vL0+PL7///79/vu++377vn09fjy9vPz8/Pz8/Pz8/Pz8/Pz8w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}
