@@ -435,6 +435,52 @@ What the built-in list is now, and why, is at the end of run E. The earlier note
 The coding and community fine-tunes (Tiel-Coder, KAT-Coder, Muse-Glimmer, Dirk, HRX) scored well but are less
 suited as defaults.
 
+### Run H: llama.cpp b12611, and Inkling 2 Mini
+
+Thinking Machines' Inkling 2 Mini (26B, 3.4B active, a looped mixture of experts; Apache 2.0) came out on 20 November.
+Mainline llama.cpp read its files wrongly until PR 32704 was merged on 21 November (b12611 is the first release with it),
+so it was run on the built-in engine on b12611, from the `Mainline_Support` file of `unsloth/Inkling-2-Mini-GGUF`
+(UD-Q4_K_XL, 17.6 GB, saved under a `.gguf` name: `"remote"` in `models.json`). Granite 4.2 8B was run again on the
+same build to check that moving the engine from b12359 changed nothing.
+
+| Model | File | Right figures | Searched | Cited | Right passage cited | Made-up ids removed | Figures flagged | Extract-only citations | Median time |
+|---|---|---|---|---|---|---|---|---|---|
+| Inkling 2 Mini, run 1 | 17.6 GB | 36/36 | 36/36 | 36/36 | 32/36 | 0 | 5 | 30 of 172 | 80 s |
+| Inkling 2 Mini, run 2 | 17.6 GB | 36/36 | 36/36 | 36/36 | 32/36 | 0 | 6 | 27 of 164 | 99 s |
+| IBM Granite 4.2 8B | 5.3 GB | 33/36 | 36/36 | 35/36 | 30/36 | 0 | 4 | 4 | 66 s |
+
+- **Inkling scored 36 of 36 twice** and cited the right passage 32 times both times. The four "wrong passage" cases are
+  the same in both runs and are the checks, not the answers: gigabit (£2,000, cited ADR1 2.14 among others) and radon
+  (200 Bq/m³, cited ADC 2.39) are right, and on Scotland and NHBC it said the library doesn't cover them, as it should,
+  but still cited an England paragraph for contrast, where the test wants nothing cited. It cited from a search extract in
+  about one citation in six (Nemotron one in seven, Qwen3.5 one in two).
+- **It is slow**: 80 and 99 s at the median, up to 333 s, against 57 to 66 s for Granite. It is the slowest model listed.
+- **Granite held on the new build**: 33 of 36 (it was 35 and 33 on b12078), its misses the front-door security question,
+  the fire-door check interval and NHBC.
+- The figure notes were not all read for this run: they were mostly figures the model worked out or added itself
+  (660 mm as 2R+G for a stair, 125 mm for a hearth).
+- Nemotron, Qwen3.5 and gpt-oss were not run again on b12611.
+- **Memory**: loaded by the built-in engine at the app's 32K context (4 slots, Vulkan), Inkling took 22.4 GB (21.9 GiB) of
+  graphics memory, about 1 GB more than the size-based guess. `"card_gb": 23` in `models.json`: it is suggested from a
+  24 GB card, and a 20 GB card gets gpt-oss 20B.
+- **The file listed is ggml-org's**, not Unsloth's: `ggml-org/Inkling-2-Mini-GGUF`, `Inkling-2-Mini-IQ4_NL.gguf` (17.6 GB,
+  imatrix, 4-bit experts, Q8_0 elsewhere). It is a plain `.gguf` in the repo, so apps before 0.2.8 that take the engine
+  update can download it too; Unsloth's needed `"remote"`, which they don't know, and that support was taken out
+  again. Asked the 36 questions twice on b12611:
+
+| Model | File | Right figures | Searched | Cited | Right passage cited | Made-up ids removed | Figures flagged | Extract-only citations | Median time |
+|---|---|---|---|---|---|---|---|---|---|
+| Inkling 2 Mini IQ4_NL, run 1 | 17.6 GB | 34/36 | 36/36 | 36/36 | 32/36 | 0 | 6 | 32 of 171 | 72 s |
+| Inkling 2 Mini IQ4_NL, run 2 | 17.6 GB | 35/36 | 36/36 | 36/36 | 32/36 | 2 | 6 | 39 of 186 | 81 s |
+
+  The same four passage misses as Unsloth's file. The figure misses are the check's wording, not the answers: both
+  runs said rightly that the NHBC Standards aren't in the library, in words the check doesn't match ("not in this
+  library", "aren't actually in the library"), and run 1 gave the cladding class as "A2-s1, d0 or better" without
+  naming A1. The two made-up ids (`r3788`, `r2`) were removed and both answers were right without them. One NHBC
+  answer is counted as crediting the person's files: it offered to check the Standards "if you add it to your files".
+  Slowest answers 285 and 348 s. Loaded, it took 22.7 GB of graphics memory (23,202 MiB above the idle 2,128), so
+  `card_gb` 23 stands.
+
 ## Repeating the tests
 
 ```bash

@@ -1331,11 +1331,11 @@ check(picks[8] == picks[12] == "granite-4.2-3b", "a model that a smaller one bea
 # a graphics card comes first: 128 GB of system memory doesn't make a model that spills off a 12 GB card the pick
 cards = {gb: (engine.recommend(ram=128, card=engine.card_memory_gb([{"total_gb": gb}])) or {}).get("id")
          for gb in (6, 8, 12, 16, 24, 32)}
-check(cards[6] == cards[8] == "granite-4.2-3b" and cards[12] == "granite-4.2-8b" and cards[16] == cards[24] ==
-      "gpt-oss-20b" and cards[32] == "nemotron-3.5-lightning-30b",
+check(cards[6] == cards[8] == "granite-4.2-3b" and cards[12] == "granite-4.2-8b" and cards[16] ==
+      "gpt-oss-20b" and cards[24] == "inkling-2-mini" and cards[32] == "nemotron-3.5-lightning-30b",
       f"with a graphics card, the suggested model is the biggest that fits on the card {cards}")
 check(all(engine.recommend(ram=128, card=engine.card_memory_gb([{"total_gb": gb}]))["id"] == want
-          for gb, want in ((10, "granite-4.2-3b"), (11, "granite-4.2-8b"))),
+          for gb, want in ((10, "granite-4.2-3b"), (11, "granite-4.2-8b"), (20, "gpt-oss-20b"), (24, "inkling-2-mini"))),
       "the 8B is suggested from an 11 GB card (a 2080 Ti), not from a 10 GB one, and never from the 8 GB of a Quadro RTX 4000")
 check(engine.recommend(ram=16, card=engine.card_memory_gb([{"total_gb": 2}])) is not None and
       not engine.fits_card({"size_gb": 2.2}, 2 - engine.CARD_RESERVE_GB),

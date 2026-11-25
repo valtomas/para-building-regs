@@ -2,7 +2,7 @@
   "version": 1,
   "llama_cpp": {
     "repo": "ggml-org/llama.cpp",
-    "tag": "b12359",
+    "tag": "b12611",
     "assets": {
       "darwin-arm64": "bin-macos-arm64\\.(zip|tar\\.gz)$",
       "darwin-x86_64": "bin-macos-x64\\.(zip|tar\\.gz)$",
@@ -22,6 +22,19 @@
     }
   },
   "models": [
+    {
+      "id": "inkling-2-mini",
+      "name": "Inkling 2 Mini",
+      "repo": "ggml-org/Inkling-2-Mini-GGUF",
+      "file": "Inkling-2-Mini-IQ4_NL.gguf",
+      "size_gb": 17.6,
+      "min_ram_gb": 32,
+      "card_gb": 23,
+      "context": 32768,
+      "licence": "Apache 2.0",
+      "about": "The most accurate in our tests. It sometimes cites from a search result without opening the passage, which the app points out. Slow: well over a minute an answer, sometimes five. For 32 GB or more.",
+      "tested": "34 to 36 of 36"
+    },
     {
       "id": "nemotron-3.5-lightning-30b",
       "name": "NVIDIA Nemotron 3.5 Lightning 30B-A3B",
@@ -44,7 +57,8 @@
       "context": 32768,
       "licence": "Apache 2.0",
       "about": "As accurate as the largest in our tests. It often cites from a search result without opening the passage, which the app points out. For 32 GB or more.",
-      "tested": "32 or 33 of 36"
+      "tested": "32 or 33 of 36",
+      "suggest": false
     },
     {
       "id": "gpt-oss-20b",
