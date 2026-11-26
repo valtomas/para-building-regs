@@ -19,6 +19,7 @@ WORD = re.compile(r"<word [^>]*>([^<]*)</word>")
 NOTE = re.compile(r"^\[?\(?(NOTES?|Notes?|Key)\b")
 HEADING = re.compile(r"^(Section|Appendix|Part|Requirement)\s+[\dA-Z]{1,3}\b")
 PARA_START = re.compile(r"^(\d{1,2}\.\d{1,3}|[a-z]\.|\(?[ivx]+\)|[A-Z]\d{1,2})\s+[A-Za-z]")
+NUMBERED = re.compile(r"^\d{1,2}\.\d{1,3}\s+[A-Za-z]")  # a numbered paragraph: "8.26 Roof covering…"
 DPI = 110
 
 
@@ -121,7 +122,8 @@ def _column(cap_lines, lines, w, h, body_h):
         caption being a box or a list, two lines of running text beside the figure within 150 points: lines with
         none in this figure's own half at the same height, which would be two columns of text above or below a
         figure across the page."""
-        if not 0.08 * h < ln.y0 < 0.93 * h:
+        # a caption may sit higher than running text can, just under the running header (as in `find`)
+        if not (0.055 if _is_caption(ln, lines) else 0.08) * h < ln.y0 < 0.93 * h:
             return False
         if _is_caption(ln, lines):  # two drawings side by side, their captions not always level (ADE)
             return ln.y1 > top - 60 and ln.y0 < bottom + 60
@@ -148,11 +150,47 @@ def _column(cap_lines, lines, w, h, body_h):
     return col if near or len(other) >= 2 or cx0 > mid + 10 else None
 
 
+def _column_by_neighbour(cap_lines, lines, w, h, body_h, grey):
+    """The column a caption sits in when a figure in the other column runs on beside it, though that figure's caption
+    is well above this one (ADE Diagrams 2.23 and 2.24): a caption in the other column higher up, no running text in
+    that column between the two captions, and the other figure still drawn (ink) level with this caption. None
+    otherwise, as for a figure across the page under a figure in one column, where the other column is blank by then."""
+    mid = w / 2
+    top, bottom = min(x.y0 for x in cap_lines), max(x.y1 for x in cap_lines)
+    cx0, cx1 = min(x.x0 for x in cap_lines), max(x.x1 for x in cap_lines)
+    if cx1 < mid + 10:
+        theirs = lambda x: x.x0 > mid - 10  # noqa: E731
+    elif cx0 > mid - 10:
+        theirs = lambda x: x.x1 < mid + 10  # noqa: E731
+    else:
+        return None
+    other = [x for x in lines if theirs(x)]
+    caps = [x for x in other if x.y0 < top - 1 and _is_caption(x, lines)]
+    if not caps:
+        return None
+    above = max(x.y0 for x in caps)
+    if any(x.y0 > above + 1 and x.y0 < bottom and _is_body(x, mid, None, body_h) and not _is_caption(x, lines)
+           for x in other):
+        return None
+    gw, gh, px = grey
+    lo, hi = (int(mid + 15), gw) if cx1 < mid + 10 else (0, int(mid - 15))
+    if not any(bytes(px[y * gw + lo:y * gw + hi]).translate(INK).find(1) >= 0
+               for y in range(max(0, int(top)), min(gh, int(bottom) + 1))):
+        return None
+    if cx1 < mid + 10:
+        return (min([x.x0 for x in lines if x.x1 < mid] + [cx0]) - 8,
+                min([mid] + [x.x0 - 4 for x in other if x.x0 > cx1]))
+    right = [x for x in lines if x.x0 > mid]
+    return min([x.x0 for x in right] + [cx0]) - 6, max([x.x1 for x in right] + [cx1]) + 8
+
+
 def _bounds(lines, body_h, top_limit, bottom_limit):
     """What can end a figure, among the lines of a page or of one of its columns: (running text or captions, the
     starts of numbered paragraphs, headings and captions)."""
     column = max(ln.x1 for ln in lines) - min(ln.x0 for ln in lines)
-    xs = sorted(ln.x0 for ln in lines)
+    # the margin from the page's text between its header and footer: in a column with few lines, a running header
+    # across the page ("ONLINE VERSION" in ADE) would set it short of the column's own text
+    xs = sorted(ln.x0 for ln in lines if top_limit < ln.y0 < bottom_limit) or sorted(ln.x0 for ln in lines)
     left = xs[len(xs) // 10]
     # on a page set in two columns, the second column's paragraphs start at its own left edge
     mid = (min(ln.x0 for ln in lines) + max(ln.x1 for ln in lines)) / 2
@@ -166,7 +204,12 @@ def _bounds(lines, body_h, top_limit, bottom_limit):
     # set in from it is part of the drawing, such as a page of an approved document shown in the Manual (Figure 7.1).
     # Paragraphs and headings are set at least as big as running text: a row of a table such as "a. if it separates a
     # flat…", or a cell ending "Section 3, Diagram 3.4).", is set smaller.
-    starts = [ln for ln in lines if (_is_caption(ln, lines) or
+    def numbered_alone(ln):
+        """A paragraph number extracted as a line of its own, its words beside it on the same line (ADE "2.42")."""
+        return (re.fullmatch(r"\d{1,2}\.\d{1,3}", ln.text.strip()) and ln.x0 <= _margin(left) + 15
+                and ln.y1 - ln.y0 >= 0.9 * body_h
+                and any(abs(x.y0 - ln.y0) < 3 and 0 < x.x0 - ln.x1 < 40 and _words(x) >= 3 for x in lines))
+    starts = [ln for ln in lines if (_is_caption(ln, lines) or numbered_alone(ln) or
                                      (HEADING.match(ln.text) and ln.x0 <= _margin(left) + 15
                                       and ln.y1 - ln.y0 >= 0.9 * body_h) or
                                      (PARA_START.match(ln.text) and _is_body(ln, column, left, body_h)
@@ -200,12 +243,18 @@ def find(pdf, skip_pages=()):
     doc_body_h = body_height([ln for _w, _h, lines in pages for ln in lines])
     found = []
     votes = collections.Counter()
+    greys = {}
     for pno, (w, h, lines) in enumerate(pages, start=1):
         if pno in skip_pages or not lines:
             continue
         top_limit, bottom_limit = h * 0.08, h * 0.93
-        # a page with plenty of running text has its own: pages replaced by an amendment may be set smaller
+        # a page with plenty of running text has its own: pages replaced by an amendment may be set smaller. Not a page
+        # given to a figure, whose notes are as wide as running text but set smaller (ADB Vol 2 Diagram 8.2): a page
+        # smaller than the document has its own size only with numbered paragraphs set in it
         body_h = body_height([ln for ln in lines if ln.x1 - ln.x0 >= w / 3], least=20) or doc_body_h
+        if body_h < 0.8 * doc_body_h and sum(1 for ln in lines if NUMBERED.match(ln.text)
+                                             and round(ln.y1 - ln.y0) == body_h) < 2:
+            body_h = doc_body_h
         bounds = {None: _bounds(lines, body_h, top_limit, bottom_limit)}
         for i, ln in enumerate(lines):
             cap = _is_caption(ln, lines)
@@ -216,6 +265,10 @@ def find(pdf, skip_pages=()):
             cap_lines = _caption_lines(ln, lines)
             cap_bottom = max(x.y1 for x in cap_lines)
             col = _column(cap_lines, lines, w, h, body_h)
+            if col is None:
+                if pno not in greys:
+                    greys[pno] = page_grey(pdf, pno)
+                col = _column_by_neighbour(cap_lines, lines, w, h, body_h, greys[pno])
             # a line in the other column may reach a little past the middle of the page
             beside = (lambda x: x.x1 > col[0] + 15 and x.x0 < col[1] - 15) if col else (lambda x: True)
             if col not in bounds:
@@ -242,7 +295,8 @@ def find(pdf, skip_pages=()):
             gap_above, gap_below = ln.y0 - above, below - cap_bottom
             found.append({"label": cap[0], "continued": cap[1], "page": pno, "kind": cap[0].split()[0],
                           "cap": (ln.y0, cap_bottom), "above": above, "below": below_strict, "w": w, "h": h,
-                          "lines": [x for x in lines if beside(x)], "cap_lines": cap_lines, "col": col,
+                          "lines": [x for x in lines if beside(x)], "page_lines": lines, "cap_lines": cap_lines,
+                          "col": col,
                           "body_h": body_h})
             # Tables have their caption above; whether diagram captions sit above or below their drawing differs
             # between documents, and in ADA between its Diagrams and its Figures, so each kind in each document votes
@@ -254,7 +308,7 @@ def find(pdf, skip_pages=()):
                     votes[cap[0].split()[0], "below"] += 1
                 elif gap_below > 60 and (gap_above < 25 or gap_above < 50 and gap_below > 4 * gap_above):
                     votes[cap[0].split()[0], "above"] += 1
-    out, greys = [], {}
+    out = []
     for f in found:
         kind_votes = [votes[f["kind"], "below"], votes[f["kind"], "above"]]
         if not any(kind_votes):  # too few of this kind to tell: as the document's other figures
@@ -291,8 +345,9 @@ def find(pdf, skip_pages=()):
             x0 = max(0, min(xs + [f["w"] * 0.08]) - 8)
             x1 = min(f["w"], max(xs + [f["w"] * 0.92]) + 8)
         # then down to where the drawing's ink is, with the running text (text as big as the body's) taken out
-        # including a line only partly in the box: the top of the page's footer, under a drawing at the foot of a page
-        running = [x for x in f["lines"] if x.y1 > y0 and x.y0 < y1 and x.y1 - x.y0 >= 0.9 * f["body_h"]]
+        # including a line only partly in the box: the top of the page's footer, under a drawing at the foot of a page,
+        # or the start of the other column's lines where the gutter is narrow (paragraph numbers at ADJ's gutter)
+        running = [x for x in f["page_lines"] if x.y1 > y0 and x.y0 < y1 and x.y1 - x.y0 >= 0.9 * f["body_h"]]
         tight = ink_box(greys[f["page"]], (x0, max(0, y0), x1, min(f["h"], y1)), running, f["cap_lines"])
         if tight:
             x0, y0, x1, y1 = tight

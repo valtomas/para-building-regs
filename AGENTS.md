@@ -107,7 +107,9 @@ memory, and on a Strix Halo a GPU load that didn't fit has crashed the whole sys
   table whose notes run on into a drawing captioned under it stops where that drawing starts, or at the first blank
   band if the drawing claims the whole table (ADM Vol 1 Table 3.3). On a page set in two columns, a figure is cropped to
   its own column when running text or another figure's caption sits beside it in the other column (ADE, ADH, ADJ, ADM
-  Vol 2), or when its caption starts past the middle; one across the page is not. The text extractor can't see the drawings, so the
+  Vol 2), or when its caption starts past the middle; one across the page is not. Side-by-side captions count from just under
+  the running header (ADE), and a figure also keeps to its column when the figure beside it, captioned higher up, is
+  still drawn level with its caption (`_column_by_neighbour`). The text extractor can't see the drawings, so the
   crop found from the text is then narrowed to where the rendered page has ink once the running text is whited out
   (`figures.ink_box`), including lines only partly in the crop, such as the footer: that stops a crop running on into
   an unnumbered paragraph. When you change it, render a few figures from ADB, ADE, ADH, ADK, ADL and ADM and look at
