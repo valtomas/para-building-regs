@@ -6,13 +6,28 @@
  "caption": "Diagram 3.18 \u0007\u0007Floor types 2.2B(a) and 2.2B(b) – wall type 1",
  "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
  "date": "2026-11-15",
- "image_sha256": "5d205302250ff505e8be226bd4ecd5208da99680402715082b971ba8af95ae52",
+ "image_sha256": "9659036e2575a3cae08f33aed73d9b4f89af00704474264b9a6471aed64a7975",
  "image_sig": {
-  "w": 755,
+  "w": 371,
   "h": 385,
-  "grey": "u7O0qKmYpOT05uLj9+//+uno26q/stjy9PPZ3fz2//rf4uLi4uLi6/T/4uL////69P////////r0/+Hj////+vT//+zx5dP69P/i4/////r0///e5uT2+vT24OH7///68Pj43dj29vj0/+3y///f3trFycvJysnp9/X19fX19fbq6/Lu9PLq9PDv7///////7fXy5ur29vPi5+Tv8ezx8ePGyNrRxs3v2cvGzczJydfx5ezi8uvq+uTZ3ef////+8fXs3ef///rV4dTS293a3/Dr7dbb/P/61cXGxcK/x9P0//////7x9ePW2tjY2tfj7fT09PTy2+j//////////w=="
+  "grey": "2q6svbe5m7GjobGOoKe44/Lp4+np5bCfvMWzr77Z6fDh4uLi4uLi4uLi4uLi4uLl6f//////////////////9On///////Ht7e3/3M7M+vTp///////s3d3l7uHt9P/06fn4+Pj45t7e0PD29vb29OnXz7zOzp7l5LbHy8zIxfTp8OPw9fXz7fDz8fX04+z06fP09vbu8enj6u/29vTv9Oniz8XFwdff1MvSxsbI3PTp/+bo1/Xm5PHr9+jf7P/06fv19+jv5N3d5P//////9On96+vt89nR2Nrz//////Tp/////////v/////28fHy5/T09PT09PT09PT03uHX5Q=="
  },
- "reviewed": false,
- "description": "The image shows two line drawings, each a section, with a block of running text at the bottom right. The larger left diagram, headed \"Diagram 3.18 Floor types 2.2B(a) and 2.2B(b) – wall type 1\" and marked \"SECTION\" below, is a cross-section through a vertical masonry core drawn with a brick pattern, flanked by two floor assemblies. Each floor assembly has a layer of hollow blocks, a row of timber battens and a top finish. The label \"Separating wall type 1\" points to the core; \"Timber batten\" points to the battens on either side; \"Floor 2.2B(a)\" labels the left floor and \"Floor 2.2B(b)\" the right. At the top, a small gap between the core and the floor is marked \"Fill small gap with flexible seal\". The smaller right diagram, also marked \"SECTION\", shows two separate vertical wall sections with hatched cores and outer linings, with a horizontal hatched element between the two cores, labelled \"Floor 2.2B(a)\" and \"Floor 2.2B(b)\" at the top and \"Separating wall types 3.1 and 3.2\" at the bottom.",
- "first_draft": "The image shows two line drawings, each a section, with blocks of running text to the right. The larger left diagram, headed \"Diagram 3.18 Floor types 2.2B(a) and 2.2B(b) – wall type 1\" and marked \"SECTION\" below, is a cross-section through a vertical masonry core drawn with a brick pattern, flanked by two floor assemblies. Each floor assembly has a layer of hollow blocks, a row of timber battens and a top finish. The label \"Separating wall type 1\" points to the core; \"Timber batten\" points to the battens on either side; \"Floor 2.2B(a)\" labels the left floor and \"Floor 2.2B(b)\" the right. At the top, a small gap between the core and the floor is marked \"Fill small gap with flexible seal\". The smaller right diagram, also marked \"SECTION\", shows two separate vertical wall sections with hatched cores and outer linings, labelled \"Floor 2.1C(a)\" and \"Floor 2.1C(b)\" at the top and \"Separating wall types 3.1 and 3.2\" at the bottom."
+ "reviewed": true,
+ "description": "A section headed \"Diagram 3.18 Floor types 2.2B(a) and 2.2B(b) – wall type 1\", marked \"SECTION\" at the lower right. A solid separating wall of cross-hatched blocks, labelled \"Separating wall type 1\", runs vertically through the middle. A floor of concrete planks, drawn with a row of circular hollow cores, meets it from each side: \"Floor 2.2B(a)\" on the left with a floating floor on battens above the planks, and \"Floor 2.2B(b)\" on the right with a screed floating floor. Under each floor is a ceiling on timber battens, labelled \"Timber batten\". At the top, where the floating floor meets the wall, the label \"Fill small gap with flexible seal\" points to the gap.",
+ "first_draft": "The image shows two line drawings, each a section, with blocks of running text to the right. The larger left diagram, headed \"Diagram 3.18 Floor types 2.2B(a) and 2.2B(b) – wall type 1\" and marked \"SECTION\" below, is a cross-section through a vertical masonry core drawn with a brick pattern, flanked by two floor assemblies. Each floor assembly has a layer of hollow blocks, a row of timber battens and a top finish. The label \"Separating wall type 1\" points to the core; \"Timber batten\" points to the battens on either side; \"Floor 2.2B(a)\" labels the left floor and \"Floor 2.2B(b)\" the right. At the top, a small gap between the core and the floor is marked \"Fill small gap with flexible seal\". The smaller right diagram, also marked \"SECTION\", shows two separate vertical wall sections with hatched cores and outer linings, labelled \"Floor 2.1C(a)\" and \"Floor 2.1C(b)\" at the top and \"Separating wall types 3.1 and 3.2\" at the bottom.",
+ "check": {
+  "verdict": "recut",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26",
+  "note": "Recut so the image shows this drawing alone; the suggestion is a new description written from the new image."
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26",
+ "suggestion": {
+  "text": "A section headed \"Diagram 3.18 Floor types 2.2B(a) and 2.2B(b) – wall type 1\", marked \"SECTION\" at the lower right. A solid separating wall of cross-hatched blocks, labelled \"Separating wall type 1\", runs vertically through the middle. A floor of concrete planks, drawn with a row of circular hollow cores, meets it from each side: \"Floor 2.2B(a)\" on the left with a floating floor on battens above the planks, and \"Floor 2.2B(b)\" on the right with a screed floating floor. Under each floor is a ceiling on timber battens, labelled \"Timber batten\". At the top, where the floating floor meets the wall, the label \"Fill small gap with flexible seal\" points to the gap.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "The image shows two line drawings, each a section, with a block of running text at the bottom right. The larger left diagram, headed \"Diagram 3.18 Floor types 2.2B(a) and 2.2B(b) – wall type 1\" and marked \"SECTION\" below, is a cross-section through a vertical masonry core drawn with a brick pattern, flanked by two floor assemblies. Each floor assembly has a layer of hollow blocks, a row of timber battens and a top finish. The label \"Separating wall type 1\" points to the core; \"Timber batten\" points to the battens on either side; \"Floor 2.2B(a)\" labels the left floor and \"Floor 2.2B(b)\" the right. At the top, a small gap between the core and the floor is marked \"Fill small gap with flexible seal\". The smaller right diagram, also marked \"SECTION\", shows two separate vertical wall sections with hatched cores and outer linings, with a horizontal hatched element between the two cores, labelled \"Floor 2.2B(a)\" and \"Floor 2.2B(b)\" at the top and \"Separating wall types 3.1 and 3.2\" at the bottom.",
+ "corrected_by": "Claude Opus 5.5"
 }

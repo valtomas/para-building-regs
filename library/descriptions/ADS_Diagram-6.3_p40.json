@@ -12,7 +12,15 @@
   "h": 362,
   "grey": "9fX39/f39/f39/f39/f39urR4uLi4uLi4uLi4uLi4vjq///////////////////q7v//////////////////7e7//8ruyuHx1fXV6PX//+3u//+0a2ltbopscXem///t7v//9//6///p//n5////7e7//7quorChtreMosz//+3u///ivb+2xMLDuLnU///t7v/////n////9Pb/////7e7/////am5njHZl/////+3u//////LxwN308//////t7f//////////////////7fLj5OTk5OTk5OTk5OTk4/C1o6Oko6Ojo6Ojo6Ojo6OyhmReZGFgY2FiZGJhT09Pcw=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "The drawing presents an example of a sign or label, shown not to size. It consists of a single rectangle with rounded corners, drawn with a black outline on a white ground. Within this rectangle, three lines of bold black text read, top to bottom, \"Dedicated position\", \"for electric vehicle\", and \"charge point\". In the upper-left corner, above the rectangle, smaller text reads \"See para 6.11\". Running along the bottom edge is a solid green band containing the caption in white lettering: \"Diagram 6.3 Label for future connection location example (not to size)\". No other symbols, dimensions, or components appear in the image.",
- "first_draft": "The drawing presents an example of a sign or label, shown not to scale. It consists of a single rectangle with rounded corners, drawn with a black outline on a white ground. Within this rectangle, three lines of bold black text read, top to bottom, \"Dedicated position\", \"for electric vehicle\", and \"charge point\". In the upper-left corner, above the rectangle, smaller text reads \"See para 6.11\". Running along the bottom edge is a solid green band containing the caption in white and dark lettering: \"Diagram 6.3 Label for future connection location example (not to size)\". No other symbols, dimensions, or components appear in the image."
+ "first_draft": "The drawing presents an example of a sign or label, shown not to scale. It consists of a single rectangle with rounded corners, drawn with a black outline on a white ground. Within this rectangle, three lines of bold black text read, top to bottom, \"Dedicated position\", \"for electric vehicle\", and \"charge point\". In the upper-left corner, above the rectangle, smaller text reads \"See para 6.11\". Running along the bottom edge is a solid green band containing the caption in white and dark lettering: \"Diagram 6.3 Label for future connection location example (not to size)\". No other symbols, dimensions, or components appear in the image.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

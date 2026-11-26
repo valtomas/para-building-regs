@@ -12,7 +12,15 @@
   "h": 383,
   "grey": "4be8v8rAqa2su6jZ4ODg4OLf2uDg4ODg1t/g4ODg4ODo///////X5v/j2v//////6P//////5Oz/7Ob//////+j//////+Hy//Hh///////o///////Y3P/W2///////6P//////3vP/8eD//////+j//////+bq/+vn///////o///////S1fLT1P//////6P//////5O7/6uT//////+j//////+Tu/+3j///////o///////b6P/l3f//////6P//////3+P/4uH//////+j//////9/z//Hh///////o///////n6//r6P//////4Orq6urq2d7q3Nrq5L/NwA=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "The image displays a diagram titled \"Diagram 2.16 Wall type 2.2\". It features two vertical columns of construction elements positioned side-by-side with a narrow gap separating them. Each column consists of four rectangular blocks stacked vertically. The blocks are filled with a diagonal cross-hatch pattern, and thin horizontal lines separate them. A short horizontal line bridges the gap between the two columns between the second and third blocks from the bottom. In the bottom right corner, the word \"SECTION\" is printed in capital letters.",
- "first_draft": "The image displays a diagram titled \"Diagram 2.16 Wall type 2.2\". It features two vertical columns of construction elements positioned side-by-side with a narrow gap separating them. Each column consists of four rectangular blocks stacked vertically. The blocks are filled with a diagonal cross-hatch pattern, and thin horizontal lines separate them. A short horizontal line bridges the gap between the two columns at the level of the second block from the bottom. In the bottom right corner, the word \"SECTION\" is printed in capital letters."
+ "first_draft": "The image displays a diagram titled \"Diagram 2.16 Wall type 2.2\". It features two vertical columns of construction elements positioned side-by-side with a narrow gap separating them. Each column consists of four rectangular blocks stacked vertically. The blocks are filled with a diagonal cross-hatch pattern, and thin horizontal lines separate them. A short horizontal line bridges the gap between the two columns at the level of the second block from the bottom. In the bottom right corner, the word \"SECTION\" is printed in capital letters.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

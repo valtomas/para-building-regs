@@ -12,7 +12,15 @@
   "h": 353,
   "grey": "2bKzub2yq6yur6a01NTp++3c2+Lhw6ywsrWnwOnp9P3x6enp6c6ms7Gts7i+zvT98enp6enDpaOwua7l4+b0/eHd3d3d3dzV3d3W3d3d6fTr//////////////////Xr6/Pz8/Pz8/Pz8/Pz8/P16+vE2NfY2L3X2NjXwNjd9evr4enn6uLm6OHn6ejp3/Xr6/P0+PL6+fT2/PP49vD16+vm8Ony7fHs6/Dv6e/r9evr8uHy8vLy3/Ly8vLg8vXr6//////////////////16+v/////////////39vY7evt6Ojo6Ojo6Ojo6Ojo6PL6+PPz8/Pz8/Pz8/Pz8/P5/g=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "The image is a section drawing titled \"Diagram 3.12 Floor type 2.1C(a) – floor type 2.1 with ceiling treatment C and floating floor (a)\". The word \"SECTION\" appears in the lower right corner of the framed drawing.\n\nThe section shows a stack of horizontal layers running across the width of the frame. At the very top is a thin line, below which three small rectangles each marked with a cross (X) are spaced at the left, centre and right. Beneath them is a layer filled with diagonal hatching. Under this hatched layer is a thick band filled with a speckled, dotted pattern, the thickest element in the drawing. Below this band are three further cross-marked rectangles, again positioned at left, centre and right, roughly in line with those above. A final thin line closes the section at the bottom. No dimensions or numerical labels are shown within the drawing itself.",
- "first_draft": "The image is a section drawing titled \"Diagram 3.12 Floor type 2.1C(a) – floor type 2.1 with ceiling treatment C and floating floor (a)\". The word \"SECTION\" appears in the lower right corner of the framed drawing.\n\nThe section shows a stack of horizontal layers running across the width of the frame. At the very top is a thin line. Below it is a layer filled with diagonal hatching, within which three small rectangles each marked with a cross (X) are spaced at the left, centre and right. Beneath this hatched layer is a thick band filled with a speckled, dotted pattern, the thickest element in the drawing. Under this band is another thin line containing three further cross-marked rectangles, again positioned at left, centre and right, roughly in line with those above. A final thin line closes the section at the bottom. No dimensions or numerical labels are shown within the drawing itself."
+ "first_draft": "The image is a section drawing titled \"Diagram 3.12 Floor type 2.1C(a) – floor type 2.1 with ceiling treatment C and floating floor (a)\". The word \"SECTION\" appears in the lower right corner of the framed drawing.\n\nThe section shows a stack of horizontal layers running across the width of the frame. At the very top is a thin line. Below it is a layer filled with diagonal hatching, within which three small rectangles each marked with a cross (X) are spaced at the left, centre and right. Beneath this hatched layer is a thick band filled with a speckled, dotted pattern, the thickest element in the drawing. Under this band is another thin line containing three further cross-marked rectangles, again positioned at left, centre and right, roughly in line with those above. A final thin line closes the section at the bottom. No dimensions or numerical labels are shown within the drawing itself.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

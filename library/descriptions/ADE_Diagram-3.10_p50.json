@@ -12,7 +12,15 @@
   "h": 469,
   "grey": "3riyxb/Dqbuou7u7vKzZ5eja2tra16e1v7mxts7a2uXp////7fX07/f////////06f///9Xx+t7r////////9On////V6Ora6+vW0dPT7PTp////1fH53tv9///////06f///9Xy+tHp////////9Onm6ebg5Nve4+nq5ujm5e/p6uvp6urh7Obs7Ozs7Oru6fLw7Mnt8tzV8PDj8PDl8un////V8fve6/Ts6O/9//Tp////1enq2uv////////06f///9Xx+t7r////////9On////i8fPm8f////////Tp///+49bT3O3////////04u3t7e3t7e3t7e3t1NLN3w=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "This is a section drawing. The title bar at the top reads \"Diagram 3.10 Floor type 1.1C – wall types 3.1 and 3.2\".\n\nWithin the section, a vertical wall runs from top to bottom, drawn as a stack of cross‑hatched blocks between two outer facing lines. A horizontal floor slab crosses this wall at right angles; the slab is shown as a speckled band above a horizontal line that rests on a row of small triangular bearing symbols, each marked with a cross. A leader line from the label \"Separating floor type 1.1C carried through\" points to the floor where it passes through the wall. The label \"Floor type 1.1C\" is placed below the floor on the right‑hand side of the wall. At the bottom, the label \"Separating wall types 3.1 and 3.2\" sits beneath the vertical wall. The word \"SECTION\" appears in the lower right corner.",
- "first_draft": "This is a section drawing. The title bar at the top reads \"Diagram 3.10 Floor type 1.1C – wall types 3.1 and 3.2\". Outside the framed drawing, in the top left, there is cut‑off running text reading \"ADE: Diagram 3.10\" and a partial line \"Floor type 1.1C – wall types 3.1 and 3.2 | Floor type 1.2B\".\n\nWithin the section, a vertical wall runs from top to bottom, drawn as a stack of cross‑hatched blocks between two outer facing lines. A horizontal floor slab crosses this wall at right angles; the slab is shown as a speckled upper band above a hatched lower band that rests on a row of small triangular bearing symbols. A leader line from the label \"Separating floor type 1.1C carried through\" points to the floor where it passes through the wall. The label \"Floor type 1.1C\" points to the floor on the right‑hand side of the wall. At the bottom, the label \"Separating wall types 3.1 and 3.2\" sits beneath the vertical wall. The word \"SECTION\" appears in the lower right corner."
+ "first_draft": "This is a section drawing. The title bar at the top reads \"Diagram 3.10 Floor type 1.1C – wall types 3.1 and 3.2\". Outside the framed drawing, in the top left, there is cut‑off running text reading \"ADE: Diagram 3.10\" and a partial line \"Floor type 1.1C – wall types 3.1 and 3.2 | Floor type 1.2B\".\n\nWithin the section, a vertical wall runs from top to bottom, drawn as a stack of cross‑hatched blocks between two outer facing lines. A horizontal floor slab crosses this wall at right angles; the slab is shown as a speckled upper band above a hatched lower band that rests on a row of small triangular bearing symbols. A leader line from the label \"Separating floor type 1.1C carried through\" points to the floor where it passes through the wall. The label \"Floor type 1.1C\" points to the floor on the right‑hand side of the wall. At the bottom, the label \"Separating wall types 3.1 and 3.2\" sits beneath the vertical wall. The word \"SECTION\" appears in the lower right corner.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

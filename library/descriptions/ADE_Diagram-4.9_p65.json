@@ -12,7 +12,15 @@
   "h": 341,
   "grey": "wLS1t72or7WoqaSsxtPT39jP2N/d3dPV1NbT1N/l5enp/////////9j2///////06f//5OLg5f+u8PTf2d3l9On//9/BwuH/p+L68uLp9fTp///j397l/6/w///////06fTxz9XU0vGl5PHx9P//9On//8rf3s//ouj///////Tp7OXI19jK5aHd5eXs///06fPrydzaze2h2uzs9///9Onf1sbZ2snXntTY2Of///Tp+Pbd2dbf9qrp9vb4///06f//49/g5f+s7///////9On///nu7vrz6vP///////Tp/////+/c4f/////y7/Dx2efn5+fn5+fn5+fnzdPN2w=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "The image displays a cross-section drawing titled \"Diagram 4.9 Floor penetrations\". It shows a horizontal floor assembly composed of timber joists, indicated by hatched sections, with insulation depicted as a series of loops between them. Two layers of horizontal boarding are shown above and below the joists. Penetrating this floor structure vertically are two distinct elements. On the left is a masonry wall, drawn with a brick bond pattern. To its right is a vertical pipe, shown as a hatched band of mineral wool between two parallel vertical lines, labeled \"Lag pipes with mineral wool\". A further vertical line to the right of this is indicated by an arrow from the word \"Enclosure\" printed at the bottom. The word \"SECTION\" is printed in the bottom right corner of the drawing.",
- "first_draft": "The image displays a cross-section drawing titled \"Diagram 4.9 Floor penetrations\". It shows a horizontal floor assembly composed of timber joists, indicated by cross-hatched sections, with insulation depicted as a series of loops between them. Two layers of horizontal boarding are shown above and below the joists. Penetrating this floor structure vertically are two distinct elements. On the left is a masonry block wall, drawn with a brick bond pattern. To its right is a vertical pipe assembly, labeled \"Lag pipes with mineral wool\", which consists of two parallel vertical lines with hatching in between. An arrow points to the outer right line of this assembly, labeled \"Enclosure\". The word \"SECTION\" is printed in the bottom right corner of the drawing."
+ "first_draft": "The image displays a cross-section drawing titled \"Diagram 4.9 Floor penetrations\". It shows a horizontal floor assembly composed of timber joists, indicated by cross-hatched sections, with insulation depicted as a series of loops between them. Two layers of horizontal boarding are shown above and below the joists. Penetrating this floor structure vertically are two distinct elements. On the left is a masonry block wall, drawn with a brick bond pattern. To its right is a vertical pipe assembly, labeled \"Lag pipes with mineral wool\", which consists of two parallel vertical lines with hatching in between. An arrow points to the outer right line of this assembly, labeled \"Enclosure\". The word \"SECTION\" is printed in the bottom right corner of the drawing.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

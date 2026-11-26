@@ -12,7 +12,15 @@
   "h": 550,
   "grey": "2snP1dHEwsbCzMXBwMnJ8N3h4eHOvrnBvbzI4eHh4ebp///6/O7z/PXt9Pf29ffy6f/53dvb29vN19Tb2N3y8un/+8j/////yPT4yP////Tp//vI/////8T898j////06f/7yP/////G9vjI////9OHv+sXoo+3/xvj6yP////Tp//vI8pOV7sb58L3r6Ont6f/7yPvv+f/H9vi14efq9On/9LfX1tXYzPz4xP////Tj8PnH9/n68fn198X////06f/76Nra2tra2tr3////9On///T2+Ojp7fjv/v////Tp7vDx7vb////////////03eHj4eTf7fDw8PDw8PDw6g=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "The image is a plan view titled, in a green band at the top, \"Diagram 2 Parking bay designated for disabled people\". It shows a rectangular parking bay drawn with a heavy black line, containing a symbol of a person in a wheelchair. A dimension of 1400mm is marked beside the symbol inside the bay. Across the top, two dimensions read 2400mm over the bay and 1200mm over the adjacent strip; down the left side, 4800mm spans the bay length and 1200mm spans the end strip. Hatched areas to the right of and below the bay are pointed to by the label \"Access zone between and at the end of designated parking bays\". At the top right, a small raised line is labelled \"Dropped kerb where access is to a pedestrian route\". Below the bay, a double-headed arrow is labelled \"Vehicular route\". A note at the bottom left reads \"Dimensions of parking bay are to centre lines of markings\".",
- "first_draft": "The image is a plan view titled, in a green band at the top, \"Diagram 2 Parking bay designated for disabled people\". It shows a rectangular parking bay drawn with a heavy black line, containing a symbol of a person in a wheelchair. A dimension of 1400mm is marked beside the symbol inside the bay. Across the top, two dimensions read 2400mm over the bay and 1200mm over the adjacent strip; down the left side, 4800mm spans the bay length and 1200mm spans the end strip. Hatched areas to the right of and below the bay are pointed to by the label \"Access zone between and at the end of designated parking bays\". At the top right, a small raised line is labelled \"Dropped kerb where access is to a pedestrian route\". Below the bay, a double-headed arrow is labelled \"Vehicular route\". A note at the bottom left reads \"Dimensions of parking bay are to centre lines of markings\"."
+ "first_draft": "The image is a plan view titled, in a green band at the top, \"Diagram 2 Parking bay designated for disabled people\". It shows a rectangular parking bay drawn with a heavy black line, containing a symbol of a person in a wheelchair. A dimension of 1400mm is marked beside the symbol inside the bay. Across the top, two dimensions read 2400mm over the bay and 1200mm over the adjacent strip; down the left side, 4800mm spans the bay length and 1200mm spans the end strip. Hatched areas to the right of and below the bay are pointed to by the label \"Access zone between and at the end of designated parking bays\". At the top right, a small raised line is labelled \"Dropped kerb where access is to a pedestrian route\". Below the bay, a double-headed arrow is labelled \"Vehicular route\". A note at the bottom left reads \"Dimensions of parking bay are to centre lines of markings\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

@@ -12,7 +12,15 @@
   "h": 329,
   "grey": "+fn5+fn5+fn5+fn5+fn5+fbi7frw9PP7///////////8/v//+P/98P///////////P////r//+r6//////////z////s6//48P//6/n////8////7v//+u7U3NHs/////P////r//+vt9/////////z////4//zt//rv///////8///62/Lt+v/64f///////P////D97+jq+P3///////z//////+Dp8/n////////8////////7vHr9f///////P/////////85fP///////z////////////9//////+WdXd2dXV0dHR0dHR0dHR0jHFecW9yW1VVVVVVVVVVVQ=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "This is a section drawing labelled \"Diagram 1.3 Minimum headroom\" in a green band along the base, with the note \"See para 1.11\" at the top left. It depicts a stair flight descending between two landings. The upper left horizontal surface is labelled \"Landing\", the lower right horizontal surface is labelled \"Landing\", and the stepped portion is labelled \"Flight\". A dashed diagonal line runs along the step nosings and is labelled \"Pitch line\". Above the flight, a solid sloping line represents the overhead, with a parallel dashed line just below it. Three vertical dimension arrows, each marked \"At least 2m\", indicate vertical clearances: the first spans from the left landing up to the horizontal ceiling line above it; the second spans from the pitch line up to the sloping overhead; and the third spans from the right landing up to a horizontal dashed line labelled \"Minimum headroom\".",
- "first_draft": "This is a section drawing labelled \"Diagram 1.3 Minimum headroom\" in a green band along the base, with the note \"See para 1.11\" at the top left. It depicts a stair flight descending between two landings. The lower left horizontal surface is labelled \"Landing\", the upper right horizontal surface is labelled \"Landing\", and the stepped portion is labelled \"Flight\". A dashed diagonal line runs along the step nosings and is labelled \"Pitch line\". Above the flight, a solid sloping line represents the overhead, with a parallel dashed line behind it. Three vertical dimension arrows, each marked \"At least 2m\", indicate vertical clearances: the first spans from the left landing up to the level of the upper ceiling; the second spans from the pitch line at the steepest part of the flight up to the sloping overhead; and the third spans from the right landing up to a horizontal dashed line labelled \"Minimum headroom\"."
+ "first_draft": "This is a section drawing labelled \"Diagram 1.3 Minimum headroom\" in a green band along the base, with the note \"See para 1.11\" at the top left. It depicts a stair flight descending between two landings. The lower left horizontal surface is labelled \"Landing\", the upper right horizontal surface is labelled \"Landing\", and the stepped portion is labelled \"Flight\". A dashed diagonal line runs along the step nosings and is labelled \"Pitch line\". Above the flight, a solid sloping line represents the overhead, with a parallel dashed line behind it. Three vertical dimension arrows, each marked \"At least 2m\", indicate vertical clearances: the first spans from the left landing up to the level of the upper ceiling; the second spans from the pitch line at the steepest part of the flight up to the sloping overhead; and the third spans from the right landing up to a horizontal dashed line labelled \"Minimum headroom\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

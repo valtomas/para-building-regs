@@ -12,7 +12,15 @@
   "h": 484,
   "grey": "4Lm5wMO/r7C1t7OturO32ujb29vb27m1urTF29vb29vo////////////////////6P/////19+/y8/fw/////+j//Ojq3uPf7fP26v/////o//3o9+7v5/Hz+uz/////6P/////u8u7/7fLo/////+j/////6/Xx//T46v/////o/////+7x8f/0+ev/////6P/////u8PD/8/nr/////+j/////6+zn9+bs6P/////o/////+vu7//1+ev/////6P/////t7fD/8/nr/////+j/////8fby//D16v/////o////////////////////4e7u7u7u7u7u7u7u6M3Xzg=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "The image is headed by a green bar reading \"Diagram 2.26 External cavity wall at eaves level\". Below it is a vertical drawing labelled \"SECTION\" in the lower right corner. It shows a cross‑section of a wall composed of two parallel leaves separated by a vertical white gap, the cavity. The left leaf is drawn as a stack of blocks with horizontal joint lines and a single diagonal hatch running from lower left to upper right. The right leaf is filled with a cross‑hatch of diagonals in both directions. At the top of the cavity, a hatched block spans the gap between the two leaves, closing it off at the eaves level. To the left of the drawing, the words \"Flexible closer\" appear, with two thin leader lines pointing to that top hatched block. About halfway down the section, a thin horizontal line crosses the cavity between the two leaves, with a small vertical tick at its centre. No other text, dimensions or symbols are present. The image is complete and not cut off.",
- "first_draft": "The image is headed by a green bar reading \"Diagram 2.26 External cavity wall at eaves level\". Below it is a vertical drawing labelled \"SECTION\" in the lower right corner. It shows a cross‑section of a wall composed of two parallel leaves separated by a vertical white gap, the cavity. The left (inner) leaf is drawn as a stack of blocks with horizontal joint lines and a single diagonal hatch running from lower left to upper right. The right (outer) leaf is filled with a cross‑hatch of diagonals in both directions. At the top of the cavity, a hatched block spans the gap between the two leaves, closing it off at the eaves level. To the left of the drawing, the words \"Flexible closer\" appear, with two thin leader lines pointing to that top hatched block. No other text, dimensions or symbols are present. The image is complete and not cut off."
+ "first_draft": "The image is headed by a green bar reading \"Diagram 2.26 External cavity wall at eaves level\". Below it is a vertical drawing labelled \"SECTION\" in the lower right corner. It shows a cross‑section of a wall composed of two parallel leaves separated by a vertical white gap, the cavity. The left (inner) leaf is drawn as a stack of blocks with horizontal joint lines and a single diagonal hatch running from lower left to upper right. The right (outer) leaf is filled with a cross‑hatch of diagonals in both directions. At the top of the cavity, a hatched block spans the gap between the two leaves, closing it off at the eaves level. To the left of the drawing, the words \"Flexible closer\" appear, with two thin leader lines pointing to that top hatched block. No other text, dimensions or symbols are present. The image is complete and not cut off.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

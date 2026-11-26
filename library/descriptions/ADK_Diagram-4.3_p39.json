@@ -12,7 +12,15 @@
   "h": 656,
   "grey": "+fn5/Pj19fX19fT8/Pz8/Pr0+f/1+Pn4+Pnu5P/////8////9P/z2+P67+L//////P////T/+f/49vXi//////z////0//n////14v/////8////9P/v+uz/9eL//////P////T/+fr6+u3i//////z////szMzMzMzG4//////8////8/v//////////////P////z7//r09f////////z////z6PH16tL2///////8//////vs+fz28vb4/f///P////jr9u30+vTz9P7///z////57vT5/Pr9+u7v///8////////////////////kHFrcnFjY2NjY2NjY2NjYw=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "The drawing, captioned \"Diagram 4.3 Loading bay\" in a green band along the bottom, carries the note \"See para 4.3\" in the upper left corner. It comprises two views. The upper view, labelled \"Plan\" beneath it, depicts a building layout. The outer wall is drawn as double lines on the left and top and as a thick line on the right and bottom, and a single inner wall divides the interior, leaving a straight-walled corridor and an open area. A row of small triangles at the top is labelled \"Steps\" by an arrow. An open area at the lower part of the layout is labelled \"Refuge\", likewise indicated by an arrow. The lower view, a perspective representation of the same space, shows low walls, a flight of steps and a dashed outline on the ground plane that follows the shape of the open areas, being a long narrow section joined to a wider section at the back. The text \"Perspective (not to scale)\" appears to the left of this view, with a short line pointing to the near wall. A short dotted line bearing an arrowhead points from the label \"Vehicle position\" to the wider part of the dashed outline.",
- "first_draft": "The drawing, captioned \"Diagram 4.3 Loading bay\", carries the note \"See para 4.3\" in the upper left corner. It comprises two views. The upper view, titled \"Plan\", depicts a building layout enclosed by double-lined walls that form a curved corridor. A short flight of stairs, drawn as a row of small triangles, sits at the top and is labelled \"Steps\" by an arrow. An open area within the lower part of the corridor is labelled \"Refuge\", likewise indicated by an arrow. The lower view, titled \"Perspective (not to scale)\", is an isometric representation of the same space, showing low walls, a flight of steps, and a dashed rectangular outline on the ground plane. A short dotted line bearing an arrowhead points from the label \"Vehicle position\" to this dashed outline."
+ "first_draft": "The drawing, captioned \"Diagram 4.3 Loading bay\", carries the note \"See para 4.3\" in the upper left corner. It comprises two views. The upper view, titled \"Plan\", depicts a building layout enclosed by double-lined walls that form a curved corridor. A short flight of stairs, drawn as a row of small triangles, sits at the top and is labelled \"Steps\" by an arrow. An open area within the lower part of the corridor is labelled \"Refuge\", likewise indicated by an arrow. The lower view, titled \"Perspective (not to scale)\", is an isometric representation of the same space, showing low walls, a flight of steps, and a dashed rectangular outline on the ground plane. A short dotted line bearing an arrowhead points from the label \"Vehicle position\" to this dashed outline.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

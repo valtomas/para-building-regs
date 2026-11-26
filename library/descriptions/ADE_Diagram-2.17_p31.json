@@ -12,7 +12,15 @@
   "h": 349,
   "grey": "3ra1v73Hl6mqsL3W1tbW4eXe2eTg5dLZz9Dc6enp6erp/////+3u7/H45P/////06f/////t7vLw+eT/////9On/////7fDx8vbk//////Tp/////+3b5ejl4//////06f/////t7fP09OT/////9On/////7e7v8Pzk//////Tp/////+3Y29/c4v/////06f/////t7u/v/OT/////9On/////7e7z9PTk//////Tp/////+3u8PD85P/////06f/////t2+br5OP/////9On/////7e/x8fnk//////Tp/////+3s8vH45P/////06f/////x7/Dz9ev/3drR6A=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "The drawing is titled \"Diagram 2.17 Wall type 2.3\" in a green header band, and is identified by the word \"SECTION\" in the lower right corner, indicating it is a vertical cut through a wall rather than a plan.\n\nIt shows two parallel, upright wall elements set side by side with a narrow vertical gap between them. Each element is drawn as a column of four stacked rectangular blocks separated by horizontal lines, and every block is filled with a cross-hatch (diagonal X) pattern. A full-height vertical line runs along the outer face of each element, just outside the edge of the hatched rectangle, so that the outer face is shown by two close parallel vertical lines, while the inner (cavity) face is shown by a single vertical line (the edge of the hatched rectangle).\n\nAt the middle horizontal dividing line, a short horizontal member spans the gap, joining the two elements, and a small vertical tick is placed at the centre of this connector. No dimensions, scale bar or further labels are present.",
- "first_draft": "The drawing is titled \"Diagram 2.17 Wall type 2.3\" in a green header band, and is identified by the word \"SECTION\" in the lower right corner, indicating it is a vertical cut through a wall rather than a plan.\n\nIt shows two parallel, upright wall elements set side by side with a narrow vertical gap between them. Each element is drawn as a column of three stacked rectangular blocks separated by horizontal lines, and every block is filled with a cross-hatch (diagonal X) pattern. A full-height vertical line runs along the outer face of each element, and an additional close vertical line runs along the inner face, so each element appears bounded by two parallel vertical lines.\n\nAt the middle horizontal dividing line, a short horizontal member spans the gap, joining the two elements, and a small tick or symbol is placed at the centre of this connector. No dimensions, scale bar or further labels are present."
+ "first_draft": "The drawing is titled \"Diagram 2.17 Wall type 2.3\" in a green header band, and is identified by the word \"SECTION\" in the lower right corner, indicating it is a vertical cut through a wall rather than a plan.\n\nIt shows two parallel, upright wall elements set side by side with a narrow vertical gap between them. Each element is drawn as a column of three stacked rectangular blocks separated by horizontal lines, and every block is filled with a cross-hatch (diagonal X) pattern. A full-height vertical line runs along the outer face of each element, and an additional close vertical line runs along the inner face, so each element appears bounded by two parallel vertical lines.\n\nAt the middle horizontal dividing line, a short horizontal member spans the gap, joining the two elements, and a small tick or symbol is placed at the centre of this connector. No dimensions, scale bar or further labels are present.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

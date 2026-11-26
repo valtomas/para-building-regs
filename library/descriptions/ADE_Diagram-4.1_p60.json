@@ -12,7 +12,15 @@
   "h": 1109,
   "grey": "1M/S1dnEure9w8XPys3a5un/////////1+7///////Tp///////89dHt///////06f/////////N7f//////9On/////////ze3///////Tp///////89dHt///////06f/////////a7///////9Onw8vX6///////////8+/Tp8+719PX19fb39fX16+306ezr6Ozz8/Pz8/Pz8/P09On49/f39/f39/f39/f3+PTp7+zp7PT09PT09PT09Pf06f//////////7PDq4t/u9On48vLy5ejh1NPh6O71/vTp8u7f4OLq8Pj////////06fPs8fn/////////////9A=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "The drawing, titled \"Diagram 4.1 Treatments for material change of use\", comprises four separate sections stacked vertically, each with a label beneath. The first, \"Wall treatment 1\", is a vertical section through a wall, shown as a long hatched column, with two triangular brackets, each marked with a cross, projecting from its left face. The second, \"Floor treatment 1\", is a horizontal section showing a row of upright loop-shaped elements resting on a flat base, bounded at each end by a crossed triangular bracket. The third, \"Floor treatment 2\", is a horizontal section of a thin profile with a hatched strip along its lower edge. The fourth, \"Stair treatment 1\", is a section through three steps, with a diagonal lattice element running along the slope beneath them and a short horizontal line at the top step.",
- "first_draft": "The drawing, titled \"Diagram 4.1 Treatments for material change of use\", comprises four separate sections stacked vertically, each with a label beneath. The first, \"Wall treatment 1\", is a vertical section through a brick wall, shown as a long column of stacked courses, with two triangular brackets, each marked with a cross, projecting from its left face. The second, \"Floor treatment 1\", is a horizontal section showing a row of upright loop-shaped elements resting on a flat base, bounded at each end by a crossed triangular bracket. The third, \"Floor treatment 2\", is a horizontal section of a thin profile with a cross-hatched strip along its lower edge. The fourth, \"Stair treatment 1\", is a section through three steps, with a diagonal lattice element running along the slope beneath them and a short horizontal line at the top step."
+ "first_draft": "The drawing, titled \"Diagram 4.1 Treatments for material change of use\", comprises four separate sections stacked vertically, each with a label beneath. The first, \"Wall treatment 1\", is a vertical section through a brick wall, shown as a long column of stacked courses, with two triangular brackets, each marked with a cross, projecting from its left face. The second, \"Floor treatment 1\", is a horizontal section showing a row of upright loop-shaped elements resting on a flat base, bounded at each end by a crossed triangular bracket. The third, \"Floor treatment 2\", is a horizontal section of a thin profile with a cross-hatched strip along its lower edge. The fourth, \"Stair treatment 1\", is a section through three steps, with a diagonal lattice element running along the slope beneath them and a short horizontal line at the top step.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

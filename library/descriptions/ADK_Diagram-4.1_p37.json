@@ -12,7 +12,15 @@
   "h": 314,
   "grey": "+Pj4+Pj4+Pj4+Pj4+Pj4+PXg7f/////////////////8/////////////////////P////////Lr6vD///////z////////0///2///////8/////vzy+v//9v///////P///+3n6Pv/9PT///////z////v/+rm6e3j///////8//zx5u7k5+7i6fj//////P///+jp6enp6en2//////z////w8fHx8fHx+f/////8////2/j//////////////P///9v7//////////////z///////////////////+LZWlnZ2RkZGRkZGRkZGRkjHFfcHBVVVVVVVVVVVVVVQ=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "This is a side elevation line drawing titled \"Diagram 4.1 Barrier siting\". In the upper left corner the text reads \"See para 4.1\". The drawing shows a simple outline of a vehicle, drawn from the side with two circular wheels, resting on a pale grey horizontal band that runs across the lower part of the image, its left edge at the barrier. To the left of the vehicle's front end stands a short vertical line, labelled \"Vehicle barrier\" beneath it, rising from the grey band. From the top of this barrier a zigzag line extends horizontally to the right, terminating in an open arrowhead that points at the front of the vehicle. A short horizontal dashed line projects to the left from the barrier, level with the top edge of the grey band. The bottom of the image carries a green band with the white text \"Diagram 4.1\" on the left and \"Barrier siting\" to its right.",
- "first_draft": "This is a side elevation line drawing titled \"Diagram 4.1 Barrier siting\". In the upper left corner the text reads \"See para 4.1\". The drawing shows a simple outline of a vehicle, drawn from the side with two circular wheels, resting on a pale grey horizontal band that runs across the lower part of the image. To the left of the vehicle's front end stands a short vertical line, labelled \"Vehicle barrier\" beneath it, rising from the grey band. From the top of this barrier a zigzag line extends horizontally to the right, terminating in an open arrowhead that points at the front of the vehicle. A short horizontal dashed line projects to the left from part-way up the barrier. The bottom of the image carries a green band with the white text \"Diagram 4.1\" on the left and \"Barrier siting\" to its right."
+ "first_draft": "This is a side elevation line drawing titled \"Diagram 4.1 Barrier siting\". In the upper left corner the text reads \"See para 4.1\". The drawing shows a simple outline of a vehicle, drawn from the side with two circular wheels, resting on a pale grey horizontal band that runs across the lower part of the image. To the left of the vehicle's front end stands a short vertical line, labelled \"Vehicle barrier\" beneath it, rising from the grey band. From the top of this barrier a zigzag line extends horizontally to the right, terminating in an open arrowhead that points at the front of the vehicle. A short horizontal dashed line projects to the left from part-way up the barrier. The bottom of the image carries a green band with the white text \"Diagram 4.1\" on the left and \"Barrier siting\" to its right.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

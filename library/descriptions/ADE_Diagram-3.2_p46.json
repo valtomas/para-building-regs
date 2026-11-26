@@ -12,7 +12,15 @@
   "h": 451,
   "grey": "xbC4wMG0p6qvqqqtsLHT4+rp6enpyMPQ6enp6enp6e/a7enm7e3t7e3t7e3n5+3o6f/45/r6+vv7+/r67u7/9On/+uPs7Ozr5+vs7OPt//Tp//Pk4t3j4+Tj4+Dh6v/06e7n5ubr5OXn5vP/////9On//vr66evp6+rr6uvt//Tp+vTr4uDf4t/m5Obl5//06fPs6+rw6u3o/f//////9On//fLi+/v7+/v75+/7//Tp7eLf3+bf4tzp+Pj4+P/06f//////////////////9On/79fS0tHS0dHR0dLW//Tp7ufm5+3j6ubj+v/////05fb29vb29vb29vb219rW5Q=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "A vertical stack of four horizontal cross-sections under the heading \"Diagram 3.2 Ceiling treatments A, B and C\", with the word \"SECTION\" at the lower right.\n\nFirst, \"Ceiling treatment A (independent joists)\": a horizontal base line with two vertical members at the left and right ends, each drawn as a rectangle crossed by an X; between them a row of overlapping loop shapes (insulation) sits on the base line.\n\nSecond, \"Ceiling treatment B (resilient bars)\": a horizontal base line carrying a row of loop shapes along most of its length; at the left end the loops stop, leaving a small gap with a tiny block and a short line slanting up to the left.\n\nThird, \"Ceiling treatment C (timber battens)\": a bare horizontal line with two small squares, each containing an X, spaced apart.\n\nFourth, \"Ceiling treatment C (resilient channels)\": a horizontal line with a small square block at the left end, followed by a row of loop shapes filling the remainder.",
- "first_draft": "A vertical stack of four horizontal cross-sections under the heading \"Diagram 3.2 Ceiling treatments A, B and C\", with the word \"SECTION\" at the lower right.\n\nFirst, \"Ceiling treatment A (independent joists)\": a horizontal base line with two vertical members at the left and right ends, each drawn as a rectangle crossed by an X; between them a row of overlapping loop shapes (insulation) sits on the base line.\n\nSecond, \"Ceiling treatment B (resilient bars)\": a horizontal base line carrying a row of loop shapes along most of its length; at the left end the loops stop, leaving a small gap with a tiny block and a short line slanting up to the left.\n\nThird, \"Ceiling treatment C (timber battens)\": a bare horizontal line with two small squares, each containing an X, spaced apart.\n\nFourth, \"Ceiling treatment C (resilient channels)\": a horizontal line with a small square block at the left end, followed by a row of loop shapes filling the remainder."
+ "first_draft": "A vertical stack of four horizontal cross-sections under the heading \"Diagram 3.2 Ceiling treatments A, B and C\", with the word \"SECTION\" at the lower right.\n\nFirst, \"Ceiling treatment A (independent joists)\": a horizontal base line with two vertical members at the left and right ends, each drawn as a rectangle crossed by an X; between them a row of overlapping loop shapes (insulation) sits on the base line.\n\nSecond, \"Ceiling treatment B (resilient bars)\": a horizontal base line carrying a row of loop shapes along most of its length; at the left end the loops stop, leaving a small gap with a tiny block and a short line slanting up to the left.\n\nThird, \"Ceiling treatment C (timber battens)\": a bare horizontal line with two small squares, each containing an X, spaced apart.\n\nFourth, \"Ceiling treatment C (resilient channels)\": a horizontal line with a small square block at the left end, followed by a row of loop shapes filling the remainder.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

@@ -12,7 +12,15 @@
   "h": 329,
   "grey": "+Pn5+fn5+fn5+fn5+fn5+fr++/n////////////////45O32/////////////////P/////q8v///+j0//////z///z/793y/v/p3PX9///8///4///+9vf///z89////P/t6v///+bx///65/L///z/9//6///r//r//Pn8/f/89Pf1+P/w+u///Or27v///P/59P////T6//jr6P3///z+8P////j2////9Pn////88//////z/////fT//////P////////////////////z///////////////////+WdXd2dnd0d3V0dHR0dHR0jHJedGxzcHFjVVVVVVVVVQ=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "Diagram 1.2, titled 'Examples of suitable tread profiles', presents three side-on line drawings of stair tread sections, each positioned above a slanted line. The top left corner reads 'See paras 1.5–1.10'. The left drawing is a simple two-step profile with no dimensions. The middle drawing shows a tread edge finished with a rounded nose; a vertical dimension line marked '25mm max. overlap' measures the horizontal gap between the front edge of the upper tread and the lower tread. The right drawing is similar, repeating the '25mm max. overlap' dimension at the top, but here the lower tread edge is cut away at a bevelled angle, shown by a small triangle symbol and labelled '60° min.'. A green footer bar across the bottom reads 'Diagram 1.2 Examples of suitable tread profiles'.",
- "first_draft": "Diagram 1.2, titled 'Examples of suitable tread profiles', presents three side-on line drawings of stair tread sections, each positioned above a slanted line. The top left corner reads 'See paras 1.5–1.10'. The left drawing is a simple two-step profile with no dimensions. The middle drawing shows a tread edge finished with a rounded nose; a vertical dimension line marked '25mm max. overlap' measures the horizontal gap between the front edge of the upper tread and the lower tread. The right drawing is similar, repeating the '25mm max. overlap' dimension at the top, but here the lower tread edge is cut away at a bevelled angle, shown by a small triangle symbol and labelled '60° min.'. A green footer bar across the bottom reads 'Diagram 1.2 Examples of suitable tread profiles'."
+ "first_draft": "Diagram 1.2, titled 'Examples of suitable tread profiles', presents three side-on line drawings of stair tread sections, each positioned above a slanted line. The top left corner reads 'See paras 1.5–1.10'. The left drawing is a simple two-step profile with no dimensions. The middle drawing shows a tread edge finished with a rounded nose; a vertical dimension line marked '25mm max. overlap' measures the horizontal gap between the front edge of the upper tread and the lower tread. The right drawing is similar, repeating the '25mm max. overlap' dimension at the top, but here the lower tread edge is cut away at a bevelled angle, shown by a small triangle symbol and labelled '60° min.'. A green footer bar across the bottom reads 'Diagram 1.2 Examples of suitable tread profiles'.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

@@ -12,7 +12,15 @@
   "h": 447,
   "grey": "wLq0qrKv2NjY2NjY2NjY3urw8PDw8PDw8PDw8PDw8O/0////zN3/////wej////69P////j3//////X1////+vT////k7dT/6s/I3Pj///r0+tPT1sGw9di+ueDT1+v69P79/+fc0/Xeysrp/v7/+vT/////39v15d7d5f////r0////5+z////////////69P///93n////zf7/////+vT////s9Oj///////////r0////29m87dHX7f/////69P///9vPt/fU1tXN4v//+vT////l7tD+//////////r0////9t3Z///////////65OTk5OTk5OTk5OTk5OTk5w=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "The drawing is headed \"Diagram 28 Fireplace recesses\" and contains three hatched details, labelled (a), (b) and (c), with the word \"Plan\" above the label for (c).\n\nIn (a) \"Solid wall\", a hatched wall section has a central notch; a downward arrow points into the notch, \"At least 200mm\" is dimensioned horizontally across the top, and \"At least 200mm\" is dimensioned vertically below the lower wall line, into the notch.\n\nIn (b) \"Cavity wall\", a two-leaf wall with a gap between the leaves is shown. The upper hatched ends are labelled \"Recess\" and \"Jamb\", the jamb indicated by a black dot. \"At least 200mm\" is dimensioned across the top, and the text \"Each leaf at least 100mm\" appears below the wall.\n\nIn (c) \"Back to back (within the same dwelling)\", a plan detail of two hatched walls meeting shows a recess in the connecting portion; \"At least 200mm\" is dimensioned across the top and \"At least 100mm\" vertically below.",
- "first_draft": "The drawing is headed \"Diagram 28 Fireplace recesses\" and contains three hatched details, labelled (a), (b) and (c), with the word \"Plan\" centred above the third.\n\nIn (a) \"Solid wall\", a hatched wall section has a central notch; a downward arrow points into the notch, \"At least 200mm\" is dimensioned horizontally across the top, and \"At least 200mm\" is dimensioned vertically below the lower wall line, into the notch.\n\nIn (b) \"Cavity wall\", a two-leaf wall with a gap between the leaves is shown. The upper hatched ends are labelled \"Recess\" and \"Jamb\", the jamb indicated by a black dot. \"At least 200mm\" is dimensioned across the top, and the text \"Each leaf at least 100mm\" appears below the wall.\n\nIn (c) \"Back to back (within the same dwelling)\", a plan detail of two hatched walls meeting shows a recess in the connecting portion; \"At least 200mm\" is dimensioned across the top and \"At least 100mm\" vertically below."
+ "first_draft": "The drawing is headed \"Diagram 28 Fireplace recesses\" and contains three hatched details, labelled (a), (b) and (c), with the word \"Plan\" centred above the third.\n\nIn (a) \"Solid wall\", a hatched wall section has a central notch; a downward arrow points into the notch, \"At least 200mm\" is dimensioned horizontally across the top, and \"At least 200mm\" is dimensioned vertically below the lower wall line, into the notch.\n\nIn (b) \"Cavity wall\", a two-leaf wall with a gap between the leaves is shown. The upper hatched ends are labelled \"Recess\" and \"Jamb\", the jamb indicated by a black dot. \"At least 200mm\" is dimensioned across the top, and the text \"Each leaf at least 100mm\" appears below the wall.\n\nIn (c) \"Back to back (within the same dwelling)\", a plan detail of two hatched walls meeting shows a recess in the connecting portion; \"At least 200mm\" is dimensioned across the top and \"At least 100mm\" vertically below.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

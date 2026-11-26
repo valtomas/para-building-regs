@@ -12,7 +12,15 @@
   "h": 252,
   "grey": "5crO0sfNu9HHz8TN3Nzc5em/sszH1K27orfByenp6e/k6Ojo6Ojo6Ojo6Ojo6Ojn6f//////////////////9On///////////////////Tp1cvKzMrMzMvKzMvMy8rs6dbe397Y1t7f397f3t/Y6un06dP47/P/////////6e3p7+bU/e/z/////////+rt6d3////y9P///+L////u7und6uvq6uvr7OvZ6unr6/Pp3ODh4N/g4eHg0+Hg4eHy6d7W19fX1tfW19bX19fX7un///////////////////Tp///////////////i2Nrk3d/f39/f39/f39/f0c3P2Q=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "This is a section drawing, identified by the title \"Diagram 3.20 Floor type 3.1A\" at the top and the word \"SECTION\" in the lower right corner. It depicts a floor construction shown in cross-section, made up of a top horizontal layer drawn as a long hatched band, a lower horizontal layer filled with a continuous row of small circles or ovals, and an open cavity between them. Within this cavity, four vertical elements are drawn, each as a narrow rectangle marked with a diagonal cross; they are placed at intervals along the cavity and are drawn at different heights, so they do not all span the full gap between the two layers. On the left side, a vertical dimension line with arrowheads spans the gap between the underside of the top layer and the top of the left-hand vertical element, and is labelled \"At least 100mm\". The vertical elements are spaced apart, leaving the cavity open between them. No other labels, dimensions or symbols are shown.",
- "first_draft": "This is a section drawing, identified by the title \"Diagram 3.20 Floor type 3.1A\" at the top and the word \"SECTION\" in the lower right corner. It depicts a floor construction shown in cross-section, made up of a top horizontal layer drawn as a long hatched band, a lower horizontal layer filled with a continuous row of small circles or ovals, and an open cavity between them. Within this cavity, two vertical support posts are drawn, each as a narrow rectangle marked with a diagonal cross, rising from the lower layer to support the top layer. On the left side, a vertical dimension line with arrowheads spans the gap between the underside of the top layer and the top of the lower layer, and is labelled \"At least 100mm\". The supports are spaced apart, leaving the cavity open along most of its length. No other labels, dimensions or symbols are shown."
+ "first_draft": "This is a section drawing, identified by the title \"Diagram 3.20 Floor type 3.1A\" at the top and the word \"SECTION\" in the lower right corner. It depicts a floor construction shown in cross-section, made up of a top horizontal layer drawn as a long hatched band, a lower horizontal layer filled with a continuous row of small circles or ovals, and an open cavity between them. Within this cavity, two vertical support posts are drawn, each as a narrow rectangle marked with a diagonal cross, rising from the lower layer to support the top layer. On the left side, a vertical dimension line with arrowheads spans the gap between the underside of the top layer and the top of the lower layer, and is labelled \"At least 100mm\". The supports are spaced apart, leaving the cavity open along most of its length. No other labels, dimensions or symbols are shown.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

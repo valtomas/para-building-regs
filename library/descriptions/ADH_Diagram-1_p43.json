@@ -6,13 +6,26 @@
  "caption": "Diagram 1 \u0007Rainfall intensities for design of gutter and rainfall pipes (litres per second per square metre)",
  "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
  "date": "2026-11-19",
- "image_sha256": "805a11a8bd99654ab9d2733263d09e06c90e03acdee47e20cd736adbc81ddcdf",
+ "image_sha256": "48362e786101713b609fca2b10e4c8c9573634f029b2819bcaa5091e8c8b2dc4",
  "image_sig": {
-  "w": 760,
+  "w": 749,
   "h": 785,
-  "grey": "2M+1rbGvsbGtycjE0N/f5Ovx8fDx7vHu8e7x7vHu8e/0///6//r/+v/4//r/+v/69Pj69fr1+vTf4fbR4fX4+vT///r/+v/f2uPz+v/6//r0+Pr1+vX65vHw7PL69fj69P//+v/6/+Ls5uDw//r/+vT5+vX68fbj5+Li2O3u+fr0///6/+va69/v6Orr8P/69Pj69frw8PHi9fLz8O3n+vT///r17+/i5efm6PTb+Pr0+Pr18Ofx5dr38ufh6Pj69P//+v/23dTl4+Lo5+T7+vT6+vX46Nrd697e5OXy+fr0///04PDg9f76//r/+v/68fr6+Pf2+vb69vr2+vb69g=="
+  "grey": "2M+3rrCvsbCrx8fFyt/f3+vx8fDx7vHu8e7x7vHu8fH0///6//r/+v/3//r/+f//9Pj69fr1+vTi3ffZ2fL6+/T///r/+v/k2ePt+v/5///0+Pr1+vX66PHu7+769Pr89P//+v/6/+bp6ODs//n///T5+vX68vXn5Ojg2efr+vz0///6/+7Z6uDt5e7n7f7/9Pn69frw8fLf9fH47PHl/PT///r37vPg5eXn6PPd8//0+Pr18enu6Nry9ejl4Pr89P//+v/339Tj5t/r4u3w//T6+vX56N3a7OHZ5+Tu+v30///24PDg8v76//r/+f//8fr6+Pf2+vb69vr2+vb6+g=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "The drawing is a line map of England and Wales titled \"Diagram 1 Rainfall intensities for design of gutter and rainfall pipes (litres per second per square metre)\". The outline of England and Wales is overlaid by a square grid, with the numbers 1, 2, 3, 4, 5, 6 repeated along the top and bottom edges and down the left and right edges. In the upper right corner is a horizontal scale bar marked 0, 20, 40, 80, 100 with the word \"kilometres\" beneath it. Across the map are several closed, irregular contour lines, each enclosing a region labelled with a value: 0.012, 0.014, 0.016, 0.018, 0.020 or 0.022. Twelve towns are shown as solid dots with names placed beside them: Carlisle, Newcastle, Leeds, Kingston-upon-Hull, Manchester, Nottingham, Birmingham, Oxford, Norwich, Cardiff, London and Plymouth. The contour lines and their figures are distributed over the whole country, with the lower values (0.012 to 0.016) appearing mainly in the north and west and the higher values (0.020 to 0.022) more common in the east and south-east.",
- "first_draft": "The drawing is a line map of England titled \"Diagram 1 Rainfall intensities for design of gutter and rainfall pipes (litres per second per square metre)\". The outline of the country is overlaid by a square grid, with the numbers 1, 2, 3, 4, 5, 6 repeated along the top and bottom edges and down the left and right edges. In the upper right corner is a horizontal scale bar marked 0, 20, 40, 80, 100 with the word \"kilometres\" beneath it. Across the map are several closed, irregular contour lines, each enclosing a region labelled with a value: 0.012, 0.014, 0.016, 0.018, 0.020 or 0.022. Twelve towns are shown as solid dots with names placed beside them: Carlisle, Newcastle, Leeds, Kingston-upon-Hull, Manchester, Nottingham, Birmingham, Oxford, Norwich, Cardiff, London and Plymouth. The contour lines and their figures are distributed over the whole country, with the lower values (0.012 to 0.016) appearing mainly in the north and west and the higher values (0.020 to 0.022) more common in the east and south-east."
+ "first_draft": "The drawing is a line map of England titled \"Diagram 1 Rainfall intensities for design of gutter and rainfall pipes (litres per second per square metre)\". The outline of the country is overlaid by a square grid, with the numbers 1, 2, 3, 4, 5, 6 repeated along the top and bottom edges and down the left and right edges. In the upper right corner is a horizontal scale bar marked 0, 20, 40, 80, 100 with the word \"kilometres\" beneath it. Across the map are several closed, irregular contour lines, each enclosing a region labelled with a value: 0.012, 0.014, 0.016, 0.018, 0.020 or 0.022. Twelve towns are shown as solid dots with names placed beside them: Carlisle, Newcastle, Leeds, Kingston-upon-Hull, Manchester, Nottingham, Birmingham, Oxford, Norwich, Cardiff, London and Plymouth. The contour lines and their figures are distributed over the whole country, with the lower values (0.012 to 0.016) appearing mainly in the north and west and the higher values (0.020 to 0.022) more common in the east and south-east.",
+ "check": {
+  "verdict": "recut",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26",
+  "note": "Recut: the new crop only trims blank space or a stray line, so the approved description still fits; the suggestion repeats it."
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26",
+ "suggestion": {
+  "text": "The drawing is a line map of England and Wales titled \"Diagram 1 Rainfall intensities for design of gutter and rainfall pipes (litres per second per square metre)\". The outline of England and Wales is overlaid by a square grid, with the numbers 1, 2, 3, 4, 5, 6 repeated along the top and bottom edges and down the left and right edges. In the upper right corner is a horizontal scale bar marked 0, 20, 40, 80, 100 with the word \"kilometres\" beneath it. Across the map are several closed, irregular contour lines, each enclosing a region labelled with a value: 0.012, 0.014, 0.016, 0.018, 0.020 or 0.022. Twelve towns are shown as solid dots with names placed beside them: Carlisle, Newcastle, Leeds, Kingston-upon-Hull, Manchester, Nottingham, Birmingham, Oxford, Norwich, Cardiff, London and Plymouth. The contour lines and their figures are distributed over the whole country, with the lower values (0.012 to 0.016) appearing mainly in the north and west and the higher values (0.020 to 0.022) more common in the east and south-east.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ }
 }

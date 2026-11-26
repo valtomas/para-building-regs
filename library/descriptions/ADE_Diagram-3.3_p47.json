@@ -6,13 +6,28 @@
  "caption": "Diagram 3.3 \u0007\u0007Floor type 1.1C – floor type 1.1 with ceiling treatment C",
  "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
  "date": "2026-11-15",
- "image_sha256": "b7e991c21ebb94e67cf9904f0cafcae99925859d20e72084bf1e695ae21d5ed8",
+ "image_sha256": "599c70f0d2ab7a99330fa3fb2fdcc36f5b9f0261fd8f53725413d0ae087cf7ec",
  "image_sig": {
   "w": 371,
-  "h": 517,
-  "grey": "4r24x7/Dsrytw7rN2tra5PPp6enpvqWknL3PvdC+we/p7u7u7uzq6+vr7u7u7u7s6fDr7Ozr7Ozs7Ozr7Ozr8unx+Pb69vb49ff59/f1+u3p7efu8fLz7ej08PPx5fLw6fXy8/T09PLz9PT09PL08+jw8PDw8PDw8PDw8NrW1uP59Pb+9v729Pv+/fz9+/z/4tDQy8rC2M7Q0crOzcnY7ebf0NLd3PHy8Ozw7+zw8///8OHe3t7b4d/X2un29vn/8e/X3dLW19rc2eb38u/z+fPq2dTe2NTU1NPr8fDs7/X39ePl4+Xn5erh6OPl7////////////////////////w=="
+  "h": 253,
+  "grey": "3Lq+wre4ubvAvLHGzMzM2um/s8zHz6u+m8rD1Onp6e/z6enp6bWdoZDFsImxi5fv8+np6enJtayuvenp6enj7+va2trazsLFxMfa2tra2uTp///////////////////06f//////////////////9Ont6enp6enp6enp6enp6fLp5eTo6eHm6Onr6ePp5eTr6fP38/v89Pjy8vv39Pn77Onn/PT1+Pf5+P3w/vPy++3p7Nnn6+fs4tnq7Ons2ufx6ezd5ujo6OLh6Ojo6N3o8un///////////////////Tp///////////////d19Xj39/f39/f39/f39/f1tPV3g=="
  },
- "reviewed": false,
- "description": "The image is headed \"Diagram 3.3 Floor type 1.1C – floor type 1.1 with ceiling treatment C\". Below the heading is a box containing a section, labelled \"SECTION\" at its lower right. The section shows a horizontal floor build‑up: a thick upper layer drawn with a dense stippled texture, resting on three small square support blocks, each marked with a diagonal cross; beneath these blocks runs a thin horizontal band formed by two parallel lines. No dimensions are shown. Below the box is a block of running text numbered \"3.30\", headed \"Floor Type 1.2B Concrete planks (solid or hollow), soft floor covering, ceiling treatment B (see Diagram 3.4)\", followed by five bullet points reading: \"minimum mass per unit area of planks and any bonded screed of 365kg/m²\"; \"use a regulating floor screed\"; \"all floor joints fully grouted to ensure air tightness\"; \"soft floor covering essential\"; \"ceiling treatment B (or better) essential\".",
- "first_draft": "The image is headed \"Diagram 3.3 Floor type 1.1C – floor type 1.1 with ceiling treatment C\". Below the heading is a box containing a section, labelled \"SECTION\" at its lower right. The section shows a horizontal floor build‑up: a thick upper layer drawn with a dense stippled texture, resting on three small square support blocks, each marked with a diagonal cross; beneath these blocks runs a thin horizontal line. No dimensions are shown. Below the box is a block of running text numbered \"3.30\", headed \"Floor Type 1.2B Concrete planks (solid or hollow), soft floor covering, ceiling treatment B (see Diagram 3.4)\", followed by five bullet points reading: \"minimum mass per unit area of planks and any bonded screed of 365kg/m²\"; \"use a regulating floor screed\"; \"all floor joints fully grouted to ensure air tightness\"; \"soft floor covering essential\"; \"ceiling treatment B (or better) essential\"."
+ "reviewed": true,
+ "description": "A section headed \"Diagram 3.3 Floor type 1.1C – floor type 1.1 with ceiling treatment C\", marked \"SECTION\" at the lower right. A thick concrete floor slab, drawn with a speckled pattern, has a thin layer on top (the soft floor covering). Under the slab, three small square timber battens, each marked with a cross, carry a ceiling drawn as a thin band along the bottom. There are no labels or dimensions.",
+ "first_draft": "The image is headed \"Diagram 3.3 Floor type 1.1C – floor type 1.1 with ceiling treatment C\". Below the heading is a box containing a section, labelled \"SECTION\" at its lower right. The section shows a horizontal floor build‑up: a thick upper layer drawn with a dense stippled texture, resting on three small square support blocks, each marked with a diagonal cross; beneath these blocks runs a thin horizontal line. No dimensions are shown. Below the box is a block of running text numbered \"3.30\", headed \"Floor Type 1.2B Concrete planks (solid or hollow), soft floor covering, ceiling treatment B (see Diagram 3.4)\", followed by five bullet points reading: \"minimum mass per unit area of planks and any bonded screed of 365kg/m²\"; \"use a regulating floor screed\"; \"all floor joints fully grouted to ensure air tightness\"; \"soft floor covering essential\"; \"ceiling treatment B (or better) essential\".",
+ "check": {
+  "verdict": "recut",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26",
+  "note": "Recut so the image shows this drawing alone; the suggestion is a new description written from the new image."
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26",
+ "suggestion": {
+  "text": "A section headed \"Diagram 3.3 Floor type 1.1C – floor type 1.1 with ceiling treatment C\", marked \"SECTION\" at the lower right. A thick concrete floor slab, drawn with a speckled pattern, has a thin layer on top (the soft floor covering). Under the slab, three small square timber battens, each marked with a cross, carry a ceiling drawn as a thin band along the bottom. There are no labels or dimensions.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "The image is headed \"Diagram 3.3 Floor type 1.1C – floor type 1.1 with ceiling treatment C\". Below the heading is a box containing a section, labelled \"SECTION\" at its lower right. The section shows a horizontal floor build‑up: a thick upper layer drawn with a dense stippled texture, resting on three small square support blocks, each marked with a diagonal cross; beneath these blocks runs a thin horizontal band formed by two parallel lines. No dimensions are shown. Below the box is a block of running text numbered \"3.30\", headed \"Floor Type 1.2B Concrete planks (solid or hollow), soft floor covering, ceiling treatment B (see Diagram 3.4)\", followed by five bullet points reading: \"minimum mass per unit area of planks and any bonded screed of 365kg/m²\"; \"use a regulating floor screed\"; \"all floor joints fully grouted to ensure air tightness\"; \"soft floor covering essential\"; \"ceiling treatment B (or better) essential\".",
+ "corrected_by": "Claude Opus 5.5"
 }

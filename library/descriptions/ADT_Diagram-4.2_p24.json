@@ -12,7 +12,15 @@
   "h": 572,
   "grey": "7uXl5eXl5eXl5eXl5eXl7fv4+Pj4+Ozz5vf///////v7+f////3z9vj0///////7+/n////6/vX06///////+/v5////+v/2/+3///////v7+f////r/9v7t///////7+/n///jp//br7f//////+/v27fX+9f/28u3///////v78Oz///je5fvt///////7+/T6///9+e377f//////+/vv+Pj3///b6ur///////v75fLz8///4+/r4O3z///7++/7//r///T77ePd5Oz3+/vs7ezs8/Po7enp3d/f6vv7/P///+7////8///////7hGBcX2FeX2BfYGBTU1NTdQ=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "This is an elevation view, captioned at the bottom \"Diagram 4.2 Type B, elevation view showing minimum dimensions\". It shows a wall with a toilet pan at lower left, a recessed shelf above it, a rectangular mirror over a basin counter in the centre, and two wall hooks on the right. A small box marked \"HD\" sits on the wall between the shelf and the mirror; a legend at right reads \"HD Hand-drying facility\". Labels read \"Mirror\", \"High hook\", \"Low hook\", \"Position of shelf\". Below the counter a dashed arc indicates the basin. Vertical green dimension lines give, from the floor: \"780–800mm\" to the top of the shelf; \"780–800mm\" to the counter surface; \"1780mm\" to the top of the mirror; \"1050mm\" to the low hook; and \"1685mm\" to the high hook. A horizontal green dimension at the bottom, spanning the width between the two walls, reads \"1685mm\". Two NOTES at right follow, referring to Appendix D and the concealed toilet cistern.",
- "first_draft": "This is an elevation view, captioned at the bottom \"Diagram 4.2 Type B, elevation view showing minimum dimensions\". It shows a wall with a toilet pan at lower left, a recessed shelf above it, a rectangular mirror over a basin counter in the centre, and two wall hooks on the right. A small box marked \"HD\" sits on the wall between the shelf and the mirror; a legend at right reads \"HD Hand-drying facility\". Labels read \"Mirror\", \"High hook\", \"Low hook\", \"Position of shelf\". Below the basin a dashed arc indicates the basin front. Vertical green dimension lines give, from the floor: \"780–800mm\" to the top of the shelf; \"780–800mm\" to the counter surface; \"1780mm\" to the top of the mirror; \"1050mm\" to the low hook; and \"1685mm\" to the high hook. A horizontal dimension at the bottom reads \"1685mm\". Two NOTES follow, referring to Appendix D and the concealed toilet cistern."
+ "first_draft": "This is an elevation view, captioned at the bottom \"Diagram 4.2 Type B, elevation view showing minimum dimensions\". It shows a wall with a toilet pan at lower left, a recessed shelf above it, a rectangular mirror over a basin counter in the centre, and two wall hooks on the right. A small box marked \"HD\" sits on the wall between the shelf and the mirror; a legend at right reads \"HD Hand-drying facility\". Labels read \"Mirror\", \"High hook\", \"Low hook\", \"Position of shelf\". Below the basin a dashed arc indicates the basin front. Vertical green dimension lines give, from the floor: \"780–800mm\" to the top of the shelf; \"780–800mm\" to the counter surface; \"1780mm\" to the top of the mirror; \"1050mm\" to the low hook; and \"1685mm\" to the high hook. A horizontal dimension at the bottom reads \"1685mm\". Two NOTES follow, referring to Appendix D and the concealed toilet cistern.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

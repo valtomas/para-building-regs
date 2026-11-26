@@ -12,7 +12,15 @@
   "h": 406,
   "grey": "3bCvvrO4oqerna6lt9bW4ejt6O3t7e3t7e3p6u3t7evp////////6ev5///////06f///////+vw+P//////9On////////r8Pj///////Tp////////4N/4///////06f///////+vw+P//////9On////////r8Pj///////Tp////////4N/4///////06f///////+vw+P//////9On////////r8Pj///////Tp////////4OD4///////06f///////+vw+P//////9On////////r8fj///////Tp////////6er5///9+vv05Ovr6+vr6+vr6+vr0s7H2g=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "The drawing carries the title \"Diagram 5.3 Internal wall type C\" in a shaded band across the top. Inside a plain bordered frame there is a single vertical drawing, identified by the word \"SECTION\" printed at the lower right corner. The section is a tall, narrow rectangle representing a wall in cross-section. It is made up of four stacked rectangular blocks, each filled with a diagonal cross-hatch pattern of intersecting lines. The four hatched blocks are separated from one another by three thin horizontal layers, each drawn as a pair of closely spaced parallel lines running the full width of the wall. The parts relate as a continuous vertical column, the hatched blocks and the thin double-lined layers alternating from top to bottom. No dimensions, scale bar, or other labels appear within the drawing.",
- "first_draft": "The drawing carries the title \"Diagram 5.3 Internal wall type C\" in a shaded band across the top. Inside a plain bordered frame there is a single vertical drawing, identified by the word \"SECTION\" printed at the lower right corner. The section is a tall, narrow rectangle representing a wall in cross-section. It is made up of four stacked rectangular blocks, each filled with a diagonal cross-hatch pattern of intersecting lines. The four hatched blocks are separated from one another by three thin horizontal layers, each drawn as a pair of closely spaced parallel lines running the full width of the wall. The parts relate as a continuous vertical column, the hatched blocks and the thin double-lined layers alternating from top to bottom. No dimensions, scale bar, or other labels appear within the drawing."
+ "first_draft": "The drawing carries the title \"Diagram 5.3 Internal wall type C\" in a shaded band across the top. Inside a plain bordered frame there is a single vertical drawing, identified by the word \"SECTION\" printed at the lower right corner. The section is a tall, narrow rectangle representing a wall in cross-section. It is made up of four stacked rectangular blocks, each filled with a diagonal cross-hatch pattern of intersecting lines. The four hatched blocks are separated from one another by three thin horizontal layers, each drawn as a pair of closely spaced parallel lines running the full width of the wall. The parts relate as a continuous vertical column, the hatched blocks and the thin double-lined layers alternating from top to bottom. No dimensions, scale bar, or other labels appear within the drawing.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

@@ -12,7 +12,15 @@
   "h": 403,
   "grey": "yri8x72wrayzvKzI4eHh6erk6enMr7+3tLy6us3p6e/h7+/f2dzW3tfq7+/v7+/s6e/s0c3NxNDL4dfs7Ozy9Om4paSjpKWjpKWkpaSjvvTpvZmZmY2ZmZmZjpmZmcf06dDNzsu70dHR0bzKy8/f9OnQzdvdv8fLvca53+TK3/Tp0M7v57/P6fDZuujgyt/06dDL1c+/y9LSz7vLz8zf9Onc0dHRvdDR0dG/0dHR5/Tp8tTSztnUz9Xo9fX19fT06ezAvsrb6Ovr6+Hq5+rv9OnvxcfXzufo6e3r4dL08fTp86ezxuXw7e/19O3f/vP02+LV19Xc4ODg4Nzb1uDj6A=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "This is a plan, titled \"Diagram 1 Boundaries in this Approved Document,\" showing three building footprints arranged side by side in grey. The middle footprint is labelled \"Building\"; each has an internal line drawing. The three are divided by two vertical boundary lines, the left one marked B at its top and A at its base, the right one marked E at its top and F at its base. Above the buildings runs a horizontal grey band containing the letters C and D, with a dashed white line through its centre; an arrow points to it from the text \"Canal, river, railway or right of way, such as a path or street.\"\n\nBeneath the plan is a table headed \"The boundary for the purposes of:\". The first row reads \"Paragraph 1.52 Diagram 34 and 41\" alongside \"is ACDF\". The second row reads \"Paragraphs 5.1, 5.15, 5.16 and 5.18 Diagram 43 Tables 9 and 10\" alongside \"is ABEF\".",
- "first_draft": "This is a plan, titled \"Diagram 1 Boundaries in this Approved Document,\" showing three building footprints arranged side by side in grey. The middle footprint is labelled \"Building\"; each has an internal line drawing. The three are divided by two vertical boundary lines, the left one marked B at its top and A at its base, the right one marked E at its top and F at its base. Above the buildings runs a horizontal grey band containing the letters C and D, with a dashed white line through its centre; an arrow points to it from the text \"Canal, river, railway or right of way, such as a path or street.\"\n\nBeneath the plan is a table headed \"The boundary for the purposes of:\". The first row reads \"Paragraph 1.52 Diagrams 34 and 41\" alongside \"is ACDF\". The second row reads \"Paragraphs 5.1, 5.15, 5.16 and 5.18 Diagram 43 Tables 9 and 10\" alongside \"is ABEF\"."
+ "first_draft": "This is a plan, titled \"Diagram 1 Boundaries in this Approved Document,\" showing three building footprints arranged side by side in grey. The middle footprint is labelled \"Building\"; each has an internal line drawing. The three are divided by two vertical boundary lines, the left one marked B at its top and A at its base, the right one marked E at its top and F at its base. Above the buildings runs a horizontal grey band containing the letters C and D, with a dashed white line through its centre; an arrow points to it from the text \"Canal, river, railway or right of way, such as a path or street.\"\n\nBeneath the plan is a table headed \"The boundary for the purposes of:\". The first row reads \"Paragraph 1.52 Diagrams 34 and 41\" alongside \"is ACDF\". The second row reads \"Paragraphs 5.1, 5.15, 5.16 and 5.18 Diagram 43 Tables 9 and 10\" alongside \"is ABEF\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

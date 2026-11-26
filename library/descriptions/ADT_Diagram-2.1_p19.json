@@ -12,7 +12,15 @@
   "h": 354,
   "grey": "9vf39/f39/f39/f39/f39/v/////+//////7///////7//////v//////f7/////+///////4rn/mv////////v//////9Ci8nz////////7//////+NWb4a////////+///////lWC2I+////////v//////4JNvUHa///////7//////+JVNto////////+///////qnXKef////////v//////+OtuIv////////7///////64+DZ////////+//////6//////v+//////v//////f/////9//////+pkJKQkpGTkJGTlZaRkJCQh2NYY2JiZGJiXl9gUk5OUg=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "The drawing is a sign, shown as a white rectangular field. A thin green line runs along its top edge, and a solid green band fills the bottom. In the centre of the white area stand two black human pictograms of similar height, placed side by side. The left figure has a circular head, two arms angled downward from the shoulders, and a trapezoidal skirt from which two short legs project. The right figure has a circular head, two arms angled downward, and two straight, widely spaced legs. In each of the four corners of the white area there is a small registration mark made up of a short horizontal tick and a short vertical tick. The green band at the bottom carries white text reading \"Diagram 2.1 Universal toilet sign (all rights reserved to BS ISO 7001:2023)\". No dimensions or scale are shown.",
- "first_draft": "The drawing is a sign, shown as a white rectangular field. A thin green line runs along its top edge, and a solid green band fills the bottom. In the centre of the white area stand two black human pictograms of similar height, placed side by side. The left figure has a circular head, two arms angled downward from the shoulders, and a trapezoidal skirt from which two short legs project. The right figure has a circular head, two arms angled downward, and two straight, widely spaced legs. At each of the four corners of the white field there is a small L‑shaped registration mark with a short horizontal tick. The green band at the bottom carries white text reading \"Diagram 2.1 Universal toilet sign (all rights reserved to BS ISO 7001:2023)\". No dimensions or scale are shown."
+ "first_draft": "The drawing is a sign, shown as a white rectangular field. A thin green line runs along its top edge, and a solid green band fills the bottom. In the centre of the white area stand two black human pictograms of similar height, placed side by side. The left figure has a circular head, two arms angled downward from the shoulders, and a trapezoidal skirt from which two short legs project. The right figure has a circular head, two arms angled downward, and two straight, widely spaced legs. At each of the four corners of the white field there is a small L‑shaped registration mark with a short horizontal tick. The green band at the bottom carries white text reading \"Diagram 2.1 Universal toilet sign (all rights reserved to BS ISO 7001:2023)\". No dimensions or scale are shown.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

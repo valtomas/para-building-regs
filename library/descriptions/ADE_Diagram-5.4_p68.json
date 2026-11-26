@@ -12,7 +12,15 @@
   "h": 406,
   "grey": "2K+vucSkp6uipqO01tbq+ejq6+3t7e3t7enr7e3t8P7r///////r7vD///////X+6///////6fbu///////1/ev//////+n27v//////9e3r///////k4+z///////Xr6///////6fXu///////16+v//////+n37v//////9evr///////k4+z///////Xr6///////6fXu///////16+v//////+j27v//////9evr///////l4+z///////Xx6///////6ffu///////1/+v//////+j17v//////9fvr///////r7+////37/PX35Ovr6+vr6+vr6+vR0Mbn/g=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "The drawing is headed \"Diagram 5.4 Internal wall type D\" in a pale green band running across the top. Below this, inside a large white area enclosed by a black border, a single tall vertical rectangle is drawn in the middle, representing a wall shown in section; the word \"SECTION\" appears in capital letters at the bottom right of the white field. The rectangle is divided by a vertical line into a wider left band filled with a pattern of small open circles set out in rows, and a narrow right band that is left plain. The circle fill is crossed at three levels by thin horizontal lines that run across the full width of the rectangle, dividing it into four stacked segments. There are no further labels, dimensions, arrows or symbols, and the drawing has no separate lettered parts. The image is complete and shows a diagram rather than running text.",
- "first_draft": "The drawing is headed \"Diagram 5.4 Internal wall type D\" in a pale green band running across the top. Below this, inside a large white area enclosed by a black border, a single tall vertical rectangle is drawn in the middle, representing a wall shown in section; the word \"SECTION\" appears in capital letters at the bottom right of the white field. Within the outer rectangle is a narrower vertical band filled with a pattern of small open circles set out in rows. This dotted fill is broken at three places by thin horizontal lines, dividing it into four stacked segments separated by small gaps. There are no further labels, dimensions, arrows or symbols, and the drawing has no separate lettered parts. The image is complete and shows a diagram rather than running text."
+ "first_draft": "The drawing is headed \"Diagram 5.4 Internal wall type D\" in a pale green band running across the top. Below this, inside a large white area enclosed by a black border, a single tall vertical rectangle is drawn in the middle, representing a wall shown in section; the word \"SECTION\" appears in capital letters at the bottom right of the white field. Within the outer rectangle is a narrower vertical band filled with a pattern of small open circles set out in rows. This dotted fill is broken at three places by thin horizontal lines, dividing it into four stacked segments separated by small gaps. There are no further labels, dimensions, arrows or symbols, and the drawing has no separate lettered parts. The image is complete and shows a diagram rather than running text.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

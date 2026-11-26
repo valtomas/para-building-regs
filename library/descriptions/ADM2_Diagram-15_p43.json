@@ -12,7 +12,15 @@
   "h": 545,
   "grey": "3dHQysfIxcjIx87LysnR6u729vTw8vTq8+f29vb29vb0///y6eTx0uHQ////////9P//8unj8tLiy/H///////T///ru8/rY9ND////////0///x6OHx39/h8fDx////9P//8unk8Oz9+NPN4f////T///Lp5OLs+fj////////0///67vPt7fny3+T2////9P//8unk4uv49v7///////T///Pt5O/s+/Tc8/z////0///6+vL29vX4//3/////9P//+vbv/v79/vr///////T///z69f/////+/v/////0///8+PX/////////////8Pj49ufm5/j4+Pj4+Pj4+A=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "Diagram 15, titled \"An example of wheelchair space provision in a cinema or theatre,\" is a plan view showing seating in vertical columns. At the top right, a hatched area labelled \"Rostrum\" contains two seats and an upward-pointing arrow. To the right, a horizontal line is labelled \"Rear wall\". Two dashed rectangular boxes in the lower middle each contain a side-view wheelchair symbol; two leader lines from these boxes connect to the label \"1400mm x 900mm nominal wheelchair spaces\". A block of text at right reads: \"The rostrum as well as seats on the rostrum and seats on the next row can be removed to create more wheelchair spaces\". Along the bottom, two dimension lines read \"1100mm*\" and \"900mm\". Two columns of seats are labelled \"Steps\" at the bottom, each with an upward arrow. A small curved plan detail appears at the bottom right. A footnote states: \"* Dimension derived from BS 8300\".",
- "first_draft": "Diagram 15, titled \"An example of wheelchair space provision in a cinema or theatre,\" is a plan view showing seating in vertical columns. At the top right, a hatched area labelled \"Rostrum\" contains two seats and an upward-pointing arrow. To the right, a horizontal line is labelled \"Rear wall\". Two dashed square boxes in the lower middle each contain a side-view wheelchair symbol; two leader lines from these boxes connect to the label \"1400mm x 900mm nominal wheelchair spaces\". A block of text at right reads: \"The rostrum as well as seats on the rostrum and seats on the next row can be removed to create more wheelchair spaces\". Along the bottom, two dimension lines read \"1100mm*\" and \"900mm\". Two columns of seats are labelled \"Steps\" at the bottom, each with an upward arrow. A small curved plan detail appears at the bottom right. A footnote states: \"* Dimension derived from BS 8300\"."
+ "first_draft": "Diagram 15, titled \"An example of wheelchair space provision in a cinema or theatre,\" is a plan view showing seating in vertical columns. At the top right, a hatched area labelled \"Rostrum\" contains two seats and an upward-pointing arrow. To the right, a horizontal line is labelled \"Rear wall\". Two dashed square boxes in the lower middle each contain a side-view wheelchair symbol; two leader lines from these boxes connect to the label \"1400mm x 900mm nominal wheelchair spaces\". A block of text at right reads: \"The rostrum as well as seats on the rostrum and seats on the next row can be removed to create more wheelchair spaces\". Along the bottom, two dimension lines read \"1100mm*\" and \"900mm\". Two columns of seats are labelled \"Steps\" at the bottom, each with an upward arrow. A small curved plan detail appears at the bottom right. A footnote states: \"* Dimension derived from BS 8300\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

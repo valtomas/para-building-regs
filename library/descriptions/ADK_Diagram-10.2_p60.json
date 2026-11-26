@@ -12,7 +12,15 @@
   "h": 896,
   "grey": "+PH0/Pz8/Pz8/Pz8/Pz8+vz/9vL///////H4+Pr///z8//bi7vLv8u3e7e3w///8/Pz15+/09PTt5PLy8+HW7/z59Ojz9vb28+r29vf///z8+Pb29vb29vb29vb3///8/P318vr6+vf5+vr6+////Pz///////ji5fb7//////z8///////8+v3l///////8/P///////Pr/7P///////Pz///////z6/+z///////z8//////r39fvr///////8/P//+vL58uDe4////////Pz///fn8/Hd2eP///////z8//rr+/f09Pru+/v7///8rZiUmJiVlpeNjY2NjY2Nnw=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "The drawing, captioned \"Diagram 10.2 Avoiding doors on access routes\", has two parts stacked vertically: a plan above a section. The upper part, labelled \"Plan\", depicts a tiled floor with a door assembly drawn at each end; a dashed line between them rises to a peak in the middle, forming an inverted V. The note \"See para 10.2\" sits at the top left, and an arrow leading from the label \"Guarding with cane detection at ground level\" points to the guarding element beside the right-hand door. The lower part, labelled \"Section\", is a vertical cut showing a door leaf drawn in dashed lines with a solid ribbed panel at the bottom, including a handle, set beside a solid vertical element on the right. A horizontal double-headed arrow at the top is dimensioned \"When greater than 100mm\", spanning the gap between the open door and the vertical element. A vertical double-headed arrow on the left is dimensioned \"Between 900mm and 1100mm\", marking the height of the solid panel from the floor line.",
- "first_draft": "The drawing, captioned \"Diagram 10.2 Avoiding doors on access routes\", has two parts stacked vertically: a plan above a section. The upper part, labelled \"Plan\", depicts a tiled floor with a door assembly drawn at each end; a dashed line between them rises to a peak in the middle, forming an inverted V. The note \"See para 10.2\" sits at the top left, and an arrow leading from the label \"Guarding with cane detection at ground level\" points to the right-hand door. The lower part, labelled \"Section\", is a vertical cut showing a door leaf drawn in dashed lines, including a handle, set beside a solid vertical bar on the right. A horizontal double-headed arrow at the top is dimensioned \"When greater than 100mm\", spanning a gap between the door and the bar. A vertical double-headed arrow on the left is dimensioned \"Between 900mm and 1100mm\", marking a height range rising from the floor line to a point on the door."
+ "first_draft": "The drawing, captioned \"Diagram 10.2 Avoiding doors on access routes\", has two parts stacked vertically: a plan above a section. The upper part, labelled \"Plan\", depicts a tiled floor with a door assembly drawn at each end; a dashed line between them rises to a peak in the middle, forming an inverted V. The note \"See para 10.2\" sits at the top left, and an arrow leading from the label \"Guarding with cane detection at ground level\" points to the right-hand door. The lower part, labelled \"Section\", is a vertical cut showing a door leaf drawn in dashed lines, including a handle, set beside a solid vertical bar on the right. A horizontal double-headed arrow at the top is dimensioned \"When greater than 100mm\", spanning a gap between the door and the bar. A vertical double-headed arrow on the left is dimensioned \"Between 900mm and 1100mm\", marking a height range rising from the floor line to a point on the door.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }

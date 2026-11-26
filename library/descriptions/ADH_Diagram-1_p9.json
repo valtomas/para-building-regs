@@ -12,7 +12,15 @@
   "h": 224,
   "grey": "5dDa2s7J1tna2tLa0tra5OWvm73InpCtl5CTq77p6e/z6enp4Le4tLO5nr7Prrrv8+np6d+9xc/F0cjO1cTM79jZ2dnW09PV2dnZ2dnZ2drp////7PPz7f/////////06f////fw/+f8////////9On/////7f/f5P////////Tp/////+7/8+X/5ODc+f/06f/+pKSfpKrV7M/e3Pz/9On/////////5f/0//////Tp/////////+X/4M3G/v/06f/////////l//T+/v//9On/////////4vHp9/////Tp/////////+/iy9z////06f/////////myNnB9///9A=="
  },
- "reviewed": false,
+ "reviewed": true,
  "description": "The image displays a line drawing titled \"Diagram 1 Direct connection of ground floor WC to a drain\". On the left, the side profile of a toilet is shown with a pipe exiting its rear. This pipe bends downwards, runs horizontally to the right, and terminates with a slight upward slope. A thick horizontal line represents the floor on which the toilet sits, and a thinner line to the right marks the \"Floor level\". At the bottom right, the text \"Invert of drain\" indicates the bottom of the horizontal section of the pipe. A vertical dimension line with arrows connects the \"Floor level\" line to the \"Invert of drain\", labeled with the measurement \"1.3m max.\"",
- "first_draft": "The image displays a line drawing titled \"Diagram 1 Direct connection of ground floor WC to a drain\". On the left, the side profile of a toilet is shown with a pipe exiting its rear. This pipe bends downwards, runs horizontally to the right, and then curves upwards to terminate. A horizontal line marks the \"Floor level\" just above the toilet base. Below the horizontal run of the pipe, the text \"Invert of drain\" indicates the top surface of the drain. A vertical dimension line with arrows connects the \"Floor level\" line to the \"Invert of drain\", labeled with the measurement \"1.3m max.\""
+ "first_draft": "The image displays a line drawing titled \"Diagram 1 Direct connection of ground floor WC to a drain\". On the left, the side profile of a toilet is shown with a pipe exiting its rear. This pipe bends downwards, runs horizontally to the right, and then curves upwards to terminate. A horizontal line marks the \"Floor level\" just above the toilet base. Below the horizontal run of the pipe, the text \"Invert of drain\" indicates the top surface of the drain. A vertical dimension line with arrows connects the \"Floor level\" line to the \"Invert of drain\", labeled with the measurement \"1.3m max.\"",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
 }
