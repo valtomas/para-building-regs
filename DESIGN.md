@@ -133,7 +133,8 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   the edition and how much differs, with "See what changed" (the Library opens at Changed in this edition); it goes
   once followed.
 - **Question** (`.msg.user`): a heading, not a bubble: "Your question" eyebrow, the question in display type, an
-  ink rule under it. Each turn repeats it.
+  ink rule under it. Only the first question of a chat is set like this; a follow-up is a plain right-aligned
+  body-text bubble on `--panel-2`, with no eyebrow or rule.
 - **Question box** (`#composer`): the box, then a mono row of Reasoning and Length with the disclaimer in italic at
   the right. While the AI works, what it's doing ("Searching “…”…", "Writing…") takes the disclaimer's place, on one
   line, cut short with an ellipsis if it's long; the disclaimer comes back when the answer ends. The row keeps its

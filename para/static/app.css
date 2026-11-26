@@ -230,6 +230,11 @@ code { font-family: var(--mono); font-size: .8em; background: var(--cite); color
   font: 500 clamp(28px, 3.4vw, 42px)/1.1 var(--display); letter-spacing: -.025em; white-space: pre-wrap; text-wrap: balance; }
 .msg.user .bubble::before { content: "Your question"; font: 500 11px/1.4 var(--mono); letter-spacing: .24em;
   text-transform: uppercase; color: var(--accent); }
+/* A follow-up is a plain turn in the conversation: only the first question is a heading. */
+.msg.user:not(:first-child) { margin: 36px 0 0; }
+.msg.user:not(:first-child) .bubble { display: block; width: fit-content; max-width: 85%; margin-left: auto; padding: 10px 16px;
+  border: 0; border-radius: 14px; background: var(--panel-2); font: 400 17px/1.5 var(--body); letter-spacing: 0; text-wrap: wrap; }
+.msg.user:not(:first-child) .bubble::before { content: none; }
 .msg.assistant { display: flex; flex-direction: column; }
 .answer { overflow-wrap: anywhere; font-size: 17.5px; line-height: 1.6; margin-top: 14px; }
 .answer:empty { margin-top: 0; }
@@ -681,6 +686,7 @@ input[type=checkbox]:checked { background-color: var(--accent); border-color: va
   .examples button::after { display: none; }
   .msg.user .bubble { font-size: 28px; line-height: 1.12; gap: 10px; padding-bottom: 18px; }
   .msg.user .bubble::before { font-size: 10.5px; letter-spacing: .22em; }
+  .msg.user:not(:first-child) .bubble { font-size: 16px; line-height: 1.5; padding: 10px 14px; max-width: 92%; }
   .answer { font-size: 17px; }
   #composer { padding: 12px 14px 18px; gap: 10px; }
   .composer-box { border-radius: 16px; padding: 8px 8px 8px 16px; gap: 10px; align-items: flex-end; }
