@@ -1,0 +1,17 @@
+{
+ "key": "ADE_Table-0.1a_p14",
+ "source": "ADE",
+ "label": "Table 0.1a",
+ "page": 14,
+ "caption": "Table 0.1a \u0007Dwelling-houses and flats – performance standards for separating walls, separating floors, and stairs that have a separating function",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "d968a244ecefd023a710bb74eb01ea0d93536d36f694dc8db7ff2a61dbbf1282",
+ "image_sig": {
+  "w": 755,
+  "h": 304,
+  "grey": "y8m/vL3Ct8i7wru7wrvCzNrWxbi3wbu/vcS6ub7Bx9Xr6b22tr66vLm+srW42+ns5uTk5OTk07m3uuTkv9/k6P/////////XyPL/783Z////////////yL/v/+fG1v//8O/u8e7y8uvr7vLt6+ry89HJv8bH6/Ly8vLy8vLy8vPm//////////T////+////5t/4///////0////8////8vDxtry8vLy8vLy8vLy8vPd09HT6///////////////2vLy8vLy8vLn8vLy8fLy8+bf+P//////9P////P////z8vLy8vLy8vLy8vLy8vLz/////////////////////w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

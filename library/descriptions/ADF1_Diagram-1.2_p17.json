@@ -1,0 +1,26 @@
+{
+ "key": "ADF1_Diagram-1.2_p17",
+ "source": "ADF1",
+ "label": "Diagram 1.2",
+ "page": 17,
+ "caption": "Diagram 1.2 \u0007Minimum ventilation rate for kitchen extract where a cooker hood does not extract to the outside(1)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "6361aa3d7bc8377851afd28cd92e3c46a0261e8021560b590ced74336d438c11",
+ "image_sig": {
+  "w": 737,
+  "h": 539,
+  "grey": "mG5yeX1wbm5ubm5ubm5ub/r6+vr6+vr6+vr6+vr6+vr7///2+Pj4+Oz4+Pjv8vr/+///+f//+P3l/vr/4evr//v///n///bs7ez5/fD3///7///5///54uTi////+f//+///+f///PTq8/////n///v///n////68/v////5///7///5///47ebp////+f//+///+f//+Ovp6P////n///v///n///nw+Ov////5///7///5///59P/u////+f//+///9Pj48unp5/j4+Pf//+zY4+bi4uPr7ezu8e7t7v6hhYCGh4WBiY2Nj4uOjY2Ee1RVYF9gWlNTU1NTU1RTTw=="
+ },
+ "reviewed": true,
+ "description": "The drawing is a schematic elevation of a kitchen. A rectangular room outline encloses the scene. Suspended from the top centre is a pyramid‑shaped cooker hood attached to a vertical duct running up to the ceiling. Wavy lines, representing air, emerge from both slanted sides of the hood, and further wavy lines rise from the top of a cooker set below it. The cooker is drawn as a box with two hobs, a front control panel showing circles and a rectangle, and a rectangular oven door. In the upper right corner, wavy lines point towards a crossed symbol, labelled \"60 litres per second\" on its left and \"Outside\" on its right. A note at the bottom left reads: \"NOTE: 1. The diagram includes a recirculating cooker hood for illustration. A recirculating cooker hood on its own does not provide a means of ventilation that complies with Part F of the Building Regulations.\" The green title band states: \"Diagram 1.2 Minimum ventilation rate for kitchen extract where a cooker hood does not extract to the outside(1)\".",
+ "first_draft": "The drawing is a schematic elevation of a kitchen. A rectangular room outline encloses the scene. Suspended from the top centre is a pyramid‑shaped cooker hood attached to a vertical duct running up to the ceiling. Wavy lines, representing air, emerge from both slanted sides of the hood, and further wavy lines rise from the top of a cooker set below it. The cooker is drawn as a box with two hobs, a front control panel showing circles and a rectangle, and a rectangular oven door. In the upper right corner, wavy lines point towards a crossed symbol, labelled \"60 litres per second\" on its left and \"Outside\" on its right. A note at the bottom left reads: \"NOTE: 1. The diagram includes a recirculating cooker hood for illustration. A recirculating cooker hood on its own does not provide a means of ventilation that complies with Part F of the Building Regulations.\" The green title band states: \"Diagram 1.2 Minimum ventilation rate for kitchen extract where a cooker hood does not extract to the outside(1)\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

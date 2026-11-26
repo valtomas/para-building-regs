@@ -1,0 +1,26 @@
+{
+ "key": "ADE_Diagram-2.27_p36",
+ "source": "ADE",
+ "label": "Diagram 2.27",
+ "page": 36,
+ "caption": "Diagram 2.27 \u0007\u0007Wall type 3.1 with independent composite panels",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "474d26ca514a6f59052028eb7ff4fd72c7e443106a36cbae9e86ec28e694b466",
+ "image_sig": {
+  "w": 362,
+  "h": 480,
+  "grey": "x7S7wsLAprGsusKryNnZ5Orp6enp1K6pvrzIxL29xu/i6enp6d7QzuPp6enp6enr6f/////w5fT05fL/////9On/////7Nv7+tvs//////Tp/////+za8/Lb7f/////06f/////s2vLy2+z/////9On/////7Nv7+9vt//////Tp/////+zZ6urb7f/////06f/////s2/v62+3/////9On/////7Nv6+tvs//////Tp/////+zZ6+vb7P/////06f/////s2/v72+z/////9On/////69ry8trs//////Tf7u7u7u7u7u7u7u7T09Hg/////////////////////w=="
+ },
+ "reviewed": true,
+ "description": "The drawing is a section, labelled \"SECTION\" in the lower right corner, set beneath a header reading \"Diagram 2.27 Wall type 3.1 with independent composite panels\". It shows a single vertical wall assembly drawn as three upright components arranged side by side within a rectangular border. In the centre is a wide vertical column, divided by three horizontal lines into four stacked panels; the interior of each panel is filled with a diagonal cross‑hatch pattern. To the left of this central column, separated by a narrow empty gap, is a slim vertical rectangle containing internal vertical lines that split it into thin layers. A mirror‑image slim vertical rectangle, also containing internal vertical lines, stands to the right of the central column, separated from it by a similar narrow gap. The two outer strips are of equal height to the central column and stand parallel to it. No further labels, dimensions or symbols are present. The parts are aligned vertically so that the central hatched column and the two outer striped strips run together from top to bottom.",
+ "first_draft": "The drawing is a section, labelled \"SECTION\" in the lower right corner, set beneath a header reading \"Diagram 2.27 Wall type 3.1 with independent composite panels\". It shows a single vertical wall assembly drawn as three upright components arranged side by side within a rectangular border. In the centre is a wide vertical column, divided by three horizontal lines into four stacked panels; the interior of each panel is filled with a diagonal cross‑hatch pattern. To the left of this central column, separated by a narrow empty gap, is a slim vertical rectangle containing internal vertical lines that split it into thin layers. A mirror‑image slim vertical rectangle, also containing internal vertical lines, stands to the right of the central column, separated from it by a similar narrow gap. The two outer strips are of equal height to the central column and stand parallel to it. No further labels, dimensions or symbols are present. The parts are aligned vertically so that the central hatched column and the two outer striped strips run together from top to bottom.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

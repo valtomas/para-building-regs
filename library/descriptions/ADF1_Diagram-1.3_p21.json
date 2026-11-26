@@ -1,0 +1,26 @@
+{
+ "key": "ADF1_Diagram-1.3_p21",
+ "source": "ADF1",
+ "label": "Diagram 1.3",
+ "page": 21,
+ "caption": "Diagram 1.3 \u0007Two habitable rooms treated as one room for ventilation purposes",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "2cfe1d847ff2ba873f499507e9edc9cc6a53efbeafdcf44927eba9595a3314e7",
+ "image_sig": {
+  "w": 737,
+  "h": 424,
+  "grey": "9/j4+Pj4+Pj4+Pj4+Pj4+Pv///vd3d/8//Dk+//////7///+9PHy+O/H7PP5////+////////+7Hxu325/////v//////+/N2c3w2+r////7//////bGzcP129zq////+//////00Mva4tzc7f////v/////9MXS4Nvc4f7////7//////TX3Njc3vr/////+//////53OLY2/T///////v///////nk1uv////////7///////88tz/////////+////O3t8f/9/f////////v///3f4+7//+rn5+v////RyMjIyMjIyMjIyMjIyMjIhGFZYWNeYF9fX19gYVhPTw=="
+ },
+ "reviewed": true,
+ "description": "The drawing is a three‑dimensional isometric block diagram of two adjoining habitable rooms within a single rectangular outer shell, drawn with cut‑away walls so that the interior floor and a central partition wall are visible. The partition wall has an opening between the two rooms, shown as a green‑shaded rectangle. Three labels, each with a leader line, point to features on the walls. The label \"Permanent opening based on 1/20 of the combined floor area\" points to the green‑shaded opening in the central partition wall. The label \"Purge ventilation opening, see paragraphs 1.26 to 1.31\" points to the larger, pale rectangular door opening in the lower part of the external front wall. The label \"10,000mm² background ventilator\" points to the small green‑shaded rectangle set high in the same external wall, at the top of the door opening. A green banner along the bottom edge carries the caption \"Diagram 1.3 Two habitable rooms treated as one room for ventilation purposes\".",
+ "first_draft": "The drawing is a three‑dimensional isometric block diagram of two adjoining habitable rooms within a single rectangular outer shell, drawn with cut‑away walls so that the interior floor and a central partition wall are visible. The partition wall has an opening between the two rooms, shown as a green‑shaded rectangle. Three labels, each with a leader line, point to features on the walls. The label \"Permanent opening based on 1/20 of the combined floor area\" points to the green‑shaded opening in the central partition wall. The label \"Purge ventilation opening, see paragraphs 1.26 to 1.31\" points to a green‑shaded rectangular opening in the lower part of the external front wall. The label \"10,000mm² background ventilator\" points to a small green‑shaded rectangle set high in the same external wall. A green banner along the bottom edge carries the caption \"Diagram 1.3 Two habitable rooms treated as one room for ventilation purposes\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

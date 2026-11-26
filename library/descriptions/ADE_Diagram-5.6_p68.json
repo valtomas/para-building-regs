@@ -1,0 +1,33 @@
+{
+ "key": "ADE_Diagram-5.6_p68",
+ "source": "ADE",
+ "label": "Diagram 5.6",
+ "page": 68,
+ "caption": "Diagram 5.6 \u0007\u0007Internal floor type B",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "69a755b9b2d798211ace47b216d97cc571dbda18881746576d3682367690caa4",
+ "image_sig": {
+  "w": 362,
+  "h": 231,
+  "grey": "z9ja08/T1drH2tXaxtra5M6gq8DDrpSaqpqljrHp6e/a4uLi4uLi4uLi4uLi4uLl6f//////////////////9On///////////////////Tp///////////////////06f//////////////////9Onk2dvX3d/Z2t/c3drT3/Tp5u7x/+//8er1///k7vT06fns7fv//+z57fn/7fXg9Onyzujf4ezP6dnk6c/s7fTp9/Pz8/Pz8/Pz8/Pz8/n06f//////////////////9On///////////////////Tp///////////////X19Pj3u3t7e3t7e3t7e3t3d7e5Q=="
+ },
+ "reviewed": true,
+ "description": "A section headed \"Diagram 5.6 Internal floor type B\", marked \"SECTION\" at the lower right. A concrete floor, drawn with a speckled pattern, has a flat top and a profiled underside with regularly spaced downstand ribs. Under the floor, a ceiling drawn as a thin band is carried on small square battens, each marked with a cross. There are no labels or dimensions.",
+ "first_draft": "The image is a technical drawing headed by a pale green title block at the top reading \"Diagram 5.6 Internal floor type B\". Below the title block is a single bordered panel containing a cross‑section drawing, with the word \"SECTION\" printed in the lower right corner. The section runs horizontally across the panel and shows a layered floor structure. A continuous horizontal line runs along the top, from which a row of short vertical elements descends. Several small triangular, hatched symbols are spaced along the line near the left end, the centre and the right end. Further down, a series of vertical lines connect the upper members to a lower horizontal line. Along this lower line are five rectangular blocks, each marked with a diagonal cross (an X), positioned at regular intervals. The vertical and horizontal lines together suggest a beam‑and‑support arrangement between the top and bottom lines, though the line types and the small triangular symbols are drawn too finely to be read with certainty, and no dimensions, material names or further labels are present. The left edge of the sheet shows part of a page margin with dotted lines but no drawing content.",
+ "check": {
+  "verdict": "recut",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26",
+  "note": "Recut so the image shows this drawing alone; the suggestion is a new description written from the new image."
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26",
+ "suggestion": {
+  "text": "A section headed \"Diagram 5.6 Internal floor type B\", marked \"SECTION\" at the lower right. A concrete floor, drawn with a speckled pattern, has a flat top and a profiled underside with regularly spaced downstand ribs. Under the floor, a ceiling drawn as a thin band is carried on small square battens, each marked with a cross. There are no labels or dimensions.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "The image is a technical drawing headed by a pale green title block at the top reading \"Diagram 5.6 Internal floor type B\". Below the title block is a single bordered panel containing a cross‑section drawing, with the word \"SECTION\" printed in the lower right corner. The section runs horizontally across the panel and shows a layered floor structure. A continuous horizontal line runs along the top, from which a row of short vertical elements descends. Several small hollow triangular symbols are spaced along the line near the left end, the centre and the right end. Further down, a series of vertical lines connect the upper members to a lower horizontal line. Along this lower line are five rectangular blocks, each marked with a diagonal cross (an X), positioned at regular intervals. The vertical and horizontal lines together suggest a beam‑and‑support arrangement between the top and bottom lines, though the line types and the small triangular symbols are drawn too finely to be read with certainty, and no dimensions, material names or further labels are present. The left edge of the sheet shows a vertical column of rectangular cells, each containing a circle, separated by horizontal lines.",
+ "corrected_by": "Claude Opus 5.5"
+}

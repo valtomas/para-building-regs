@@ -1,0 +1,26 @@
+{
+ "key": "ADL1_Diagram-11.1_p78",
+ "source": "ADL1",
+ "label": "Diagram 11.1",
+ "page": 78,
+ "caption": "Diagram 11.1 \u0007Renovation of a thermal element from the outside",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "6c26bd437d1e2bb9cbb643b140dc2cb3220a1b9d1fa3ccdf0092e8f1e13987d3",
+ "image_sig": {
+  "w": 756,
+  "h": 535,
+  "grey": "+Pr6+vr6+vr6+vr6+vr6+Pv03uHf6O3u7u7u7ezv9fv7/vz9+/r////////////7+////Pj7+v//////////+/v/+/r///z4//////////v7+uHl5eXl5O/////////7+/+0yby2y7rl////////+/v/tOnHuO3B5f31+Pj///v7/7TYwbfbveX55eLj9v/7+/+jpKSwtrbl/Ort9f//+/v/nb2prcq65f3t7Pb///v7/53oua/tweX////////7+/+d1bGu3L3l////////+/v/nZ6erba25f////////vu7uDg4eHi4uru7u7u7u7tg15ZXVpdXlxcW1hPT09PdA=="
+ },
+ "reviewed": true,
+ "description": "The drawing is a front elevation of a two-storey house with a pitched roof. The wall is shown in plain green, with four windows laid out in two rows of two. The lower-left quarter of the wall, which includes one window, is filled with diagonal hatching. To the right of the house a legend gives two keys: a hatched square paired with the words \"Area of the thermal element being renovated\", and a plain green square paired with the words \"Total area of the thermal element\". Above the house a line of running text reads: \"For example, if external render is being removed from the outer side of a wall, the area of the thermal element is the area of the elevation in which that wall sits.\" A green band along the bottom edge carries the caption \"Diagram 11.1 Renovation of a thermal element from the outside\". The hatched region thus marks a portion of the green elevation that the legend identifies as the part being renovated.",
+ "first_draft": "The drawing is a front elevation of a two-storey house with a pitched roof. The wall is shown in plain green, with four windows laid out in two rows of two. The lower-left quarter of the wall, which includes one window, is filled with diagonal hatching. To the right of the house a legend gives two keys: a hatched square paired with the words \"Area of the thermal element being renovated\", and a plain green square paired with the words \"Total area of the thermal element\". Above the house a line of running text reads: \"For example, if external render is being removed from the outer side of a wall, the area of the thermal element is the area of the elevation in which that wall sits.\" A green band along the bottom edge carries the caption \"Diagram 11.1 Renovation of a thermal element from the outside\". The hatched region thus marks a portion of the green elevation that the legend identifies as the part being renovated.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

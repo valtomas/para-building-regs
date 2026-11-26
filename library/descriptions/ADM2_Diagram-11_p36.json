@@ -1,0 +1,26 @@
+{
+ "key": "ADM2_Diagram-11_p36",
+ "source": "ADM2",
+ "label": "Diagram 11",
+ "page": 36,
+ "caption": "Diagram 11 Key dimensions associated with passenger lifts | HORIZONTAL AND VERTICAL CIRCULATION IN BUILDINGS | OTHER THAN DWELLINGS | M1/M2",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "5abcb52112a6cf9bb291009b5e13dae78e12c880b74431336b8bc8e0b23ab269",
+ "image_sig": {
+  "w": 755,
+  "h": 378,
+  "grey": "z8rIu7i9uLm5uLfd6+vr7trb3Nrc3Nzc2tra3Nzc3N/0////////+v/////////69P////3l7vP06/r/////+vT////15ery+PX///////r0////5s7h8/bt8v/////69P///f335uz16+Pn9P//+vT//+XU4+Hl4/Px6vz///r0//////vh7/Dg6//////69P/////u4u3o+fr/////+vT////e5efq4fP///////r0////7ezy5PH2///////69P////zz7PTz8Pf/////+vT////3+v309Nzq//////r0////9PT29/rz+P/////64+rq6urq6urq6urq6urq6Q=="
+ },
+ "reviewed": true,
+ "description": "The diagram is a perspective view of a passenger lift with its doors open, showing the landing wall at left, the interior wall of the car at right, and the floor below. On the left landing wall, leader lines identify the \"Landing call buttons with tactile identification\" and a \"Sign showing storey with tactile identification\". A vertical dimension labelled \"Range for centre lines of landing call buttons\" is bounded by 1100mm at the top and 900mm at the bottom. On the floor, an area is labelled \"Unobstructed wheelchair turning space\", with floor dimensions of 1500mm, 1500mm and 800mm min. On the car wall at right, a horizontal \"Handrail\" is shown, with no dimension of its own. A dimension of 1100mm min. runs across the top of the car wall, giving the minimum width of the car. A vertical dimension labelled \"Range for centre lines of lift car controls\" is bounded by 1200mm at the top and 900mm nominal at the bottom, with a 400mm dimension below the \"Lift car controls with tactile identification\". A dimension of 1400mm min. runs along the base of the car wall in the depth direction, giving the minimum depth of the car.",
+ "first_draft": "The diagram is a perspective view of a passenger lift with its doors open, showing the landing wall at left, the interior wall of the car at right, and the floor below. On the left landing wall, leader lines identify the \"Landing call buttons with tactile identification\" and a \"Sign showing storey with tactile identification\". A vertical dimension labelled \"Range for centre lines of landing call buttons\" is bounded by 1100mm at the top and 900mm at the bottom. On the floor, an area is labelled \"Unobstructed wheelchair turning space\", with floor dimensions of 1500mm, 1500mm and 800mm min. On the car wall at right, a horizontal \"Handrail\" is shown, with a dimension of 1100mm min. above it. A vertical dimension labelled \"Range for centre lines of lift car controls\" is bounded by 1200mm at the top and 900mm nominal at the bottom; a 400mm dimension runs to the \"Lift car controls with tactile identification\" below, with a 1400mm min. dimension at the floor.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

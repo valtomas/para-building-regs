@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-6.3_p52",
+ "source": "ADL2",
+ "label": "Table 6.3",
+ "page": 52,
+ "caption": "Table 6.3 \u0007Minimum heat generator seasonal efficiency for gas and oil-fired warm air heaters",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "896627964e0bde4eb4e4d89e338c580e22a800a2c42138f22150c9fb72c0c131",
+ "image_sig": {
+  "w": 756,
+  "h": 294,
+  "grey": "w6+srbKvtLKmr7atrLK90cavqaymq6yrra6orrGuu9DTyJq0yMjIyMjIyMjIyMjQ7u7u8vPv7+/s7/Dt7fPz8vHx7vz/7uHl5eT38O7///v19fX19fPq6+vq9fX19fX16+Dk4/Xv/////+rO49/f9+jg4OXe/v/////pyd3e3/vk29XZ4vn19fX1+fX19PX16OPj4+Pz/////+rN////+/Xz9fX1+fX19fX59fX19fXp4eTk/+//////6svv///72Oz19fX59fX19fn19fX19fL6/f3+/v75/f7+/f3//Pv14uLj4uDT5OXi5eXl4uT48dfY1tnYz9fa8/X19fX19A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

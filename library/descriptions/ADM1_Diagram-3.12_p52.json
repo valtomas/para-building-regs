@@ -1,0 +1,33 @@
+{
+ "key": "ADM1_Diagram-3.12_p52",
+ "source": "ADM1",
+ "label": "Diagram 3.12",
+ "page": 52,
+ "caption": "Diagram 3.12 \u0007Example of wheelchair adaptable WC/cloakroom layout with potential to be wheelchair accessible",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "3142c4576c034174ff4067fc281a7696e5ccb746fae382e22941490e3ff8ae1c",
+ "image_sig": {
+  "w": 754,
+  "h": 575,
+  "grey": "+Pr6+vj5+vr6+vr3+vr6+Pv///b08OT///fw5e3x//v7//jr7ezb+/rm3uDh6//7+//64Lze4/r65d7o0+//+/v/9+XT3ef69+Lh6drv//v7/+3k2OTo+u3fv7XJ6//7+//66+bs6Pr66LyxyNb/+/v/+u7y8eb6+vHf3Nvh//v7/vjv8/Tt+/z06vjo8v/7+/LS8fn0//rT6Pv99P//+/v13fv98f/73Pf/+fX///v7+Ory8PH1///////////7+/jj5eLj5OXi4/D/////+/v54+Hk5eXk5OXu8vTw//uzo6KjpKSjpaOjo6Oko52qfFdXZmJjWFZVVldVVlZPbQ=="
+ },
+ "reviewed": true,
+ "description": "This drawing is a plan view (top-down) showing two rectangular room layouts side by side, each with a door at the bottom drawn as an outward-opening arc.\n\nLeft, labelled \"Example 3.12A – Wheelchair adaptable WC cloakroom\": the room is dimensioned 1650mm wide along the top and 2200mm high on the left, with a 450mm segment marked at the top right. Inside are a basin symbol at the upper left, a WC symbol at the upper right, grey shaded access zones, and a small dot (the stack) at the top left corner. Dashed lines and arrows trace a turning/access zone around the interior.\n\nRight, labelled \"Example 3.12B – Wheelchair accessible WC cloakroom\": the top is dimensioned 1650mm, with 1000mm and 450mm marked beneath it; the side shows 2200mm and 1000mm. Inside are a WC at the upper right, a grey shaded rectangle on the left side, a basin on the right wall, a shower-head symbol at the upper left with dashed spray lines, and a dashed access zone.\n\nBelow the plans, \"Notes:\" lists three numbered points concerning dimensions, door opening, and stack/drainage positions.",
+ "first_draft": "This drawing is a plan view (top-down) showing two rectangular room layouts side by side, each with a door at the lower right drawn as an outward-opening arc.\n\nLeft, labelled \"Example 3.12A – Wheelchair adaptable WC cloakroom\": the room is dimensioned 1650mm wide along the top and 2200mm high on the left, with a 450mm segment marked at the top right. Inside are a basin symbol at the upper left, a WC symbol at the upper right, a grey shaded rectangular fixture, and a small dot at the top left corner. Dashed lines and arrows trace a turning/access zone around the interior.\n\nRight, labelled \"Example 3.12B – Wheelchair accessible WC cloakroom\": the top is dimensioned 1650mm, subdivided into 1000mm and 450mm; the side shows 2200mm and 1000mm. Inside are a WC at the upper right, a grey shaded rectangle in the centre, a basin on the right wall, a shower-head symbol at the upper left with dashed spray lines, and a dashed access zone.\n\nBelow the plans, \"Notes:\" lists three numbered points concerning dimensions, door opening, and stack/drainage positions.",
+ "check": {
+  "verdict": "minor",
+  "note": "In 3.12A the grey shapes are access zones, not a fixture.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "This drawing is a plan view (top-down) showing two rectangular room layouts side by side, each with a door at the bottom drawn as an outward-opening arc.\n\nLeft, labelled \"Example 3.12A – Wheelchair adaptable WC cloakroom\": the room is dimensioned 1650mm wide along the top and 2200mm high on the left, with a 450mm segment marked at the top right. Inside are a basin symbol at the upper left, a WC symbol at the upper right, grey shaded access zones, and a small dot (the stack) at the top left corner. Dashed lines and arrows trace a turning/access zone around the interior.\n\nRight, labelled \"Example 3.12B – Wheelchair accessible WC cloakroom\": the top is dimensioned 1650mm, with 1000mm and 450mm marked beneath it; the side shows 2200mm and 1000mm. Inside are a WC at the upper right, a grey shaded rectangle on the left side, a basin on the right wall, a shower-head symbol at the upper left with dashed spray lines, and a dashed access zone.\n\nBelow the plans, \"Notes:\" lists three numbered points concerning dimensions, door opening, and stack/drainage positions.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "This drawing is a plan view (top-down) showing two rectangular room layouts side by side, each with a door at the bottom drawn as an outward-opening arc.\n\nLeft, labelled \"Example 3.12A – Wheelchair adaptable WC cloakroom\": the room is dimensioned 1650mm wide along the top and 2200mm high on the left, with a 450mm segment marked at the top right. Inside are a basin symbol at the upper left, a WC symbol at the upper right, a grey shaded rectangular fixture, and a small dot at the top left corner. Dashed lines and arrows trace a turning/access zone around the interior.\n\nRight, labelled \"Example 3.12B – Wheelchair accessible WC cloakroom\": the top is dimensioned 1650mm, with 1000mm and 450mm marked beneath it; the side shows 2200mm and 1000mm. Inside are a WC at the upper right, a grey shaded rectangle on the left side, a basin on the right wall, a shower-head symbol at the upper left with dashed spray lines, and a dashed access zone.\n\nBelow the plans, \"Notes:\" lists three numbered points concerning dimensions, door opening, and stack/drainage positions.",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

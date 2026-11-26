@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-2.2_p24",
+ "source": "ADL2",
+ "label": "Table 2.2",
+ "page": 24,
+ "caption": "Table 2.2 \u0007Target primary energy rate and target emission rate multiplying factors for modular and portable buildings with a service life of more than two years at a single location",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "22dd25140c514ed2cb69202bf95202e6bcdf4fd44dc79f1f597285c1e49a89cc",
+ "image_sig": {
+  "w": 756,
+  "h": 264,
+  "grey": "w7K1s7i3trK0tbavsLO60cGmop+fl52hnpqim5qgttDTyJOSjouIj5WWl5ORkZnM08iRjaPIyMjIyMjIyMjI0NrRy9HR0dHR0dHR0dHR0dfv7+7u8PT/7+7v9f/v7/L76enm5+36//Lk5fv/6+bv+/Lt8PDw9Pjz7u70+PHt8fTm4t3i6f////H7////7v/78Ojt6uvz+PTv8/T49O309OXh4N3c8vj17fP1+PXr9fTq4uLp//////H7////7f/79fTz9fX1+PX19fX49fX19OXb49z/////8vz////v//vo5ev19fX49e7y9fj17PX07OPs9PT09PTu9PT09O708w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

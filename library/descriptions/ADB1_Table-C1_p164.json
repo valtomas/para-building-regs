@@ -1,0 +1,17 @@
+{
+ "key": "ADB1_Table-C1_p164",
+ "source": "ADB1",
+ "label": "Table C1",
+ "page": 164,
+ "caption": "Table C1 Provisions for fire doorsets",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "a42951cc736ac381959c459545951da0ee26d3433df1e9f065c2f497a4609079",
+ "image_sig": {
+  "w": 779,
+  "h": 671,
+  "grey": "3q6yr66wucbGxsbFxMTE0Pn3+P/////y7uvt7NnY1+b6+/v6+vn67unr8+3V3Nzl+/Do6uno7ePc2e7rx8bM4vjr5OX4+/v8+/v78uPj4+X88OTz8/X/8/j7++7b5OTl/Ore3tzc9Pb8///w3ufn5/zs3eDi3er/////9Ofn5+f87uXm5eP+6OHh4uTKzNXl/Pfy8fz//+3m8vPtzM/T5fz07u/y8ffv6urq5tDU2+X8+vb7////8Orq8uvIydjn/Pfw8/Hw++ri4uXszM7N3fz////////s5ePo6NDPzuH6+/v5+/v78O/s8urW2Nfh7d/Y2uvv79zg5OTdyMnW3w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADJ_Table-9_p62",
+ "source": "ADJ",
+ "label": "Table 9",
+ "page": 62,
+ "caption": "Table 9 \u0007Protecting buildings from hot flues for flue gas temperatures not more than 250oC",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-22",
+ "image_sha256": "f5e643620ac2727e8fa31c464305cc213f5a459664c1a576fad1c5c0b168868c",
+ "image_sig": {
+  "w": 362,
+  "h": 664,
+  "grey": "0sTJuK2xraiuq6eyrrC14efl5c/DwcW+wLi60t3a3eni2NDk5/Ty0tXX19Xk6fT76+Di3Ort8c/S19PR09nq/+3j4Or09O/N2M/V09Hi+P/////////xztXR09HQ2en/////////8dDT09TX09Hc+v////////HP0M/T2Nrp///v6uzr+fns2tvb2dvc5+7749LPzs7a7srM2dLS1N7o/+Pb3Nnp+ezb3Nfa4+z5+fv3+Pj4+fns2drX1t3X7vj67+jr6Or57Njc3Ojp6evz++PS0972//Lq0szOz9Pe9f/////////y6NHX1tXU2tj6+fn5+fn57vDU4Ovp6Ono+g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

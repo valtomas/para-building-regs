@@ -1,0 +1,20 @@
+{
+ "key": "ADA_Diagram-15_p32",
+ "source": "ADA",
+ "label": "Diagram 15",
+ "page": 32,
+ "caption": "Diagram 15 \u0007Lateral support by floors",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "36c89f2f3b3fb5855950335080645a68706bc1a009efcdb71c1b0802b4d35fe9",
+ "image_sig": {
+  "w": 760,
+  "h": 641,
+  "grey": "zsTDvLm+u9TW1tbW1tbW2+73////////////4Nnv//r1//vw5u7////89tjk7f/69f/43OL9///r1NHn4dTx+vX/+uXW+fz/7erg0djs+Pr1//Tg4v/c2vP28N/e0/f69f//////////++Lj6O3/+vX//+3q7/3////36uzu//r1/+/o9/3/////9+7z7Pr69f/y7/b5/////Oz39+P4+vX/9vD4/P/////r9/7l+vr1//fq6On9///55+zq7fz69fLt7+/w8/z6+fv5+f3/+vTk7efr4/3/6+Xl2OT5//r1///86ujo+f//+O3e3+D37fPz8/Pz6ODg4vPv4uXv8Q=="
+ },
+ "reviewed": true,
+ "description": "Diagram 15, Lateral support by floors, notes 'See para 2C35'. Two isometric views sit at the top. The left shows a strap over a joist, labelled '30 x 5mm galvanised mild steel or other durable strap at least 1200mm long and held tight against masonry wall' and 'Internal leaf of external cavity wall or internal wall requiring lateral restraint'. The right shows a strap across three joists, labelled '30 x 5mm galvanised mild steel or other durable strap held tight against masonry wall and fixed across 3 joists', '2m max spacing', 'Noggings, minimum 38mm width to extend at least 1/2 the depth of the joist' and 'Joist blocked to wall', with a note 'The steel straps and noggings may alternatively be fixed to the underside of the floor joists'. Below, sectional details: a. Tension strap detail – 1 and b. Tension strap detail – 2 show sections, b marked 'X to be not less than 90mm'; c. Restraint type joist hanger and d. Restraint by concrete floor or roof show joist fixings; e. Restraint of internal walls shows joists spanning a wall, captioned 'Floors should be at or about the same level on each side of the wall', 'Lateral support is continuous where joists are hard up to the wall', and 'Where joists are not hard up to the wall blockings at not greater than 2m centres should be used at the same locations on both sides of the wall'.",
+ "first_draft": "Diagram 15, Lateral support by floors, notes 'See para 2C35'. Two isometric views sit at the top. The left shows a strap over a joist, labelled '30 x 5mm galvanised mild steel or other durable strap at least 1200mm long and held tight against masonry wall' and 'Internal leaf of external cavity wall or internal wall requiring lateral restraint'. The right shows a strap across three joists: '2m max spacing', 'Noggings, minimum 38mm width to extend at least 1/2 the depth of the joist' and 'Joist blocked to wall'. Below, sectional details: a. Tension strap detail – 1 and b. Tension strap detail – 2 show sections, b marked 'X to be not less than 90mm'; c. Restraint type joist hanger and d. Restraint by concrete floor or roof show joist fixings; e. Restraint of internal walls shows joists spanning a wall, captioned 'Floors should be at or about the same level on each side of the wall', 'Lateral support is continuous where joists are hard up to the wall', and 'Where joists are not hard up to the wall blockings at not greater than 2m centres should be used at the same locations on both sides of the wall'.",
+ "rejected": false,
+ "reviewed_date": "2026-11-06"
+}

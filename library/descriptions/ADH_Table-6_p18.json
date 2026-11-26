@@ -1,0 +1,17 @@
+{
+ "key": "ADH_Table-6_p18",
+ "source": "ADH",
+ "label": "Table 6",
+ "page": 18,
+ "caption": "Table 6 \u0007\u0007Recommended minimum gradients for foul drains",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "fbf4c8305a6dbdec669ea05740a33a1ae50747677368c434d35b3087a13d2227",
+ "image_sig": {
+  "w": 401,
+  "h": 326,
+  "grey": "17C1sK6tq6ivqqixzNLo/u7V28msrLevs7CuueTp9P/k1dW8vL7Cwr6+vcPV1en//8bE3/TJzfi8wf3Qw93////n5O//7PP/wdD/yLbR///38u3y8urw8u3p8vLq8vj////6///r8v/y5f//4v////fy6/Ly6fDy6+Xy8uTy+P7///v//+ry/+zm///f////9/Pz8/Pk6PPj2/Pz2PP5/+7Z/v/////////////////98Obr5v//////////////8ePY3dXs8vLy8vLy8vL4//fy8vLy8vLy8vLy8vLy+P7//////////////////////////////////////////g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

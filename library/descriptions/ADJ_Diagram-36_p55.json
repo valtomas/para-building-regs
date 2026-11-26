@@ -1,0 +1,26 @@
+{
+ "key": "ADJ_Diagram-36_p55",
+ "source": "ADJ",
+ "label": "Diagram 36",
+ "page": 55,
+ "caption": "Diagram 36 \u0007Bases for back boilers (installation using a proprietary back boiler enclosure shown)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-21",
+ "image_sha256": "19acaf4997a438aa67066513360417d57d8fa5eb54019afe43c704a611b960e6",
+ "image_sig": {
+  "w": 749,
+  "h": 800,
+  "grey": "2c+/r7Kyx8TIxcvFx8jQ4Ovy8vLu6/Ly8uvy8vLy8vL0////+Oza9vjx////////9P////jt6O7u5vv///////T////4+PHz9Oj6/f/////0////+Pjx9Pbk8P//////9P/83vTx8vj36Pn6+/////T///Hw6c3Yzdjp6uv////0//7d++rc6//e6NDIzf//9P////j1697n6/j38P////T////45tHS1dz//Pv////0////+Obe9uXy7Pz7////9P////jm1Nzf4//7+/////T////47unY6+L7/fv////0/////PPy1erq8vv9////7fX19fXv3d7e4Of19fX19Q=="
+ },
+ "reviewed": true,
+ "description": "The drawing, titled \"Diagram 36 Bases for back boilers (installation using a proprietary back boiler enclosure shown)\", comprises a section above and a plan below.\n\nThe upper section shows, from left to right, a wall, a \"Back boiler enclosure box\", a \"Back boiler\" set on a grey \"Non-combustible base\" resting on \"Non-combustible supports\", a dashed \"Gas fire\" opening to the right, a floor of \"Combustible material\", and a \"Hearth complying with paragraphs 3.40 and 3.41, where required\". Two vertical dimension lines at left each read \"At least 25mm\", marking the clear space above and below the base. An asterisk sits by the base and by the hearth.\n\nThe lower plan shows the \"Back boiler\" as a circle within a white rectangle (the enclosure box), which lies within the shaded \"Non-combustible base\", with the dashed \"Gas fire\" to the right. A vertical dimension at the bottom reads \"At least 150mm or to a wall\". A footnote states: \"* Where the gas fire requires a hearth, the back boiler base should be level with it\".",
+ "first_draft": "The drawing, titled \"Diagram 36 Bases for back boilers (installation using a proprietary back boiler enclosure shown)\", comprises a section above and a plan below.\n\nThe upper section shows, from left to right, a wall, a \"Back boiler enclosure box\", a \"Back boiler\" set on a grey \"Non-combustible base\" resting on \"Non-combustible supports\", a dashed \"Gas fire\" opening to the right, a floor of \"Combustible material\", and a \"Hearth complying with paragraphs 3.40 and 3.41, where required\". Two vertical dimension lines at left each read \"At least 25mm\", marking the clear space above and below the base. An asterisk sits by the base and by the hearth.\n\nThe lower plan shows the \"Back boiler\" as a circle within the dashed \"Gas fire\", enclosed by a shaded \"Non-combustible base\". A horizontal dimension reads \"At least 150mm or to a wall\". A footnote states: \"* Where the gas fire requires a hearth, the back boiler base should be level with it\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

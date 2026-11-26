@@ -1,0 +1,33 @@
+{
+ "key": "ADE_Diagram-2.9_p28",
+ "source": "ADE",
+ "label": "Diagram 2.9",
+ "page": 28,
+ "caption": "Diagram 2.9 \u0007\u0007Wall type 1 – external cavity wall with timber frame inner leaf",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-12",
+ "image_sha256": "acddda519f64252abec75f45896546665dac1276c791ab3ed939cfbf78673746",
+ "image_sig": {
+  "w": 401,
+  "h": 456,
+  "grey": "3LW2wManrqjEwKyzw9ns/PHp6enpvLPEvrK6usbp9Pzq5ubm5sK+xsHG0ubm5vDr6//x9+zw///////////16+v/4u3X3f//////////9evr/97q1t7///////////Xr6//j7dXc///////////16+v/3tjR2+zs5evt7PD/9evr/+LT6PX29uH39fbw//Xr6//d08fR4+rh6evq7v/16+v/4+3Y3fjy9/n7////9evr/93r197///Pw8v////X/6//h7NXc///////////1/Ov//v/+/v///////+vh7v3y7e3t7e3t7e3t7e3t7fXx5tTW3Nje0tfazd7U3NTw6w=="
+ },
+ "reviewed": true,
+ "description": "A plan headed \"Diagram 2.9 Wall type 1 – external cavity wall with timber frame inner leaf\", marked \"PLAN\" at the lower right. The external wall runs vertically on the left: an outer leaf of masonry blocks drawn with single diagonal hatching, a cavity, and a timber frame inner leaf filled with insulation, drawn as a column of loops. The solid separating wall, drawn as cross-hatched masonry, runs off to the right from the inner leaf. Where it meets the external wall, a cross-hatched block fills the cavity, pointed to by the label \"Cavity stop\".",
+ "first_draft": "Two diagrams sit side by side. On the left, the header reads \"Diagram 2.9 Wall type 1 – external cavity wall with timber frame inner leaf\". Beneath it is a cross-section: a vertical outer leaf on the left with a hatched pattern, a central cavity band of diagonal hatching, and a vertical inner leaf of cross-hatching. A horizontal cross-hatched member projects rightwards from the inner leaf, forming a T-junction with the wall. An arrow points to the point where this horizontal member meets the cavity, labelled \"Cavity stop\". On the right, the header reads \"Diagram 2.10 Wall type 1 – internal timber floor\". Its drawing, marked \"SECTION\" at the lower right, shows a stack of cross-hatched wall blocks running vertically, met by a horizontal cross-hatched floor element. At the corner where floor and wall meet, small dots are indicated and an arrow points to one of them, labelled \"Hanger\". The horizontal floor is shown continuing out to the left and right of the vertical wall.",
+ "check": {
+  "verdict": "recut",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26",
+  "note": "Recut so the image shows this drawing alone; the suggestion is a new description written from the new image."
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26",
+ "suggestion": {
+  "text": "A plan headed \"Diagram 2.9 Wall type 1 – external cavity wall with timber frame inner leaf\", marked \"PLAN\" at the lower right. The external wall runs vertically on the left: an outer leaf of masonry blocks drawn with single diagonal hatching, a cavity, and a timber frame inner leaf filled with insulation, drawn as a column of loops. The solid separating wall, drawn as cross-hatched masonry, runs off to the right from the inner leaf. Where it meets the external wall, a cross-hatched block fills the cavity, pointed to by the label \"Cavity stop\".",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "Two diagrams sit side by side. On the left, the header reads \"Diagram 2.9 Wall type 1 – external cavity wall with timber frame inner leaf\". Beneath it is a cross-section: a vertical outer leaf on the left with diagonal hatching, a cavity between the two leaves, and a vertical inner leaf with a zig-zag (chevron) hatching pattern. A horizontal cross-hatched member projects rightwards from the inner leaf, forming a T-junction with the wall. An arrow points to the point where this horizontal member meets the cavity, labelled \"Cavity stop\". On the right, the header reads \"Diagram 2.10 Wall type 1 – internal timber floor\". Its drawing, marked \"SECTION\" at the lower right, shows a stack of cross-hatched wall blocks running vertically, met by a horizontal floor element shown as an outline, with short diagonal lines at the joint. At the corner where floor and wall meet, small dots are indicated and an arrow points to one of them, labelled \"Hanger\". The horizontal floor is shown continuing out to the left and right of the vertical wall.",
+ "corrected_by": "Claude Opus 5.5"
+}

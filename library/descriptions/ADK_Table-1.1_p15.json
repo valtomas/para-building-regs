@@ -1,0 +1,17 @@
+{
+ "key": "ADK_Table-1.1_p15",
+ "source": "ADK",
+ "label": "Table 1.1",
+ "page": 15,
+ "caption": "Table 1.1 Rise and going",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-22",
+ "image_sha256": "82477dc3af51fb3c64aaf019050fbe16d96093630b888d02b52836042863796f",
+ "image_sig": {
+  "w": 732,
+  "h": 408,
+  "grey": "qqikoLfCwsLCwsLCwsLCwtjX19bW19fX19bW19fX19fq6urg5OTk5OTj2+Tk5OTk5eTk3NPb2dPc4NLW39PW5NzZ5N7k5N3k5OHg5ODh5OTe4urh6urg6url5erj5urq5uTk5uTk5uTk5uTk5uTk5Njd5+Hq6uLq6uXl6uPm6ure6urq6urq6urq6urq6urq2dna3d3e4+rq6urq6urq6tnKy9DY2NvY2tvY2Nza2dza2NTX19nY2t7Y6urq6urq39nY19rZ2dzb3Nvc2trc5trZ2NnY6erq6urp6urq6urTzMrLzMnNzM7MycvMzs3g2NfW1NXW1NXZ5ujn5+bn5w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

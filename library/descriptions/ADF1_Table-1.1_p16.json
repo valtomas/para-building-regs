@@ -1,0 +1,17 @@
+{
+ "key": "ADF1_Table-1.1_p16",
+ "source": "ADF1",
+ "label": "Table 1.1",
+ "page": 16,
+ "caption": "Table 1.1 Minimum extract ventilation rates for intermittent extract systems",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "532630acb661a4a1e60fa87ee1c248e103d106dca3d95265a5175b21757c6004",
+ "image_sig": {
+  "w": 756,
+  "h": 293,
+  "grey": "wrCutLKts7CyrbG0s8XF0MCxpKerpaiqq6erp6jIyNDo8vX19fX19fX19ebj5uXz8/X19fX19PX19fnz8vLx9ePa2dna2t729vb59vPu9vXn5OHj4+Dk4uTe/P/79//79PT19fX19fX19Pn19PT19eXb9vb29vb29vb59vPv9vXk6v/////////////9+P/79PX08/X19fX19fn19fT19ePZ19719fX19fX59fXw9fXY6f/////////////////79OXs////////////////+/Pn8P////////////////vz5ez4+fj2+Pj5+Pn7///77+Dc4t7f4Nvf3N7e5/X19A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

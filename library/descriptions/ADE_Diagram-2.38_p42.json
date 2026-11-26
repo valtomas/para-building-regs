@@ -1,0 +1,33 @@
+{
+ "key": "ADE_Diagram-2.38_p42",
+ "source": "ADE",
+ "label": "Diagram 2.38",
+ "page": 42,
+ "caption": "Diagram 2.38 \u0007\u0007Wall type 4 – external cavity wall with timber frame inner leaf",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "24d4cb70e90918f7f59d421fbc52a01c3e0da89b615361d1db2489ae7e16ed88",
+ "image_sig": {
+  "w": 362,
+  "h": 425,
+  "grey": "zLi/x8HBqLSuwsyzt7Xh6ero6enp27q2wb2yv7i33O/Z2NjY2Maqra6rs7LY2Nji6e/y7eTx////////////9Onv7+Ta6P////////////Tp4ubj2uj////////////06e7s3dro////////////9Onv5crQ09/e3eDe3t/e6fTp493PwdXp6uvp6+vp6/L06e7w7MzV+///////////9Onj2s7T0Obw+vr6+vr6/PTp7+XLwtft3+T09PT09Pb06ejr5Nrn8fHo6PHw+v//9Onp6uTa6P//+Pj18/z///Tp7/Dj2uj////////////02uHi4Nrj7Ozs7Ozs7NzI2g=="
+ },
+ "reviewed": true,
+ "description": "A plan headed \"Diagram 2.38 Wall type 4 – external cavity wall with timber frame inner leaf\", marked \"PLAN\" at the lower right. The external wall runs vertically on the left: an outer leaf of masonry blocks with single diagonal hatching, a cavity, and a timber frame inner leaf filled with insulation drawn as loops. The separating wall, two timber frames each with a lining on its outer face and a gap between them, runs off to the right; where it meets the external wall, insulation (loops) fills the gap between the frames. Two cross-hatched blocks in the cavity, one at each frame of the separating wall, are labelled \"Cavity stops\".",
+ "first_draft": "The image contains two plan views. The right-hand part is headed \"Diagram 2.38 Wall type 4 – external cavity wall with timber frame inner leaf\" and is marked PLAN in its lower right corner. It shows a wall running vertically, made of two parallel leaves with a cross-hatched cavity between them, met by a perpendicular wall extending to the right that has a cross-hatched upper layer and a plain lower layer. At the junction, small squares each marked with a diagonal cross are shown, and two leader lines from the label \"Cavity stops\" point to these squares. The left-hand part is cut off at the top. It shows two further plan details labelled (b) and (c), each marked PLAN, each depicting two parallel leaves with a cross-hatched cavity and squares marked with diagonal crosses at the ends. In (c) an arrow labelled \"Socket detail\" points to a central square with a diagonal cross set within a hatched block. At the top left an arrow labelled \"detail\" points to a small triangular symbol.",
+ "check": {
+  "verdict": "recut",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26",
+  "note": "Recut so the image shows this drawing alone; the suggestion is a new description written from the new image."
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26",
+ "suggestion": {
+  "text": "A plan headed \"Diagram 2.38 Wall type 4 – external cavity wall with timber frame inner leaf\", marked \"PLAN\" at the lower right. The external wall runs vertically on the left: an outer leaf of masonry blocks with single diagonal hatching, a cavity, and a timber frame inner leaf filled with insulation drawn as loops. The separating wall, two timber frames each with a lining on its outer face and a gap between them, runs off to the right; where it meets the external wall, insulation (loops) fills the gap between the frames. Two cross-hatched blocks in the cavity, one at each frame of the separating wall, are labelled \"Cavity stops\".",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "The image contains two columns of plan views. The right-hand column is headed \"Diagram 2.38 Wall type 4 – external cavity wall with timber frame inner leaf\" in a green box and is marked PLAN in its lower right corner. It shows a wall running vertically, made of two parallel leaves with a cross-hatched cavity between them, the inner leaf being shown with diagonal hatching, met by a perpendicular wall extending to the right that has a cross-hatched upper layer and a plain lower layer. At the junction, small squares each marked with a diagonal cross are shown, and two leader lines from the label \"Cavity stops\" point to these squares. The left-hand column is cut off at the top, where a plan detail (its letter label not visible) shows a wall with squares marked with a diagonal cross and, at the very top, an arrow labelled \"detail\" pointing to a small triangular symbol. Below this, two further plan details labelled (b) and (c) are shown, with a single PLAN label at the bottom of the column. Each depicts two parallel cross-hatched walls with a plain gap between them and squares marked with a diagonal cross on the inner faces. In (c) an additional square marked with a diagonal cross is set within a hatched block on the left-hand wall, pointed to by an arrow labelled \"Socket detail\".",
+ "corrected_by": "Claude Opus 5.5"
+}

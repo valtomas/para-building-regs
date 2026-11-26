@@ -1,0 +1,26 @@
+{
+ "key": "ADM1_Diagram-1.2_p15",
+ "source": "ADM1",
+ "label": "Diagram 1.2",
+ "page": 15,
+ "caption": "Diagram 1.2 \u0007\u0007\u0007Minimum door width, hall widths and localised obstructions",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "f3cb63159ded4ee5aa715cbc1b07ab5edde7a2f94648c73508a37e0d33a515e0",
+ "image_sig": {
+  "w": 737,
+  "h": 372,
+  "grey": "9vf39/f39/f39/f39/f39/v////v+v//8fP////////7////8fH//+r0///7////+/////j0///p+f//9P////vy6en35unp5PPp6eT////7+enq9vH09PP15+nu5/H/+//s7fv7///7++3t//nu//v+7e/0+f/66ufo5u748v/78N3k5OX68vTy6fPs////+//p/v/4+fT//+z/9P////v///3v8/fp++7u7uv////7///67///7f/54+bk////+/////Lj8en98+jp8/////v//////ejv/+vr6+zq6f+2pqampqampqampqampqamg2RaZGJkYmdjZWVfT09PTw=="
+ },
+ "reviewed": true,
+ "description": "This is a plan (top view) of a horizontal hall or corridor with door openings on either side, drawn as wall lines with quarter‑circle arcs showing the swing of each door. From left to right: a door arc is dimensioned 775mm across its opening; the hall on this side is marked 900mm and, at a wider point, 1050mm, with a horizontal double‑arrow labelled 2m max., a dashed rectangle (the key's \"Permitted obstruction\") and a grey shaded rectangle (the key's \"Localised obstruction not permitted in shaded zone\") placed in the hall. A lower door arc carries a 750mm vertical dimension and a 1200mm horizontal dimension. In the centre, a door arc is dimensioned 800mm. On the right, the hall is marked 750mm and 900mm, again with a horizontal 2m max. arrow, a grey shaded rectangle and a dashed rectangle in the hall; a far‑right door arc is dimensioned 750mm. A key at lower right shows the grey rectangle as \"Localised obstruction not permitted in shaded zone\" and the dashed rectangle as \"Permitted obstruction\", with the note \"*all dimensions are minimum except where noted\". A green banner at the bottom reads \"Diagram 1.2 Minimum door width, hall widths and localised obstructions\".",
+ "first_draft": "This is a plan (top view) of a horizontal hall or corridor with door openings on either side, drawn as wall lines with quarter‑circle arcs showing the swing of each door. From left to right: a door arc is dimensioned 775mm across its opening; the hall on this side is marked 900mm and, at a wider point, 1050mm, with a horizontal double‑arrow labelled 2m max. and a dashed rectangle (the key's \"Permitted obstruction\") placed in the hall. A lower door arc carries a 750mm vertical dimension and a 1200mm horizontal dimension. In the centre, a door arc is dimensioned 800mm. On the right, the hall is marked 750mm and 900mm, again with a horizontal 2m max. arrow and a grey shaded rectangle in the hall; a far‑right door arc is dimensioned 750mm. A key at lower right shows the grey rectangle as \"Localised obstruction not permitted in shaded zone\" and the dashed rectangle as \"Permitted obstruction\", with the note \"*all dimensions are minimum except where noted\". A green banner at the bottom reads \"Diagram 1.2 Minimum door width, hall widths and localised obstructions\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

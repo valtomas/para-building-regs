@@ -1,0 +1,26 @@
+{
+ "key": "ADJ_Diagram-38_p57",
+ "source": "ADJ",
+ "label": "Diagram 38",
+ "page": 57,
+ "caption": "Diagram 38 \u0007Hearths for other appliances: plan dimension of noncombustible surfaces",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-21",
+ "image_sha256": "de1bc14bc8b6568b48bb279c816a03bed002c8c149cdf868b3fc0af666ca1122",
+ "image_sig": {
+  "w": 355,
+  "h": 402,
+  "grey": "3K6vuqytnqCqsZ6vm52jpfLp5Onpvbi8t7e4xbu75Ony6enp6cq4tbSswrq4wOnp4/Pz8/Pz8/Pz8+be4dbe8+ji7v/////////e0My6x/bo4tX////////939ba3ePi6P7+///Y3d3d3dvd6////+jnqcj/rsXJzMzHufD////m1brB667Lzdfw2rn6////6OjOzfyu5PLH+9q5/////+j///34psC2usDBuf/////o7d3f/67AssfHx7n/////6N2sxPjV3Nvc3M7i/////+j/1+v9///Osqa8qNL////o/////////v79+/3+////8+vr6+vr6+vr6+vr6+vr6w=="
+ },
+ "reviewed": true,
+ "description": "The drawing is titled \"Diagram 38 Hearths for other appliances plan dimension of non-combustible surfaces\" and is labelled \"Plan\" at the upper left. It shows a grey square representing a hearth, within which sits a smaller white rectangle marked \"Appliance\" with the word \"Front\" beneath it. A line from the text \"Hearth surface free of combustible material\" points to the grey area. A vertical dimension line between the appliance's front edge and the hearth's front edge is annotated \"At least 225mm beyond front\". A line from \"Perimeter should be clearly marked\" points to the front edge of the hearth. At the top right, two short dimension lines indicate the side and rear gaps, annotated \"At least 150mm or to a suitably heat-resistant wall\".",
+ "first_draft": "The drawing is titled \"Diagram 38 Hearths for other appliances plan dimension of non-combustible surfaces\" and is labelled \"Plan\" at the upper left. It shows a grey square representing a hearth, within which sits a smaller white rectangle marked \"Appliance\" with the word \"Front\" beneath it. An arrow from the text \"Hearth surface free of combustible material\" points into the grey area. A dimension line across the lower part of the appliance rectangle is annotated \"At least 225mm beyond front\", measuring from the appliance's front edge to the hearth's front edge. An arrow from \"Perimeter should be clearly marked\" points to that front edge. At the top right, two short dimension lines indicate the side and rear gaps, annotated \"At least 150mm or to a suitably heat-resistant wall\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADH_Table-1_p42",
+ "source": "ADH",
+ "label": "Table 1",
+ "page": 42,
+ "caption": "Table 1 \u0007Calculation of drained area",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "869ec185305e56090591976f460d78e9de171cf6961fc8e48c43fb86c34c9640",
+ "image_sig": {
+  "w": 401,
+  "h": 185,
+  "grey": "0r3BvMDAv8K9wMHBwsLg/96YtrOBfIWch4h+mpLp9P3w3eTk3dvf4eDf3uDe6fT/4dnSzePo6NHJ1NLV4ejz//bF0cru///myc+9z+f////w6OPn6Ojo5+jo5ujo5/P/9v/S0f///+LOzcvNzN3///Hq6urq6urq6urq6urq9P/t/8TIzML44MrJy8rY6f/////Q1dnT+OfY19fX4e///f//1d3f1vjq3+Dc3uL0/////+jj5uL/7eLg5OXr+///6ujY4uLl1uTh4uTd5ujz//T/2NLV1+rlzNXK3/n///3//9HR3///////////////8erq6urq6urq6urq6ur0/w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

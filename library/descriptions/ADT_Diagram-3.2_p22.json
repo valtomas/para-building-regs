@@ -1,0 +1,26 @@
+{
+ "key": "ADT_Diagram-3.2_p22",
+ "source": "ADT",
+ "label": "Diagram 3.2",
+ "page": 22,
+ "caption": "Diagram 3.2 Type A, elevation view showing recommended dimensions",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-26",
+ "image_sha256": "84b1458189e8d97a63a7f2dd72e40c85b3f924c5a1c361be94b6c03f0177707a",
+ "image_sig": {
+  "w": 747,
+  "h": 564,
+  "grey": "7+bm5ubm5ubm5ubm5ubm7vv1+Pj4+Pj17enx9/////v7+f//////+fHx//T////7+/n///////r/8PH0////+/v5////7PH6//b39P////v7+f////P7+f/z9+/8///7+/n////08/T/5/Tc8///+/vv7vr/9Pv4/vHs7v////v57O7r7vX459j16On////79vj18PPx8PLt9/Dw////+/P39vns9u329ePX5Onq7fvq8fLz6+3t//Tx5+zs2uf78Pn6/PHz8f/3+/Dw6s3j+/bx7vDs8/D48PPp7fTe3vP37+/v7+De7+/v7/X5+fn2gVtXWV1aWltaXFxaTk5Ocg=="
+ },
+ "reviewed": true,
+ "description": "This is an elevation (front view) labelled \"Diagram 3.2 Type A, elevation view showing recommended dimensions\". On the left a toilet is shown; above it are a dashed \"Position of shelf\" and, below that, a \"Horizontal grab rail\", and a \"Vertical grab rail\" stands to the right of the toilet, with a box marked \"HD\" to the right of the vertical grab rail. Further right is a \"Mirror\" over a dashed oval wash basin, with a \"High hook\" above and a \"Low hook\" beside it, and a \"Horizontal closing bar\" at the far right edge. Green dimension lines give a horizontal base width of \"2125mm minimum\" and a \"600mm\" horizontal gap between toilet and basin. Vertical dimensions read, left to right, \"780–800mm\", \"480mm\", \"680mm\", \"800mm\", then on the right \"780–800mm\", \"1780mm\", \"1685mm\" and \"900mm\", each aligned to the adjacent feature. On the right, text defines \"HD Hand-drying facility\" and two NOTES: 1. Refer to Appendix D for appliance and equipment schedule. 2. As long as other dimensions are maintained, the toilet cistern may be concealed.",
+ "first_draft": "This is an elevation (front view) labelled \"Diagram 3.2 Type A, elevation view showing recommended dimensions\". On the left a toilet is shown with a dashed \"Position of shelf\" beside it and a \"Horizontal grab rail\" above; a \"Vertical grab rail\" stands to its right, with a box marked \"HD\" between them. Further right is a \"Mirror\" over a dashed oval wash basin, with a \"High hook\" above and a \"Low hook\" beside it, and a \"Horizontal closing bar\" at the far right edge. Green dimension lines give a horizontal base width of \"2125mm minimum\" and a \"600mm\" horizontal gap between toilet and basin. Vertical dimensions read, left to right, \"780–800mm\", \"480mm\", \"680mm\", \"800mm\", then on the right \"780–800mm\", \"1780mm\", \"1850mm\", \"1685mm\" and \"900mm\", each aligned to the adjacent feature. On the right, text defines \"HD Hand-drying facility\" and two NOTES: 1. Refer to Appendix D for appliance and equipment schedule. 2. As long as other dimensions are maintained, the toilet cistern may be concealed.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

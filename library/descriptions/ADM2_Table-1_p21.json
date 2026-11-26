@@ -1,0 +1,17 @@
+{
+ "key": "ADM2_Table-1_p21",
+ "source": "ADM2",
+ "label": "Table 1",
+ "page": 21,
+ "caption": "Table 1 Limits for ramp gradients",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "a883136ce1b37c06f8b3a35c0d7a699b041b5f782f9c481b7a974fad07261661",
+ "image_sig": {
+  "w": 371,
+  "h": 187,
+  "grey": "8ebr6erp6u3t7e3o7O3t8vCVsrWOfZqhhZiGc4TP6e/z3OTj3t3i4t/P2dzg5env6dDSzc7hytLVztfazNPV6PTCydDH+MDBx7/d6L/Hy/Hy6Orq6urq6efq6urn5+rv9db///////XZ////5sjv//Pj///////13v///+bG7//x4f//////9Nz////ovu7/8+rq6urq6urq6urq6urq7++8///////////////////9/v7+//7+/f7//v7//v//9tTN0dTW2tjX0MjazdP///TN1NXR0crd5dba0tPf2//z1sXJysvl////////////8+rq6urq6urq6urq6urq7w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

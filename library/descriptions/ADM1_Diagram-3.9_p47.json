@@ -1,0 +1,26 @@
+{
+ "key": "ADM1_Diagram-3.9_p47",
+ "source": "ADM1",
+ "label": "Diagram 3.9",
+ "page": 47,
+ "caption": "Diagram 3.9 | Clear access zones and manoeuvering spaces to principal bedroom | Sanitary facilities General provisions",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "0563f12cd53c2ad85899801ecfb7876250d27f3433de3d57c11acd9bcc75f838",
+ "image_sig": {
+  "w": 744,
+  "h": 452,
+  "grey": "9/n5+fn5+fn5+fn5+fn5+eLl5drf29vc29nl4//////n///l9PLw9u7k/+n/////5fby3s329vbZx93k/////+bPycvY////5Nrf1vLx8fbu18C7xv///9/L2Njw3+X27tHFx8z////k2t7Y8N7i8N3OvL7L////5Nrj2PLw8vvg2MTCzP///93O1enx5PH65fbRzMre297PzM/n/////+f/1NLR2tXaz8HK5//////n/9za2trR2s7Mz+f/////5//q2tra19rOzM/n/////+vl6+rq6unq6Ojp7//////Z09PT09PT09PT083HyMfNf2FZX19fYGBiXmJhWU9PUA=="
+ },
+ "reviewed": true,
+ "description": "This is a floor plan of a principal bedroom, labelled \"Diagram 3.9 Clear access zones and manoeuvering spaces to principal bedroom\". A bed is drawn in the centre, headboard against the top wall, with built-in storage cabinets running along that wall. Dashed lines mark the clear access zones around the bed. Dimensions of \"1000mm\" are shown on each side of the bed and at its foot; \"600mm\" is marked at the top right, indicating the depth of the built-in storage at the bedhead. On the left, two shaded squares each labelled \"1200 x 1200mm\" are shown, the upper one containing a quarter-circle arc denoting a turning space; a further shaded \"1200 x 1200mm\" zone sits at the bottom right. A window and a radiator are on the right wall. The four numbered notes are printed to the right of the room, with the footnote \"*all dimensions are minimum except where noted\" at the bottom right.",
+ "first_draft": "This is a floor plan of a principal bedroom, labelled \"Diagram 3.9 Clear access zones and manoeuvring spaces to principal bedroom\". A bed is drawn in the centre, headboard against the top wall, with built-in storage cabinets running along that wall. Dashed lines mark the clear access zones around the bed. Dimensions of \"1000mm\" are shown on each side of the bed and at its foot; \"600mm\" is marked at the top right, indicating the bed width. On the left, two shaded squares each labelled \"1200 x 1200mm\" are shown, the upper one containing a quarter-circle arc denoting a turning space; a further shaded \"1200 x 1200mm\" zone sits at the bottom right. A window with a radiator below it is on the left wall. To the right, four numbered notes and a footnote \"*all dimensions are minimum except where noted\" are printed.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

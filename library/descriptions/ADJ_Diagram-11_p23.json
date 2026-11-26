@@ -1,0 +1,26 @@
+{
+ "key": "ADJ_Diagram-11_p23",
+ "source": "ADJ",
+ "label": "Diagram 11",
+ "page": 23,
+ "caption": "Diagram 11 \u0007Provision of permanent air vent openings in a solid floor",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-20",
+ "image_sha256": "5923efb2e219227de1a5e32f38e9e7693677e804e0603c8a14125de4ec4e2158",
+ "image_sig": {
+  "w": 749,
+  "h": 399,
+  "grey": "xLi2pq6np6uqpa2nqtbW1unq7Ozr7Ozs6+ns7Ozs7Oz0////////////////////9P//////7+D///////////T////i49va4ODi5f/////0////6tzY1end6tv/////9P///+T13/zlx9H6//////T////p8/P52NbP5eX////0///lztv35L/Qx///////9P//8dnr7OrCwcP///////T////n1uHw2frU///////0////8+LU////////////9P///+3X2NXX1tbU2fX///T////w09fS1tXi1+f////0////////////////////7vX19fX19fX19fX19fX19Q=="
+ },
+ "reviewed": true,
+ "description": "The image is a technical drawing titled \"Diagram 11 Provision of permanent air vent openings in a solid floor\". It is a plan, with the word \"PLAN\" written on the right side. A hatched wall runs along the top and the left side of the drawing, with a white rectangular area in the hatched corner. The top wall has an opening labeled \"Airbrick\" and the left wall has a second opening labeled \"Airbrick\". Dashed lines labeled \"Duct\" run from these two airbricks to a junction left of centre labeled \"Mixing chamber\". From this junction a dashed line runs to the right to a small rectangular grille with horizontal slats, labeled \"Floor vent\". To the right of the vent is a grey rectangle with the word \"Fireplace\" near its top and the word \"Hearth\" indicated by a leader line ending in a dot in its lower part. The un-hatched area is the floor, in which the ducts, mixing chamber, floor vent and hearth are shown. At the bottom of the diagram, a caption states: \"Airbrick, duct and grille should have an equivalent free area of at least that recommended in Section 2, 3 or 4 as relevant\".",
+ "first_draft": "The image is a technical drawing titled \"Diagram 11 Provision of permanent air vent openings in a solid floor\". It presents a \"PLAN\" view of a floor layout. On the left side, a hatched wall section indicates two openings labeled \"Airbrick\". Dashed lines labeled \"Duct\" extend from these airbricks inward to a central junction labeled \"Mixing chamber\". From this chamber, a dashed line leads to a small rectangular grille set into the floor, labeled \"Floor vent\". To the right of the vent is a large rectangular structure labeled \"Fireplace\", which contains an inner area labeled \"Hearth\". The solid floor surrounding the fireplace and ducts is represented by diagonal hatching. At the bottom of the diagram, a caption states: \"Airbrick, duct and grille should have an equivalent free area of at least that recommended in Section 2, 3 or 4 as relevant\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

@@ -1,0 +1,26 @@
+{
+ "key": "ADR1_Diagram-5_p19",
+ "source": "ADR1",
+ "label": "Diagram 5",
+ "page": 19,
+ "caption": "Diagram 5 \u0007Schematic example of gigabit-ready physical infrastructure for an individual dwelling",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "57250ad6fd9ad4a1108a4b509bd30ae36b16c8105abb2b0d78dd2f2659b100f5",
+ "image_sig": {
+  "w": 732,
+  "h": 604,
+  "grey": "+Pr6+vr6+vfs+vr6+vr6+vv///////Xo8+j+///////7/////+3o+vr24fv/////+//////i7u7u7uH4//////v/////7P/////t///////7/////+z/////7f//////+//////s6enp6d7///////v/////6fv6///t///////7////8Mfl7///7f//////+//////S+////+3///////v6+vr64vr6+vr5+vr6+v376uvn6vP/////////////+//03d3e4Nz0//////////v/893c5Onp+/////////+vnJqdnJydnZ2cnZycnJyZelhWZVlYWlhYWFhXVldYTw=="
+ },
+ "reviewed": true,
+ "description": "This is a schematic diagram, captioned at the bottom in a green band as \"Diagram 5 Schematic example of gigabit-ready physical infrastructure for an individual dwelling\". The drawing shows a simple front elevation of a house: a thick light green outline of the walls and roof, a horizontal light green line marking the upper floor, and a thin horizontal ground line. To the left of the house outline are two symbols, consisting of two thick green outlined squares joined by a short horizontal line. The left square is labelled \"Access point\". The right square is labelled \"Network termination point\". A solid black line starts below the line joining the two squares, runs down to the ground line, then curves left and continues as a dashed black line extending off to the left. Beneath this line is a block of text reading: \"Gigabit-ready physical infrastructure (ducting) to the distribution point or, where there is no access right up to the distribution point, as close as is reasonably practicable to a distribution point. In some cases, there will be no gigabit-ready physical infrastructure beyond the access point.\"",
+ "first_draft": "This is a schematic diagram, captioned at the bottom in a green band as \"Diagram 5 Schematic example of gigabit-ready physical infrastructure for an individual dwelling\". The drawing shows a simple front elevation of a two-storey house: a rectangular outline with a triangular roof, a horizontal line marking the upper floor, and a horizontal ground line. On the left-hand wall of the house are two green symbols. The left one, a small green square, is pointed to by an arrow and labelled \"Access point\". To its right is a second green symbol, a rectangle with a notch, pointed to by an arrow and labelled \"Network termination point\". A solid black line runs down from the access point to the ground line, then curves left and continues as a dashed black line extending off to the left. Beneath this line is a block of text reading: \"Gigabit-ready physical infrastructure (ducting) to the distribution point or, where there is no access right up to the distribution point, as close as is reasonably practicable to a distribution point. In some cases, there will be no gigabit-ready physical infrastructure beyond the access point.\"",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

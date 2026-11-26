@@ -1,0 +1,33 @@
+{
+ "key": "ADM1_Diagram-2.6_p29",
+ "source": "ADM1",
+ "label": "Diagram 2.6",
+ "page": 29,
+ "caption": "Diagram 2.6 | Examples of WC/cloakroom layouts",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "cb721f88bbd455d7158fb10e6071018b21fba23834aaabf2e3e99da0f47d72b9",
+ "image_sig": {
+  "w": 737,
+  "h": 401,
+  "grey": "9/j4+Pj4+Pj4+Pj4+Pj4+Pv/+PLi9P//9ebu+P/////7//Xr7vP///fq6/X+////+//o2dzc+Pnh4Nvt8OP0//v/7OfSz/Tv0MLo8vHg+//7/+7m0NTt7rur5fT05fL/+/3gw87X8t7Eu8Dv79f3//v628G91fXhxr3U7fHf6P/7/+eysdX/9M3G2Ob05PD/+//irbvV//rc2trp7tv3//v/6dLj3P/24uPj8vbq///77Njw//T/2OH69P//////+//+/fr0//7/+PT///////v////49P////3u///////KwMDAwMDAwMDAwMDAwMDAgWNaY2BgY2JTT09PT09PTw=="
+ },
+ "reviewed": true,
+ "description": "Diagram 2.6, \"Examples of WC/cloakroom layouts\", shows two floor plans of small rooms, labelled Example 2.6A on the left and Example 2.6B on the right. In 2.6A the top width is dimensioned 1450mm, split into 450mm and 1000mm; the left height is 1800mm and an inner right height 1000mm. The plan contains a toilet symbol at the top, a basin symbol at the bottom left, a dashed access zone in front of the toilet, 750mm deep, with a 350mm dimension beside the toilet, dotted lines radiating from a point at the top right, and a door with a quarter‑circle swing at the bottom right. In 2.6B the top width 1450mm is split into 1000mm and 450mm; the left height is 1800mm with an inner 1000mm. It shows a basin at the top left, a toilet at the top right, a dashed access zone in front of the toilet, with a 350mm dimension beside it, dotted lines from the top left, and a door with a swing arc at the bottom. To the right, a text block headed \"Notes\" lists three numbered points: dimensions for illustration purposes only; doors should open outwards; and stack and drainage positions to be shown clear of access zones where located within the WC/cloakroom.",
+ "first_draft": "Diagram 2.6, \"Examples of WC/cloakroom layouts\", shows two floor plans of small rooms, labelled Example 2.6A on the left and Example 2.6B on the right. In 2.6A the top width is dimensioned 1450mm, split into 450mm and 1000mm; the left height is 1800mm and an inner right height 1000mm. The plan contains a toilet symbol at the top, two basin symbols down the left side, a dashed rectangular access zone marked 350mm by 750mm, dotted lines radiating from a point at the top right, and a door with a quarter‑circle swing at the bottom right. In 2.6B the top width 1450mm is split into 1000mm and 450mm; the left height is 1800mm with an inner 1000mm. It shows a basin at the top, a toilet at the top right, a fixture at the top left, a dashed access zone marked 350mm, dotted lines from the top left, and a door with a swing arc at the bottom. To the right, a text block headed \"Notes\" lists three numbered points: dimensions for illustration purposes only; doors should open outwards; and stack and drainage positions to be shown clear of access zones where located within the WC/cloakroom.",
+ "check": {
+  "verdict": "minor",
+  "note": "The 350mm marks are beside the WC and 750mm is the clear depth in front of it; it treats them as one 350 by 750mm zone.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "Diagram 2.6, \"Examples of WC/cloakroom layouts\", shows two floor plans of small rooms, labelled Example 2.6A on the left and Example 2.6B on the right. In 2.6A the top width is dimensioned 1450mm, split into 450mm and 1000mm; the left height is 1800mm and an inner right height 1000mm. The plan contains a toilet symbol at the top, a basin symbol at the bottom left, a dashed access zone in front of the toilet, 750mm deep, with a 350mm dimension beside the toilet, dotted lines radiating from a point at the top right, and a door with a quarter‑circle swing at the bottom right. In 2.6B the top width 1450mm is split into 1000mm and 450mm; the left height is 1800mm with an inner 1000mm. It shows a basin at the top left, a toilet at the top right, a dashed access zone in front of the toilet, with a 350mm dimension beside it, dotted lines from the top left, and a door with a swing arc at the bottom. To the right, a text block headed \"Notes\" lists three numbered points: dimensions for illustration purposes only; doors should open outwards; and stack and drainage positions to be shown clear of access zones where located within the WC/cloakroom.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "Diagram 2.6, \"Examples of WC/cloakroom layouts\", shows two floor plans of small rooms, labelled Example 2.6A on the left and Example 2.6B on the right. In 2.6A the top width is dimensioned 1450mm, split into 450mm and 1000mm; the left height is 1800mm and an inner right height 1000mm. The plan contains a toilet symbol at the top, a basin symbol at the bottom left, a dashed rectangular access zone marked 350mm by 750mm, dotted lines radiating from a point at the top right, and a door with a quarter‑circle swing at the bottom right. In 2.6B the top width 1450mm is split into 1000mm and 450mm; the left height is 1800mm with an inner 1000mm. It shows a basin at the top left, a toilet at the top right, a dashed access zone marked 350mm, dotted lines from the top left, and a door with a swing arc at the bottom. To the right, a text block headed \"Notes\" lists three numbered points: dimensions for illustration purposes only; doors should open outwards; and stack and drainage positions to be shown clear of access zones where located within the WC/cloakroom.",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

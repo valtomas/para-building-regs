@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-4.2_p37",
+ "source": "ADL2",
+ "label": "Table 4.2",
+ "page": 37,
+ "caption": "Table 4.2 \u0007Limiting U-values for existing elements in existing buildings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "e15e7dfed31ebe51938b70600d60d9d1fab8991960f412eb507f7fc326deb955",
+ "image_sig": {
+  "w": 748,
+  "h": 608,
+  "grey": "xLCyrq+zrK6wsaupxsnJyPT6/////////v729fn///vv6/Ds7e78+uzv+vz46PX37Ofq6Obs+fbx8/b59u329Ojo5eLs7fz68vX6/Prs+vfo5+Lk5vD59u/x9vn26vb06fD6+vr6/Pr19/r8+vL69+vp7vDz//////////////vz6uzr6+jr7Ovo7err6un49+jn5un09/j29/b29/f5+fbt4eTj4+Li4+Lm8PLx/fv04uHk49/g4uTy7/Dw8vL09OHj5eTy8vDx8/Hy7/Dy9vLk4eDh5vLw8fLx7/Lx8fD14uLf5OHj6fDw7/Dx8fH0797c5Ozr6uzs6+3q7e3s7Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

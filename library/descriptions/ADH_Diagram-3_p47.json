@@ -1,0 +1,33 @@
+{
+ "key": "ADH_Diagram-3_p47",
+ "source": "ADH",
+ "label": "Diagram 3",
+ "page": 47,
+ "caption": "Diagram 3 \u0007\u0007Discharge capacities of rainwater drains running full",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "d95b116d05eb0bf965a973d8f417ff593bc13c5140c5f6ed7bd8126d47ad75f1",
+ "image_sig": {
+  "w": 371,
+  "h": 424,
+  "grey": "37Swwbmkraiwp6qmtNjY4vPp6Onhwbm6s8O3v+np6e/u4eHh2Li0t6jh4eHh4eHp6f3r6+vo6+jo5eXl6+v09On/79nZ0NnQ0MbGxtnZ5/Tp//Df4dXl3OLX19fr6+306f3x6eng793Yy9Xc9vbx9Oni4s7OxMS2vbW2tcXE3/Tp5vDh4djgz9fZ1M/g4un06eLw3+Xh6+DYx83L5evt9Ono6uPm1uDM0NjY2Obg6fTp/+/XzsTLwMK6vLzMzOX06f/y7Ozi7OLd0M3P4Ofr9On/8/X16/Xr6+Dg4PXv7vTp//H29vP27ujp8eX29uz04+vr6+vr69zd4evr6+vr6A=="
+ },
+ "reviewed": true,
+ "description": "A line graph titled \"Diagram 3 Discharge capacities of rainwater drains running full\". The vertical axis is labelled \"Flow rate (litres per second)\" on a logarithmic scale, marked 1, 10, 100 and 1,000, with minor grid lines between the main divisions. The horizontal axis is labelled \"Gradient (1 in ...)\" on a logarithmic scale, marked 10, 50, 100 and 200. A grid of fine lines covers the plotting area.\n\nFive parallel straight lines run diagonally from the upper left to the lower right. From top to bottom they are labelled, following the slope of each line: \"300mm diameter\", \"225mm diameter\", \"150mm diameter\", \"100mm diameter\" and \"75mm diameter\". The 300mm diameter line is the highest and the 75mm diameter line the lowest; the flow rate of each falls as the gradient gets shallower.",
+ "first_draft": "A line graph titled \"Diagram 3 Discharge capacities of rainwater drains running full\". The vertical axis is labelled \"Flow rate (litres per second)\" on a logarithmic scale, marked 1, 10, 100 and 1,000, with minor grid lines between the main divisions. The horizontal axis is labelled \"Gradient (1 in ...)\" on a logarithmic scale, marked 10, 50, 100 and 200. A grid of fine lines covers the plotting area.\n\nFive straight lines run diagonally from the upper left to the lower right, each steeper than the next below it. From top to bottom they are labelled, following the slope of each line: \"300mm diameter\", \"250mm diameter\", \"150mm diameter\", \"100mm diameter\" and \"75mm diameter\". The 300mm diameter line is the highest and the 75mm diameter line the lowest; all five lines converge toward the right edge of the graph as the gradient value increases.",
+ "check": {
+  "verdict": "flag",
+  "note": "Reads a line as \"250mm diameter\"; the chart says 225mm. It also says the lines converge to the right; they are parallel.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "A line graph titled \"Diagram 3 Discharge capacities of rainwater drains running full\". The vertical axis is labelled \"Flow rate (litres per second)\" on a logarithmic scale, marked 1, 10, 100 and 1,000, with minor grid lines between the main divisions. The horizontal axis is labelled \"Gradient (1 in ...)\" on a logarithmic scale, marked 10, 50, 100 and 200. A grid of fine lines covers the plotting area.\n\nFive parallel straight lines run diagonally from the upper left to the lower right. From top to bottom they are labelled, following the slope of each line: \"300mm diameter\", \"225mm diameter\", \"150mm diameter\", \"100mm diameter\" and \"75mm diameter\". The 300mm diameter line is the highest and the 75mm diameter line the lowest; the flow rate of each falls as the gradient gets shallower.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "A line graph titled \"Diagram 3 Discharge capacities of rainwater drains running full\". The vertical axis is labelled \"Flow rate (litres per second)\" on a logarithmic scale, marked 1, 10, 100 and 1,000, with minor grid lines between the main divisions. The horizontal axis is labelled \"Gradient (1 in ...)\" on a logarithmic scale, marked 10, 50, 100 and 200. A grid of fine lines covers the plotting area.\n\nFive straight lines run diagonally from the upper left to the lower right, each steeper than the next below it. From top to bottom they are labelled, following the slope of each line: \"300mm diameter\", \"250mm diameter\", \"150mm diameter\", \"100mm diameter\" and \"75mm diameter\". The 300mm diameter line is the highest and the 75mm diameter line the lowest; all five lines converge toward the right edge of the graph as the gradient value increases.",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

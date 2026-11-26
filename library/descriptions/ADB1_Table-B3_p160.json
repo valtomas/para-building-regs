@@ -1,0 +1,17 @@
+{
+ "key": "ADB1_Table-B3_p160",
+ "source": "ADB1",
+ "label": "Table B3",
+ "page": 160,
+ "caption": "Table B3 \u0007Limitations on the use of uninsulated glazed elements on escape routes. These limitations do not apply to glazed elements that satisfy the relevant insulation criterion, see Table B1",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "544f5d2f9cc328c1f6babfc0ad9ef50a69f5133e1b2341d815e015098cf6d5de",
+ "image_sig": {
+  "w": 779,
+  "h": 1032,
+  "grey": "3K+clZeYoqCfoqGloaOr0fPq5+ft7u7g4+bn5ODi6O74+Pr6+vr78/jz9fb39vL2++De3ubo/fL36e709PLm9vfq7vn6+vvr9PP28+738vf76ePr6/D45fL9/Ovr/fz5++nn4+34/eX16e/u6vPn9/jj4eLj4fjq+O3t8u/16/L54uXf4/D9+vz7+/z7/Pr5+ePf4OLx+vf79/r4+vj69/vr5+bu8fr8//P57fT39vj57OXu8O766vTu8PLt9Oz2/Ozl5eXz+ff9+Pv6+fv4+vnj4+Hk6/Xf8OTq6+Xu4fX45+fk7O359PX18u3o8eT2+PLz8/L5+eHw5erq5u7i9A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

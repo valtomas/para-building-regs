@@ -1,0 +1,20 @@
+{
+ "key": "ADA_Diagram-17_p34",
+ "source": "ADA",
+ "label": "Diagram 17",
+ "page": 34,
+ "caption": "Diagram 17 \u0007Size and location of openings",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "af9b98835a417fd8b555f9e5b1158e134d4868a7e756b8f88c9e1ca2f1538818",
+ "image_sig": {
+  "w": 760,
+  "h": 887,
+  "grey": "08/S0M/Pz8zh4eHh4eHh4/X/8PP8//////////////r1///u6ers6+vs6+Pl+P/69f//8v/////////96vv/+vX//+////////////H///r1///u///////////x///69f//8P//////////8v//+vX//+3///////////H///r1///x///////////x///69f/16P388uf0/Pz88f//+vX/797//vju8vv///L///r1//rw9vn89vL7+vjz///67u/7+/v6+vz17OTn6eXn9e3a1dbb3N7o8OLc5/Pz9Prs5ubm6efl/PDj3+Hj4+767u/29/f39/f08fHx8PD08w=="
+ },
+ "reviewed": true,
+ "description": "Diagram 17, titled 'Size and location of openings', carries the note 'See para 2C38' at the top left. The drawing is a plan view of a rectangular room or enclosure, the upper, side and lower walls drawn in solid line, with a dashed line running along the lower wall. A horizontal dashed line crosses the plan; two leader lines from the label 'Wall with major openings' point to the bottom corners of the left and right walls. Two leader lines from the label 'Isolated column' point to a small square with a central dot at the bottom centre and to the right end of the horizontal dashed line. Dimensions are marked: '390mm min.' horizontally at the top-left corner and vertically at the top-right corner, and '2.0m' vertically on the left side, paired with the vertical text 'No other openings in this zone'. The left-hand wall also shows several small rectangular notches of unclear purpose. Below the plan sits a heading 'Notes' followed by five numbered paragraphs of running text. Some fine detail of the wall line near the corners is faint and partly unclear.",
+ "first_draft": "Diagram 17, titled 'Size and location of openings', carries the note 'See para 2C38' at the top left. The drawing is a plan view of a rectangular room or enclosure, the upper and side walls drawn in solid line and the lower wall in a dashed line. A small square with a central dot at the bottom centre is labelled 'Isolated column'. A horizontal dashed line crosses the plan; two leader lines from the label 'Wall with major openings' point to the left and right ends of the lower wall. Dimensions are marked: '390mm min.' horizontally at the top-left corner and vertically at the top-right corner, and '2.0m' vertically on the left side, paired with the vertical text 'No other openings in this zone'. The left-hand wall also shows several small rectangular notches of unclear purpose. Below the plan sits a heading 'Notes' followed by five numbered paragraphs of running text. Some fine detail of the wall line near the corners is faint and partly unclear.",
+ "rejected": false,
+ "reviewed_date": "2026-11-06"
+}

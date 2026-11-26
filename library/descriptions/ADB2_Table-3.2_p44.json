@@ -1,0 +1,17 @@
+{
+ "key": "ADB2_Table-3.2_p44",
+ "source": "ADB2",
+ "label": "Table 3.2",
+ "page": 44,
+ "caption": "Table 3.2 Capacity of stairs for basements and for simultaneous evacuation of the building",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "81f42c0734d7689b9e5a081593fb84860612ef07f41605349c34ed27b6eee780",
+ "image_sig": {
+  "w": 754,
+  "h": 537,
+  "grey": "wK6rrK2qqqysp6yrq6ulw+/1+Pj47O3t7O3v7Pj4+Pbq9vr6+vr6+vr6+vr6+vr4+PL17vfw8/ft9vHy9u7z8vXu++7z9e787PP17vjw7vj07vvr8vXu++zy9e737+/38u747fTy8Pjs8fHx9u7v9PXz+/D29vL88Pb38vnz8vjz7vvu8/bw++7z9e/48PD38+z76vL27fzr8fbw+O7r+PTy+/H19vH78fX28fny8ffw7vbr8PLv9u3w8e307uz04en29fX09fb19Pb19Pv/+/Do6uvp5+zn6ufo6Ofo8vvt3d3q7u/x8O/w7fDw7+z67+jr5+ns6ejo5/L6+vr69w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

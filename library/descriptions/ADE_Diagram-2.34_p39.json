@@ -1,0 +1,26 @@
+{
+ "key": "ADE_Diagram-2.34_p39",
+ "source": "ADE",
+ "label": "Diagram 2.34",
+ "page": 39,
+ "caption": "Diagram 2.34 \u0007\u0007Wall types 3.1 and 3.2 – internal concrete floor",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "212629a54b7a10e8081cbaa4fb1295c865f24dbe91f0616d7d8bdc860f86c2b7",
+ "image_sig": {
+  "w": 355,
+  "h": 426,
+  "grey": "47y9xMnGsLOrs77Hs7jB3PLp6Onp6cC7tcW8vL64w+nl8vLy6ujn6uXy8vLy8vLy6P///+XZ9u/O/+vl5+nt/+j////l2fXwzv/Sz9TS7v/o////5dPm5M7/0dLh4+7/6P///+Xb9e/O8fn3/v///+j49vbg1e7rvfL29vb29vjo5O/t7env3unt7+zv6+/p6ODn5ubm5eXi5ubp5Obl4ej////l2ffvzv/////////o////5dj3787/////////6P///+XV4uXO/////////+j////l2fjuzv/////////o////5dn2787/////////4ezs7Obk4ubj7Ozs6sTTxQ=="
+ },
+ "reviewed": true,
+ "description": "This image is a section drawing titled \"Diagram 2.34 Wall types 3.1 and 3.2 - internal concrete floor\". The word \"SECTION\" appears in the bottom right corner. The diagram shows a horizontal concrete floor slab, rendered with a speckled aggregate pattern, crossing a single vertical wall section at right angles. The vertical wall section, which continues both above and below the floor slab, consists of a central band of rectangular blocks filled with a diagonal cross-hatch pattern, flanked on each side by a narrow strip showing a pattern of vertical lines bounded by parallel vertical lines. A leader line runs from a point on the floor slab to the right of the wall junction to a text box on the right side of the drawing. This label reads: \"Concrete floor slab may be carried through if mass per unit area is at least 365kg/m²\". No other dimensions or text are visible.",
+ "first_draft": "This image is a section drawing titled \"Diagram 2.34 Wall types 3.1 and 3.2 - internal concrete floor\". The word \"SECTION\" appears in the bottom right corner. The diagram shows a horizontal concrete floor slab, rendered with a speckled aggregate pattern, intersecting two vertical wall sections. The left wall section is drawn with blocks featuring a diagonal cross-hatch pattern, bounded by parallel vertical lines. The right wall section shows blocks with a vertical line pattern, also bounded by parallel vertical lines. The two walls meet at a perpendicular junction, with the floor slab passing horizontally through their intersection. A leader line originates from the centre of the floor slab and points to a text box on the right side of the drawing. This label reads: \"Concrete floor slab may be carried through if mass per unit area is at least 365kg/m²\". No other dimensions or text are visible.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

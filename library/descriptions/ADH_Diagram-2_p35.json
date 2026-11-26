@@ -1,0 +1,26 @@
+{
+ "key": "ADH_Diagram-2_p35",
+ "source": "ADH",
+ "label": "Diagram 2",
+ "page": 35,
+ "caption": "Diagram 2 \u0007Drainage mound",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "3146baaffd74dc3f88da8b4d151e5cee9104a71ac63f1f478b7a8f1d64fc2def",
+ "image_sig": {
+  "w": 752,
+  "h": 379,
+  "grey": "w7SpoKy81tbW1tbW1tbW1ujn6eXp6enp6enp6enp6en0////6t3z////+Pj/////9P/////4////+u7o4vL///T/2c7q6d3D4Nzr6/3////0//73+OzEyMbX6O7j4fr/9P/69/z51sLY7/Lv6v////T99vr7//v2+v/7/+HY+//k3N7j3ePd3d3j3eHZ3d3o1MSxu76xrq+yrr3Gsq3C0e709PT05Nze3+L08+709Pbk6enp6eXi4+Pj6enl6enp7f7+/f/+/f7//v7//v/+/vLS09TN0tPQ1NTQ09LR0+L76enq5eTo6uX7/v/+//7/7t3b393e4Nzf3d3d397c5A=="
+ },
+ "reviewed": true,
+ "description": "The drawing is a section through a drainage mound, titled \"Diagram 2 Drainage mound\". A central raised mound sits on a horizontal grey band labelled \"Drained constructed filter gravel or permeable soil\", beneath which is \"High water table or impervious ground\". The mound's left slope is labelled \"250mm grassed top soil\", with a dashed line and arrow marked \"Note 2\" running down it. At the top of the mound a thin dark line is labelled \"Soil cap\"; just below it, three circles labelled \"Distribution pipes\" are set in the upper part of a shaded band \"Washed gravel (10–20mm)\", below which is \"Filter sand\", with downward arrows passing through. At the right edge a thin line along the slope is labelled \"Geotextile\". Vertical dimension lines on the right, marked with cross symbols, read \"At least 100mm\", \"At least 200mm\", \"At least 700mm\" and \"At least 250mm\", measuring successive layers from the mound surface to the lower band. A \"Notes\" block with three numbered paragraphs appears beneath the section, dealing with venting of the filter, interception of surface water and seepage, and construction on a gently sloping site.",
+ "first_draft": "The drawing is a section through a drainage mound, titled \"Diagram 2 Drainage mound\". A central raised mound sits on a horizontal grey band labelled \"Drained constructed filter gravel or permeable soil\", beneath which is \"High water table or impervious ground\". The mound's left slope is labelled \"250mm grassed top soil\", with a dashed line and arrow marked \"Note 2\" running down it. Inside the mound, three circles labelled \"Distribution pipes\" are set in a thin dark layer labelled \"Soil cap\". Below this is a shaded band \"Washed gravel (10–20mm)\", then \"Filter sand\", with downward arrows passing through. At the right edge a thin line is labelled \"Geotextile\". Vertical dimension lines on the right, marked with cross symbols, read \"At least 100mm\", \"At least 200mm\", \"At least 700mm\" and \"At least 250mm\", measuring successive layers from the mound surface to the lower band. A \"Notes\" block with three numbered paragraphs appears beneath the section.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

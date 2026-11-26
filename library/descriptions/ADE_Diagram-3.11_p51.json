@@ -1,0 +1,33 @@
+{
+ "key": "ADE_Diagram-3.11_p51",
+ "source": "ADE",
+ "label": "Diagram 3.11",
+ "page": 51,
+ "caption": "Diagram 3.11 \u0007\u0007Floating floors (a) and (b)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "6e5cf96b9df5fe43eee50a65a2072ac889f9e519b74cb2e52f55453541dd0ec0",
+ "image_sig": {
+  "w": 355,
+  "h": 274,
+  "grey": "2ri8vb+9rLK0rrq8sLmzsurEv8vX28S0tL64xq66vr7a4ODg4ODg4ODg4ODg4ODg6P31+Pj4+Pj4+Pj4+Pj4+ejy0u/4+Pj46vD4+Pj47+vo8svl9vb29tno9vb29ubf6PfR0NHPz9HP0c/Q0NHQ3ejj5+Tu///////////////o8/Hz9P//////////////6P/u8/Pz8/Pz8/Pz8/Pz8Oj/0Pf///////////////fo/8nr7Ozs7ejp7Ozt7OXn6P/Z1NXT1dTU1NPV1NXT2+jX3djm///////////////o//v//P/////////72uTb5fDw8PDw8PDw8PDw7dri2A=="
+ },
+ "reviewed": true,
+ "description": "The image is a section drawing, headed in a pale green band by the words \"Diagram 3.11 Floating floors (a) and (b)\". Two horizontal sections are stacked one above the other, each with a caption beneath it, and the word \"SECTION\" appears in the bottom right corner. No dimensions or scale are shown.\n\nThe upper section is captioned \"Floating floor (a)\". It depicts a long horizontal assembly whose base is a continuous resilient layer drawn as a wavy band. On this base sit three small square blocks, each cross‑hatched with two diagonals, spaced at intervals along the length. Above the blocks is a plain horizontal layer bounded by a solid line. At the left end is a short vertical resilient edge strip, drawn with the same wavy pattern.\n\nThe lower section is captioned \"Floating floor (b)\". It repeats the same resilient layer and edge strip. In place of the square blocks, its upper region contains small scattered mark symbols set against a dashed line.",
+ "first_draft": "The image is a section drawing, headed in a pale green band by the words \"Diagram 3.11 Floating floors (a) and (b)\". Two horizontal sections are stacked one above the other, each with a caption beneath it, and the word \"SECTION\" appears in the bottom right corner. No dimensions or scale are shown.\n\nThe upper section is captioned \"Floating floor (a)\". It depicts a long horizontal assembly whose base is a continuous layer drawn with a brick‑bond hatching. On this base sit three small square blocks, each cross‑hatched with two diagonals, spaced at intervals along the length. Above the blocks is a plain horizontal layer bounded by a solid line. At the left end is a short vertical element with brickwork hatching and a jagged top edge.\n\nThe lower section is captioned \"Floating floor (b)\". It repeats the same hatched base layer and the same vertical element at the left. In place of the square blocks, its upper region contains small scattered mark symbols set against a dashed line.",
+ "check": {
+  "verdict": "minor",
+  "note": "The base layer is the resilient layer (drawn as a wavy band), and the element at the left end is the resilient edge strip, not brickwork.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "The image is a section drawing, headed in a pale green band by the words \"Diagram 3.11 Floating floors (a) and (b)\". Two horizontal sections are stacked one above the other, each with a caption beneath it, and the word \"SECTION\" appears in the bottom right corner. No dimensions or scale are shown.\n\nThe upper section is captioned \"Floating floor (a)\". It depicts a long horizontal assembly whose base is a continuous resilient layer drawn as a wavy band. On this base sit three small square blocks, each cross‑hatched with two diagonals, spaced at intervals along the length. Above the blocks is a plain horizontal layer bounded by a solid line. At the left end is a short vertical resilient edge strip, drawn with the same wavy pattern.\n\nThe lower section is captioned \"Floating floor (b)\". It repeats the same resilient layer and edge strip. In place of the square blocks, its upper region contains small scattered mark symbols set against a dashed line.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "The image is a section drawing, headed in a pale green band by the words \"Diagram 3.11 Floating floors (a) and (b)\". Two horizontal sections are stacked one above the other, each with a caption beneath it, and the word \"SECTION\" appears in the bottom right corner. No dimensions or scale are shown.\n\nThe upper section is captioned \"Floating floor (a)\". It depicts a long horizontal assembly whose base is a continuous layer drawn with a diagonal hatching. On this base sit three small square blocks, each cross‑hatched with two diagonals, spaced at intervals along the length. Above the blocks is a plain horizontal layer bounded by a solid line. At the left end is a short vertical element with brickwork hatching.\n\nThe lower section is captioned \"Floating floor (b)\". It repeats the same hatched base layer and the same vertical element at the left. In place of the square blocks, its upper region contains small scattered mark symbols set against a dashed line.",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

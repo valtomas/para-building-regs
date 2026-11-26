@@ -1,0 +1,17 @@
+{
+ "key": "ADL1_Table-C1_p90",
+ "source": "ADL1",
+ "label": "Table C1",
+ "page": 90,
+ "caption": "Table C1 \u0007Cost-effective U-value targets when undertaking renovation works to thermal elements",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "d1037c2e6e9db1b503a30d1e1948d46433982f47637f0694068975bad7108e18",
+ "image_sig": {
+  "w": 754,
+  "h": 478,
+  "grey": "va2ln6aipKOfo6SmoqKhz+rn7fTx6u7o5+7n5uXn5fL7////+en////88/D0///77+vu7vv4+/n5+/n5+fn59+rn5+X08/Tl9vfn5Ojo5vLk3Nnb+P/x2eT02Nfc4Nj15uLe4fn/893f89XU3dnZ+Onj4uf8//Pk4/bg3+Ti6fnj2Njq+Pnr2uzz6u3t7vH26unq7fv59un4+Onn6uvu+Ojb4Oj///Lf3O7d3ODf4PXh29nn///z19rvzcvZyeL1493f6v3/8t/d893f3ubt8/n8/f////Lh6PPp7Ojp7Pj7///////68vj22dzb2tzz9/n5+fn5+fn59ejn5/n59w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

@@ -1,0 +1,26 @@
+{
+ "key": "ADJ_Diagram-7_p18",
+ "source": "ADJ",
+ "label": "Diagram 7",
+ "page": 18,
+ "caption": "Diagram 7 \u0007Measurement of flues and ducts",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "f091cc8c4ba01d914361b734695149507373e6cc0131be9d23475163f4d55802",
+ "image_sig": {
+  "w": 755,
+  "h": 438,
+  "grey": "v7msrK2rr6vO2NjY2NjY3eHn5+fn5+fn5+fn5+fn5+f0///////z1tbP1tbW8v/69P//////1dHRwNHRy/D/+vT/////9sDR0cjMrrju//r0/////9q/0dG40dHL8P/69P////zGyanRydfX1/L/+vT////eyM/Z9efS5v////r0////t7bC9f//y+n////69P//5Ma/1P//////////+vT//87Iye////////////r0/+zMy8Twu6n////////69P/y0crp///6////////+vT//+a6//////////////r0///+7P/////////////67vb29vb29vb29vb29vb28w=="
+ },
+ "reviewed": true,
+ "description": "Diagram 7, titled \"Measurement of flues and ducts\", shows a grey duct bent at an angle, with a lower diagonal segment and an upper horizontal segment meeting at an elbow. Inside the duct are two white block arrows each containing the words \"Gas flow\": one in the diagonal segment pointing up and to the right, and one in the horizontal segment pointing right. Three double-headed arrows are drawn across the duct. One is in the horizontal segment, drawn vertically between its walls; one in the diagonal segment is located near the elbow and is drawn across the width perpendicular to the walls; and the one further down the diagonal segment is drawn vertically, not at right angles to the walls. The label \"Wrong\", positioned at the lower right, has a single leader line pointing to the vertical width arrow in the diagonal segment. The label \"Right\", at the right, has two leader lines, one to the vertical width arrow in the horizontal segment and one to the width arrow at the elbow.",
+ "first_draft": "Diagram 7, titled \"Measurement of flues and ducts\", shows a grey duct bent at an angle, with a lower diagonal segment and an upper horizontal segment meeting at an elbow. Inside the duct are two white block arrows each containing the words \"Gas flow\": one in the diagonal segment pointing up and to the right, and one in the horizontal segment pointing right. Three double-headed arrows indicate the internal width of the duct. One is in the horizontal segment, drawn vertically between its walls; the other two are in the diagonal segment, drawn across its width perpendicular to its walls, one located near the elbow and one further down. The label \"Wrong\", positioned at the lower right, has a single leader line pointing to the lower diagonal width arrow. The label \"Right\", at the right, has two leader lines, one to the vertical width arrow in the horizontal segment and one to the width arrow at the elbow.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

@@ -1,0 +1,26 @@
+{
+ "key": "ADM2_Diagram-10_p30",
+ "source": "ADM2",
+ "label": "Diagram 10",
+ "page": 30,
+ "caption": "Diagram 10 Key dimensions for lobbies with single leaf doors",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "2f36c605fc492f05c3e2fb58b01196a0bbd5396bb329db38713f2b84ae238493",
+ "image_sig": {
+  "w": 755,
+  "h": 773,
+  "grey": "2dnW0dDS0dHQz9Hc6urq6/T///j58/729fn++Pfy//r0//vv/Pr59/zz+vH88v/69P/79vv2+PX79fj0+/L/+vT//Pf99/r3/fb69fzy/vr0//vu+vn58Pr4+vT5+v/69P//9/nz/vf58v75+fT/+vT///v9/////fv/+/3///r0///09PP+9fTz/vP08v/69P/49/z39vf89vX1/PL/+vT///X69vz1+/X98vny/vr0//zw/Pr58fz5+vf8/f/69P//+vb0/vr39f76+fT/+vT/+ero6Ojn8v////////r0//fg3Nvd3tvq+P/+///67PTt39/d3d7h3t/f3t7z8Q=="
+ },
+ "reviewed": true,
+ "description": "The image is a sheet titled \"Diagram 10 Key dimensions for lobbies with single leaf doors\". It contains six plan views arranged in two rows of three. Each plan shows a dashed rectangle in the lobby (the wheelchair position) together with two doors, each drawn as a thin leaf and a quarter-circle swing arc, with dimension lines. The labels used are DL1, DL2, \"a*\", DP1, DP2, 1570mm and L, positioned along the outer edges of the plans. The top-left plan reads DP1, 1570mm, DP2 down its left side and is the only one of the six without L; the other plans carry L and 1570mm on their outer edges, and the door labels DL1, DL2, DP1 or DP2 also appear along the edges of each plan. Below the plans a key in running text states: DL1 and DL2 = door leaf dimensions of the doors to the lobby; DP1 and DP2 = door projection into the lobby (normally door leaf size); L = minimum length of lobby, or length up to door leaf for side entry lobby; \"a\" = at least 300mm wheelchair access space [can be increased to reduce L]; 1570mm = length of occupied wheelchair with a companion pushing (or a large scooter). A note adds that for every 100mm increase above 300mm in dimension \"a\" there can be a corresponding 100mm reduction in L, up to a maximum of 600mm reduction.",
+ "first_draft": "The image is a sheet titled \"Diagram 10 Key dimensions for lobbies with single leaf doors\". It contains six plan views arranged in two rows of three. Each plan shows a central dashed rectangle set between two door leaves, each door drawn with a quarter-circle swing arc, and dimension lines. The labels used are DL1, DL2, \"a*\", DP1, DP2, 1570mm and L, positioned at the doors and along the outer edges. The top-left plan reads DP1, 1570mm, DP2 down its left side; the other plans carry L and 1570mm on their outer edges. Below the plans a key in running text states: DL1 and DL2 = door leaf dimensions of the doors to the lobby; DP1 and DP2 = door projection into the lobby (normally door leaf size); L = minimum length of lobby, or length up to door leaf for side entry lobby; \"a\" = at least 300mm wheelchair access space [can be increased to reduce L]; 1570mm = length of occupied wheelchair with a companion pushing (or a large scooter). A note adds that increasing dimension \"a\" above 300mm allows a corresponding reduction in L, up to 600mm.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

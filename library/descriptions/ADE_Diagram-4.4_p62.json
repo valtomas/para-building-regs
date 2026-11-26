@@ -1,0 +1,26 @@
+{
+ "key": "ADE_Diagram-4.4_p62",
+ "source": "ADE",
+ "label": "Diagram 4.4",
+ "page": 62,
+ "caption": "Diagram 4.4 \u0007\u0007Floor treatment 1 – high window head detail",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "efe6ce2794e130e34f0ddb28b2b62b054e2fb6905434be30232e4f73c0753b15",
+ "image_sig": {
+  "w": 362,
+  "h": 383,
+  "grey": "v62xusCopa+eo53BtJ/L4erj6OnpvrG3vbK4r8Th6e/X4uLi4uLi4uLi4uLi4uLj6f//////////////////9On//////////+/g3uTf//Tk+Pj48fDx8fHx7+fx8fHw3v///+r1/////+D0////697////q9v/////h9P///+ve////3NHT1N7p4+Dp6enu4Pbz9ODR1s7k+fr6+fr59Ony//Du4f3l3+bi4+fj5vDp8v/w8d7/5+Pi4tzi5eHv6fL/8P/////////0////9Ony//D//////fHy6/Dz9/Tp+v/6//////3v7/Hv7vT02erq6urq6urq6urqysjG2A=="
+ },
+ "reviewed": true,
+ "description": "The image is a cross-section drawing titled \"Diagram 4.4 Floor treatment 1 – high window head detail\". It depicts the structural relationship between a window and two levels of ceiling construction. The upper level, marked by a line labeled \"Original ceiling level\", shows a roof or floor joist structure with cross-hatched insulation. Below this is a second layer labeled \"Independent ceiling level\". This lower structure includes a recessed area on the left, identified by a label as the \"Pelmet recess\", which sits between the window frame and the main ceiling body. The insulation within this lower section is illustrated using a pattern of overlapping circles. On the far left edge, the profile of a window frame and sill is visible. The bottom right corner of the drawing is labeled \"SECTION\".",
+ "first_draft": "The image is a cross-section drawing titled \"Diagram 4.4 Floor treatment 1 – high window head detail\". It depicts the structural relationship between a window and two levels of ceiling construction. The upper level, marked by a line labeled \"Original ceiling level\", shows a roof or floor joist structure with cross-hatched insulation. Below this is a second layer labeled \"Independent ceiling level\". This lower structure includes a recessed area on the left, identified by a label as the \"Pelmet recess\", which sits between the window frame and the main ceiling body. The insulation within this lower section is illustrated using a pattern of overlapping circles. On the far left edge, the profile of a window sash and frame is visible. The bottom right corner of the drawing is labeled \"SECTION\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

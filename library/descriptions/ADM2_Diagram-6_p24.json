@@ -1,0 +1,33 @@
+{
+ "key": "ADM2_Diagram-6_p24",
+ "source": "ADM2",
+ "label": "Diagram 6",
+ "page": 24,
+ "caption": "Diagram 6 Examples of acceptable step profiles and key dimensions for external stairs",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "2f191f0397e2e1f8fbcf4dfdc14313afe34220d70f82bb9db2e17f7fa95f1c34",
+ "image_sig": {
+  "w": 362,
+  "h": 644,
+  "grey": "3M7T18u9uL7Cw8W1t8S54+Xj4+PIvrG3s7y0xdHT0+Pp//by7vDv8vDx7v73+Pz06f/////////4+fD49vb79On///////v49/z29vf///Tp///////69/f6///////06f/////5+v7r7+n39vb79On////79ufz7Pfu+PP2+/Tp8/Pz8Pv6+Pb39vb7///06f//////+vf3/v//////9On///////////////v4/PTp//////Dk9Pf/9fjx/vv06f//////+/js+fX29vf/9On///////fu8ff6//////Tp//3z8fHs7vLx/f/////04PLy8uTh4O3x8PLy8vLy7A=="
+ },
+ "reviewed": true,
+ "description": "A drawing headed \"Diagram 6 Examples of acceptable step profiles and key dimensions for external stairs\", showing three step profiles in section, one above another, each rising to the right above a sloping line. The top profile has square nosings and is captioned \"Steps without projecting nosings are preferred\". The middle profile has rounded projecting nosings, with dimensions \"280mm to 425mm\" (the going), \"150mm to 170mm\" (the rise) and \"25mm max. overlap\". The bottom profile has nosings projecting with a sloping underside, marked \"25mm max. overlap\" and \"60° min.\" for the angle of the riser to the horizontal. A note at the foot reads \"Note: Rise and going dimensions apply to all step profiles\".",
+ "first_draft": "Diagram 6, on the right, shows three step‑profile sections stacked vertically, each drawn as a staircase silhouette rising to the right with a diagonal line beneath it. The heading reads \"Steps without projecting nosings are preferred\". The top profile carries no dimensions. The middle profile is marked \"25mm max. overlap\" at a small step‑edge projection, \"280mm to 425mm\" as a horizontal going dimension, and \"150mm to 170mm\" as a vertical rise dimension. The bottom profile is marked \"25mm max. overlap\" and \"60° min.\", the latter shown with an angle symbol at the lowest step. A note below reads \"Note: Rise and going dimensions apply to all step profiles\". To the left, Diagram 5 shows a stair section with a pitch line and handrail, dimensioned \"900mm to 1000mm above pitch line\", \"900mm min.\", \"300mm min.\" (twice), \"900mm to 1100mm\", and \"12 risers max., going less than 350mm\" / \"18 risers max., (going 350mm or more)\", above a text list k–p.",
+ "check": {
+  "verdict": "recut",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26",
+  "note": "Recut so the image shows this drawing alone; the suggestion is a new description written from the new image."
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26",
+ "suggestion": {
+  "text": "A drawing headed \"Diagram 6 Examples of acceptable step profiles and key dimensions for external stairs\", showing three step profiles in section, one above another, each rising to the right above a sloping line. The top profile has square nosings and is captioned \"Steps without projecting nosings are preferred\". The middle profile has rounded projecting nosings, with dimensions \"280mm to 425mm\" (the going), \"150mm to 170mm\" (the rise) and \"25mm max. overlap\". The bottom profile has nosings projecting with a sloping underside, marked \"25mm max. overlap\" and \"60° min.\" for the angle of the riser to the horizontal. A note at the foot reads \"Note: Rise and going dimensions apply to all step profiles\".",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "Diagram 6, on the right, headed \"Examples of acceptable step profiles and key dimensions for external stairs\", shows three step‑profile sections stacked vertically, each drawn as a staircase silhouette rising to the right, the middle and bottom profiles having a diagonal line beneath them and the top profile none. The top profile is preceded by the text \"Steps without projecting nosings are preferred\" and carries no dimensions. The middle profile is marked \"25mm max. overlap\" at a small step‑edge projection, \"280mm to 425mm\" as a horizontal going dimension, and \"150mm to 170mm\" as a vertical rise dimension. The bottom profile is marked \"25mm max. overlap\" and \"60° min.\", the latter shown with an angle symbol at the lowest step. A note below reads \"Note: Rise and going dimensions apply to all step profiles\". To the left, Diagram 5, headed \"External steps and stairs – key dimensions\", shows a stair section with a pitch line and handrail, dimensioned \"900mm to 1000mm above pitch line\", \"300mm min.\" (twice), \"900mm to 1100mm\" (twice), and \"12 risers max., going less than 350mm\" / \"18 risers max., (going 350mm or more)\", above a text list k–p.",
+ "corrected_by": "Claude Opus 5.5"
+}

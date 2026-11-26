@@ -1,0 +1,17 @@
+{
+ "key": "ADO_Table-D3_p34",
+ "source": "ADO",
+ "label": "Table D3",
+ "page": 34,
+ "caption": "Table D3 \u0007Equivalent area of a window with an opening angle of α = 30°",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "8bf9b50bb534a44ef7737e39843dc4817f3e0980ca052baecb2aceb60b5a9a33",
+ "image_sig": {
+  "w": 756,
+  "h": 455,
+  "grey": "vqKio6WmpKGkoKCqwMXFz+vp6enp6enp6eXk5+np6er7//////n4+ffv7vD4+fj3+Pn5+/n79Pvz+/j79Pv29+nq//vz++777vvt++777ff6/v/68vvu++777vvs++73+///+/f77fvs++z77Pvt9/v///vz++377fvs++778Pf7///79fvt++v77Pvv++/3+///+/P77vvt+/H77vvv9/v///v3++z77fvx++/78ff7////+P/x//X/9f/2//b7+///+/T77/vx+/H77fvv9/v///vy++z77/vu++777vf7///79/vt+/D78Pvu+/H39vPz8/Pz8/Pz8/Pz8/Pz9Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

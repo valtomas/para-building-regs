@@ -1,0 +1,17 @@
+{
+ "key": "ADH_Table-2_p42",
+ "source": "ADH",
+ "label": "Table 2",
+ "page": 42,
+ "caption": "Table 2 \u0007Gutter sizes and outlet sizes",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "e29ad5eb42fb7a02c3bc40957ca4ea95ca6ccd5f8db481a6575415073e0debef",
+ "image_sig": {
+  "w": 362,
+  "h": 237,
+  "grey": "v8C/uLvIw8fIwce5wcfJ2dOtv7+brJ+Zr66fmKqfyu/i4+Hi4+Dj4uHi4uPi4OPr3dK8w+67ytDZusnz8sT6///SwN30xsvW2MzH8sy71f//+NX////////////NyNL/7+7R7u7u6e7u6e7u7uru8v/9z////+X//+b4//zQ////+df///zV///j9//80f////jX///84f//5fj//+T////21v///Nv//+v5///c////9tL8//zZ///i9//92P//6unr7e3s6+3u7e3r7evr8t3Tx9TMzs7NyMfOy9HN0PX/8MrNyeXj5+ng5+jo5vX/7+zm5eTt7u7u7u7u7u7u8g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

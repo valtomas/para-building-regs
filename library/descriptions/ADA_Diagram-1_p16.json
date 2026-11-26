@@ -1,0 +1,20 @@
+{
+ "key": "ADA_Diagram-1_p16",
+ "source": "ADA",
+ "label": "Diagram 1",
+ "page": 16,
+ "caption": "Diagram 1 \u0007Size and proportion of residential buildings of not more than three storeys",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "bba2d63e1ac488cf2e124743b34c28f4a302ec59cc6d01bdd5c5a45c89277ad3",
+ "image_sig": {
+  "w": 760,
+  "h": 559,
+  "grey": "zcO6vLe7urW1s768uLm7yejy+Pj4+Pj4+Pj4+Pj4+PT1/+/z+Pf//efc+f/t9v/69e/15f/2///k9+j/7PLk+vXw//Dp7P//8P/q+ur/8Pr17v/w+/T///D/7P/s//D69erq4Ovt///m6On/6ujl+vX////44Pn/9/P6//rz9vr1////////7Pz//+7s6/L69f/////84fLo////////+vX////63OPx+Pr///////r1////+PXx6eTy+v/////69f////Xs7vHk9v//////+vX////y8vz4+fH///////r1//////v2////89vb4e347PLy8vLy8vLy8vLy8vLy7w=="
+ },
+ "reviewed": true,
+ "description": "The drawing is a technical diagram titled \"Diagram 1 Size and proportion of residential buildings of not more than three storeys\", with \"See para 2C4\" in the top left. It contains four line drawings. The top left shows a gable-fronted elevation standing on a sloping line labelled \"Lowest ground level\"; a vertical dimension on its right reads \"H not to exceed 15m\". The top middle shows a similar gable-fronted elevation with a vertical dimension \"H\" on the right, a horizontal dimension \"W₁\" below, and the words \"Minimum width\" above. The top right shows an elevation with a single sloping roof, a vertical dimension \"H\" on the left, a horizontal dimension \"W₁\" below, and the note \"W₁ to be not less than 0.5 H\" below. The lower drawing is a three-dimensional block of a house with a projecting single-storey extension; it is dimensioned \"W₁\" at the left, \"P\" along the front, \"W₂\" at the right, and \"H₂\" as the extension height, with the note \"If P is more than 2W₂ then W₂ to be not less than 0.5 H₂\".",
+ "first_draft": "The drawing is a technical diagram titled \"Diagram 1 Size and proportion of residential buildings of not more than three storeys\", with \"See para 2C4\" in the top left. It contains four line drawings. The top left shows a gable-fronted elevation standing on a sloping line labelled \"Lowest ground level\"; a vertical dimension on its right reads \"H not to exceed 15m\". The top middle shows a similar gable-fronted elevation with a vertical dimension \"H\" on the right, a horizontal dimension \"W₁\" below, and the words \"Minimum width\" above. The top right shows an elevation with a single sloping roof, a vertical dimension \"H\" on the left, a horizontal dimension \"W₁\" below, and the note \"W₁ to be not less than 0.5 H\" to the right. The lower drawing is a three-dimensional block of a house with a projecting single-storey extension; it is dimensioned \"W₁\" at the left, \"P\" along the front, \"W₂\" at the right, and \"H₂\" as the extension height, with the note \"If P is more than 2W₂ then W₂ to be not less than 0.5 H₂\".",
+ "rejected": false,
+ "reviewed_date": "2026-11-06"
+}

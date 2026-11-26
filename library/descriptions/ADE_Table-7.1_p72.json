@@ -1,0 +1,17 @@
+{
+ "key": "ADE_Table-7.1_p72",
+ "source": "ADE",
+ "label": "Table 7.1",
+ "page": 72,
+ "caption": "Table 7.1 \u0007\u0007Absorption coefficient data for common materials in buildings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "1a7063211a4b46a4a4014057063e883223360237885fdd231930b5dc976dedf8",
+ "image_sig": {
+  "w": 371,
+  "h": 466,
+  "grey": "57vJ0L62tbXDuK+5v67J6/Lp6enExbnAwsa4vcXS6fDr3d3ewri0t97d3t7e3N7o9tzn/////+O3u7SvvLW19/Tn5+nm8fbo1eHlz+Pe1O703Nba2OT26/Hz9O/z8vD48+Lf4Oz29ung6ure7efi9vLc4uDe3/Hp2+fm2+vi3PPx19fX4N3x6Nnm5dXr4dr08tbY19/29uje5ejX6uLb9PTZ3OLc5/bp3ejp2uvk3PT03tnT1v7/9P//////////8t/h4N7s9ung6unh7efj9fXb1dT5///0///////////wyczNytjo6eTt6t3t5+H17NDW0tTQ6OTt7e3t7e3t8w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

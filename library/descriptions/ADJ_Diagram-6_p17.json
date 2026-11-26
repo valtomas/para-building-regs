@@ -1,0 +1,26 @@
+{
+ "key": "ADJ_Diagram-6_p17",
+ "source": "ADJ",
+ "label": "Diagram 6",
+ "page": 17,
+ "caption": "Diagram 6 \u0007The functions of hearths",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "c03350e8b5bc091b96c980583b4c66be32fa50df3e9a026e3fae9566466487b9",
+ "image_sig": {
+  "w": 760,
+  "h": 385,
+  "grey": "wrOrqailqdbW1tbW1tbW2+jo6urq6urq6urq6urq6uv0////2NjTzdnp///////69P///8O4tq+v5P7/////+vT////39fP17uyksaLu//r0///nxOn//+7mubqz0//69P///+/tzOvw9sTNyd//+vT//PX16dbW2f////////r0//blw52Tk5Ss3On////69P///8Senp6cr///////+vT////axsvHxMn2//////r0//////X99/b0//7////69P//7+nh2OzMsayt9v//+vT//9/S09ju07XM6P////r0///VxNbOzvjx+//////67vT09PT09PT09PT09PT08g=="
+ },
+ "reviewed": true,
+ "description": "This is a section titled \"Diagram 6 The functions of hearths\". A thin light grey line representing the floor runs across the drawing, interrupted by the hearth in the middle. The hearth straddles this line, with a dark grey body below it and a thinner dark grey slab above it, with a white rectangular block sitting on the slab. An arrow labelled \"Combustion zone\" points to this white block. Text above, \"Surface of hearth segregates floor and room contents from heat and falling embers. Usually decorative tiling finish\", has an arrow pointing to the top of the slab. To the right, text reads \"(Optional superimposed hearth shown. Usually a stone hearth slab, bricks or tiles on a concrete plinth, for example to BS 1251: 1987)\", with an arrow to the slab. Several short arrows radiate outwards and downwards from the dark grey body. Text at the lower right, \"Body of hearth resists heat flow so that surrounding fabric remains at safe temperatures\", has an arrow into the body. A legend at the lower left shows light grey for \"Combustible material, e.g. flooring\" and dark grey for \"Non-combustible material, e.g. concrete or masonry\".",
+ "first_draft": "This is a horizontal section titled \"Diagram 6 The functions of hearths\". A thin light grey line representing the floor runs across the drawing. Resting on it is a hearth made of two layers: a darker grey body below and a thinner lighter grey slab on top, with a white rectangular block sitting on the slab. An arrow labelled \"Combustion zone\" points to this white block. Text above, \"Surface of hearth segregates floor and room contents from heat and falling embers. Usually decorative tiling finish\", has an arrow pointing to the top of the slab. To the right, text reads \"(Optional superimposed hearth shown. Usually a stone hearth slab, bricks or tiles on a concrete plinth, for example to BS 1251: 1987)\", with an arrow to the slab. Several short arrows radiate outwards and downwards from the dark grey body. Text at the lower right, \"Body of hearth resists heat flow so that surrounding fabric remains at safe temperatures\", has an arrow into the body. A legend at the lower left shows light grey for \"Combustible material, e.g. flooring\" and dark grey for \"Non-combustible material, e.g. concrete or masonry\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

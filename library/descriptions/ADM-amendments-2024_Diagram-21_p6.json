@@ -1,0 +1,33 @@
+{
+ "key": "ADM-amendments-2024_Diagram-21_p6",
+ "source": "ADM amendments 2024",
+ "label": "Diagram 21",
+ "page": 6,
+ "caption": "Diagram 21 | WC cubicle for ambulant disabled people",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "f535fcf35e69e8aa0b7c34d02318a3224824b900a3b31d04ef48083ac7551c76",
+ "image_sig": {
+  "w": 748,
+  "h": 1046,
+  "grey": "2ujl7vL08fH7/Pz8/Pz8/Pv5+/v7+/D39f////////v7+v////zs9/T////////7+/r////56/nv+P//////+/v49Pnu8e/25Pj///////v77/L39PXt9/D////////7++b19fXy4ejr/f//////+/vr9fb09env7P////////v18vH38vH4+vv////////7+/n65vbo/O3t9vX7////+/Tn6eDq4dXp7fr2//////v05efk6aituvz//f7////7+ufz9vKstL346ujt897j9vvx6+rux9Db5u30//nU3PH7///z7O3y8/jx///73entt5+jpaWlpqemoZ+fn5+frQ=="
+ },
+ "reviewed": true,
+ "description": "This drawing, headed “Replace Diagram 21 with the following” and footed “Diagram 21 WC cubicle for ambulant disabled people”, shows two views of a toilet cubicle. The upper “Side elevation view” depicts a WC in profile, with a “Position of shelf” at left, a “Horizontal grab rail” above the pan, a “Vertical grab rail”, a “High hook” and “low hook”, and a “Horizontal closing bar” at right. Dimensions shown are “780–800mm” and “1465mm minimum” overall, plus verticals of “480mm”, “600mm”, “680mm”, “800mm”, “1050mm”, “1685mm” and “900mm”. The lower “Plan view” shows the WC, shelf, “Space for disposal bin”, grab rails, hooks, a door-swing arc, “Horizontal closing bar”, “Column of clearance”, and a green “Activity space WC” containing a dashed circle marked “465mm Ø”. Dimensions include “1465mm minimum”, “540mm”, “100mm”, “210mm”, “920mm minimum”, “400mm”, “200mm”, “565mm”, “60mm”, “600mm”, “500mm” and “750mm”. A legend identifies the green area, and three NOTES at right refer to Appendix D of Approved Document T, a concealed cistern, and centring the mid-line axis of the WC on the rear wall.",
+ "first_draft": "This drawing, headed “Replace Diagram 21 with the following” and footed “Diagram 21 WC cubicle for ambulant disabled people”, shows two views of a toilet cubicle. The upper “Side elevation view” depicts a WC in profile, with a “Position of shelf” at left, a “Horizontal grab rail” above the pan, a “Vertical grab rail”, a “High hook” and “low hook”, and a “Horizontal closing bar” at right. Dimensions shown are “780–800mm” and “1465mm minimum” overall, plus verticals of “480mm”, “600mm”, “680mm”, “800mm”, “1050mm”, “1685mm” and “900mm”. The lower “Plan view” shows the WC, shelf, “Space for disposal bin”, grab rails, hooks, a door-swing arc, “Horizontal closing bar”, “Column of clearance”, and a green “Activity space WC” containing a dashed circle marked “465mm Ø”. Dimensions include “1465mm minimum”, “540mm”, “100mm”, “300mm”, “920mm minimum”, “400mm”, “200mm”, “565mm”, “60mm”, “600mm”, “500mm” and “750mm”. A legend identifies the green area, and three NOTES at right refer to Appendix D of Approved Document T, a concealed cistern, and centring the mid-line axis of the WC on the rear wall.",
+ "check": {
+  "verdict": "minor",
+  "note": "Lists the dimensions without saying what each measures, includes a \"300mm\" that is not on the plan and misses the 210mm.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "This drawing, headed “Replace Diagram 21 with the following” and footed “Diagram 21 WC cubicle for ambulant disabled people”, shows two views of a toilet cubicle. The upper “Side elevation view” depicts a WC in profile, with a “Position of shelf” at left, a “Horizontal grab rail” above the pan, a “Vertical grab rail”, a “High hook” and “low hook”, and a “Horizontal closing bar” at right. Dimensions shown are “780–800mm” and “1465mm minimum” overall, plus verticals of “480mm”, “600mm”, “680mm”, “800mm”, “1050mm”, “1685mm” and “900mm”. The lower “Plan view” shows the WC, shelf, “Space for disposal bin”, grab rails, hooks, a door-swing arc, “Horizontal closing bar”, “Column of clearance”, and a green “Activity space WC” containing a dashed circle marked “465mm Ø”. Dimensions include “1465mm minimum”, “540mm”, “100mm”, “210mm”, “920mm minimum”, “400mm”, “200mm”, “565mm”, “60mm”, “600mm”, “500mm” and “750mm”. A legend identifies the green area, and three NOTES at right refer to Appendix D of Approved Document T, a concealed cistern, and centring the mid-line axis of the WC on the rear wall.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "This drawing, headed “Replace Diagram 21 with the following” and footed “Diagram 21 WC cubicle for ambulant disabled people”, shows two views of a toilet cubicle. The upper “Side elevation view” depicts a WC in profile, with a “Position of shelf” at left, a “Horizontal grab rail” above the pan, a “Vertical grab rail”, a “High hook” and “low hook”, and a “Horizontal closing bar” at right. Dimensions shown are “780–800mm” and “1465mm minimum” overall, plus verticals of “480mm”, “600mm”, “680mm”, “800mm”, “1050mm”, “1685mm” and “900mm”. The lower “Plan view” shows the WC, shelf, “Space for disposal bin”, grab rails, hooks, a door-swing arc, “Horizontal closing bar”, “Column of clearance”, and a green “Activity space WC” containing a dashed circle marked “465mm Ø”. Dimensions include “1465mm minimum”, “540mm”, “100mm”, “300mm”, “920mm minimum”, “400mm”, “200mm”, “565mm”, “60mm”, “600mm”, “500mm” and “750mm”. A legend identifies the green area, and three NOTES at right refer to Appendix D of Approved Document T, a concealed cistern, and centring the mid-line axis of the WC on the rear wall.",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

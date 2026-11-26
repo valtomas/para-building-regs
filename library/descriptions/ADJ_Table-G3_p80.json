@@ -1,0 +1,17 @@
+{
+ "key": "ADJ_Table-G3_p80",
+ "source": "ADJ",
+ "label": "Table G3",
+ "page": 80,
+ "caption": "Table G3 – this is fuel dependant and expressed as 1, 2 or 3.",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-22",
+ "image_sha256": "7ac9c9aff162fba33ef0659e5ae1c1a4aa9280684487f2b5234633e4e9a033f8",
+ "image_sig": {
+  "w": 755,
+  "h": 279,
+  "grey": "v72zurS7t7SvrrCmzs7O1dPPwcC6vrq+wMbAuunp6ey+xdrg4ODg1uDg4Nbg4ODk2dDpzcz0/9fQ3//tzM3///Hw7O/v8PDr8PDw6/Dw8PLt//XJ1/P/1e35/+Pj9f/////0zeT///Hz/v/28Pv///Dx6+/w8PHp8O/v6fDw7vHm//TK193/2c7V0+nQ0Nrq///57fv//9vV6vHrzOfx//Lx7PHx8fHo7PDx6+nw8fPm//r/////39/Y+ObT0ub/8vHs8fHx8ezx8fHk3Nfp8+z/+v/////6////7fb////q8ezx8fHx7PHx8eXt8fHz4/Ds8PDw8Ozw8PDm6/Dw8g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

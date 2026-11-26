@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-10.1_p82",
+ "source": "ADL2",
+ "label": "Table 10.1",
+ "page": 82,
+ "caption": "Table 10.1 \u0007Maximum area of openings in the extension",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "abcee68a17c66b71a0ff3d40e35eaa2d8dd354c2f4fd272f6bec4e08b8e3f207",
+ "image_sig": {
+  "w": 756,
+  "h": 184,
+  "grey": "z8PGx8jFxsbIx8jIyMjI0aV4dXB2dnN6bpvIyMjIyNDTx8jIx8S/yMfIyMjIyMjQ8vPz8/Pz8/Pz8/Pz8/Pz8uXf+/////je4d3l7t3k4uv7+v//////+PLz+//8///7+/////////Xr6fz/////+/Ds7e7u7/Xv7e/v9O/s7/Hdz8vWz/////D/////8P/75+Th3uP/////////////++fe393i8Pbw8PDx9fDw8PL1/Pv6+/////r/////+f/74NbT0tH7///x//////P/+/Lv7+/v7/Xv7+/v9O/v7/Hez87N7f////L/////7v/78e/s7+zv7+/v7+/v7+/v8A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

@@ -1,0 +1,26 @@
+{
+ "key": "ADM2_Diagram-4_p23",
+ "source": "ADM2",
+ "label": "Diagram 4",
+ "page": 23,
+ "caption": "Diagram 4 Stepped access – key dimensions and use of hazard warning surface",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "17cbf55bebb89a441849bbfec88a887983a39f96a87b22d96e1af8b4dbc9c801",
+ "image_sig": {
+  "w": 749,
+  "h": 742,
+  "grey": "3dfRzNHVzs7Q0NPNz8/O4vT///jt7fL////29P7////0///15ubq9Pr4+Pjx/f//9P//8+Dg5vT79Pn///////T///fr6u74/P/////////0///34uDl+v3/////////9P////by+/////////////T////+/v778Ofo5+7////0///+5+f45unw6Pv/////9P///OLu9Ovq4/Xu+f////T/////8/rS3uv4/P/////0////+/jf49Ts+///////9P/////i1+328Onc3er8//T///zh5+Pt5+js+P/////0//vy9+3y7f7/////////7PT09PT08eLt9PT09PT09A=="
+ },
+ "reviewed": true,
+ "description": "The drawing, titled \"Diagram 4 Stepped access – key dimensions and use of hazard warning surface,\" has two parts. The upper part shows a hatched rectangle labelled \"'Corduroy' hazard warning surface (with 6mm ribs),\" with two vertical dimensions, \"20mm rib\" and \"30mm gap.\" To its right, a line drawing labelled \"Rib profile\" shows a rounded rib dimensioned \"20mm\" across the top and \"6mm\" in height. A note reads: \"Note: Full details of tactile paving are in 'Guidance on the use of Tactile Paving Surfaces.'\"\n\nThe lower part is a three-dimensional perspective of a stepped stair with handrails and a corduroy surface at the top. Labels point to features: \"Closed end to handrail at top and bottom,\" \"Handrail to be continuous across intermediate landings,\" and \"'Corduroy' hazard warning surface at top of stairs to extend at least 400mm at each side of stairs and to stop 400mm from nosing.\" Dimensions include \"400mm min.\" in two places, \"Stair width,\" \"400mm\" in two places at the foot, \"800mm,\" and \"1200mm min.\" at each landing. Further labels read \"800mm when the approach is straight on and 400mm when a conscious turn is needed to reach the step,\" and \"Handrail to be terminated in a way that reduces the risk of clothing being caught.\"",
+ "first_draft": "The drawing, titled \"Diagram 4 Stepped access – key dimensions and use of hazard warning surface,\" has two parts. The upper part shows a hatched rectangle labelled \"'Corduroy' hazard warning surface (with 6mm ribs),\" with two vertical dimensions, \"20mm rib\" and \"30mm gap.\" To its right, a line drawing labelled \"Rib profile\" shows a raised ridge dimensioned \"20mm\" across the top and \"6mm\" in height. A note reads: \"Note: Full details of tactile paving are in 'Guidance on the use of Tactile Paving Surfaces.'\"\n\nThe lower part is a three-dimensional perspective of a stepped stair with handrails and a corduroy surface at the top. Labels point to features: \"Closed end to handrail at top and bottom,\" \"Handrail to be continuous across intermediate landings,\" and \"'Corduroy' hazard warning surface at top of stairs to extend at least 400mm at each side of stairs and to stop 400mm from nosing.\" Dimensions include \"400mm min.\" in three places, \"Stair width,\" \"400mm\" at the foot, \"800mm,\" and \"1200mm min.\" at each landing. Further labels read \"800mm when the approach is straight on and 400mm when a conscious turn is needed to reach the step,\" and \"Handrail to be terminated in a way that reduces the risk of clothing being caught.\"",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

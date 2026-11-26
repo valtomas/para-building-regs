@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-2.3_p25",
+ "source": "ADL2",
+ "label": "Table 2.3",
+ "page": 25,
+ "caption": "Table 2.3 \u0007Target emission rate multiplying factor for modular and portable buildings with a planned service life of more than two years but intended time of use at a single location of less than two years",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "57da3bf73b237281a5cf32d6283a234cb04fb9bb3c9dba269ff4d649acea883a",
+ "image_sig": {
+  "w": 747,
+  "h": 265,
+  "grey": "xre7vL68tbi5v7m7trW9u72gnZqYmZKToZqZk5aXlKvSyJmNkZOTjZiRkoSXkpyQ0siSjZSKkrfIyMjIyMjIxtfOzs7OzsvOzs7Ozs7Ozszv7+7u8PL/8O/u9P/y7vD76+vo6u35//Tn5vn/8Ons+/Hs7+/v9fnz7Oz0+PHr7/Pk4dze5/////T3////7P/78Onu7Oz0+fXx8vX49e718+Tf4Nra7/j07vD0+PTq9PLq4uTp//////X4////7v/79PTz9PT0+PT09PT49PT08ufc5d3/////9fn////w//vq5+v09PT49O/w9Pj06/Ty6eHr9fX19fXv8PX19ev18g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

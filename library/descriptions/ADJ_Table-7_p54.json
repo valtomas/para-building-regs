@@ -1,0 +1,17 @@
+{
+ "key": "ADJ_Table-7_p54",
+ "source": "ADJ",
+ "label": "Table 7",
+ "page": 54,
+ "caption": "Table 7 \u0007Protecting buildings from hot flues",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-21",
+ "image_sha256": "4931aa05ce97aee8b464e5eb52f83f79060edd68aff76fd8f78db6563aec7eb9",
+ "image_sig": {
+  "w": 362,
+  "h": 507,
+  "grey": "yrnGwLK4sbGusK68tdLa5N/e3sS+sL3e3t7e3t7e3ubf183q7vXqz9PX1NTn7PT55Njb2Ojz7crO0c7Kzc/h/+TS0tbR4fHV2dvb29ni/P/z7uv1///xzNfM09DT5vf/////////8cbQy83LyNPk//////////HV2NjW3tbY3fn////////y1dbT29Tb1eH/////////8cPN1M/R2uLs/+rk5uT39+va393a4uL29/ngzs3TzN7x0NDd2NbX5+z/4dfU0eDw6s7Q0M/d5uTs+fDr7uzw//HX2djV2dzy///w7e/s7/fq2trV2NzX7vP58urt7uv37Nna2uvs7Ovy+Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

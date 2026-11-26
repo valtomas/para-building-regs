@@ -1,0 +1,26 @@
+{
+ "key": "ADM1_Diagram-3.6_p42",
+ "source": "ADM1",
+ "label": "Diagram 3.6",
+ "page": 42,
+ "caption": "Diagram 3.6 | Wheelchair storage and transfer space General storage space",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "b6e9bd81d11145d7e34b5842fff9593fd38ce72fe1fba30f5477cf4ab93ec3b0",
+ "image_sig": {
+  "w": 754,
+  "h": 291,
+  "grey": "9fX19fX19fX19fX19fX19Pv//////vD27/3///////v7//////ny7PL3///////7+//////v5/X/+v//////+/v/////89Xo//r///////v7/////+3v7f/6///////7+//////m1/D/+v//////+/v/////7M/q//r///////v7//////fv7P/6///////7+//////oxOj/+v//////+/v///////r8//z///////v7///////x5P3////////7+//////p6unq6Or/////+/v/////+/r7+vr6//////t/XF1eW1pdW1lZWVlZWVlxhGhbaGZsZ2hVT09PT09PbQ=="
+ },
+ "reviewed": true,
+ "description": "The drawing is a plan (top view) showing two wheelchairs drawn one above the other, each seen from above with seat, back and armrests. A vertical dimension line on the left, labelled 1700mm, runs the full height of the two wheelchairs together. A horizontal dimension line across the top is split into two segments: 1100mm, which matches the width of a single wheelchair, and 1200mm, which measures the space from the wheelchair's side edge to a vertical line on the right, representing the transfer area. A leader line from the right edge of the lower wheelchair points to the label \"Power socket\". Beneath the diagram a note reads \"*all dimensions are minimum except where noted\". The green footer at the bottom of the image states \"Diagram 3.6\" followed by \"Wheelchair storage and transfer space\".",
+ "first_draft": "The drawing is a plan (top view) showing two wheelchairs drawn one above the other, each seen from above with seat, back and armrests. A vertical dimension line on the left, labelled 1700mm, runs the full height of the two wheelchairs together. A horizontal dimension line across the top is split into two segments: 1100mm, which matches the width of a single wheelchair, and 1200mm, which measures the space from the wheelchair's side edge to a vertical line on the right, representing the transfer area. A leader line from the right edge of the upper wheelchair points to the label \"Power socket\". Beneath the diagram a note reads \"*all dimensions are minimum except where noted\". The green footer at the bottom of the image states \"Diagram 3.6\" followed by \"Wheelchair storage and transfer space\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

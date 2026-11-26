@@ -1,0 +1,33 @@
+{
+ "key": "ADM1_Diagram-3.16_p56",
+ "source": "ADM1",
+ "label": "Diagram 3.16",
+ "page": 56,
+ "caption": "Diagram 3.16 \u0007Examples of wheelchair accessible bathrooms",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "277ec19e57689c99f290a743dec0a78c7cadb1328fd3dfb5612b5b5810a5c8f5",
+ "image_sig": {
+  "w": 754,
+  "h": 1042,
+  "grey": "+fz8/Pj18+3y8vz8/Pz8+fvg8P/q3tna3Nj19/j4/Pv76fP86PHT29zh+vLx9v/7+////uryxsC+y/Xo6+/1+/v////y7+jr4ub25+fu9fv7///////y9v/////////7++jx/+zf2drf5f//////+/vh8v/r7cLO3uL38PDw/Pv7///75/K6xOrr/P/////7+////+3328vq8fb5////+/v////17e7p7vL///////v74PH66unm19rf+vf4+Pz7++Hq9Oj66tnj4vz49/f/+/vf+fjlxsXG5uL///////v7///79Onp4+vr///////7uaqoqqiqqaqpqKOjo6Ojrw=="
+ },
+ "reviewed": true,
+ "description": "Three bathroom floor plans are stacked vertically, each with overall and internal dimensions, dashed access zones, and a callout reading \"1000 x 1000 x 100mm zone kept clear to enable fitting of rails.\"\n\nExample 3.16A – wheelchair accessible bathroom with choice of bath or shower: width 2600mm, split into 1200mm, 800mm, 450mm and 150mm; depth 2200mm. A bath sits at left, a WC at top right, with a vertical \"750mm min.\" dimension. A door is at the bottom. To the right, \"Notes for all diagrams:\" list 1. Dimensions for illustration purposes only. 2. WC doors must be capable of opening outwards. 3. Stack and drainage positions to be shown clear of access zones where located within bathroom.\n\nExample 3.16B – wheelchair accessible bathroom with choice of bath or shower: width 2450mm (1200mm, 800mm, 450mm); depth 2450mm. Bath at left, WC at top right, basin at bottom, door on the right wall.\n\nExample 3.16C – wheelchair accessible bathroom with shower only – suitable where bath provided in wheelchair accessible bathroom elsewhere: width 2450mm (1200mm, 800mm, 450mm); depth 2200mm with an inner 1200mm. Shower at left, WC at top right, door at the bottom.",
+ "first_draft": "Three bathroom floor plans are stacked vertically, each with overall and internal dimensions, dashed access zones, and a callout reading \"1000 x 1000 x 100mm zone kept clear to enable fitting of rails.\"\n\nExample 3.16A – wheelchair accessible bathroom with choice of bath or shower: width 2600mm, split into 1200mm, 800mm, 450mm and 150mm; depth 2200mm. A bath sits at left, a WC at right, with a vertical \"750mm min.\" dimension. A door is at the bottom. To the right, \"Notes for all diagrams:\" list 1. Dimensions for illustration purposes only. 2. WC doors must be capable of opening outwards. 3. Stack and drainage positions to be shown clear of access zones where located within bathroom.\n\nExample 3.16B – same title: width 2450mm (1200mm, 800mm, 450mm); depth 2450mm. Bath at left, WC at right, curved shower screen at bottom.\n\nExample 3.16C – wheelchair accessible bathroom with shower only – suitable where bath provided in wheelchair accessible bathroom elsewhere: width 2450mm (1200mm, 800mm, 450mm); depth 2200mm with an inner 1200mm. Shower at left, WC at right.",
+ "check": {
+  "verdict": "minor",
+  "note": "In 3.16B the fitting at the bottom is a basin, not a curved shower screen.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "Three bathroom floor plans are stacked vertically, each with overall and internal dimensions, dashed access zones, and a callout reading \"1000 x 1000 x 100mm zone kept clear to enable fitting of rails.\"\n\nExample 3.16A – wheelchair accessible bathroom with choice of bath or shower: width 2600mm, split into 1200mm, 800mm, 450mm and 150mm; depth 2200mm. A bath sits at left, a WC at top right, with a vertical \"750mm min.\" dimension. A door is at the bottom. To the right, \"Notes for all diagrams:\" list 1. Dimensions for illustration purposes only. 2. WC doors must be capable of opening outwards. 3. Stack and drainage positions to be shown clear of access zones where located within bathroom.\n\nExample 3.16B – wheelchair accessible bathroom with choice of bath or shower: width 2450mm (1200mm, 800mm, 450mm); depth 2450mm. Bath at left, WC at top right, basin at bottom, door on the right wall.\n\nExample 3.16C – wheelchair accessible bathroom with shower only – suitable where bath provided in wheelchair accessible bathroom elsewhere: width 2450mm (1200mm, 800mm, 450mm); depth 2200mm with an inner 1200mm. Shower at left, WC at top right, door at the bottom.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "Three bathroom floor plans are stacked vertically, each with overall and internal dimensions, dashed access zones, and a callout reading \"1000 x 1000 x 100mm zone kept clear to enable fitting of rails.\"\n\nExample 3.16A – wheelchair accessible bathroom with choice of bath or shower: width 2600mm, split into 1200mm, 800mm, 450mm and 150mm; depth 2200mm. A bath sits at left, a WC at top right, with a vertical \"750mm min.\" dimension. A door is at the bottom. To the right, \"Notes for all diagrams:\" list 1. Dimensions for illustration purposes only. 2. WC doors must be capable of opening outwards. 3. Stack and drainage positions to be shown clear of access zones where located within bathroom.\n\nExample 3.16B – wheelchair accessible bathroom with choice of bath or shower: width 2450mm (1200mm, 800mm, 450mm); depth 2450mm. Bath at left, WC at top right, curved shower screen at bottom, door on the right wall.\n\nExample 3.16C – wheelchair accessible bathroom with shower only – suitable where bath provided in wheelchair accessible bathroom elsewhere: width 2450mm (1200mm, 800mm, 450mm); depth 2200mm with an inner 1200mm. Shower at left, WC at top right, door at the bottom.",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

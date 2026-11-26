@@ -1,0 +1,26 @@
+{
+ "key": "ADM1_Diagram-3.14_p53",
+ "source": "ADM1",
+ "label": "Diagram 3.14",
+ "page": 53,
+ "caption": "Diagram 3.14 \u0007Examples of compliant second WC/cloakrooms where on the same floor level as the first WC",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "0c43cf4a5050feac90faf892d672877977790ba0b60d6b389708d0d6618a514c",
+ "image_sig": {
+  "w": 740,
+  "h": 469,
+  "grey": "69vb29vb29vb29vb29vb3vn5+fn5+fn5+fn5+fn5+fn7///97P3///7t/P//////+///9PDn///09t7/8P////v//+rk4/n/4ubb9evo9v37///m4+z4/8zR6vPp4+f8+///5eXs9v/b2ezv4uju//v89+ni4+3/297n5+Xj4P77+f/o28P2/93t6vLt6uz+++/t4dLU+P/a6+ju49zr/vv/++Pl6/b+7f7w/OLe4P/7/+Xn///53ur59P/r6O//+///////////+O//6O74//v////////////+//////+Kb21xbHFucG5xbm5ucG5reVBUX1lPT09PT09PT09PTw=="
+ },
+ "reviewed": true,
+ "description": "The image is a plan drawing titled \"Diagram 3.14 Examples of compliant second WC/cloakrooms where on the same floor level as the first WC\". It shows two floor plans side by side. The left, \"Example 3.14A\", is a rectangle dimensioned 1200mm across the top (with 450mm marked on the right) and 1700mm down the right side; it contains a WC pan at the top, a dashed access zone, a round hand basin on the right wall, a linear fixture along the bottom wall, and a door swinging out to the left. The right, \"Example 3.14B\", is dimensioned 1300mm across the top (with 450mm on the right) and 1600mm down the right side; it contains a basin at top left, a WC pan at top right, dashed access zones, vertical handrail bars on the left, and a door swinging out at the bottom. A Notes block to the right reads: 1. Dimensions for illustration purposes only. 2. Doors should open outwards. 3. Where future shower provision is provided in entrance level WC's, this need not be provided in adaptable bathrooms on other storeys. 3. Stack and drainage positions to be clear of access zones shown where located within bathroom.",
+ "first_draft": "The image is a plan drawing titled \"Diagram 3.14 Examples of compliant second WC/cloakrooms where on the same floor level as the first WC\". It shows two floor plans side by side. The left, \"Example 3.14A\", is a rectangle dimensioned 1200mm across the top (with 450mm marked on the right) and 1700mm down the right side; it contains a WC pan at the top, a dashed access zone, a circular pivot symbol, a linear fixture along the bottom wall, and a door swinging out to the left. The right, \"Example 3.14B\", is dimensioned 1300mm across the top (with 450mm on the right) and 1600mm down the right side; it contains a basin at top left, a WC pan at top right, dashed access zones, vertical handrail bars on the left, a linear fixture at the bottom, and a door swinging out at the bottom. A Notes block to the right reads: 1. Dimensions for illustration purposes only. 2. Doors should open outwards. 3. Where future shower provision is provided in entrance level WC's, this need not be provided in adaptable bathrooms on other storeys. 3. Stack and drainage positions to be clear of access zones shown where located within bathroom.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

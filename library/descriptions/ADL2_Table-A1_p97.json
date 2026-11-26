@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-A1_p97",
+ "source": "ADL2",
+ "label": "Table A1",
+ "page": 97,
+ "caption": "Table A1 \u0007High excitation purity light sources",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "e230ab2131369e39cd4026458cb255dcfacc5317612136f07c7fad4280e59329",
+ "image_sig": {
+  "w": 378,
+  "h": 168,
+  "grey": "4MbGyMjGyMjIyMjGxsjIyNxvg4V4fYRzeod5hW6OgpHctLW8tqmvs7Kss7Kis7Oz593d3d3d3d3d3d3d3d3d3fb6////+/7////7/v/+/v/x3+n//97b4v//2tve29b2+P////Tt6+30///u7u76//j////t6uXt9P//7evr9//17+/07+/v7/Hz7+/v7+/v69r////a3eH/////3P////Da7/Tv5Obk8fPv7+Pv7+/4////////////////////7tPu///e3+L/////4P////Th6vPt5Obq8PLt7ebt7e34/v//////////////////6Mj////R0tz/////1f///w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

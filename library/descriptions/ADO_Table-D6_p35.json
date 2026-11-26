@@ -1,0 +1,17 @@
+{
+ "key": "ADO_Table-D6_p35",
+ "source": "ADO",
+ "label": "Table D6",
+ "page": 35,
+ "caption": "Table D6 \u0007Equivalent area of a window with an opening angle of α = 60°",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "90332f51e07a3499a193afac80f968ff51ecdf24e702da40b53c800b371cb8a3",
+ "image_sig": {
+  "w": 737,
+  "h": 437,
+  "grey": "vp2ln6monqeioaCrscbGxunn5+fn5+fn5+Xm5efn5+f7//////r4+Pjv6+31+Pj49/j4+/j78/vx+/f69fb69O7w/vvz++/77fvv+fLz9/H0+P778fvu++377vny8/jx+/////3/8v/y//T9+vz9+Pv///vy++z77Pvv+vT1+O/7///79Pvr++r77/r09fjv+///+/T77/vw+/H69fb58/v///v2++/78fvx+vX1+PP7///79fvv+/L78fr09vfx+///+/P77/vy+/P69vX49Pv///vz++v77vvu+vTy9/H7///78vvu++777/r09fjy9/j4+Pb47/jv+O738vH17w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

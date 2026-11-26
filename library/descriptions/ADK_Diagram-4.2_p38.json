@@ -1,0 +1,33 @@
+{
+ "key": "ADK_Diagram-4.2_p38",
+ "source": "ADK",
+ "label": "Diagram 4.2",
+ "page": 38,
+ "caption": "Diagram 4.2 | Barrier design Loading bays For all buildings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "44385295f9fa41b3d7bc87c20ba4e7ed2ed06b118096d62c08155239a9d95812",
+ "image_sig": {
+  "w": 754,
+  "h": 360,
+  "grey": "+fn5+fn5+fn5+fn5+fn5+Pn1+P////////////v///z67/b//Pz////9///9///8/P////39////w8/++f///Pz9+f7+/v///9vr7N/+//z85Lbv+/z////g+P/k4P/8/PPi9+Xs////5///5OH//Pzs5/nr4en//////uT///z89fX57Orv/////+Tk///8/P/34fPx///////+5P///Pz/9tTj6f/////l69////z8//jl5Pn/////29Tj/v/8/P/5y8Hy/////+HH6P///Pz///n49//////45/////yqj5KQkI+Pj4+Pj4+Pj4+gjXBjbXRVVVVVVVVVVVVVcw=="
+ },
+ "reviewed": true,
+ "description": "This drawing, titled \"Diagram 4.2 Barrier design\" in a green box at the bottom, presents two cross-section diagrams labelled (a) and (b). The text \"See para 4.2\" appears at the top left.\n\nPart (a), labelled \"Any building: floor or roof edge,\" shows a vertical line, labelled \"Barrier,\" rising from a horizontal surface marked \"Floor or roof level\". A dimension line to the right of the barrier indicates the height from the floor or roof level to the top of the barrier is \"At least 375mm\". A zig-zag pointer line from the text \"As shown in BS EN 1991-1-1 with its UK National Annex\" points to the top of the barrier. Two short vertical dashed lines appear at the top of the diagram.\n\nPart (b), labelled \"Any building: ramp edge,\" shows a vertical line, labelled \"Barrier,\" rising from a horizontal surface marked \"Ramp level\". A dimension line to the right of the barrier indicates the height from the ramp level to the top of the barrier is \"At least 610mm\". A zig-zag pointer line from the text \"As shown in BS EN 1991-1-1 with its UK National Annex\" points to the top of the barrier. Two short vertical dashed lines appear at the top of the diagram.",
+ "first_draft": "This drawing, titled \"Diagram 4.2 Barrier design\" in a green box at the bottom, presents two cross-section diagrams labeled (a) and (b). The text \"See para 4.2\" appears at the top left.\n\nPart (a), labelled \"Any building: floor or roof edge,\" shows a vertical barrier rising from a horizontal surface marked \"Floor or roof level\". A zig-zag line represents the top of the barrier. A dimension line indicates the barrier height is \"At least 375mm\". Text pointing to the barrier reads \"As shown in BS EN 1991-1 with its UK National Annex\".\n\nPart (b), labelled \"Any building: ramp edge,\" shows a vertical barrier rising from a sloped surface. The base is marked \"Ramp level\". The top of the barrier is again represented by a zig-zag line. A dimension line indicates the barrier height is \"At least 610mm\". Similar text pointing to the barrier reads \"As shown in BS EN 1991-1 with its UK National Annex\". Dashed vertical lines extend upwards from the top of the barrier in both diagrams.",
+ "check": {
+  "verdict": "minor",
+  "note": "Quotes the standard as \"BS EN 1991-1\"; the drawing says \"BS EN 1991-1-1\".",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "This drawing, titled \"Diagram 4.2 Barrier design\" in a green box at the bottom, presents two cross-section diagrams labelled (a) and (b). The text \"See para 4.2\" appears at the top left.\n\nPart (a), labelled \"Any building: floor or roof edge,\" shows a vertical line, labelled \"Barrier,\" rising from a horizontal surface marked \"Floor or roof level\". A dimension line to the right of the barrier indicates the height from the floor or roof level to the top of the barrier is \"At least 375mm\". A zig-zag pointer line from the text \"As shown in BS EN 1991-1-1 with its UK National Annex\" points to the top of the barrier. Two short vertical dashed lines appear at the top of the diagram.\n\nPart (b), labelled \"Any building: ramp edge,\" shows a vertical line, labelled \"Barrier,\" rising from a horizontal surface marked \"Ramp level\". A dimension line to the right of the barrier indicates the height from the ramp level to the top of the barrier is \"At least 610mm\". A zig-zag pointer line from the text \"As shown in BS EN 1991-1-1 with its UK National Annex\" points to the top of the barrier. Two short vertical dashed lines appear at the top of the diagram.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "This drawing, titled \"Diagram 4.2 Barrier design\" in a green box at the bottom, presents two cross-section diagrams labelled (a) and (b). The text \"See para 4.2\" appears at the top left.\n\nPart (a), labelled \"Any building: floor or roof edge,\" shows a vertical line, labelled \"Barrier,\" rising from a horizontal surface marked \"Floor or roof level\". A dimension line to the right of the barrier indicates the height from the floor or roof level to the top of the barrier is \"At least 375mm\". A zig-zag pointer line from the text \"As shown in BS EN 1991-1 with its UK National Annex\" points to the top of the barrier. Two short vertical dashed lines appear at the top of the diagram.\n\nPart (b), labelled \"Any building: ramp edge,\" shows a vertical line, labelled \"Barrier,\" rising from a horizontal surface marked \"Ramp level\". A dimension line to the right of the barrier indicates the height from the ramp level to the top of the barrier is \"At least 610mm\". A zig-zag pointer line from the text \"As shown in BS EN 1991-1 with its UK National Annex\" points to the top of the barrier. Two short vertical dashed lines appear at the top of the diagram.",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

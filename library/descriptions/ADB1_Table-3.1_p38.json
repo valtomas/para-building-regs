@@ -1,0 +1,17 @@
+{
+ "key": "ADB1_Table-3.1_p38",
+ "source": "ADB1",
+ "label": "Table 3.1",
+ "page": 38,
+ "caption": "Table 3.1 Limitations on travel distance in common areas of blocks of flats Maximum travel distance from flat entrance door to storey exit or stair lobby(1)",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-09",
+ "image_sha256": "01d63440b521d01b09f5f403c4fa8fb8a57528a43f5a8656d3908018700fbacc",
+ "image_sig": {
+  "w": 754,
+  "h": 249,
+  "grey": "wrS2u7y1vL6+vrCzvMDAybCYhImIiIaJhYiJkZ/AwMfl4eHh4eHh4eHh4eHh4eHi6unl5+fm6ejr5fL/////+/Hw7vL09PT08PDu7/D09PTn4+Ls9PT09eXk4+Dq9PT07Pb////////o/P//////+/D09PT09PT07/T09PT09PTP5P/////////////////78eTo6Ojn5+fo6Ofq6ufn8vLe4d3d7fT09fT19PTx9ff17/Ht8Pj//vv8/f39///77t3i197Z3dva3uPa4P//++ri29zg3tvd2d7g6/////vx7+708+/x8/D+//7////7693b393g3eDd8fT09PT08w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

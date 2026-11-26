@@ -1,0 +1,17 @@
+{
+ "key": "ADT_Table-3.1_p21",
+ "source": "ADT",
+ "label": "Table 3.1",
+ "page": 21,
+ "caption": "Table 3.1 \u0007Type A – Fully enclosed self-contained ambulant universal toilet",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-26",
+ "image_sha256": "4f7d7d6bfea2cea308e769079ebd570c0859e652e831ae3ee2c78d055899d9a4",
+ "image_sig": {
+  "w": 749,
+  "h": 675,
+  "grey": "yLu5vba2uLW2s7m4vc/P0Obi4u75++nl5O7u7vL7+/j7/v/////y6+vr7vb39vf1+///////6t3b3Nze2t/d5vv//////+zi5O/u7/Dv8Pf19fT09vvs3+Hi5Ojl5eby9/r3+Pf/7+bk4+Xl5+Tm9fv//////+zi5eLi4t/d4/P7///////v3+bn5uTi5vv47u7t+fv769/h4uzt7u7w+Pv//////+3i5+np4uTo5+v7///////u5uzp6ejq7O/1+///////8ujr6ejs5+r19Pv///////Dq7+/x7e3u8fL7///////s5efl5+fk5+3y+///////6+Pg4ubs7u7u9w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

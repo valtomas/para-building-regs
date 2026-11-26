@@ -1,0 +1,17 @@
+{
+ "key": "ADL1_Table-4.5_p42",
+ "source": "ADL1",
+ "label": "Table 4.5",
+ "page": 42,
+ "caption": "Table 4.5  \u0007Maximum daily heat loss for a hot water cylinder(1)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "8d7388a38e22be37c0deceac2e6e5158da5ce52a08826b43ab7add65b54c354d",
+ "image_sig": {
+  "w": 754,
+  "h": 336,
+  "grey": "uZ+nnZydoKSfnqzIyMjIz9rS09HQ0tLT0tDV19fX19rv7ev3+u7r9vXu6/X27Ov37vf39/n07/j47/D5+PDy9fP39/f59vT4+PT1+fjz9vXq9/f3+fTt+Pjw8Pn47fL17v/////88v//9vf///X5++v39/f59O74+PHx+fjw9PXy9/f3+fX0+Pj19fn49fb16Pf39/ny7vj47e/5+O3y9ez/////+vX///b3///1+vvt9/f3+fTu+Pjv8fn48fT18ff39/n09Pj48/T5+PP29dz0//////////////////v06Obn4+bk5+Tk5uDs5+b38t/f3eT39/f39/f39/f39Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

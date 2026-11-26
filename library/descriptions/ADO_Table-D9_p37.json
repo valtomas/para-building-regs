@@ -1,0 +1,17 @@
+{
+ "key": "ADO_Table-D9_p37",
+ "source": "ADO",
+ "label": "Table D9",
+ "page": 37,
+ "caption": "Table D9 \u0007Equivalent area of a window with an opening angle of α = 90°",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "b3219f1ba3eb0bd8c63185390971c33bf14a7c9aa344a21e56b6d6762e50ed24",
+ "image_sig": {
+  "w": 737,
+  "h": 437,
+  "grey": "vpyknqinnaaioaCqsMXFxenn5ufn5+fn5uTk5ubn5+f7//////r4+Pjv6+31+Pj49/j4+/j78/vx+/f69fb69O7w/vvz++377vvv+fP09/H0+P778fvt++z77vny8fjw+/////3/8//y//L8+vz99vv///vy++377Pvw+/T0+PH7///79Pvs++v77/rz9Pjw+///+/T78Pvz+/L69fb49Pv///v2++/78fvx+vb29/L7///79vvv+/H78/v29vjy+///+/P77vvw+/H69fP48fv///vz++/77fvv+vP0+PH7///78vvv++/78Pnz9Pfx9/j4+Pb47fju+O/39PT17w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

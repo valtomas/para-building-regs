@@ -1,0 +1,26 @@
+{
+ "key": "ADK_Diagram-5.2_p42",
+ "source": "ADK",
+ "label": "Diagram 5.2",
+ "page": 42,
+ "caption": "Diagram 5.2 | Annealed glass thickness and dimension limits",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "62300be5a88342a98afc4c91e72d700d6fcc3bfa6d3a351717f06e52fe0e6316",
+ "image_sig": {
+  "w": 754,
+  "h": 437,
+  "grey": "+Pj4+Pj4+Pj4+Pj4+Pj49/jq8v/v8Pn5+fn57Pv///z8//////b///////n6///8/P/////2////////+////Pz///7u7Pb29uvz//v///z8///99vb////7+f/7///8/P///fbr9+D8//r/+////Pz/////9v///P/6//v///z8///87er4//z/+v/7///8/P/////w7P/8//r/+////Pz/////9vr//P/6//v///z8//////Xn6+7x6vPz///8/P///////P79//z//f///Pz//////u3r//P09/j///zNwMDAwMDAwMDAwMDAwMDJi2xgbW9saWxsa1ZVVVVVcw=="
+ },
+ "reviewed": true,
+ "description": "This is a stepped chart, titled in a green band at the bottom: \"Diagram 5.2 Annealed glass thickness and dimension limits\". The top-left corner reads \"See para 5.5\". Two axes frame the drawing. The vertical axis, shown with arrows, lists from bottom to top: 1.10m, 2.25m, 3.0m, and Any. The horizontal axis, also with arrows, lists from left to right: 1.10m, 2.25m, 4.50m, and Any. A single stepped line divides the chart into four stepped regions, each holding a thickness label. The smallest lower-left region is labelled 8mm. The next region up and to the right is labelled 10mm. The following region is labelled 12mm. The largest top-right region is labelled 15mm. The step lines align with the axis values: the 8mm region is bounded at 1.10m on both axes; the 10mm region at 2.25m; the 12mm region at 4.50m horizontally and 3.0m vertically; and the 15mm region extends to Any on both axes.",
+ "first_draft": "This is a stepped chart, titled in a green band at the bottom: \"Diagram 5.2 Annealed glass thickness and dimension limits\". The top-left corner reads \"See para 5.5\". Two axes frame the drawing. The vertical axis, shown with arrows, lists from bottom to top: 1.10m, 2.25m, 3.0m, and Any. The horizontal axis, also with arrows, lists from left to right: 1.10m, 2.25m, 4.50m, and Any. A single stepped line divides the chart into four stepped regions, each holding a thickness label. The smallest lower-left region is labelled 8mm. The next region up and to the right is labelled 10mm. The following region is labelled 12mm. The largest top-right region is labelled 15mm. The step lines align with the axis values: the 8mm region is bounded at 1.10m on both axes; the 10mm region at 2.25m; the 12mm region at 4.50m horizontally and 3.0m vertically; and the 15mm region extends to Any on both axes.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

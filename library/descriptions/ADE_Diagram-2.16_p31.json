@@ -1,0 +1,26 @@
+{
+ "key": "ADE_Diagram-2.16_p31",
+ "source": "ADE",
+ "label": "Diagram 2.16",
+ "page": 31,
+ "caption": "Diagram 2.16 \u0007\u0007Wall type 2.2",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "56c06772ff029570a1cd28c78a3061146f2e7420e4ab996b531922efd8e8e191",
+ "image_sig": {
+  "w": 355,
+  "h": 383,
+  "grey": "4be8v8rAqa2su6jZ4ODg4OLf2uDg4ODg1t/g4ODg4ODo///////X5v/j2v//////6P//////5Oz/7Ob//////+j//////+Hy//Hh///////o///////Y3P/W2///////6P//////3vP/8eD//////+j//////+bq/+vn///////o///////S1fLT1P//////6P//////5O7/6uT//////+j//////+Tu/+3j///////o///////b6P/l3f//////6P//////3+P/4uH//////+j//////9/z//Hh///////o///////n6//r6P//////4Orq6urq2d7q3Nrq5L/NwA=="
+ },
+ "reviewed": true,
+ "description": "The image displays a diagram titled \"Diagram 2.16 Wall type 2.2\". It features two vertical columns of construction elements positioned side-by-side with a narrow gap separating them. Each column consists of four rectangular blocks stacked vertically. The blocks are filled with a diagonal cross-hatch pattern, and thin horizontal lines separate them. A short horizontal line bridges the gap between the two columns between the second and third blocks from the bottom. In the bottom right corner, the word \"SECTION\" is printed in capital letters.",
+ "first_draft": "The image displays a diagram titled \"Diagram 2.16 Wall type 2.2\". It features two vertical columns of construction elements positioned side-by-side with a narrow gap separating them. Each column consists of four rectangular blocks stacked vertically. The blocks are filled with a diagonal cross-hatch pattern, and thin horizontal lines separate them. A short horizontal line bridges the gap between the two columns at the level of the second block from the bottom. In the bottom right corner, the word \"SECTION\" is printed in capital letters.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

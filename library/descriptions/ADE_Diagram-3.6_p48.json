@@ -1,0 +1,33 @@
+{
+ "key": "ADE_Diagram-3.6_p48",
+ "source": "ADE",
+ "label": "Diagram 3.6",
+ "page": 48,
+ "caption": "Diagram 3.6 \u0007\u0007Floor type 1 – floor penetrations",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "93c5d10587e183be687638e9d5fd9e531d1884a91809576466d8bc6dbe58bedd",
+ "image_sig": {
+  "w": 362,
+  "h": 382,
+  "grey": "vqywubeppa2hwLehw9bW4erj6OnpvLWxrLXk6enp6e/X4uLi4uLi4uLi4uLi4uLk6f//+PT08fHv+f//////9On///Dv7uXVyuXx28vV5PTp///w8fDm1dXy//n09v306f//7+bn39XV8v//////9OXy8ubt7OTS0Ory8vLy8vLe/vn///n/zsn/////+v/p4fr+/P36+s7G9/r8//z/6ePt6tTp6uHQ0Nbn6uzZ6fDp///t7+3l1dXu7/Dx7vL06f//7fb36tXU8f/r0Nzy9On///329vf+6/X///////Tp///////o4vH////6+Prz2erq6urq6urq6urqy9DD2g=="
+ },
+ "reviewed": true,
+ "description": "A section headed \"Diagram 3.6 Floor type 1 – floor penetrations\", marked \"SECTION\" at the lower right. A masonry wall of cross-hatched blocks stands above and below a concrete floor slab with a speckled pattern. To the right of the wall, pipes wrapped in mineral wool run vertically through the floor inside an enclosure; labels read \"Lag pipes with mineral wool\" and \"Enclosure\". Below the slab, a ceiling on small crossed battens meets the enclosure, and the label \"Seal with tape or sealant\" points to that junction.",
+ "first_draft": "The image shows two sections. The right-hand part, headed \"Diagram 3.6 Floor type 1 – floor penetrations\", is a section through a floor. A horizontal, cross-hatched floor slab is crossed by a vertical, cross-hatched wall. Two parallel vertical lines pass through the floor; a label \"Lag pipes with mineral wool\" points to them. A vertical member at the wall-and-floor junction is labelled \"Enclosure\", and a line there is labelled \"Seal with tape or sealant\". Small open triangles are scattered over the slab, and \"SECTION\" appears at the lower right. The left-hand part is a section, cut off at the top, showing an \"External cavity wall\" of vertical brick pattern, a vertical cross-hatched element, and a horizontal floor with a wavy line and a row of small circles. A dimension arrow reads \"Minimum 300mm\", and \"Timber batten\" points to a horizontal line; \"SECTION\" is at the lower right. Below this part is running text giving the heading \"Junctions with an external cavity wall with timber frame inner leaf\" and clause 3.36 a.",
+ "check": {
+  "verdict": "recut",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26",
+  "note": "Recut so the image shows this drawing alone; the suggestion is a new description written from the new image."
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26",
+ "suggestion": {
+  "text": "A section headed \"Diagram 3.6 Floor type 1 – floor penetrations\", marked \"SECTION\" at the lower right. A masonry wall of cross-hatched blocks stands above and below a concrete floor slab with a speckled pattern. To the right of the wall, pipes wrapped in mineral wool run vertically through the floor inside an enclosure; labels read \"Lag pipes with mineral wool\" and \"Enclosure\". Below the slab, a ceiling on small crossed battens meets the enclosure, and the label \"Seal with tape or sealant\" points to that junction.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "The image shows two sections. The right-hand part, headed \"Diagram 3.6 Floor type 1 – floor penetrations\", is a section through a floor. A horizontal floor slab is crossed by a vertical, cross-hatched wall. Two parallel vertical lines pass through the floor; a label \"Lag pipes with mineral wool\" points to them. A vertical member at the wall-and-floor junction is labelled \"Enclosure\", and a line there is labelled \"Seal with tape or sealant\". Small open triangles are scattered over the slab, and \"SECTION\" appears at the lower right. The left-hand part is a section, cut off at the top, showing an \"External cavity wall\" of vertical brick pattern, a vertical cross-hatched element, and a horizontal floor with a wavy line and a row of small circles. A dimension arrow reads \"Minimum 300mm\", and \"Timber batten\" points to the wavy line; \"SECTION\" is at the lower right. Below this part is running text giving the heading \"Junctions with an external cavity wall with timber frame inner leaf\" and clause 3.36 a.",
+ "corrected_by": "Claude Opus 5.5"
+}

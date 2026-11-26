@@ -1,0 +1,17 @@
+{
+ "key": "ADJ_Table-8_p61",
+ "source": "ADJ",
+ "label": "Table 8",
+ "page": 61,
+ "caption": "Table 8 \u0007Minimum performance designations for chimney and fluepipe components for use with new oil-fired appliances with flue gas temperature less than 250oC",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-22",
+ "image_sha256": "a6f3dc355842f56c83b6f32d85ad343b77ddfda590eb4ce7d53cab001000cf85",
+ "image_sig": {
+  "w": 371,
+  "h": 714,
+  "grey": "7MXMxKGpq66us6urv8vJ6PPp6dampbGsraapsbauodzx4OHYxNDKxr3Jy8vDw8no9t7d3+P4+d3Jy+jw4N/x+/bQ2NTR4f/0////7NLT3f3129Xa1+fv6Ovr7Ofd3+P09crSz8zd+PT////y7/H3//Tc19nX1/Po6uvw6dre7fv30dnU1OT09P///+vX1NL38tbW1dLW9ufq6u7p2ODr+/bV2dXW4u/v+fn57/n5+fv33eDe3t3q6Ovr8Ona3u379dXe3t3e6urq6u7s2ODr+/zt1tja3ePo5unn4ufm7v789NfY2tnV29rb4Obp////9uvY3Nrb3N3c29zb3Nfo8g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

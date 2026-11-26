@@ -1,0 +1,26 @@
+{
+ "key": "ADH_Diagram-9_p17",
+ "source": "ADH",
+ "label": "Diagram 9",
+ "page": 17,
+ "caption": "Diagram 9 \u0007\u0007Discharge capacities of foul drains running 0.75 proportional depth",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "c7dd81e9b0f5f9394ef717053dffbd029b15ad063f438af75c6c45631a13863e",
+ "image_sig": {
+  "w": 371,
+  "h": 467,
+  "grey": "4LizxLqpsay0q6+ruNnZ4/Pp6enftLm/u8O+t7nj6e/s6Ojo4NPEwMLEwcu80ejr6f/n9vbx9uPh8ezs9vb59On/3+/27Pbs2NjH2Pb28/Tp4fTx6uH19On06dLR4fT06dXm9vblzMTb7OHh9vbz9OnV3tPb2+XbvMXL0uXl8vTp1OHt5cPG3Nvj1Nnt7fL06dHp9vbs9s7H4eHh9vbz9OnY6vb27Pbs4ePV4fb28/Tp6ur29uz27OHs4eH29vP06f/0///0//Tp9Onp///09On/9PX26/bs5Ozj5PX18vTp//X4/+vfydXW5fH09uz06Pb29vb29vb19vX29vb27w=="
+ },
+ "reviewed": true,
+ "description": "This is a line chart titled \"Diagram 9 Discharge capacities of foul drains running 0.75 proportional depth\". The vertical axis is labelled \"Flow rate [litres per second]\" and is marked 2, 3, 4, 5, 6, 7, 8, 10, 20 and 30 from bottom to top, with gridlines at each value. The horizontal axis is labelled \"Gradient [1 in ...].\" and is marked 1:10, 1:20, 1:30, 1:50, 1:70, 1:100 and 1:200 from left to right. Three straight lines slope downwards from left to right, each labelled with a pipe size. The upper line, \"150mm diameter\", runs from about 30 at 1:30 to about 12 at 1:100. The middle line, \"100mm diameter\", runs from 20 at 1:10 to about 6 at 1:70. The lower line, \"75mm diameter\", runs from about 8 at 1:10 to 3 at 1:70. For any given gradient, the larger diameter line lies above the smaller one.",
+ "first_draft": "This is a line chart titled \"Diagram 9 Discharge capacities of foul drains running 0.75 proportional depth\". The vertical axis is labelled \"Flow rate [litres per second]\" and is marked 2, 3, 4, 5, 6, 7, 8, 10, 20 and 30 from bottom to top, with gridlines at each value. The horizontal axis is labelled \"Gradient [1 in ...].\" and is marked 1:10, 1:20, 1:30, 1:50, 1:70, 1:100 and 1:200 from left to right. Three straight lines slope downwards from left to right, each labelled with a pipe size. The upper line, \"150mm diameter\", runs from about 30 at 1:30 to about 12 at 1:100. The middle line, \"100mm diameter\", runs from 20 at 1:10 to about 6 at 1:70. The lower line, \"75mm diameter\", runs from about 8 at 1:10 to 3 at 1:70. For any given gradient, the larger diameter line lies above the smaller one.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

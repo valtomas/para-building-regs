@@ -1,0 +1,33 @@
+{
+ "key": "ADE_Diagram-2.22_p33",
+ "source": "ADE",
+ "label": "Diagram 2.22",
+ "page": 33,
+ "caption": "Diagram 2.22 \u0007\u0007Wall type 2 – external cavity wall with timber frame inner leaf",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "6f6d3ec0fea6e76688ad008be87df7ef63708d76ec3fab05cb579dbd345349fe",
+ "image_sig": {
+  "w": 371,
+  "h": 447,
+  "grey": "4LaxwrnFnaqktr6qr7nY4/Pp6enp6Li0xL2zura/6e/t5eXl5eS1tsG5wsbl5eXq6fnw/O7w////////////9Onx2/rc3P////////////Tp79n62d3////////////06fLc+tzc////////////9Onw3OzP0/Hx8fDx8fHx9vTp79Tr9PP09PPk8/Tz9PH06fDe3uz29/b28fb39vf39Onw0evn3uvx8OXx8fHw8fTp79z119r28f/////////06fDX+tvd//7w9fr5////9Onx3/rc2/////bu6v////Tp8tz62tz////////////04+3t7e3t7e3t7e3t7d7M3A=="
+ },
+ "reviewed": true,
+ "description": "The image presents a plan view titled \"Diagram 2.22 Wall type 2 – external cavity wall with timber frame inner leaf\". The label \"PLAN\" appears in the bottom right corner. The drawing depicts a section of an external wall on the left, represented by a vertical column of hatched blocks. Adjacent to this is a gap, known as the cavity. To the right of the cavity is a vertical inner leaf, containing insulation depicted as a continuous wavy line. Extending horizontally to the right from this inner leaf are the two leaves of the masonry separating wall, shown as cross-hatched blocks with a gap between them. In the cavity of the external wall, where the separating wall meets it, a cross-hatched block is shown. A leader line points to this block, labelled \"Cavity stop\".",
+ "first_draft": "The image presents a plan view titled \"Diagram 2.22 Wall type 2 – external cavity wall with timber frame inner leaf\". The label \"PLAN\" appears in the bottom right corner. The drawing depicts a section of an external wall on the left, represented by a vertical column of hatched blocks. Adjacent to this is a gap, known as the cavity. To the right, a timber frame structure extends horizontally towards the external leaf. This structure consists of parallel joists or studs, with insulation depicted as a wavy, continuous line filling the spaces between them. The timber frame also includes a vertical section at the far right end. Where the horizontal inner leaf meets the gap next to the external leaf, a rectangular block is shown filling the space. A leader line points to this block, labeled \"Cavity stop\". This stop is illustrated with a dotted texture.",
+ "check": {
+  "verdict": "flag",
+  "note": "The two hatched members running right are the leaves of the masonry separating wall, not timber joists.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "The image presents a plan view titled \"Diagram 2.22 Wall type 2 – external cavity wall with timber frame inner leaf\". The label \"PLAN\" appears in the bottom right corner. The drawing depicts a section of an external wall on the left, represented by a vertical column of hatched blocks. Adjacent to this is a gap, known as the cavity. To the right of the cavity is a vertical inner leaf, containing insulation depicted as a continuous wavy line. Extending horizontally to the right from this inner leaf are the two leaves of the masonry separating wall, shown as cross-hatched blocks with a gap between them. In the cavity of the external wall, where the separating wall meets it, a cross-hatched block is shown. A leader line points to this block, labelled \"Cavity stop\".",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "The image presents a plan view titled \"Diagram 2.22 Wall type 2 – external cavity wall with timber frame inner leaf\". The label \"PLAN\" appears in the bottom right corner. The drawing depicts a section of an external wall on the left, represented by a vertical column of hatched blocks. Adjacent to this is a gap, known as the cavity. To the right of the cavity is a vertical inner leaf, containing insulation depicted as a continuous wavy line. Extending horizontally to the right from this vertical leaf is a timber frame structure, consisting of parallel joists shown as rectangles with a cross-hatched pattern. In the cavity, at the junction with the horizontal structure, a rectangular block is shown. A leader line points to this block, labeled \"Cavity stop\". This stop is illustrated with a dotted texture.",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

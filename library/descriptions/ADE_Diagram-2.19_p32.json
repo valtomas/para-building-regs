@@ -1,0 +1,33 @@
+{
+ "key": "ADE_Diagram-2.19_p32",
+ "source": "ADE",
+ "label": "Diagram 2.19",
+ "page": 32,
+ "caption": "Diagram 2.19 \u0007\u0007Wall types 2.1 and 2.2 | – external cavity wall with masonry inner leaf | E VERSION | E",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "a4911c04c40192c0824b94a066c5fe9c1bcf65470f43ead0544f8aa32e9f5d2f",
+ "image_sig": {
+  "w": 362,
+  "h": 426,
+  "grey": "w6+2vcC4n6ultbOzr6jY4uro6enp48a5u8C7t8DA6e/i4eHh4dKpwLO4t7e0vrrp6f//9PT05P//////////9On//+7s8eL///////////Tp///m4/Di///////////06f//8O7x4///////////9On///Dp4NPs7Ozu//////Tp///n3eXt8PDs6P/////06f//8OnV5/P08/T/////9On//+bc3+HX3Onj//////Tp///u6Ori//zw9P/////06f//5OLw4v///+Ti7///9On///Du8eP///////////Tp///q5/Lh///////////03Ozs7Ozj2+zs7Ozs7NzJ2w=="
+ },
+ "reviewed": true,
+ "description": "The drawing is a plan view, with the word \"PLAN\" printed in the lower right corner of the framed area. Above the frame a green title band reads \"Diagram 2.19 Wall types 2.1 and 2.2 – external cavity wall with masonry inner leaf\".\n\nWithin the frame the external cavity wall runs vertically: an outer leaf of single-hatched blocks on the left and an inner leaf of cross-hatched blocks on the right, with the cavity between them. The two leaves of the separating wall, cross-hatched, run off horizontally to the right from the inner leaf, one above the other with a gap between them. Where they meet the external wall, a cross-hatched block fills the cavity; a thin leader line runs from it to the label \"Cavity stop\". No other dimensions or symbols are shown.",
+ "first_draft": "The drawing is a plan view, with the word \"PLAN\" printed in the lower right corner of the framed area. Above the frame a green title band reads \"Diagram 2.19 Wall types 2.1 and 2.2 – external cavity wall with masonry inner leaf\".\n\nWithin the frame two masonry walls are drawn as parallel vertical bands of hatched blocks, one on the left and one on the right, separated by an open gap representing the cavity. The left wall shows a small grey-shaded square at its mid-height. Two horizontal rectangular members, hatched with a cross-diagonal pattern, project inward from the right-hand wall into the cavity, one above and one below the mid-point, without reaching the left wall. A thin leader line runs from the lower of these horizontal members down to the right, ending at the label \"Cavity stop\". No other dimensions or symbols are shown.",
+ "check": {
+  "verdict": "flag",
+  "note": "Misreads the plan: the two hatched members are the leaves of the separating wall running off to the right from the inner leaf, not members projecting into the cavity; the cavity stop sits in the cavity at that junction, not as a grey square in the left wall.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "The drawing is a plan view, with the word \"PLAN\" printed in the lower right corner of the framed area. Above the frame a green title band reads \"Diagram 2.19 Wall types 2.1 and 2.2 – external cavity wall with masonry inner leaf\".\n\nWithin the frame the external cavity wall runs vertically: an outer leaf of single-hatched blocks on the left and an inner leaf of cross-hatched blocks on the right, with the cavity between them. The two leaves of the separating wall, cross-hatched, run off horizontally to the right from the inner leaf, one above the other with a gap between them. Where they meet the external wall, a cross-hatched block fills the cavity; a thin leader line runs from it to the label \"Cavity stop\". No other dimensions or symbols are shown.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "The drawing is a plan view, with the word \"PLAN\" printed in the lower right corner of the framed area. Above the frame a green title band reads \"Diagram 2.19 Wall types 2.1 and 2.2 – external cavity wall with masonry inner leaf\".\n\nWithin the frame two masonry walls are drawn as parallel vertical bands of hatched blocks, one on the left and one on the right, separated by an open gap representing the cavity. The left wall shows a small grey-shaded square at its mid-height. Two horizontal rectangular members, hatched with a diagonal pattern, project inward from the right-hand wall into the cavity, one above and one below the mid-point, without reaching the left wall. A thin leader line runs from the grey-shaded square down and to the right, ending at the label \"Cavity stop\". No other dimensions or symbols are shown.",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

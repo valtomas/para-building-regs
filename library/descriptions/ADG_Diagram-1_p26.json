@@ -1,0 +1,26 @@
+{
+ "key": "ADG_Diagram-1_p26",
+ "source": "ADG",
+ "label": "Diagram 1",
+ "page": 26,
+ "caption": "Diagram 1 Typical discharge pipe arrangement | HOT WATER SUPPLY | L ISYSTEMS\nAND | NE VERSION | G3",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "079679f63f026f2fdf1d13bfa2d0ae1d97a371b03f5fcc611cafe1e0509b8f41",
+ "image_sig": {
+  "w": 755,
+  "h": 573,
+  "grey": "0MzGwsC+xb7G4+Pj4+Pj5+jx6+zj29rc7/Hx8fHx8e7g5ufa2uDo8Pj////////63+Pt9Orc5v//////////+vT/+////+vt//3j4/3///r0///////Y/f//7e3////69P/////+6P///+3t////+vT////43uf////t7f////r0///////p5/f/7e3////69P/62tzf3/rw59DZ/unc9PT//O7t+f/////t4+rgz/L0////////////7erW4+X29P///////////+3t9ezu+vT////////////t7e/j+vr0////////////7e365un46fHx8fHx8fHx7+Li7/Hx7g=="
+ },
+ "reviewed": true,
+ "description": "The drawing is a line diagram titled \"Diagram 1 Typical discharge pipe arrangement\". At the top left, a valve symbol (two stacked triangles) with a zigzag line below is labelled \"Safety device (e.g. temperature relief valve)\". A pipe leaves it to the right, labelled \"Metal discharge pipe (D1) from temperature relief valve to tundish\", with a dimension arrow below its horizontal run reading \"600mm maximum\". This pipe bends downwards to join a vertical diamond-shaped component with pointed ends, labelled \"Tundish\", which contains a small trapezoid. A vertical dimension below the tundish reads \"300mm minimum\". Continuing downwards, a pipe is labelled \"Discharge pipe (D2) from tundish, with continuous fall. See 3.56, Table 3.1 and worked example\". It slopes to the right, crossing the vertical lines, then bends down to terminate above the gulley. A note to the right reads \"Discharge below fixed grating (3.61 gives alternative points of discharge)\". A horizontal line with small tick marks is labelled \"Fixed grating\", and beneath it a U-shaped fitting is labelled \"Trapped gulley\".",
+ "first_draft": "The drawing is a line diagram titled \"Diagram 1 Typical discharge pipe arrangement\". At the top left, a valve symbol with a zigzag line below is labelled \"Safety device (e.g. temperature relief valve)\". A pipe leaves it, labelled \"Metal discharge pipe (D1) from temperature relief valve to tundish\", with a dimension arrow along its length reading \"600mm maximum\". This pipe bends downwards to join a bulbous component labelled \"Tundish\", which contains a small trapezoid. A vertical dimension below the tundish reads \"300mm minimum\". Continuing downwards, a pipe is labelled \"Discharge pipe (D2) from tundish, with continuous fall. See 3.56, Table 3.1 and worked example\". It slopes to the right, crossing vertical lines, and terminates at the bottom right. A note there reads \"Discharge below fixed grating (3.61 gives alternative points of discharge)\". A horizontal line is labelled \"Fixed grating\", and beneath it a U-shaped fitting is labelled \"Trapped gulley\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

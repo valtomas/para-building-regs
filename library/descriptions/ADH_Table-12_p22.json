@@ -1,0 +1,17 @@
+{
+ "key": "ADH_Table-12_p22",
+ "source": "ADH",
+ "label": "Table 12",
+ "page": 22,
+ "caption": "Table 12 \u0007Minimum dimensions for manholes",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "78d6035d806844a2c94012e83652b1ae5889e40751e70d9f06ae1737af75817d",
+ "image_sig": {
+  "w": 755,
+  "h": 625,
+  "grey": "yce0vbi9vbfL2dnZ2dnZ3v/w/+HU/9jg////7NT8///5+Pj4+PbN0PjQ79/J6tPt6er0/fj/9ff/9P768f/5//////z0/+3w/+7/+vD+///////99P/p7vnb6///////9vD09/D47O747vj06Pjv+f////fu/+js/+v////////5+Pj38Pjm7PLZ5fj4+Pj57+T7+/r/9/f/9//88//4//rp+Orm8uTl8uXy8e3y8PTq+Pjy8fjt7/jv+PTo+O/58+Pj4+Lk4+Pj8vLy8PD///Hi5OPh7fHy8PD4///////x5uTh5eTl8vDw8fP/////8d7e6+rr7ers6+rr6+vs+Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

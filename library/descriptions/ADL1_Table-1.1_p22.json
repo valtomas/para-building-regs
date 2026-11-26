@@ -1,0 +1,17 @@
+{
+ "key": "ADL1_Table-1.1_p22",
+ "source": "ADL1",
+ "label": "Table 1.1",
+ "page": 22,
+ "caption": "Table 1.1 Summary of notional dwelling specification for new dwelling(1)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "87effc45d1b498fd1bace204b785e266ff1c612a5d46c1121e06581ebbdbba64",
+ "image_sig": {
+  "w": 756,
+  "h": 1058,
+  "grey": "08rHz83MxMXHyMvN3Nzc4Onh4+vs9eXj7vXz9PTz9Pbo8fr6+vrw8fn6+vr6+vr46+3u7u306ub29/f39/f39ufg3eHq9OTi+Pr6+vr6+vju7fr8/Pvn5OXj6Ozt7Oz07ujv+vr54eDn6Orx+Pr6+Ozo7fHx+eLr8/X29vj6+vjy+Pr6+vjj4uLo9vX3+vr49fb3+//85+7r9PXz9ff39/j7+/z8/enk6e3r7fD08/nx7fD18vrb39zf3t7q7PT58fDy+vr55efm5+jo8fD4+O/u9Pr6+eXr6e3u9Pj6+ffz8/X3/Prk4+Ti5Ozr6+zz6t/j5fX09PT19PT08/X5+Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

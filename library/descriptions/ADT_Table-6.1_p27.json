@@ -1,0 +1,17 @@
+{
+ "key": "ADT_Table-6.1_p27",
+ "source": "ADT",
+ "label": "Table 6.1",
+ "page": 27,
+ "caption": "Table 6.1 \u0007Type D – Single-sex toilet cubicle (not self-contained)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-26",
+ "image_sha256": "976b6f418c25507a664ffeb404efd258a4eb9d1c16a9bb21009ddf4f6bd555a2",
+ "image_sig": {
+  "w": 749,
+  "h": 379,
+  "grey": "uaOkp5ygnp2coprIyMjIyuPh3eHe4d/e4OHg4eHh4eDn5N/h9fjs5uj4+Pj4+Pj259/l+Pj46uPh4uHg6Pj49uzr5Ojo/+/o5+Lu7+zo6/v7///////x5+Li4uDl4vT2+///////5tbf3unu6+7/+/Hv7/b4+PPr6uzx8O/y8O7v8e/+///u6PLx9e/v8e3w+///////7uPj6eXn5eXp6Pv//////+3m9vz5+/r7+/n7///////q4eLg3+Hg4PX1+///////6uDi4ubi3eLh6/v//////+vi4eDk+Pj4+Pb7///////v6+rl6eTp6Ofs9vj4+Pj46eHf5/j4+Pj49Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

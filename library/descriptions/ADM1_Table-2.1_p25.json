@@ -1,0 +1,17 @@
+{
+ "key": "ADM1_Table-2.1_p25",
+ "source": "ADM1",
+ "label": "Table 2.1",
+ "page": 25,
+ "caption": "Table 2.1 Minimum widths of corridors and passageways for a range of doorway widths",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "88516e5176264cf85c3924c95cb45478f246057442d467a61ece957a9920ae01",
+ "image_sig": {
+  "w": 749,
+  "h": 178,
+  "grey": "0sfIyMbGx8fIyMbIxcjGyaWEdHxzgXeAeoGHgneHbcDNv8C/vsC+urK6wLa+vb/H6ujo6Ojo6Ojo6Ojo6Ojo5uzn6OXj////7ufo5+7///vr5eTj5e/v8O3k4OTq7+/v8vz////////y/f37/P//++jR/v//////5M3Mzeb///vx7+/v7+/v8PTv7+/v7+/v5f/////////h09Xd1vj/++7v7+/v7+/w7ufh6Obs7+/v/////////+7t7fDv/P/78v/////////t3trm4Pj/+/Hv7+/v7+/w9O/v7+7v7+/Z/////////9nMzNjN+v/78e/v7+/v7+/u7u7v7u/v7g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

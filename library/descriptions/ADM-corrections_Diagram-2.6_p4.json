@@ -1,0 +1,33 @@
+{
+ "key": "ADM-corrections_Diagram-2.6_p4",
+ "source": "ADM corrections",
+ "label": "Diagram 2.6",
+ "page": 4,
+ "caption": "Diagram 2.6 | Examples of WC/cloakroom layouts",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "c3533baade3a2db4503423aa793acf6a36e6119b13956a3e0aa853ad8f15adfa",
+ "image_sig": {
+  "w": 758,
+  "h": 417,
+  "grey": "1OL5+fn5+fn5+fn5+fn5+vz///zu/////+78//////z8//Pr6O///+3p4/z////8/P/x3+np//7m59r57fz+/Pz/6ObR1fTp2eDq9eji+/z8/+/hz9bw6qu36PTk2vv8/P/ky8/X8t2/vtT07OX9/Pz82MTG2fTcwcLP9Orj9/z8/ue1r9z/6sfG0/Tn3PT8/P/irLfc//Tc2tb05+L//Pz/6Mzb3f/x3+Pg9u3v//z87trx//T/1uj69P/////8/P/9/Pv0//3/+fT//////Pz////49f////vx//////zXycnJycnJycnJycnJycnPmnVtdXJxc3RkY2NjY2Njfg=="
+ },
+ "reviewed": true,
+ "description": "The drawing, titled Diagram 2.6 Examples of WC/cloakroom layouts, shows two floor plans of small rooms, each with a door opening outwards and swing arcs, plus a Notes column at the right. Example 2.6A is a plan with an overall top dimension of 1450mm, divided into 450mm and 1000mm, a left dimension of 1800mm and a right dimension of 1000mm. It contains a toilet at the top left, with a 350mm dimension beside it and a 750mm clear depth in front of it, a basin on the left wall, a door at the bottom right, a point in the top right corner with dashed lines, and a shaded access area. Example 2.6B is a plan with an overall top dimension of 1450mm, divided into 1000mm and 450mm, a left dimension of 1800mm with an inner dimension of 1000mm. It contains a basin at the top left, a toilet at the top right with a 350mm dimension beside it, a door at the bottom right, a point in the top left corner with dashed lines, and a shaded access area. The Notes read: 1. Dimensions for illustration purposes only. 2. Doors should open outwards. 3. Stack and drainage positions to be shown clear of access zones where located within WC / Cloakroom.",
+ "first_draft": "The drawing, titled Diagram 2.6 Examples of WC/cloakroom layouts, shows two floor plans of small rooms, each with a door opening outwards and dashed swing arcs, plus a Notes column at the right. Example 2.6A is a plan with an overall top dimension of 1450mm, divided into 450mm and 1000mm, a left dimension of 1800mm and a right dimension of 1000mm. It contains a toilet at the top, a basin on the left wall marked 350mm, a door at the bottom right marked 750mm, a point in the top right corner with dashed lines, and a shaded access area. Example 2.6B is a plan with an overall top dimension of 1450mm, divided into 1000mm and 450mm, a left dimension of 1800mm with an inner dimension of 1000mm. It contains a basin at the top left, a toilet at the top right, a door on the right marked 450mm, dashed arcs and a shaded access area. The Notes read: 1. Dimensions for illustration purposes only. 2. Doors should open outwards. 3. Stack and drainage positions to be shown clear of access zones where located within WC / Cloakroom.",
+ "check": {
+  "verdict": "minor",
+  "note": "Ties the 750mm to the door; it is the clear depth in front of the WC. The 350mm marks are beside the WC, not the basin.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "The drawing, titled Diagram 2.6 Examples of WC/cloakroom layouts, shows two floor plans of small rooms, each with a door opening outwards and swing arcs, plus a Notes column at the right. Example 2.6A is a plan with an overall top dimension of 1450mm, divided into 450mm and 1000mm, a left dimension of 1800mm and a right dimension of 1000mm. It contains a toilet at the top left, with a 350mm dimension beside it and a 750mm clear depth in front of it, a basin on the left wall, a door at the bottom right, a point in the top right corner with dashed lines, and a shaded access area. Example 2.6B is a plan with an overall top dimension of 1450mm, divided into 1000mm and 450mm, a left dimension of 1800mm with an inner dimension of 1000mm. It contains a basin at the top left, a toilet at the top right with a 350mm dimension beside it, a door at the bottom right, a point in the top left corner with dashed lines, and a shaded access area. The Notes read: 1. Dimensions for illustration purposes only. 2. Doors should open outwards. 3. Stack and drainage positions to be shown clear of access zones where located within WC / Cloakroom.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "The drawing, titled Diagram 2.6 Examples of WC/cloakroom layouts, shows two floor plans of small rooms, each with a door opening outwards and swing arcs, plus a Notes column at the right. Example 2.6A is a plan with an overall top dimension of 1450mm, divided into 450mm and 1000mm, a left dimension of 1800mm and a right dimension of 1000mm. It contains a toilet at the top, a basin on the left wall marked 350mm, a door at the bottom right marked 750mm, a point in the top right corner with dashed lines, and a shaded access area. Example 2.6B is a plan with an overall top dimension of 1450mm, divided into 1000mm and 450mm, a left dimension of 1800mm with an inner dimension of 1000mm. It contains a basin at the top left, a toilet at the top right marked 450mm, a door at the bottom right, a point in the top left corner with dashed lines, and a shaded access area. The Notes read: 1. Dimensions for illustration purposes only. 2. Doors should open outwards. 3. Stack and drainage positions to be shown clear of access zones where located within WC / Cloakroom.",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

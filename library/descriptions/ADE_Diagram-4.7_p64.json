@@ -1,0 +1,26 @@
+{
+ "key": "ADE_Diagram-4.7_p64",
+ "source": "ADE",
+ "label": "Diagram 4.7",
+ "page": 64,
+ "caption": "Diagram 4.7 \u0007\u0007Floor treatment 2 – wall treatment 1",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "3475f01630305b977acae43673c530f08b5e3e7897536cbb93643d743e3ed44a",
+ "image_sig": {
+  "w": 371,
+  "h": 492,
+  "grey": "37u2x8LCsLuysbO2zK7M5ujd3d3dxbWzssvd3d3d3ebp9vXz/fP5///////////06fH77vjO7///////////9Onm6eH4zu////////////Tp5uvk+M7b6vPz8/Pz8+/06efq4O/a2szR0dHR0dDR9Onx/Ons8vD////////x7fTp6Ovk6O7p9PXx8vHy8Of06eXq3Ozx5+/u8PDw8urs9Ont8ubt4Obs7O3t7ezs7PTp6vHl+M7v///////////06eTo4vjO7///////////9Onn6+P4zu////////////Tp7PPo+M7t///////////06Pf39/f39/f39/f3393b6A=="
+ },
+ "reviewed": true,
+ "description": "The image displays a cross-section drawing titled 'Diagram 4.7 Floor treatment 2 – wall treatment 1' in a green header at the top. The word 'SECTION' is located in the bottom right corner.\n\nThe drawing illustrates the junction between a vertical wall and a horizontal floor. On the left, the wall consists of a vertical column of eight stacked rectangles with diagonal hatching, adjacent to a vertical strip filled with a zig-zag wavy line pattern.\n\nThe floor extends horizontally to the right. It features a top surface line, followed by a rectangular layer with a dense cross-hatch pattern. Below this is a thick, solid horizontal band. Underneath the band is a wide cavity containing two distinct sections: a vertical area with an X-shaped brace on the left, and a series of connected, bulbous loop shapes on the right. The floor structure concludes with a thick, solid horizontal band at the bottom.",
+ "first_draft": "The image displays a cross-section drawing titled 'Diagram 4.7 Floor treatment 2 – wall treatment 1' in a green header at the top. The word 'SECTION' is located in the bottom right corner. \n\nThe drawing illustrates the junction between a vertical wall and a horizontal floor. On the left, the wall consists of a vertical column of seven stacked rectangles with diagonal hatching, adjacent to a vertical strip filled with a zig-zag wavy line pattern. \n\nThe floor extends horizontally to the right. It features a top surface line, followed by a rectangular layer with a dense cross-hatch pattern. Below this is a thick, solid horizontal band. Underneath the band is a wide cavity containing two distinct sections: a vertical area with a cross-shaped hatching on the left, and a series of connected, bulbous loop shapes on the right. The floor structure concludes with a thick, solid horizontal band at the bottom.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

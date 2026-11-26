@@ -1,0 +1,33 @@
+{
+ "key": "ADJ_Diagram-10_p22",
+ "source": "ADJ",
+ "label": "Diagram 10",
+ "page": 22,
+ "caption": "Diagram 10 \u0007Location of permanent air vent openings, some examples",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-20",
+ "image_sha256": "ad91db6262577bf3dc18b2bf183a6a92e1bbab766e89404741df2dec816734cb",
+ "image_sig": {
+  "w": 755,
+  "h": 540,
+  "grey": "yMPCt7y4uby5tb67tNjb4Ofv7+/v7+/t7e/v7+/v7+30///////78/X5///////69P/////68/7/9vj/////+vT////59f3Gtvf39/////r0///49v7///////j2///69P//5+Tj4ePj5ePi5f//+vT///b2+v///+7/+vP///r0///p8fr////u+/Xl/f/69P//9vL6/dXf7vr29///+vT///by+v/k8O769vf///r0///28vr73OTu9eP3///69P//9vL628/k7vr29///+vT///b18uTm+Ob49vf///r0///25uXSzL7C4+P1///69P//9/r93Njc9v//8v//+g=="
+ },
+ "reviewed": true,
+ "description": "This section of a house, titled \"Diagram 10 Location of permanent air vent openings, some examples,\" shows airflow paths. At the top, under a pitched roof, is a \"Well-ventilated roof space\". Below this is a large interior area labelled \"Living room (example)\", containing a rectangular block labelled \"Combustion appliance\". To the right is a smaller room labelled \"Hall\". At the bottom is a \"Suspended floor\", with a \"Well-ventilated space\" beneath it. Black arrows indicate the direction of air movement. Arrows point inwards from the exterior on the left and right sides. Arrows lead to the \"Combustion appliance\" from the outside wall on the left and, through the \"Hall\", from the outside wall on the right. Additional arrows point upwards from the \"Well-ventilated space\" into the \"Living room\" and downwards from the \"Well-ventilated roof space\" into the \"Living room\".",
+ "first_draft": "This cross-sectional plan of a house, titled \"Diagram 10 Location of permanent air vent openings, some examples,\" shows airflow paths. At the top, under a pitched roof, is a \"Well-ventilated roof space\". Below this is a large interior area labelled \"Living room (example)\", containing a rectangular block labelled \"Combustion appliance\". To the right is a smaller room labelled \"Hall\". At the bottom is a \"Suspended floor\", with a \"Well-ventilated space\" beneath it. Black arrows indicate the direction of air movement. Arrows point inwards from the exterior to the \"Living room\" and \"Hall\". Arrows show air moving from the \"Living room\" into the \"Combustion appliance\", and from the \"Combustion appliance\" into the \"Hall\". Additional arrows point upwards from the \"Well-ventilated space\" into the \"Living room\" and downwards from the \"Well-ventilated roof space\" into the \"Living room\". Finally, arrows point outwards from the \"Hall\" to the exterior.",
+ "check": {
+  "verdict": "minor",
+  "note": "The right-hand arrow comes in from outside through the hall to the appliance; no arrow goes from the hall into the floor.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "This section of a house, titled \"Diagram 10 Location of permanent air vent openings, some examples,\" shows airflow paths. At the top, under a pitched roof, is a \"Well-ventilated roof space\". Below this is a large interior area labelled \"Living room (example)\", containing a rectangular block labelled \"Combustion appliance\". To the right is a smaller room labelled \"Hall\". At the bottom is a \"Suspended floor\", with a \"Well-ventilated space\" beneath it. Black arrows indicate the direction of air movement. Arrows point inwards from the exterior on the left and right sides. Arrows lead to the \"Combustion appliance\" from the outside wall on the left and, through the \"Hall\", from the outside wall on the right. Additional arrows point upwards from the \"Well-ventilated space\" into the \"Living room\" and downwards from the \"Well-ventilated roof space\" into the \"Living room\".",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "This section of a house, titled \"Diagram 10 Location of permanent air vent openings, some examples,\" shows airflow paths. At the top, under a pitched roof, is a \"Well-ventilated roof space\". Below this is a large interior area labelled \"Living room (example)\", containing a rectangular block labelled \"Combustion appliance\". To the right is a smaller room labelled \"Hall\". At the bottom is a \"Suspended floor\", with a \"Well-ventilated space\" beneath it. Black arrows indicate the direction of air movement. Arrows point inwards from the exterior on the left and right sides. Arrows point into the \"Combustion appliance\" from the left and from the \"Hall\", and an arrow points from the \"Hall\" into the gap in the \"Suspended floor\". Additional arrows point upwards from the \"Well-ventilated space\" into the \"Living room\" and downwards from the \"Well-ventilated roof space\" into the \"Living room\".",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

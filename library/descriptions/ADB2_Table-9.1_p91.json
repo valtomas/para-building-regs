@@ -1,0 +1,17 @@
+{
+ "key": "ADB2_Table-9.1_p91",
+ "source": "ADB2",
+ "label": "Table 9.1",
+ "page": 91,
+ "caption": "Table 9.1 \u0007Maximum dimensions of cavities in buildings other than dwellings (purpose groups 2 to 7)",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-11",
+ "image_sha256": "4f85265b776e797ad711f02ad5043d2bd1dd7303d9bafbddd7c38ba3f51205bf",
+ "image_sig": {
+  "w": 741,
+  "h": 206,
+  "grey": "z8TGxsfHxMXDxsbGxMjIx6aIdnt5gX+Dcnl/fXXIyMjQyK2yr63IyMjEyMjEyMjI0MiKj5KnyMjIyMjIyMjIyN7a2tra2tra2tra2tra2try7/L///nv7e7t8Pn/7Ozy8/X1///78fDw8vP6/fPy9Pv/////9uDm5uHk5/Lm4/D7//////fm4uXs////////8/Hx8fH28fHw8fHx9vLx897X1tj/8vb////////v///z8fHv8fbw8fHx8fH28vHz59zp///03+Lh//////H///f4+v//+enq7PHx8fbv8fP7//////Ph4+j8////9P//8vHx8fHv5+Xm8PHx8e7x8Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

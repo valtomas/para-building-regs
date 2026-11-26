@@ -1,0 +1,33 @@
+{
+ "key": "ADJ_Diagram-3_p14",
+ "source": "ADJ",
+ "label": "Diagram 3",
+ "page": 14,
+ "caption": "Diagram 3 \u0007\u0007Draught diverter and",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "2336600e7eec4c8b433c0554b7e853517e1b30c3559b788e2a370081e089d3d7",
+ "image_sig": {
+  "w": 371,
+  "h": 406,
+  "grey": "27GvwLWmpKmjqqWutdfX5PLp5enftK/As7C22enp6fDh5eXl5eXl5eXl5eXl5eXm6f/9/Ovo39rm6/r7////9On/7O/////////s7f////Tp/+zv////////7O3////06f/s7////////+zt////9On/7O//8/X9///s7dutuvTp/+nv5rG0+///7Ove5vr06fjw7e7//////+zk8///9On/6+3+//////br5/z///Tp6PXj4v/////q8O/q///06ezx4vf////77Ofr+P//9Ont6+Xh7f//5+fk6/D///Tp//bp/+nT2e//4/n////04Ovr6+vr6+vr6+vr6+vr6A=="
+ },
+ "reviewed": true,
+ "description": "A drawing headed \"Diagram 3 Draught diverter and draught stabiliser\", in two parts, (a) and (b), each showing an \"Appliance\" (a box with a flame) with a flue rising from it to a \"Flue outlet\". In (a) the flue has a draught diverter just above the appliance: the flue is opened out to the room on both sides, with a baffle in the opening, labelled \"Draught diverter\". In (b) a short branch on the side of the flue holds a small hinged flap, labelled \"Draught stabiliser\", which lets room air into the flue.",
+ "first_draft": "The drawing, headed \"Diagram 3 Draught diverter and draught stabiliser\", is a pair of line diagrams, (a) and (b), drawn side by side. Each shows an \"Appliance\", depicted as a square box containing a flame symbol, with a vertical flue pipe rising from its top. In both, a horizontal double-headed arrow across the top of the pipe is labelled \"Flue outlet\".\n\nIn (a), the pipe has a side opening on the left and a horizontal flap inside it just above the appliance; an arrow points to this flap with the label \"Draught diverter\".\n\nIn (b), the pipe has a side inlet branch on the right, and a small angled flap is drawn within that branch; an arrow points to it with the label \"Draught stabiliser\".\n\nThe parts relate as follows: the appliance sits beneath the flue pipe in each case, with the labelled device fitted into the pipe or its branch between the appliance and the flue outlet. Below the diagrams is running text (paragraphs 12 and 13), which is not part of the drawing itself.",
+ "check": {
+  "verdict": "recut",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26",
+  "note": "Recut so the image shows this drawing alone; the suggestion is a new description written from the new image."
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26",
+ "suggestion": {
+  "text": "A drawing headed \"Diagram 3 Draught diverter and draught stabiliser\", in two parts, (a) and (b), each showing an \"Appliance\" (a box with a flame) with a flue rising from it to a \"Flue outlet\". In (a) the flue has a draught diverter just above the appliance: the flue is opened out to the room on both sides, with a baffle in the opening, labelled \"Draught diverter\". In (b) a short branch on the side of the flue holds a small hinged flap, labelled \"Draught stabiliser\", which lets room air into the flue.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "The drawing, headed \"Diagram 3 Draught diverter and draught stabiliser\", is a pair of line diagrams, (a) and (b), drawn side by side. Each shows an \"Appliance\", depicted as a square box containing a flame symbol, with a vertical flue pipe rising from its top. A single horizontal double-headed arrow across the tops of both pipes is labelled \"Flue outlet\".\n\nIn (a), the pipe has a side opening on the left and a horizontal flap inside it just above the appliance; an arrow points to this flap with the label \"Draught diverter\".\n\nIn (b), the pipe has a side inlet branch on the right, and a small angled flap is drawn within that branch; an arrow points to it with the label \"Draught stabiliser\".\n\nThe parts relate as follows: the appliance sits beneath the flue pipe in each case, with the labelled device fitted into the pipe or its branch between the appliance and the flue outlet. Below the diagrams is running text (paragraphs 12 and 13), which is not part of the drawing itself.",
+ "corrected_by": "Claude Opus 5.5"
+}

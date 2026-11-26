@@ -1,0 +1,17 @@
+{
+ "key": "ADL1_Table-C1_p93",
+ "source": "ADL1",
+ "label": "Table C1",
+ "page": 93,
+ "caption": "Table C1 \u0007Continued",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "27b3219970f3561d7856c5641e674125c735585d9f34c15879d30ead8737097d",
+ "image_sig": {
+  "w": 743,
+  "h": 375,
+  "grey": "uaOYpsjIyMjIyMjIyMjIyOTg4ODg4ODg4ODg4ODg4ODw7/b//Oj67+/25OLi7u36+/////zo/v///vn6+f///+zm6ej69/r39/r39/f39/js6+rx+PL36Oz06efq6er059zg4fTk897o+d/e4ODe+Onl6ev///nm5vXl6ejn5vbt6u/////x0efw1dHSzNHw+///////++7v++jl6eXp7Pv///////Xj3/Tb2dng3ez7///////35+Xz39vc2d3x+///////8dHn/efm6ufl8/v///////////vW0tjU1vX7///////////94+Tm5Ob/9vf39/f39/f39Nzg3+739w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

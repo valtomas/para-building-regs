@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-4.1_p35",
+ "source": "ADL2",
+ "label": "Table 4.1",
+ "page": 35,
+ "caption": "Table 4.1 \u0007Limiting U-values for new or replacement elements in new and existing buildings and air permeability in new buildings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "3f8bf25613a39890255dffec46433badec7ee514c44efd0a029e85a1fbfcfc8d",
+ "image_sig": {
+  "w": 745,
+  "h": 1027,
+  "grey": "zL+xr6uwsqq2vb6/vru7wOvn7/n6+vr6+/P08e/08/np7vX5+vr6+vv6+vXx+vr66+bk6+/t9ff59O/s6u3y+Ofg6erq6vD4+/r69/T6+vrp5OTk6/L39/n39/Xz9/f46ebo6ebz+vr7+vfw7/X6+u7o6+zt7O3t7evt6+zu8/304d3e4d7g4ebs8PHv8fL48+jl5uXl5e7t7e3o6O/2+fHd3d3f3OHm5ufn5ebm6PT05+3t7e3t6+7s7e3s7fX/8t3e3N/i5uXm6OXo5+bl8/Tb4d3g2tze5ubm5eXn5/rz3dzc3eTl5efk5ujj5OX68uHk4uXi4uTk4erv9vPz9w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

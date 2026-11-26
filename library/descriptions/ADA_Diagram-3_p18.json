@@ -1,0 +1,20 @@
+{
+ "key": "ADA_Diagram-3_p18",
+ "source": "ADA",
+ "label": "Diagram 3",
+ "page": 18,
+ "caption": "Diagram 3 \u0007Determination of wall thickness",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-06",
+ "image_sha256": "acd8096be119d3254e7fed94302a7059f3efb4419083c2992e2f4e658c8952e5",
+ "image_sig": {
+  "w": 756,
+  "h": 727,
+  "grey": "zMrFw8TEwsHY2tra2tra3+76///////87vPy//////r1////4tLU+ebi3t7e3+H69f///+/X5vrZ0M7Q2u3w+vX/////4Pz9//////////r14NXe58zl///////////69fr6+/vh9Prm7PP49/f9+vX////66e/639TT0uft/fr1////7drh+uHZ3Nrg5P/69f/////q//nd1NLV5en++vXs6ufr0ez64tXZ2ez5/vr17eTx99vu+ePW08/j5/769f/////r9P//////////+vX////i0tj///////////r1////79nl///////////68PX19fX19fX19fX19fX18w=="
+ },
+ "reviewed": true,
+ "description": "A flowchart titled \"Diagram 3 Determination of wall thickness\", with \"See para 2C5\" at top left. It runs vertically, top to bottom, with two side annotations.\n\nAt the top a rectangle reads \"Conditions relating to the building to which the wall forms part\". A bracket to its right, headed \"Conditions – building\", lists: (a) limitations on size and proportion of building and parts of the building (paragraphs 2C4 and 2C38); (b) maximum allowable floor areas (paragraph 2C14); (c) maximum imposed and wind loads (paragraphs 2C15 and 2C16). An arrow leads down to a diamond, \"Are conditions relating to the building satisfied?\", with a NO arrow left to a box \"Outside scope of this part\" and a YES arrow down.\n\nNext, a rectangle \"Conditions relating to the wall\", bracketed right by \"Conditions – wall\" listing: (a) maximum allowable length and height of wall (paragraphs 2C17–2C18); (b) construction materials and workmanship (paragraphs 2C19–2C22); (c) loading on walls (paragraphs 2C23–2C24); (d) end restraints (paragraphs 2C25–2C27); (e) openings, recesses, overhangs and chases (paragraphs 2C28–2C31); (f) lateral support by roofs and floors (paragraphs 2C32–2C37); (g) conditions relating to external walls of small single storey non-residential buildings and annexes (paragraph 2C38). An arrow reaches a second diamond, \"Are conditions relating to the wall satisfied?\", again with NO left to \"Outside scope of this part\" and YES down. The final rectangle states \"Wall thickness given in paragraphs 2C6 to 2C13 may be used\".",
+ "first_draft": "A flowchart titled \"Diagram 3 Determination of wall thickness\", with \"See para 2C5\" at top left. It runs vertically, top to bottom, with two side annotations.\n\nAt the top a rectangle reads \"Conditions relating to the building to which the wall forms part\". A bracket to its right, headed \"Conditions – building\", lists: (a) limitations on size and proportion of building and parts of the building (paragraphs 2C4 and 2C38); (b) maximum allowable floor areas (paragraph 2C14); (c) maximum imposed and wind loads (paragraphs 2C15 and 2C16). An arrow leads down to a diamond, \"Are conditions relating to the building satisfied?\", with a NO arrow left to a box \"Outside scope of this part\" and a YES arrow down.\n\nNext, a rectangle \"Conditions relating to the wall\", bracketed right by \"Conditions – wall\" listing items (a) to (g) with paragraphs 2C17–2C18 through 2C38. An arrow reaches a second diamond, \"Are conditions relating to the wall satisfied?\", again with NO left to \"Outside scope of this part\" and YES down. The final rectangle states \"Wall thickness given in paragraphs 2C6 to 2C13 may be used\".",
+ "rejected": false,
+ "reviewed_date": "2026-11-06"
+}

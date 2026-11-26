@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-8.1_p73",
+ "source": "ADL2",
+ "label": "Table 8.1",
+ "page": 73,
+ "caption": "Table 8.1 \u0007Ductwork pressure classes",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "1226e58ebac5a6f00804b0516454a306347e8965d01e436b1f8564429a4c92ad",
+ "image_sig": {
+  "w": 742,
+  "h": 275,
+  "grey": "wrGytbe1vsjIyMjIyMjIyL+oqaCgpbDIyMjIyMjIyMjy9PX09fT19fP19PX09PPz7enq8v/u6ent/+vs9OXq7vv////59/n4+Pnr6/js6fP19fX17efr6ubr9vX49fX27ebo9v/u///u//z5/+/r//Lu7vT48vf38vj29Pnx8fbj4N/i/+b//+3/+vf/6eT/9PXz9Pjx9vfx9/b0+PLy9t3V1uz43fb35vfw7vjh3vbx9fT5//L///b//Pz/9fL/5t/g7vjn9vft9/Px+Onq9t3q///////////////////58+/y9vX8////////////8uLg4N/e8PX19fX19fX19Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

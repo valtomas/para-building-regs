@@ -1,0 +1,26 @@
+{
+ "key": "ADJ_Diagram-14_p28",
+ "source": "ADJ",
+ "label": "Diagram 14",
+ "page": 28,
+ "caption": "Diagram 14 \u0007Example locations of access panels for concealed horizontal flues",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-20",
+ "image_sha256": "045f900b12554fc9c416ce4630d4abdcf1269746d05bf42f7b8e04d9198d3732",
+ "image_sig": {
+  "w": 755,
+  "h": 660,
+  "grey": "2NXSyM/Ozc3J0s7Ky8vU7Ojw8Ozf7PDw8PDk5fDw8O70/vDu5/Dg6O3w7Ozw8//69P//9e7y///x+/H5////+vT///Xs9f//7+zw8O31//r0///17OXx//D59d3d8P/69P//9enZ4//x/e/5////+vT///Xo4dz68f30+v////r0///17/Hx7Oj97vf////69P//9enn8fPf8t7w////+vT///Xx+P//8ff///////r0///14fH9//Hx///////69P//9ebm7//+////////+vT///vk3t7i7vDu7v3///r0////2MrMzc/Nzcvu///66vPz8+Xi4ODh4eHh8PPz8A=="
+ },
+ "reviewed": true,
+ "description": "Diagram 14, titled \"Example locations of access panels for concealed horizontal flues\", is a line drawing showing two flues against a grey external wall across the top (broken in the middle where the internal wall is) and a grey internal wall running vertically down the centre. On the left, a flue marked \"Flue terminal\" at the top runs vertically; dashed squares to its left are labelled \"Inspection hatch\", with the note text \"Any intervening joints to be visible within 1.5m of an inspection hatch\". Double‑headed arrows marked \"x\" show the distances between the inspection hatches and the nearest flue joints and ends. At the bottom the flue meets a dashed box \"Boiler A\", pointed to by the label \"Concealed flue connection\". On the right, a second flue labelled \"Flue terminal\" descends and bends horizontally toward a dashed box \"Boiler B\"; labels include \"Inspection hatch\", \"Accessible flue connection\" and the same joint‑visibility note, with a vertical \"x\" dimension. Three paragraphs of note text appear below the drawing, referring to the 300mm square hatch, the 1.5m joint distance and bend visibility.",
+ "first_draft": "Diagram 14, titled \"Example locations of access panels for concealed horizontal flues\", is a line drawing showing two flues against a grey external wall across the top and a grey internal wall running vertically down the centre. On the left, a flue marked \"Flue terminal\" at the top runs vertically; dashed squares beside it are labelled \"Inspection hatch\", with the pointer text \"Any intervening joints to be visible within 1.5m of an inspection hatch\". Double‑headed arrows marked \"x\" span the gaps between hatches. At the bottom the flue meets a dashed box \"Boiler A\" via a line labelled \"Concealed flue connection\". On the right, a second flue labelled \"Flue terminal\" descends and bends horizontally toward a dashed box \"Boiler B\"; labels include \"Inspection hatch\", \"Accessible flue connection\" and the same joint‑visibility note, with a vertical \"x\" dimension. Three lines of note text appear below the drawing, referring to the 300mm square hatch, the 1.5m joint distance and bend visibility.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

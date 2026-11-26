@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-4.3_p39",
+ "source": "ADL2",
+ "label": "Table 4.3",
+ "page": 39,
+ "caption": "Table 4.3 \u0007Reference glazing systems for solar gain calculation",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "f7a09a21ac7909f8b3a5344c00d99f42b7a762d67f1da3cdab4d627a79be1470",
+ "image_sig": {
+  "w": 737,
+  "h": 283,
+  "grey": "wa6ssq2zrbGzsK7IyMjIyMGsr6qgo6qppaioyMjIyMjy9fX19vb09fX09fb09vT27Onx+Ob18ejz7On76Pzw9evp9/fx//Xo/Ovp+uv57vHp6Oj8///x+//////n+ezz6+Tu+fX1+fX49/X46Pbr9Ob1//b5/+zl/+Tj/O3/6v/7/////v/q8P/g3uz/////9fX1+fX1+PX49PX49vb49en1//X4/+z7/+Pk8O3/6v/7///79fX28/fu8/bw9fL19fX18e716PP44tzs6/br9d7q///////////////////59fb29Pf1+Pj8////////8t/e3ePe4t/b6/X19fX19Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

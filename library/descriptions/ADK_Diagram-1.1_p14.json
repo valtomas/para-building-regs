@@ -1,0 +1,26 @@
+{
+ "key": "ADK_Diagram-1.1_p14",
+ "source": "ADK",
+ "label": "Diagram 1.1",
+ "page": 14,
+ "caption": "Diagram 1.1 | Measuring rise and going",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-22",
+ "image_sha256": "83608fcce3a0c764a5d392e4548c79e2116b34385f6d978fe387a400e08febd1",
+ "image_sig": {
+  "w": 754,
+  "h": 639,
+  "grey": "9uzv9/v78fv7+/v7+/v7+fz//////uv4/v////////z8/////Onw+fT////////8/Pjs+uLl5fDy5ur6/////Pz89vz1+fTp5/f3/P////z8////7OP9/Obz+vv////8/P////fy9/L6/fn+/////Pz9+fnw7Ovq7Ozq7Ovs//z8//////389fX3/P/////8/P////Xu7/L39vP//////Pz04vrj9fjr4fL57fz///z868np///7+u3r8O/y///8/O/e+/Xx+fT19PT9/////Pz67/zu5fb+9Pb++vT///z8////9fPy8PLy8PLx8v/8j3FncXFwb2JiYmJiYmJifA=="
+ },
+ "reviewed": true,
+ "description": "This drawing, titled Diagram 1.1 \"Measuring rise and going\", is a side elevation of a staircase shown in two parts separated by a horizontal green line. The upper part is headed \"DWELLINGS\" with the text \"See paras 1.2–1.3\" at top left. It shows four open-riser steps with a diagonal dashed line labelled \"Pitch\". Labels, with arrows, include \"Going\", \"Open riser\", \"Nosing\", \"Riser\", \"Top surface of tread\" (twice), a vertical double arrow \"Rise\", a horizontal double arrow \"Going\", the note \"Open riser treads should overlap at least 16mm\" and \"Going dimensions to be measured from nosing to nosing\". A note below reads \"Two examples of tread profiles have been shown together for illustrative purposes only\". The lower part is headed \"BUILDINGS OTHER THAN DWELLINGS\" with \"(For tread profiles see Diagram 1.2)\". It shows overlapping treads labelled \"Nosing\", \"Top surface of tread\" (twice), \"Treads should overlap no more than 25mm\", \"Max 25mm overlap\", \"Rise\", \"Going\", \"Pitch\" and \"Going dimensions to be measured from nosing to nosing\". Its note reads \"Four examples of tread profiles have been shown together for illustrative purposes only\".",
+ "first_draft": "This drawing, titled Diagram 1.1 \"Measuring rise and going\", is a side elevation of a staircase shown in two parts separated by a horizontal green line. The upper part is headed \"DWELLINGS\" with the text \"See paras 1.2–1.3\" at top left. It shows three open-riser steps with a diagonal dashed line labelled \"Pitch\". Labels, with arrows, include \"Going\", \"Open riser\", \"Nosing\", \"Riser\", \"Top surface of tread\" (twice), a vertical double arrow \"Rise\", a horizontal double arrow \"Going\", the note \"Open riser treads should overlap at least 16mm\" and \"Going dimensions to be measured from nosing to nosing\". A note below reads \"Two examples of tread profiles have been shown together for illustrative purposes only\". The lower part is headed \"BUILDINGS OTHER THAN DWELLINGS\" with \"(For tread profiles see Diagram 1.2)\". It shows overlapping treads labelled \"Nosing\", \"Top surface of tread\" (twice), \"Treads should overlap no more than 25mm\", \"Max 25mm overlap\", \"Rise\", \"Going\", \"Pitch\" and \"Going dimensions to be measured from nosing to nosing\". Its note reads \"Four examples of tread profiles have been shown together for illustrative purposes only\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

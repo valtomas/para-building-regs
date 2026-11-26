@@ -1,0 +1,33 @@
+{
+ "key": "ADE_Diagram-2.25_p34",
+ "source": "ADE",
+ "label": "Diagram 2.25",
+ "page": 34,
+ "caption": "Diagram 2.25 \u0007\u0007Wall type 2 – ceiling and roof junction | E VERSION | E Junctions with ceiling and roof space",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "e87772030b6336b0d3e3a62fc6f777193582458b9c1025f27f4f354b1b2db5d2",
+ "image_sig": {
+  "w": 362,
+  "h": 485,
+  "grey": "z7zDysfHr7m0w9Czt7636uPk5OTk2b6+vLrO5OTk5Orp8+nz9Ojt7eXq7PT08/P06fbt///h7u3r4Nz05PX/9On/////7+zu7eju9+n///Tp//////r49PPz9v/////06fv+/v/3+vHx9u//////9OnBy9bw7u7v7uj0//////Tp+ff//+/w8fDr7v/////06f/////h8PHv6+b/////9On26ff34ebm5ure9vf39/Tp8Ov///Pm5OLb8OnZ4P/06f/////08O3v7Pr/////9On/////9PDw7+z6//////Tp//////Tx8e/s+v/////03e7u7u7s6Ovr6O3u09PL3g=="
+ },
+ "reviewed": true,
+ "description": "This image is a section drawing titled “Diagram 2.25 Wall type 2 – ceiling and roof junction”, with the word “SECTION” printed in the bottom right corner. At the very top, a horizontal line is labelled “Roof”. Below the roof is a two-leaf masonry wall, the leaves drawn as cross-hatched blocks with a cavity between them; a hatched block filling the top of the cavity under the roof is labelled “Flexible closer”. The middle portion of this wall is interrupted by zigzag break lines. An arrow pointing to the left side of the vertical wall carries the label “Mass per unit area of at least 150kg/m²”. Lower down, a solid horizontal line crosses the vertical wall, which is labelled “Ceiling” on the left. On the right side, the label “Sealed joints” has two arrows pointing to the intersections where the wall meets the horizontal ceiling line on each side.",
+ "first_draft": "This image is a section drawing titled “Diagram 2.25 Wall type 2 – ceiling and roof junction”, with the word “SECTION” printed in the bottom right corner. At the very top, a horizontal line is labelled “Roof”. Directly beneath the roof is a hatched horizontal layer labelled “Flexible closer”. \n\nDescending from this layer is a vertical double line representing a wall. The middle portion of this wall is interrupted by zigzag break lines. An arrow pointing to the left side of the vertical wall carries the label “Mass per unit area of at least 150kg/m²”. \n\nLower down, a solid horizontal line crosses the vertical wall, which is labelled “Ceiling” on the left. On the right side, the label “Sealed joints” has two arrows pointing to the intersections where the vertical wall lines meet the horizontal ceiling line.",
+ "check": {
+  "verdict": "minor",
+  "note": "Describes one solid wall; it is a two-leaf wall with a cavity, and the flexible closer fills the top of that cavity.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "This image is a section drawing titled “Diagram 2.25 Wall type 2 – ceiling and roof junction”, with the word “SECTION” printed in the bottom right corner. At the very top, a horizontal line is labelled “Roof”. Below the roof is a two-leaf masonry wall, the leaves drawn as cross-hatched blocks with a cavity between them; a hatched block filling the top of the cavity under the roof is labelled “Flexible closer”. The middle portion of this wall is interrupted by zigzag break lines. An arrow pointing to the left side of the vertical wall carries the label “Mass per unit area of at least 150kg/m²”. Lower down, a solid horizontal line crosses the vertical wall, which is labelled “Ceiling” on the left. On the right side, the label “Sealed joints” has two arrows pointing to the intersections where the wall meets the horizontal ceiling line on each side.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "This image is a section drawing titled “Diagram 2.25 Wall type 2 – ceiling and roof junction”, with the word “SECTION” printed in the bottom right corner. At the very top, a horizontal line is labelled “Roof”. Directly beneath the roof is a hatched horizontal band labelled “Flexible closer”. Descending from this band is a vertical wall, represented by two vertical lines filled with cross-hatching. The middle portion of this wall is interrupted by zigzag break lines. An arrow pointing to the left side of the vertical wall carries the label “Mass per unit area of at least 150kg/m²”. Lower down, a solid horizontal line crosses the vertical wall, which is labelled “Ceiling” on the left. On the right side, the label “Sealed joints” has two arrows pointing to the intersections where the vertical wall lines meet the horizontal ceiling line.",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

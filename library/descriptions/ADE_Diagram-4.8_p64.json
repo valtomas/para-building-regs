@@ -1,0 +1,33 @@
+{
+ "key": "ADE_Diagram-4.8_p64",
+ "source": "ADE",
+ "label": "Diagram 4.8",
+ "page": 64,
+ "caption": "Diagram 4.8 \u0007\u0007Stair treatment",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "4605994726130696116b48058c2773dc11a99f563952ec2e2437777d4911c4e0",
+ "image_sig": {
+  "w": 362,
+  "h": 339,
+  "grey": "zMDBxMe0tbyztrPf39/f6MzBytLOyMXMw8jG2NjY2ODp///////////////////06f/57u7x////6tbW1tv/9On//PLl7f///+v///3i5/Tp/////+v5///r/+/a4Mny6f/////SyMnJz9/a0dP19On/////8v/+59be09j+//Tp3t/f3+jz2snS3fLm7vb06eHr6+jW197S4//58O/29Ony/+nX4dXi9Ovv+v////Tm7NnY19b3//bs6fj////06d7dzuvp////////////9Ony3vzj3OD3//////////Tp///////////////z8O7v4vPz8/Pz8/Pz8/Pz2d3V4Q=="
+ },
+ "reviewed": true,
+ "description": "A section headed \"Diagram 4.8 Stair treatment\", marked \"SECTION\" at the lower right. It shows a flight of stairs in profile, rising to the right. The treads carry a \"Soft covering\". Under the flight, a sloping layer of \"Mineral wool\", drawn as loops, is held by a \"Fixing batten\" and closed underneath by \"Plasterboard\" along the soffit.",
+ "first_draft": "The image presents two architectural sections. The left panel, labeled \"SECTION\" at the bottom, illustrates a vertical cut through a masonry wall and a suspended structure. This structure features timber joists filled with insulation, depicted by a series of loops, and a zig-zag pattern within the wall cavity.\n\nThe right panel is a framed diagram titled \"Diagram 4.8 Stair treatment,\" also marked \"SECTION\" in the lower right corner. It shows a profile view of a staircase. Labels with leader lines identify specific parts of the construction beneath the stairs. \"Soft covering\" indicates the material on the treads. \"Mineral wool\" points to the insulation within the sloped void, represented by a criss-cross hatch pattern. A \"Fixing batten\" is identified as a support strip within the insulation, and \"Plasterboard\" labels the bottom-most layer of the sloped assembly. The stairs ascend from the left side of the diagram to the right.",
+ "check": {
+  "verdict": "recut",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26",
+  "note": "Recut so the image shows this drawing alone; the suggestion is a new description written from the new image."
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26",
+ "suggestion": {
+  "text": "A section headed \"Diagram 4.8 Stair treatment\", marked \"SECTION\" at the lower right. It shows a flight of stairs in profile, rising to the right. The treads carry a \"Soft covering\". Under the flight, a sloping layer of \"Mineral wool\", drawn as loops, is held by a \"Fixing batten\" and closed underneath by \"Plasterboard\" along the soffit.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "The image presents two architectural sections. The left panel, labeled \"SECTION\" at the bottom, illustrates a vertical cut through a masonry wall and a suspended structure. The suspended structure is shown with insulation depicted by a series of loops between its top and bottom layers, and the wall cavity contains a vertical zig-zag pattern.\n\nThe right panel is a framed diagram titled \"Diagram 4.8 Stair treatment,\" also marked \"SECTION\" in the lower right corner. It shows a profile view of a staircase. Labels with leader lines identify specific parts of the staircase and the assembly beneath it. \"Soft covering\" indicates the material on the treads. \"Mineral wool\" points to the insulation within the sloped void, represented by a criss-cross hatch pattern. A \"Fixing batten\" is identified as a support strip within the insulation, and \"Plasterboard\" labels the bottom-most layer of the sloped assembly. The stairs ascend from the left side of the diagram to the right.",
+ "corrected_by": "Claude Opus 5.5"
+}

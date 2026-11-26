@@ -1,0 +1,26 @@
+{
+ "key": "ADK_Diagram-5.3_p43",
+ "source": "ADK",
+ "label": "Diagram 5.3",
+ "page": 43,
+ "caption": "Diagram 5.3 | Dimensions and areas of small panes | Protection against impact with glazing | Permanent screen protection",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "54adcf819dd57a2aca9bfd51e96a3b9890d4ceb0969b0a441040fe3142cc87aa",
+ "image_sig": {
+  "w": 737,
+  "h": 533,
+  "grey": "9/Dx9vv7+/v7+/v7+/v7+/v4+v3+8fX/+/D4///////8//////b4///29////////P////bz9Pf/8PPy//////z////39PX2//L79//////8////9/Lz9v/0+vf//////P////fw8vb/9Pr3//////z////39/f2//T69//////8////9/Lz9v/0+vf//////P////fy8/b/9Pr3//////z////39/f2//T69//////8////9e7w9f/t9fH//////P////bx8O7x8u/4//////z////v4OXs7/Dw/f/////s6urq6urq6urq6urq6urqiGheaGdnZWlkVVVVVVVVVQ=="
+ },
+ "reviewed": true,
+ "description": "This drawing, titled in a green banner at the bottom as \"Diagram 5.3 Dimensions and areas of small panes\", is a line diagram showing two vertical rectangular outlines side by side, each representing a glazing panel. In the top left corner is the text \"See paras 5.6–5.7\". Above each panel is a short horizontal dimension line with inward-pointing arrowheads and a central tick mark, each labelled \"max. 250mm\"; the dimension line is narrower than the panel and does not extend across its full top width. The left panel contains an internal grid of small rectangular panes arranged in three columns and five rows. The right panel contains a single narrow vertical rectangular outline set within it. Below the two panels is a block of text reading: \"Maximum area of single pane not to exceed 0.5m², small panes of annealed glass should not be less than 6mm thick\".",
+ "first_draft": "This drawing, titled in a green banner at the bottom as \"Diagram 5.3 Dimensions and areas of small panes\", is a line diagram showing two vertical rectangular outlines side by side, each representing a glazing panel. In the top left corner is the text \"See paras 5.6–5.7\". Above each panel is a horizontal dimension line with arrowheads and a central tick mark, each labelled \"max. 250mm\", indicating a maximum width measurement across the top of the panel. The left panel contains an internal grid forming a column of small rectangular panes arranged in two columns and five rows. The right panel contains a single narrow vertical rectangular outline set within it. Below the two panels is a block of text reading: \"Maximum area of single pane not to exceed 0.5m², small panes of annealed glass should not be less than 6mm thick\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

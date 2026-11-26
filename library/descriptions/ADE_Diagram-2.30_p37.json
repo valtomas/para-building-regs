@@ -1,0 +1,33 @@
+{
+ "key": "ADE_Diagram-2.30_p37",
+ "source": "ADE",
+ "label": "Diagram 2.30",
+ "page": 37,
+ "caption": "Diagram 2.30 \u0007\u0007Wall type 3.3 with independent composite panels",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "1684cdbe73ce0a6405b2bb9f87a61d455b11307a4b7bbdee45ef55f28d1c86bd",
+ "image_sig": {
+  "w": 371,
+  "h": 447,
+  "grey": "5cC6y8PMp7evusSvyeHh6fPp6enp57i2v7bGwbq8w+/o3Nzc3Nmpscnc3Nzc3Nzj6f/////r8PL09O74////9On/////2vHw8fnf7/////Tp/////9vu8fD73+/////06f/////b3+Pn5uDv////9On/////2/Hv8fnf7/////Tp/////9vv8fH73+/////06f/////b3t7g5eDv////9On/////2/Hv8fnf7/////Tp/////9vw8fH63+/////06f/////b3uTm5uDv////9On/////2vHw8frf7/////Tp/////9nq6+3w3fD////05/b29vb29vb29vb23NrX5Q=="
+ },
+ "reviewed": true,
+ "description": "A page heading above the drawing reads \"Diagram 2.30 Wall type 3.3 with independent composite panels\", and the drawing is identified as a SECTION by a label in the lower right corner. It shows a vertical section comprising four separate vertical members arranged in a row with visible gaps between them. At the far left is a narrow vertical strip filled with fine horizontal shading. To its right, after a gap, stands a wider vertical column built from a stack of four rectangular segments, each enclosed by a border and filled with a diagonal cross-hatch pattern (an X of two lines). A further gap separates this column from a second, similar wider column of stacked cross-hatched rectangular segments, also four in number. At the far right, after a final gap, is a second narrow vertical strip, also filled with horizontal shading, mirroring the left-hand strip. No dimensions or scale appear within the drawing. The outer narrow strips and the two inner cross-hatched columns are each depicted as distinct elements; a short horizontal tie crosses the gap between the two inner columns at mid-height.",
+ "first_draft": "The drawing is titled \"Diagram 2.30 Wall type 3.3 with independent composite panels\" and is identified as a SECTION by a label in the lower right corner. It shows a vertical section comprising four separate vertical members arranged in a row with visible gaps between them. At the far left is a narrow vertical strip filled with fine horizontal shading. To its right, after a gap, stands a wider vertical column built from a stack of four rectangular segments, each enclosed by a border and filled with a diagonal cross-hatch pattern (an X of two lines). A further gap separates this column from a second, similar wider column of stacked cross-hatched rectangular segments, of which three are shown. At the far right, after a final gap, is a second narrow vertical strip, also filled with horizontal shading, mirroring the left-hand strip. No dimensions, scale or other annotations appear within the drawing. The outer narrow strips and the two inner cross-hatched columns are each depicted as distinct, non-touching elements.",
+ "check": {
+  "verdict": "minor",
+  "note": "Both inner columns have four blocks (it says three for one) and it misses the tie across the cavity.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "A page heading above the drawing reads \"Diagram 2.30 Wall type 3.3 with independent composite panels\", and the drawing is identified as a SECTION by a label in the lower right corner. It shows a vertical section comprising four separate vertical members arranged in a row with visible gaps between them. At the far left is a narrow vertical strip filled with fine horizontal shading. To its right, after a gap, stands a wider vertical column built from a stack of four rectangular segments, each enclosed by a border and filled with a diagonal cross-hatch pattern (an X of two lines). A further gap separates this column from a second, similar wider column of stacked cross-hatched rectangular segments, also four in number. At the far right, after a final gap, is a second narrow vertical strip, also filled with horizontal shading, mirroring the left-hand strip. No dimensions or scale appear within the drawing. The outer narrow strips and the two inner cross-hatched columns are each depicted as distinct elements; a short horizontal tie crosses the gap between the two inner columns at mid-height.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "A page heading above the drawing reads \"Diagram 2.30 Wall type 3.3 with independent composite panels\", and the drawing is identified as a SECTION by a label in the lower right corner. It shows a vertical section comprising four separate vertical members arranged in a row with visible gaps between them. At the far left is a narrow vertical strip filled with fine horizontal shading. To its right, after a gap, stands a wider vertical column built from a stack of four rectangular segments, each enclosed by a border and filled with a diagonal cross-hatch pattern (an X of two lines). A further gap separates this column from a second, similar wider column of stacked cross-hatched rectangular segments, of which three are shown. At the far right, after a final gap, is a second narrow vertical strip, also filled with horizontal shading, mirroring the left-hand strip. No dimensions or scale appear within the drawing. The outer narrow strips and the two inner cross-hatched columns are each depicted as distinct, non-touching elements.",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

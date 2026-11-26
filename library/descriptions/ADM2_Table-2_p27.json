@@ -1,0 +1,17 @@
+{
+ "key": "ADM2_Table-2_p27",
+ "source": "ADM2",
+ "label": "Table 2",
+ "page": 27,
+ "caption": "Table 2 Minimum effective clear widths of doors",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "95d05a49021000f603139985fbf53e7a08f7de72a68b2067f1f3097d33faf9f8",
+ "image_sig": {
+  "w": 371,
+  "h": 381,
+  "grey": "8sDO4Ki+wcW0vcXBv+7u8vXu7uy5scrBvsvu7u7u7vLuzs/V6/T09PT02OH0ysv3+Nfo1t7y////98vN9c3L+/Xh5ebi6Obu9fXn6fXq6fj52d/d3Pf4/P//+/z//Pz/9Nva0+Pd3ODj9eXo9erp+PTd4d3h2/X19fX09PXz9Pj0zM/F18vk6Oz/7/T/9/b/89zf3eLb2t/q9eXk9evr+PPe3Nrd4vP19fX19fX19fj23/7///7//v7/////////+dXO2dfX1tXc2c/W1Nbn//bT0tbU1NbQ0NbV0NPb/v/10tXR2dnX1dfS2M/Z2f7/79fW0tna2dPV2NLZ6+vr8A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

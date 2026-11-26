@@ -1,0 +1,26 @@
+{
+ "key": "ADJ_Diagram-5_p16",
+ "source": "ADJ",
+ "label": "Diagram 5",
+ "page": 16,
+ "caption": "Diagram 5 \u0007Fireplace recesses",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "6bb6bb6c181e5aef8868a3af84be6f1ab731a86d13be50d1edda4c4517ecff20",
+ "image_sig": {
+  "w": 760,
+  "h": 567,
+  "grey": "z8O+tr6/3Nzc3Nzc3Nzc4O/4+Pj49/jv+Pj4+Pj4+PT0//r7+PPw6tTLzvP////69P/67PDt8fTazNDV////+vT/+u3/+PX02NPk9P////r0//rt//j19Pv5/v/////69P/67fjx6/r/////////+vT//Pv//fj+//////////r0//z//Pb6+v///////P/69P/6//b19Pr4////+vr/+vT/+vH18O769vLm6ur6//r0//rx//j07+P35PDo+v/69P/67/jx7fr49+Tx6Pf/+vT/+/j//PT//fL2+u7+//r0//HN0Mrh///xxcXH3v368Pj25fj4+Pj49M/Py9fy9A=="
+ },
+ "reviewed": true,
+ "description": "Diagram 5, titled Fireplace recesses, is a set of three line drawings in axonometric view showing recesses cut into a wall, labelled a, b and c, with (a) above (b) and (c) to the right of (b). Part (a) shows a plain rectangular box-shaped recess in a wall plane, with a dashed-line flue rising from its back. The accompanying text reads: Simple recess suitable for closed appliances such as room heaters and cookers that are connected to their chimneys, and Not suitable for an open fire without a canopy. Part (b) shows a similar recess but with internal top surfaces sloping inward and upward to form a hopper-shaped opening, again with a dashed flue above; its text reads: Structural opening prepared to receive, e.g., a free standing fire basket. An arrow points from (b) to part (c), which depicts the recess fitted with a flat-capped decorative surround having vertical side cheeks set into the wall. Its text reads: Recess comprising structural opening (as (b)) lined to receive an inset open fire and with decorative surround. See also Diagram 29.",
+ "first_draft": "Diagram 5, titled Fireplace recesses, is a set of three line drawings in axonometric view showing recesses cut into a wall, labelled a, b and c. Part (a) shows a plain rectangular box-shaped recess in a wall plane, with a dashed-line flue rising from its back. The accompanying text reads: Simple recess suitable for closed appliances such as room heaters and cookers that are connected to their chimneys, and Not suitable for an open fire without a canopy. Part (b) shows a similar recess but with internal top surfaces sloping inward and upward to form a hopper-shaped opening, again with a dashed flue above; its text reads: Structural opening prepared to receive, e.g., a free standing fire basket. An arrow points from (b) to part (c), which depicts the recess fitted with a flat-capped decorative surround having angled side cheeks set into the wall. Its text reads: Recess comprising structural opening (as (b)) lined to receive an inset open fire and with decorative surround. See also Diagram 29.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

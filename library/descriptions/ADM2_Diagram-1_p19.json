@@ -1,0 +1,33 @@
+{
+ "key": "ADM2_Diagram-1_p19",
+ "source": "ADM2",
+ "label": "Diagram 1",
+ "page": 19,
+ "caption": "Diagram 1 Tactile paving and an example of its use at an uncontrolled crossing",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "9ebbd77df0063984c8c1ba245dc63d30826bd48ed77ae4cd6b0c9fbefd110384",
+ "image_sig": {
+  "w": 371,
+  "h": 759,
+  "grey": "7tbS3d6ysLi4tMO+vtXq8O3r6+vl0dLOy9TSz8zr6+3p//////P3+Pf4+Pr////06f/////z9/f39/j6////9On/////8/b29vb2+v////Tp/////+bn4ern5fn////06f//////8Onm6e71////9On////////+/v////////Tp////9/vz7Ozs9f/////06f//+urx+v/98e7z+f//9On/////7e/z/v////////Tp///////////x8vP5///06f/////98fT18fPx////9Onx8ejv9Orf29zy5u32+PLp//v7+/X26+/08/r7+/vy5ejq6+3o5unq+Pf4+vr68Q=="
+ },
+ "reviewed": true,
+ "description": "The drawing, titled \"Diagram 1 Tactile paving and an example of its use at an uncontrolled crossing,\" has three parts. The top part is a rectangular outline filled with a grid of thirty-six circles in six rows and six columns, captioned \"Blister surface (with 36 domes),\" followed by a note reading \"Note: Full details of tactile paving are in 'Guidance on the use of Tactile Paving Surfaces.'\" The middle part is a cross-section labelled \"Dome profile,\" showing a raised dome of \"25mm diameter,\" a left-hand step height of \"5mm,\" a total height of \"10mm,\" and a right-hand curved shoulder marked \"16mm radius.\" The bottom part is a perspective view labelled \"Dropped kerb at an uncontrolled crossing,\" depicting a trapezoidal patch captioned \"Blister surface,\" with the label \"Dropped kerb flush with carriageway\" above it, a label on the left reading \"Gradient 1:12 max.,\" a dimension of \"800mm\" along the sloping right-hand side of the dropped kerb, and a bottom dimension of \"1200mm min.\"",
+ "first_draft": "The drawing, titled \"Diagram 1 Tactile paving and an example of its use at an uncontrolled crossing,\" has three parts. The top part is a rectangular outline filled with a grid of thirty-six circles in six rows and six columns, captioned \"Blister surface (with 36 domes),\" followed by a note reading \"Note: Full details of tactile paving are in 'Guidance on the use of Tactile Paving Surfaces.'\" The middle part is a cross-section labelled \"Dome profile,\" showing a raised dome with a flat top dimensioned \"25mm diameter,\" a left-hand step height of \"5mm,\" a total height of \"10mm,\" and a right-hand curved shoulder marked \"16mm radius.\" The bottom part is a plan view labelled \"Dropped kerb at an uncontrolled crossing,\" depicting a trapezoidal patch captioned \"Blister surface,\" with an arrow to a \"Dropped kerb flush with carriageway,\" a left edge marked \"Gradient 1:12 max.,\" a right vertical dimension of \"800mm,\" and a bottom dimension of \"1200mm min.\"",
+ "check": {
+  "verdict": "minor",
+  "note": "The 800mm runs along the sloping side of the dropped kerb, not vertically.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "The drawing, titled \"Diagram 1 Tactile paving and an example of its use at an uncontrolled crossing,\" has three parts. The top part is a rectangular outline filled with a grid of thirty-six circles in six rows and six columns, captioned \"Blister surface (with 36 domes),\" followed by a note reading \"Note: Full details of tactile paving are in 'Guidance on the use of Tactile Paving Surfaces.'\" The middle part is a cross-section labelled \"Dome profile,\" showing a raised dome of \"25mm diameter,\" a left-hand step height of \"5mm,\" a total height of \"10mm,\" and a right-hand curved shoulder marked \"16mm radius.\" The bottom part is a perspective view labelled \"Dropped kerb at an uncontrolled crossing,\" depicting a trapezoidal patch captioned \"Blister surface,\" with the label \"Dropped kerb flush with carriageway\" above it, a label on the left reading \"Gradient 1:12 max.,\" a dimension of \"800mm\" along the sloping right-hand side of the dropped kerb, and a bottom dimension of \"1200mm min.\"",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "The drawing, titled \"Diagram 1 Tactile paving and an example of its use at an uncontrolled crossing,\" has three parts. The top part is a rectangular outline filled with a grid of thirty-six circles in six rows and six columns, captioned \"Blister surface (with 36 domes),\" followed by a note reading \"Note: Full details of tactile paving are in 'Guidance on the use of Tactile Paving Surfaces.'\" The middle part is a cross-section labelled \"Dome profile,\" showing a raised dome of \"25mm diameter,\" a left-hand step height of \"5mm,\" a total height of \"10mm,\" and a right-hand curved shoulder marked \"16mm radius.\" The bottom part is a perspective view labelled \"Dropped kerb at an uncontrolled crossing,\" depicting a trapezoidal patch captioned \"Blister surface,\" with the label \"Dropped kerb flush with carriageway\" above it, a label on the left reading \"Gradient 1:12 max.,\" a right vertical dimension of \"800mm,\" and a bottom dimension of \"1200mm min.\"",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

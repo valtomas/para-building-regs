@@ -1,0 +1,26 @@
+{
+ "key": "ADE_Diagram-3.14_p52",
+ "source": "ADE",
+ "label": "Diagram 3.14",
+ "page": 52,
+ "caption": "Diagram 3.14 \u0007\u0007Floor type 2.2B(a) – floor type 2.2 with ceiling treatment B and floating floor (a)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "3da96d31db309c1ba752ebd196b3a56786342cb4a3dec6ac6470afa6c0b4e962",
+ "image_sig": {
+  "w": 362,
+  "h": 353,
+  "grey": "wLK0vL6ypbGosKScvNTU3+TX3+Ll06q3nrKxn8jp6e/q6enp6dmosq+rrq25usrv6unp6enTpZ6yqrm45OPm79Xd3d3d3dzd1N3Z2d3d3eHp/v7+/v7+/v7+/v7+/v705fPz2PPz8/Ph6vPz8+vf897V1NLT1dTLztTV1NTUzfPk8vPz7u/y6Ozz8fDv9PH04v////////b////////+8N/q6Obn5ubk4ebn5+fq6fDk59nQ0NDR1d7Q0NDT6efz6f/////s4drt////////9On//////////////9na1+Xm6Ojo6Ojo6Ojo6Ojo6Ojs9PPz8/Pz8/Pz8/Pz8/Pz9g=="
+ },
+ "reviewed": true,
+ "description": "Diagram 3.14, headed \"Floor type 2.2B(a) – floor type 2.2 with ceiling treatment B and floating floor (a)\", is a horizontal section, marked \"SECTION\" in the lower right corner.\n\nFrom top to bottom, the section shows: a thin upper line; three square symbols, each containing a diagonal cross; below this, a stippled horizontal layer; below this, a thick horizontal structural band running the full width, pierced by a row of evenly spaced small circles; a single vertical line running down the centre of the drawing, with a small circle at its top end inside the band and a short horizontal stub at its lower end; beneath the band, a zigzag‑hatched strip resting on a flat line, terminating at each end in a small triangular block.\n\nA leader line from the label \"Timber batten\" points to the zigzag‑hatched strip. The crossed squares and the row of circles are not individually named in the drawing.",
+ "first_draft": "Diagram 3.14, headed \"Floor type 2.2B(a) – floor type 2.2 with ceiling treatment B and floating floor (a)\", is a horizontal section, marked \"SECTION\" in the lower right corner.\n\nFrom top to bottom, the section shows: a thin upper line; a stippled horizontal layer on which sit three square symbols, each containing a diagonal cross; below this, a thick horizontal structural band running the full width, pierced by a row of evenly spaced small circles (roughly ten); a single vertical line running down the centre of the drawing, with a small circle at its top end inside the band and a short stub at its lower end; beneath the band, a zigzag‑hatched strip resting on a flat line, terminating at each end in a small triangular block.\n\nA leader line from the label \"Timber batten\" points to the zigzag‑hatched strip and its end block on the left. Some symbols (the crossed squares and the row of circles) are not individually named in the drawing.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

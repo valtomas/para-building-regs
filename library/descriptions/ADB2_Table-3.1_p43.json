@@ -1,0 +1,17 @@
+{
+ "key": "ADB2_Table-3.1_p43",
+ "source": "ADB2",
+ "label": "Table 3.1",
+ "page": 43,
+ "caption": "Table 3.1 Minimum widths of escape stairs",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "19588eb525122a4b17df79fee1b9ee9e718d399909973cb1979cb3c986c460da",
+ "image_sig": {
+  "w": 737,
+  "h": 397,
+  "grey": "uaWbo56hoLHIyMjIyMjIyOTh4uLi4uHi4uLi4uLi4eLx8PX///////Dj5vrp8O/+7+zp6urp6e7x9ff46/b4+PLh4OHv8/f5+/////r////r5OHi4t/i5e74+Pjr+Pj48+Ln5+jo6ur///////////Po8ff3+Pf4+fX4+Pj3+Pjt2dnU4Onq/fbx///y8P//7+fn5u34+Pj1+Pj47ff4+OXn8O/y+Pj49fj4+PP4+Pjn6PL08fLw+f//////////7uba2uXm3ujt7uvt+P///+zk5+bl5+Hk5uHm5ebu///v6evo7Ofp6ezr5+ro6ej/7uHk4eTg4PL4+Pj4+Pj4+A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

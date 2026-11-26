@@ -1,0 +1,17 @@
+{
+ "key": "ADL1_Table-2.1_p26",
+ "source": "ADL1",
+ "label": "Table 2.1",
+ "page": 26,
+ "caption": "Table 2.1 U-values for party walls",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "04971c372e672df77f1af1a37f69d885f710a6d99f7ad203202705b8697d32ac",
+ "image_sig": {
+  "w": 756,
+  "h": 256,
+  "grey": "xLC0srOyyMjIyMjIyMjI0cKnp6CeoMjIyMjIyMjIyM/m5eTp6urq6urq6urq5uLn6uPi7vT09PT09PT0+OPk7un8////////////////8vvw9PT09PT09PT09PT49PL0493f29zZ9v/////////x+/Dx8e/y8/Hx8/Lz8/j08PTn3uHd2dvf293b4Pn///b74dHV0c7t9PT09PT0+PT09O3m7eTr6+nn6+no/f//9fvq4uLk4Ojw7vLv9P7///r76d/j4eHx9PT09PT0+PT09NLw//////////////////v07O3r6ujq6evq6+3p///78enm6Onk5Ofn5+jo5vT09A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

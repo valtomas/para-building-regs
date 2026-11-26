@@ -1,0 +1,26 @@
+{
+ "key": "ADJ_Diagram-20_p36",
+ "source": "ADJ",
+ "label": "Diagram 20",
+ "page": 36,
+ "caption": "Diagram 20 \u0007Wall thicknesses for masonry and flueblock chimneys",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-20",
+ "image_sha256": "f8a8430a4085afb09dfdcec259bbca00ac6710ad83411aa4460fc4777d80362c",
+ "image_sig": {
+  "w": 760,
+  "h": 390,
+  "grey": "wrSooKOmqaionKihwtbW2+jp6+vr6+vp6+vr6+nr6+v0/////////dH0///////69P/////18fHl5/H1////+vT/////7fjt+tr27/////r0///////458Tl+P/////69P//////+N//+Pj/////+vT///////fw8vL4//////r0///////////9z+T////69P////////Le7+D/////+vT////////32Pb///////r0///////18+Lx8//////69P//////8fHn8PH/////+vT//////9/K0cXb//////r0///////8083G9f/////65urq6urq6urq6urq6urq6Q=="
+ },
+ "reviewed": true,
+ "description": "The drawing, titled \"Diagram 20 Wall thicknesses for masonry and flueblock chimneys\", contains two wall cross-sections arranged one above the other, each shown with jagged break lines at the left and right edges to indicate the wall continues.\n\nThe upper section is labelled \"Outside\" above its top face. The wall profile steps so that the top is wider than the base. Within the wall are two flues, each drawn as a pair of concentric circles. A horizontal dimension of \"100\" spans the space between the two flues. A vertical dimension of \"100\" runs from the top face down to the upper edge of the right-hand flue, and a further vertical dimension of \"100\" runs from the base of the wall up to the lower edge of the left-hand flue.\n\nThe lower section has the note \"Dimensions in mm\" to its right. Its wall profile steps so that a narrower block rises above a wider base, and it contains a single flue drawn as concentric circles. A vertical dimension of \"200\" runs from the top of the wider base to the flue. Below this section is the label \"Another fire compartment or another dwelling\".",
+ "first_draft": "The drawing, titled \"Diagram 20 Wall thicknesses for masonry and flueblock chimneys\", contains two wall cross-sections arranged one above the other, each shown with jagged break lines at the left and right edges to indicate the wall continues.\n\nThe upper section is labelled \"Outside\" above its top face. The wall profile steps so that the top is wider than the base. Within the wall are two flues, each drawn as a pair of concentric circles. A horizontal dimension of \"100\" spans the space between the two flues. A vertical dimension of \"100\" runs from the top face down to the upper edge of the right-hand flue, and a further vertical dimension of \"100\" runs from the base of the wall up to the lower edge of the left-hand flue.\n\nThe lower section has the note \"Dimensions in mm\" to its right. Its wall profile steps so that a narrower block rises above a wider base, and it contains a single flue drawn as concentric circles. A vertical dimension of \"200\" runs from the base of the wall to the flue. Below this section is the label \"Another fire compartment or another dwelling\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

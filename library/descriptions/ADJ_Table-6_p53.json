@@ -1,0 +1,17 @@
+{
+ "key": "ADJ_Table-6_p53",
+ "source": "ADJ",
+ "label": "Table 6",
+ "page": 53,
+ "caption": "Table 6 \u0007Minimum performance designations for chimney and fluepipe components for use with new gas appliances",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-21",
+ "image_sha256": "7a879210ee964374114ea35584c45fda2d42b01682918cdd9ca2a060e6efaf7f",
+ "image_sig": {
+  "w": 371,
+  "h": 453,
+  "grey": "7LjDwqyzuLy0uLO41eHh6fPp6dq0tbm9xcq6vrbIyu/z6enUkZ+pp6Ofn6elxNTv79fZ1dTi3Nne09PDy+rq8Pzt8fD4///////ltbTl///z3OTi3PDf4d/f5tna4/H4///+///02tDQ5OfT0+D1//Pd5uTd4eHi3t/m3+Do8vn///////Ta0M7l59PT4PX/9d7k9vXw8+729ujw8fL1+PXV2t/g5N3e7+7k2dnk8Pj88u3///TU0NTW58zP4PX/89jx9vbx7+/x9u/t7fH0+Pz23Nnd4+Dg3uLe2eLe5/399t7f3d/q9O7x8/Dw8fb+/PHJycrY3N7h39ja497g/Q=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

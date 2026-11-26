@@ -1,0 +1,26 @@
+{
+ "key": "ADL2_Diagram-11.2_p88",
+ "source": "ADL2",
+ "label": "Diagram 11.2",
+ "page": 88,
+ "caption": "Diagram 11.2 \u0007Renovation of a thermal element from the inside",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "2f4294e5ecc3c5dc3d4348d82f6a27f285f50783ab17a85ac41cb69a0eda4679",
+ "image_sig": {
+  "w": 756,
+  "h": 474,
+  "grey": "6NjY2NjY2NjY2NjY2NjY5vv///////////////////v7+unq7Ors7O3r6+rt6+r5+/vs6+3+////////////+/vq1/////////zN9/////v76rLG8PLy8u2/svf////7++qyr7G2traxr7L3////+/vqsrixveG5sbey6Oro8fr76rK/pbTsurG+su/v7e35++qywqGy9LqxwbLj4uT5+/vqsq2hoaOxsa2y8PXx/Pv76rKyoaGhr7Gysvf////7++qyxOvs7O7qvbL3////+/vq1P7///////vK9/////vn5OXl5eXl5eXl5eTl5eXmgF9bXlteX11eXVVPT09PdQ=="
+ },
+ "reviewed": true,
+ "description": "The drawing is a perspective view looking into a room corner, showing three wall surfaces. The left and right surfaces are grey, and each contains a narrow vertical window set in a frame with a central cross bar. The central surface is a green wall, with a square four‑pane window in its upper middle. A rectangular patch in the lower left corner of this green wall is marked with diagonal green hatching on a white ground, while the remainder of the green wall is plain green. Above the view, running text reads: \"For example, if plaster is being removed from the inner side of a wall, the area of the thermal element is the area of external wall as viewed from inside the room.\" A legend on the right gives two swatches: a diagonally hatched square labelled \"Area of the thermal element being renovated\" and a plain green square labelled \"Total area of the thermal element\", so the hatched patch relates to a part of the green wall. A green band along the bottom reads \"Diagram 11.2 Renovation of a thermal element from the inside\".",
+ "first_draft": "The drawing is a perspective view looking into a room corner, showing three wall surfaces. The left and right surfaces are grey, and each contains a narrow vertical window set in a frame with a central cross bar. The central surface is a green wall, with a square four‑pane window in its upper middle. The lower portion of this green wall is filled with diagonal green hatching. Above the view, running text reads: \"For example, if plaster is being removed from the inner side of a wall, the area of the thermal element is the area of external wall as viewed from inside the room.\" A legend on the right gives two swatches: a diagonally hatched square labelled \"Area of the thermal element being renovated\" and a plain green square labelled \"Total area of the thermal element\", so the hatched patch relates to a part of the green wall. A green band along the bottom reads \"Diagram 11.2 Renovation of a thermal element from the inside\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

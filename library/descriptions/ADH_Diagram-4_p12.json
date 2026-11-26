@@ -1,0 +1,33 @@
+{
+ "key": "ADH_Diagram-4_p12",
+ "source": "ADH",
+ "label": "Diagram 4",
+ "page": 12,
+ "caption": "Diagram 4 \u0007\u0007Branch ventilation pipes",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "33b0fe0f26f53cf6df30a010bb43fbeee088f13df06a165a052932bdcfbf4280",
+ "image_sig": {
+  "w": 371,
+  "h": 264,
+  "grey": "4snJ0Mi9x8jGu7/Mw8zd5+jDt9PNtbbBtLa0uay56fDa3t7e3t7e3t7e3t7e3t7g6f/////Y1tbTy+b/////9On/0OngxcfMzL+/9v////Tp/93v59/g3+Hf4d3z9vn06f///+f0+tne5P/Z2+Do9On////jv/fg2u7v1u/+//Tp////5/La7uD/7//////06fDk5Obl9tbi6fT/////9On1x9Hl3t3d1+j///////Tp//X75N/4//v////////06f///+f9////////////9On////n/v////////////Tp////39vP1czw///////05u/v7+/v7+/v7+/v7+/v7A=="
+ },
+ "reviewed": true,
+ "description": "This is a schematic line diagram titled \"Diagram 4 Branch ventilation pipes\". It depicts a vertical pipe. The upper continuation of this pipe is labelled \"Stack vent\"; the main body is labelled \"Ventilating stack\"; a lower section carries the label \"d.p.\"; and the bottom end is labelled \"Discharge stack\". A branch discharge pipe, labelled \"d.p.\", runs from the stack to the trap of an appliance on the right; a branch ventilating pipe, labelled \"v.p.\", rises from the discharge pipe near the trap and slopes back to join the ventilating stack. The text \"Invert of connection to stack vent or ventilating stack above spillover level\" points to where the v.p. joins the stack. A horizontal dimension marked \"750 Max.\" gives the greatest distance between the trap and the point where the v.p. leaves the discharge pipe. The appliance's \"Spillover level\" is marked by a horizontal line on the right.",
+ "first_draft": "This is a schematic line diagram, drawn in section, titled \"Diagram 4 Branch ventilation pipes\". It depicts a vertical pipe shown with diagonal hatch marks along its left edge. The upper continuation of this pipe is labelled \"Stack vent\"; the main body is labelled \"Ventilating stack\"; a lower section carries the label \"d.p.\"; and the bottom end is labelled \"Discharge stack\". The label \"v.p.\" sits within the upper part of the stack. In the top right corner the text \"Invert of connection to stack vent or ventilating stack above spillover level\" is shown with two short downward arrows pointing to two horizontal connection lines at the top of the stack. A vertical dimension of \"750\" is marked between these lines. To the right, a small vertical pipe marked \"Max.\" joins the stack through a U‑shaped bend, and a curved line on the right side is labelled \"Spillover level\", positioned opposite the top of that bend.",
+ "check": {
+  "verdict": "flag",
+  "note": "Misreads \"750 Max.\": it is a horizontal maximum of 750mm between the trap and the vent connection, not a vertical 750 with a separate pipe marked \"Max.\"",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "This is a schematic line diagram titled \"Diagram 4 Branch ventilation pipes\". It depicts a vertical pipe. The upper continuation of this pipe is labelled \"Stack vent\"; the main body is labelled \"Ventilating stack\"; a lower section carries the label \"d.p.\"; and the bottom end is labelled \"Discharge stack\". A branch discharge pipe, labelled \"d.p.\", runs from the stack to the trap of an appliance on the right; a branch ventilating pipe, labelled \"v.p.\", rises from the discharge pipe near the trap and slopes back to join the ventilating stack. The text \"Invert of connection to stack vent or ventilating stack above spillover level\" points to where the v.p. joins the stack. A horizontal dimension marked \"750 Max.\" gives the greatest distance between the trap and the point where the v.p. leaves the discharge pipe. The appliance's \"Spillover level\" is marked by a horizontal line on the right.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "This is a schematic line diagram titled \"Diagram 4 Branch ventilation pipes\". It depicts a vertical pipe. The upper continuation of this pipe is labelled \"Stack vent\"; the main body is labelled \"Ventilating stack\"; a lower section carries the label \"d.p.\"; and the bottom end is labelled \"Discharge stack\". To the right of the upper part of the pipe, a triangular branch pipe labelled \"v.p.\" connects to the stack. At the top of the diagram the text \"Invert of connection to stack vent or ventilating stack above spillover level\" is shown, with two short downward arrows pointing to two horizontal lines: the invert of the \"v.p.\" connection and the spillover level, which is the top of a small vertical pipe. A vertical dimension of \"750\" is marked between these lines. To the right of the \"v.p.\" branch, the small vertical pipe marked \"Max.\" joins the stack through a U‑shaped bend at its bottom. A curved line on the right side, labelled \"Spillover level\", runs from the top of the \"Max.\" pipe to a short horizontal line on the right that carries a downward arrow.",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

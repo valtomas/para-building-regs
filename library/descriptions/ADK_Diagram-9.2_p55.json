@@ -1,0 +1,26 @@
+{
+ "key": "ADK_Diagram-9.2_p55",
+ "source": "ADK",
+ "label": "Diagram 9.2",
+ "page": 55,
+ "caption": "Diagram 9.2 Ladders a maximum of 6m long",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "81f1dbc4013045716fc5201577924ac8f78c3b3f4db5cb9be496d7c465b06dfe",
+ "image_sig": {
+  "w": 737,
+  "h": 541,
+  "grey": "+vv7+/v7+/v6+/v7+/v7+/ju7fv/////9O/3///////8//////////f9/v///////P///////9/y//////////z////////w+//////////8///////18Pv//////////P//////7PT7//////////z//////+v1+//////////8///////s9fv//////////P//////8v37//////////z//////+r1+//////////8/////+jO4Oj09////////P/////34+r3/f////////z/////493i4+Lp///////w7+/v7+fi5ePk5+/v7+/vimthbmlsaWxVVVVVVVVVVQ=="
+ },
+ "reviewed": true,
+ "description": "A line elevation shows a ladder leaning diagonally against a vertical wall. A horizontal line at the bottom represents the ground and is labelled \"Suitable firm level surface in a safe place\". A vertical line on the right represents the wall, with a window near the top indicated by an arrow and the label \"Window\". The ladder is drawn resting its feet on the ground line and reaching up to the wall. A dimension line running parallel to the ladder reads \"Not more than 6m\". At the base of the ladder, a curved arc marks the angle between the ladder and the ground, labelled \"75°\". In the upper left corner is the text \"See para 9.1b(i)\". Below the drawing, a sentence reads \"Special safety features are not necessary if the ladder is not more than 6m long.\" A green band along the bottom carries the caption \"Diagram 9.2 Ladders a maximum of 6m long\".",
+ "first_draft": "A line elevation shows a ladder leaning diagonally against a vertical wall. A horizontal line at the bottom represents the ground and is labelled \"Suitable firm level surface in a safe place\". A vertical line on the right represents the wall, with a window near the top indicated by an arrow and the label \"Window\". The ladder is drawn resting its feet on the ground line and reaching up to the wall. A dimension line running parallel to the ladder reads \"Not more than 6m\". At the base of the ladder, a curved arc marks the angle between the ladder and the ground, labelled \"75°\". In the upper left corner is the text \"See para 9.1b(i)\". Below the drawing, a sentence reads \"Special safety features are not necessary if the ladder is not more than 6m long.\" A green band along the bottom carries the caption \"Diagram 9.2 Ladders a maximum of 6m long\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

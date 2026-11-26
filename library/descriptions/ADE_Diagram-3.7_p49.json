@@ -1,0 +1,26 @@
+{
+ "key": "ADE_Diagram-3.7_p49",
+ "source": "ADE",
+ "label": "Diagram 3.7",
+ "page": 49,
+ "caption": "Diagram 3.7 \u0007\u0007Floor type 1.1C – wall type 1",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "e360996ab709eceea3b72ef4b15494336790aa8f9a83f7d2d660c7c8ac1cee8b",
+ "image_sig": {
+  "w": 355,
+  "h": 383,
+  "grey": "26yxtLy2pbKfsq+yz9bW1vLp4+np2rC3p83p6enp6enh4uLi4uLi4uLi4uLi4uLi6P//++7z8/L//////////+j///bd5OTl/+Tg4+Lk7/To///27fj46P/p3OPi////6P//9uDo6Ob97P3//////+jt6+Tc4ePT2+vr6+vr6u3o7vj5+vDv6Pf0+vf58vfp6O/z+vj17/ry9vX59/X37ejy8+Tc5+bZ8/Hz4uvz8/Po8vDp3uXl3vDw7e7v7Oz06P//9+/4+PD///no4vT5/+j///3z9PT5///////////o///h4OPj5Pr////+9fX45/T09PT09PT09PT079Pa1A=="
+ },
+ "reviewed": true,
+ "description": "The image is a section drawing, titled in a green band at the top \"Diagram 3.7 Floor type 1.1C – wall type 1\", with the word \"SECTION\" printed in the lower right corner. At the centre is a horizontal band of material filled with small speckles, running the full width of the drawing. A vertical element drawn with a diagonal-hatch (blockwork) pattern rises from the top edge of this band in three stacked tiers, and a matching hatched element descends from the bottom edge in two tiers, the two being aligned with one another but separated by the unbroken speckled band, so the floor is continuous across the wall while the wall is interrupted by it. Two thin horizontal lines lie just beneath the speckled band, marked at a few points with small X symbols. A leader line from the label \"Separating floor type 1.1C carried through\" points into the middle of the speckled band. The label \"Floor type 1.1C\" sits at the lower right near the horizontal lines, and \"Separating wall type 1\" is positioned at the lower left, below the descending hatched element.",
+ "first_draft": "The image is a section drawing, titled in a green band at the top \"Diagram 3.7 Floor type 1.1C – wall type 1\", with the word \"SECTION\" printed in the lower right corner. At the centre is a horizontal band of material filled with small speckles, running the full width of the drawing. A vertical element drawn with a diagonal-hatch (blockwork) pattern rises from the top edge of this band in three stacked tiers, and a matching hatched element descends from the bottom edge in two tiers, so the wall appears to pass vertically through the speckled floor. Two thin horizontal lines lie just beneath the speckled band, marked at a few points with small X symbols. A leader line from the label \"Separating floor type 1.1C carried through\" points into the middle of the speckled band. The label \"Floor type 1.1C\" sits at the lower right near the horizontal lines, and \"Separating wall type 1\" at the lower left points to the descending hatched element.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

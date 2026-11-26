@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-B1_p102",
+ "source": "ADL2",
+ "label": "Table B1",
+ "page": 102,
+ "caption": "Table B1 \u0007Recommended maximum LENI (kWh per square metre per year) in new and existing buildings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "aab285c683e94ec336ee568e86563813fb791037662b0a56be6f2e90c5ff5221",
+ "image_sig": {
+  "w": 754,
+  "h": 441,
+  "grey": "v6ekoqKiop2qpqOppqm2ztLIpJ6fyMjIyMjIyMjIyM708u/29vb26unw9vb26ujw9/v7+Pv6+vr6+vv5+fb5+PX39/b49/j3+Pj49/f08e729fT28vH49fb19fHx9v378/Dv8O/s8vHx7vDv7PH49/Lw7vDw7/Ly8O/v7ezv+Pf08u/y8/Hy8/Px9O/u8vj38/Hu8vDw8/Ty8vDx7vH49/Px7/Pw8vTz8fLv8e/y+Pf18vDx8PDz8fDx8PDv8fj18vDu8u/w8fDv7/Dv7+/36vPv7O/w7vLw7u/t7u3u+Pfy7+zs7u3x8ezw7O7r6/j38e7p6e3s7+zr6e3r6u335g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

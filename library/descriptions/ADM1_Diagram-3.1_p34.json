@@ -1,0 +1,26 @@
+{
+ "key": "ADM1_Diagram-3.1_p34",
+ "source": "ADM1",
+ "label": "Diagram 3.1",
+ "page": 34,
+ "caption": "Diagram 3.1 | Maximum length of ramp at a given gradient | External steps forming part of an additional route",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "27ed528bc4b91ad4af58396da52c1e003b4720a4f797fbbb60e77bbbaf756e34",
+ "image_sig": {
+  "w": 754,
+  "h": 542,
+  "grey": "9/n6+vr6+vr6+fn6+vr6+PTl9/j4+Pj4+PDh8/////v79vj4+Pj4+Pjs6Obm4/L7+/L////////42+b+////+/vy+Pf39/f13NXm//////v79fn4+Pj37M3V5v/////7+/T5+Pj489PR1eb/////+/v05NPa2dXV0dXm//////v79N/R1dXV1dHV5v/////7+/Xf0dXV1dXR1eb/////+/v339HV1dXV0dXm//////v79d/R1dXV1dHV5vHx8P/7++/f0dXV1dXR1ebu7/n/+/v36+Tn5+fi3uHo/f////v4+/v7+/v78/Dz8fj7+/v4fl5WXl9bXFxgUU9PT09Paw=="
+ },
+ "reviewed": true,
+ "description": "This is a line chart, titled at the bottom 'Diagram 3.1 Maximum length of ramp at a given gradient'. The left vertical axis is labelled 'Gradient of ramp', running from 1:20 at the top to 1:10 at the bottom, with a vertical arrow marked 'shallower' at the top and 'steeper' at the bottom. The bottom horizontal axis is labelled 'Maximum length of ramp flight (m)', marked 0 to 10; the top right is labelled 'Rise (mm)' with the figure 500. A boundary line runs horizontally at the 1:15 level from the left axis to the 5 m mark, then rises diagonally to the top right corner at 10 m / 500 mm. Plotted points along the line carry the figures 67, 133, 200, 268, 333, 375, 412, 444, 474 and 500, each with a vertical line to the base axis. The line divides the chart into a grey-shaded region to the right of the line and a white region to its left and below; a legend at the bottom right keys the grey square to 'does not comply' and the white square to 'satisfactory'. A note at the top right reads 'Notes: 1. Gradient x length of flight = rise e.g. 1/20 x 10 = 500mm'.",
+ "first_draft": "This is a line chart, titled at the bottom 'Diagram 3.1 Maximum length of ramp at a given gradient'. The left vertical axis is labelled 'Gradient of ramp', running from 1:20 at the top to 1:10 at the bottom, with a vertical arrow marked 'shallower' at the top and 'steeper' at the bottom. The bottom horizontal axis is labelled 'Maximum length of ramp flight (m)', marked 0 to 10; the top right is labelled 'Rise (mm)' with the figure 500. A boundary line runs horizontally at the 1:15 level from the left axis to the 5 m mark, then rises diagonally to the top right corner at 10 m / 500 mm. Plotted points along the line carry the figures 67, 133, 200, 268, 333, 375, 412, 444, 474 and 500, each with a vertical line to the base axis. The line divides the chart into a grey-shaded region and a white region; a legend at the bottom right keys the grey square to 'does not comply' and the white square to 'satisfactory'. A notes box at the top right reads 'Notes: 1. Gradient x length of flight = rise e.g. 1/20 x 10 = 500mm'.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

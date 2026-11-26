@@ -1,0 +1,33 @@
+{
+ "key": "ADJ_Diagram-12_p25",
+ "source": "ADJ",
+ "label": "Diagram 12",
+ "page": 25,
+ "caption": "Diagram 12 \u0007Material change of use: fire protection of chimneys passing through other dwellings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-20",
+ "image_sha256": "dcf0765c7d9e1870c2dd57c827062e9fbf7f539f399fb1036e62b44ff7f6a27b",
+ "image_sig": {
+  "w": 749,
+  "h": 572,
+  "grey": "1s3FvMHCw8PCxMTAwsrj4+rr3sfNzMbr6+vr6+vr6+v0////2tPo////////////9P///+f35/////////////T////h+s/l6f/////////0////5PfWzcrcsbfk////9P///+X59+bZ3qi79P////T////g3NLj29iprOD////0////5tje3dv12P//////9P///+Dw6unZ//////////T////l9+vb2v/////////0////5PnG0N7/////////9P///+H45/////////////T////m+Of////////////0////3eHh////////////6vHx8d7m7vHx8fHx8fHx8Q=="
+ },
+ "reviewed": true,
+ "description": "The drawing is a plan view. A vertical wall is shown with diagonal hatching, its top and bottom edges cut off by wavy break lines. Near the centre of the wall is a pair of concentric circles, representing a chimney in plan. The chimney breast, also hatched, projects to the right of the wall around the flue. A grey L-shaped band with a dashed outer edge wraps round the projecting chimney breast, showing added fire protection. A thin leader line runs from a small solid black dot on the grey band to a block of text on the right, which reads: \"To maintain the compartmentation of dwellings, additional fire protection may be needed to meet the Requirements in Part B\". A title banner above the drawing reads: \"Diagram 12 Material change of use: fire protection of chimneys passing through other dwellings\".",
+ "first_draft": "The drawing is a plan view. A vertical wall is shown with diagonal hatching, its top and bottom edges cut off by wavy break lines. Near the centre of the wall is a pair of concentric circles, representing a chimney in plan. On the right-hand side of the wall a rectangular notch is cut out, and within and around this notch lies a grey shaded, L-shaped area. The right edge of this area is a vertical dashed line, joined at the top and bottom by horizontal dashed lines to form a rectangle. A thin leader line runs from a small solid black dot placed on the grey shading to a block of text on the right, which reads: \"To maintain the compartmentation of dwellings, additional fire protection may be needed to meet the Requirements in Part B\". A title banner above the drawing reads: \"Diagram 12 Material change of use: fire protection of chimneys passing through other dwellings\".",
+ "check": {
+  "verdict": "minor",
+  "note": "Muddled: the hatched chimney breast projects to the right of the wall, and the grey L-shaped band with the dashed outline is the added fire protection around it.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "The drawing is a plan view. A vertical wall is shown with diagonal hatching, its top and bottom edges cut off by wavy break lines. Near the centre of the wall is a pair of concentric circles, representing a chimney in plan. The chimney breast, also hatched, projects to the right of the wall around the flue. A grey L-shaped band with a dashed outer edge wraps round the projecting chimney breast, showing added fire protection. A thin leader line runs from a small solid black dot on the grey band to a block of text on the right, which reads: \"To maintain the compartmentation of dwellings, additional fire protection may be needed to meet the Requirements in Part B\". A title banner above the drawing reads: \"Diagram 12 Material change of use: fire protection of chimneys passing through other dwellings\".",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "The drawing is a plan view. A vertical wall is shown with diagonal hatching, its top and bottom edges cut off by wavy break lines. Near the centre of the wall is a pair of concentric circles, representing a chimney in plan. On the right-hand side of the wall a rectangular notch is cut out, which is filled by a grey shaded rectangle. To the right of this grey rectangle, horizontal dashed lines extend from the top and bottom right corners, joined by a vertical dashed line on the right, forming a larger rectangle. A thin leader line runs from a small solid black dot placed at the top-right corner of the grey rectangle to a block of text on the right, which reads: \"To maintain the compartmentation of dwellings, additional fire protection may be needed to meet the Requirements in Part B\". A title banner above the drawing reads: \"Diagram 12 Material change of use: fire protection of chimneys passing through other dwellings\".",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

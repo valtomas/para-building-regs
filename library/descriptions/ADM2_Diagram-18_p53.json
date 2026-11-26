@@ -1,0 +1,33 @@
+{
+ "key": "ADM2_Diagram-18_p53",
+ "source": "ADM2",
+ "label": "Diagram 18",
+ "page": 53,
+ "caption": "Diagram 18 Unisex wheelchair-accessible toilet with corner WC",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "58d34afe616b7ef4eb9a72694a1c3af6a58adcd15dfcfb103e2bbf1a455ec8d4",
+ "image_sig": {
+  "w": 749,
+  "h": 595,
+  "grey": "0sjEwLu6wLm9vcK82N7e3u/4+Pj4+PXq9vj4+Pj4+Pj0////////8vz/////////9P////Dt+PP/6e////////T////28vHs7t7o8//////0/////P/63efx6P3/////9P//8vn99/j34ev///////T////98e34+/Dl4PP////0/////f/15+Po3+3w9f//9P////329/zx6N7t7/f///T////83+Lv6+zz9P/////0//////Tw9e/o+ubs////9P///////ffx8/v///////T///////357vb8///////0///5/f/97/Dv9///////7fHx7OLj5PHx8fHx8fHx8Q=="
+ },
+ "reviewed": true,
+ "description": "This is a floor plan of a single room, titled Diagram 18 Unisex wheelchair-accessible toilet with corner WC. The room outline is rectangular. Along the top edge a door is drawn with an open arc, and to its left a further door position is shown in dashed lines, labelled Alternative door position; at the top right corner a Sanitary dispenser is shown. The upper area contains a dashed square marked 1500mm x 1500mm wheelchair turning space, a Mirror on its left wall, and, at the top right corner, a Disposal bin above a Shelf. The right wall, labelled Wall A, carries a Finger rinse basin, Vertical grab rails, and an Alarm pull cord; the left wall has Clothes hooks. The WC is at the bottom centre, with a Drop-down rail to its left and a Wall-mounted grab rail on the right wall. Dimensions given are 2200mm min. and 750mm on the left; 140–160mm, 60–85mm, 600mm and 250mm on the right; and 150mm, 320mm, 500mm, 970mm, 1000mm min., 1500mm min. (excluding any projecting heat emitters) across the bottom. A Sanitary disposal unit and a Zone for shelf for standing users are marked on the right. At the bottom left, labels read Alternative position for alarm pull cord and Vertical grab rail. A Note reads: Layout for right-hand transfer to WC.",
+ "first_draft": "This is a floor plan of a single room, titled Diagram 18 Unisex wheelchair-accessible toilet with corner WC. The room outline is rectangular. Along the top edge a door is drawn with an open arc, labelled Alternative door position, and at the top right a Sanitary dispenser. The upper area contains a dashed square marked 1500mm x 1500mm wheelchair turning space, a Mirror on its left wall (Wall A), and, at the top right corner, a Disposal bin above a Shelf. The right wall carries a Finger rinse basin, Vertical grab rails, and an Alarm pull cord; the left wall has Clothes hooks. The WC is at the bottom centre, with a Drop-down rail to its left and a Wall-mounted grab rail on the right wall. Dimensions given are 2200mm min. and 750mm on the left; 140–160mm, 80–95mm, 600mm and 250mm on the right; and 150mm, 320mm, 500mm, 970mm, 1000mm min., 1500mm min. (excluding any projecting heat emitters) across the bottom. A Sanitary disposal unit and a Zone for shelf for standing users are marked on the right. A Note reads: Layout for right-hand transfer to WC.",
+ "check": {
+  "verdict": "flag",
+  "note": "Reads \"60–85mm\" as \"80–95mm\", and puts Wall A on the left with the mirror; Wall A is the right-hand wall with the basin.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "This is a floor plan of a single room, titled Diagram 18 Unisex wheelchair-accessible toilet with corner WC. The room outline is rectangular. Along the top edge a door is drawn with an open arc, and to its left a further door position is shown in dashed lines, labelled Alternative door position; at the top right corner a Sanitary dispenser is shown. The upper area contains a dashed square marked 1500mm x 1500mm wheelchair turning space, a Mirror on its left wall, and, at the top right corner, a Disposal bin above a Shelf. The right wall, labelled Wall A, carries a Finger rinse basin, Vertical grab rails, and an Alarm pull cord; the left wall has Clothes hooks. The WC is at the bottom centre, with a Drop-down rail to its left and a Wall-mounted grab rail on the right wall. Dimensions given are 2200mm min. and 750mm on the left; 140–160mm, 60–85mm, 600mm and 250mm on the right; and 150mm, 320mm, 500mm, 970mm, 1000mm min., 1500mm min. (excluding any projecting heat emitters) across the bottom. A Sanitary disposal unit and a Zone for shelf for standing users are marked on the right. At the bottom left, labels read Alternative position for alarm pull cord and Vertical grab rail. A Note reads: Layout for right-hand transfer to WC.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "This is a floor plan of a single room, titled Diagram 18 Unisex wheelchair-accessible toilet with corner WC. The room outline is rectangular. Along the top edge a door is drawn with an open arc, and to its left a further door position is shown in dashed lines, labelled Alternative door position; at the top right corner a Sanitary dispenser is shown. The upper area contains a dashed square marked 1500mm x 1500mm wheelchair turning space, a Mirror on its left wall (Wall A), and, at the top right corner, a Disposal bin above a Shelf. The right wall carries a Finger rinse basin, Vertical grab rails, and an Alarm pull cord; the left wall has Clothes hooks. The WC is at the bottom centre, with a Drop-down rail to its left and a Wall-mounted grab rail on the right wall. Dimensions given are 2200mm min. and 750mm on the left; 140–160mm, 80–95mm, 600mm and 250mm on the right; and 150mm, 320mm, 500mm, 970mm, 1000mm min., 1500mm min. (excluding any projecting heat emitters) across the bottom. A Sanitary disposal unit and a Zone for shelf for standing users are marked on the right. At the bottom left, labels read Alternative position for alarm pull cord and Vertical grab rail. A Note reads: Layout for right-hand transfer to WC.",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

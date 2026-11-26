@@ -1,0 +1,17 @@
+{
+ "key": "ADJ_Table-G2_p80",
+ "source": "ADJ",
+ "label": "Table G2",
+ "page": 80,
+ "caption": "Table G2 Pressure classes",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-22",
+ "image_sha256": "776dc8fad675e76b27027d6671ce4ad1854365b0afa7cab0f3e58886b104eb07",
+ "image_sig": {
+  "w": 371,
+  "h": 264,
+  "grey": "2rS9uLC4ur20uL/Ozs7O3e6/yMjIt7DAt67E6enp6fDqyrjB3d3dtN3d3bm6tsno//y33f//4rjb///ZqLrj//////////zZ////1cTR6P/////////////////O3v//9vDl8PDp8Obw8Onw6evw9fXv4e/v5e/f7+/l7+Xo7/T//+L///T/5f//9P/u9P//9e/s7+/l7+zv7+Xv7e3v9Pbw3fDw5vDM8PDm8NLY8PX//+f///T/3f//9P/q6v//9vDs8PDm8Onw8Obw7Ovw9f//5///9P/N+f/0/93k///28Nzw8Obwzuzw5vDf3/D19e/o7+/o7+Hu7+jv5+jv9A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

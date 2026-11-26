@@ -1,0 +1,26 @@
+{
+ "key": "ADK_Diagram-2.1_p28",
+ "source": "ADK",
+ "label": "Diagram 2.1",
+ "page": 28,
+ "caption": "Diagram 2.1 | Relationship of ramp gradient to the going of a flight",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-22",
+ "image_sha256": "e6a9e54bf7847b5de4a7d1b73eba88ed58117c1267b94238a4893ec2e6377bc9",
+ "image_sig": {
+  "w": 754,
+  "h": 485,
+  "grey": "+Pb3+/v7+/v7+/v7+/v7+frw9//0/Pz8/Pzw7v3///z8////+f/////69//////8/P//+/n/////9Pz//////Pz///T5////9v38//////z8///z+f///vb//P/////8/P//9PL7++zu+vz//////Pz///P4//r3///8//////z8///9+f/0/f///P/////8/P////Dq7PT///z//////Pz////5+v/9///8//////z8////9/L28vX19v/////8/P////7+9O3r//3//////Pjp6+7v7+3s7O/t8/////zZxcHEwNPT09PT09PT09PYimlfa2lpa2dpamtZVVVVcw=="
+ },
+ "reviewed": true,
+ "description": "This is a line chart, with the title \"Diagram 2.1 Relationship of ramp gradient to the going of a flight\" in a green bar at the bottom, and the text \"See para 2.3\" at the top left. The vertical axis is labelled \"Maximum gradient of ramp\" and is marked 1:12, 1:15 and 1:20. The horizontal axis is labelled \"Going of ramp flight (m)\" and is marked 0, 2, 5 and 10. A single line runs horizontally at 1:12 from 0 to 2, where a point is marked \"(166mm rise)\". From there the line rises in a straight diagonal to a point at 5, labelled \"(333mm rise)\" and aligned with 1:15, and then continues in a straight diagonal of a different slope to a point at 10, labelled \"(500mm rise)\" and aligned with 1:20. Dashed lines drop from the point at 2 to 2 on the horizontal axis, and from the points at 5 and 10 to their corresponding values on the horizontal axis; horizontal dashed lines also run from the points at 5 and 10 to 1:15 and 1:20 on the vertical axis. Below the chart, a NOTE reads: \"For goings between 2m and 10m, it is acceptable to interpolate between the maximum gradients i.e. 1:14 for 4m going or 1:19 for 9m going\".",
+ "first_draft": "This is a line chart titled \"Diagram 2.1 Relationship of ramp gradient to the going of a flight\", with the text \"See para 2.3\" at the top left. The vertical axis is labelled \"Maximum gradients of ramp\" and is marked 1:12, 1:15 and 1:20. The horizontal axis is labelled \"Going of ramp flight (m)\" and is marked 0, 2, 5 and 10. A single line runs horizontally at 1:12 from 0 to 2, where a point is marked \"(166mm rise)\". From there the line rises in a straight diagonal to a point at 5, labelled \"(333mm rise)\" and aligned with 1:15, and continues to a point at 10, labelled \"(500mm rise)\" and aligned with 1:20. Dashed lines connect each of these three points to the corresponding values on the axes. Below the chart, a NOTE reads: \"For goings between 2m and 10m, it is acceptable to interpolate between the maximum gradients i.e. 1:14 for 4m going or 1:19 for 9m going\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

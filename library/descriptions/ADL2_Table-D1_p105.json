@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-D1_p105",
+ "source": "ADL2",
+ "label": "Table D1",
+ "page": 105,
+ "caption": "Table D1 \u0007Energy efficiency measures which should usually be installed whenever consequential improvements are required These measures are considered technically, functionally and economically feasible in normal circumstances. These measures should be installed at least to the extent outlined to meet the reasonable provision criterion, based on the value of the principal works, as outlined in Section 12.",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "6ba14f25e1e3ff9dad07b5868b08e6348673eb21642e7eebb14cb442e793b72b",
+ "image_sig": {
+  "w": 747,
+  "h": 730,
+  "grey": "xLOdmp2eoJ+arbSvsrTIxtDItbW0ubu8vL28vb29usDQyLe1trW5tre5uLi5ubzD1M29vMXIx8bIxsjHxsfHx/L17Ozw9fb19vX19vb19ff08eDj5ebo5+Tl5OXp5Oby9fPk5+To6Ojo5+nm6Ojo7fju3t3e3+fr6uvp7Ors7ff29ejp6erq6uvp6/f39vf39vHk5ebo8/Pw8/P08/Py9/rz3N3d4N3j3ebn5+z19fv4+O/s7e7s7u3s7/r5+/v4+e/d5ejo6OXm5ejo6Onm7vbx5eHl4uPl6O/w7+3v8O7l8fTz9PPz8/X09PP19PTz5+Tr6+vr7Ors6uvq6+3q7A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

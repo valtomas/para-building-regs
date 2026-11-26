@@ -1,0 +1,26 @@
+{
+ "key": "ADE_Diagram-4.5_p63",
+ "source": "ADE",
+ "label": "Diagram 4.5",
+ "page": 63,
+ "caption": "Diagram 4.5 \u0007\u0007Floor treatment 1 – wall treatment 1 | Floor treatment 2: platform floor with absorbent material",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "93a6f6bbdc84e9237c33fb547ecb4c0da1a3d4d823bc9ef94668dfcf921625b1",
+ "image_sig": {
+  "w": 355,
+  "h": 513,
+  "grey": "4bu7wsbBtb2zsLO8x7y22ujf39/f0bi0ubze39/f39/o//rw9Prt////////////6P/r4t7tz////////////+j/6ebf7c/////////////o/+/n3ejU9PT09PT09Pr/6P/u5dvn6v///////+30/+j/7+fj5+f////////p+P/o/+7l2eDk6urq6urq4vD/6P/s493r7/////////P3/+j/6uLc5ubt6urp6enf+P/o/+vh3N7e3d3d3d7e5fH/6P/u5eHiwff39/f39/f8/+j/7uTf573////////////o/+/k5ue9////////////4+/k4dzjy+/v7+/v7M/W0A=="
+ },
+ "reviewed": true,
+ "description": "The drawing is a section, headed \"Diagram 4.5 Floor treatment 1 – wall treatment 1\" and marked \"SECTION\" at the lower right corner. On the left is a vertical wall drawn as a stack of rectangular blocks filled with diagonal hatching. To the right of the top of this wall, down to the upper floor, is a narrow vertical strip filled with a zigzag pattern. Two horizontal floor constructions project to the right from the wall. The upper one is a horizontal slab over a deep trussed section, with X-shaped diagonal bracing at each end. The lower construction is a similar horizontal slab that contains, across its depth, a row of overlapping curved loops, with X-braced truss members at the left and right ends. Beneath this lower slab, to the right of the wall, is a second narrow vertical strip, again filled with the zigzag pattern, mirroring the strip above.",
+ "first_draft": "The drawing is a section, headed \"Diagram 4.5 Floor treatment 1 – wall treatment 1\" and marked \"SECTION\" at the lower right corner. On the left is a vertical wall drawn as a stack of rectangular blocks filled with diagonal hatching. Set into the right face of this wall, at the top, is a narrow vertical strip filled with a zigzag pattern alongside a thin vertical line. Two horizontal floor constructions project to the right from the wall. The upper one is a horizontal slab spanning a row of trusses, each end and the middle bay shown with X-shaped diagonal bracing. The lower construction is a similar horizontal slab that contains, across its depth, a row of overlapping curved loops, with X-braced truss members at the left and right ends. Beneath this lower slab is a second narrow vertical strip, again filled with the zigzag pattern and a thin vertical line, mirroring the strip above.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

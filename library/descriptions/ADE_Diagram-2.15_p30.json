@@ -1,0 +1,26 @@
+{
+ "key": "ADE_Diagram-2.15_p30",
+ "source": "ADE",
+ "label": "Diagram 2.15",
+ "page": 30,
+ "caption": "Diagram 2.15 \u0007\u0007Wall type 2.1 | E VERSION | E",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "bb9b6526f14b1301e3a29df21145a5efec1ffe6a24c115febbfe92ac1bb891ce",
+ "image_sig": {
+  "w": 362,
+  "h": 418,
+  "grey": "wrC0vMC5nauls8fY2NjY4uHp7e3t7e3r6+3t7e3t7evp//////j4/Pr4+//////06f/////u9PXz9fL/////9On/////7vT19PXy//////Tp/////+zp8O7q8f/////06f/////u9fX19fL/////9On/////7vX29PXy//////Tp/////+zp6+rp8f/////06f/////v9vP19fH/////9On/////7/X19PXy//////Tp/////+zr8e7p8f/////06f/////u8/b19PL/////9On/////7vX09PXy//////Tp/////+/y9fPy8//////06f//////////////3uHd6g=="
+ },
+ "reviewed": true,
+ "description": "This vertical section drawing, titled \"Diagram 2.15 Wall type 2.1\", depicts two parallel columns of rectangular masonry blocks. Each block is filled with a diagonal cross-hatch pattern, and they are stacked vertically, separated by thin horizontal lines. A horizontal line connects the inner vertical faces of the two columns at the center of the drawing, interrupted by a small vertical tick mark. The word \"SECTION\" is printed in capital letters in the bottom right corner.",
+ "first_draft": "This vertical section drawing, titled \"Diagram 2.15 Wall type 2.1\", depicts two parallel columns of rectangular masonry blocks. Each block is filled with a diagonal cross-hatch pattern, and they are stacked vertically, separated by thin horizontal lines. A horizontal line connects the inner vertical faces of the two columns at the center of the drawing, interrupted by a small vertical tick mark. The word \"SECTION\" is printed in capital letters in the bottom right corner.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

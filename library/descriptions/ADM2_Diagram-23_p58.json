@@ -1,0 +1,33 @@
+{
+ "key": "ADM2_Diagram-23_p58",
+ "source": "ADM2",
+ "label": "Diagram 23",
+ "page": 58,
+ "caption": "Diagram 23 An example of a self-contained shower room for individual use",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "0329344978e7d2254e744b4d854c2dade62c0d2b1983c1f01503eb92740b3101",
+ "image_sig": {
+  "w": 755,
+  "h": 764,
+  "grey": "2djX0tHU0s/R1NPUzdHp6/T/////8/H6+vr9//////r0//////r49fT/+v/////69P/////68+vo6vn/////+vT////37eje4vT6//////r0///8+t/j6OP5+v/////69P//+fH37/Dv+vP2////+vT/+e718/Ts/v/u09/z//r0//329vPn7ff4/f/////69P///vLn3fXv+PHy////+vT/+PXw5+rw8fj2//////r0///+++zn9vPw9//////69P///v/z9fHp8/f/////+vT///3+9PXq/PD0/v////r0///c3vn9+fvw/v/////68Pr69fT2+vr47/f6+vr69g=="
+ },
+ "reviewed": true,
+ "description": "Diagram 23, titled 'An example of a self-contained shower room for individual use', shows an elevation above and a plan below. The elevation is a vertical rectangle with a 500mm top dimension, a 'Fixed shower head' at top, and a vertical scale of 1400mm, 1200mm, 1000mm and 750mm; 1200mm to 1400mm is labelled 'Range for adjustable and detachable shower head' and 750mm to 1000mm 'Range for shower controls'. A 'Back rest' sits left, with left dimensions 680mm and 480mm. Lower parts are 'Drop-down rail on side wall', 'Drop-down rail' and 'Tip-up seat'. A note states that the alarm pull cord, horizontal and vertical grab rails, shower curtain rail and towel rail are not shown for clarity. The plan is a 2200mm by 2000mm rectangle with top dimensions 250mm, 600mm, 50mm, 300mm, left dimensions 1200mm, 500mm, 320mm and an internal 650mm. It marks 'Shower control and adjustable shower head', 'Alarm pull cord', 'Floor drain', 'Tip-up seat', 'Towel rail', 'Clothes hooks', 'Drop-down rails', 'Fall of floor' with an arrow, 'Shower curtain', and a '1500mm x 1500mm wheelchair turning space'. A door is shown at the bottom edge of the plan. A bottom note describes an 'Additional optional tip-up seat for users when drying (mainly for ambulant users)'.",
+ "first_draft": "Diagram 23, titled 'An example of a self-contained shower room for individual use', shows an elevation above and a plan below. The elevation is a vertical rectangle with a 500mm top dimension, a 'Fixed shower head' at top, and a vertical scale of 1400mm, 1200mm, 1000mm and 750mm; the upper three are labelled 'Range for adjustable and detachable shower head' and the 750mm level 'Range for shower controls'. A 'Back rest' sits left, with left dimensions 680mm and 480mm. Lower parts are 'Drop-down rail on side wall', 'Drop-down rail' and 'Tip-up seat'. A note states the alarm pull cord, grab rails, shower curtain rail and towel rail are not shown. The plan is a 2200mm by 2000mm rectangle with top dimensions 250mm, 600mm, 50mm, 300mm, left dimensions 1200mm, 500mm, 320mm and an internal 650mm. It marks 'Shower control and adjustable shower head', 'Alarm pull cord', 'Floor drain', 'Tip-up seat', 'Towel rail', 'Clothes hooks', 'Drop-down rails', 'Fall of floor' with an arrow, 'Shower curtain', and a '1500mm x 1500mm wheelchair turning space'. A bottom note describes an 'Additional, optional tip-up seat for users when drying (mainly for ambulant users)'.",
+ "check": {
+  "verdict": "flag",
+  "note": "Gets the ranges wrong: 1200 to 1400mm is the range for the adjustable shower head and 750 to 1000mm the range for shower controls; it puts 1000mm in the head range.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "Diagram 23, titled 'An example of a self-contained shower room for individual use', shows an elevation above and a plan below. The elevation is a vertical rectangle with a 500mm top dimension, a 'Fixed shower head' at top, and a vertical scale of 1400mm, 1200mm, 1000mm and 750mm; 1200mm to 1400mm is labelled 'Range for adjustable and detachable shower head' and 750mm to 1000mm 'Range for shower controls'. A 'Back rest' sits left, with left dimensions 680mm and 480mm. Lower parts are 'Drop-down rail on side wall', 'Drop-down rail' and 'Tip-up seat'. A note states that the alarm pull cord, horizontal and vertical grab rails, shower curtain rail and towel rail are not shown for clarity. The plan is a 2200mm by 2000mm rectangle with top dimensions 250mm, 600mm, 50mm, 300mm, left dimensions 1200mm, 500mm, 320mm and an internal 650mm. It marks 'Shower control and adjustable shower head', 'Alarm pull cord', 'Floor drain', 'Tip-up seat', 'Towel rail', 'Clothes hooks', 'Drop-down rails', 'Fall of floor' with an arrow, 'Shower curtain', and a '1500mm x 1500mm wheelchair turning space'. A door is shown at the bottom edge of the plan. A bottom note describes an 'Additional optional tip-up seat for users when drying (mainly for ambulant users)'.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "Diagram 23, titled 'An example of a self-contained shower room for individual use', shows an elevation above and a plan below. The elevation is a vertical rectangle with a 500mm top dimension, a 'Fixed shower head' at top, and a vertical scale of 1400mm, 1200mm, 1000mm and 750mm; the upper three are labelled 'Range for adjustable and detachable shower head' and the 750mm level 'Range for shower controls'. A 'Back rest' sits left, with left dimensions 680mm and 480mm. Lower parts are 'Drop-down rail on side wall', 'Drop-down rail' and 'Tip-up seat'. A note states that the alarm pull cord, horizontal and vertical grab rails, shower curtain rail and towel rail are not shown for clarity. The plan is a 2200mm by 2000mm rectangle with top dimensions 250mm, 600mm, 50mm, 300mm, left dimensions 1200mm, 500mm, 320mm and an internal 650mm. It marks 'Shower control and adjustable shower head', 'Alarm pull cord', 'Floor drain', 'Tip-up seat', 'Towel rail', 'Clothes hooks', 'Drop-down rails', 'Fall of floor' with an arrow, 'Shower curtain', and a '1500mm x 1500mm wheelchair turning space'. A door is shown at the bottom edge of the plan. A bottom note describes an 'Additional optional tip-up seat for users when drying (mainly for ambulant users)'.",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

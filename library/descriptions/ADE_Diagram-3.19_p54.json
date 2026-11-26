@@ -1,0 +1,26 @@
+{
+ "key": "ADE_Diagram-3.19_p54",
+ "source": "ADE",
+ "label": "Diagram 3.19",
+ "page": 54,
+ "caption": "Diagram 3.19 \u0007\u0007Floor type 2.1C – wall types 3.1 and 3.2 | Floor type 2.2B",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "b4360dd9a6d64789e705c5e6dc80aa1861e64ca9506a04d8d6a4291b9856fc3e",
+ "image_sig": {
+  "w": 362,
+  "h": 472,
+  "grey": "z7zDy8vFusWuwcLGxLfi6tvZ2dnZyqi2sbq2rtLZ2ePp///06vTs9P/////////06f//69n83Or/8erl8v//9On//+zX69vq9eDe5fv///Tp///s2vzd4/T////////05vPty9r83cH07/Tz8PXz7dvT1M7i6eHP0c3Qz8vS0ObY+fP29fb29/L28vX09/Xp5evrztHp1Mzr69nr6+bd8ent1Oza/N3q/+Te//////Tp//7s1+ja6v///v/////06f//69n83Or/////////9On//+va8t3r//////////Tp///j3+Pg6f/////////05Pb29uzn7fb29vb22trT4w=="
+ },
+ "reviewed": true,
+ "description": "A section drawing, marked \"SECTION\" in the lower right, titled \"Diagram 3.19 Floor type 2.1C – wall types 3.1 and 3.2\" in a green box at the top. In the centre a vertical separating wall, shown as a column of stacked rectangular blocks with diagonal lines inside, flanked by thin vertical lines, runs from the top to the bottom of the drawing. A horizontal floor structure, drawn as a speckled concrete slab resting on beams marked with X symbols, spans to the left and right of the wall. On the left the floor is labelled \"Floor 2.1C(a)\" and the slab is topped by a set of horizontal lines and a small rectangle containing an 'X'; on the right the floor is labelled \"Floor 2.1C(b)\" and the slab is topped by a cross-hatched layer. At the top of the wall, where it meets this layer, there is a small gap. A leader line points to this gap with the label \"Fill small gap with flexible seal\". The base of the wall, below the floor, is labelled \"Separating wall types 3.1 and 3.2\". The wall is continuous through the floor, with the floor elements abutting it on both sides.",
+ "first_draft": "A section drawing, marked \"SECTION\" in the lower right, titled \"Diagram 3.19 Floor type 2.1C – wall types 3.1 and 3.2\". In the centre a vertical separating wall, shown as a column of stacked rectangular blocks flanked by thin vertical lines, runs from the top to the bottom of the drawing. A horizontal floor structure, drawn as a speckled concrete slab resting on beams marked with X symbols, passes behind the wall and spans to the left and right. On the left the floor is labelled \"Floor 2.1C(a)\"; on the right \"Floor 2.1C(b)\". On the right side the slab is topped by a cross-hatched layer, and at the top of the wall, where it meets this layer, there is a small gap. A leader line points to this gap with the label \"Fill small gap with flexible seal\". The base of the wall, below the floor, is labelled \"Separating wall types 3.1 and 3.2\". The wall is continuous through the floor, with the floor elements abutting it on both sides.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

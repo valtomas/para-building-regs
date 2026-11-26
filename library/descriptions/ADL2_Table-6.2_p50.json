@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-6.2_p50",
+ "source": "ADL2",
+ "label": "Table 6.2",
+ "page": 50,
+ "caption": "Table 6.2 \u0007Minimum heat generator seasonal efficiency for boiler systems in existing buildings(1)(2)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "aa82578cc130ba31f5710e053637002e97d8c39576713708d4d83b2c20b4edb5",
+ "image_sig": {
+  "w": 756,
+  "h": 503,
+  "grey": "wamoqKaoq6mkqqesqaq40NnQsK/M0NDQ0NDQ0NDQ0Nbw8fn28/n5+fLt7Ozt7vL38O7/9eXn6fTy+vr6+vr6+Pv///Tk5Ofo6/n5+fn5+ff7///z4Ofp+Oz08vL5+vr4+///+vP4///u5eLi7f//++76+vLg4uPy7fT09PT09PT7///15ejo9+75+fn5+fn3+///9uz0///u7+rq/f//+/L6+vbs9vr67Orq6+r6+vj5///y4e75+ezq5+b4+fn3+Pr6/Pn5+vrx6ejp6fr6+OXx/v/+/v7///7///////vz39/h4d7i49vi5+/y8PH39OTk5eTk5ePk5ej29/b29g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

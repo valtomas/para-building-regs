@@ -267,8 +267,12 @@ buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 
   the model and dates in mono, and Approve (primary), Edit (outline) and Reject (danger outline) buttons; once
   decided, Withdraw approval or Undo rejection. A warm note says when a drawing's image has changed since its
   description was approved. The description shown is the model's second
-  reading (its draft corrected against the image), and there's nothing else to compare: one text against one image.
-  A correction someone other than the model made shows as "corrected by …" in the mono line. Two views, Descriptions
+  reading (its draft corrected against the image). Where another reader has checked it against the image, a mono line
+  with a clay rule on the left gives the verdict and why ("Claude's check: Wrong. …"); where they wrote a correction
+  (`suggestion` in the description's file), the model's text and theirs sit side by side with removed words struck
+  through and added ones marked, and "Approve suggestion" is the primary button, with "Approve original" beside it.
+  Filters under "Claude's check" show suggested corrections, bad crops, those that looked right and recut ones. A
+  correction someone other than the model made shows as "corrected by …" in the mono line. Two views, Descriptions
   and Crops, switched by pills under the title. Crops is a grid of tiles by document (the image on white in a 200 px
   box, the label and page in mono, a "Bad crop" tick box); a ticked tile has a danger-coloured border, a recut one a
   warm note, and filters show all, marked bad or recut since marked, for one document or all. A description whose

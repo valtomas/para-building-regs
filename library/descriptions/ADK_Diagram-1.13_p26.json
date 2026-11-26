@@ -1,0 +1,33 @@
+{
+ "key": "ADK_Diagram-1.13_p26",
+ "source": "ADK",
+ "label": "Diagram 1.13",
+ "page": 26,
+ "caption": "Diagram 1.13 | Handrail design Guarding of stairs For all buildings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-22",
+ "image_sha256": "5d788460de6fb064fc0260f6daf1261ca6b62cd6279f422a05dc45b599786737",
+ "image_sig": {
+  "w": 753,
+  "h": 799,
+  "grey": "+fT2/Pz89/P1/Prz8/P8+fv7/f71/+ji8f/63N3b7vv8///94+vw8v////v////7/P///ej89PTz6unw////+/z///3o//Xv7/Ls8/////v8///93O3p8+7q6vj////7/P///eT/////////////+/z///7y///59v7///////v8///////79Pb3///////7/P//////9fT/+v//////+/z///jx++z7//r///////v8///47/nk8fbx0PX////7/P/////58/Tt8f//////+/z/////////8PD///////v8//////////Pz///////7pIuFjI2Df39/f39/f39/kQ=="
+ },
+ "reviewed": true,
+ "description": "The drawing, captioned \"Diagram 1.13 Handrail design\", carries the note \"See para 1.36\" at the top left and has an upper and a lower part. The upper part is a side section showing two handrail cross-sections; the left one is connected to a bracket fixed to a hatched vertical wall on the left by a horizontal tube, and the right one is connected to a similar horizontal tube that stops short of the wall. The left form is a circle, labelled \"Circular handrail 32mm to 50mm diameter\"; a horizontal dimension from the wall to its near side reads \"50mm to 75mm\". The right form is an oval with a dashed inner curve on its left side, labelled \"Non-circular handrail 50mm wide and 39mm deep having rounded edges\", with a dimension to that curve reading \"15mm min. radius\". A vertical dimension between the underside of the handrail and the supporting horizontal tube reads \"50mm min.\". The lower part is a side section of a single post topped by a circle, set on a hatched horizontal surface whose right edge is indicated by an arrow labelled \"Ramped or stepped access\". A vertical dimension from the surface to the underside of the circle reads \"50mm min.\", and a horizontal dimension from the near side of the circle to the surface edge reads \"50mm max.\"",
+ "first_draft": "The drawing, captioned \"Diagram 1.13 Handrail design\", carries the note \"See para 1.36\" at the top left and has an upper and a lower part. The upper part is a side section showing two handrail cross-sections held by brackets fixed to a hatched vertical wall on the left. The left form is a circle, labelled \"Circular handrail 32mm to 50mm diameter\"; a horizontal dimension from the wall to its near side reads \"50mm to 75mm\". The right form is an oval with a dashed inner curve, labelled \"Non-circular handrail 50mm wide and 39mm deep having rounded edges\", with a dimension to that curve reading \"15mm min. radius\". A vertical dimension between horizontal lines at the two handrails reads \"50mm min.\" The lower part is a side section of a single post topped by a circle, set on a hatched horizontal surface whose edge is indicated by an arrow labelled \"Ramped or stepped access\". A vertical dimension from the surface to the underside of the circle reads \"50mm min.\", and a horizontal dimension from the circle's centre to the surface edge reads \"50mm max.\"",
+ "check": {
+  "verdict": "minor",
+  "note": "Quotes the caption as \"Diagram 1.3\"; it is Diagram 1.13. The dimensions are right.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "The drawing, captioned \"Diagram 1.13 Handrail design\", carries the note \"See para 1.36\" at the top left and has an upper and a lower part. The upper part is a side section showing two handrail cross-sections; the left one is connected to a bracket fixed to a hatched vertical wall on the left by a horizontal tube, and the right one is connected to a similar horizontal tube that stops short of the wall. The left form is a circle, labelled \"Circular handrail 32mm to 50mm diameter\"; a horizontal dimension from the wall to its near side reads \"50mm to 75mm\". The right form is an oval with a dashed inner curve on its left side, labelled \"Non-circular handrail 50mm wide and 39mm deep having rounded edges\", with a dimension to that curve reading \"15mm min. radius\". A vertical dimension between the underside of the handrail and the supporting horizontal tube reads \"50mm min.\". The lower part is a side section of a single post topped by a circle, set on a hatched horizontal surface whose right edge is indicated by an arrow labelled \"Ramped or stepped access\". A vertical dimension from the surface to the underside of the circle reads \"50mm min.\", and a horizontal dimension from the near side of the circle to the surface edge reads \"50mm max.\"",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "The drawing, captioned \"Diagram 1.3 Handrail design\", carries the note \"See para 1.36\" at the top left and has an upper and a lower part. The upper part is a side section showing two handrail cross-sections; the left one is connected to a bracket fixed to a hatched vertical wall on the left by a horizontal tube, and the right one is connected to a similar horizontal tube that stops short of the wall. The left form is a circle, labelled \"Circular handrail 32mm to 50mm diameter\"; a horizontal dimension from the wall to its near side reads \"50mm to 75mm\". The right form is an oval with a dashed inner curve on its left side, labelled \"Non-circular handrail 50mm wide and 39mm deep having rounded edges\", with a dimension to that curve reading \"15mm min. radius\". A vertical dimension between the underside of the handrail and the supporting horizontal tube reads \"50mm min.\". The lower part is a side section of a single post topped by a circle, set on a hatched horizontal surface whose right edge is indicated by an arrow labelled \"Ramped or stepped access\". A vertical dimension from the surface to the underside of the circle reads \"50mm min.\", and a horizontal dimension from the near side of the circle to the surface edge reads \"50mm max.\"",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

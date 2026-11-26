@@ -1,0 +1,26 @@
+{
+ "key": "ADR2_Diagram-2_p14",
+ "source": "ADR2",
+ "label": "Diagram 2",
+ "page": 14,
+ "caption": "Diagram 2 \u0007Schematic example of the in-building physical infrastructure for a multi-dwelling building that is subject to major renovation works",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "36d10964f4a8fac1687178accdc1e5dec224995c9b210e94d4e8d7ae466a8ec8",
+ "image_sig": {
+  "w": 754,
+  "h": 781,
+  "grey": "+fv7+/v7++7p8/v7+/v7+fv////57O36//Xs7v3///v7//bd4O3t7e3t7evc4fz7+///7v//8+7s6fj//+3/+/v//+rs7Nzg4dnj7Ozt//v7///u///y7+7p9///7f/7+///6u7u3+Df2ubu7u3/+/v//+775e3l5OD2///t//v7///q7eTd6unh5O3t7f/7+///7v//8Orp5Pf//+3/+/v//+rt7eDl5d7m7e3t//v7///t//jxz+rt////7f/7+/v66/r6+c/66vr6+ur6+/vu7e3u7O/j7/Ly8/Tx8vvq6Ojg4OTo5tra29ra4ePofVlWZGBiX2FkYF5XV1dZcQ=="
+ },
+ "reviewed": true,
+ "description": "This schematic elevation shows a multi-storey building with a pitched roof, drawn as a grid of pale green squares and rectangles representing floors and external walls. A central vertical shaft is labelled \"Ducting/ trays in riser\". Inside it, a black line runs vertically as a trunk, with horizontal black branches at four storeys, each ending in a small green-outlined rectangle on the left and on the right. The label \"Network termination point in each dwelling\" appears to the left, aligned with the third row of these rectangles. At the base of the shaft a green-outlined rectangle is labelled \"Common access point\"; a black line drops from it below the building's base line and joins a dashed black line labelled \"Service provider's duct\". A note at the lower right reads: \"NOTE: The diagram shows future connectivity by underground ducts for network cables outside the building. However, it should be noted that alternative forms of connectivity may be used.\" A green footer bar repeats the title: \"Diagram 2 Schematic example of the in-building physical infrastructure for a multi-dwelling building that is subject to major renovation works\".",
+ "first_draft": "This schematic elevation shows a multi-storey building with a pitched roof, drawn as a grid of pale green squares and rectangles representing floors and external walls. A central vertical shaft is labelled \"Ducting/ trays in riser\". Inside it, a black line runs vertically as a trunk, with horizontal black branches at four storeys, each ending in a small green-outlined rectangle on the left and on the right. The label \"Network termination point in each dwelling\" appears to the left, aligned with the third row of these rectangles. At the base of the shaft a green-outlined rectangle is labelled \"Common access point\"; a black line drops from it below the building's base line and joins a dashed black line labelled \"Service provider's duct\". A note at the lower right reads: \"NOTE: The diagram shows future connectivity by underground ducts for network cables outside the building. However, it should be noted that alternative forms of connectivity may be used.\" A green footer bar repeats the title: \"Diagram 2 Schematic example of the in-building physical infrastructure for a multi-dwelling building that is subject to major renovation works\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

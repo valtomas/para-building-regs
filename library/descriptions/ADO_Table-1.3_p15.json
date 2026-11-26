@@ -1,0 +1,17 @@
+{
+ "key": "ADO_Table-1.3_p15",
+ "source": "ADO",
+ "label": "Table 1.3",
+ "page": 15,
+ "caption": "Table 1.3 \u0007Minimum free areas for buildings or parts of buildings with cross-ventilation",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "8b8fe1b3f059ad25dfba88bd16bb5277dcc6aa4dd47059cd22725f63cacb64ce",
+ "image_sig": {
+  "w": 748,
+  "h": 315,
+  "grey": "vKuhpqqopKqqqaGnraSqyMu/vby+vLu2ur21vr29vMv7//////3w8/z///Dx8v/79vb29vb58PD19vnx8fD29OXh4N/9/t7k4Or/4eXf5vv7//////3h4eX9/+Tg5Pr79vb29vb349zY6/nj29jq9OLk4eLv/eTk5ebz5+Ll5u7y9Pb29vn29vb2+fb29vb03e3/////////////////+/Tk5OTl4+Pn49/k4ubk4+j35eLm3+Px///////////78uXo5OXi+f//////////+/Xs7uzu6fb///////////v38vX29/P7/v/////////77N3d4N7e2N/29vb29vb29A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

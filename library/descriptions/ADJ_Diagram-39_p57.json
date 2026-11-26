@@ -1,0 +1,33 @@
+{
+ "key": "ADJ_Diagram-39_p57",
+ "source": "ADJ",
+ "label": "Diagram 39",
+ "page": 57,
+ "caption": "Diagram 39 \u0007Shielding of appliances",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-21",
+ "image_sha256": "a5728985f549cd2e160e32f842eb5c519bfd1887a8b0032e0d898862f8c1c1f7",
+ "image_sig": {
+  "w": 355,
+  "h": 329,
+  "grey": "47/ExLzArqq3vL+ysrzO39/GwcvIysPAuci/vMHDzNbo////8fDu///y6fn/////6P///9rD2///38Ll/////+j////l3P3//+vY+P/////o////8Pbq///43Pr/////6OjY0eTv/////9vu3NXP+ujo1+3/6OvF0ObN7dfc///o/////+jt/v7szfT/////6P/////o9/T09s30/////+j/////6Pf09PbN9P/////o/////+jt/v7szfT/////6P/////9+fn5+Nvg1tfa/+j////////////n2Of////o3MjE0sXc////0MrOxt3/5vPz8/Pz8/Pz8/Pz8/Pz8w=="
+ },
+ "reviewed": true,
+ "description": "The diagram, titled \"Diagram 39 Shielding of appliances\", depicts a central square containing a diagonal cross, with the label \"Appliance\" positioned above it. This appliance is shown in relation to two different installation scenarios on either side. On the left, labeled \"(a) Without shield\", a vertical line represents \"Combustible material\". The gap between this line and the appliance is marked with a dimension indicating \"Air space at least 75mm\". On the right, labeled \"(b) With shield\", a thick vertical line is labeled \"Non-combustible material\" below it. To the right of this shield, shaded, is the combustible material, labelled \"Combustible material\"; a dimension across the gap between the shield and the combustible material reads \"Shield at least 25mm\".",
+ "first_draft": "The diagram, titled \"Diagram 39 Shielding of appliances\", depicts a central square labeled \"Appliance\" containing a diagonal cross. This appliance is shown in relation to two different installation scenarios on either side. On the left, labeled \"(a) Without shield\", a vertical line represents \"Combustible material\". The gap between this line and the appliance is marked with a dimension indicating \"Air space at least 75mm\". On the right, labeled \"(b) With shield\", a thick vertical line is labeled \"Non-combustible material\" and placed directly adjacent to the appliance. A dimension above this vertical line indicates the \"Shield at least 25mm\". To the right of this shield, a separate vertical line is labeled \"Combustible material\".",
+ "check": {
+  "verdict": "flag",
+  "note": "Says \"Shield at least 25mm\" is the gap between the appliance and the shield; it is the air gap between the shield and the combustible material behind it.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "The diagram, titled \"Diagram 39 Shielding of appliances\", depicts a central square containing a diagonal cross, with the label \"Appliance\" positioned above it. This appliance is shown in relation to two different installation scenarios on either side. On the left, labeled \"(a) Without shield\", a vertical line represents \"Combustible material\". The gap between this line and the appliance is marked with a dimension indicating \"Air space at least 75mm\". On the right, labeled \"(b) With shield\", a thick vertical line is labeled \"Non-combustible material\" below it. To the right of this shield, shaded, is the combustible material, labelled \"Combustible material\"; a dimension across the gap between the shield and the combustible material reads \"Shield at least 25mm\".",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "The diagram, titled \"Diagram 39 Shielding of appliances\", depicts a central square containing a diagonal cross, with the label \"Appliance\" positioned above it. This appliance is shown in relation to two different installation scenarios on either side. On the left, labeled \"(a) Without shield\", a vertical line represents \"Combustible material\". The gap between this line and the appliance is marked with a dimension indicating \"Air space at least 75mm\". On the right, labeled \"(b) With shield\", a thick vertical line is labeled \"Non-combustible material\" below it. A dimension between the appliance and this vertical line indicates \"Shield at least 25mm\". To the right of this shield, a separate vertical line is labeled \"Combustible material\".",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

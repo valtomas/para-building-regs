@@ -1,0 +1,17 @@
+{
+ "key": "ADL2_Table-A2_p98",
+ "source": "ADL2",
+ "label": "Table A2",
+ "page": 98,
+ "caption": "Table A2 \u0007Partial load efficiency ratio",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "df75a3f2235ad2b21be7320e5530a38c6f9c1ab2c631499cfb63f6cc14cdd502",
+ "image_sig": {
+  "w": 386,
+  "h": 203,
+  "grey": "v73FvsXAw8O1xcjHxcjI2K5vgpZ3fXx+eHZ/fpXIyNXFyMjIyMjIyMjIxMjIyMjV+P/////+////////////+ODh2N7l5//q7+7o9+T22Pbw8e/x8fH18vP08fHx9vHz7vTv6+v9//f4/fT+8P/x+Ojn4ejm+v/1+Pr2/vD/8vjaz9XTzM/m///////////44PP/////////////////+O3v8fHx8fXy8/Tx8fH28fPo7fPq6uz/9vj89P7x/+746+Hn4enl//f5+vX+7v/v+N3T19LVzv3///////////jf19rd6v/////////////46efo6urx8fHx8fHx8fHx8g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

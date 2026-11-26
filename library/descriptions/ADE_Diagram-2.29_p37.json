@@ -1,0 +1,26 @@
+{
+ "key": "ADE_Diagram-2.29_p37",
+ "source": "ADE",
+ "label": "Diagram 2.29",
+ "page": 37,
+ "caption": "Diagram 2.29 \u0007\u0007Wall type 3.2 with independent composite panels",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "6214d1df4c7b85ca2514c5d5724a0bfc694ffca4970ec92c06ef2bbd95483d2d",
+ "image_sig": {
+  "w": 355,
+  "h": 447,
+  "grey": "5L6+xcnEsrWswbK+ruHh4fLp6enp6cSzu7q6zL28utTn3Nzc3NyzrLvc3Nzc3Nzc6P//////6fTy9un//////+j//////8/w++7P///////o///////P7vvvz///////6P//////0OXl5tD//////+j//////9Dz+vHQ///////o///////Q7/jv0P//////6P//////0OXn5ND//////+j//////9Dy+vHQ///////o///////Q8PXx0P//////6P//////z+Xp5c///////+j//////8/v++/P///////o///////K6+rtyv//////5vb29vb29vb29vb28tHZ0w=="
+ },
+ "reviewed": true,
+ "description": "The image features a pale green header at the top containing the text \"Diagram 2.29\" on the left and the title \"Wall type 3.2 with independent composite panels\" on the right. Below this is a technical line drawing labelled \"SECTION\" in the bottom right corner. The drawing depicts a vertical cross-section of a wall. In the center, there is a column composed of four distinct rectangular panels stacked vertically, each containing an 'X' shaped cross-hatch pattern. Flanking this central structure on both the left and right sides are separate vertical layers, represented by double lines. There is a visible gap or cavity separating the central column from these outer layers. The drawing is enclosed in a simple black rectangular frame.",
+ "first_draft": "The image features a green header at the top containing the text \"ADE: Diagram 2.29\" and the title \"Wall type 3.2 with independent composite panels\". Below this is a technical line drawing labelled \"SECTION\" in the bottom right corner. The drawing depicts a vertical cross-section of a wall. In the center, there is a column composed of four distinct rectangular panels stacked vertically, each containing an 'X' shaped cross-hatch pattern. Flanking this central structure on both the left and right sides are separate vertical layers, represented by double lines. There is a visible gap or cavity separating the central column from these outer layers. The drawing is enclosed in a simple black rectangular frame.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

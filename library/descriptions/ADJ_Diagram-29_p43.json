@@ -1,0 +1,26 @@
+{
+ "key": "ADJ_Diagram-29_p43",
+ "source": "ADJ",
+ "label": "Diagram 29",
+ "page": 43,
+ "caption": "Diagram 29 \u0007Open fireplaces: throat and fireplace components",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-21",
+ "image_sha256": "5ba738ae6cd629c034e3ea68cd96bd518ba46624774d541a326c91c233d2a178",
+ "image_sig": {
+  "w": 749,
+  "h": 667,
+  "grey": "0cfCwLzBwr29w73C29vb2/T////////53t/f3Ov////0////////8PPCvt/t////9P//79jf7/D/2trdzPv///T///Pa59r0/97b7v/////0/////73R9O3n7f//////9P/////izPTp6/////////T/////4Ob+///////////0////9s7O0e/K1uf/////9P////Tk7fn19ff1//////T///bH5f769f/////////0////9uvO6/n/////////9P////XT7v////////////T/////5dP8///////////0//////bz6PH/////////8Pn5+fn5+fj5+fn5+fn5+Q=="
+ },
+ "reviewed": true,
+ "description": "The drawing, titled \"Diagram 29 Open fireplaces: throat and fireplace components\", shows two views of a fireplace. The upper view is an elevation. At its top left a diagonal benched surface is labelled \"Sand/cement benching\". A hatched block at the top is pointed to by the label \"Throat forming component\", which the text beside it describes as either \"Integrated into prefabricated gather or prefabricated appliance chamber\" or \"Throat forming lintel (BS 1251: 1987)\", and is dimensioned \"110 ± 10mm\"; a bracket to the right of this text reads \"Protects fireplace surround\". Below the throat forming component, a curved section is labelled \"Throat\", and a dotted mass is labelled \"Insulating infill\". The word \"Elevation\" is written in the middle of the drawing with an arrow pointing to the vertical hatched element at the foot of the upper view (the fireback as seen in elevation); to the right of it the label \"Fireback (BS 1251: 1987)\" has a leader line that runs down to the hatched fireback profile in the lower view. The lower view is labelled \"Plan\" and shows a C-shaped hatched profile, opening to the left, with the dotted insulating infill in the opening to its left; the single \"Insulating infill\" label on the left of the drawing points to the dotted mass in the elevation, the same infill that is shown dotted in the plan.",
+ "first_draft": "The drawing, titled \"Diagram 29 Open fireplaces: throat and fireplace components\", shows two views of a fireplace. The upper view is an elevation. At its top left a diagonal line is labelled \"Sand/cement benching\". A vertical hatched block at the top is dimensioned \"110 ± 10mm\" and pointed to by \"Throat forming component\", which the text describes as \"Either Integrated into prefabricated gather or prefabricated appliance chamber\" or \"Throat forming lintel (BS 1251: 1987)\", with a bracket on the right reading \"Protects fireplace surround\". Below this, a curved flue section is labelled \"Throat\", and a vertical back element is labelled \"Fireback (BS 1251: 1987)\". A dotted mass is labelled \"Insulating infill\". The lower view is labelled \"Plan\" and shows a C-shaped hatched profile with a dotted region again labelled \"Insulating infill\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

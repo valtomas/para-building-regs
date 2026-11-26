@@ -1,0 +1,26 @@
+{
+ "key": "ADE_Diagram-2.37_p42",
+ "source": "ADE",
+ "label": "Diagram 2.37",
+ "page": 42,
+ "caption": "Diagram 2.37 \u0007\u0007Wall type 4.1",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "a543ffd403aa64db520239f6602db30138b5e89835f7ae86dda0bf1fab4be168",
+ "image_sig": {
+  "w": 371,
+  "h": 1088,
+  "grey": "49vZ4dzj0djU2uLp6enp6+n//////+f00/To//////Tp//Ps+fbf+tf/6f/////06f/////+7P/X/+n/////9On//////+j00fXo//////Tp//j////z/+377//////06f//////4vP53N7/////9On/8+z8+Nz5/97c//////Tp///////o///e3f/////06f//////4vP53N3/////9On/+P///+f//+3r//////Tp///////M9Png5f/////06f/z7Pz40uH/4uP/////9On//////8X//+Lj//////Tp///////M9Png5f/////05/jy+Pj48fj49fT4+PHr7A=="
+ },
+ "reviewed": true,
+ "description": "The drawing is a plan, headed \"Diagram 2.37 Wall type 4.1\", with the word \"PLAN\" printed at the lower right. It comprises three vertically stacked arrangements, labelled (a), (b) and (c). Each arrangement depicts two vertical parallel lines forming the edges of a wall, with four small squares, each marked by a diagonal cross, positioned between the lines. In (a) a vertical zigzag line runs down the centre, between the two lines. In (b) the vertical zigzag line runs along the inner face of the right-hand line. In (c) vertical zigzag lines run along the inner face of both lines. In every arrangement an arrow labelled \"Socket detail\" points to a rectangular box attached to the left-hand line, the box enclosing a square with a diagonal cross. No dimensions or further labels are shown.",
+ "first_draft": "The drawing is a plan, headed \"Diagram 2.37 Wall type 4.1\", with the word \"PLAN\" printed at the lower right. It comprises three vertically stacked arrangements, labelled (a), (b) and (c). Each arrangement depicts two vertical parallel lines forming the edges of a wall, with four small squares, each marked by a diagonal cross, positioned between the lines. In (a) a vertical zigzag line runs down the centre, between the two lines. In (b) the vertical zigzag line runs along the inner face of the right-hand line. In (c) vertical zigzag lines run along the inner face of both lines. In every arrangement an arrow labelled \"Socket detail\" points to a rectangular box attached to the left-hand line, the box enclosing a square with a diagonal cross; in (c) a hatched area appears beside this box. No dimensions or further labels are shown.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

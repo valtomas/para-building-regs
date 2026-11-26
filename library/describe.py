@@ -456,17 +456,23 @@ def crop_items(figs):
             for key, fig in figs.items()]
 
 
-def approve(fig, description, approved=True, rejected=False):
+def approve(fig, description, approved=True, rejected=False, use_suggestion=False):
     """A person checked (and maybe corrected) a description against the figure's current image, or rejected it (a
     crop that is cut short, a description that can't be put right). A rejected one stays out of the library and
-    isn't written again until the image changes."""
+    isn't written again until the image changes. With `use_suggestion`, the person took the corrected draft another
+    reader wrote (`suggestion`, see `corrected_by` in AGENTS.md), so that reader is named as its corrector."""
     rec = load(fig["key"])
     if rec is None:
         return None
+    suggestion = rec.get("suggestion") or {}
+    if use_suggestion and suggestion.get("text"):
+        description = suggestion["text"]
     text = description.strip() if description is not None else rec["description"]
     if text != rec["description"]:
         rec.setdefault("model_description", rec["description"])  # what the model wrote, kept for the record
         rec["description"] = text
+        if use_suggestion and suggestion.get("by"):
+            rec["corrected_by"] = suggestion["by"]
     rec["reviewed"] = bool(approved) and not rejected
     rec["rejected"] = bool(rejected)
     if approved or rejected:
@@ -524,7 +530,7 @@ class ReviewHandler(http.server.BaseHTTPRequestHandler):
                 return self._send(404, {"error": "No such figure"})
             return self._send(200, {"key": fig["key"], "bad": mark_crop(fig, bool(body.get("bad"))) is not None})
         rec = approve(fig, body.get("description"), approved=bool(body.get("approve")),
-                      rejected=bool(body.get("reject"))) if fig else None
+                      rejected=bool(body.get("reject")), use_suggestion=bool(body.get("use_suggestion"))) if fig else None
         return self._send(200 if rec else 404, rec or {"error": "No such description"})
 
 

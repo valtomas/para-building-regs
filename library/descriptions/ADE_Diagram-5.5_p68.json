@@ -1,0 +1,26 @@
+{
+ "key": "ADE_Diagram-5.5_p68",
+ "source": "ADE",
+ "label": "Diagram 5.5",
+ "page": 68,
+ "caption": "Diagram 5.5 \u0007\u0007Internal floor type A",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "01001dd74b97208fa300fc82f751113f9931d0165f8e3ad733530a6734825c79",
+ "image_sig": {
+  "w": 401,
+  "h": 245,
+  "grey": "4NHX0dPL1tHL0tfP29vt/OWxrcTRqaSspLWUtenp9P3a19fX19fX19fX19fX1+T96//////////////////17ev/////////////////9evr8fDz7vDv8PDz7+/v7vXr6+z09fP19ej09fP19PD16+v2+fj4+Pjk+Pj4+Pj39evr8vL08fHx3fHw8fH08vXr6/X5+fn5+fP5+fn5+fL16+v62fn5+fnV+fn5+df69evr6+jp6enp6Onp6eno6/Xr6//////////////////16+v/////////////4dvX7+vc39/f39/f39/f39DPzeLr////////////////////8A=="
+ },
+ "reviewed": true,
+ "description": "Diagram 5.5, titled \"Internal floor type A\", is a horizontal cross-section, as indicated by the word \"SECTION\" printed in the lower right corner of the framed drawing. Within the framed drawing there are no other text labels, dimensions or symbols. The section is built up in horizontal layers. The topmost is a thin band filled with a fine speckled or dotted pattern. Beneath it lies a thicker band containing a row of small, evenly spaced circles running across the width. At the centre of the row one of these circles is shaded grey; from it a short vertical line rises up through the top speckled band and ends in a small U-shaped opening at its top. Below the circular band there is an open gap, then two horizontal lines running the full width of the section, between which are three square supports, each drawn with a diagonal cross (X) inside, spaced towards the left, the centre and the right, forming a row of supports beneath the floor structure.",
+ "first_draft": "Diagram 5.5, titled \"Internal floor type A\", is a horizontal cross-section, as indicated by the word \"SECTION\" printed in the lower right corner of the framed drawing. No other text labels, dimensions or symbols are present. The section is built up in horizontal layers. The topmost is a thin band filled with a fine speckled or dotted pattern. Beneath it lies a thicker band containing a row of small, evenly spaced circles running across the width. In the centre of this band a short vertical line with a small U-shaped hook at its top passes through the layers and terminates in a single circle positioned in the middle of the row. Below the circular band there is an open gap, then a pair of close parallel horizontal lines. Under these, three square supports, each drawn with a diagonal cross (X) inside, stand on a bottom horizontal line, spaced apart to form a beam-like support on which the upper floor structure rests. The right-hand edge of the drawing is partly cut off.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

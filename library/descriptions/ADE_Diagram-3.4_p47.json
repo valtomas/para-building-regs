@@ -1,0 +1,26 @@
+{
+ "key": "ADE_Diagram-3.4_p47",
+ "source": "ADE",
+ "label": "Diagram 3.4",
+ "page": 47,
+ "caption": "Diagram 3.4 \u0007\u0007Floor type 1.2B – floor type 1.2 with ceiling treatment B",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "2525ae0715542ebd039cdf0f4998ebef5dfed6f5d1a0feb359b1cdbec858a59c",
+ "image_sig": {
+  "w": 371,
+  "h": 252,
+  "grey": "5crO0snJycvQzLjW3Nzc5em/s8zG0au+m8qu0enp6e/z6enp6badoZDFnYmxi5bv8+np6enMurOztenp6enj7+va2tray72+v8Da2tra2uTh1c7Pzs/Nz8/Pzs7Pzs/l6d/p5eXr6eHk5ebk6Obp6en2////////5v//////+PTp9Orp6vDs5dbq6enu7ezz6ff////////4////////6env9PT09PT07vT09PT09Onp7PLj4+Ti1vLk4+Li7/Tp6ezZzMvLv97cy8rLzObh6+n//////+////////////Tp////9dLS1P/////WzMPd5u/v7+/v7+/v7+/v6ujp6g=="
+ },
+ "reviewed": true,
+ "description": "The image is a framed cross-section drawing titled, in a green band at the top, \"Diagram 3.4 Floor type 1.2B – floor type 1.2 with ceiling treatment B\". The word \"SECTION\" appears in the bottom right corner of the frame.\n\nThe section shows a horizontal floor build-up made of stacked layers. The topmost layer is a plain band with scattered speckles. Beneath it runs a horizontal row of evenly spaced small open circles; at the centre of this row the circle is replaced by a hatched diamond shape, linked by a thin vertical line that runs down to the bottom band. Below the row of circles is a thinner plain band, and at the bottom is a band filled with a short hatched/ribbed pattern, split into two lengths by a small central gap. A label reading \"Timber batten\" sits below the drawing, with an arrow pointing up to that central gap in the hatched band. No dimensions or scale are shown.",
+ "first_draft": "The image is a framed cross-section drawing titled, in a green band at the top, \"Diagram 3.4 Floor type 1.2B – floor type 1.2 with ceiling treatment B\". The word \"SECTION\" appears in the bottom right corner of the frame.\n\nThe section shows a horizontal floor build-up made of stacked layers. The topmost layer is a plain band with scattered speckles. Beneath it runs a horizontal row of evenly spaced small open circles; at the centre of this row the circle is replaced by a vertically hatched diamond shape, linked by a thin vertical line that runs down through the lower layers. Below the row of circles is a thinner plain band, and at the bottom is a band filled with a short hatched/ribbed pattern, split into two lengths by a small central gap. A label reading \"Timber batten\" sits below the drawing, with an arrow pointing up to that central gap in the hatched band. No dimensions or scale are shown.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

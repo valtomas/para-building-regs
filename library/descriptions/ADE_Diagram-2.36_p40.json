@@ -1,0 +1,33 @@
+{
+ "key": "ADE_Diagram-2.36_p40",
+ "source": "ADE",
+ "label": "Diagram 2.36",
+ "page": 40,
+ "caption": "Diagram 2.36 \u0007\u0007External cavity wall at eaves level",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "930dea226338483e654d4bb72691cb55bfd6c5b145e79b5fa9fd6b603ad3cc2a",
+ "image_sig": {
+  "w": 362,
+  "h": 426,
+  "grey": "w6+2vri2qqyrrqqwp6rV4uro6enp2Lq+vrrp6enp6e/Z6urq6urq6urq6urq6urm6enK8ebn3OHj8O3l////9On////t5d747fzz5/////Tp////7eng8u388uf////06f///+/v5//p8O3n////9On////w9Or/7PPv5/////Tp////7eni//L88+f////06f///+3l3//w/fPn////9On////w8+H55/Du5/////Tp////8PTq/ezz7+f////06f///+3l3//x/fPn////9On////u6uL/8/zy5/////Tp////8PPq/+vz7+P////05Pb29vb29vb29vb219jV4w=="
+ },
+ "reviewed": true,
+ "description": "A section headed \"Diagram 2.36 External cavity wall at eaves level\", marked \"SECTION\" at the lower right. The external cavity wall has an outer leaf of blocks with single diagonal hatching on the left and an inner leaf of cross-hatched blocks on the right, with a cavity between them and a wall tie across it about halfway down. At the top, a cross-hatched block fills the cavity, labelled \"Flexible closer\". A thin double line to the right of the inner leaf shows its lining.",
+ "first_draft": "Two sections are shown side by side under a shared heading reading \"Diagram 2.35 Wall types 3.1 and 3.2 – ceiling and roof junction\".\n\nThe left drawing is titled \"Diagram 2.35 Wall types 3.1 and 3.2 – ceiling and roof junction\" and is marked \"SECTION\" at the bottom right. It depicts a vertical wall core with cross-hatched and horizontally-lined infill, interrupted by a pair of broken lines in the middle. A horizontal line labelled \"Roof\" crosses the top and a horizontal line labelled \"Ceiling\" crosses the lower part. A label \"Flexible closer\" points to the top of the core, and a label \"Sealed joints\" points to the gaps at the ceiling line on either side of the core.\n\nThe right drawing is titled \"Diagram 2.36 External cavity wall at eaves level\" and is also marked \"SECTION\". It shows an inner leaf of horizontally-lined blocks on the left and an outer leaf of cross-hatched blocks on the right, separated by a cavity, with a vertical line to the right of the wall. A label \"Flexible closer\" points to a small block at the top of the cavity.",
+ "check": {
+  "verdict": "recut",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26",
+  "note": "Recut so the image shows this drawing alone; the suggestion is a new description written from the new image."
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26",
+ "suggestion": {
+  "text": "A section headed \"Diagram 2.36 External cavity wall at eaves level\", marked \"SECTION\" at the lower right. The external cavity wall has an outer leaf of blocks with single diagonal hatching on the left and an inner leaf of cross-hatched blocks on the right, with a cavity between them and a wall tie across it about halfway down. At the top, a cross-hatched block fills the cavity, labelled \"Flexible closer\". A thin double line to the right of the inner leaf shows its lining.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "Two sections are shown side by side, each with a heading in a green box at the top. The left drawing is titled \"Diagram 2.35 Wall types 3.1 and 3.2 – ceiling and roof junction\" and is marked \"SECTION\" at the bottom right. It depicts a vertical wall core interrupted by a pair of broken lines in the middle. The core is cross-hatched in the upper section and the section above the ceiling, and blank in the middle section. At the lower level, the core is flanked by vertical strips containing horizontal lines. A horizontal line labelled \"Roof\" crosses the top, and a horizontal line labelled \"Ceiling\" crosses the lower part. A label \"Flexible closer\" points to the top of the core, and a label \"Sealed joints\" points to the gaps at the ceiling line on either side of the core.\n\nThe right drawing is titled \"Diagram 2.36 External cavity wall at eaves level\" and is also marked \"SECTION\". It shows an inner leaf of horizontally-lined blocks on the left and an outer leaf of cross-hatched blocks on the right, separated by a cavity, with a vertical line to the right of the wall. A label \"Flexible closer\" points to the top of the cavity.",
+ "corrected_by": "Claude Opus 5.5"
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADB1_Table-13.1_p112",
+ "source": "ADB1",
+ "label": "Table 13.1",
+ "page": 112,
+ "caption": "Table 13.1 Typical fire and rescue service vehicle access route specification",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "4c00afe6a0af34ce320e978a8c4cb7c63bc4db3400b2a55c5e3bcaafb9f625b7",
+ "image_sig": {
+  "w": 754,
+  "h": 294,
+  "grey": "u6WopaitqaSsrKqgtcDAyb2ppqikpKWmpKahpLPAwMfv8vTw+O357fbw9PPx9+336/r26fTn/uny7+z07fvq+/f/9uz55v/m+O7v8vP65/v7//bu+vj/6/nw9fX++ez77fX09vf0+e/28vb09vXz9enz9fb39Pjt9vH29fb18/Xk6PX/+vv/7f/t//P/9/j73ej29vb29vb29vb29vb29e72///9+/z+/f/+/f38/vvv2tze3end5eXn4eXm5OT19Orp6PP/////////////++3e4d7e4+Dk4uTa3uDk5/vy4uHh2t3j3+Tj5Obg5eX769ba1uDZ2dzR9fb29vb29A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

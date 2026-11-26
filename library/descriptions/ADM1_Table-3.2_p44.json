@@ -1,0 +1,17 @@
+{
+ "key": "ADM1_Table-3.2_p44",
+ "source": "ADM1",
+ "label": "Table 3.2",
+ "page": 44,
+ "caption": "Table 3.2 Minimum combined floor area for living, dining, and kitchen space",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "cab7c840e9d439bd50ea803b4d08923027c8c65121a25c20e5a1d48017db0f7d",
+ "image_sig": {
+  "w": 756,
+  "h": 97,
+  "grey": "1cjIyMjIyMjIyMjIyMjI0tHGyMjGwcjDyMbExsjIyNCnjYWVhYSbj5mFkoObw8jQpHBmY1VnaHVrWWdjXb3I0NLHyMjIx8fHtbXHx7/IyNDSyMjIyMjIyMjIyMjIyMjQ7ezs7Ozs7Ozs7Ozs7Ozs7Pv9//////////////////vm3uD3+f/5+f/5//j5//X76eLX9fr/+/r/+//5/P/5++ri4eLs5ens4u3p5ezi7Oj7///////////////////78vf//Pb/9Pr59//29v/0+9C7ueny//T59PP/8fP98/v18u799//6+/37//n5//v76OLi4uLi4uLi4uLi4uLi5g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

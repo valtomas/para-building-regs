@@ -1,0 +1,26 @@
+{
+ "key": "ADM2_Diagram-17_p46",
+ "source": "ADM2",
+ "label": "Diagram 17",
+ "page": 46,
+ "caption": "Diagram 17 One example of a wheelchair-accessible hotel bedroom with en-suite sanitary facilities",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "c522e4d61ac9527ddf0a4c1c009da726e9b60d27c9f1798cf04ad7afa02b9065",
+ "image_sig": {
+  "w": 760,
+  "h": 481,
+  "grey": "2NDOxcDMv8PEvsLDx8PD4+DZx62yvNnZ2dnZ2dnZ2d70//////////////P8///69P/////////////i9v//+vT//u7x/+b++/z39/////r0//7z9PTx9PH09PT9///69P/56e7u3u7m9vbz+P//+vT/9PH3//T/6dHR9fv///r0//Ti6//0/+329fn+///69P/07ub28/bt///0/f//+vT/9Pju4/L/7+ra2fr///r0//rp9vn4//3w6/7s7v/69P/97e329vTi69TW+///+vT//e7s7+j11+PLwv////r0//7p6+vr6+nr5+3////67/b29vb29vb29vb29vb28w=="
+ },
+ "reviewed": true,
+ "description": "This is a floor plan titled \"Diagram 17 One example of a wheelchair-accessible hotel bedroom with en-suite sanitary facilities\". The plan shows a rectangular room divided into a bedroom on the left and a bathroom on the right, with a desk, a cabinet, and a washbasin along the bottom edge. In the bedroom, a bed with a figure is shown on the left, and a chair is positioned at the bottom left. A dashed square labelled \"1500mm x 1500mm wheelchair turning space\" is located in the center of the room. A central block with two open doors represents a wardrobe. The bathroom on the right is labelled \"Wheelchair-accessible shower room or bathroom see Section 5 for details\" and contains a figure in a wheelchair, a shower with a seat, a toilet, and a washbasin. Dimensions above the plan read \"1500mm min.\" spanning the bedroom area and \"700mm min.\" spanning the wardrobe opening. A note at top right, \"See Section 5 for dimensions\", points to the width and depth of the bathroom. On the right, the bathroom door opening is marked vertically with \"Effective clear width\", and the space beyond the open door is marked horizontally with \"300mm min.\"",
+ "first_draft": "This is a floor plan titled \"Diagram 17 One example of a wheelchair-accessible hotel bedroom with en-suite sanitary facilities\". The plan shows a rectangular room divided into a bedroom on the left and a bathroom on the right, with a desk along the bottom edge. In the bedroom, a bed, a chair and a human figure are drawn; a dashed square labelled \"1500mm x 1500mm wheelchair turning space\" sits between the bed and the desk. A central block represents storage or a wardrobe, and a door opens into the bathroom. The bathroom is labelled \"Wheelchair-accessible shower room or bathroom see Section 5 for details\", with a figure and a shower seat shown inside. Dimensions above the plan read \"1500mm min.\" on the left and \"700mm min.\" in the centre. A note at top right, \"See Section 5 for dimensions\", points to the upper wall. On the right, the bathroom door is marked \"300mm min.\" and \"Effective clear width\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

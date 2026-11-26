@@ -1,0 +1,33 @@
+{
+ "key": "ADM1_Diagram-1.4_p17",
+ "source": "ADM1",
+ "label": "Diagram 1.4",
+ "page": 17,
+ "caption": "Diagram 1.4 | Examples of WC/cloakrooms Services and controls",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "d7c2eda55ac9cf7f5c7ec663df2ea56730dd71d74b0351fc50ed7ebff447a94b",
+ "image_sig": {
+  "w": 737,
+  "h": 416,
+  "grey": "9/j4+Pj4+Pj4+Pj4+Pj4+Pv///////////zv//H9///7///n6f/////69P/y7Pj++//88vH8////+/T/59vZ+Pv/+dDM7v//7u/l8PL1///7/fPd4fT//+Tb5+7/////+/r/2+jt///u3Ojr//////v7/9zk5///9Onk4//////76ujb7vL///H18Oj/////+//56ej0///p7uju//////v/+eXj8P//6ubg6f/////7///g2v/////c2vv/////+////f3////35+n7//////v91enq7vz81Ofr7P7////RycnJycnJycnJycnJycnJgGFZZGBgYlNPT09PT09PTw=="
+ },
+ "reviewed": true,
+ "description": "Diagram 1.4, titled \"Examples of WC/cloakrooms\", shows two floor plans. At the top right are Notes: \"1. Dimensions for illustration purposes only 2. Doors should open outwards.\"\n\nExample 1.4A – oblique access WC, on the left, is a rectangular plan with a door on the left wall, shown open by an arc. A wash basin is drawn at the top and a WC at the bottom, both aligned on a vertical centre line marked with a cross. The dimensions are 850mm across the top, 1600mm down the right side, 750mm for the depth of the clear access zone in front of the WC, 250mm on the left from the front of the WC to the edge of the door opening, and 450mm and 400mm along the bottom.\n\nExample 1.4B – frontal access WC, on the right, is a rectangular plan with a door at the top, shown open by an arc. A wash basin is at the upper left and a WC at the bottom centre. The dimensions are 750mm for the depth of the clear access zone in front of the WC, 1500mm down the right side, and 450mm, 450mm and 1050mm along the bottom.",
+ "first_draft": "Diagram 1.4, titled \"Examples of WC/cloakrooms\", shows two floor plans. At the top right are Notes: \"1. Dimensions for illustration purposes only 2. Doors should open outwards.\"\n\nExample 1.4A – oblique access WC, on the left, is a rectangular plan with a door on the left wall, shown open by an arc. A wash basin is drawn at the top and a WC at the bottom, both aligned on a vertical centre line marked with a cross. The dimensions are 850mm across the top, 1600mm down the right side, 750mm from the basin to the WC centre line, 250mm on the left, and 450mm and 400mm along the bottom.\n\nExample 1.4B – frontal access WC, on the right, is a rectangular plan with a door at the top, shown open by an arc. A wash basin is at the upper left and a WC at the bottom centre. The dimensions are 750mm from the basin to the WC centre line, 1500mm down the right side, and 450mm, 450mm and 1050mm along the bottom.",
+ "check": {
+  "verdict": "minor",
+  "note": "The 750mm in both plans is the depth of the clear access zone in front of the WC, not a distance to the WC centre line; the 250mm in 1.4A is from the front of the WC to the door edge.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "Diagram 1.4, titled \"Examples of WC/cloakrooms\", shows two floor plans. At the top right are Notes: \"1. Dimensions for illustration purposes only 2. Doors should open outwards.\"\n\nExample 1.4A – oblique access WC, on the left, is a rectangular plan with a door on the left wall, shown open by an arc. A wash basin is drawn at the top and a WC at the bottom, both aligned on a vertical centre line marked with a cross. The dimensions are 850mm across the top, 1600mm down the right side, 750mm for the depth of the clear access zone in front of the WC, 250mm on the left from the front of the WC to the edge of the door opening, and 450mm and 400mm along the bottom.\n\nExample 1.4B – frontal access WC, on the right, is a rectangular plan with a door at the top, shown open by an arc. A wash basin is at the upper left and a WC at the bottom centre. The dimensions are 750mm for the depth of the clear access zone in front of the WC, 1500mm down the right side, and 450mm, 450mm and 1050mm along the bottom.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "Diagram 1.4, titled \"Examples of WC/cloakrooms\", shows two floor plans. At the top right are Notes: \"1. Dimensions for illustration purposes only 2. Doors should open outwards.\"\n\nExample 1.4A – oblique access WC, on the left, is a rectangular plan with a door on the left wall, shown open by an arc. A wash basin is drawn at the top and a WC at the bottom, both aligned on a vertical centre line marked with a cross. The dimensions are 850mm across the top, 1600mm down the right side, 750mm from the rear wall to the WC centre line, 250mm on the left from the WC centre line to the door head, and 450mm and 400mm along the bottom.\n\nExample 1.4B – frontal access WC, on the right, is a rectangular plan with a door at the top, shown open by an arc. A wash basin is at the upper left and a WC at the bottom centre. The dimensions are 750mm from the basin to the WC centre line, 1500mm down the right side, and 450mm, 450mm and 1050mm along the bottom.",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

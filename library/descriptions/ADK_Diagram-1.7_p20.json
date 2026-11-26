@@ -1,0 +1,26 @@
+{
+ "key": "ADK_Diagram-1.7_p20",
+ "source": "ADK",
+ "label": "Diagram 1.7",
+ "page": 20,
+ "caption": "Diagram 1.7 | Cupboard onto landing",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-22",
+ "image_sha256": "c10389d797fbc00e74e2a4411c4097e379163a896a2f8bd0ae6a52f210dcd774",
+ "image_sig": {
+  "w": 754,
+  "h": 309,
+  "grey": "9vb29vb29vb29vb29vb29fXl7f////3y+P////////v6+Pv////01uX////////7+///////8/rw////////+/v///////Pm1tXo//////v7///////0593p7v/////7+//////T3NXN3eX/////+/v/////2dXh1d3q//////v7///////x2dnk9P/////7+///////8eDi////////+/v///////DT2/////////v7///////x4uD////////7+///////9+Hq////////+/v///////////////////uKaGVoaGhkX19fX19fX195h2lVamZnX09PT09PT09Pbg=="
+ },
+ "reviewed": true,
+ "description": "This is a plan view (a plan) of a stair landing, titled in a green band at the bottom as \"Diagram 1.7 Cupboard onto landing\", with the note \"See para 1.21\" in the top left corner.\n\nThe drawing shows a change of direction in a staircase. Below the landing is a flight of stairs drawn as a series of horizontal tread lines, with an arrow running up its length marked \"Up\". This flight leads onto a grey shaded rectangular landing at the centre. To the right of the landing is a second flight of stairs, drawn as vertical tread lines, running horizontally and ending in a right‑pointing arrow at its far end.\n\nAt the top of the drawing, above the landing, is a rectangle labelled \"Cupboard\". The bottom edge of this rectangle has a central gap (the door opening), and below the gap is a single curved line indicating the door swings out onto the landing. A vertical double‑headed dimension arrow is drawn to the left of the grey landing, aligned with its top and bottom edges, and is labelled \"400mm minimum\". This dimension measures the depth of the landing in the direction of the lower flight.",
+ "first_draft": "This is a plan view (a plan) of a stair landing, titled in a green band at the bottom as \"Diagram 1.7 Cupboard onto landing\", with the note \"See para 1.21\" in the top left corner.\n\nThe drawing shows a change of direction in a staircase. On the lower left is a flight of stairs drawn as a series of horizontal tread lines, with an arrow running up its length marked \"Up\". This flight leads onto a grey shaded rectangular landing at the centre. To the right of the landing is a second flight of stairs, drawn as vertical tread lines, running horizontally and ending in a right‑pointing arrow at its far end.\n\nProjecting from the top edge of the landing is a rectangle labelled \"Cupboard\", containing a single curved line indicating a door swing. A vertical double‑headed dimension arrow is drawn alongside the grey landing, aligned with the top of the lower flight and the bottom of the landing, and is labelled \"400mm minimum\". This dimension measures the depth of the landing in the direction of the lower flight.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

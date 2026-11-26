@@ -1,0 +1,26 @@
+{
+ "key": "ADL2_Table-6.7_p58",
+ "source": "ADL2",
+ "label": "Table 6.7",
+ "page": 58,
+ "caption": "Table 6.7 \u0007Standard cooling load factors for office accommodation",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "29e78c0a864f4e62501ecbe2b8585ba4b59e51288676c9bbae768bb9c1d05f69",
+ "image_sig": {
+  "w": 756,
+  "h": 99,
+  "grey": "1cjIyMjIyMjIyMjIyMjI09HGyMTGxMbFwsjGyMjIyNCohouIgoiIkX+LgKbIyMjQqX56dGV3dYJ4bWmXyMjI0NLIyMi7yMjIyMjIyMjIyNDSyMjIyMjIyMjIyMjIyMjQ8/X19fX19fX19fX19fX18/v///////7////////+//v7//n////3///7////9//7+//5////+v///P////r/++ri4uTr4uLn6OLi6uXi4uj7///////////////////7+/vy///59v//+fj///T7+/v55f//9O3///Dy///q9/v7///////////////////75+Li4uLi4uLi4uLi4uLi5Q=="
+ },
+ "reviewed": true,
+ "description": "The table is a small four-column table. Its title line reads “Table 6.7 Standard cooling load factors for office accommodation”. In the displayed table, this title is set in a green shaded band that runs across the top. Beneath the title are four column headings, from left to right: “a”, “b”, “c” and “d”, each with an underline beneath it. Under each heading is one number: under “a” is “0.03”, under “b” is “0.33”, under “c” is “0.41”, and under “d” is “0.23”. There are no other shaded cells, no row labels, no footnotes, no key, and no ticks, crosses, circles or other symbols in the table as shown. The table does not explain what the column headings “a” to “d” represent.",
+ "first_draft": "The table is a small four-column table. Its title line reads “Table 6.7 Standard cooling load factors for office accommodation”. In the displayed table, this title is set in a green shaded band that runs across the top. Beneath the title are four column headings, from left to right: “a”, “b”, “c” and “d”. Under each heading is one number: under “a” is “0.03”, under “b” is “0.33”, under “c” is “0.41”, and under “d” is “0.23”. The text extraction keeps the words and numbers but loses the visual layout, showing them as two lines rather than values placed in their columns. It also does not show the green shading of the title band. There are no other shaded cells, no row labels, no footnotes, no key, and no ticks, crosses, circles or other symbols in the table as shown. The table does not explain what the column headings “a” to “d” represent.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

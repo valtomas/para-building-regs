@@ -1,0 +1,26 @@
+{
+ "key": "ADR1_Diagram-1_p13",
+ "source": "ADR1",
+ "label": "Diagram 1",
+ "page": 13,
+ "caption": "Diagram 1 \u0007Requirement RA1 – schematic example of gigabit-ready physical infrastructure from the network termination point to the network distribution point",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-25",
+ "image_sha256": "2b3abba93f0840e09f7b61c84864572c00ca2cab1b2edb066d6f1b74eb8b61f5",
+ "image_sig": {
+  "w": 732,
+  "h": 349,
+  "grey": "9vf39vf39/f39/f39/f39/v/19X+///////////////74sbG4P//////////////+9u0tNr////////l9/////vbrKzb////////6vv////727O22f7/////++nw////+97CvdXo4f7///nt8P////vexrC75u3////53d/////728bGxez29vb28czQ9vb7+/Hq6uX////////07v////v57ev05+XX2OHn9djNzO77///////85ubz///v5+f2+///////////////9ezs+q6ampqampqampqampqampqBZVZlYl9lYmdlZWZlY2RYfE9UYmJjZGJiYWNkZmJSUA=="
+ },
+ "reviewed": true,
+ "description": "This schematic diagram illustrates the gigabit-ready physical infrastructure connection between two main points. A thin horizontal line runs across the middle of the drawing. On the left, a grey house-shaped icon sits on this line and is labelled \"Network termination point (for each dwelling in building, see Diagrams 5 and 6)\". Below the icon is the text \"Dwelling/building containing more than one dwelling\". A green line runs from a small green circle inside the house shape down and to the right, to a small green circle on the horizontal line, with the text \"Access point/ common access point\" to the right of this circle. From this access point the green line runs down, then horizontally to the right, then up to a second green circle on the horizontal line; the horizontal part of this line is labelled \"Gigabit-ready physical infrastructure (ducting)\". The second green circle is adjacent to a white square box on the horizontal line, with the text \"Network distribution point\" above the box. From this box a solid black line runs down and to the right, labelled \"Gigabit-capable public electronic communications network (spine network)\". A green banner at the bottom reads \"Diagram 1 Requirement RA1 – schematic example of gigabit-ready physical infrastructure from the network termination point to the network distribution point\".",
+ "first_draft": "This schematic diagram illustrates the gigabit-ready physical infrastructure connection between two main points. On the left, a grey house-shaped icon is labelled \"Network termination point (for each dwelling in building, see Diagrams 5 and 6)\". Below this shape is the text \"Dwelling/building containing more than one dwelling\". A green line extends from a small green circle inside the house shape to a box labelled \"Access point/ common access point\". This line continues horizontally to the right, labelled \"Gigabit-ready physical infrastructure (ducting)\". It connects to a second green circle, which links to a square box labelled \"Network distribution point\". From this distribution point, a solid black line extends rightward, labelled \"Gigabit-capable public electronic communications network (spine network)\". A green banner at the bottom reads \"Diagram 1 Requirement RA1 – schematic example of gigabit-ready physical infrastructure from the network termination point to the network distribution point\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

@@ -1,0 +1,17 @@
+{
+ "key": "ADB1_Table-B2_p145",
+ "source": "ADB1",
+ "label": "Table B2",
+ "page": 145,
+ "caption": "Table B2 Continued",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "2e4a8ba830808d729f8474cd43e4874986065793f1f8d39d70ae4bd8b5001ea1",
+ "image_sig": {
+  "w": 783,
+  "h": 989,
+  "grey": "9cjEwsvS0tLS0tLX2NjY2PX8////6Orz8fDw9fb29vr1/P///+v19vDw8vD39fX49fTq6vD3+vr2+Pj1+fb3+vXr8PT65/Lr8/X28vj09fb16+Pm5Obl5uXj7e3u7e309e3n5+bl5+fm5ufn6OX4+/Xt5eXn6O7u6+/s7+75/f717+zs7Ozt7O719fX7/v//9ejh5uTl5Ojt7ezt7e3v+fXt5Obk7uvt7e3w9vb1+f/169zh3+Dj5eTl5ubj7PD/9evh4+Th5OTj6uzu7+zt+PXr5eTl6Ovt7+vv7ezu8vn18uTk5uTm5OTn4ufs8/r/7+ri4uLc3ezq6+rr9PT09A=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

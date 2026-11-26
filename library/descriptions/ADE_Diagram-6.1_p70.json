@@ -1,0 +1,33 @@
+{
+ "key": "ADE_Diagram-6.1_p70",
+ "source": "ADE",
+ "label": "Diagram 6.1",
+ "page": 70,
+ "caption": "Diagram 6.1 \u0007\u0007Ceiling void and roof space (only applicable to rooms for residential purposes)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-16",
+ "image_sha256": "022c1f6ebce4de00eaa33d7db8611e5af471286e19b475faad96a3c1c859378c",
+ "image_sig": {
+  "w": 362,
+  "h": 383,
+  "grey": "vqiyscmjmq2jppytq6Kh0urj6enptbWvrLmqv8a0v+/q6enp6bXGtLGwtre3s8rv4O/v7+/v7+/v7+/v7+/v6+n///////Hk6PH///////Tp///////+/PT+///////06f///////fPr9///////9Onv8ezx8eXp6+Lx7+3x8fHp6dXh4unP4+fR4+rq0Ojz5enq6erpy9bixejp6erp9On//////+Tf0tLu/f7///Tp///////l9fXg6MbL+f/06f//////5OLh3OfHxtX49On///////Lt7e3s1tnp//Tp////////////+Ovr6//02urq6urq6urq6urqyMm/2A=="
+ },
+ "reviewed": true,
+ "description": "This section drawing, titled \"Diagram 6.1 Ceiling void and roof space (only applicable to rooms for residential purposes)\", illustrates a horizontal ceiling structure supported by vertical joists. The space above the joists is filled with clumps of material labeled \"Mineral wool\". A wall between two rooms, drawn as stacked hatched blocks, rises through the middle into the ceiling void, with the mineral wool packed over its head. The ceiling stops against the wall on each side; a label pointing to these junctions reads \"Ceiling not continuous between rooms, joints sealed with tape or flexible sealant\", indicating a specific joint detail at that junction. The word \"SECTION\" is printed in the bottom right corner.",
+ "first_draft": "This section drawing, titled \"Diagram 6.1 Ceiling void and roof space (only applicable to rooms for residential purposes)\", illustrates a horizontal ceiling structure supported by vertical joists. The space above the joists is filled with clumps of material labeled \"Mineral wool\". A vertical rectangular column, representing a flue or chimney, runs up through the center of the ceiling, with the mineral wool packed around its upper section. A label pointing to the horizontal line where the ceiling meets the central column reads \"Ceiling not continuous between rooms, joints sealed with tape or flexible sealant\", indicating a specific joint detail at that intersection. The word \"SECTION\" is printed in the bottom right corner.",
+ "check": {
+  "verdict": "flag",
+  "note": "Calls the vertical element a flue or chimney; it is the wall between the two rooms, which the ceiling stops against on each side.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "This section drawing, titled \"Diagram 6.1 Ceiling void and roof space (only applicable to rooms for residential purposes)\", illustrates a horizontal ceiling structure supported by vertical joists. The space above the joists is filled with clumps of material labeled \"Mineral wool\". A wall between two rooms, drawn as stacked hatched blocks, rises through the middle into the ceiling void, with the mineral wool packed over its head. The ceiling stops against the wall on each side; a label pointing to these junctions reads \"Ceiling not continuous between rooms, joints sealed with tape or flexible sealant\", indicating a specific joint detail at that junction. The word \"SECTION\" is printed in the bottom right corner.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "This section drawing, titled \"Diagram 6.1 Ceiling void and roof space (only applicable to rooms for residential purposes)\", illustrates a horizontal ceiling structure supported by vertical joists. The space above the joists is filled with clumps of material labeled \"Mineral wool\". A vertical rectangular column, representing a flue or chimney, runs up through the center of the ceiling, with the mineral wool packed around its upper section. A label pointing to the junction where the ceiling meets the central column reads \"Ceiling not continuous between rooms, joints sealed with tape or flexible sealant\", indicating a specific joint detail at that junction. The word \"SECTION\" is printed in the bottom right corner.",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

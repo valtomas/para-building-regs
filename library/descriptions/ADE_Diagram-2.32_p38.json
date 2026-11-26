@@ -1,0 +1,26 @@
+{
+ "key": "ADE_Diagram-2.32_p38",
+ "source": "ADE",
+ "label": "Diagram 2.32",
+ "page": 38,
+ "caption": "Diagram 2.32 \u0007\u0007Wall type 3 – external cavity wall with internal timber wall",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "76c3976951201bbf4877094cd0701f414748e365d95f73e03daa0339654931a0",
+ "image_sig": {
+  "w": 362,
+  "h": 448,
+  "grey": "zbnAyMTFq7awws21ubfh6erp6enp27u5xL22xLq/xu/a3Nzc3M6vq7uv3Nzc3Nzj6fnm6fb/////+P7/////9On///jz//738OHj7/rv5u7p////9ujv1t7t5OHx4+f06f/86+jS1tjC4fv/9+3/9OTw7enY4OT37uDl9ub+//Td4930+f/l8OT3+NLa8v/02tns/+7a1dni7+Ts6ezg9Nnd39fl/Of85tjF5e316PTl7+3n+Pf67O/m4NTo6OL06f/57f7/4dnw/9//69bj9On//////efl9/fu9/fW8/Tp//fs6+Ls///14uPw+//05Pb08PDw7/b29fX09fb27w=="
+ },
+ "reviewed": true,
+ "description": "The image is titled \"Diagram 2.32 Wall type 3 – external cavity wall with internal timber wall\". It is a three-dimensional cross-section showing the corner of a building wall assembly. The outermost layer consists of a brick wall. A gap, or cavity, separates this from the inner block wall. At the top of the cavity, a label reads \"Cavity stop\", pointing to a short block bridging the outer wall and the inner block. Another label, \"Mineral wool pad\", points to a pad within the inner block wall. Further inside, set back from the main wall structure, is a framed partition. A label at the bottom left reads \"Internal timber wall\", pointing to a timber stud of this framework. A label at the bottom right reads \"Sealed joints\", pointing to the joint where the timber wall meets the inner block wall. The drawing is a line drawing showing the spatial relationship between the external masonry, the insulation, and the internal timber partition.",
+ "first_draft": "The image is titled \"Diagram 2.32 Wall type 3 – external cavity wall with internal timber wall\". It is a three-dimensional cross-section showing the corner of a building wall assembly. The outermost layer consists of a brick wall. A gap, or cavity, separates this from the interior. Inside this cavity, a label reads \"Cavity stop\", pointing to a short block bridging the outer wall and an inner structural element. Another label, \"Mineral wool pad\", points to a pad of insulation located in the cavity against the inner structural block. Further inside, set back from the main wall structure, is a framed partition. A label reads \"Internal timber wall\", indicating this framework. The bottom labels read \"Sealed joints\", pointing to the corner connection where the two internal timber walls meet. The drawing is a line drawing showing the spatial relationship between the external masonry, the insulation, and the internal timber partition.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

@@ -1,0 +1,26 @@
+{
+ "key": "ADE_Diagram-3.13_p52",
+ "source": "ADE",
+ "label": "Diagram 3.13",
+ "page": 52,
+ "caption": "Diagram 3.13 \u0007\u0007Floor type 2.1C(b) – floor type 2.1 with ceiling treatment C and floating floor (b)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-15",
+ "image_sha256": "f85ed8caf88a60553b5d575400ea0ef252a89406f3f4b4ae0d4e38e07d6c8e1b",
+ "image_sig": {
+  "w": 401,
+  "h": 318,
+  "grey": "2LS2ur2wsK+wsKS20dLo++vS0tzdxrO0t7iswunp9P3x6enp6c+psra1trzU2fT98enp6enHr7ewvq7PyNj0/fHp6enp0LKqw8G06enp9P3d5eXl5eXl5eXl5eXl5enr6//////////////////16+vw8u/r8PPy8PPx7+7w9evrz9TQ1NDV0s7R0tDV1/Xr6+Di5ePm4+fm5eTj5eL16+vq8/j4+Pz88fTz+vbz9evr8/j1+vD0+vj9+fn18PXr6+zS7e3s6c/q6ejq1u316+v29/f39/f39/f39/f39evr/////////////+vo5/Hr6fLy8vLy8vLy8vLk4t/t8A=="
+ },
+ "reviewed": true,
+ "description": "The image is a cross‑section drawing, framed by a rectangular border, with the word \"SECTION\" printed in the lower right corner. Above the frame, a pale green title block reads: \"Diagram 3.13 Floor type 2.1C(b) – floor type 2.1 with ceiling treatment C and floating floor (b)\".\n\nThe section itself shows a horizontal floor assembly made up of stacked layers. The topmost layer is a rectangular band filled with a speckled, stippled pattern. Directly beneath it is a thin horizontal band drawn with a closely spaced diagonal zig‑zag or hatched pattern. Below that sits a thicker rectangular layer, again rendered with the same speckled, stippled texture. Along the underside of this lower layer are three small, evenly spaced symbols, each shaped like a shallow rectangle with a cross (X) inside. These symbols rest on top of a single thin horizontal line or plate that runs along the very bottom of the drawing. No dimensions, arrows or additional text labels appear on the construction elements themselves.",
+ "first_draft": "The image is a cross‑section drawing, framed by a rectangular border, with the word \"SECTION\" printed in the lower right corner. Above the frame, a pale green title block reads: \"Diagram 3.13 Floor type 2.1C(b) – floor type 2.1 with ceiling treatment C and floating floor (b)\".\n\nThe section itself shows a horizontal floor assembly made up of stacked layers. The topmost layer is a rectangular band filled with a speckled, stippled pattern. Directly beneath it is a thin horizontal band drawn with a closely spaced diagonal zig‑zag or hatched pattern. Below that sits a thicker rectangular layer, again rendered with the same speckled, stippled texture. Along the underside of this lower layer are three small, evenly spaced symbols, each shaped like a shallow triangle with a cross (X) inside. These symbols rest on top of a single thin horizontal line or plate that runs along the very bottom of the drawing. No dimensions, arrows or additional text labels appear on the construction elements themselves.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

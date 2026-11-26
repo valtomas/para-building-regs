@@ -1,0 +1,26 @@
+{
+ "key": "ADK_Diagram-1.4_p18",
+ "source": "ADK",
+ "label": "Diagram 1.4",
+ "page": 18,
+ "caption": "Diagram 1.4 | Reduced headroom for loft conversions For loft conversions in dwellings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-22",
+ "image_sha256": "b0e7be6866ae51d836e7ae0a1214697b5ce5ed176c9aea42df97f897122bb510",
+ "image_sig": {
+  "w": 754,
+  "h": 355,
+  "grey": "9/f39/f39/f39/f39/f39/nw9f////70//////////z69Pj///Po7tfa1dr////8/P///fL5+uzN0NHm/////Pz////6+vry3/v///////z8////+vrr/f/////////8/P//7fr6+vj//////////Pz////6+vrr//////////z8////+vr67//////////8/P////r6+u///////////Pz///7y8u3q//////////z8//////r69v/////////8/P////3s9f3//////////Pz////05ef///////////yliYqJiomLiYmIiIiIiIibjHFhcXBvbWtwWVVVVVVVcw=="
+ },
+ "reviewed": true,
+ "description": "This cross-sectional drawing depicts a loft space with a sloping roof line. A vertical dimension on the far left is marked \"1.8m\", measuring the height of the vertical wall from the floor level up to where the roof line begins. A second vertical dimension line measures \"1.9m\" from the floor level up to the sloping roof. To the right of this measurement, a vertical line with a small square at the top, representing the stair, is drawn. A horizontal dimension line below the floor level is labelled \"Half width of stair\", spanning the distance from the vertical wall on the left to the vertical line marking the 1.9m measurement. A text box in the upper right states: \"Where there is not enough space to achieve 2m headroom reduced headroom as shown will be satisfactory\". In the top left corner, the text \"See para 1.13\" appears. A green footer bar at the bottom of the image reads \"Diagram 1.4 Reduced headroom for loft conversions\".",
+ "first_draft": "This cross-sectional drawing depicts a loft space with a sloping roof line. A vertical dimension on the far left is marked \"1.8m\". A second vertical dimension line measures \"1.9m\" from the floor level up to the sloping roof. To the right of this measurement, a symbol representing a stair is drawn. A horizontal dimension line below the floor level is labelled \"Half width of stair\", spanning the distance from the vertical reference line to the stair symbol. A text box in the upper right states: \"Where there is not enough space to achieve 2m headroom reduced headroom as shown will be satisfactory\". In the top left corner, the text \"See para 1.13\" appears. A green footer bar at the bottom of the image reads \"Diagram 1.4 Reduced headroom for loft conversions\".",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

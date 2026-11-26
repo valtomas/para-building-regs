@@ -1,0 +1,17 @@
+{
+ "key": "ADB2_Table-2.3_p31",
+ "source": "ADB2",
+ "label": "Table 2.3",
+ "page": 31,
+ "caption": "Table 2.3 Widths of escape routes and exits",
+ "model": "Qwen3.8-27B-GGUF",
+ "date": "2026-11-10",
+ "image_sha256": "9989379e30a5f01c2220d7bff62527185c9dded0841f02b08e96ff4f67ffda17",
+ "image_sig": {
+  "w": 737,
+  "h": 327,
+  "grey": "v62mrKytr7HIyMjIyMjIyMu9v760u7u+z8/Pz8/Pz8/t7uzp+/////Xs6u//////8Pf39vf39/fx8/b29/f39/H29vb29vb29Pb29vb29vbr9/f39/f39+n29/f39/f37P/////////v+////////+vn8Pf39/f38+fw9/f39/fs6vL29vb29vHr9Pb29vb23Oz//v7//////////////+/j5ebn5ef////////////t4+Tm4+bh5+Hj5fr/////7uPo4ePo5ej//////////+zk4eTi3ePk4eTi5+Xi5/Hz5OTk5uL//v/9////////6Nvb3t3b2trd3Ob29vb29g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

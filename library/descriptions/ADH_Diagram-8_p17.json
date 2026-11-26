@@ -1,0 +1,33 @@
+{
+ "key": "ADH_Diagram-8_p17",
+ "source": "ADH",
+ "label": "Diagram 8",
+ "page": 17,
+ "caption": "Diagram 8 \u0007\u0007Pipe runs near buildings",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-19",
+ "image_sha256": "6ca2ce74369c9dfa8b56a06c9861bb5a24deb867c7fd903569b7c9f73d2df124",
+ "image_sig": {
+  "w": 355,
+  "h": 511,
+  "grey": "4by8wsmrvrfAtb6xqq3J2+X09Nzc9PT09PT09PT09PTo//+3ttna2uT5//Pv7/f/6P//t7f8/vb/5//o/////+j/8cDA4Pb29+D/6P/////o/+TX3NDm4/rW6uT/////6P/r19Xc5un23Mnm/////+j///b1///////////////o//+3rP//////////////6P//t6vv7+/v5//h7+/3/+j/9rCm4vPr9t7/6P/////o/+zv7+X68vbm/+j/////6P/////7zNT/6P/o/////+j/9/D19fXm7dzj4//////o/+PMzd/f4/ng1ur/////4u/u7e3v7+/v7+/v7+/v7w=="
+ },
+ "reviewed": true,
+ "description": "The image is titled 'Diagram 8 Pipe runs near buildings' and contains two separate cross-sectional drawings arranged vertically. Both show the wall of a building standing on a strip foundation, with a pipe trench beside it. In the upper drawing, a line indicates 'Ground level'. A horizontal double-headed arrow labelled 'A' measures the distance from the edge of the foundation to the side of the trench on the right. A horizontal dashed line runs from the underside of the foundation to the trench. Text below reads 'Where A is less than 1m concrete fill trench to this level'. The trench is filled with concrete up to that level, with the pipe at its base.\n\nThe lower drawing shows a similar arrangement with a horizontal arrow labelled 'A'. A vertical double-headed arrow labelled 'A less 150mm' measures down from the dashed line at the underside of the foundation to a lower level in the trench. Text below reads 'Where A is 1m or more concrete fill trench to this level'. Below that level the trench holds the pipe in its fill.",
+ "first_draft": "The image is titled 'Diagram 8 Pipe runs near buildings' and contains two separate cross-sectional drawings arranged vertically. Both show vertical pipes passing down through a solid horizontal slab. In the upper drawing, a line indicates 'Ground level'. A horizontal double-headed arrow labelled 'A' measures the distance from the pipes to the edge of a deep cut-out on the right. A horizontal dashed line runs across the upper part of the cut-out. Text below reads 'Where A is less than 1m concrete fill trench to this level'. The cut-out contains loose material and a pipe at its base. \n\nThe lower drawing shows a similar arrangement with pipes through a slab and a horizontal arrow labelled 'A'. A vertical double-headed arrow is labelled 'A less 150mm', measuring from the dashed line down to the bottom of a second deep cut-out. Text below reads 'Where A is 1m or more concrete fill trench to this level'. This cut-out also contains loose material and a pipe at the bottom.",
+ "check": {
+  "verdict": "minor",
+  "note": "Calls the walls on their foundations \"vertical pipes passing through a slab\". A and the two fill levels are right.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "suggestion": {
+  "text": "The image is titled 'Diagram 8 Pipe runs near buildings' and contains two separate cross-sectional drawings arranged vertically. Both show the wall of a building standing on a strip foundation, with a pipe trench beside it. In the upper drawing, a line indicates 'Ground level'. A horizontal double-headed arrow labelled 'A' measures the distance from the edge of the foundation to the side of the trench on the right. A horizontal dashed line runs from the underside of the foundation to the trench. Text below reads 'Where A is less than 1m concrete fill trench to this level'. The trench is filled with concrete up to that level, with the pipe at its base.\n\nThe lower drawing shows a similar arrangement with a horizontal arrow labelled 'A'. A vertical double-headed arrow labelled 'A less 150mm' measures down from the dashed line at the underside of the foundation to a lower level in the trench. Text below reads 'Where A is 1m or more concrete fill trench to this level'. Below that level the trench holds the pipe in its fill.",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "model_description": "The image is titled 'Diagram 8 Pipe runs near buildings' and contains two separate cross-sectional drawings arranged vertically. Both show vertical pipes passing down through a solid horizontal slab. In the upper drawing, a line indicates 'Ground level'. A horizontal double-headed arrow labelled 'A' measures the distance from the edge of the slab to the edge of a deep cut-out on the right. A horizontal dashed line runs from the slab to the cut-out at the level of the top of the loose material, near the bottom of the cut-out. Text below reads 'Where A is less than 1m concrete fill trench to this level'. The cut-out contains loose material and a pipe at its base.\n\nThe lower drawing shows a similar arrangement with pipes through a slab and a horizontal arrow labelled 'A'. A vertical double-headed arrow is labelled 'A less 150mm', measuring from the dashed line down to the bottom of a second deep cut-out. Text below reads 'Where A is 1m or more concrete fill trench to this level'. This cut-out also contains loose material and a pipe at the bottom.",
+ "corrected_by": "Claude Opus 5.5",
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

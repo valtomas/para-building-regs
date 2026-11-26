@@ -1,0 +1,26 @@
+{
+ "key": "ADJ_Diagram-40_p59",
+ "source": "ADJ",
+ "label": "Diagram 40",
+ "page": 59,
+ "caption": "Diagram 40 \u0007Free areas of permanently open air vents for oil-fired appliance installations",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-21",
+ "image_sha256": "c4ee51621847740e78ea523839bfa0648cf90c453665f13f0753562a84835e2c",
+ "image_sig": {
+  "w": 749,
+  "h": 1057,
+  "grey": "2dHHt7u1vsrNzM/L2d7e3vT4+/v7+Obl6fv45ubf+/v09/v7++fe29735uHj5fj59NTR0u/08fj06+j77ub3+vT6////+ePu5O7s8+7m/Pr09/v7++/l5uz48u/w+/v59MO70e/06OTr6ujz4uP4+vTEsrzj+ufo7uzq8N7d+Pr0+v/+/+nK0djx8+3y8fj69O7v8vb06erm8/Lw7+/6+fS7qs30+u/69Ofp//Hq8Pr00cj7//ns8uzu7/Xv7Pn69Pj7+/vw4efi8PDr8e33+uXy9vf39/f39vb39/f39/fx6N7e3d/f6Ojo5+Xn5+n58O/q6uvr7Ozq6+zy9PL6+w=="
+ },
+ "reviewed": true,
+ "description": "Diagram 40 is a table of small floor plans showing free areas of permanently open air vents for oil-fired appliance installations. It has three rows and two columns headed “Open flued” and “Room sealed”. The left column labels the rows: “Appliance in a room or space”, “Appliance in an appliance compartment ventilated via an adjoining room or space”, and “Appliance in an appliance compartment ventilated direct to outside”. Each cell holds a plan of a room or compartment, the appliance drawn as a rectangle with a flue or pipe line, and wall gaps marked with letters. Values per kW output are: row one, A = 550mm² (open flued) and “No vent needed” (room sealed); row two, A = 550mm², B = 1100mm², C = 1650mm² (open flued) and F = 1100mm², G = F (room sealed); row three, D = 550mm², E = 1100mm² (open flued) and H = 550mm², I = H (room sealed). Five numbered notes below state which letters are permanently open vents to the outside and which are between an appliance compartment and a room or space, that the given area is the free area of the vent(s) or the equivalent free area for ventilators of more complex design, the draught-break addition, the mm²-to-cm² conversion, and the 5kW(net) proviso for older dwellings.",
+ "first_draft": "Diagram 40 is a table of small floor plans showing free areas of permanently open air vents for oil-fired appliance installations. It has three rows and two columns headed “Open flued” and “Room sealed”. The left column labels the rows: “Appliance in a room or space”, “Appliance in an appliance compartment ventilated via an adjoining room or space”, and “Appliance in an appliance compartment ventilated direct to outside”. Each cell holds a plan of a room or compartment, the appliance drawn as a rectangle with a flue or pipe line, and wall gaps marked with letters. Values per kW output are: row one, A = 550mm² (open flued) and “No vent needed” (room sealed); row two, A = 550mm², B = 1100mm², C = 1650mm² (open flued) and F = 1100mm², G = F (room sealed); row three, D = 550mm², E = 1100mm² (open flued) and H = 550mm², I = H (room sealed). Five numbered notes below define which letters are external vents, which are internal, the draught-break addition, the mm²-to-cm² conversion, and the 5kW(net) proviso for older dwellings.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}

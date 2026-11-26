@@ -1,0 +1,17 @@
+{
+ "key": "ADM2_Table-3_p41",
+ "source": "ADM2",
+ "label": "Table 3",
+ "page": 41,
+ "caption": "Table 3 Provision of wheelchair space in audience seating",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-24",
+ "image_sha256": "2671bfcbd5cc50a7fb312e474b12227ba73fcf086cdc5ae8b7cc53617b7086d2",
+ "image_sig": {
+  "w": 371,
+  "h": 282,
+  "grey": "6cDNxLzCw8jDwL6/xsTH5/LFzdDJur3Jxru6vcuyv+/z6enUsKOppLOgmunp6env68rV6urq6tPJ1c/N0Orq7/Gvuv/////Ps8Gyr7n3/////Pz///rm6fD//+7r5/r/9/Dw8PDs19De8PDh0c/l9Pjd2fn/593b1uru2djj2vb/////9tXg3dri//Pb4/j/7s7G8PDXzcrG29zDzMzJ7fXX2OL21d/d2eD/+trX///y1eLx8fHx8fHx8fHx8fH19ND///////////////////fk2+Hb6N7l3+Pe4uX1///508rV09LR1MzZ0dDb2vb/7NHQz8/OzszNz9DP1+Pj6g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

@@ -1,0 +1,26 @@
+{
+ "key": "ADK_Diagram-7.2_p50",
+ "source": "ADK",
+ "label": "Diagram 7.2",
+ "page": 50,
+ "caption": "Diagram 7.2 Height of manifestation for glass doors and glazed screens",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-23",
+ "image_sha256": "d0e93bb6882f0d09b998aa66f2ca81fc49652dd72ef1cfa70f7ca6e25d900c84",
+ "image_sig": {
+  "w": 754,
+  "h": 523,
+  "grey": "8enp6enp6enp6enp6enp8Pbp8Pv7+/v7+/v7+/v7+/n8/v/////29/f4///////8/P//////+///+v///////Pz///////f29vT69/////z8///////08fPu//r////8/P//////+///9//6/////Pz////1+PHr7PD/6Pr///z8/////Pb4/v/06vr////8/P//8fP8+///9//6/////Pz////56vv///f/+v////z8////+/v7///1//j////8/P////n36OTm5enz/////Pz//////+Du7Ovu8/////zo5OTk5OTk5OTk5OTk5OTmiWhdamdpZ2hmZ2hnVlVVcw=="
+ },
+ "reviewed": true,
+ "description": "This is a line diagram, captioned \"Diagram 7.2 Height of manifestation for glass doors and glazed screens\", showing an elevation of a glass door or glazed screen drawn as a tall, narrow rectangle. Across the rectangle are two horizontal manifestation markings, one upper and one lower; each is drawn as a small circle, a circle with a central dot, and a short broken line of square dashes. The text below the rectangle reads \"Manifestation can take various forms, e.g. broken or solid lines, patterns or company logos\", and the top left reads \"See para 7.4\". Four vertical dimension lines, each with arrowheads at both ends, extend upward from a baseline at the level of the bottom of the rectangle; on the left are \"1000mm\" and \"850mm\", on the right \"1600mm\" and \"1400mm\". The two manifestation markings lie between the pairs of dimension lines, the lower marking between 850mm and 1000mm and the upper marking between 1400mm and 1600mm, so the dimension lines mark the top and bottom of the height band for each marking above the base.",
+ "first_draft": "This is a line diagram, captioned \"Diagram 7.2 Height of manifestation for glass doors and glazed screens\", showing an elevation of a glass door or glazed screen drawn as a tall, narrow rectangle. Across the rectangle are two horizontal manifestation markings, one upper and one lower; each is drawn as a small circle, a circle with a central dot, and a short broken line of square dashes. The text below the rectangle reads \"Manifestation can take various forms, e.g. broken or solid lines, patterns or company logos\", and the top left reads \"See para 7.4\". Four vertical dimension lines with arrowheads run from the bottom edge of the rectangle upward. On the left are \"1000mm\" and \"850mm\"; on the right are \"1600mm\" and \"1400mm\". Their upper arrowheads point to the two manifestation markings, indicating the heights of the markings above the base. The exact matching of each figure to each marking is not clearly legible.",
+ "check": {
+  "verdict": "ok",
+  "note": "",
+  "by": "Claude Opus 5.5",
+  "date": "2026-11-26"
+ },
+ "rejected": false,
+ "reviewed_date": "2026-11-26"
+}
