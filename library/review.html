@@ -13,7 +13,7 @@
 :root {
   --bg: #f2ebdf; --panel: #faf5ec; --panel-2: #eadfcd; --field: #fffdf8; --ink: #2b1d16; --muted: #5c4a3e;
   --muted-2: #7a6656; --border: #d6c7b2; --border-field: #c9b8a1; --accent: #8a3324; --accent-hover: #6b2419;
-  --accent-2: #f3e4cf; --ok: #4a6420; --warn: #5e3a0a; --warn-bg: #f5e6c8; --danger: #a3291b;
+  --accent-2: #f3e4cf; --danger-bg: #f6dcd3; --ok: #4a6420; --warn: #5e3a0a; --warn-bg: #f5e6c8; --danger: #a3291b;
   --display: "Space Grotesk", "IBM Plex Sans", system-ui, sans-serif; --body: "IBM Plex Sans", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
 }
@@ -21,7 +21,7 @@
   :root {
     --bg: #1c1411; --panel: #261b17; --panel-2: #30231e; --field: #2a1e19; --ink: #efe4d3; --muted: #b8a593;
     --muted-2: #8a7868; --border: #3d2c25; --border-field: #5c4a3e; --accent: #d9876b; --accent-hover: #e0927a;
-    --accent-2: #3a2620; --ok: #a9c27a; --warn: #f0c98a; --warn-bg: #3a2a14; --danger: #f08a7a;
+    --accent-2: #3a2620; --danger-bg: #3a1a14; --ok: #a9c27a; --warn: #f0c98a; --warn-bg: #3a2a14; --danger: #f08a7a;
   }
 }
 * { box-sizing: border-box; }
@@ -62,6 +62,15 @@ textarea { width: 100%; min-height: 220px; font: 16px/1.55 var(--body); color: v
 .note { background: var(--warn-bg); color: var(--warn); border-radius: 12px; padding: 10px 14px; margin: 0 0 14px;
   font-size: 15px; }
 .empty { font-style: italic; color: var(--muted); }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 0 0 14px; }
+.pair .eyebrow { margin-bottom: 4px; }
+.pair .text { margin: 0; font-size: 15px; }
+.pair .text del { background: var(--danger-bg); color: inherit; text-decoration: line-through; }
+.pair .text ins { background: var(--accent-2); text-decoration: none; border-bottom: 2px solid var(--accent); }
+.check { font: 12.5px/1.5 var(--mono); color: var(--muted); border-left: 2px solid var(--accent); padding: 2px 0 2px 10px;
+  margin: 0 0 14px; }
+.check.flag, .check.crop { color: var(--danger); border-color: var(--danger); }
+@media (max-width: 1100px) { .pair { grid-template-columns: 1fr; } }
 .note ul { margin: 6px 0 0; padding-left: 20px; }
 .views { display: flex; gap: 8px; margin: 0 0 18px; }
 .state.badcrop { color: var(--danger); margin-left: 6px; }
@@ -106,6 +115,11 @@ select { font: 12px var(--mono); color: var(--ink); background: var(--field); bo
     <button class="tab" data-show="reviewed" aria-pressed="false">Reviewed</button>
     <button class="tab" data-show="rejected" aria-pressed="false">Rejected</button>
     <button class="tab" data-show="all" aria-pressed="false">All</button>
+    <span class="count">Claude's check:</span>
+    <button class="tab" data-show="suggested" aria-pressed="false">Suggested corrections</button>
+    <button class="tab" data-show="crop" aria-pressed="false">Bad crops</button>
+    <button class="tab" data-show="looked_right" aria-pressed="false">Looked right</button>
+    <button class="tab" data-show="recut" aria-pressed="false">Recut</button>
     <span class="count" id="count"></span>
   </div>
   <div id="list"></div>
@@ -128,6 +142,31 @@ select { font: 12px var(--mono); color: var(--ink); background: var(--field); bo
 let items = [], show = "todo";
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const kind = (it) => (it.stale ? "stale" : it.reviewed ? "reviewed" : it.rejected ? "rejected" : "todo");
+const verdict = (it) => (it.check || {}).verdict;
+const groups = {  // Claude's check of the drafts still to review, by what it found
+  suggested: (it) => kind(it) === "todo" && it.suggestion && it.suggestion.text,
+  crop: (it) => kind(it) === "todo" && verdict(it) === "crop",
+  looked_right: (it) => kind(it) === "todo" && verdict(it) === "ok",
+  recut: (it) => verdict(it) === "recut" && (kind(it) === "todo" || kind(it) === "stale"),
+};
+const open_ = (it) => kind(it) === "todo" || kind(it) === "stale";  // still waiting for a decision
+const matches = (it) => show === "all" || (groups[show] ? groups[show](it) : kind(it) === show);
+
+// The words that differ between two texts: removed ones struck through in the first, added ones marked in the second.
+function wordDiff(a, b) {
+  const x = a.split(/(\s+)/), y = b.split(/(\s+)/), n = x.length, m = y.length;
+  const L = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
+  for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--)
+    L[i][j] = x[i] === y[j] ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
+  let i = 0, j = 0, left = "", right = "";
+  while (i < n || j < m) {
+    if (i < n && j < m && x[i] === y[j]) { left += esc(x[i]); right += esc(y[j]); i++; j++; }
+    else if (j < m && (i === n || L[i][j + 1] >= L[i + 1][j])) { right += /^\s+$/.test(y[j]) ? y[j] : `<ins>${esc(y[j])}</ins>`; j++; }
+    else { left += /^\s+$/.test(x[i]) ? x[i] : `<del>${esc(x[i])}</del>`; i++; }
+  }
+  return [left, right];
+}
+const verdictLabel = { ok: "Looked right", minor: "Small slip", flag: "Wrong", crop: "Bad crop", recut: "Recut" };
 const label = { todo: "To review", reviewed: "Reviewed", rejected: "Rejected", stale: "Image changed since review" };
 
 async function load() {
@@ -136,10 +175,11 @@ async function load() {
 }
 
 function render() {
-  const shown = items.filter((it) => show === "all" || kind(it) === show);
+  const shown = items.filter(matches);
   const n = (k) => items.filter((it) => kind(it) === k).length;
   document.getElementById("count").textContent =
-    `${n("todo")} to review · ${n("reviewed")} reviewed · ${n("rejected")} rejected · ${n("stale")} changed · ${items.length} written`;
+    `${n("todo")} to review · ${n("reviewed")} reviewed · ${n("rejected")} rejected · ${n("stale")} changed · ${items.length} written` +
+    (groups[show] ? ` · ${shown.length} shown` : "");
   document.getElementById("list").innerHTML = shown.length ? shown.map((it) => `
     <article class="card" data-key="${esc(it.key)}">
       <div class="img"><img src="/image?key=${encodeURIComponent(it.key)}" alt="${esc(it.source + " " + it.label)}"
@@ -150,23 +190,29 @@ function render() {
         <p class="caption">${esc(it.caption)}</p>
         <p class="meta">${esc(it.model)} · written ${esc(it.date)}${it.corrected_by ? ` · corrected by ${esc(it.corrected_by)}` : ""}${it.reviewed_date ? ` · approved ${esc(it.reviewed_date)}` : ""} · PDF page ${esc(it.page)}</p>
         ${it.stale ? `<p class="note">The drawing's image has changed since this was approved, so it is left out of the library until you approve it again against the image shown.</p>` : ""}
-        <p class="text">${esc(it.description)}</p>
+        ${it.check && open_(it) ? `<p class="check ${esc(verdict(it))}">Claude's check: ${esc(verdictLabel[verdict(it)] || verdict(it))}${it.check.note ? ". " + esc(it.check.note) : ""}</p>` : ""}
+        ${it.suggestion && it.suggestion.text && open_(it) ? (() => { const [a, b] = wordDiff(it.description, it.suggestion.text); return `
+        <div class="pair">
+          <div><div class="eyebrow">Model's description</div><p class="text">${a}</p></div>
+          <div><div class="eyebrow">Suggested by ${esc(it.suggestion.by)}</div><p class="text">${b}</p></div>
+        </div>`; })() : `<p class="text">${esc(it.description)}</p>`}
         <div class="actions">
-          <button class="primary" data-act="approve">${it.reviewed && !it.stale ? "Approved" : "Approve"}</button>
+          ${it.suggestion && it.suggestion.text && open_(it) ? `<button class="primary" data-act="take">Approve suggestion</button>` : ""}
+          <button class="${it.suggestion && it.suggestion.text && open_(it) ? "" : "primary"}" data-act="approve">${it.reviewed && !it.stale ? "Approved" : it.suggestion && it.suggestion.text && open_(it) ? "Approve original" : "Approve"}</button>
           <button data-act="edit">Edit</button>
           ${it.reviewed || it.rejected ? `<button data-act="unapprove">${it.rejected ? "Undo rejection" : "Withdraw approval"}</button>` : `<button class="danger" data-act="reject">Reject</button>`}
         </div>
       </div>
     </article>`).join("") : `<p class="empty">Nothing here.</p>`;
-  document.querySelectorAll('.card button.primary').forEach((b) => {
+  document.querySelectorAll('.card button[data-act="approve"]').forEach((b) => {
     const it = items.find((x) => x.key === b.closest(".card").dataset.key);
     b.disabled = it.reviewed && !it.stale;
   });
 }
 
-async function save(key, description, approve, reject = false) {
+async function save(key, description, approve, reject = false, use_suggestion = false) {
   const r = await fetch("/api/save", { method: "POST", headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ key, description, approve, reject }) });
+    body: JSON.stringify({ key, description, approve, reject, use_suggestion }) });
   if (!r.ok) { alert("Couldn't save: " + (await r.text())); return; }
   const rec = await r.json();
   const i = items.findIndex((x) => x.key === key);
@@ -257,7 +303,9 @@ document.addEventListener("click", (e) => {
   const card = b.closest(".card"), key = card.dataset.key, area = card.querySelector("textarea");
   if (b.dataset.act === "edit") {
     const it = items.find((x) => x.key === key);
-    card.querySelector(".text").outerHTML = `<textarea aria-label="Description">${esc(it.description)}</textarea>`;
+    const start = it.suggestion && it.suggestion.text && open_(it) ? it.suggestion.text : it.description;
+    (card.querySelector(".pair") || card.querySelector(".text")).outerHTML = `<textarea aria-label="Description">${esc(start)}</textarea>`;
+    card.querySelector('[data-act="take"]')?.remove();
     card.querySelector('[data-act="approve"]').textContent = "Save and approve";
     card.querySelector('[data-act="approve"]').disabled = false;
     b.textContent = "Save without approving";
@@ -267,6 +315,8 @@ document.addEventListener("click", (e) => {
     ta.focus();
   } else if (b.dataset.act === "save") {
     save(key, area.value, false);
+  } else if (b.dataset.act === "take") {
+    save(key, null, true, false, true);
   } else if (b.dataset.act === "approve") {
     save(key, area ? area.value : null, true);
   } else if (b.dataset.act === "reject") {
