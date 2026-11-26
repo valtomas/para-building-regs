@@ -4,13 +4,13 @@
  "label": "Table 8",
  "page": 20,
  "caption": "Table 8 \u0007Limits of cover for class 120 clayware pipes in any width of trench",
- "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
- "date": "2026-11-19",
- "image_sha256": "1cd0f7403a2a4329afe92bb59b4ccfed02475b89772947ce5ccaaab6679bf7f0",
+ "model": "Claude Opus 5.5",
+ "date": "2026-11-26",
+ "image_sha256": "0abe40913b261b1f747eadeb51263f1b87db34a7a98eee85bb9a0adecad7387b",
  "image_sig": {
-  "w": 796,
+  "w": 755,
   "h": 292,
-  "grey": "zMjBxMTFusPEx8S8v9jd/b+3r7G2r7Clp7Crsq7L0P3X2///6Mz/+tDL///W0PL/5/Dx8ezp8fHq6/Hx7Orx/u/+///27v//9fP///jy///k/f//9en///Dx///w7P//6f3///Ts///y8f//9/D///j+///7+f//+vr///z8///h/f//8Ob//+7s///z7f//1vLy8vLy8vLy8vLy8vLy/vPe4eLh4ODi4OHi3/r////u3uHh3uLi4+Dg3+Di7P//7+Dh39/g4OHh4OLh4+D1//Xl5P7+/v7+//7///7////w4OLm4eDh////////////8vHx8fHx8fHx8fHx8fHx/g=="
+  "grey": "zMnBw8HEv8LFxMW7wsPd4sG4r7GwsLSnq6qsrbaw0NfY1f//9s7q/9/P4f/z0c//5+/x8e/o7vHv6O/x8err8/D8///97Pr//e38///09f/l+v///eT5//zm/f//7e3/6vv///rs9//76/v///L0//j+///9+fz//fj+///6/f/h+v//+eb0//nk+v//7fL/1PLy8vLy8vLy8vLy8vLy8/Pf4uPf4N/h4OHh4eT////v3uLg4d7n4t7k393j3vT/8ODg3uLg3+Hj4ODi4+Hf/fbk4f7+/v/9//7////+///w4uLk4uLf9P//////////8vHx8fHx8fHx8fHx8fHx8w=="
  },
  "reviewed": false,
  "not_needed": true

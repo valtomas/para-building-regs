@@ -4,13 +4,13 @@
  "label": "Table C1",
  "page": 30,
  "caption": "Table C1 \u0007\u0007Characteristics that should be considered when designing or laying a shared drain/sewer so that it meets the basic requirements for adoption",
- "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
- "date": "2026-11-19",
- "image_sha256": "7fae465b95db54d43b1ef13052e20498f8a5851006edf28d4b3cecd32f808189",
+ "model": "Claude Opus 5.5",
+ "date": "2026-11-26",
+ "image_sha256": "0932049fdf4e6e707b825dbc7f14bc0426079c88ed5afa93a4f8c2a2be3cfe1c",
  "image_sig": {
-  "w": 796,
-  "h": 1115,
-  "grey": "2ta9vb/Dv8G+wMC8xbva/u7d4Obk5eXr8O7q19jd5v///f7/////////9Nvi7Pn/8d3d29vb4Nvc5Pjv7fT2//Da3Nzb4eTl4+r3+//////z2Nza3dnc5OPk+P//////8d3e3uPm5eXr9fr4/P////DU1tve3N3c3N32+Pb5///y4uTo7e/s7u3x/Pr/////7NjY2NjY2djW3+rb4+Hp//ny8vPy8vPz8/j59fv7+////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="
+  "w": 755,
+  "h": 720,
+  "grey": "1tetsLK0r7mus7ersrW04enX1tTV1tbY5OPk2tfX0+bw5+jt6urs6u3s7OPe3+fv/fb2///////////k2+Hq+fz7+/r8+/v7+/v86eDu7frv0NDM0M/Q0c7R7PDp6PT49t7f3uHg4OPg4vP///////Db3Nza3ebn6Obq9/z////y0dXU09HU3N/j5f//////9+Lm5Obk5Obm9P////////Tk5ebo8fLx7/Lz9/P9///v0tLS1NXS1dLR4Pfy8fr/8Nna6Ofm6ebp6PX3+/////Xk5Ojx8vLw8vD4///////q1tbW1tfW19bW7eDf5uPx79fY19nV2tfZ2ung3+jl8Q=="
  },
  "reviewed": false,
  "not_needed": true

@@ -4,13 +4,13 @@
  "label": "Table 1",
  "page": 9,
  "caption": "Table 1 \u0007Minimum trap sizes and seal depths Appliance",
- "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
- "date": "2026-11-16",
- "image_sha256": "7183c3178477a8e71c6619f58b8a5e3c9c6eefdb1056e707803face9bfdc877c",
+ "model": "Claude Opus 5.5",
+ "date": "2026-11-26",
+ "image_sha256": "6b7bd59b08c6c63715c15bb4682f81236d17228e033f4d0e6dbba722c16b9a7b",
  "image_sig": {
   "w": 371,
-  "h": 842,
-  "grey": "78/Yz7C4tbfM0M3T0uXl7Pfk5/P4+OTa3+f3ysnF3vrz2Ofw9fX18fH19fXw9PX489Tm8/r6+vf2+vr68/j6+/XN3ub0/v/7+v////n+///11Nvi5O759/b6+vrz+Pr799zg6Ony8u7q8vPz6vDx+f72297h2uHe3d3k8PTy9v757NbV19PX2NXX2t7h5/L44+Pi59vi393m3OX//////+PZ1c3SzdTQ1tPJ0NDf4vngz8rUztDc4N7h3+Pi3ur05dra1dXX0tXb3dPZ1Nrn++3d1+LU5+fp7+fr5uvm4/Th0NbQydLP09TN19rW09b/9/Py8Pn7/////////////w=="
+  "h": 470,
+  "grey": "7LnKxq61usC0u7XBv+Li6u/i4tW2vrSx4uLi4uLi4ur42uD1///bytPg/MPKxOL/+vb29vb29vb29vbg19fl+fPK5fb////4+P////X9///y3fP29vb29fT29vbz9vb58tXf7/b29vHw9vb27fT2+fbJz9/////////////////zzujo6P3/+ff////1/f//9eDe4eLh9Pb29vb29vb2+ffO4u3w///69/////L8///41OPu8f//+PL////z/P//+e3O0dTQ1dHRz+Hl5OTf8v31297f2N/c293Z6e3r9P/99t3b4tfc497e4Nvj7Pv/9eXU09HU1tPS1Nfn5efs8g=="
  },
  "reviewed": false,
  "not_needed": true

@@ -4,13 +4,13 @@
  "label": "Table 2",
  "page": 32,
  "caption": "Table 2 Size of flues in chimneys",
- "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
- "date": "2026-11-20",
- "image_sha256": "5b851bafe8db272e87aea37d768e36573474ee6dc938fb7298e43ef2d522e53b",
+ "model": "Claude Opus 5.5",
+ "date": "2026-11-26",
+ "image_sha256": "95a9b4bd3adf4fd294a5ce569a709d40f83a4cad5a8249036ae0f078c04d77df",
  "image_sig": {
-  "w": 760,
+  "w": 755,
   "h": 530,
-  "grey": "1ci/vsW91uPj4+Pj4+Pj59jL5Obm5ubLzt3m5ubm5urx7e3t7O3429jd2dnZ3On/3tbT1NbX8NTS2NHR5+Xm+erd4ODe4PHi3uHd3t7f4fTy493i3+Hz4uDh4ODq8/T2/9vc5+zr9v////////////fi3uDh4fP////////////q4t/f3+n35+P39/f39/f48uzt7fX//9vb3Nna2tjb8v/////////f2dvZ1tjr6vTg1d3o5eTz1tLW09PT1eP56Nzh4+Xk6ePe4d3e3t/l+N/p6vf39/fr6uvs6uvs9Pj13t3g3uLc4vDu7/D/////8+Xn5+fl9Pf39/f39/f3+A=="
+  "grey": "zsjBvsO82ePj4+Pj4+Pj59LM5ubm5ubKzt/m5ubm5urv7ezu6+362tfd2dnZ3Or/2tfS1NfX8dLS2c/S5+bm+ejd4t/e4PLi3eHd3t7e4vTy4N7h3+L04d/i4ODr9PT2/9fd6O3q9/////////////be4ODg4vT////////////p3+Df3uv35+L39/f39/f48Ozt7fb//9nb29nb2djb8v/////////d2N3Y19fq6/Td0+Do4+X01dHW0tPT1eP55d3h4+bj6uPd4d3e3t7m+Nvq6/f39/fq6uzr6uvs9Pjx3d/g3uHd4vDv7vH/////8eTn6ebl9Pf39/f39/f3+A=="
  },
  "reviewed": false,
  "not_needed": true

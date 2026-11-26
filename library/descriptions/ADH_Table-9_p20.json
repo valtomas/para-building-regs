@@ -4,13 +4,13 @@
  "label": "Table 9",
  "page": 20,
  "caption": "Table 9 \u0007Limits of cover for class M concrete pipes in any width of trench",
- "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
- "date": "2026-11-19",
- "image_sha256": "8b7863d115975aec251490de8dea277e2a04279c6bdd961c92bf34d00cf832c1",
+ "model": "Claude Opus 5.5",
+ "date": "2026-11-26",
+ "image_sha256": "9689f54c9d255a394ea487382335d36d135412fde70ad59d2a08b72745dddb7b",
  "image_sig": {
-  "w": 796,
+  "w": 755,
   "h": 266,
-  "grey": "zcrEx8fEwsfHycTCx93d/c7GvL3EuLu6rry4wb7p6f7Bxd7ez7fe3ry63N7DvNP95uTw8Ofh8PDg3u/w4+Hr/t78///z5P//7e////Dm///w/v//9/L///b1///49P//7/7///bw///28///+PL//9/9///v5P//7ur///Tp///l8PDw8PDw8PDw8PDw8PD+6f///fz///7//v7///////Pc4OHi4d7h39/g5f/////t3N/g3OH2////////////7dfV29rc3Nzd29/d3tz0//Tl6P7//v/////////////v3d/k3d3e////////////1tLS0tLS0tLS0tLS0tLS/Q=="
+  "grey": "zcvExsXHw8bEy8rAws3d4dHIu768vb64sb62ur3O6ezCwd7e2bnP3su7x97ZvLvg5uLw8Ozi6fDl4OXw7OLg8d/5///93/j//OP6///q6f/w/P//+/L5//3x+///9vT/8Pz///zw+f/97/r///T0/+D6///44/T/++L3///t7//k8PDw8PDw8PDw8PDw8PDy6P///vz+///+/v////////Pd4eDg5d3g39zk3vH////u3ODe39zu////////////7tjU2d7b29ze29ze393b/fTl5v/+/v/////////////w3t7h39/c8///////////1tLS0tLS0tLS0tLS0tLS2A=="
  },
  "reviewed": false,
  "not_needed": true

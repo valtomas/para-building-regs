@@ -4,13 +4,13 @@
  "label": "Table 2.1",
  "page": 18,
  "caption": "Table 2.1 Maximum fittings consumption",
- "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
- "date": "2026-11-16",
- "image_sha256": "ba40a0507aad74322e136a5aafdac352a2d9df5799650bd0c11c581ca1c166b3",
+ "model": "Claude Opus 5.5",
+ "date": "2026-11-26",
+ "image_sha256": "77adb1678ed79c3c8636eb28331f675733c6a2c60d02c5286350fc7196dd511e",
  "image_sig": {
   "w": 362,
-  "h": 322,
-  "grey": "zb7G1qq6vb2vtsTg4ODg6OHU2+S2s7Oys8vM6enp6e/v7u7u0tPQy9Hp7u7u7u7z1MjE1/Pz8/PJydHKyMTl9uj2////////5OHi3uTx/////////////+ng4t7a+///4Njr8vLy8vLi1u7y8vLy9uvr8fLy8vLy6+ry8vLy8vbe4PLy8vLy8t7X4vLy8vL25uPa///////p4////////9zV2vLy8vLy29by8vLy8vbp5uTw8/Pz8+rl5ufm8/P26N/d7/Ly8vLq493h3vLy9ujb497n////6uTZ5v/////z8vLy8vLy8vLy8vLy8vL2y//U09ra0dXN1djg097a/w=="
+  "h": 288,
+  "grey": "zsXL1bHCxMSzvsnf39/f59zH0eG8u7+9wb7A6enp6e/q6enpsK+ppKrg6enp6env2czH3v7+/v7NzdbPzMju/ufs8fDx8fHx5uXo5Ojs8fXx+v///////+zq6Ofq9P/////////////n3d/a1vr//9nO6PHx8fHx3M3s8fHx8fXr7fHx8fHx8efq8PHx8fH13N/x8fHx8fHe1uDx8fHx9ePg1v//////5uD////////l4ufx8fHx8ePi8fHx8fH15d/f8fHx8fHl4fHx8fHx9efb1/j/////697Y3tn////e1d3Z3vHx8eDZ193x8fH17OXl5enx8fHr6+Hp8fHx9Q=="
  },
  "reviewed": false,
  "not_needed": true
