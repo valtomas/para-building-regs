@@ -1,0 +1,17 @@
+{
+ "key": "ADT_Table-4.1_p23",
+ "source": "ADT",
+ "label": "Table 4.1",
+ "page": 23,
+ "caption": "Table 4.1 \u0007Type B – Fully enclosed self-contained universal toilet",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-26",
+ "image_sha256": "b80e136f715bcbbbbeee3f70963219d45da92ca2f6b89e590b7584377ef01fda",
+ "image_sig": {
+  "w": 749,
+  "h": 495,
+  "grey": "vqyqrqamqaamqKfIyMjIyebl4OLy9Ofm4/T09PT09PHs5uv5+fnr4+Li4uHn9PTy+Pn5+fn58Onp6e35+fn59/Dw6+7u/+zh3dni4uPe7vv7///////y5u3s6uzp6en3+///////6ePj4ODf3trj7/v///////Hn6ezv9/f3+ff7///////q2eLg7fPx8//76ujn9/n58OXl4uHg4uXp8vv///////Dl6ufl6+Xm9/f7///////w6e/w8+3t8Ozt+///////7+nq6Ofp6Oj49/v//////+7m6Ojq6OXo5+/7///////p4dze5e3u7u/29/n5+fn56eLg4+Dg8/Pz9g=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

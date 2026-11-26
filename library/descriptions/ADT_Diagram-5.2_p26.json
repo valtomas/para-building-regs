@@ -1,0 +1,18 @@
+{
+ "key": "ADT_Diagram-5.2_p26",
+ "source": "ADT",
+ "label": "Diagram 5.2",
+ "page": 26,
+ "caption": "Diagram 5.2 \u0007Type C, side elevation view showing recommended dimensions",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-26",
+ "image_sha256": "54a91f6f1bdad491d3cee6a3bb7df2338a43b401ee59ababc972196fd15b46ca",
+ "image_sig": {
+  "w": 747,
+  "h": 572,
+  "grey": "8Ojo6Ojo6Ojo6Ojo6Ojo7/v5+Pj4+Ozu9f////////v7+f/////6//T////////7+/n/////7PD0////////+/v5/////+z39P////////v7+f////3m9vT////////7+/n////44+/o4f//////+/v57vLx8Orr8P3///////v78ur/8Prn8OD+///////7+/T68u3x9PDs////////+/vx+fn59vfw7P////////v75/Px8erh3eTz1+Tn7//7++36//r08erp/NzX1t3v+/vu6ebm5+Tg4/7k6+/w9Pv7/P//8+/6//z////////7gVtWWFxbWVpaW1tcVk5Ocg=="
+ },
+ "reviewed": false,
+ "description": "Diagram 5.2 is a side elevation line drawing of a Type C toilet bay. Against the left rear wall sits a WC with a cistern behind it; a dashed line on the wall above the cistern is labelled 'Position of shelf'. A horizontal bar labelled 'Horizontal grab rail' is drawn above the WC, to the right of the cistern. To the right of the WC is a vertical bar labelled 'Vertical grab rail', with a 'low hook' attached part-way up it and a 'High hook' fixed higher on the wall above it; further to the right, a 'Horizontal closing bar' is fixed to the right-hand wall. Vertical dimensions measured from the floor on the right read 480mm, 680mm, 800mm, 1050mm, 1685mm and 900mm; the vertical grab rail is marked 600mm long. A vertical dimension on the left to the shelf reads 780–800mm. A horizontal dimension along the floor reads 1465mm minimum. Notes on the right read: 1. Refer to Appendix D for appliance and equipment schedule. 2. As long as other dimensions are maintained, the toilet cistern may be concealed. 3. Centre the mid-line axis of the WC on the rear wall.",
+ "first_draft": "Diagram 5.2 is a side elevation line drawing of a Type C toilet bay. Against the left rear wall sits a WC with a cistern above it; a dashed line on the wall above the cistern is labelled 'Position of shelf'. A horizontal bar labelled 'Horizontal grab rail' is drawn in the open space to the right of the WC. On the right-hand wall there is a vertical bar labelled 'Vertical grab rail', with a 'low hook' attached part-way up it, a 'High hook' fixed higher on the wall above, and a 'Horizontal closing bar' fixed to the wall to the right of the rail. Vertical dimensions measured from the floor on the right read 480mm, 680mm, 800mm, 1050mm, 1685mm and 900mm; the vertical grab rail is marked 600mm long. A vertical dimension on the left to the shelf reads 780–800mm. A horizontal dimension along the floor reads 1465mm minimum. Notes on the right read: 1. Refer to Appendix D for appliance and equipment schedule. 2. As long as other dimensions are maintained, the toilet cistern may be concealed. 3. Centre the mid-line axis of the WC on the rear wall."
+}

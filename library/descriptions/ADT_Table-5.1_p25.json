@@ -1,0 +1,17 @@
+{
+ "key": "ADT_Table-5.1_p25",
+ "source": "ADT",
+ "label": "Table 5.1",
+ "page": 25,
+ "caption": "Table 5.1 \u0007Type C – Ambulant single-sex toilet cubicle (not self-contained)",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-26",
+ "image_sha256": "88fabf195536565deffc7a02bbbf20bab464ebc354facc663b56619069163c85",
+ "image_sig": {
+  "w": 749,
+  "h": 622,
+  "grey": "xLW0uq2wtLGvsrSvucvLzOvp5uz5+u3q6vX29vb6+vj19fj////u5eLl4uLn7u3u+///////6dvd4+Xm4uXj7Pv///////Dm5uvq7e3r6/T4+vr6+vrs5e3v7fHx7/L48vPv8fH/7eLf3OPj5ODt+Pv///////Hp6+vp6u3p9Pj4+vr6+vrt4Obk7/Px8/r48PHw/v//6trd4eHZ3ODf7vv//////+/r8/T09PLz9fP7///////w6e7u8ezs7+vt+///////6d7n7+vt7Ozv7fv///////Hq7Ors6+ns+Pf7///////q4uHh4+/u7u7y+Pr6+vr66ODf4e3r7u3s7w=="
+ },
+ "reviewed": false,
+ "not_needed": true
+}

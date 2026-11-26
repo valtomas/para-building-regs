@@ -1,0 +1,18 @@
+{
+ "key": "ADS_Diagram-6.5_p41",
+ "source": "ADS",
+ "label": "Diagram 6.5",
+ "page": 41,
+ "caption": "Diagram 6.5 \u0007Minimum space requirements for wall-mounted charge point location",
+ "model": "Qwen3.8-27B-GGUF-UD-Q4_K_XL",
+ "date": "2026-11-26",
+ "image_sha256": "2dd908e65a0e669ed1a8c5736e5a3427b55d1c31a25747dc77ee1ad9499b74b7",
+ "image_sig": {
+  "w": 737,
+  "h": 504,
+  "grey": "7uDg4ODg4ODg4ODg4ODg5vf5+fn5+fn19/n5+fn5+fn7//Dz8/fw5vbw9v//////+/bu59/e7OP22+H7//////vp8vHT2fbj6sne9v/////76ebnxMjq2Oq3z+3/////++nz7NbW9uPqzdv4//////vp8/n////j6vD////////76fP4////4+rw////////++ny7P///+Pq8P////////vp8u/////j6vD////////76fP5////4+rw////////++nz+P///+Pq8P////////vtycvR0dHT6MjN0ND18//t6dzj7Ozs7Ojb5ezs7Ozsgl5aX11dXl1cXV5fXV1PUQ=="
+ },
+ "reviewed": false,
+ "description": "The drawing, captioned \"Diagram 6.5 Minimum space requirements for wall-mounted charge point location\", has two parts. The left part, labelled \"Front elevation\", shows two vertical hatched \"Wall/object\" members on either side of a horizontal hatched floor. Between them sits a green rectangle labelled \"Wall-mounted charge point\", with \"Free space\" marked to its left and right. A horizontal dimension line above reads \"≥800mm\" from the left wall to the point, \"≥400mm\" across the point, and \"≥800mm\" from the point to the right wall. A vertical dimension on the left reads \"700 to 1000mm\", measuring the floor to the bottom edge of the point. The right part, labelled \"Side elevation\", shows the point projecting from a hatched wall, above a hatched floor marked \"Floor\". A top dimension of \"≥200mm\" gives its depth, and a vertical dimension of \"≥500mm\" gives its height.",
+ "first_draft": "The drawing, captioned \"Diagram 6.5 Minimum space requirements for wall-mounted charge point location\", has two parts. The left part, labelled \"Front elevation\", shows two vertical hatched \"Wall/object\" members on either side of a horizontal hatched floor. Between them sits a green rectangle labelled \"Wall-mounted charge point\", with \"Free space\" marked to its left and right. A horizontal dimension line above reads \"≥800mm\" from the left wall to the point, \"≥400mm\" across the point, and \"≥800mm\" from the point to the right wall. A vertical dimension on the left reads \"700 to 1000mm\", measuring the floor to the bottom edge of the point. The right part, labelled \"Side elevation\", shows the point projecting from a hatched wall onto a hatched floor marked \"Floor\". A top dimension of \"≥200mm\" gives its depth, and a vertical dimension of \"≥500mm\" gives its height."
+}
