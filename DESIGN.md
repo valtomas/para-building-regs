@@ -118,6 +118,9 @@ Type, bundled in `para/static/fonts/` so the app works offline (all SIL Open Fon
 - **Labels**, IBM Plex Mono 400–500: eyebrows 11 px uppercase with .22–.24em tracking in `--accent`; button labels
   11–12 px uppercase; citations 12 px; sizes, dates and page refs 11–12.5 px.
 
+App icon: the gold ¶ on an oxblood rounded square, drawn by `packaging/make_icon.py` for Windows, Linux and the Mac
+(`icon.icns`, on Apple's grid so it sits the same size as other Dock icons).
+
 Radius: dialogs 20 px, the question box 18 px, cards 14 px, notes and errors 12 px, inputs 10 px, citations 4 px,
 buttons and pills 999 px, close buttons a 34 px circle. Spacing in multiples of 2 px, mostly 8, 10, 14, 22, 28.
 
@@ -292,8 +295,6 @@ no emoji anywhere.
 - **Figure crops** are found from captions, so a few are cut short or include the next heading, and some
   diagrams without a recognisable caption have no image. "Original, page N" is always there as a fallback.
 - **Reader find** hides non-matching passages rather than highlighting matches.
-- **App icon**: the gold ¶ on an oxblood rounded square (`packaging/make_icon.py`), used on Windows and Linux. The
-  Mac app has none yet (`packaging/icon.icns`).
 - **Screenshots** don't yet show Connect, the recommended-models dialog, the graphics-card line on model rows, Downloaded
   to this computer, or the engine update row. `welcome.png` predates the empty-chat rework in 0.2.2, and
   `reader-description.png` is still the old picture (no description is approved yet).
