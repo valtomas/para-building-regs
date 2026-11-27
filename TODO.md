@@ -21,6 +21,8 @@ download pressed while another is running.
 card), moves the AI engine to llama.cpp b12611, the first build that reads it, and stops suggesting Qwen3.5 35B-A3B.
 0.2.9 (26 November) brings a library with descriptions of 424 diagrams, each checked by a person against its image and
 shown under the drawing in the reader, and recrops 19 drawings that took in their neighbour (mostly ADE).
+0.2.10 (27 November) gives the Mac app its icon (the Dock showed Python's) and sets follow-up questions as plain chat
+bubbles.
 The checks below were left open at 0.2.0. Delete this file when it's empty.
 
 ## Done at the workstation

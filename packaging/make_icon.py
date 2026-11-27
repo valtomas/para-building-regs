@@ -1,6 +1,7 @@
 """Draws the app icon: the sidebar's gold pilcrow on an oxblood rounded square.
 
-Writes packaging/icon.png (Linux menus, AppImage) and packaging/icon.ico (Windows app and installer), and the Windows
+Writes packaging/icon.png (Linux menus, AppImage), packaging/icon.ico (Windows app and installer), packaging/icon.icns
+(the Mac app; without it the Dock shows Python's icon), and the Windows
 installer's pictures (packaging/windows/wizard-*.bmp: the tall one on its first and last pages, the small one in the
 corner of the others). The files are checked in, so run this only when the icon changes. Needs PyQt6, which the Linux build already installs:
     QT_QPA_PLATFORM=offscreen python packaging/make_icon.py
@@ -21,12 +22,12 @@ SMALL = ((55, 55), (83, 80), (110, 106))
 ICO_SIZES = (16, 24, 32, 48, 64, 128, 256)
 
 
-def draw(size, family):
+def draw(size, family, inset=0.06):
     img = QImage(size, size, QImage.Format.Format_ARGB32)
     img.fill(Qt.GlobalColor.transparent)
     p = QPainter(img)
     p.setRenderHints(QPainter.RenderHint.Antialiasing | QPainter.RenderHint.TextAntialiasing)
-    inset = size * 0.06  # room for the shadow some desktops draw, and the same visual size as other icons
+    inset = size * inset  # room for the shadow some desktops draw, and the same visual size as other icons
     box = QRectF(inset, inset, size - 2 * inset, size - 2 * inset)
     path = QPainterPath()
     path.addRoundedRect(box, box.width() * 0.22, box.width() * 0.22)
@@ -106,14 +107,34 @@ def write_ico(path, images):
         f.write(out + b"".join(data))
 
 
+# The Mac's icon grid puts the rounded square at 824 of 1024 px, so the icon sits the same size as others in the Dock
+MAC_INSET = 100 / 1024
+# (type, pixels): the PNG entries macOS reads, from 16 px to 512 px at twice the density
+ICNS_TYPES = ((b"icp4", 16), (b"icp5", 32), (b"icp6", 64), (b"ic07", 128), (b"ic08", 256), (b"ic09", 512),
+              (b"ic10", 1024), (b"ic11", 32), (b"ic12", 64), (b"ic13", 256), (b"ic14", 512))
+
+
+def write_icns(path, family):
+    """An .icns holding a PNG per size, so the Mac app can be built on any computer (no iconutil needed)."""
+    cache = {}
+    body = b""
+    for kind, px in ICNS_TYPES:
+        if px not in cache:
+            cache[px] = png_bytes(draw(px, family, MAC_INSET))
+        body += kind + struct.pack(">I", 8 + len(cache[px])) + cache[px]
+    with open(path, "wb") as f:
+        f.write(b"icns" + struct.pack(">I", 8 + len(body)) + body)
+
+
 if __name__ == "__main__":
     app = QGuiApplication([])
     family = QFontDatabase.applicationFontFamilies(QFontDatabase.addApplicationFont(FONT))[0]
     draw(512, family).save(os.path.join(HERE, "icon.png"))
     write_ico(os.path.join(HERE, "icon.ico"), [draw(s, family) for s in ICO_SIZES])
+    write_icns(os.path.join(HERE, "icon.icns"), family)
     mono = QFontDatabase.applicationFontFamilies(QFontDatabase.addApplicationFont(MONO))[0]
     for w, h in BANNERS:
         save_bmp(banner(w, h, family, mono), os.path.join(HERE, "windows", f"wizard-{w}.bmp"))
     for w, h in SMALL:
         save_bmp(corner(w, h, family), os.path.join(HERE, "windows", f"wizard-small-{w}.bmp"))
-    print("Wrote packaging/icon.png, packaging/icon.ico and packaging/windows/wizard-*.bmp")
+    print("Wrote packaging/icon.png, icon.ico, icon.icns and packaging/windows/wizard-*.bmp")
